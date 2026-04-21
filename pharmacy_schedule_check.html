@@ -526,13 +526,24 @@ const DATA = [
 function getKey(id,lb,ti){return `${id}__${lb}__${ti}`}
 function load(){try{return JSON.parse(localStorage.getItem('pharma4')||'{}')}catch(e){return{}}}
 function save(s){localStorage.setItem('pharma4',JSON.stringify(s))}
-function onCheck(key,el){const s=load();s[key]=el.checked;save(s);el.closest('.task-item').classList.toggle('done',el.checked);updateOverall();}
+function onCheck(key,el,fromDiv){
+  if(fromDiv){
+    const cb=document.getElementById('cb_'+key);
+    cb.checked=!cb.checked;
+    el.classList.toggle('done',cb.checked);
+    const s=load();s[key]=cb.checked;save(s);
+  } else {
+    el.closest('.task-item').classList.toggle('done',el.checked);
+    const s=load();s[key]=el.checked;save(s);
+  }
+  updateOverall();
+}
 function tog(el){const b=el.nextElementSibling,c=el.querySelector('.chev');b.classList.toggle('open');c.classList.toggle('open',b.classList.contains('open'));}
 function renderTasks(id,lb,tasks,state){
   return tasks.map((task,ti)=>{
     const key=getKey(id,lb,ti);const checked=!!state[key];
     const cls=task.t==='new'?' new-text':task.t==='ra'?' ra':task.t==='rb'?' rb':task.t==='rc'?' rc':'';
-    return `<label class="task-item${checked?' done':''}"><input type="checkbox" ${checked?'checked':''} onchange="onCheck('${key}',this)"><span class="task-text${cls}">${task.x}</span></label>`;
+    return `<div class="task-item${checked?' done':''}" style="display:flex;align-items:flex-start;gap:7px;padding:3px 4px;border-radius:4px;cursor:pointer" onclick="onCheck('${key}', {checked:!document.getElementById('cb_${key}').checked, target:document.getElementById('cb_${key}')}, true)"><input id="cb_${key}" type="checkbox" ${checked?'checked':''} onclick="event.stopPropagation();onCheck('${key}',this)" style="margin-top:2px;flex-shrink:0;width:14px;height:14px;accent-color:#378ADD"><span class="task-text${cls}">${task.x}</span></div>`;
   }).join('');
 }
 function renderCard(id,isToday,badge,bs,dates,title,slots,state){
