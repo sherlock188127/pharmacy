@@ -6,12 +6,12 @@
 <title>藥學國考進度表 7/18</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f5f5f0;padding:1.5rem;color:#1a1a1a}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#f5f5f0;padding:1.5rem;color:#1a1a1a}
 h1{font-size:18px;font-weight:500;margin-bottom:.3rem}
 .subtitle{font-size:12px;color:#888;margin-bottom:1rem}
-.overall{margin-bottom:1rem;background:#fff;border:0.5px solid #e0e0e0;border-radius:10px;padding:.75rem 1rem}
-.phase-hd{font-size:11px;font-weight:500;color:#888;letter-spacing:.06em;text-transform:uppercase;margin:1.5rem 0 .5rem;padding-bottom:4px;border-bottom:0.5px solid #ddd}
-.wcard{background:#fff;border:0.5px solid #e0e0e0;border-radius:12px;margin-bottom:.55rem;overflow:hidden}
+.overall{margin-bottom:1rem;background:#fff;border:.5px solid #e0e0e0;border-radius:10px;padding:.75rem 1rem}
+.phase-hd{font-size:11px;font-weight:500;color:#888;letter-spacing:.06em;text-transform:uppercase;margin:1.5rem 0 .5rem;padding-bottom:4px;border-bottom:.5px solid #ddd}
+.wcard{background:#fff;border:.5px solid #e0e0e0;border-radius:12px;margin-bottom:.55rem;overflow:hidden}
 .wcard.today{border:2px solid #378ADD}
 .wtop{display:flex;align-items:center;gap:9px;padding:.6rem 1rem;cursor:pointer;user-select:none}
 .wtop:hover{background:#fafafa}
@@ -20,33 +20,34 @@ h1{font-size:18px;font-weight:500;margin-bottom:.3rem}
 .wti{font-size:13px;font-weight:500;flex:1}
 .chev{font-size:11px;color:#bbb;transition:transform .2s;flex-shrink:0}
 .chev.open{transform:rotate(90deg)}
-.wbody{border-top:0.5px solid #eee;display:none}
+.wbody{border-top:.5px solid #eee;display:none}
 .wbody.open{display:block}
-.sr{display:grid;grid-template-columns:100px 1fr;gap:6px;padding:.45rem 1rem;border-bottom:0.5px solid #f0f0f0;align-items:start}
+.sr{display:grid;grid-template-columns:110px 1fr;gap:6px;padding:.45rem 1rem;border-bottom:.5px solid #f0f0f0;align-items:start}
 .sr:last-child{border-bottom:none}
 .slb{font-size:10px;font-weight:500;padding:2px 5px;border-radius:4px;text-align:center;line-height:1.6}
 .item{display:flex;align-items:flex-start;gap:7px;padding:3px 4px;border-radius:4px;cursor:pointer;margin:1px 0}
 .item:hover{background:#f5f5f5}
-.item input[type=checkbox]{margin-top:2px;flex-shrink:0;width:14px;height:14px;accent-color:#378ADD;cursor:pointer}
+.item input{margin-top:2px;flex-shrink:0;width:14px;height:14px;accent-color:#378ADD;cursor:pointer}
 .item .tx{font-size:12px;line-height:1.6;color:#555}
 .item.done .tx{color:#bbb;text-decoration:line-through}
 .tx.c-new{color:#185FA5;font-weight:500}
 .tx.c-ra{color:#854F0B}
 .tx.c-rb{color:#993C1D}
 .tx.c-rc{color:#3B6D11}
+.tx.c-purple{color:#3C3489;font-weight:500}
 .pb{height:3px;background:#eee;border-radius:2px;margin:.3rem 0 0}
 .pf{height:3px;background:#378ADD;border-radius:2px;transition:width .3s}
 .pl{font-size:10px;color:#aaa;margin-top:2px}
 .banner{border-radius:8px;padding:.5rem 1rem;font-size:12px;font-weight:500;text-align:center;margin:.5rem 0}
-.bwarn{background:#FFF8EC;color:#92610A;border:0.5px solid #F5C842}
-.binfo{background:#EEF5FD;color:#185FA5;border:0.5px solid #B5D4F4}
-.bsuc{background:#EEFBF4;color:#0F6E56;border:0.5px solid #9FE1CB}
-.bdanger{background:#FEF0F0;color:#A32D2D;border:0.5px solid #F7C1C1}
+.bwarn{background:#FFF8EC;color:#92610A;border:.5px solid #F5C842}
+.binfo{background:#EEF5FD;color:#185FA5;border:.5px solid #B5D4F4}
+.bsuc{background:#EEFBF4;color:#0F6E56;border:.5px solid #9FE1CB}
+.bdanger{background:#FEF0F0;color:#A32D2D;border:.5px solid #F7C1C1}
 </style>
 </head>
 <body>
 <h1>藥學國考進度表</h1>
-<div class="subtitle">7/18 國考｜打勾自動儲存｜週三10:30・週四15:00後・週五12:00後</div>
+<div class="subtitle">7/18 國考｜打勾自動儲存｜早上中藥7:00・藥理10:15・下午藥劑・晚上藥分・生藥21:00</div>
 <div class="overall">
   <div style="display:flex;justify-content:space-between">
     <span style="font-size:12px;color:#888">整體進度</span>
@@ -54,479 +55,686 @@ h1{font-size:18px;font-weight:500;margin-bottom:.3rem}
   </div>
   <div class="pb"><div class="pf" id="ov-fill" style="width:0%"></div></div>
 </div>
-<div class="banner bwarn">4/21–4/29 無課全天自由｜4/30起：週三10:30・週四15:00・週五12:00</div>
+<div class="banner bwarn">今天休息 4/21｜從 4/22 開始｜週三10:30・週四15:00・週五12:00</div>
 <div id="app"></div>
 <div class="banner bsuc" style="margin-top:1.5rem">7/18 國考 — 加油！</div>
-
 <script>
-var SK = 'pharma_v6';
-function load(){try{return JSON.parse(localStorage.getItem(SK)||'{}')}catch(e){return{}}}
+
+var SK="pharma_v8";
+function load(){try{return JSON.parse(localStorage.getItem(SK)||"{}")}catch(e){return{}}}
 function save(s){localStorage.setItem(SK,JSON.stringify(s))}
-
+function safe(k){return k.replace(/[^a-zA-Z0-9]/g,"_")}
 function ck(key){
-  var s=load(); s[key]=!s[key]; save(s);
-  var row=document.getElementById('row_'+key);
-  var cb=document.getElementById('cb_'+key);
-  if(!row||!cb) return;
-  cb.checked=s[key];
-  if(s[key]) row.classList.add('done'); else row.classList.remove('done');
-  recalcOverall();
+  var s=load();s[key]=!s[key];save(s);
+  var row=document.getElementById("row_"+key);
+  var cb=document.getElementById("cb_"+key);
+  if(row){if(s[key])row.classList.add("done");else row.classList.remove("done");}
+  if(cb)cb.checked=!!s[key];
+  updateAll();
 }
-
 function tog(el){
-  var b=el.nextElementSibling;
-  var c=el.querySelector('.chev');
-  var open=b.classList.toggle('open');
-  if(open) c.classList.add('open'); else c.classList.remove('open');
+  var b=el.nextElementSibling,c=el.querySelector(".chev");
+  var o=b.classList.toggle("open");
+  if(o)c.classList.add("open");else c.classList.remove("open");
 }
-
-function recalcOverall(){
+function updateAll(){
   var s=load();
-  var all=document.querySelectorAll('.item');
-  var total=all.length, done=0;
-  all.forEach(function(el){ if(s[el.id.replace('row_','')]) done++; });
-  var pct=total?Math.round(done/total*100):0;
-  document.getElementById('ov-fill').style.width=pct+'%';
-  document.getElementById('ov-label').textContent=done+' / '+total+' ('+pct+'%)';
-  document.querySelectorAll('.wcard').forEach(function(card){
-    var its=card.querySelectorAll('.item');
+  var all=document.querySelectorAll(".item");
+  var tot=all.length,done=0;
+  all.forEach(function(el){if(s[el.id.replace("row_","")])done++;});
+  var pct=tot?Math.round(done/tot*100):0;
+  document.getElementById("ov-fill").style.width=pct+"%";
+  document.getElementById("ov-label").textContent=done+" / "+tot+" ("+pct+"%)";
+  document.querySelectorAll(".wcard").forEach(function(card){
+    var its=card.querySelectorAll(".item");
     if(!its.length)return;
     var t=its.length,d=0;
-    its.forEach(function(el){if(s[el.id.replace('row_','')])d++;});
+    its.forEach(function(el){if(s[el.id.replace("row_","")])d++;});
     var p=Math.round(d/t*100);
-    var pf=card.querySelector('.pf');
-    var pl=card.querySelector('.pl');
-    if(pf)pf.style.width=p+'%';
-    if(pl)pl.textContent=d+'/'+t+' 完成';
+    var pf=card.querySelector(".pf");
+    var pl=card.querySelector(".pl");
+    if(pf)pf.style.width=p+"%";
+    if(pl)pl.textContent=d+"/"+t+" 完成";
   });
 }
-
-// 安全的key（只留英數底線）
-function safeKey(k){ return k.replace(/[^a-zA-Z0-9]/g,'_'); }
-
-function buildSlots(id, slots, s){
-  var html='';
+function buildSlots(id,slots,s){
+  var html="";
   slots.forEach(function(slot){
-    var items='';
+    var items="";
     slot.tasks.forEach(function(t,ti){
-      var key=safeKey(id+'__'+slot.label+'__'+ti);
+      var key=safe(id+"__"+slot.label+"__"+ti);
       var checked=!!s[key];
-      var colorCls = t.t==='new'?' c-new':t.t==='ra'?' c-ra':t.t==='rb'?' c-rb':t.t==='rc'?' c-rc':'';
-      items+='<div class="item'+(checked?' done':'')+'" id="row_'+key+'" onclick="ck(\''+key+'\')">'
-        +'<input type="checkbox" id="cb_'+key+'" '+(checked?'checked ':'')+'onclick="event.stopPropagation()">'
-        +'<span class="tx'+colorCls+'">'+t.x+'</span>'
-        +'</div>';
+      var cc=t.t==="new"?" c-new":t.t==="ra"?" c-ra":t.t==="rb"?" c-rb":t.t==="rc"?" c-rc":t.t==="purple"?" c-purple":"";
+      var div=document.createElement("div");
+      div.className="item"+(checked?" done":"");
+      div.id="row_"+key;
+      div.setAttribute("onclick","ck('"+key+"')");
+      var cb=document.createElement("input");
+      cb.type="checkbox";cb.id="cb_"+key;cb.checked=checked;
+      cb.setAttribute("onclick","event.stopPropagation()");
+      var span=document.createElement("span");
+      span.className="tx"+cc;span.textContent=t.x;
+      div.appendChild(cb);div.appendChild(span);
+      items+=div.outerHTML;
     });
-    html+='<div class="sr">'
-      +'<span class="slb" style="'+slot.ls+'">'+slot.label+'</span>'
-      +'<div>'+items+'</div>'
-      +'</div>';
+    html+='<div class="sr"><span class="slb" style="'+slot.ls+'">'+slot.label+'</span><div>'+items+'</div></div>';
   });
   return html;
 }
-
-function buildCard(item, slots, s, isToday){
-  var total=0,done=0;
+function buildCard(item,slots,s,isToday){
+  var tot=0,done=0;
   slots.forEach(function(slot){
     slot.tasks.forEach(function(t,ti){
-      var key=safeKey(item.id+'__'+slot.label+'__'+ti);
-      total++;
-      if(s[key]) done++;
+      var key=safe(item.id+"__"+slot.label+"__"+ti);
+      tot++;if(s[key])done++;
     });
   });
-  var pct=total?Math.round(done/total*100):0;
-  var dates=item.dates||item.date||'';
-  var title=item.title||item.date||'';
-  return '<div class="wcard'+(isToday?' today':'')+'">'
+  var pct=tot?Math.round(done/tot*100):0;
+  return '<div class="wcard'+(isToday?" today":"")+'">'
     +'<div class="wtop" onclick="tog(this)">'
     +'<span class="wbg" style="'+item.bs+'">'+item.badge+'</span>'
-    +'<span class="wdt">'+dates+'</span>'
-    +'<span class="wti">'+title+'</span>'
+    +'<span class="wdt">'+item.dates+'</span>'
+    +'<span class="wti">'+item.title+'</span>'
     +'<span style="font-size:11px;color:#aaa;margin-right:4px">'+pct+'%</span>'
-    +'<span class="chev'+(isToday?' open':'')+'">▶</span>'
+    +'<span class="chev'+(isToday?" open":"")+'">▶</span>'
     +'</div>'
-    +'<div class="wbody'+(isToday?' open':'')+'">'
-    +buildSlots(item.id, slots, s)
+    +'<div class="wbody'+(isToday?" open":"")+'">'
+    +buildSlots(item.id,slots,s)
     +'<div style="padding:.4rem 1rem .5rem">'
     +'<div class="pb"><div class="pf" style="width:'+pct+'%"></div></div>'
-    +'<div class="pl">'+done+'/'+total+' 完成</div>'
-    +'</div>'
-    +'</div>'
-    +'</div>';
+    +'<div class="pl">'+done+"/"+tot+" 完成</div>"
+    +'</div></div></div>';
 }
 
-// ===== 資料 =====
 var D=[
-{ph:"📌 今天 4/21 週二",type:"daily",days:[
- {id:"d421",today:true,date:"4/21 今天",badge:"今天",bs:"background:#378ADD;color:#fff",slots:[
-  {label:"晚上 7:00–9:45 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[
-   {t:"rc",x:"複習 CH1 基礎概念（補完剩餘）"},
-   {t:"new",x:"首讀 水溶液概論（第1晚）"},
+{ph:"📌 今天 4/22 週二",type:"daily",days:[
+ {id:"d0422",today:true,date:"4/22 週二",badge:"今天",bs:"background:#378ADD;color:#fff",slots:[
+  {label:"早上 7:00–7:45 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[
+   {t:"new",x:"首讀 補氣藥"}
+  ]},
+  {label:"早上 10:15–12:00 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
+   {t:"new",x:"首讀 抗癲癇藥物"},
+   {t:"ra",x:"複習 藥效學・藥動學・總論"}
+  ]},
+  {label:"下午 14:00–17:30 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
+   {t:"new",x:"首讀 錠劑 1"},
+   {t:"new",x:"首讀 錠劑 2"},
+   {t:"new",x:"首讀 錠劑 3"}
+  ]},
+  {label:"晚上 19:00–21:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[
+   {t:"new",x:"首讀 CH1基礎概念（第1晚）"}
+  ]},
+  {label:"晚上 21:00–21:45 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[
+   {t:"new",x:"生物鹼 I（第1天）"}
   ]},
  ]},
 ]},
-{ph:"4/22–4/29 無課全天自由",type:"daily",days:[
- {id:"d422",today:false,date:"4/22 週三",badge:"Day 2",bs:"background:#E6F1FB;color:#0C447C",slots:[
-  {label:"早上 藥理 10:15",ls:"background:#E6F1FB;color:#0C447C",tasks:[
-   {t:"new",x:"首讀 抗癲癇藥物"},
+{ph:"4/23–4/29 無課全天自由",type:"daily",days:[
+ {id:"d0423",today:false,date:"4/23 週三",badge:"Day 2",bs:"background:#E6F1FB;color:#0C447C",slots:[
+  {label:"早上 7:00–7:45 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[
+   {t:"new",x:"首讀 補血藥"}
+  ]},
+  {label:"早上 10:15–12:00 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
+   {t:"new",x:"首讀 全身麻醉劑"},
+   {t:"ra",x:"複習 抗癲癇藥物"}
+  ]},
+  {label:"下午 14:00–17:30 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
+   {t:"new",x:"首讀 軟膏劑 1"},
+   {t:"new",x:"首讀 軟膏劑 2"}
+  ]},
+  {label:"晚上 19:00–21:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[
+   {t:"new",x:"首讀 CH1基礎概念（第2晚）"},
+   {t:"rc",x:"整理 CH1基礎概念 筆記"}
+  ]},
+  {label:"晚上 21:00–21:45 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[
+   {t:"new",x:"生物鹼 I（第2天）"}
+  ]},
+ ]},
+ {id:"d0424",today:false,date:"4/24 週四",badge:"Day 3",bs:"background:#E6F1FB;color:#0C447C",slots:[
+  {label:"早上 7:00–7:45 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[
+   {t:"new",x:"首讀 補陰藥"}
+  ]},
+  {label:"早上 10:15–12:00 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
+   {t:"new",x:"首讀 局部麻醉劑"},
+   {t:"ra",x:"複習 藥效學・藥動學・總論"},
    {t:"ra",x:"複習 交感神經用藥"}
   ]},
-  {label:"下午 藥劑 2:00",ls:"background:#FAECE7;color:#712B13",tasks:[
-   {t:"new",x:"首讀 錠劑 2"},
-   {t:"new",x:"首讀 錠劑 3"},
-  ]},
-  {label:"晚上 藥分 7:00",ls:"background:#EAF3DE;color:#27500A",tasks:[
-   {t:"new",x:"首讀 CH1基礎概念（晚1）"}
-  ]},
- ]},
- {id:"d423",today:false,date:"4/23 週四",badge:"Day 3",bs:"background:#E6F1FB;color:#0C447C",slots:[
-  {label:"早上 藥理 10:15",ls:"background:#E6F1FB;color:#0C447C",tasks:[
-   {t:"new",x:"首讀 全身麻醉劑"},
-   {t:"ra",x:"複習 副交感神經・神經節・神經肌肉阻斷劑"}
-  ]},
-  {label:"下午 藥劑 2:00",ls:"background:#FAECE7;color:#712B13",tasks:[
-   {t:"new",x:"首讀 軟膏劑 1"},
-   {t:"new",x:"首讀 軟膏劑 2"},
-   {t:"rb",x:"複習 錠劑 1・2・3"},
-  ]},
-  {label:"晚上 藥分 7:00",ls:"background:#EAF3DE;color:#27500A",tasks:[
-   {t:"new",x:"首讀 CH1基礎概念（晚2）"}
-  ]},
- ]},
- {id:"d424",today:false,date:"4/24 週五",badge:"Day 4",bs:"background:#E6F1FB;color:#0C447C",slots:[
-  {label:"早上 藥理 10:15",ls:"background:#E6F1FB;color:#0C447C",tasks:[
-   {t:"new",x:"首讀 局部麻醉劑"},
-   {t:"ra",x:"複習 精神分裂症・躁鬱症・憂鬱症"}
-  ]},
-  {label:"下午 藥劑 2:00",ls:"background:#FAECE7;color:#712B13",tasks:[
+  {label:"下午 14:00–17:30 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
    {t:"new",x:"首讀 軟膏劑 3"},
    {t:"new",x:"首讀 軟膏劑 4"},
-   {t:"rb",x:"複習 軟膏劑 1・2"},
+   {t:"rb",x:"複習 錠劑 1（記憶曲線）"},
+   {t:"rb",x:"複習 錠劑 2（記憶曲線）"}
   ]},
-  {label:"晚上 藥分 7:00",ls:"background:#EAF3DE;color:#27500A",tasks:[
-   {t:"new",x:"首讀 水溶液概論（晚1）"}
+  {label:"晚上 19:00–21:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[
+   {t:"new",x:"首讀 水溶液概論（第1晚）"},
+   {t:"rc",x:"複習 CH1基礎概念（記憶曲線）"}
+  ]},
+  {label:"晚上 21:00–21:45 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[
+   {t:"new",x:"生物鹼 I（第3天）"}
   ]},
  ]},
- {id:"d425",today:false,date:"4/25 週六",badge:"Day 5",bs:"background:#E6F1FB;color:#0C447C",slots:[
-  {label:"早上 藥理 10:15",ls:"background:#E6F1FB;color:#0C447C",tasks:[
+ {id:"d0425",today:false,date:"4/25 週五",badge:"Day 4",bs:"background:#E6F1FB;color:#0C447C",slots:[
+  {label:"早上 7:00–7:45 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[
+   {t:"new",x:"首讀 補陽藥"}
+  ]},
+  {label:"早上 10:15–12:00 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
    {t:"new",x:"首讀 鎮靜安眠藥物"},
-   {t:"ra",x:"複習 全身麻醉劑・局部麻醉劑（昨天讀的確認）"}
+   {t:"ra",x:"複習 抗癲癇藥物"},
+   {t:"ra",x:"複習 局部麻醉劑"}
   ]},
-  {label:"下午 藥劑 2:00",ls:"background:#FAECE7;color:#712B13",tasks:[
+  {label:"下午 14:00–17:30 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
    {t:"new",x:"首讀 膠囊・栓劑 1"},
-   {t:"rb",x:"複習 軟膏劑 3・4"},
+   {t:"rb",x:"複習 軟膏劑 1（記憶曲線）"},
+   {t:"rb",x:"複習 軟膏劑 2（記憶曲線）"}
   ]},
-  {label:"晚上 藥分 7:00",ls:"background:#EAF3DE;color:#27500A",tasks:[
-   {t:"new",x:"首讀 水溶液概論（晚2）"}
+  {label:"晚上 19:00–21:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[
+   {t:"new",x:"首讀 水溶液概論（第2晚）"},
+   {t:"rc",x:"整理 水溶液概論 筆記"}
+  ]},
+  {label:"晚上 21:00–21:45 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[
+   {t:"new",x:"生物鹼 II（第1天）"}
   ]},
  ]},
- {id:"d426",today:false,date:"4/26 週日",badge:"Day 6",bs:"background:#E6F1FB;color:#0C447C",slots:[
-  {label:"早上 藥理 10:15",ls:"background:#E6F1FB;color:#0C447C",tasks:[
+ {id:"d0426",today:false,date:"4/26 週六",badge:"Day 5",bs:"background:#E6F1FB;color:#0C447C",slots:[
+  {label:"早上 7:00–7:45 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[
+   {t:"new",x:"首讀 溫裡藥"}
+  ]},
+  {label:"早上 10:15–12:00 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
    {t:"new",x:"首讀 酒精・中樞總論"},
-   {t:"ra",x:"複習 交感・副交感・神經節（三輪）"}
+   {t:"ra",x:"複習 交感神經用藥"},
+   {t:"ra",x:"複習 副交感神經・神經節・神經肌肉阻斷劑"}
   ]},
-  {label:"下午 藥劑 2:00",ls:"background:#FAECE7;color:#712B13",tasks:[
+  {label:"下午 14:00–17:30 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
    {t:"new",x:"首讀 膠囊・栓劑 2"},
-   {t:"rb",x:"複習 軟膏劑全系列"},
+   {t:"rb",x:"複習 軟膏劑 3（記憶曲線）"},
+   {t:"rb",x:"複習 軟膏劑 4（記憶曲線）"}
   ]},
-  {label:"晚上 藥分 7:00",ls:"background:#EAF3DE;color:#27500A",tasks:[
-   {t:"new",x:"首讀 層析概論・TLC（晚1）"}
+  {label:"晚上 19:00–21:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[
+   {t:"new",x:"首讀 層析概論・TLC（第1晚）"},
+   {t:"rc",x:"複習 CH1基礎概念（記憶曲線）"},
+   {t:"rc",x:"複習 水溶液概論（記憶曲線）"}
+  ]},
+  {label:"晚上 21:00–21:45 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[
+   {t:"new",x:"生物鹼 II（第2天）"}
   ]},
  ]},
- {id:"d427",today:false,date:"4/27 週一",badge:"Day 7",bs:"background:#E6F1FB;color:#0C447C",slots:[
-  {label:"早上 藥理 10:15",ls:"background:#E6F1FB;color:#0C447C",tasks:[
+ {id:"d0427",today:false,date:"4/27 週日",badge:"Day 6",bs:"background:#E6F1FB;color:#0C447C",slots:[
+  {label:"早上 7:00–7:45 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[
+   {t:"new",x:"首讀 理氣藥"}
+  ]},
+  {label:"早上 10:15–12:00 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
    {t:"new",x:"首讀 血清素・興奮劑・迷幻藥"},
+   {t:"ra",x:"複習 局部麻醉劑"},
    {t:"ra",x:"複習 酒精・中樞總論"}
   ]},
-  {label:"下午 藥劑 2:00",ls:"background:#FAECE7;color:#712B13",tasks:[
+  {label:"下午 14:00–17:30 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
    {t:"new",x:"首讀 乳劑・懸浮劑 1"},
-   {t:"rb",x:"複習 膠囊・栓劑全系列"},
+   {t:"rb",x:"複習 錠劑 1（記憶曲線）"},
+   {t:"rb",x:"複習 錠劑 2（記憶曲線）"}
   ]},
-  {label:"晚上 藥分 7:00",ls:"background:#EAF3DE;color:#27500A",tasks:[
-   {t:"new",x:"首讀 層析概論・TLC（晚2）"}
+  {label:"晚上 19:00–21:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[
+   {t:"new",x:"首讀 層析概論・TLC（第2晚）"},
+   {t:"rc",x:"整理 層析概論・TLC 筆記"}
+  ]},
+  {label:"晚上 21:00–21:45 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[
+   {t:"new",x:"生物鹼 II（第3天）"}
   ]},
  ]},
- {id:"d428",today:false,date:"4/28 週二",badge:"Day 8",bs:"background:#E6F1FB;color:#0C447C",slots:[
-  {label:"早上 藥理 10:15",ls:"background:#E6F1FB;color:#0C447C",tasks:[
-   {t:"new",x:"首讀 高血壓"},
-   {t:"ra",x:"複習 麻醉・鎮靜安眠・中樞・血清素"}
+ {id:"d0428",today:false,date:"4/28 週一",badge:"Day 7",bs:"background:#E6F1FB;color:#0C447C",slots:[
+  {label:"早上 7:00–7:45 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[
+   {t:"new",x:"首讀 平肝熄風藥"}
   ]},
-  {label:"下午 藥劑 2:00",ls:"background:#FAECE7;color:#712B13",tasks:[
+  {label:"早上 10:15–12:00 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
+   {t:"new",x:"首讀 高血壓"},
+   {t:"ra",x:"複習 藥效學・藥動學・總論"},
+   {t:"ra",x:"複習 副交感神經・神經節・神經肌肉阻斷劑"}
+  ]},
+  {label:"下午 14:00–17:30 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
    {t:"new",x:"首讀 乳劑・懸浮劑 2"},
    {t:"new",x:"首讀 溶液劑 1"},
-   {t:"rb",x:"複習 乳劑・懸浮劑 1"},
+   {t:"rb",x:"複習 軟膏劑 1（記憶曲線）"},
+   {t:"rb",x:"複習 軟膏劑 2（記憶曲線）"}
   ]},
-  {label:"晚上 藥分 7:00",ls:"background:#EAF3DE;color:#27500A",tasks:[
-   {t:"new",x:"首讀 HPLC（晚1）"}
+  {label:"晚上 19:00–21:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[
+   {t:"new",x:"首讀 HPLC（第1晚）"},
+   {t:"rc",x:"複習 水溶液概論（記憶曲線）"},
+   {t:"rc",x:"複習 層析概論・TLC（記憶曲線）"}
+  ]},
+  {label:"晚上 21:00–21:45 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[
+   {t:"new",x:"配糖體 I（第1天）"}
   ]},
  ]},
- {id:"d429",today:false,date:"4/29 週三",badge:"Day 9",bs:"background:#E6F1FB;color:#0C447C",slots:[
-  {label:"早上 藥理 10:15",ls:"background:#E6F1FB;color:#0C447C",tasks:[
+ {id:"d0429",today:false,date:"4/29 週二",badge:"Day 8",bs:"background:#E6F1FB;color:#0C447C",slots:[
+  {label:"早上 7:00–7:45 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[
+   {t:"new",x:"首讀 安神藥"}
+  ]},
+  {label:"早上 10:15–12:00 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
    {t:"new",x:"首讀 心絞痛"},
-   {t:"ra",x:"複習 交感・副交感（四輪）"}
+   {t:"ra",x:"複習 抗癲癇藥物"},
+   {t:"ra",x:"複習 酒精・中樞總論"}
   ]},
-  {label:"下午 藥劑 2:00",ls:"background:#FAECE7;color:#712B13",tasks:[
+  {label:"下午 14:00–17:30 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
    {t:"new",x:"首讀 溶液劑 2"},
-   {t:"rb",x:"複習 溶液劑 1・乳劑・懸浮劑"},
+   {t:"rb",x:"複習 軟膏劑 3（記憶曲線）"},
+   {t:"rb",x:"複習 軟膏劑 4（記憶曲線）"}
   ]},
-  {label:"晚上 藥分 7:00",ls:"background:#EAF3DE;color:#27500A",tasks:[
-   {t:"new",x:"首讀 HPLC（晚2）"}
+  {label:"晚上 19:00–21:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[
+   {t:"new",x:"首讀 HPLC（第2晚）"},
+   {t:"rc",x:"整理 HPLC 筆記"}
+  ]},
+  {label:"晚上 21:00–21:45 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[
+   {t:"new",x:"配糖體 I（第2天）"}
   ]},
  ]},
 ]},
 {ph:"4/30起套課表（週三10:30・週四15:00・週五12:00）",type:"daily",days:[
- {id:"d430",today:false,date:"4/30 週四 課到15:00",badge:"4/30",bs:"background:#FAEEDA;color:#633806",slots:[
-  {label:"下午 15:00 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
+ {id:"d0430",today:false,date:"4/30 週三 早八課",badge:"4/30",bs:"background:#FAEEDA;color:#633806",slots:[
+  {label:"早上 7:00–7:45 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[
+   {t:"new",x:"首讀 收澀藥"}
+  ]},
+  {label:"早上 10:30–12:00 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
+   {t:"new",x:"首讀 心律不整"},
+   {t:"ra",x:"複習 交感神經用藥"},
+   {t:"ra",x:"複習 巴金森氏症"}
+  ]},
+  {label:"下午 14:00–17:30 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
    {t:"new",x:"首讀 流變學 1"},
    {t:"new",x:"首讀 流變學 2"},
+   {t:"rb",x:"複習 膠囊・栓劑 1（記憶曲線）"},
+   {t:"rb",x:"複習 乳劑・懸浮劑 2（記憶曲線）"}
   ]},
-  {label:"晚上 7:00 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
-   {t:"new",x:"首讀 心律不整・心衰竭・利尿劑"},
-   {t:"ra",x:"複習 高血壓・心絞痛"},
+  {label:"晚上 19:00–21:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[
+   {t:"new",x:"首讀 GC・SFC・萃取法（第1晚）"},
+   {t:"rc",x:"複習 CH1基礎概念（記憶曲線）"},
+   {t:"rc",x:"複習 層析概論・TLC（記憶曲線）"}
   ]},
- ]},
- {id:"d501",today:false,date:"5/1 週五 課到12:00",badge:"5/1",bs:"background:#FAEEDA;color:#633806",slots:[
-  {label:"下午 12:00 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
-   {t:"new",x:"首讀 膠體（長影片1h44m，慢慢讀）"},
-   {t:"rb",x:"複習 流變學 1・2"},
-  ]},
-  {label:"晚上 7:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[
-   {t:"new",x:"首讀 GC・SFC・萃取法（晚2）"}
+  {label:"晚上 21:00–21:45 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[
+   {t:"new",x:"配糖體 I（第3天）"}
   ]},
  ]},
- {id:"d502",today:false,date:"5/2 週六",badge:"5/2",bs:"background:#E6F1FB;color:#0C447C",slots:[
-  {label:"早上 藥理 10:15",ls:"background:#E6F1FB;color:#0C447C",tasks:[
-   {t:"new",x:"首讀 心律不整"},
-   {t:"ra",x:"複習 心血管全系列"}
+ {id:"d0501",today:false,date:"5/1 週四 課到15:00",badge:"5/1",bs:"background:#FAEEDA;color:#633806",slots:[
+  {label:"早上 7:00–7:45 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[
+   {t:"new",x:"首讀 辛溫解表藥"}
   ]},
-  {label:"下午 藥劑 2:00",ls:"background:#FAECE7;color:#712B13",tasks:[
+  {label:"下午 15:00–17:30 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
+   {t:"new",x:"首讀 膠體"},
+   {t:"rb",x:"複習 膠囊・栓劑 2（記憶曲線）"},
+   {t:"rb",x:"複習 溶液劑 2（記憶曲線）"}
+  ]},
+  {label:"晚上 19:00–21:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[
+   {t:"new",x:"首讀 GC・SFC・萃取法（第2晚）"},
+   {t:"rc",x:"整理 GC・SFC・萃取法 筆記"}
+  ]},
+  {label:"晚上 21:00–21:45 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[
+   {t:"new",x:"配糖體 II（第1天）"}
+  ]},
+ ]},
+ {id:"d0502",today:false,date:"5/2 週五 課到12:00",badge:"5/2",bs:"background:#FAEEDA;color:#633806",slots:[
+  {label:"早上 7:00–7:45 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[
+   {t:"new",x:"首讀 辛涼解表藥"}
+  ]},
+  {label:"下午 12:00–17:30 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
    {t:"new",x:"首讀 散劑・微粒學"},
    {t:"new",x:"首讀 眼用製劑"},
-   {t:"rb",x:"複習 溶液劑 1・2"},
+   {t:"rb",x:"複習 乳劑・懸浮劑 1（記憶曲線）"},
+   {t:"rb",x:"複習 流變學 1（記憶曲線）"}
   ]},
-  {label:"晚上 藥分 7:00",ls:"background:#EAF3DE;color:#27500A",tasks:[
-   {t:"new",x:"首讀 CE・MS質譜儀（晚1）"}
+  {label:"晚上 19:00–21:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[
+   {t:"new",x:"首讀 CE・MS質譜儀（第1晚）"},
+   {t:"rc",x:"複習 水溶液概論（記憶曲線）"},
+   {t:"rc",x:"複習 HPLC（記憶曲線）"}
+  ]},
+  {label:"晚上 21:00–21:45 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[
+   {t:"new",x:"配糖體 II（第2天）"}
   ]},
  ]},
- {id:"d503",today:false,date:"5/3 週日",badge:"5/3",bs:"background:#E6F1FB;color:#0C447C",slots:[
-  {label:"早上 藥理 10:15",ls:"background:#E6F1FB;color:#0C447C",tasks:[
+ {id:"d0503",today:false,date:"5/3 週六",badge:"5/3",bs:"background:#E6F1FB;color:#0C447C",slots:[
+  {label:"早上 7:00–7:45 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[
+   {t:"new",x:"首讀 化痰藥"}
+  ]},
+  {label:"早上 10:15–12:00 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
    {t:"new",x:"首讀 心衰竭"},
-   {t:"ra",x:"複習 抗凝血・降血脂"}
+   {t:"ra",x:"複習 酒精・中樞總論"},
+   {t:"ra",x:"複習 心律不整"}
   ]},
-  {label:"下午 藥劑 2:00",ls:"background:#FAECE7;color:#712B13",tasks:[
+  {label:"下午 14:00–17:30 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
    {t:"new",x:"首讀 糖漿/酏/醑…生物製劑 1"},
-   {t:"rb",x:"複習 散劑・微粒學・眼用製劑"},
+   {t:"rb",x:"複習 乳劑・懸浮劑 2（記憶曲線）"},
+   {t:"rb",x:"複習 溶液劑 1（記憶曲線）"}
   ]},
-  {label:"晚上 藥分 7:00",ls:"background:#EAF3DE;color:#27500A",tasks:[
-   {t:"new",x:"首讀 CE・MS質譜儀（晚2）"}
+  {label:"晚上 19:00–21:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[
+   {t:"new",x:"首讀 CE・MS質譜儀（第2晚）"},
+   {t:"rc",x:"整理 CE・MS質譜儀 筆記"}
+  ]},
+  {label:"晚上 21:00–21:45 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[
+   {t:"new",x:"配糖體 II（第3天）"}
   ]},
  ]},
- {id:"d504",today:false,date:"5/4 週一",badge:"5/4",bs:"background:#E6F1FB;color:#0C447C",slots:[
-  {label:"早上 藥理 10:15",ls:"background:#E6F1FB;color:#0C447C",tasks:[
+ {id:"d0504",today:false,date:"5/4 週日",badge:"5/4",bs:"background:#E6F1FB;color:#0C447C",slots:[
+  {label:"早上 7:00–7:45 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[
+   {t:"new",x:"首讀 止咳平喘藥"}
+  ]},
+  {label:"早上 10:15–12:00 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
    {t:"new",x:"首讀 利尿劑"},
-   {t:"ra",x:"複習 抗腫瘤 1・2"}
+   {t:"ra",x:"複習 巴金森氏症"},
+   {t:"ra",x:"複習 血清素・興奮劑・迷幻藥"}
   ]},
-  {label:"下午 藥劑 2:00",ls:"background:#FAECE7;color:#712B13",tasks:[
-   {t:"new",x:"首讀 糖漿/酏/醑…生物製劑 2（長影片1h26m）"},
-   {t:"rb",x:"複習 生物製劑 1"},
+  {label:"下午 14:00–17:30 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
+   {t:"new",x:"首讀 糖漿/酏/醑…生物製劑 2"},
+   {t:"rb",x:"複習 溶液劑 2（記憶曲線）"},
+   {t:"rb",x:"複習 散劑・微粒學（記憶曲線）"}
   ]},
-  {label:"晚上 藥分 7:00",ls:"background:#EAF3DE;color:#27500A",tasks:[
-   {t:"new",x:"首讀 光譜概論・UV/VIS（晚1）"}
+  {label:"晚上 19:00–21:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[
+   {t:"new",x:"首讀 光譜概論・UV/VIS（第1晚）"},
+   {t:"rc",x:"複習 層析概論・TLC（記憶曲線）"},
+   {t:"rc",x:"複習 GC・SFC・萃取法（記憶曲線）"}
+  ]},
+  {label:"晚上 21:00–21:45 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[
+   {t:"new",x:"多醣類・樹脂（第1天）"}
   ]},
  ]},
- {id:"d505",today:false,date:"5/5 週二",badge:"5/5",bs:"background:#E6F1FB;color:#0C447C",slots:[
-  {label:"早上 藥理 10:15",ls:"background:#E6F1FB;color:#0C447C",tasks:[
+ {id:"d0505",today:false,date:"5/5 週一",badge:"5/5",bs:"background:#E6F1FB;color:#0C447C",slots:[
+  {label:"早上 7:00–7:45 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[
+   {t:"new",x:"首讀 利水滲濕藥"}
+  ]},
+  {label:"早上 10:15–12:00 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
    {t:"new",x:"首讀 抗凝血藥物"},
+   {t:"ra",x:"複習 藥效學・藥動學・總論"},
+   {t:"ra",x:"複習 高血壓"}
+  ]},
+  {label:"下午 14:00–17:30 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
+   {t:"new",x:"首讀 試驗-檢查法 1"},
+   {t:"rb",x:"複習 流變學 1（記憶曲線）"},
+   {t:"rb",x:"複習 流變學 2（記憶曲線）"}
+  ]},
+  {label:"晚上 19:00–21:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[
+   {t:"new",x:"首讀 光譜概論・UV/VIS（第2晚）"},
+   {t:"rc",x:"整理 光譜概論・UV/VIS 筆記"}
+  ]},
+  {label:"晚上 21:00–21:45 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[
+   {t:"new",x:"多醣類・樹脂（第2天）"}
+  ]},
+ ]},
+ {id:"d0506",today:false,date:"5/6 週二",badge:"5/6",bs:"background:#E6F1FB;color:#0C447C",slots:[
+  {label:"早上 7:00–7:45 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[
+   {t:"new",x:"首讀 芳香化濕藥"}
+  ]},
+  {label:"早上 10:15–12:00 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
+   {t:"new",x:"首讀 降血脂藥物"},
+   {t:"ra",x:"複習 精神分裂症・躁鬱症・憂鬱症"},
+   {t:"ra",x:"複習 心絞痛"}
+  ]},
+  {label:"下午 14:00–17:30 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
+   {t:"new",x:"首讀 試驗-檢查法 2"},
+   {t:"rb",x:"複習 膠體（記憶曲線）"},
+   {t:"rb",x:"複習 糖漿/酏/醑…生物製劑 2（記憶曲線）"}
+  ]},
+  {label:"晚上 19:00–21:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[
+   {t:"new",x:"首讀 IR紅外光譜（第1晚）"},
+   {t:"rc",x:"複習 HPLC（記憶曲線）"},
+   {t:"rc",x:"複習 CE・MS質譜儀（記憶曲線）"}
+  ]},
+  {label:"晚上 21:00–21:45 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[
+   {t:"new",x:"多醣類・樹脂（第3天）"}
+  ]},
+ ]},
+ {id:"d0507",today:false,date:"5/7 週三 早八課",badge:"5/7",bs:"background:#FAEEDA;color:#633806",slots:[
+  {label:"早上 7:00–7:45 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[
+   {t:"new",x:"首讀 祛風濕藥"}
+  ]},
+  {label:"早上 10:30–12:00 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
+   {t:"new",x:"首讀 抗腫瘤藥物 1"},
+   {t:"ra",x:"複習 交感神經用藥"},
+   {t:"ra",x:"複習 心律不整"}
+  ]},
+  {label:"下午 14:00–17:30 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
+   {t:"new",x:"首讀 滅菌檢查・度量衡・CYP450"},
+   {t:"rb",x:"複習 散劑・微粒學（記憶曲線）"},
+   {t:"rb",x:"複習 眼用製劑（記憶曲線）"}
+  ]},
+  {label:"晚上 19:00–21:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[
+   {t:"new",x:"首讀 IR紅外光譜（第2晚）"},
+   {t:"rc",x:"整理 IR紅外光譜 筆記"}
+  ]},
+  {label:"晚上 21:00–21:45 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[
+   {t:"new",x:"苯丙烷（第1天）"}
+  ]},
+ ]},
+ {id:"d0508",today:false,date:"5/8 週四 課到15:00",badge:"5/8",bs:"background:#FAEEDA;color:#633806",slots:[
+  {label:"早上 7:00–7:45 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[
+   {t:"new",x:"首讀 消食藥"}
+  ]},
+  {label:"下午 15:00–17:30 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
+   {t:"rb",x:"複習 糖漿/酏/醑…生物製劑 1（記憶曲線）"},
+   {t:"rb",x:"複習 試驗-檢查法 2（記憶曲線）"}
+  ]},
+  {label:"晚上 19:00–21:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[
+   {t:"new",x:"首讀 螢光・拉曼光譜（第1晚）"},
+   {t:"rc",x:"複習 GC・SFC・萃取法（記憶曲線）"},
+   {t:"rc",x:"複習 光譜概論・UV/VIS（記憶曲線）"}
+  ]},
+  {label:"晚上 21:00–21:45 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[
+   {t:"new",x:"苯丙烷（第2天）"}
+  ]},
+ ]},
+ {id:"d0509",today:false,date:"5/9 週五 課到12:00",badge:"5/9",bs:"background:#FAEEDA;color:#633806",slots:[
+  {label:"早上 7:00–7:45 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[
+   {t:"new",x:"首讀 瀉下藥"}
+  ]},
+  {label:"下午 12:00–17:30 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
+   {t:"rb",x:"複習 糖漿/酏/醑…生物製劑 2（記憶曲線）"},
+   {t:"rb",x:"複習 滅菌檢查・度量衡・CYP450（記憶曲線）"}
+  ]},
+  {label:"晚上 19:00–21:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[
+   {t:"new",x:"首讀 螢光・拉曼光譜（第2晚）"},
+   {t:"rc",x:"整理 螢光・拉曼光譜 筆記"}
+  ]},
+  {label:"晚上 21:00–21:45 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[
+   {t:"new",x:"苯丙烷（第3天）"}
+  ]},
+ ]},
+ {id:"d0510",today:false,date:"5/10 週六",badge:"5/10",bs:"background:#E6F1FB;color:#0C447C",slots:[
+  {label:"早上 7:00–7:45 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[
+   {t:"new",x:"首讀 活血祛瘀藥"}
+  ]},
+  {label:"早上 10:15–12:00 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
+   {t:"new",x:"首讀 抗腫瘤藥物 2"},
+   {t:"ra",x:"複習 心衰竭"},
+   {t:"ra",x:"複習 抗腫瘤藥物 1"}
+  ]},
+  {label:"下午 14:00–17:30 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
+   {t:"rb",x:"複習 試驗-檢查法 1（記憶曲線）"}
+  ]},
+  {label:"晚上 19:00–21:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[
+   {t:"new",x:"首讀 原子光譜 AES/AAS（第1晚）"},
+   {t:"rc",x:"複習 CE・MS質譜儀（記憶曲線）"},
+   {t:"rc",x:"複習 IR紅外光譜（記憶曲線）"}
+  ]},
+  {label:"晚上 21:00–21:45 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[
+   {t:"new",x:"萜類（第1天）"}
+  ]},
+ ]},
+ {id:"d0511",today:false,date:"5/11 週日",badge:"5/11",bs:"background:#E6F1FB;color:#0C447C",slots:[
+  {label:"早上 7:00–7:45 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[
+   {t:"new",x:"首讀 止血藥"}
+  ]},
+  {label:"早上 10:15–12:00 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
+   {t:"new",x:"首讀 標靶藥物"},
+   {t:"ra",x:"複習 巴金森氏症"},
+   {t:"ra",x:"複習 利尿劑"}
+  ]},
+  {label:"下午 14:00–17:30 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
+   {t:"rb",x:"複習 試驗-檢查法 2（記憶曲線）"}
+  ]},
+  {label:"晚上 19:00–21:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[
+   {t:"new",x:"首讀 原子光譜 AES/AAS（第2晚）"},
+   {t:"rc",x:"整理 原子光譜 AES/AAS 筆記"}
+  ]},
+  {label:"晚上 21:00–21:45 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[
+   {t:"new",x:"萜類（第2天）"}
+  ]},
+ ]},
+ {id:"d0512",today:false,date:"5/12 週一",badge:"5/12",bs:"background:#E6F1FB;color:#0C447C",slots:[
+  {label:"早上 7:00–7:45 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[
+   {t:"new",x:"首讀 清熱解毒藥"}
+  ]},
+  {label:"早上 10:15–12:00 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
+   {t:"new",x:"首讀 免疫藥理學・神經肌肉藥物"},
+   {t:"ra",x:"複習 抗凝血藥物"},
    {t:"ra",x:"複習 標靶藥物"}
   ]},
-  {label:"下午 藥劑 2:00",ls:"background:#FAECE7;color:#712B13",tasks:[
-   {t:"new",x:"首讀 試驗-檢查法 1"},
-   {t:"rb",x:"複習 糖漿・生物製劑 1・2"},
+  {label:"下午 14:00–17:30 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
+   {t:"rb",x:"複習 滅菌檢查・度量衡・CYP450（記憶曲線）"}
   ]},
-  {label:"晚上 藥分 7:00",ls:"background:#EAF3DE;color:#27500A",tasks:[
-   {t:"new",x:"首讀 光譜概論・UV/VIS（晚2）"}
+  {label:"晚上 19:00–21:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[
+   {t:"new",x:"首讀 旋光度・折光率・NMR（第1晚）"},
+   {t:"rc",x:"複習 光譜概論・UV/VIS（記憶曲線）"},
+   {t:"rc",x:"複習 螢光・拉曼光譜（記憶曲線）"}
   ]},
- ]},
- {id:"d506",today:false,date:"5/6 週三 早八課",badge:"5/6",bs:"background:#FAEEDA;color:#633806",slots:[
-  {label:"早上 10:30 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
-   {t:"new",x:"首讀 降血脂藥物"},
-   {t:"ra",x:"複習 免疫・神經肌肉藥物"}
-  ]},
-  {label:"下午 2:00 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
-   {t:"new",x:"首讀 試驗-檢查法 2（長影片1h14m）"},
-   {t:"rb",x:"複習 試驗-檢查法 1"},
-  ]},
-  {label:"晚上 7:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[
-   {t:"new",x:"首讀 IR紅外光譜（晚1）"}
+  {label:"晚上 21:00–21:45 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[
+   {t:"new",x:"萜類（第3天）"}
   ]},
  ]},
- {id:"d507",today:false,date:"5/7 週四 課到15:00",badge:"5/7",bs:"background:#FAEEDA;color:#633806",slots:[
-  {label:"下午 15:00 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
-   {t:"new",x:"首讀 滅菌檢查・度量衡・CYP450"},
-   {t:"rb",x:"複習 試驗-檢查法 1・2"},
+ {id:"d0513",today:false,date:"5/13 週二",badge:"5/13",bs:"background:#E6F1FB;color:#0C447C",slots:[
+  {label:"早上 7:00–7:45 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[
+   {t:"new",x:"首讀 清熱瀉火藥"}
   ]},
-  {label:"晚上 7:00 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
-   {t:"new",x:"首讀 抗生素 2"},
-   {t:"ra",x:"複習 抗生素 1"},
-  ]},
- ]},
- {id:"d508",today:false,date:"5/8 週五 課到12:00",badge:"5/8",bs:"background:#FAEEDA;color:#633806",slots:[
-  {label:"下午 12:00 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
-   {t:"rb",x:"複習 膠體・溶液劑・流變學（三輪）"},
-   {t:"rb",x:"複習 生物藥劑 CH7・CH8（二輪）"},
-  ]},
-  {label:"晚上 7:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[
-   {t:"new",x:"首讀 螢光・拉曼光譜（晚1）"}
-  ]},
- ]},
- {id:"d509",today:false,date:"5/9 週六",badge:"5/9",bs:"background:#E6F1FB;color:#0C447C",slots:[
-  {label:"早上 藥理 10:15",ls:"background:#E6F1FB;color:#0C447C",tasks:[
-   {t:"new",x:"首讀 抗腫瘤藥物 2"},
-   {t:"ra",x:"複習 抗生素 1・2"}
-  ]},
-  {label:"下午 藥劑 2:00",ls:"background:#FAECE7;color:#712B13",tasks:[
-   {t:"rb",x:"複習 膠囊・栓劑（四輪）"},
-   {t:"rb",x:"複習 錠劑（六輪）"},
-   {t:"new",x:"首讀 生物藥劑 CH9・CH10"},
-  ]},
-  {label:"晚上 藥分 7:00",ls:"background:#EAF3DE;color:#27500A",tasks:[
-   {t:"new",x:"首讀 螢光・拉曼光譜（晚2）"}
-  ]},
- ]},
- {id:"d510",today:false,date:"5/10 週日",badge:"5/10",bs:"background:#E6F1FB;color:#0C447C",slots:[
-  {label:"早上 藥理 10:15",ls:"background:#E6F1FB;color:#0C447C",tasks:[
-   {t:"new",x:"首讀 標靶藥物"},
-   {t:"ra",x:"複習 抗生素 3・抗黴菌・抗肺結核"}
-  ]},
-  {label:"下午 藥劑 2:00",ls:"background:#FAECE7;color:#712B13",tasks:[
-   {t:"rb",x:"複習 散劑・微粒學（三輪）"},
-   {t:"rb",x:"複習 糖漿・試驗檢查・滅菌（三輪）"},
-   {t:"new",x:"首讀 生物藥劑 CH11・CH12（完課）"},
-  ]},
-  {label:"晚上 藥分 7:00",ls:"background:#EAF3DE;color:#27500A",tasks:[
-   {t:"new",x:"首讀 原子光譜AES/AAS（晚1）"}
-  ]},
- ]},
- {id:"d511",today:false,date:"5/11 週一",badge:"5/11",bs:"background:#E6F1FB;color:#0C447C",slots:[
-  {label:"早上 藥理 10:15",ls:"background:#E6F1FB;color:#0C447C",tasks:[
-   {t:"new",x:"首讀 免疫藥理學・神經肌肉藥物"},
-   {t:"ra",x:"複習 荷爾蒙全系列"}
-  ]},
-  {label:"下午 藥劑 2:00",ls:"background:#FAECE7;color:#712B13",tasks:[
-   {t:"rb",x:"複習 生物藥劑 CH1–CH6（三輪）"},
-   {t:"rb",x:"複習 生物藥劑 CH7–CH12（二輪）"},
-  ]},
-  {label:"晚上 藥分 7:00",ls:"background:#EAF3DE;color:#27500A",tasks:[
-   {t:"new",x:"首讀 原子光譜AES/AAS（晚2）"}
-  ]},
- ]},
- {id:"d512",today:false,date:"5/12 週二",badge:"5/12",bs:"background:#E6F1FB;color:#0C447C",slots:[
-  {label:"早上 藥理 10:15",ls:"background:#E6F1FB;color:#0C447C",tasks:[
+  {label:"早上 10:15–12:00 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
    {t:"new",x:"首讀 抗生素 1"},
-   {t:"ra",x:"複習 骨質疏鬆・甲狀腺・糖尿病"}
+   {t:"ra",x:"複習 精神分裂症・躁鬱症・憂鬱症"},
+   {t:"ra",x:"複習 降血脂藥物"}
   ]},
-  {label:"下午 藥劑 2:00",ls:"background:#FAECE7;color:#712B13",tasks:[
-   {t:"rb",x:"複習 注射劑（五輪）"},
-   {t:"rb",x:"複習 軟膏劑（六輪）"},
-   {t:"rb",x:"複習 生物製劑 1・2（二輪）"},
+  {label:"晚上 19:00–21:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[
+   {t:"new",x:"首讀 旋光度・折光率・NMR（第2晚）"},
+   {t:"rc",x:"整理 旋光度・折光率・NMR 筆記"}
   ]},
-  {label:"晚上 藥分 7:00",ls:"background:#EAF3DE;color:#27500A",tasks:[
-   {t:"new",x:"首讀 旋光度・折光率・NMR（晚1）"}
+  {label:"晚上 21:00–21:45 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[
+   {t:"new",x:"揮發油（第1天）"}
   ]},
  ]},
- {id:"d513",today:false,date:"5/13 週三 早八課",badge:"5/13",bs:"background:#FAEEDA;color:#633806",slots:[
-  {label:"早上 10:30 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
+ {id:"d0514",today:false,date:"5/14 週三 早八課",badge:"5/14",bs:"background:#FAEEDA;color:#633806",slots:[
+  {label:"早上 7:00–7:45 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[
+   {t:"new",x:"首讀 清熱燥濕藥"}
+  ]},
+  {label:"早上 10:30–12:00 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
    {t:"new",x:"首讀 抗生素 2"},
-   {t:"ra",x:"複習 鴉片類・NSAID・抗痛風"}
+   {t:"ra",x:"複習 抗腫瘤藥物 1"},
+   {t:"ra",x:"複習 標靶藥物"}
   ]},
-  {label:"下午 2:00 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
-   {t:"rb",x:"複習 乳劑・懸浮劑（五輪）"},
-   {t:"rb",x:"複習 膠體・溶液劑（四輪）"},
+  {label:"晚上 19:00–21:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[
+   {t:"new",x:"首讀 滴定概論・酸鹼滴定（第1晚）"},
+   {t:"rc",x:"複習 IR紅外光譜（記憶曲線）"},
+   {t:"rc",x:"複習 原子光譜 AES/AAS（記憶曲線）"}
   ]},
-  {label:"晚上 7:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[
-   {t:"new",x:"首讀 旋光度・折光率・NMR（晚2）"}
-  ]},
- ]},
- {id:"d514",today:false,date:"5/14 週四 課到15:00",badge:"5/14",bs:"background:#FAEEDA;color:#633806",slots:[
-  {label:"下午 15:00 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
-   {t:"rb",x:"複習 生物藥劑 CH9・CH10・CH11・CH12（二輪）"},
-  ]},
-  {label:"晚上 7:00 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
-   {t:"new",x:"首讀 抗病毒・抗痙攣・貧血・解毒劑（完課！）"},
-   {t:"ra",x:"複習 抗組織胺・胃酸"},
+  {label:"晚上 21:00–21:45 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[
+   {t:"new",x:"揮發油（第2天）"}
   ]},
  ]},
- {id:"d515",today:false,date:"5/15 週五 課到12:00",badge:"5/15",bs:"background:#FAEEDA;color:#633806",slots:[
-  {label:"下午 12:00 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
-   {t:"rb",x:"複習 膠囊・栓劑（五輪）"},
-   {t:"rb",x:"複習 流變學・散劑・微粒學（四輪）"},
-   {t:"rb",x:"複習 糖漿・試驗檢查・滅菌（四輪）"},
+ {id:"d0515",today:false,date:"5/15 週四 課到15:00",badge:"5/15",bs:"background:#FAEEDA;color:#633806",slots:[
+  {label:"早上 7:00–7:45 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[
+   {t:"new",x:"首讀 清熱涼血藥"}
   ]},
-  {label:"晚上 7:00 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
-   {t:"new",x:"試做一份藥理考古題（10題）"},
-   {t:"ra",x:"複習 抗病毒・抗痙攣・貧血・解毒劑"},
-   {t:"ra",x:"複習 藥理全科（用心智圖快速瀏覽）"},
+  {label:"晚上 19:00–21:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[
+   {t:"new",x:"首讀 滴定概論・酸鹼滴定（第2晚）"},
+   {t:"rc",x:"整理 滴定概論・酸鹼滴定 筆記"}
+  ]},
+  {label:"晚上 21:00–21:45 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[
+   {t:"new",x:"揮發油（第3天）"}
   ]},
  ]},
 ]},
 {ph:"5/16 起週為單位",type:"weekly",weeks:[
- {id:"w516",badge:"5/16–5/23",bs:"background:#EAF3DE;color:#3B6D11",dates:"5/16–5/23",title:"藥理全科複習・藥劑全科・藥分整合",subjects:[
+ {id:"w516",badge:"5/16–5/23",bs:"background:#EAF3DE;color:#3B6D11",dates:"5/16–5/23",title:"抗生素・荷爾蒙首讀・藥劑全科複習",subjects:[
+  {label:"早上 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[
+   {t:"purple",x:"繼續中藥章節（按進度）"},
+  ]},
   {label:"早上 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
-   {t:"ra",x:"複習 交感・副交感・神經節（五輪）"},
-   {t:"ra",x:"複習 心血管・抗凝血・抗腫瘤（三輪）"},
-   {t:"ra",x:"複習 荷爾蒙・抗生素・骨質疏鬆（二輪）"},
+   {t:"new",x:"首讀 抗生素 3"},
+   {t:"new",x:"首讀 抗黴菌・抗肺結核藥物"},
+   {t:"ra",x:"複習 高血壓・心絞痛・心律不整（7天後）"},
+   {t:"ra",x:"複習 抗腫瘤・標靶・免疫（7天後）"},
   ]},
   {label:"下午 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
-   {t:"rb",x:"複習 注射劑・錠劑・軟膏劑（最終輪）"},
-   {t:"rb",x:"複習 生物藥劑全系列（最終輪）"},
+   {t:"rb",x:"複習 試驗-檢查法 1・2（記憶曲線）"},
+   {t:"rb",x:"複習 錠劑・軟膏劑（14天後）"},
   ]},
   {label:"晚上 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[
-   {t:"new",x:"首讀 滴定概論・酸鹼滴定（晚2）"}
+   {t:"new",x:"首讀 非水滴定（第1晚）"},
+   {t:"new",x:"首讀 非水滴定（第2晚）"},
+   {t:"rc",x:"複習 滴定概論・酸鹼滴定（3天後）"},
+  ]},
+  {label:"晚上 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[
+   {t:"purple",x:"繼續生藥PDF（按進度）"},
   ]},
  ]},
- {id:"w524",badge:"5/24–5/30",bs:"background:#EAF3DE;color:#3B6D11",dates:"5/24–5/30",title:"三科全科確認・試寫國考題找弱點",subjects:[
+ {id:"w524",badge:"5/24–5/30",bs:"background:#EAF3DE;color:#3B6D11",dates:"5/24–5/30",title:"荷爾蒙・骨質疏鬆首讀・藥分滴定",subjects:[
+  {label:"早上 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[
+   {t:"purple",x:"繼續中藥章節（按進度）"},
+  ]},
   {label:"早上 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
-   {t:"ra",x:"複習 精神科・中樞神經全系列（最終輪）"},
-   {t:"ra",x:"複習 末段章節（糖尿病・鴉片・NSAID・抗病毒）"},
+   {t:"new",x:"首讀 荷爾蒙藥物"},
+   {t:"new",x:"首讀 皮質類固醇"},
+   {t:"new",x:"首讀 性激素藥物"},
+   {t:"ra",x:"複習 抗生素 1・2・3（3天後）"},
+   {t:"ra",x:"複習 心衰竭・利尿劑・抗凝血・降血脂（14天後）"},
   ]},
   {label:"下午 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
-   {t:"rb",x:"複習 全科製劑（針對自己弱點）"},
+   {t:"rb",x:"複習 滅菌・度量衡・CYP450（7天後）"},
+   {t:"rb",x:"複習 膠囊・栓劑・乳劑・懸浮劑（14天後）"},
   ]},
   {label:"晚上 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[
-   {t:"new",x:"試寫一份藥分國考題，找出弱點"},
-   {t:"rc",x:"複習 弱點章節"},
+   {t:"new",x:"首讀 沉澱・錯合・氧化還原滴定（第1晚）"},
+   {t:"new",x:"首讀 沉澱・錯合・氧化還原滴定（第2晚）"},
+   {t:"rc",x:"複習 非水滴定（3天後）"},
+  ]},
+  {label:"晚上 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[
+   {t:"purple",x:"繼續生藥PDF（按進度）"},
   ]},
  ]},
- {id:"w531",badge:"5/31–6/6",bs:"background:#EAF3DE;color:#3B6D11",dates:"5/31–6/6",title:"第一份國考題＋三天訂正",subjects:[
-  {label:"刷題",ls:"background:#E1F5EE;color:#085041",tasks:[
-   {t:"new",x:"寫第一份國考題（三科）"},
-   {t:"new",x:"分三天訂正，錯題記入錯誤本"},
+ {id:"w531",badge:"5/31–6/6",bs:"background:#EAF3DE;color:#3B6D11",dates:"5/31–6/6",title:"藥理最後章節完課",subjects:[
+  {label:"早上 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[
+   {t:"purple",x:"繼續中藥章節（按進度）"},
   ]},
-  {label:"複習藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
-   {t:"ra",x:"複習 藥效學・藥動學（五輪）"},
-   {t:"ra",x:"複習 神經・精神系統全系列"},
+  {label:"早上 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
+   {t:"new",x:"首讀 骨質疏鬆・抗甲狀腺"},
+   {t:"new",x:"首讀 糖尿病藥物"},
+   {t:"new",x:"首讀 鴉片類藥物"},
+   {t:"new",x:"首讀 NSAID・抗痛風藥物"},
+   {t:"ra",x:"複習 荷爾蒙・皮質類固醇・性激素（7天後）"},
   ]},
-  {label:"複習藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
-   {t:"rb",x:"複習 注射劑・錠劑・軟膏劑"},
+  {label:"下午 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
+   {t:"rb",x:"複習 散劑・微粒學・眼用製劑（14天後）"},
+   {t:"rb",x:"複習 膠體・溶液劑・流變學（14天後）"},
   ]},
-  {label:"複習藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[
-   {t:"rc",x:"複習 層析全系列"},
+  {label:"晚上 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[
+   {t:"new",x:"首讀 水分・灰分測定（第1晚）"},
+   {t:"new",x:"首讀 水分・灰分測定（第2晚）"},
+   {t:"rc",x:"複習 沉澱・錯合・氧化還原滴定（7天後）"},
+  ]},
+  {label:"晚上 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[
+   {t:"purple",x:"生藥PDF收尾"},
   ]},
  ]},
- {id:"w607",badge:"6/7–6/13",bs:"background:#EAF3DE;color:#3B6D11",dates:"6/7–6/13",title:"第二份國考題＋三天訂正",subjects:[
-  {label:"刷題",ls:"background:#E1F5EE;color:#085041",tasks:[
-   {t:"new",x:"寫第二份國考題（三科）"},
-   {t:"new",x:"分三天訂正，錯題記入錯誤本"},
+ {id:"w607",badge:"6/7–6/13",bs:"background:#EAF3DE;color:#3B6D11",dates:"6/7–6/13",title:"藥理完課・準備刷題",subjects:[
+  {label:"早上 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[
+   {t:"purple",x:"中藥複習整理"},
   ]},
-  {label:"複習藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
-   {t:"ra",x:"複習 心血管・抗凝血・抗腫瘤・標靶"},
+  {label:"早上 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
+   {t:"new",x:"首讀 抗組織胺・胃酸相關藥物"},
+   {t:"new",x:"首讀 抗病毒藥物"},
+   {t:"new",x:"首讀 抗痙攣・貧血治療劑・解毒劑（完課！）"},
+   {t:"ra",x:"複習 骨質疏鬆・糖尿病・鴉片類・NSAID（7天後）"},
   ]},
-  {label:"複習藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
-   {t:"rb",x:"複習 膠囊・栓劑・乳劑・懸浮劑"},
-   {t:"rb",x:"複習 生物藥劑 CH1–CH6"},
+  {label:"下午 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
+   {t:"rb",x:"複習 糖漿・生物製劑（14天後）"},
+   {t:"rb",x:"複習 注射劑・錠劑・軟膏劑（最終確認）"},
   ]},
-  {label:"複習藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[
-   {t:"rc",x:"複習 光譜全系列"},
+  {label:"晚上 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[
+   {t:"new",x:"首讀 脂肪・揮發油・生物檢測定（第1晚）"},
+   {t:"new",x:"首讀 脂肪・揮發油・生物檢測定（第2晚）"},
+   {t:"new",x:"首讀 重金屬・藥典補充・生物製劑（第1晚）"},
+   {t:"new",x:"首讀 重金屬・藥典補充・生物製劑（第2晚）"},
+   {t:"rc",x:"複習 水分・灰分測定（7天後）"},
   ]},
  ]},
 ]},
@@ -539,31 +747,38 @@ var D=[
  ]},
 ]},
 {ph:"刷題衝刺 — 6/29 到 7/11",type:"weekly",weeks:[
- {id:"w629",badge:"刷題3",bs:"background:#E1F5EE;color:#085041",dates:"6/29–7/4",title:"第三份國考題｜抗生素・荷爾蒙・生物藥劑",subjects:[
+ {id:"w629",badge:"刷題1",bs:"background:#E1F5EE;color:#085041",dates:"6/29–7/4",title:"第一份國考題｜神經・心血管複習",subjects:[
   {label:"藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
-   {t:"ra",x:"複習 免疫・抗生素全・抗黴菌・抗肺結核"},
-   {t:"ra",x:"複習 荷爾蒙・皮質類固醇・性激素・骨質疏鬆・甲狀腺"},
+   {t:"ra",x:"複習 藥效學・藥動學"},
+   {t:"ra",x:"複習 交感・副交感・神經節"},
+   {t:"ra",x:"複習 巴金森・精神分裂・憂鬱"},
+   {t:"ra",x:"複習 麻醉・鎮靜安眠・中樞・血清素"},
+   {t:"ra",x:"複習 高血壓・心絞痛・心律不整・心衰竭・利尿劑"},
   ]},
   {label:"藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
-   {t:"rb",x:"複習 生物藥劑 CH7–CH12・生物製劑"},
-   {t:"rb",x:"複習 散劑・糖漿・試驗檢查・滅菌"},
+   {t:"rb",x:"複習 注射劑・錠劑・軟膏劑"},
+   {t:"rb",x:"複習 膠囊・栓劑・乳劑・懸浮劑"},
+  ]},
+  {label:"藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[
+   {t:"rc",x:"複習 層析全系列"},
+   {t:"rc",x:"複習 光譜全系列"},
+  ]},
+ ]},
+ {id:"w705",badge:"刷題2",bs:"background:#E1F5EE;color:#085041",dates:"7/5–7/11",title:"第二份國考題｜抗腫瘤・抗生素・荷爾蒙複習",subjects:[
+  {label:"藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
+   {t:"ra",x:"複習 抗凝血・降血脂・抗腫瘤・標靶"},
+   {t:"ra",x:"複習 免疫・抗生素全・抗黴菌・抗肺結核"},
+   {t:"ra",x:"複習 荷爾蒙・皮質類固醇・性激素・骨質疏鬆・甲狀腺"},
+   {t:"ra",x:"複習 糖尿病・鴉片類・NSAID・抗痛風・抗組織胺・胃酸・抗病毒・解毒劑"},
+  ]},
+  {label:"藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
+   {t:"rb",x:"複習 膠體・溶液劑・流變學・散劑"},
+   {t:"rb",x:"複習 糖漿・試驗檢查・滅菌"},
+   {t:"rb",x:"複習 生物藥劑全系列"},
   ]},
   {label:"藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[
    {t:"rc",x:"複習 滴定分析全系列"},
-  ]},
- ]},
- {id:"w705",badge:"刷題4",bs:"background:#E1F5EE;color:#085041",dates:"7/5–7/11",title:"錯題集中攻克・最末章節複習",subjects:[
-  {label:"藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
-   {t:"ra",x:"複習 糖尿病・鴉片類・NSAID・抗痛風・抗組織胺・胃酸・抗病毒・解毒劑"},
-   {t:"ra",x:"複習 錯題本中藥理弱點"},
-  ]},
-  {label:"藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
-   {t:"rb",x:"複習 注射劑・錠劑・軟膏劑（最後確認）"},
-   {t:"rb",x:"複習 錯題本中藥劑弱點"},
-  ]},
-  {label:"藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[
    {t:"rc",x:"複習 傳統分析全系列"},
-   {t:"rc",x:"複習 錯題本中藥分弱點"},
   ]},
  ]},
 ]},
@@ -580,20 +795,23 @@ var D=[
 
 function render(){
   var s=load();
-  var html='';
+  var html="";
   D.forEach(function(p){
-    html+='<div class="phase-hd">'+p.ph+'</div>';
-    if(p.ph.indexOf('刷題')>=0) html+='<div class="banner binfo">一天寫完一回，分 3 天訂正。錯題當天記入錯誤本。</div>';
-    var items=p.type==='daily'?p.days:p.weeks;
+    html+='<div class="phase-hd">'+p.ph+"</div>";
+    if(p.ph.indexOf("刷題")>=0)html+='<div class="banner binfo">一天寫完一回，分 3 天訂正。錯題當天記入錯誤本。</div>';
+    var items=p.type==="daily"?p.days:p.weeks;
     items.forEach(function(item){
-      var slots=p.type==='daily'?item.slots:item.subjects;
-      html+=buildCard(item,slots,s,!!item.today);
+      var slots=p.type==="daily"?item.slots:item.subjects;
+      var dates=item.dates||item.date||"";
+      var title=item.title||item.date||"";
+      html+=buildCard({id:item.id,badge:item.badge,bs:item.bs,dates:dates,title:title},slots,s,!!item.today);
     });
   });
-  document.getElementById('app').innerHTML=html;
-  recalcOverall();
+  document.getElementById("app").innerHTML=html;
+  updateAll();
 }
 render();
+
 </script>
 </body>
 </html>
