@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,49 +15,44 @@
         text-align: center;
         vertical-align: middle;
     }
-    .header-row {
-        background-color: #ffffff;
-    }
-    .label-cell {
-        width: 40px;
-        font-weight: bold;
-    }
     /* 顏色樣式 */
-    .highlight-orange { color: #d35400; font-weight: bold; }
-    .highlight-blue { background-color: #d6eaf8; }
-    .highlight-yellow { background-color: #fef9e7; }
-    .highlight-purple { color: #8e44ad; font-weight: bold; }
-    .highlight-red { color: #c0392b; font-weight: bold; }
-    .highlight-green { color: #27ae60; }
-    .year-tag { font-weight: bold; }
+    .c-matrix { color: #d35400; font-weight: bold; } /* 橘色 */
+    .bg-osmotic { background-color: #d6eaf8; } /* 藍色背景 */
+    .bg-yellow { background-color: #fef9e7; } /* 黃色背景 */
+    .c-polymer { color: #8e44ad; font-weight: bold; } /* 紫色 */
+    .c-zero-order { color: #c0392b; font-weight: bold; } /* 紅色 */
+    .c-erosion { color: #303395; font-weight: bold; } /* 深藍色 */
+    .c-green { color: #27ae60; } /* 綠色 */
+    .c-light-blue { color: #3498db; } /* 淺藍色 */
     
+    .year-tag { font-weight: bold; }
     .text-left { text-align: left; }
 </style>
 </head>
 <body>
 
 <table>
-    <tr class="header-row">
-        <td colspan="3"><span class="highlight-orange">Matrix</span> tablets</td>
-        <td colspan="2">OROS (<span class="highlight-blue">osmotic</span>-controlled <span class="highlight-orange">r</span>elease <span class="highlight-orange">o</span>ral delivery <span class="highlight-orange">s</span>ystem / oral release <span class="highlight-blue">osmotic</span> system) <span class="year-tag">【97-1】</span></td>
+    <tr>
+        <td colspan="3"><span class="c-matrix">Matrix</span> tablets</td>
+        <td colspan="2">OROS (<span class="bg-osmotic">osmotic</span>-controlled <span class="c-matrix">r</span>elease <span class="c-matrix">o</span>ral delivery <span class="c-matrix">s</span>ystem / oral release <span class="bg-osmotic">osmotic</span> system) <span class="year-tag">【97-1】</span></td>
     </tr>
     
     <tr>
-        <td rowspan="2" class="label-cell">構造</td>
-        <td>親水性間質系統 (hydrophilic <span class="highlight-orange">matrix</span> system)</td>
-        <td>不溶的塑性基質 (inert plastic <span class="highlight-orange">matrix</span>) 系統</td>
-        <td>elementary <span class="highlight-blue">osmotic</span> pump (EOP)</td>
-        <td>push-pull <span class="highlight-blue">osmotic</span> pump (PPOP)</td>
+        <td rowspan="2" style="font-weight: bold; width: 40px;">構造</td>
+        <td>親水性間質系統 (hydrophilic <span class="c-matrix">matrix</span> system)</td>
+        <td><span class="bg-yellow">不溶的塑性基質</span>(inert plastic <span class="c-matrix">matrix</span>)系統</td>
+        <td>elementary <span class="bg-osmotic">osmotic</span> pump (EOP)</td>
+        <td>push-pull <span class="bg-osmotic">osmotic</span> pump (PPOP)</td>
     </tr>
     
     <tr>
-        <td colspan="2">藥物均勻分散在基質中</td>
-        <td class="text-left">外層：<span class="highlight-yellow">不溶性半透膜</span>，利用雷射形成釋藥孔 <span class="year-tag">【112-2、109-2】</span><br><br>內層：藥物層</td>
-        <td class="text-left">內層：藥物層 + 吸水膨脹的<span class="highlight-purple">高分子層</span></td>
+        <td colspan="2">藥物均勻<span class="c-matrix">分散在基質</span>中</td>
+        <td class="text-left">外層：<span class="bg-yellow">不溶性半透膜</span>，利用雷射形成釋藥孔 <span class="year-tag">【112-2、109-2】</span><br><br>內層：藥物層</td>
+        <td class="text-left">內層：藥物層+吸水膨脹的<span class="c-polymer">高分子層</span></td>
     </tr>
     
     <tr>
-        <td rowspan="2" class="label-cell">釋放</td>
+        <td rowspan="2" style="font-weight: bold;">釋放</td>
         <td>可製備成單層、雙層、三層之控釋劑型<br><span class="year-tag">【113-1、102-1】</span></td>
         <td>單層錠</td>
         <td>雙層錠</td>
@@ -66,33 +60,33 @@
     </tr>
     
     <tr>
-        <td colspan="2">藥物自基質中持續而緩慢的釋出</td>
-        <td colspan="2">水分滲到半透膜內，藉由滲透壓推動藥物自雷射小孔釋出 <span class="year-tag">【112-2、111-1、109-2】</span></td>
+        <td colspan="2">藥物自<span class="c-matrix">基質</span>中持續而緩慢的釋出</td>
+        <td colspan="2">水分滲到半透膜內，藉由<span class="c-green">滲透壓推動</span>藥物自雷射小孔釋出 <span class="year-tag">【112-2、111-1、109-2】</span></td>
     </tr>
     
     <tr>
-        <td rowspan="2" class="label-cell">控釋材料</td>
+        <td rowspan="2" style="font-weight: bold;">控釋材料</td>
         <td>遇水後形成凝膠層，產生控釋能力<br><span class="year-tag">【113-1】</span></td>
-        <td>藥物經由擴散緩慢從惰性間質釋放<br><span class="year-tag">【113-1、112-2、108-1】</span></td>
-        <td>主要<span class="highlight-red">0階次</span>，也有可能1階次</td>
-        <td>一定是<span class="highlight-red">0階次</span> <span class="year-tag">【110-2、109-2】</span></td>
+        <td>藥物經由<span class="c-matrix">擴散</span>緩慢從惰性間質釋放<br><span class="year-tag">【113-1、112-2、108-1】</span></td>
+        <td>主要<span class="c-zero-order">0階次</span>，也有可能1階次</td>
+        <td>一定是<span class="c-zero-order">0階次</span> <span class="year-tag">【110-2、109-2】</span></td>
     </tr>
     
     <tr>
-        <td>Hydroxypropyl methylcellulose (HPMC)<br><span class="year-tag">【113-1、107-2、102-1】</span></td>
-        <td>Polyethylene (PE) <span class="year-tag">【112-2、108-1】</span>、Polyvinyl chloride (PVC)、Polyvinyl acetate (PVA) <span class="year-tag">【113-1】</span>、Polymethacrylates (Eudragits)</td>
-        <td colspan="2">Cellulose acetate (CA) <span class="year-tag">【112-1】</span>、Ethylcellulose (EC)、<br>Hydroxypropyl cellulose (HPC) <span class="year-tag">【111-1】</span></td>
+        <td><span class="bg-osmotic">Hydroxypropyl <span class="c-matrix">methyl</span>cellulose (HPMC)</span><br><span class="year-tag">【113-1、107-2、102-1】</span></td>
+        <td><span style="font-weight: bold;">Polyethylene (PE)</span> <span class="year-tag">【112-2、108-1】</span>、Polyvinyl chloride (PVC)、<span style="font-weight: bold;">Polyvinyl acetate(PVA)</span> <span class="year-tag">【113-1】</span>、Polymethacrylates (Eudragits)</td>
+        <td colspan="2">Cellulose acetate (CA) <span class="year-tag">【112-1】</span>、Ethylcellulose (EC)、<br><span class="bg-osmotic">Hydroxypropyl cellulose (HPC)</span> <span class="year-tag">【111-1】</span></td>
     </tr>
     
     <tr>
-        <td class="label-cell">特色</td>
-        <td class="text-left">1.製備時不需加入塑化劑 <span class="year-tag">【113-1、102-1】</span><br>2.<span class="highlight-purple">極難溶性藥品</span>主要釋出機轉為溶蝕 (erosion)<br><span class="year-tag">【113-1、109-1】</span></td>
-        <td class="text-left">1.通過腸胃道時保持原來形狀，隨糞便排出<br><span class="year-tag">【113-1、112-2、108-1】</span><br>2.速放部分可壓製在錠劑表面，不需另服速放劑型<br><span class="year-tag">【112-2、108-1】</span></td>
-        <td colspan="2" class="text-left">1.藥物層及<span class="highlight-purple">高分子層</span>均會加入 <span class="highlight-blue">osmotic agents</span>；PPOP含<span class="highlight-purple">高分子層</span>可提高水溶性差藥物的遞送速率 <span class="highlight-blue">[osmotic agents: KCl, NaCl, MgCl2, BaCl2最不宜]</span><br>2.通過腸胃道時保持原來形狀，隨糞便排出 <span class="year-tag">【112-2、111-1】</span><br>3.釋放速率<span class="highlight-red">僅與自身設計有關</span>（半透膜材質、雷射小孔孔徑等），<span class="highlight-blue">與外在因素無關</span>（胃腸酸鹼值、蠕動情形等） <span class="year-tag">【111-1、110-1】</span></td>
+        <td style="font-weight: bold;">特色</td>
+        <td class="text-left">1.製備時不需加入塑化劑 <span class="year-tag">【113-1、102-1】</span><br>2.<span class="c-erosion">極難溶性藥品</span>主要釋出機轉為<span class="c-erosion">溶蝕(erosion)</span><br><span class="year-tag">【113-1、109-1】</span></td>
+        <td class="text-left">1.通過腸胃道時<span class="bg-yellow">保持原來形狀，隨糞便排出</span><br><span class="year-tag">【113-1、112-2、108-1】</span><br>2.<span class="c-green">速放部分</span>可壓製在錠劑表面，不需另服速放劑型<br><span class="year-tag">【112-2、108-1】</span></td>
+        <td colspan="2" class="text-left">1.藥物層及<span class="c-polymer">高分子層</span>均會加入 <span class="bg-osmotic">osmotic agents</span>；PPOP含<span class="c-polymer">高分子層</span>可提高水溶性差藥物的遞送速率 <span class="bg-osmotic">[osmotic agents: KCl, NaCl, MgCl2, BaCl2最不宜]</span><br>2.通過腸胃道時<span class="bg-yellow">保持原來形狀，隨糞便排出</span> <span class="year-tag">【112-2、111-1】</span><br>3.釋放速率<span class="c-zero-order">僅與自身設計有關</span>（半透膜材質、雷射小孔孔徑等），<span class="c-light-blue">與外在因素無關</span>（胃腸酸鹼值、蠕動情形等） <span class="year-tag">【111-1、110-1】</span></td>
     </tr>
     
     <tr>
-        <td class="label-cell">錠劑</td>
+        <td style="font-weight: bold;">錠劑</td>
         <td>Oramorph SR錠</td>
         <td>Desoxyn gradumet錠</td>
         <td colspan="2">Adalat CR <span class="year-tag">【112-2、109-2】</span>、Glucotrol XL ER 錠片 <span class="year-tag">【111-1】</span></td>
@@ -101,4 +95,3 @@
 
 </body>
 </html>
-```
