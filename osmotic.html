@@ -1,0 +1,106 @@
+您的 HTML 表格已根據圖片內容、顏色標記及您的特定格式要求（如單位標示、排除特殊符號等）製作完成。
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        font-family: sans-serif;
+        font-size: 14px;
+        color: #333;
+    }
+    th, td {
+        border: 1.5px solid #000;
+        padding: 8px;
+        text-align: center;
+        vertical-align: middle;
+    }
+    .header-row {
+        background-color: #ffffff;
+    }
+    .label-cell {
+        width: 40px;
+        font-weight: bold;
+    }
+    /* 顏色樣式 */
+    .highlight-orange { color: #d35400; font-weight: bold; }
+    .highlight-blue { background-color: #d6eaf8; }
+    .highlight-yellow { background-color: #fef9e7; }
+    .highlight-purple { color: #8e44ad; font-weight: bold; }
+    .highlight-red { color: #c0392b; font-weight: bold; }
+    .highlight-green { color: #27ae60; }
+    .year-tag { font-weight: bold; }
+    
+    .text-left { text-align: left; }
+</style>
+</head>
+<body>
+
+<table>
+    <tr class="header-row">
+        <td colspan="3"><span class="highlight-orange">Matrix</span> tablets</td>
+        <td colspan="2">OROS (<span class="highlight-blue">osmotic</span>-controlled <span class="highlight-orange">r</span>elease <span class="highlight-orange">o</span>ral delivery <span class="highlight-orange">s</span>ystem / oral release <span class="highlight-blue">osmotic</span> system) <span class="year-tag">【97-1】</span></td>
+    </tr>
+    
+    <tr>
+        <td rowspan="2" class="label-cell">構造</td>
+        <td>親水性間質系統 (hydrophilic <span class="highlight-orange">matrix</span> system)</td>
+        <td>不溶的塑性基質 (inert plastic <span class="highlight-orange">matrix</span>) 系統</td>
+        <td>elementary <span class="highlight-blue">osmotic</span> pump (EOP)</td>
+        <td>push-pull <span class="highlight-blue">osmotic</span> pump (PPOP)</td>
+    </tr>
+    
+    <tr>
+        <td colspan="2">藥物均勻分散在基質中</td>
+        <td class="text-left">外層：<span class="highlight-yellow">不溶性半透膜</span>，利用雷射形成釋藥孔 <span class="year-tag">【112-2、109-2】</span><br><br>內層：藥物層</td>
+        <td class="text-left">內層：藥物層 + 吸水膨脹的<span class="highlight-purple">高分子層</span></td>
+    </tr>
+    
+    <tr>
+        <td rowspan="2" class="label-cell">釋放</td>
+        <td>可製備成單層、雙層、三層之控釋劑型<br><span class="year-tag">【113-1、102-1】</span></td>
+        <td>單層錠</td>
+        <td>雙層錠</td>
+        <td>三層錠 <span class="year-tag">【109-2】</span></td>
+    </tr>
+    
+    <tr>
+        <td colspan="2">藥物自基質中持續而緩慢的釋出</td>
+        <td colspan="2">水分滲到半透膜內，藉由滲透壓推動藥物自雷射小孔釋出 <span class="year-tag">【112-2、111-1、109-2】</span></td>
+    </tr>
+    
+    <tr>
+        <td rowspan="2" class="label-cell">控釋材料</td>
+        <td>遇水後形成凝膠層，產生控釋能力<br><span class="year-tag">【113-1】</span></td>
+        <td>藥物經由擴散緩慢從惰性間質釋放<br><span class="year-tag">【113-1、112-2、108-1】</span></td>
+        <td>主要<span class="highlight-red">0階次</span>，也有可能1階次</td>
+        <td>一定是<span class="highlight-red">0階次</span> <span class="year-tag">【110-2、109-2】</span></td>
+    </tr>
+    
+    <tr>
+        <td>Hydroxypropyl methylcellulose (HPMC)<br><span class="year-tag">【113-1、107-2、102-1】</span></td>
+        <td>Polyethylene (PE) <span class="year-tag">【112-2、108-1】</span>、Polyvinyl chloride (PVC)、Polyvinyl acetate (PVA) <span class="year-tag">【113-1】</span>、Polymethacrylates (Eudragits)</td>
+        <td colspan="2">Cellulose acetate (CA) <span class="year-tag">【112-1】</span>、Ethylcellulose (EC)、<br>Hydroxypropyl cellulose (HPC) <span class="year-tag">【111-1】</span></td>
+    </tr>
+    
+    <tr>
+        <td class="label-cell">特色</td>
+        <td class="text-left">1.製備時不需加入塑化劑 <span class="year-tag">【113-1、102-1】</span><br>2.<span class="highlight-purple">極難溶性藥品</span>主要釋出機轉為溶蝕 (erosion)<br><span class="year-tag">【113-1、109-1】</span></td>
+        <td class="text-left">1.通過腸胃道時保持原來形狀，隨糞便排出<br><span class="year-tag">【113-1、112-2、108-1】</span><br>2.速放部分可壓製在錠劑表面，不需另服速放劑型<br><span class="year-tag">【112-2、108-1】</span></td>
+        <td colspan="2" class="text-left">1.藥物層及<span class="highlight-purple">高分子層</span>均會加入 <span class="highlight-blue">osmotic agents</span>；PPOP含<span class="highlight-purple">高分子層</span>可提高水溶性差藥物的遞送速率 <span class="highlight-blue">[osmotic agents: KCl, NaCl, MgCl2, BaCl2最不宜]</span><br>2.通過腸胃道時保持原來形狀，隨糞便排出 <span class="year-tag">【112-2、111-1】</span><br>3.釋放速率<span class="highlight-red">僅與自身設計有關</span>（半透膜材質、雷射小孔孔徑等），<span class="highlight-blue">與外在因素無關</span>（胃腸酸鹼值、蠕動情形等） <span class="year-tag">【111-1、110-1】</span></td>
+    </tr>
+    
+    <tr>
+        <td class="label-cell">錠劑</td>
+        <td>Oramorph SR錠</td>
+        <td>Desoxyn gradumet錠</td>
+        <td colspan="2">Adalat CR <span class="year-tag">【112-2、109-2】</span>、Glucotrol XL ER 錠片 <span class="year-tag">【111-1】</span></td>
+    </tr>
+</table>
+
+</body>
+</html>
+```
