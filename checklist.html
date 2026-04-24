@@ -68,7 +68,7 @@ var SK="pharma_v9";
 })();
 function load(){try{return JSON.parse(localStorage.getItem(SK)||"{}")}catch(e){return{}}}
 function save(s){localStorage.setItem(SK,JSON.stringify(s))}
-function safe(k){return k.replace(/[^a-zA-Z0-9]/g,"_")}
+function safe(k){var h=0;for(var i=0;i<k.length;i++){h=Math.imul(31,h)+k.charCodeAt(i)|0;}return"k"+Math.abs(h)+"_"+k.replace(/[^a-zA-Z0-9]/g,"_").slice(0,20)}
 function ck(key){
   var s=load();s[key]=!s[key];save(s);
   var row=document.getElementById("row_"+key);
