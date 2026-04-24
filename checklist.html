@@ -60,6 +60,12 @@ h1{font-size:18px;font-weight:500;margin-bottom:.3rem}
 <div class="banner bsuc" style="margin-top:1.5rem">7/18 國考 — 加油！</div>
 <script>
 var SK="pharma_v9";
+  (function fixBadKeys(){
+  var s=load();
+  var changed=false;
+  Object.keys(s).forEach(function(k){if(s[k]!==true){delete s[k];changed=true;}});
+  if(changed)save(s);
+})();
 function load(){try{return JSON.parse(localStorage.getItem(SK)||"{}")}catch(e){return{}}}
 function save(s){localStorage.setItem(SK,JSON.stringify(s))}
 function safe(k){return k.replace(/[^a-zA-Z0-9]/g,"_")}
