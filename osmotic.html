@@ -8,37 +8,57 @@
         font-family: sans-serif;
         font-size: 14px;
         color: #333;
+        /* 使用 fixed 佈局來精確控制寬度 */
+        table-layout: fixed; 
     }
     th, td {
         border: 1.5px solid #000;
         padding: 8px;
         text-align: center;
         vertical-align: middle;
+        /* 防止內容撐開表格，強迫換行 */
+        word-wrap: break-word;
+        overflow-wrap: break-word;
     }
-    /* 顏色樣式 */
-    .c-matrix { color: #d35400; font-weight: bold; } /* 橘色 */
-    .bg-osmotic { background-color: #d6eaf8; } /* 藍色背景 */
-    .bg-yellow { background-color: #fef9e7; } /* 黃色背景 */
-    .c-polymer { color: #8e44ad; font-weight: bold; } /* 紫色 */
-    .c-zero-order { color: #c0392b; font-weight: bold; } /* 紅色 */
-    .c-erosion { color: #303395; font-weight: bold; } /* 深藍色 */
-    .c-green { color: #27ae60; } /* 綠色 */
-    .c-light-blue { color: #3498db; } /* 淺藍色 */
     
-    .year-tag { font-weight: bold; }
+    /* 定義各欄寬度比例 */
+    .col-label { width: 45px; font-weight: bold; }
+    .col-matrix { width: 22%; }
+    .col-oros { width: 26%; }
+
+    /* 顏色樣式 */
+    .c-matrix { color: #d35400; font-weight: bold; }
+    .bg-osmotic { background-color: #d6eaf8; }
+    .bg-yellow { background-color: #fef9e7; }
+    .c-polymer { color: #8e44ad; font-weight: bold; }
+    .c-zero-order { color: #c0392b; font-weight: bold; }
+    .c-erosion { color: #303395; font-weight: bold; }
+    .c-green { color: #27ae60; }
+    .c-light-blue { color: #3498db; }
+    
+    .year-tag { font-weight: bold; white-space: nowrap; }
     .text-left { text-align: left; }
 </style>
 </head>
 <body>
 
 <table>
+    <colgroup>
+        <col class="col-label">
+        <col class="col-matrix">
+        <col class="col-matrix">
+        <col class="col-oros">
+        <col class="col-oros">
+    </colgroup>
+
     <tr>
-        <td colspan="3"><span class="c-matrix">Matrix</span> tablets</td>
+        <td></td>
+        <td colspan="2"><span class="c-matrix">Matrix</span> tablets</td>
         <td colspan="2">OROS (<span class="bg-osmotic">osmotic</span>-controlled <span class="c-matrix">r</span>elease <span class="c-matrix">o</span>ral delivery <span class="c-matrix">s</span>ystem / oral release <span class="bg-osmotic">osmotic</span> system) <span class="year-tag">【97-1】</span></td>
     </tr>
     
     <tr>
-        <td rowspan="3" style="font-weight: bold; width: 40px;">構造</td>
+        <td rowspan="3" class="col-label">構造</td>
         <td>親水性間質系統 (hydrophilic <span class="c-matrix">matrix</span> system)</td>
         <td><span class="bg-yellow">不溶的塑性基質</span>(inert plastic <span class="c-matrix">matrix</span>)系統</td>
         <td>elementary <span class="bg-osmotic">osmotic</span> pump (EOP)</td>
@@ -56,7 +76,7 @@
     </tr>
     
     <tr>
-        <td rowspan="2" style="font-weight: bold;">釋放</td>
+        <td rowspan="2" class="col-label">釋放</td>
         <td>可製備成單層、雙層、三層之控釋劑型<br><span class="year-tag">【113-1、102-1】</span></td>
         <td>單層錠</td>
         <td>雙層錠</td>
@@ -69,7 +89,7 @@
     </tr>
     
     <tr>
-        <td rowspan="2" style="font-weight: bold;">控釋材料</td>
+        <td rowspan="2" class="col-label">控釋材料</td>
         <td>遇水後形成凝膠層，產生控釋能力<br><span class="year-tag">【113-1】</span></td>
         <td>藥物經由<span class="c-matrix">擴散</span>緩慢從惰性間質釋放<br><span class="year-tag">【113-1、112-2、108-1】</span></td>
         <td>主要<span class="c-zero-order">0階次</span>，也有可能1階次</td>
@@ -83,14 +103,14 @@
     </tr>
     
     <tr>
-        <td style="font-weight: bold;">特色</td>
+        <td class="col-label">特色</td>
         <td class="text-left">1.製備時不需加入塑化劑 <span class="year-tag">【113-1、102-1】</span><br>2.<span class="c-erosion">極難溶性藥品</span>主要釋出機轉為<span class="c-erosion">溶蝕(erosion)</span><br><span class="year-tag">【113-1、109-1】</span></td>
         <td class="text-left">1.通過腸胃道時<span class="bg-yellow">保持原來形狀，隨糞便排出</span><br><span class="year-tag">【113-1、112-2、108-1】</span><br>2.<span class="c-green">速放部分</span>可壓製在錠劑表面，不需另服速放劑型<br><span class="year-tag">【112-2、108-1】</span></td>
         <td colspan="2" class="text-left">1.藥物層及<span class="c-polymer">高分子層</span>均會加入 <span class="bg-osmotic">osmotic agents</span>；PPOP含<span class="c-polymer">高分子層</span>可提高水溶性差藥物的遞送速率 <span class="bg-osmotic">[osmotic agents: KCl, NaCl, MgCl2, BaCl2最不宜]</span><br>2.通過腸胃道時<span class="bg-yellow">保持原來形狀，隨糞便排出</span> <span class="year-tag">【112-2、111-1】</span><br>3.釋放速率<span class="c-zero-order">僅與自身設計有關</span>（半透膜材質、雷射小孔孔徑等），<span class="c-light-blue">與外在因素無關</span>（胃腸酸鹼值、蠕動情形等） <span class="year-tag">【111-1、110-1】</span></td>
     </tr>
     
     <tr>
-        <td style="font-weight: bold;">錠劑</td>
+        <td class="col-label">錠劑</td>
         <td>Oramorph SR錠</td>
         <td>Desoxyn gradumet錠</td>
         <td colspan="2">Adalat CR <span class="year-tag">【112-2、109-2】</span>、Glucotrol XL ER 錠片 <span class="year-tag">【111-1】</span></td>
