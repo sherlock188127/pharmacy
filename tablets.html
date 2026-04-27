@@ -2,69 +2,134 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>錠劑材料精華筆記</title>
     <style>
         body {
-            font-family: "Segoe UI", "Microsoft JhengHei", sans-serif;
-            line-height: 1.6;
-            color: #333;
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 0 20px;
+            font-family: "Microsoft JhengHei", "Segoe UI", sans-serif;
+            line-height: 1.8;
+            background-color: #f4f7f6;
+            padding: 20px;
         }
-        .note-header {
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-radius: 12px;
+        }
+        h2.title {
             text-align: center;
             color: #2c3e50;
-            border-bottom: 2px solid #2c3e50;
+            border-bottom: 3px solid #34495e;
             padding-bottom: 10px;
+            margin-bottom: 30px;
         }
         .section {
-            padding: 15px;
+            margin-bottom: 25px;
             border-radius: 8px;
-            margin-bottom: 15px;
-            border-left: 6px solid;
+            border-left: 8px solid;
+            padding: 20px;
+            overflow: hidden;
         }
-        .diluents { background-color: #fdf2e9; border-color: #e67e22; }
-        .binders { background-color: #e8f8f5; border-color: #27ae60; }
-        .disintegrants { background-color: #fdf1f0; border-color: #c0392b; }
-        .lubricants { background-color: #f4ecf7; border-color: #8e44ad; }
-        .dc-method { background-color: #ebf5fb; border-color: #2980b9; }
+        h3 { margin-top: 0; font-size: 1.4em; }
+        ul { padding-left: 25px; margin-bottom: 0; }
+        li { margin-bottom: 8px; }
+        .highlight { font-weight: bold; }
         
-        h3 { margin-top: 0; }
+        /* 顏色定義 */
+        .diluents { background-color: #fff8f0; border-color: #e67e22; }
         .diluents h3 { color: #d35400; }
+        
+        .binders { background-color: #f0fff4; border-color: #27ae60; }
         .binders h3 { color: #1e8449; }
+        
+        .disintegrants { background-color: #fff5f5; border-color: #c0392b; }
         .disintegrants h3 { color: #922b21; }
+        
+        .lubricants { background-color: #f9f0ff; border-color: #8e44ad; }
         .lubricants h3 { color: #633974; }
-        .dc-method h3 { color: #21618c; }
 
-        ul { padding-left: 20px; }
-        li { margin-bottom: 5px; }
-        .warning { color: #e74c3c; font-weight: bold; }
-        .tip { color: #2980b9; font-style: italic; }
+        .dc-info { background-color: #f0f7ff; border-color: #2980b9; }
+        .dc-info h3 { color: #21618c; }
+
+        .warning-box {
+            color: #c0392b;
+            font-weight: bold;
+            background: #ffe3e3;
+            padding: 5px 10px;
+            border-radius: 4px;
+            display: inline-block;
+        }
     </style>
 </head>
 <body>
 
-<h2 class="note-header">💊 錠劑材料精華筆記 (Tablet Excipients)</h2>
+<div class="container">
+    <h2 class="title">💊 錠劑材料精華筆記 (Tablet Excipients)</h2>
 
-<div class="section diluents">
-    <h3>1. 稀釋劑與填充劑 (Diluents / Fillers)</h3>
-    <p><strong>目的：</strong> 使錠劑重量、體積增加，以利於打錠。</p>
-    <ul>
-        <li><strong>Lactose (乳糖)：</strong> 最常用稀釋劑，溶解度高、壓錠性好。</li>
-        <li><strong>Microcrystalline cellulose (MCC)：</strong> 極佳稀釋劑，具多重功能。</li>
-        <li><strong>特殊用途：</strong>
-            <ul>
-                <li><strong>咀嚼錠：</strong> 常用甘露醇 (mannitol)、山梨醇 (sorbitol)、木醣醇 (xylitol)，具放熱清涼感。</li>
-                <li><strong>固醇類或 Vit. 錠劑：</strong> 適用 CaSO4、Ca3(PO4)2。</li>
-            </ul>
-        </li>
-        <li><span class="warning">⚠️ 禁忌：</span> Tetracycline 不可用鈣鹽類稀釋劑，會產生螯合作用。</li>
-    </ul>
+    <div class="section diluents">
+        <h3>1. 稀釋劑與填充劑 (Diluents / Fillers) [cite: 4, 6]</h3>
+        <p><span class="highlight">目的：</span> 使錠劑重量、體積增加，以利於打錠 [cite: 7]。</p>
+        <ul>
+            <li><span class="highlight">Lactose (乳糖)：</span> 最常用稀釋劑，溶解度高、壓錠性好 [cite: 8]。</li>
+            <li><span class="highlight">Microcrystalline cellulose (MCC)：</span> 極佳稀釋劑，具多重功能 [cite: 8, 34]。</li>
+            <li><span class="highlight">特殊用途：</span>
+                <ul>
+                    <li><span class="highlight">咀嚼錠：</span> 常用甘露醇 (mannitol)、山梨醇 (sorbitol)、木醣醇 (xylitol)，具放熱清涼感 [cite: 13]。</li>
+                    <li><span class="highlight">固醇類或 Vit. 錠劑：</span> 適用 CaSO4、Ca3(PO4)2 [cite: 11]。</li>
+                </ul>
+            </li>
+            <li><span class="warning-box">⚠️ 禁忌：</span> Tetracycline 不可用鈣鹽類稀釋劑，會產生螯合作用 [cite: 10]。</li>
+        </ul>
+    </div>
+
+    <div class="section binders">
+        <h3>2. 黏合劑 (Binders) [cite: 4, 21]</h3>
+        <p><span class="highlight">目的：</span> 濕潤藥物粉末，促進粉末顆粒黏著，增加粒徑與硬度 [cite: 22]。</p>
+        <ul>
+            <li><span class="highlight">澱粉糊 (Starch paste)：</span> 常用濃度為 10-20% [cite: 26]。</li>
+            <li><span class="highlight">Povidone (PVP)：</span> 非離子性水溶性膠體，可用於水或酒精造粒 [cite: 24, 36]。</li>
+            <li><span class="highlight">明膠溶液 (Gelatin)：</span> 濃度 10-20%，多用於口含錠，溫熱下使用，冷卻則凝固 [cite: 38]。</li>
+            <li><span class="highlight">乾燥粉狀 Binders：</span> MCC、Acacia powder、PVP [cite: 1, 2]。</li>
+            <li><span class="highlight">對水敏感藥物：</span> 可用 HPMC、PVP、HPC [cite: 30]。</li>
+        </ul>
+    </div>
+
+    <div class="section disintegrants">
+        <h3>3. 崩散劑 (Disintegrants) [cite: 4, 15]</h3>
+        <p><span class="highlight">目的：</span> 克服錠片黏合強度，使藥物迅速融離 [cite: 16]。</p>
+        <ul>
+            <li><span class="highlight">毛細作用 (Capillary)：</span> Crospovidone、微晶纖維素 MCC [cite: 19]。</li>
+            <li><span class="highlight">膨脹型 (Swelling)：</span> 遇水膨脹把錠劑脹破。常用材料包括 Sodium starch glycolate (2%)、Croscarmellose (5%)、澱粉、Alginic acid [cite: 19]。</li>
+            <li><span class="highlight">💡 小提醒：</span> 咀嚼錠可不含崩散劑；發泡錠則選用水溶性崩散劑 [cite: 17]。</li>
+        </ul>
+    </div>
+
+    <div class="section lubricants">
+        <h3>4. 潤滑、助滑與抗黏劑 [cite: 39]</h3>
+        <p><span class="highlight">目的：</span> 使顆粒流入錠模、降低模具磨損、提高錠片表面亮度 [cite: 39]。</p>
+        <ul>
+            <li><span class="highlight">助滑劑 (Glidants)：</span> 增進粉末滑動力。直打錠最常用二氧化矽 (Fumed silicon dioxide) [cite: 40, 41]。</li>
+            <li><span class="highlight">潤滑劑 (Lubricants)：</span> 減少與模壁摩擦 [cite: 43]。
+                <ul>
+                    <li><span class="highlight">水不溶性：</span> 硬脂酸鎂 (最常用，1%)。注意：過量會降低崩散與溶離，產生「雨衣現象」 [cite: 45]。</li>
+                    <li><span class="highlight">水溶性：</span> PEG4000 或 6000，可改善雨衣現象 [cite: 45]。</li>
+                </ul>
+            </li>
+            <li><span class="highlight">抗黏劑 (Anti-adherents)：</span> 減少顆粒黏附於沖模表面，防止打錠出現凹隙 [cite: 46]。</li>
+        </ul>
+    </div>
+
+    <div class="section dc-info">
+        <h3>5. 直接壓錠 (Direct Compression) [cite: 12, 40]</h3>
+        <ul>
+            <li><span class="highlight">常用填充劑：</span> Spray-dried lactose、微晶纖維素 MCC、Crystalline maltose [cite: 12]。</li>
+            <li><span class="highlight">最常用助滑劑：</span> 二氧化矽 (Fumed silicon dioxide) [cite: 41]。</li>
+        </ul>
+    </div>
 </div>
 
-<div class="section binders">
-    <h3>2. 黏合劑 (Binders)</h3>
-    <p><strong>目的：</strong> 濕潤藥物粉末，促進粉末顆粒黏著，增加粒徑與硬度。</p>
-    <ul>
-        <li>
+</body>
+</html>
