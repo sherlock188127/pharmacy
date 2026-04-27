@@ -3,130 +3,148 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>錠劑材料精華筆記</title>
+    <title>錠劑材料精華筆記完整版</title>
     <style>
         body {
-            font-family: "Microsoft JhengHei", "Segoe UI", sans-serif;
+            font-family: "Microsoft JhengHei", sans-serif;
             line-height: 1.8;
-            background-color: #f4f7f6;
+            background-color: #f0f2f5;
             padding: 20px;
+            margin: 0;
         }
         .container {
             max-width: 900px;
             margin: auto;
             background: white;
-            padding: 30px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border-radius: 15px;
         }
-        h2.title {
+        h2.main-title {
             text-align: center;
             color: #2c3e50;
-            border-bottom: 3px solid #34495e;
-            padding-bottom: 10px;
+            border-bottom: 4px solid #34495e;
+            padding-bottom: 15px;
             margin-bottom: 30px;
         }
         .section {
             margin-bottom: 25px;
-            border-radius: 8px;
-            border-left: 8px solid;
-            padding: 20px;
-            overflow: hidden;
+            border-radius: 10px;
+            border-left: 10px solid;
+            padding: 25px;
         }
-        h3 { margin-top: 0; font-size: 1.4em; }
-        ul { padding-left: 25px; margin-bottom: 0; }
-        li { margin-bottom: 8px; }
+        h3 { margin-top: 0; font-size: 1.5em; margin-bottom: 15px; }
+        .sub-cat { font-weight: bold; margin-top: 15px; display: block; border-bottom: 1px solid #ddd; }
+        ul { padding-left: 20px; margin-top: 8px; }
+        li { margin-bottom: 6px; }
         .highlight { font-weight: bold; }
         
-        /* 顏色定義 */
-        .diluents { background-color: #fff8f0; border-color: #e67e22; }
+        /* 顏色區分 */
+        .diluents { background-color: #fffaf5; border-color: #e67e22; } /* 橘色 */
+        .binders { background-color: #f5fff8; border-color: #27ae60; }  /* 綠色 */
+        .disintegrants { background-color: #fff8f8; border-color: #c0392b; } /* 紅色 */
+        .lubricants { background-color: #faf5ff; border-color: #8e44ad; } /* 紫色 */
+        .direct { background-color: #f5faff; border-color: #2980b9; } /* 藍色 */
+
         .diluents h3 { color: #d35400; }
-        
-        .binders { background-color: #f0fff4; border-color: #27ae60; }
         .binders h3 { color: #1e8449; }
-        
-        .disintegrants { background-color: #fff5f5; border-color: #c0392b; }
         .disintegrants h3 { color: #922b21; }
-        
-        .lubricants { background-color: #f9f0ff; border-color: #8e44ad; }
         .lubricants h3 { color: #633974; }
+        .direct h3 { color: #21618c; }
 
-        .dc-info { background-color: #f0f7ff; border-color: #2980b9; }
-        .dc-info h3 { color: #21618c; }
-
-        .warning-box {
-            color: #c0392b;
-            font-weight: bold;
-            background: #ffe3e3;
-            padding: 5px 10px;
+        .tag {
+            padding: 2px 8px;
             border-radius: 4px;
-            display: inline-block;
+            font-size: 0.85em;
+            color: white;
+            margin-right: 5px;
         }
+        .tag-orange { background: #e67e22; }
+        .tag-green { background: #27ae60; }
+        .tag-red { background: #c0392b; }
+        .tag-blue { background: #2980b9; }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h2 class="title">💊 錠劑材料精華筆記 (Tablet Excipients)</h2>
+    <h2 class="main-title">💊 錠劑材料精華筆記 (Tablet Excipients)</h2>
 
     <div class="section diluents">
-        <h3>1. 稀釋劑與填充劑 (Diluents / Fillers) [cite: 4, 6]</h3>
-        <p><span class="highlight">目的：</span> 使錠劑重量、體積增加，以利於打錠 [cite: 7]。</p>
+        <h3>1. 稀釋劑與填充劑 (Diluents / Fillers)</h3>
+        <p><span class="highlight">目的：</span>使錠劑重量、體積增加，以利於打錠 [cite: 7]。</p>
         <ul>
-            <li><span class="highlight">Lactose (乳糖)：</span> 最常用稀釋劑，溶解度高、壓錠性好 [cite: 8]。</li>
-            <li><span class="highlight">Microcrystalline cellulose (MCC)：</span> 極佳稀釋劑，具多重功能 [cite: 8, 34]。</li>
-            <li><span class="highlight">特殊用途：</span>
-                <ul>
-                    <li><span class="highlight">咀嚼錠：</span> 常用甘露醇 (mannitol)、山梨醇 (sorbitol)、木醣醇 (xylitol)，具放熱清涼感 [cite: 13]。</li>
-                    <li><span class="highlight">固醇類或 Vit. 錠劑：</span> 適用 CaSO4、Ca3(PO4)2 [cite: 11]。</li>
-                </ul>
-            </li>
-            <li><span class="warning-box">⚠️ 禁忌：</span> Tetracycline 不可用鈣鹽類稀釋劑，會產生螯合作用 [cite: 10]。</li>
+            <li><span class="highlight">Lactose (乳糖)：</span>溶解度高、壓錠性好 [cite: 8]。</li>
+            <li><span class="highlight">Microcrystalline cellulose (MCC)：</span>常用稀釋劑 [cite: 8]。</li>
+            <li><span class="highlight">Calcium phosphate (磷酸二鈣)：</span>常用稀釋劑 [cite: 8]。</li>
+            <li><span class="highlight">Calcium sulfate (硫酸鈣)：</span>固醇類或 Vit. 錠劑適用 [cite: 11]。</li>
+            <li><span class="highlight">咀嚼錠專用：</span>甘露醇 (mannitol)、山梨醇 (sorbitol)、木醣醇 (xylitol)，具放熱清涼感 [cite: 13]。</li>
+            <li><span class="tag tag-orange">⚠️ 禁忌</span> <span class="highlight">Tetracycline：</span>不可用鈣鹽類稀釋劑，會產生螯合作用 [cite: 10]。</li>
         </ul>
     </div>
 
     <div class="section binders">
-        <h3>2. 黏合劑 (Binders) [cite: 4, 21]</h3>
-        <p><span class="highlight">目的：</span> 濕潤藥物粉末，促進粉末顆粒黏著，增加粒徑與硬度 [cite: 22]。</p>
+        <h3>2. 黏合劑 (Binders)</h3>
+        <p><span class="highlight">目的：</span>濕潤藥粉促進黏著，增加粒徑與流動性，提升硬度 [cite: 22]。</p>
+        
+        <span class="sub-cat">💧 水性溶液 (Aqueous)</span>
         <ul>
-            <li><span class="highlight">澱粉糊 (Starch paste)：</span> 常用濃度為 10-20% [cite: 26]。</li>
-            <li><span class="highlight">Povidone (PVP)：</span> 非離子性水溶性膠體，可用於水或酒精造粒 [cite: 24, 36]。</li>
-            <li><span class="highlight">明膠溶液 (Gelatin)：</span> 濃度 10-20%，多用於口含錠，溫熱下使用，冷卻則凝固 [cite: 38]。</li>
-            <li><span class="highlight">乾燥粉狀 Binders：</span> MCC、Acacia powder、PVP [cite: 1, 2]。</li>
-            <li><span class="highlight">對水敏感藥物：</span> 可用 HPMC、PVP、HPC [cite: 30]。</li>
+            <li><span class="highlight">澱粉糊 (Starch paste)：</span>濃度 10-20% [cite: 26]。</li>
+            <li><span class="highlight">明膠溶液 (Gelatin solution)：</span>10-20%，多用於口含錠，需溫熱使用 [cite: 38]。</li>
+            <li><span class="highlight">Povidone (PVP)：</span>非離子性水溶性膠體 [cite: 24]。</li>
+            <li><span class="highlight">蔗糖 (Sucrose)：</span>常用黏合劑 [cite: 24]。</li>
+        </ul>
+
+        <span class="sub-cat">🧪 非水性溶液 (Non-aqueous / 對水敏感)</span>
+        <ul>
+            <li><span class="highlight">PVP / HPMC / HPC：</span>可用酒精泡成造粒液，用於濕式造粒 [cite: 30, 36, 37]。</li>
+            <li><span class="highlight">PVP：</span>吸濕性高，少用於膜衣包覆 [cite: 36]。</li>
+        </ul>
+
+        <span class="sub-cat">📦 乾燥粉狀 (Dry Binders)</span>
+        <ul>
+            <li><span class="highlight">MCC / Acacia powder / PVP / Amylose / Colloidal clays：</span>常用乾燥粉狀黏合劑 [cite: 1, 2]。</li>
         </ul>
     </div>
 
     <div class="section disintegrants">
-        <h3>3. 崩散劑 (Disintegrants) [cite: 4, 15]</h3>
-        <p><span class="highlight">目的：</span> 克服錠片黏合強度，使藥物迅速融離 [cite: 16]。</p>
+        <h3>3. 崩散劑 (Disintegrants)</h3>
+        <p><span class="highlight">目的：</span>克服錠片黏合強度，使藥物迅速融離 [cite: 16]。</p>
         <ul>
-            <li><span class="highlight">毛細作用 (Capillary)：</span> Crospovidone、微晶纖維素 MCC [cite: 19]。</li>
-            <li><span class="highlight">膨脹型 (Swelling)：</span> 遇水膨脹把錠劑脹破。常用材料包括 Sodium starch glycolate (2%)、Croscarmellose (5%)、澱粉、Alginic acid [cite: 19]。</li>
-            <li><span class="highlight">💡 小提醒：</span> 咀嚼錠可不含崩散劑；發泡錠則選用水溶性崩散劑 [cite: 17]。</li>
+            <li><span class="tag tag-red">毛細作用</span> <span class="highlight">Crospovidone、MCC：</span>藉由孔洞將水導入促進崩散 [cite: 19]。</li>
+            <li><span class="tag tag-red">膨脹型</span> <span class="highlight">Sodium starch glycolate (2%)、Croscarmellose (5%)：</span>遇水膨脹把錠劑脹破 [cite: 19]。</li>
+            <li><span class="highlight">其他材料：</span>澱粉、MC、CMC、Alginic acid、PVP、離子交換樹脂 [cite: 19]。</li>
+            <li><span class="highlight">💡 筆記：</span>咀嚼錠可不含崩散劑；發泡錠用水溶性崩散劑 [cite: 17]。</li>
         </ul>
     </div>
 
     <div class="section lubricants">
-        <h3>4. 潤滑、助滑與抗黏劑 [cite: 39]</h3>
-        <p><span class="highlight">目的：</span> 使顆粒流入錠模、降低模具磨損、提高錠片表面亮度 [cite: 39]。</p>
+        <h3>4. 潤滑、助滑與抗黏劑</h3>
+        <p><span class="highlight">目的：</span>使顆粒流入錠模、降低模具磨損、提高表面亮度 [cite: 39]。</p>
+        
+        <span class="sub-cat">助滑劑 (Glidants)</span>
         <ul>
-            <li><span class="highlight">助滑劑 (Glidants)：</span> 增進粉末滑動力。直打錠最常用二氧化矽 (Fumed silicon dioxide) [cite: 40, 41]。</li>
-            <li><span class="highlight">潤滑劑 (Lubricants)：</span> 減少與模壁摩擦 [cite: 43]。
-                <ul>
-                    <li><span class="highlight">水不溶性：</span> 硬脂酸鎂 (最常用，1%)。注意：過量會降低崩散與溶離，產生「雨衣現象」 [cite: 45]。</li>
-                    <li><span class="highlight">水溶性：</span> PEG4000 或 6000，可改善雨衣現象 [cite: 45]。</li>
-                </ul>
-            </li>
-            <li><span class="highlight">抗黏劑 (Anti-adherents)：</span> 減少顆粒黏附於沖模表面，防止打錠出現凹隙 [cite: 46]。</li>
+            <li><span class="highlight">二氧化矽 (Fumed silicon dioxide)：</span>最常用於直接壓錠 [cite: 40, 41]。</li>
+            <li><span class="highlight">滑石粉 (Talc)：</span>用量小於 5% [cite: 42]。</li>
+        </ul>
+
+        <span class="sub-cat">潤滑劑 (Lubricants)</span>
+        <ul>
+            <li><span class="highlight">水不溶性：</span>硬脂酸鎂 (最常用，1%)、鈣鹽。過量會造成「雨衣現象」降低溶離 [cite: 45]。</li>
+            <li><span class="highlight">水溶性：</span>PEG 4000/6000、月桂酸鹽，可改善雨衣現象 [cite: 45]。</li>
+        </ul>
+
+        <span class="sub-cat">抗黏著劑 (Anti-adherents)</span>
+        <ul>
+            <li><span class="highlight">功能：</span>減少顆粒黏附於沖模表面，防止出現凹隙 [cite: 46]。</li>
         </ul>
     </div>
 
-    <div class="section dc-info">
-        <h3>5. 直接壓錠 (Direct Compression) [cite: 12, 40]</h3>
+    <div class="section direct">
+        <h3>5. 直接壓錠法專用 (Direct Compression)</h3>
         <ul>
-            <li><span class="highlight">常用填充劑：</span> Spray-dried lactose、微晶纖維素 MCC、Crystalline maltose [cite: 12]。</li>
-            <li><span class="highlight">最常用助滑劑：</span> 二氧化矽 (Fumed silicon dioxide) [cite: 41]。</li>
+            <li><span class="highlight">常用填充劑：</span>Spray-dried lactose、微晶纖維素 (MCC)、Crystalline maltose [cite: 12]。</li>
+            <li><span class="highlight">助滑劑首選：</span>二氧化矽 (Fumed silicon dioxide) [cite: 41]。</li>
         </ul>
     </div>
 </div>
