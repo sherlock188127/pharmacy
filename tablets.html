@@ -2,7 +2,7 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <title>錠劑材料精華筆記</title>
+    <title>錠劑材料與製劑精華筆記</title>
     <style>
         body {
             font-family: "Microsoft JhengHei", sans-serif;
@@ -25,108 +25,112 @@
             padding-bottom: 10px;
         }
         .section {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             padding: 20px;
             border-radius: 8px;
             border-left: 8px solid;
         }
-        /* 各區塊顏色 */
+        /* 區塊顏色 */
         .diluents { background-color: #fff9f2; border-color: #e67e22; }
         .binders { background-color: #f0fff4; border-color: #27ae60; }
         .disintegrants { background-color: #fff5f5; border-color: #c0392b; }
         .lubricants { background-color: #f9f0ff; border-color: #8e44ad; }
-        .direct { background-color: #f0f7ff; border-color: #2980b9; }
+        .coating { background-color: #f0f7ff; border-color: #2980b9; }
+        .special { background-color: #fdfefe; border-color: #7f8c8d; border-style: dashed; }
 
-        h3 { margin-top: 0; }
-        .sub-title { font-weight: bold; text-decoration: underline; display: block; margin-top: 15px; }
+        h3 { margin-top: 0; display: flex; align-items: center; }
+        .sub-title { font-weight: bold; text-decoration: underline; display: block; margin-top: 15px; color: #444; }
         ul { padding-left: 20px; }
         li { margin-bottom: 5px; }
+        
+        .exam { color: #e74c3c; font-weight: bold; margin-left: 5px; font-size: 0.85em; } /* 考過標注 */
         .warning { color: #d35400; font-weight: bold; }
-        .important { color: #c0392b; font-weight: bold; }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h2 class="title">💊 錠劑材料精華筆記 (Tablet Excipients)</h2>
+    <h2 class="title">💊 錠劑材料與製劑完整筆記</h2>
 
     <div class="section diluents">
-        <h3 style="color: #d35400;">1. 稀釋劑 (Diluents) 與 填充劑 (Fillers)</h3>
-        <p><strong>目的：</strong>使錠劑重量、體積增加，以利於打錠。</p>
+        <h3 style="color: #d35400;">1. 稀釋劑 (Diluents) / 填充劑 (Fillers)</h3>
+        <p><strong>目的：</strong>增加重量體積，利於打錠。</p>
         <ul>
-            <li><strong>乳糖 (Lactose)：</strong>溶解度高、壓錠性好。</li>
-            <li><strong>微晶纖維素 (MCC)：</strong>常用稀釋劑。</li>
-            <li><strong>磷酸二鈣 (Calcium phosphate)：</strong>常用稀釋劑。</li>
-            <li><strong>硫酸鈣 (CaSO4)：</strong>適用於固醇類或 Vitamin 錠劑。</li>
-            <li><strong>咀嚼錠常用：</strong>甘露醇 (Mannitol)、山梨醇 (Sorbitol)、木醣醇 (Xylitol) → 具放熱清涼感。</li>
-            <li><span class="warning">⚠️ Tetracycline 不可用鈣鹽類稀釋劑（會產生螯合作用）。</span></li>
-            <li><strong>低水溶性藥物：</strong>建議使用水溶性稀釋劑以提升生體可用率。</li>
+            <li><strong>乳糖 (Lactose)：</strong>溶解度高、壓錠性好。<span class="exam">★常考</span></li>
+            <li><strong>微晶纖維素 (MCC)：</strong>直打錠常用。</li>
+            <li><strong>磷酸二鈣 (DCP)：</strong>直打錠填充劑。</li>
+            <li><strong>硫酸鈣 (CaSO4)：</strong>適用於固醇類、Vitamin。</li>
+            <li><strong>甘露醇 (Mannitol)：</strong>咀嚼錠首選，具放熱清涼感。<span class="exam">★常考</span></li>
+            <li><span class="warning">⚠️ Tetracycline 不可用鈣鹽類稀釋劑（會產生螯合作用）。</span><span class="exam">★重點</span></li>
+            <li><strong>生體可用率考量：</strong>疏水性藥物宜使用水溶性稀釋劑。</li>
         </ul>
     </div>
 
     <div class="section binders">
         <h3 style="color: #1e8449;">2. 黏合劑 (Binders)</h3>
-        <p><strong>目的：</strong>促進粉末顆粒黏著，增加粒徑（改善流動性）及硬度。</p>
+        <p><strong>目的：</strong>促進顆粒黏著，增加粒徑與硬度。</p>
         
-        <span class="sub-title">💧 水性溶液 (Aqueous Solutions)</span>
+        <span class="sub-title">💧 水性溶液 (Aqueous)</span>
         <ul>
-            <li><strong>澱粉糊 (Starch paste)：</strong>濃度 10-20%。</li>
-            <li><strong>明膠溶液 (Gelatin solution)：</strong>10-20%，多用於口含錠，需溫熱使用（冷卻會凝固）。</li>
-            <li><strong>蔗糖 (Sucrose)：</strong>常用黏合劑。</li>
-            <li><strong>Povidone (PVP)：</strong>非離子性水溶性膠體，可溶於水。</li>
-            <li><strong>Methylcellulose (MC)：</strong>濃度約 3%，冷水比熱水易溶。</li>
+            <li><strong>澱粉糊 (Starch paste)：</strong>常用濃度 10-20%。</li>
+            <li><strong>明膠溶液 (Gelatin)：</strong>10-20%，用於口含錠，冷卻即凝固。<span class="exam">★常考</span></li>
+            <li><strong>蔗糖 (Sucrose) / 糖漿：</strong>傳統黏合劑。</li>
+            <li><strong>Povidone (PVP)：</strong>水溶性膠體。</li>
         </ul>
 
         <span class="sub-title">🧪 非水性溶液 (Non-aqueous / 對水敏感)</span>
         <ul>
-            <li><strong>PVP：</strong>可溶於酒精，吸濕性高，少用於膜衣包覆。</li>
-            <li><strong>HPMC：</strong>可用水或酒精泡成造粒液。製備時先加沸水攪拌（熱水分散性高）。</li>
-            <li><strong>HPC：</strong>適用於對水敏感之藥物。</li>
+            <li><strong>酒精溶液形式：</strong>PVP、HPMC、HPC。<span class="exam">★常考</span></li>
+            <li><strong>HPMC：</strong>熱水分散性高，需先加沸水攪拌。</li>
+            <li><strong>PVP：</strong>可溶於水與酒精，但吸濕性高。</li>
         </ul>
 
         <span class="sub-title">📦 乾燥粉狀 (Dry Binders)</span>
         <ul>
-            <li><strong>Microcrystalline cellulose (MCC)：</strong>常用於直壓或乾式造粒。</li>
-            <li><strong>Acacia powder (阿拉伯膠粉)：</strong>乾燥粉狀使用。</li>
-            <li><strong>其他：</strong>Colloidal clays、Amylose、PVP 乾粉。</li>
+            <li><strong>MCC、Acacia powder、Amylose、PVP：</strong>用於乾式造粒或直壓法。</li>
         </ul>
     </div>
 
     <div class="section disintegrants">
         <h3 style="color: #922b21;">3. 崩散劑 (Disintegrants)</h3>
-        <p><strong>目的：</strong>克服黏合強度，使藥物迅速融離。</p>
         <ul>
-            <li><strong>毛細作用 (Capillary)：</strong>Crospovidone、微晶纖維素 (MCC)。</li>
-            <li><strong>膨脹型 (Swelling)：</strong>
-                <ul>
-                    <li>Sodium starch glycolate (2%)、Croscarmellose (5%)。</li>
-                    <li>澱粉、MC、CMC、Alginic acid、PVP、離子交換樹脂、Agar、Kayara、Tragacanth。</li>
-                </ul>
-            </li>
-            <li><strong>備註：</strong>咀嚼錠可不含崩散劑。發泡錠需選用水溶性崩散劑。</li>
+            <li><strong>毛細作用：</strong>Crospovidone、MCC。</li>
+            <li><strong>膨脹型：</strong>Sodium starch glycolate (SSG, 2%)、Croscarmellose (5%)。<span class="exam">★超級崩散劑</span></li>
+            <li><strong>備註：</strong>咀嚼錠可不含崩散劑。發泡錠需用水溶性崩散劑。</li>
         </ul>
     </div>
 
     <div class="section lubricants">
-        <h3 style="color: #633974;">4. 抗摩擦劑 (Lubricants / Glidants)</h3>
-        <p><strong>目的：</strong>顆粒流動順暢、降低模具磨損、提高表面亮度。</p>
+        <h3 style="color: #633974;">4. 潤滑、助滑與抗黏劑</h3>
         <ul>
-            <li><strong>助滑劑 (Glidants)：</strong>二氧化矽 (Fumed silicon dioxide)、滑石粉 (Talc < 5%)。</li>
+            <li><strong>助滑劑 (Glidants)：</strong>二氧化矽 (Fumed silica)、滑石粉 (Talc)。<span class="exam">★直打錠必考</span></li>
             <li><strong>潤滑劑 (Lubricants)：</strong>
                 <ul>
-                    <li><strong>水不溶性：</strong>硬脂酸鎂 (最常用，1%)。過量會降低硬度、產生「雨衣現象」阻礙溶離。</li>
-                    <li><strong>水溶性：</strong>月桂酸鹽、PEG 4000/6000 → 可改善雨衣現象。</li>
+                    <li><strong>硬脂酸鎂：</strong>最常用 (1%)，過量會產生「雨衣現象」。<span class="exam">★常考</span></li>
+                    <li><strong>水溶性：</strong>PEG 4000/6000，改善雨衣現象。</li>
                 </ul>
             </li>
-            <li><strong>抗黏著劑 (Anti-adherents)：</strong>減少顆粒黏附於沖模，防止打錠出現凹隙。</li>
+            <li><strong>抗黏劑 (Anti-adherents)：</strong>防止藥粉黏附沖頭 (Punches)。</li>
         </ul>
     </div>
 
-    <div class="section direct">
-        <h3 style="color: #21618c;">5. 直接壓錠法 (Direct Compression)</h3>
+    <div class="section coating">
+        <h3 style="color: #21618c;">5. 包衣 (Coating) 與設備</h3>
         <ul>
-            <li><strong>常用填充劑：</strong>Spray-dried lactose、微晶纖維素 (MCC)、Crystalline maltose。</li>
-            <li><strong>最常用助滑劑：</strong>二氧化矽 (Fumed silicon dioxide)。</li>
+            <li><strong>糖衣 (Sugar coating)：</strong>掩蓋苦味、防潮。</li>
+            <li><strong>腸衣 (Enteric coating)：</strong>通過胃部到小腸才釋出。</li>
+            <li><strong>包衣目的：</strong>防止調劑者接觸敏感藥物 (如 Finasteride 避免孕婦接觸)。<span class="exam">★新增考點</span></li>
+            <li><strong>噴霧乾燥機 (Spray Dryer)：</strong>用於包衣可獲得較大表面積。</li>
+        </ul>
+    </div>
+
+    <div class="section special">
+        <h3>💡 藥理補充：Finasteride (Proscar)</h3>
+        <ul>
+            <li><strong>機轉：</strong>5α-reductase type II 競爭型抑制劑 (不可逆)。</li>
+            <li><strong>特性：</strong>Suicide substrate (自殺型受質)。<span class="exam">★常考</span></li>
+            <li><strong>結構：</strong>4-aza-steroid (4位是N，3位有酮基)。</li>
+            <li><strong>功用：</strong>治療男性禿頭、攝護腺肥大 (BPH)。</li>
         </ul>
     </div>
 </div>
