@@ -1,133 +1,200 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-Hant">
 <head>
-    <meta charset="UTF-8">
-    <title>錠劑材料與製劑精華筆記</title>
-    <style>
-        body { font-family: "Microsoft JhengHei", sans-serif; line-height: 1.6; background-color: #f4f4f9; padding: 10px; }
-        .container { max-width: 850px; margin: auto; background: white; padding: 25px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        .section { margin-bottom: 20px; padding: 15px; border-radius: 8px; border-left: 10px solid; }
-        
-        .diluents { background-color: #fff9f2; border-color: #e67e22; }
-        .binders { background-color: #f0fff4; border-color: #27ae60; }
-        .super-dis { background-color: #fff0f0; border-color: #e74c3c; }
-        .disintegrants { background-color: #fffafa; border-color: #fab1a0; }
-        .lubricants { background-color: #f9f0ff; border-color: #8e44ad; }
-        .tech { background-color: #f0f7ff; border-color: #2980b9; }
-
-        h3 { margin: 0 0 10px 0; font-size: 1.3em; }
-        .group-title { font-weight: bold; color: #444; display: block; margin-top: 15px; border-bottom: 2px solid #ddd; }
-        .item-list { list-style: none; padding-left: 5px; margin: 10px 0; }
-        .item-list li { margin-bottom: 8px; border-bottom: 1px dashed #eee; padding-bottom: 4px; }
-        
-        .exam-tag { color: #e74c3c; font-weight: bold; font-size: 0.85em; background: #ffebeb; padding: 1px 4px; border-radius: 3px; }
-        .drug-highlight { color: #2980b9; font-weight: bold; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>錠劑賦形劑比較表</title>
+<style>
+  body { font-family: sans-serif; padding: 1.5rem; background: #fff; color: #222; }
+  .tbl { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .tbl th { font-size: 12px; font-weight: 500; padding: 8px 10px; text-align: center; border: 0.5px solid #aaa; }
+  .tbl td { padding: 8px 10px; vertical-align: top; border: 0.5px solid #ccc; }
+  .tbl tr:hover td { background: #f7f7f7; }
+  .role-label { font-weight: 500; font-size: 12px; white-space: nowrap; }
+  .item { display: block; padding: 2px 0; line-height: 1.5; }
+  .note { font-size: 11px; margin-top: 6px; padding: 5px 8px; border-radius: 6px; line-height: 1.5; }
+  .check { font-size: 13px; color: #888; text-align: center; }
+  .header-row th { color: white; }
+  .h-wet { background: #185FA5; }
+  .h-fluid { background: #0F6E56; }
+  .h-dry { background: #854F0B; }
+  .h-direct { background: #993556; }
+  .role-col { width: 72px; background: #f5f5f5; }
+  .wet { color: #185FA5; }
+  .fluid { color: #0F6E56; }
+  .dry { color: #854F0B; }
+  .direct { color: #993556; }
+  .tag { display: inline-block; font-size: 10px; padding: 1px 6px; border-radius: 4px; margin-left: 4px; vertical-align: middle; }
+  .tag-c { background: #FAEEDA; color: #854F0B; }
+  .tag-b { background: #EAF3DE; color: #3B6D11; }
+  .note-blue { background: #E6F1FB; color: #0C447C; }
+  .note-green { background: #EAF3DE; color: #27500A; }
+  .note-amber { background: #FAEEDA; color: #633806; }
+  .note-pink { background: #FBEAF0; color: #72243E; }
+</style>
 </head>
 <body>
+<h2 style="font-size:16px; margin-bottom:1rem;">錠劑賦形劑比較表</h2>
+<div style="overflow-x: auto;">
+<table class="tbl">
+  <thead>
+    <tr class="header-row">
+      <th class="role-col" style="background:#e8e8e8; color:#555; font-size:11px;">賦形劑</th>
+      <th class="h-wet">濕粒法</th>
+      <th class="h-fluid">流動床造粒</th>
+      <th class="h-dry">乾粒法</th>
+      <th class="h-direct">直接壓錠法</th>
+    </tr>
+  </thead>
+  <tbody>
 
-<div class="container">
-    <h2 style="text-align: center;">錠劑材料與國考考點完全整合</h2>
+    <!-- 主成分 -->
+    <tr>
+      <td class="role-col"><span class="role-label">主成分</span></td>
+      <td class="check wet">✓</td>
+      <td class="check fluid">✓</td>
+      <td class="check dry">✓ <span class="tag tag-c">cohesive</span></td>
+      <td class="check direct">✓ <span class="tag tag-c">cohesive</span></td>
+    </tr>
 
-    <div class="section diluents">
-        <h3 style="color: #d35400;">1. 稀釋劑與填充劑 (Diluents / Fillers)</h3>
-        <ul class="item-list">
-            <li><strong>Lactose (乳糖)：</strong>最常用，溶解度高、壓錠性好</li>
-            <li><strong>Anhydrous Lactose (無水乳糖)：</strong><span class="exam-tag">題目</span> 適合配伍具胺基 (Amine) 的藥物，避免美拉德反應</li>
-            <li><strong>Spray-dried Lactose (噴霧乾燥乳糖)：</strong>改善流動性，常用於直打錠</li>
-            <li><strong>Microcrystalline cellulose (MCC)：</strong>直打錠填充劑</li>
-            <li><strong>Dicalcium phosphate (DCP)：</strong>直打錠填充劑</li>
-            <li><strong>Calcium sulfate (硫酸鈣)：</strong>適用於固醇類、維生素錠劑</li>
-            <li><strong>Mannitol (甘露醇)：</strong>咀嚼錠首選，具放熱清涼感</li>
-            <li><strong>Sorbitol / Xylitol：</strong>咀嚼錠常用成分</li>
-            <li><strong>⚠️ 禁忌：</strong>Tetracycline 不可用鈣鹽類稀釋劑（產生螯合作用）</li>
-        </ul>
-    </div>
+    <!-- 稀釋劑 -->
+    <tr>
+      <td class="role-col"><span class="role-label">稀釋劑</span></td>
+      <td>
+        <span class="item wet">Lactose（乳糖）</span>
+        <span class="item wet">Microcrystalline cellulose（微晶纖維素，MCC）</span>
+        <span class="item wet">Starch（澱粉）</span>
+        <span class="item wet">Dicalcium phosphate（磷酸二鈣，DCP）</span>
+        <span class="item wet">Calcium phosphate（磷酸鈣）</span>
+      </td>
+      <td class="check fluid">✓</td>
+      <td>
+        <span class="tag tag-c" style="margin:0 0 4px 0; display:inline-block;">cohesive</span>
+        <span style="font-size:11px; color:#888;"> 或加 binder</span>
+      </td>
+      <td>
+        <div class="note note-pink" style="margin-bottom:0;">
+          <span class="tag tag-c" style="margin:0 0 4px 0; display:inline-block;">cohesive</span><br>
+          <span class="item direct">Spray-dried lactose（噴霧乾燥乳糖）</span>
+          <span class="item direct">MCC（微晶纖維素）</span>
+          <span class="item direct">DCP（磷酸二鈣）</span>
+          <span class="item direct">Calcium phosphate（磷酸鈣）</span>
+          <span class="item direct">Pregelatinized starch（預膠化澱粉）</span>
+          <span class="item direct">α-Monohydrate lactose（一水乳糖）</span>
+          <span class="item direct">Anhydrous lactose（無水乳糖）</span>
+          <span class="item direct">Sucrose-invert sugar–corn starch mixtures</span>
+          <span class="item direct">Crystalline maltose（結晶麥芽糖）</span>
+          <span class="item direct">Granule mannitol（顆粒甘露醇）</span>
+          <span class="item direct">Crystalline sorbitol（結晶山梨醇）</span>
+        </div>
+      </td>
+    </tr>
 
-    <div class="section binders">
-        <h3 style="color: #1e8449;">2. 黏合劑 (Binders)</h3>
-        
-        <span class="group-title">💧 水性溶液 (Aqueous)</span>
-        <ul class="item-list">
-            <li><strong>Starch paste (澱粉糊)：</strong>濃度 10-20%，最常用</li>
-            <li><strong>Gelatin solution (明膠)：</strong>10-20%，口含錠用，具「熱溶冷凝」特性</li>
-            <li><strong>Sucrose (蔗糖)：</strong>傳統強效黏合劑</li>
-            <li><strong>Povidone (PVP)：</strong>非離子性水溶性膠體</li>
-            <li><strong>Methylcellulose (MC)：</strong>濃度 3%，冷水溶解度較熱水高</li>
-        </ul>
+    <!-- 黏合劑 -->
+    <tr>
+      <td class="role-col"><span class="role-label">黏合劑</span></td>
+      <td>
+        <div style="margin-bottom:4px; font-size:11px; font-weight:500; color:#555;">水性液體：</div>
+        <span class="item wet">Polyvinylpyrrolidone（PVP，聚乙烯吡咯烷酮）</span>
+        <span class="item wet">Corn starch（玉米澱粉）</span>
+        <span class="item wet">Glucose（葡萄糖）</span>
+        <span class="item wet">Molasses（糖蜜）</span>
+        <span class="item wet">Gelatin（明膠）</span>
+        <span class="item wet">MCC（微晶纖維素）</span>
+        <span class="item wet">MC（甲基纖維素）</span>
+        <span class="item wet">Sodium CMC（羧甲基纖維素鈉）</span>
+        <div style="margin:6px 0 4px; font-size:11px; font-weight:500; color:#555;">非水性液體：</div>
+        <span class="item wet">HPMC（羥丙甲纖維素）</span>
+        <span class="item wet">EC（乙基纖維素）</span>
+        <span class="item wet">PVP（酒精或有機媒液）</span>
+        <span class="item wet">HPC（羥丙纖維素）</span>
+      </td>
+      <td>
+        <div style="font-size:11px; font-weight:500; color:#555; margin-bottom:4px;">液體黏合劑：</div>
+        <span class="item fluid">Acacia（阿拉伯膠）</span>
+        <span class="item fluid">HPC（羥丙纖維素）</span>
+        <span class="item fluid">PVP（聚乙烯吡咯烷酮）</span>
+        <span style="font-size:11px; color:#888;">等之水性溶液</span>
+      </td>
+      <td>
+        <div style="font-size:11px; font-weight:500; color:#555; margin-bottom:4px;">乾粉黏合劑：</div>
+        <span class="item dry">MC（甲基纖維素）</span>
+        <span class="item dry">HPMC（羥丙甲纖維素）</span>
+        <span class="item dry">MCC（微晶纖維素）</span>
+        <span class="item dry">Acacia（阿拉伯膠）</span>
+      </td>
+      <td style="vertical-align:middle; text-align:center;">
+      </td>
+    </tr>
 
-        <span class="group-title">🧪 非水性溶液 (Non-aqueous / 對水敏感)</span>
-        <ul class="item-list">
-            <li><strong>HPMC：</strong>可用酒精配製，需先加沸水攪拌（熱水分散性高）</li>
-            <li><strong>HPC：</strong>適用於對水敏感之藥物</li>
-            <li><strong>PVP (酒精溶液)：</strong>吸濕性高，少用於膜衣包覆</li>
-        </ul>
+    <!-- 崩散劑 -->
+    <tr>
+      <td class="role-col"><span class="role-label">崩散劑</span></td>
+      <td>
+        <span class="item wet">Croscarmellose（交聯羧甲基纖維素，2%）</span>
+        <span class="item wet">Sodium starch glycolate（羥乙酸澱粉鈉，5%）</span>
+        <span class="item wet">Crospovidone（交聯聚維酮，2–5%）</span>
+        <span class="item wet">Corn and potato starches（玉米/馬鈴薯澱粉）</span>
+        <span class="item wet">CMC sodium（羧甲基纖維素鈉）</span>
+        <span class="item wet">PVP（聚乙烯吡咯烷酮）</span>
+        <span class="item wet">Cation exchange resins（陽離子交換樹脂）</span>
+        <span class="item wet">Alginic acid（褐藻酸）</span>
+      </td>
+      <td class="check fluid">✓</td>
+      <td class="check dry">✓</td>
+      <td>
+        <span class="item direct">Croscarmellose（交聯羧甲基纖維素）</span>
+        <span class="item direct">Sodium starch glycolate（羥乙酸澱粉鈉）</span>
+        <span class="item direct">Crospovidone（交聯聚維酮）</span>
+        <span class="item direct">Direct compression starch（直接壓錠澱粉）</span>
+      </td>
+    </tr>
 
-        <span class="group-title">📦 乾燥粉狀 (Dry Binders)</span>
-        <ul class="item-list">
-            <li><strong>Microcrystalline cellulose (MCC)：</strong>直壓法常用</li>
-            <li><strong>Acacia powder (阿拉伯膠粉)：</strong>乾燥粉末形式</li>
-            <li><strong>Amylose (直鏈澱粉)：</strong>乾燥粉狀使用</li>
-        </ul>
-    </div>
+    <!-- ps 崩散附註 -->
+    <tr>
+      <td colspan="5" style="padding: 4px 10px; border: none; border-bottom: 0.5px solid #ccc;">
+        <div class="note note-green">
+          💡 也可加<b>潤濕劑與界面活性劑</b>如 Sodium lauryl sulfate、Dioctyl sodium sulfosuccinate 增進藥物之溶解<br>
+          💡 矯味劑、甜味劑、著色劑、吸附劑為<b>非必要添加成分</b>
+        </div>
+      </td>
+    </tr>
 
-    <div class="section super-dis">
-        <h3 style="color: #c0392b;">🔥 超級崩散劑 (Superdisintegrants)</h3>
-        <p><strong>特性：</strong>極低用量即可強力崩散。</p>
-        <ul class="item-list">
-            <li><strong>Sodium starch glycolate (SSG)：</strong><span class="exam-tag">題目</span> 膨脹體積可達 200-300 倍</li>
-            <li><strong>Croscarmellose (跨鏈 CMC)：</strong>具極佳吸水性與快速作用特性</li>
-            <li><strong>Crospovidone：</strong><span class="exam-tag">題目</span> 利用「毛細管作用 (Wicking)」而非膨脹</li>
-        </ul>
-    </div>
+    <!-- 潤滑劑 -->
+    <tr>
+      <td class="role-col"><span class="role-label">潤滑劑</span></td>
+      <td>
+        <div style="font-size:11px; font-weight:500; color:#555; margin-bottom:4px;">疏水性（0.1–5%）：</div>
+        <span class="item wet">Magnesium stearate（硬脂酸鎂）</span>
+        <span class="item wet">Calcium stearate（硬脂酸鈣）</span>
+        <span class="item wet">Stearic acid（硬脂酸）</span>
+        <span class="item wet">Talc（滑石粉）</span>
+        <span class="item wet">Sodium stearyl fumarate（富馬酸硬脂酸鈉）</span>
+        <div style="margin:6px 0 4px; font-size:11px; font-weight:500; color:#555;">親水性：</div>
+        <span class="item wet">PEG（聚乙二醇）</span>
+        <span class="item wet">Fumed silicon dioxide（氣相二氧化矽）</span>
+        <span class="item wet">Corn starch（玉米澱粉）</span>
+        <span class="item wet">Talc（滑石粉）</span>
+      </td>
+      <td class="check fluid">✓</td>
+      <td class="check dry">✓</td>
+      <td>
+        <span class="item direct">Magnesium stearate（硬脂酸鎂）</span>
+        <span class="item direct">Talc（滑石粉）</span>
+      </td>
+    </tr>
 
-    <div class="section disintegrants">
-        <h3 style="color: #c0392b;">3. 一般崩散劑 (Disintegrants)</h3>
-        <ul class="item-list">
-            <li><strong>Starch (澱粉)：</strong>最經典材料</li>
-            <li><strong>Alginic acid (褐藻酸)：</strong>吸水膨脹型</li>
-            <li><strong>Cation exchange resins：</strong>離子交換樹脂</li>
-            <li><strong>Agar / Kayara / Tragacanth：</strong>天然膠類</li>
-            <li><strong>備註：</strong>發泡錠需選用水溶性崩散劑；咀嚼錠通常不加</li>
-        </ul>
-    </div>
+    <!-- 滑動劑 -->
+    <tr>
+      <td class="role-col"><span class="role-label">滑動劑</span></td>
+      <td colspan="3" class="check" style="color:#888; font-size:12px;">（同潤滑劑欄）</td>
+      <td>
+        <span class="item direct">Fumed silicon dioxide（氣相二氧化矽）</span>
+      </td>
+    </tr>
 
-    <div class="section lubricants">
-        <h3 style="color: #633974;">4. 抗摩擦劑 (按講義與題目分類)</h3>
-        
-        <span class="group-title">💨 助滑劑 (Glidants) - 改善顆粒流動性</span>
-        <ul class="item-list">
-            <li><strong>Fumed silicon dioxide (Aerosil)：</strong>直打錠首選，改善流動性</li>
-            <li><strong>Talc (滑石粉)：</strong>傳統助滑劑，用量應小於 5%</li>
-            <li><strong>Corn starch：</strong>亦具備助滑功能</li>
-        </ul>
-
-        <span class="group-title">✨ 潤滑劑 (Lubricants) - 減少模壁摩擦</span>
-        <ul class="item-list">
-            <li><strong>Magnesium stearate (硬脂酸鎂)：</strong>最常用 (1%)，疏水性</li>
-            <li><strong>⚠️ 雨衣現象：</strong><span class="exam-tag">題目</span> 潤滑劑過量會使崩散延長、溶離速率變慢</li>
-            <li><strong>PEG 4000/6000：</strong>水溶性潤滑劑，可改善雨衣現象</li>
-            <li><strong>Sodium benzoate：</strong>水溶性潤滑劑，用於可溶性錠劑</li>
-        </ul>
-
-        <span class="group-title">🚫 抗黏劑 (Anti-adherents) - 防止黏附沖頭</span>
-        <ul class="item-list">
-            <li><strong>主要功能：</strong>防止藥粉黏在槍 (Punch) 上，預防表面凹隙 (Picking/Pitting)</li>
-            <li><strong>代表材料：</strong>硬脂酸鎂、滑石粉、玉米澱粉</li>
-        </ul>
-    </div>
-
-    <div class="section tech">
-        <h3 style="color: #21618c;">5. 國考題目與講義重點補充</h3>
-        <ul class="item-list">
-            <li><strong>Finasteride (Proscar)：</strong><span class="drug-highlight">4-aza-steroid</span> 結構 (4位是N，3位有酮基)</li>
-            <li><strong>Finasteride 機轉：</strong>Suicide substrate (自殺型受質)，不可逆抑制</li>
-            <li><strong>包衣原因：</strong><span class="exam-tag">題目</span> 避免孕婦接觸，預防男性胎兒畸形</li>
-            <li><strong>Cellulose acetate phthalate (CAP)：</strong><span class="exam-tag">題目</span> 含有「游離羧基」，為常用腸衣</li>
-            <li><strong>噴霧乾燥機 (Spray Dryer)：</strong><span class="exam-tag">題目</span> 目的在於獲得「較大表面積」</li>
-        </ul>
-    </div>
+  </tbody>
+</table>
 </div>
-
 </body>
 </html>
