@@ -1,0 +1,1401 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>錠劑完整筆記 — Tablets</title>
+<style>
+  :root {
+    --blue: #1a5fa8;
+    --blue-light: #e8f1fb;
+    --blue-mid: #b5d4f4;
+    --teal: #0d6b52;
+    --teal-light: #e0f4ee;
+    --amber: #7a4a08;
+    --amber-light: #faebd6;
+    --amber-mid: #f5c875;
+    --pink: #8f2e4e;
+    --pink-light: #fbeaf0;
+    --purple: #4a3faa;
+    --purple-light: #eeecff;
+    --coral: #8c3318;
+    --coral-light: #faece7;
+    --green: #2d6614;
+    --green-light: #e8f3dc;
+    --red: #9b2222;
+    --red-light: #fceaea;
+    --gray: #444;
+    --gray-light: #f4f4f2;
+    --border: #ddd;
+    --text: #222;
+    --text-muted: #666;
+    --font-body: 'Georgia', 'Noto Serif TC', serif;
+    --font-ui: 'Helvetica Neue', 'PingFang TC', sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: var(--font-ui);
+    font-size: 14px;
+    color: var(--text);
+    background: #f8f8f6;
+    line-height: 1.6;
+  }
+
+  /* ===== HEADER ===== */
+  .page-header {
+    background: #fff;
+    border-bottom: 3px solid var(--blue);
+    padding: 1.5rem 2rem 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+  }
+  .page-header h1 { font-size: 22px; font-weight: 700; color: var(--blue); letter-spacing: -0.02em; }
+  .page-header .sub { font-size: 12px; color: var(--text-muted); }
+
+  /* ===== NAV PILLS ===== */
+  .nav-pills {
+    background: #fff;
+    border-bottom: 1px solid var(--border);
+    padding: 0.5rem 2rem;
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    position: sticky;
+    top: 62px;
+    z-index: 99;
+  }
+  .nav-pills a {
+    text-decoration: none;
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    transition: all 0.15s;
+  }
+  .nav-pills a:hover { background: var(--blue-light); color: var(--blue); border-color: var(--blue-mid); }
+
+  /* ===== LAYOUT ===== */
+  .container { max-width: 1100px; margin: 0 auto; padding: 1.5rem 1.5rem 4rem; }
+
+  /* ===== SECTION ===== */
+  .section { margin-bottom: 2.5rem; }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 14px;
+    border-radius: 8px 8px 0 0;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+  }
+  .section-header .num { font-size: 11px; opacity: 0.8; }
+  .section-body {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 10px 10px;
+    overflow: hidden;
+  }
+
+  /* Colors */
+  .c-blue { background: var(--blue); }
+  .c-teal { background: var(--teal); }
+  .c-amber { background: var(--amber); }
+  .c-pink { background: var(--pink); }
+  .c-purple { background: var(--purple); }
+  .c-coral { background: var(--coral); }
+  .c-green { background: var(--green); }
+
+  /* ===== GRID ===== */
+  .grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+  .grid3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+  .grid4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); }
+
+  .col {
+    padding: 14px 16px;
+    border-right: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+  }
+  .col:last-child { border-right: none; }
+
+  .col-title {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 8px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid;
+  }
+
+  /* ===== ITEMS LIST ===== */
+  ul.item-list { list-style: none; }
+  ul.item-list li {
+    padding: 3px 0 3px 14px;
+    position: relative;
+    font-size: 13px;
+    line-height: 1.55;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  ul.item-list li:last-child { border-bottom: none; }
+  ul.item-list li::before {
+    content: '·';
+    position: absolute;
+    left: 3px;
+    color: #aaa;
+    font-weight: 700;
+  }
+  ul.item-list li b { font-weight: 600; color: var(--text); }
+  ul.item-list li .en { color: var(--text-muted); font-size: 12px; }
+  ul.item-list li .dose { color: var(--amber); font-weight: 600; font-size: 12px; margin-left: 4px; }
+  ul.item-list li .mech { font-size: 11px; color: var(--purple); margin-left: 4px; }
+
+  /* sub-groups inside list */
+  .sub-group-label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    padding: 6px 0 2px;
+    display: block;
+  }
+
+  /* ===== BADGES / TAGS ===== */
+  .tag {
+    display: inline-block;
+    font-size: 10px;
+    padding: 1px 6px;
+    border-radius: 4px;
+    margin: 1px 2px;
+    font-weight: 600;
+    vertical-align: middle;
+  }
+  .tag-star { background: #fff3cd; color: #7a5500; border: 1px solid #f5c875; }
+  .tag-warn { background: var(--red-light); color: var(--red); border: 1px solid #f09595; }
+  .tag-info { background: var(--blue-light); color: var(--blue); border: 1px solid var(--blue-mid); }
+  .tag-green { background: var(--green-light); color: var(--green); border: 1px solid #c0dd97; }
+  .tag-purple { background: var(--purple-light); color: var(--purple); border: 1px solid #afa9ec; }
+
+  /* ===== CALLOUT BOXES ===== */
+  .callout {
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    margin: 8px 0 4px;
+    line-height: 1.6;
+  }
+  .callout-warn { background: var(--red-light); color: var(--red); border-left: 3px solid var(--red); }
+  .callout-info { background: var(--blue-light); color: var(--blue); border-left: 3px solid var(--blue); }
+  .callout-green { background: var(--green-light); color: var(--green); border-left: 3px solid var(--green); }
+  .callout-amber { background: var(--amber-light); color: var(--amber); border-left: 3px solid var(--amber); }
+  .callout-purple { background: var(--purple-light); color: var(--purple); border-left: 3px solid var(--purple); }
+  .callout b { font-weight: 700; }
+
+  /* ===== FLOW STEPS ===== */
+  .flow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px;
+    padding: 10px 0 4px;
+  }
+  .flow-step {
+    background: #f4f4f2;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 4px 9px;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+  .flow-arrow { color: #aaa; font-size: 14px; }
+
+  /* ===== TABLE ===== */
+  .simple-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .simple-table th {
+    background: #f4f4f2;
+    font-weight: 600;
+    text-align: left;
+    padding: 7px 10px;
+    border-bottom: 2px solid #ddd;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .simple-table td {
+    padding: 6px 10px;
+    border-bottom: 1px solid #f0f0f0;
+    vertical-align: top;
+  }
+  .simple-table tr:last-child td { border-bottom: none; }
+  .simple-table tr:hover td { background: #fafafa; }
+
+  /* ===== SPECIAL: MULTI-COL SUBSECTION ===== */
+  .subsection {
+    padding: 12px 16px;
+    border-bottom: 1px solid #eee;
+  }
+  .subsection:last-child { border-bottom: none; }
+  .subsection-title {
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .subsection-title .dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+    flex-shrink: 0;
+  }
+
+  /* ===== PERCENT TABLE ===== */
+  .pct-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 8px;
+    padding: 12px 16px;
+  }
+  .pct-card {
+    background: var(--gray-light);
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+  .pct-card .val { font-size: 18px; font-weight: 700; color: var(--blue); }
+  .pct-card .label { color: var(--text-muted); font-size: 11px; }
+
+  /* ===== DRUG EXAMPLES ===== */
+  .drug-pill {
+    display: inline-block;
+    background: #eef2fb;
+    color: #1a4faa;
+    border: 1px solid #b5d4f4;
+    border-radius: 4px;
+    padding: 1px 7px;
+    font-size: 11px;
+    margin: 2px 2px;
+    font-style: italic;
+  }
+
+  /* ===== COMPARE ROW ===== */
+  .compare-row {
+    display: grid;
+    grid-template-columns: 140px 1fr 1fr;
+    border-bottom: 1px solid #eee;
+    font-size: 12px;
+  }
+  .compare-row:last-child { border-bottom: none; }
+  .compare-row > * { padding: 7px 10px; }
+  .compare-label { background: #f8f8f6; font-weight: 600; font-size: 11px; color: var(--text-muted); border-right: 1px solid #eee; }
+  .compare-a { border-right: 1px solid #eee; }
+
+  /* ===== RESP ===== */
+  @media (max-width: 600px) {
+    .page-header { padding: 1rem; }
+    .nav-pills { padding: 0.4rem 1rem; }
+    .container { padding: 1rem; }
+    .grid2, .grid3, .grid4 { grid-template-columns: 1fr; }
+    .compare-row { grid-template-columns: 1fr; }
+    .compare-label { border-right: none; border-bottom: 1px solid #eee; }
+    .compare-a { border-right: none; border-bottom: 1px solid #eee; }
+    .flow { flex-direction: column; align-items: flex-start; }
+    .flow-arrow { transform: rotate(90deg); }
+  }
+</style>
+</head>
+<body>
+
+<header class="page-header">
+  <h1>錠劑 Tablets</h1>
+  <span class="sub">CH17 完整筆記 — 分類 · 賦形劑 · 製程 · 包衣 · 品管</span>
+</header>
+
+<nav class="nav-pills">
+  <a href="#sec1">一、分類</a>
+  <a href="#sec2">二、賦形劑</a>
+  <a href="#sec3">三、製程</a>
+  <a href="#sec4">四、包衣</a>
+  <a href="#sec5">五、品管</a>
+  <a href="#sec6">六、長效劑型</a>
+  <a href="#sec7">七、注意事項</a>
+</nav>
+
+<div class="container">
+
+<!-- ============================================================ -->
+<!-- 一、錠劑分類 -->
+<!-- ============================================================ -->
+<div class="section" id="sec1">
+  <div class="section-header c-blue">
+    <span class="num">一</span>
+    錠劑分類 Classification
+  </div>
+  <div class="section-body">
+
+    <!-- 製作方法 -->
+    <div class="subsection">
+      <div class="subsection-title">
+        <span class="dot" style="background:var(--blue)"></span>
+        依製作方法
+      </div>
+      <div class="grid2">
+        <div>
+          <div class="col-title" style="color:var(--blue); border-color:var(--blue-mid);">壓製錠 Compressed tablets</div>
+          <ul class="item-list">
+            <li>上下杵於鋼模中，以高壓將粉末或顆粒壓製成錠</li>
+            <li>杵及模之設計可製成不同樣式</li>
+            <li><b>Multiple compressed</b>（多層壓製錠）<br>
+              隔開不相容成分；分段釋放（stage release）；不同顏色產生獨特外觀
+            </li>
+          </ul>
+        </div>
+        <div>
+          <div class="col-title" style="color:var(--teal); border-color:#9FE1CB;">模製錠 Molded tablets</div>
+          <ul class="item-list">
+            <li>藥品與稀釋劑（乳糖 + 蔗糖粉）混合製成</li>
+            <li>以高濃度乙醇液潤濕後填入模型，輕壓成型</li>
+            <li>乾燥結晶固化，<b>非由壓力促成</b></li>
+            <li>代表：Tablet triturates（研製錠）、Hypodermic tablet（皮下用錠）</li>
+          </ul>
+          <div class="callout callout-info" style="margin-top:8px;">
+            基本流程：秤量 → 混合 → 造粒 → 乾燥 → 整粒 → 潤滑 → 壓錠 → 包覆 → 檢查 → 包裝
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 依作用分類 -->
+    <div class="subsection">
+      <div class="subsection-title">
+        <span class="dot" style="background:var(--teal)"></span>
+        依作用特性分類
+      </div>
+      <div class="grid3">
+        <div class="col">
+          <div class="col-title" style="color:var(--teal); border-color:#9FE1CB;">釋放機制</div>
+          <ul class="item-list">
+            <li><b>Immediate release / CT</b><br>未包衣壓製錠，口服迅速溶離</li>
+            <li><b>Enteric coated (ECT)</b> 腸溶錠<br>
+              <span class="tag tag-info">Delayed release</span><br>
+              胃中不溶，腸道 pH 才釋放<br>
+              適用：<span class="drug-pill">Pancreatin</span> <span class="drug-pill">Aspirin</span>
+            </li>
+            <li><b>Repeat action (RAT)</b> 重覆作用錠<br>速放 + 控釋膜層 + 核蕊藥錠</li>
+            <li><b>Extended release (XL/ER/SR)</b><br>緩慢釋放，維持血中濃度穩定<br>半衰期適合：4–6 hr，TI &gt; 10</li>
+            <li><b>Delayed action (DAT)</b><br>預期時間才產生藥效，以腸溶機制為代表</li>
+            <li><b>Effervescent</b> 發泡錠<br>酸（檸檬酸：酒石酸 = 1:2）+ 碳酸氫鈉 → CO₂<br>
+              <span class="tag tag-warn">不得直接吞服</span> 放置防潮容器</li>
+            <li><b>RDT</b> 速崩錠（舌上 &lt; 1 min 崩散）<br>
+              Zydis 冷凍乾燥技術；加 effervescents 增強速溶<br>
+              <span class="drug-pill">Loratadine Reditabs</span> <span class="drug-pill">Ondansetron ODT</span>
+            </li>
+          </ul>
+        </div>
+        <div class="col">
+          <div class="col-title" style="color:var(--amber); border-color:var(--amber-mid);">口腔 / 局部作用</div>
+          <ul class="item-list">
+            <li><b>Sublingual tablet</b> 舌下錠<br>
+              舌下迅速吸收，避免首渡效應 &amp; 胃酸<br>
+              <span class="drug-pill">Nitroglycerin</span> <span class="drug-pill">Estradiol</span>
+            </li>
+            <li><b>Buccal tablet</b> 口頰錠<br>
+              置頰側，緩慢溶蝕全身作用<br>
+              <span class="drug-pill">Nitroglycerin</span> <span class="drug-pill">Methyltestosterone</span>
+            </li>
+            <li><b>Lozenges / Troches</b> 口含錠<br>
+              口腔緩慢溶離 ≥ 30 min，局部作用<br>
+              壓製法或模製法；以硬糖果為基底<br>
+              適用：局部麻醉劑、鎮咳劑<br>
+              <span class="drug-pill">Cetylpyridinium chloride</span>
+            </li>
+            <li><b>Chewable tablet</b> 咀嚼錠<br>
+              口中嚼碎，多供兒童使用；<b>可不含崩散劑</b><br>
+              稀釋劑：Mannitol、Sorbitol、Xylitol
+            </li>
+            <li><b>Dental cones</b> 牙科錠<br>拔牙後局部抗菌用</li>
+            <li><b>Gelacaps</b> 明膠著衣錠<br>膠囊形狀壓製錠，體積較小</li>
+          </ul>
+        </div>
+        <div class="col">
+          <div class="col-title" style="color:var(--purple); border-color:#afa9ec;">其他給藥途徑</div>
+          <ul class="item-list">
+            <li><b>Vaginal tablet</b> 陰道錠<br>
+              圓形或梨形；壓制法<br>
+              稀釋劑：NaHCO₃、乳糖<br>
+              <span class="drug-pill">Metronidazole</span>
+            </li>
+            <li><b>Implantation tablet / Pellets</b> 植入錠<br>
+              皮下植入，維持 3–6 個月<br>
+              ≤ 8 mm 之滅菌錠片<br>
+              <span class="drug-pill">Estradiol</span> <span class="drug-pill">Testosterone</span>
+            </li>
+            <li><b>Hypodermic tablet (HT)</b> 皮下用錠<br>
+              模製錠；完全迅速溶解於水<br>
+              須滅菌，加注射水後 SC 給藥
+            </li>
+            <li><b>Dispensing tablet (DT)</b> 調劑錠<br>
+              劇藥調成錠，加蒸餾水溶解使用<br>
+              <span class="drug-pill">高錳酸鉀</span> <span class="drug-pill">Benzalkonium Cl</span>
+            </li>
+            <li><b>OROS</b> 滲透幫浦型錠<br>
+              零級釋放；半透膜不在腸胃道溶解<br>
+              影響因素：表面積、膜厚、雷射孔徑<br>
+              不受食物 &amp; 腸胃道 pH 影響
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ============================================================ -->
+<!-- 二、賦形劑 -->
+<!-- ============================================================ -->
+<div class="section" id="sec2">
+  <div class="section-header c-teal">
+    <span class="num">二</span>
+    賦形劑 Excipients（稀、潤、黏、崩）
+  </div>
+  <div class="section-body">
+
+    <!-- 稀釋劑 -->
+    <div class="subsection">
+      <div class="subsection-title">
+        <span class="dot" style="background:#1D9E75"></span>
+        稀釋劑 / 填充劑 Diluent / Filler
+        <span class="tag tag-info">增加體積、重量</span>
+      </div>
+      <div class="grid2">
+        <div>
+          <span class="sub-group-label">一般用</span>
+          <ul class="item-list">
+            <li><b>Lactose</b>（乳糖）<br>溶解度高、壓錠性好，最常用
+              <div class="callout callout-warn" style="margin-top:4px; font-size:11px;">⚠ 與 Amine 類藥物（鹼性環境）→ Maillard reaction（變色）</div>
+            </li>
+            <li><b>Microcrystalline cellulose (MCC / Avicel)</b><br>
+              <span class="tag tag-star">★ 一人多功能</span><br>
+              同時具稀釋劑、黏合劑、崩散劑；流動性與壓縮性俱佳
+            </li>
+            <li><b>Starch</b>（澱粉）<br>本身兼具崩散與黏合功能；不溶於冷水</li>
+            <li><b>Dicalcium phosphate (DCP / Di-Tab)</b><br>常用於直打錠
+              <div class="callout callout-warn" style="margin-top:4px; font-size:11px;">⚠ 不可與 Tetracycline 併用（螯合）</div>
+            </li>
+            <li><b>Calcium phosphate</b>（磷酸鈣）</li>
+            <li><b>Calcium sulfate dihydrate</b>（二水合硫酸鈣）<br>適用：固醇類、維生素錠劑</li>
+          </ul>
+
+          <span class="sub-group-label" style="margin-top:10px;">咀嚼錠專用</span>
+          <ul class="item-list">
+            <li><b>Mannitol</b>（甘露醇）清涼感、甜味</li>
+            <li><b>Sorbitol</b>（山梨醇）</li>
+            <li><b>Xylitol</b>（木糖醇）</li>
+          </ul>
+        </div>
+        <div>
+          <span class="sub-group-label">直接壓錠專用 (DC Fillers)</span>
+          <ul class="item-list">
+            <li><b>Spray-dried lactose</b>（噴霧乾燥乳糖）流動性佳</li>
+            <li><b>Microcrystalline cellulose (MCC)</b> <span class="tag tag-star">首選</span></li>
+            <li><b>Microcrystals of α-monohydrate lactose</b></li>
+            <li><b>Anhydrous lactose</b>（無水乳糖）</li>
+            <li><b>Pregelatinized starch</b>（預凝膠化澱粉）</li>
+            <li><b>Crystalline maltose</b>（結晶麥芽糖）</li>
+            <li><b>Dicalcium phosphate dihydrate (DCP)</b></li>
+            <li><b>Sucrose-invert sugar-corn starch mixtures</b></li>
+            <li><b>Granule mannitol</b>（顆粒甘露醇）</li>
+            <li><b>Crystalline sorbitol</b>（結晶山梨醇）</li>
+          </ul>
+          <div class="callout callout-info">
+            主成分含量通常不超過總重之 <b>20–25%</b>（無 cohesive 性質時）
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 黏合劑 -->
+    <div class="subsection">
+      <div class="subsection-title">
+        <span class="dot" style="background:var(--blue)"></span>
+        黏合劑 Binder / Adhesive
+        <span class="tag tag-info">促進顆粒形成、增加硬度</span>
+      </div>
+      <div class="grid3">
+        <div>
+          <span class="sub-group-label">水性 Aqueous binders</span>
+          <ul class="item-list">
+            <li><b>Povidone (PVP)</b><br>最廣用；可溶於水 &amp; 酒精；吸濕性高</li>
+            <li><b>Starch paste</b> 10–20%<br>最常用傳統黏合劑</li>
+            <li><b>Glucose solution</b> 25–50%</li>
+            <li><b>Molasses</b>（糖蜜）</li>
+            <li><b>Gelatin solution</b> 10–20%<br>多用於口含錠，溫熱下使用</li>
+            <li><b>Methylcellulose (MC)</b> 3%<br>冷水比熱水好溶</li>
+            <li><b>Sodium CMC</b>（羧甲基纖維素鈉）</li>
+            <li><b>Microcrystalline cellulose (MCC)</b></li>
+          </ul>
+        </div>
+        <div>
+          <span class="sub-group-label">非水性 Non-aqueous binders（對水敏感藥物）</span>
+          <ul class="item-list">
+            <li><b>HPMC</b>（Hydroxypropyl methylcellulose）<br>先加沸水攪拌（熱水中分散性高）；冷水比熱水好溶</li>
+            <li><b>PVP</b>（Polyvinylpyrrolidone）<br>可溶於水與酒精兩者</li>
+            <li><b>HPC</b>（Hydroxypropylcellulose）</li>
+            <li><b>Ethylcellulose (EC)</b><br>水不溶性纖維素；溶於酒精</li>
+          </ul>
+          <div class="callout callout-amber" style="margin-top:8px;">
+            以酒精或有機媒液配製造粒液，用於濕式造粒
+          </div>
+        </div>
+        <div>
+          <span class="sub-group-label">乾粉黏合劑 Dry binders（乾粒法/直打錠）</span>
+          <ul class="item-list">
+            <li><b>Microcrystalline cellulose (MCC)</b></li>
+            <li><b>Acacia powder</b>（阿拉伯膠粉）</li>
+            <li><b>PVP</b></li>
+            <li><b>HPMC</b></li>
+            <li><b>Colloidal clays</b></li>
+            <li><b>Amylose</b></li>
+          </ul>
+          <div class="callout callout-purple" style="margin-top:8px;">
+            明膠三大用途：Binder、Encapsulating Agent、Gelling Agent
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 崩散劑 -->
+    <div class="subsection">
+      <div class="subsection-title">
+        <span class="dot" style="background:var(--pink)"></span>
+        崩散劑 Disintegrant
+        <span class="tag tag-info">克服黏合強度，促進溶離</span>
+      </div>
+      <div class="grid2">
+        <div>
+          <span class="sub-group-label">一般崩散劑 — 機制分類</span>
+          <table class="simple-table" style="margin-top:4px;">
+            <thead>
+              <tr><th>機制</th><th>材料</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="tag tag-purple">Swelling 膨脹型</span></td>
+                <td>
+                  <ul class="item-list">
+                    <li><b>Starch</b>（澱粉）</li>
+                    <li><b>Methylcellulose (MC)</b></li>
+                    <li><b>CMC</b>（Carboxymethylcellulose）</li>
+                    <li><b>Alginic acid</b>（褐藻酸）</li>
+                    <li><b>PVP</b></li>
+                    <li><b>Cation exchange resins</b></li>
+                    <li>Agar、Kayara、Tragacanth</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td><span class="tag tag-green">Capillary 毛細管型</span></td>
+                <td>
+                  <ul class="item-list">
+                    <li><b>Microcrystalline cellulose (MCC)</b></li>
+                    <li><b>Crospovidone</b>（交聯 PVP）</li>
+                  </ul>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <span class="sub-group-label">Super-disintegrants 超級崩散劑</span>
+          <ul class="item-list">
+            <li>
+              <b>Sodium starch glycolate (SSG / Explotab)</b>
+              <span class="dose">用量 5%</span>
+              <span class="mech">膨脹型 Swelling</span><br>
+              修飾型澱粉，強力膨脹
+            </li>
+            <li>
+              <b>Croscarmellose</b>（Cross-linked CMC）
+              <span class="dose">用量 2%</span>
+              <span class="mech">膨脹型 Swelling</span><br>
+              高吸水性、快速作用
+            </li>
+            <li>
+              <b>Crospovidone</b>（Cross-linked PVP）
+              <span class="dose">用量 2–5%</span>
+              <span class="mech">毛細管 Capillary</span><br>
+              親水性；水不溶但利用毛細管崩散
+            </li>
+            <li>
+              <b>Direct compression starch</b>（直打錠專用）
+            </li>
+          </ul>
+          <div class="callout callout-green" style="margin-top:8px;">
+            💡 可加 <b>Sodium lauryl sulfate</b> 或 <b>Dioctyl sodium sulfosuccinate</b>（界面活性劑）增進藥物溶解<br>
+            💡 矯味劑、甜味劑、著色劑、吸附劑均為<b>非必要添加成分</b>
+          </div>
+          <div class="callout callout-amber" style="margin-top:6px;">
+            ⚠ 咀嚼錠可不含崩散劑；發泡錠用水溶性崩散劑
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 潤滑劑/滑動劑 -->
+    <div class="subsection">
+      <div class="subsection-title">
+        <span class="dot" style="background:var(--amber)"></span>
+        潤滑劑 Lubricant &amp; 滑動劑 Glidant &amp; 抗黏著劑 Anti-adherent
+      </div>
+      <div class="grid3">
+        <div>
+          <span class="sub-group-label">Lubricant 潤滑劑（0.1–5%）</span>
+          <ul class="item-list">
+            <li style="font-weight:600; color:var(--text-muted); font-size:11px; border:none; padding-left:0;">疏水性（Hydrophobic）</li>
+            <li><b>Magnesium stearate</b>（硬脂酸鎂）<span class="tag tag-star">最常用 1%</span></li>
+            <li><b>Calcium stearate</b>（硬脂酸鈣）</li>
+            <li><b>Stearic acid</b>（硬脂酸）<br>也具崩散抑制劑功能</li>
+            <li><b>Talc</b>（滑石粉）</li>
+            <li><b>Sodium stearyl fumarate</b></li>
+            <li style="font-weight:600; color:var(--text-muted); font-size:11px; border:none; padding-left:0;">親水性（Hydrophilic）</li>
+            <li><b>PEG 4000 / 6000</b>（聚乙二醇）</li>
+            <li><b>Sodium benzoate</b></li>
+            <li><b>Sodium lauryl sulfate</b></li>
+          </ul>
+          <div class="callout callout-warn" style="margin-top:8px;">
+            ⚠ 過量疏水性潤滑劑 → <b>Raincoat effect（雨衣現象）</b><br>降低顆粒面對水潤濕性 → 延遲崩散與溶離<br>
+            改善：加少量界面活性劑
+          </div>
+        </div>
+        <div>
+          <span class="sub-group-label">Glidant 助滑劑/滑動劑（改善粉末流動性）</span>
+          <ul class="item-list">
+            <li><b>Fumed silicon dioxide</b>（氣相 SiO₂ / Aerosil）<span class="tag tag-star">直打錠最常用</span></li>
+            <li><b>Talc</b>（滑石粉）<span class="dose">&lt; 5%</span></li>
+            <li><b>Corn starch</b>（玉米澱粉）</li>
+          </ul>
+          <div class="callout callout-info" style="margin-top:8px;">
+            吸附於顆粒表面，降低顆粒間摩擦力，幫助直壓製錠顆粒流動
+          </div>
+        </div>
+        <div>
+          <span class="sub-group-label">Anti-adherent 抗黏著劑</span>
+          <ul class="item-list">
+            <li>減少顆粒黏附於沖模表面</li>
+            <li><b>Talc</b>（滑石粉）</li>
+            <li><b>Corn starch</b></li>
+            <li><b>Fumed silicon dioxide</b></li>
+          </ul>
+          <div style="margin-top:12px;">
+          <span class="sub-group-label">吸附劑 Adsorbent（非必要）</span>
+          <ul class="item-list">
+            <li><b>Magnesium oxide</b>（氧化鎂）</li>
+            <li><b>Silicon dioxide (SiO₂)</b></li>
+            <li><b>Kaolin</b>、<b>Bentonite</b>、<b>Carbonates</b></li>
+            <li>吸附液體成分（共熔混合物、揮發油）；如硝化甘油加 Macrogol 400</li>
+          </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 多功能整理 -->
+    <div class="subsection" style="background:#fafaf8;">
+      <div class="subsection-title">
+        <span class="dot" style="background:var(--purple)"></span>
+        ★ 多功能賦形劑整理（考試常考）
+      </div>
+      <div class="grid2">
+        <table class="simple-table">
+          <thead><tr><th>材料</th><th>功能</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><b>Starch</b>（澱粉）</td>
+              <td>Diluent、Disintegrant、Granulating agent、Anti-adherent；泡成澱粉糊 → Binder</td>
+            </tr>
+            <tr>
+              <td><b>MCC</b>（微晶纖維素）</td>
+              <td>Diluent、Binder、Disintegrant（Glidant）</td>
+            </tr>
+            <tr>
+              <td><b>Croscarmellose</b>（交聯 CMC）</td>
+              <td>Binder、Disintegrant</td>
+            </tr>
+            <tr>
+              <td><b>Gelatin</b>（明膠）</td>
+              <td>Binder、Encapsulating agent、Gelling agent</td>
+            </tr>
+            <tr>
+              <td><b>Stearic acid / 熔點蠟 / 氫化植物油</b></td>
+              <td>崩散抑制劑（Dissolution retardant）、Lubricant</td>
+            </tr>
+            <tr>
+              <td><b>Talc</b></td>
+              <td>Glidant、Lubricant、Anti-adherent</td>
+            </tr>
+          </tbody>
+        </table>
+        <div>
+          <span class="sub-group-label">特殊添加物</span>
+          <ul class="item-list">
+            <li><b>Effervescents</b> 發泡劑：<br>
+              Citric acid + Sodium bicarbonate → CO₂（助崩散）
+            </li>
+            <li><b>Pharmaceutical colorants</b> 著色劑：<br>
+              法定水溶性食性色素、Lake dyes（非水溶性）<br>
+              光敏感 → 加 1–5% TiO₂（阻光）
+            </li>
+            <li><b>Flavoring agents</b> 矯味劑：<br>
+              甜味劑：Glucose、Mannitol、Saccharin、Sucrose
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ============================================================ -->
+<!-- 三、製程 -->
+<!-- ============================================================ -->
+<div class="section" id="sec3">
+  <div class="section-header c-amber">
+    <span class="num">三</span>
+    製造製程 Manufacturing Process
+  </div>
+  <div class="section-body">
+
+    <div class="grid2">
+      <!-- 濕粒法 -->
+      <div class="col">
+        <div class="col-title" style="color:var(--blue); border-color:var(--blue-mid);">濕式造粒 Wet Granulation</div>
+        <div class="flow">
+          <span class="flow-step">1. 秤重 Weighting</span><span class="flow-arrow">→</span>
+          <span class="flow-step">2. 研細 Milling</span><span class="flow-arrow">→</span>
+          <span class="flow-step">3. 過篩 Sieving</span><span class="flow-arrow">→</span>
+          <span class="flow-step">4. 乾粉混合 Dry mixing</span><span class="flow-arrow">→</span>
+          <span class="flow-step">5. 加黏合劑 → 濕塊 Wet massing</span><span class="flow-arrow">→</span>
+          <span class="flow-step">6. 造粒 Granulation（6、8號篩）</span><span class="flow-arrow">→</span>
+          <span class="flow-step">7. 乾燥 Drying（60°C）</span><span class="flow-arrow">→</span>
+          <span class="flow-step">8. 整粒 Sizing（12、20號篩）</span><span class="flow-arrow">→</span>
+          <span class="flow-step">9. 加崩散劑 + 潤滑劑</span><span class="flow-arrow">→</span>
+          <span class="flow-step">10. 壓錠</span>
+        </div>
+        <ul class="item-list" style="margin-top:10px;">
+          <li>黏合劑先溶解於水溶液或酒精，形成造粒液</li>
+          <li>壓錠最佳細顆粒比：<b>10–20%</b></li>
+          <li>適用：對水與熱安定的藥品</li>
+        </ul>
+        <div class="callout callout-green" style="margin-top:8px;">
+          優點：適合強效藥、顯色均勻
+        </div>
+        <div class="callout callout-warn" style="margin-top:6px;">
+          缺點：步驟繁瑣；不耐熱 / 水藥物不適用
+        </div>
+      </div>
+
+      <!-- 流動床 -->
+      <div class="col" style="border-right:none;">
+        <div class="col-title" style="color:var(--teal); border-color:#9FE1CB;">流動床造粒 Fluid Bed Granulation</div>
+        <div class="callout callout-info" style="margin-top:4px;">
+          <b>All-in-one：混合 + 造粒 + 乾燥一次完成</b>
+        </div>
+        <ul class="item-list" style="margin-top:8px;">
+          <li>顆粒流動性高；均勻乾燥；耗時短</li>
+          <li>黏合劑以噴灑方式給予（Acacia 水溶液、Povidone）</li>
+        </ul>
+        <span class="sub-group-label" style="margin-top:10px;">噴灑位置與適用</span>
+        <table class="simple-table">
+          <thead><tr><th>噴灑方式</th><th>適用</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><b>Top-spray</b>（頂噴，逆氣流）</td>
+              <td>Enteric-release、Taste masking<br>
+                <span class="tag tag-warn">不適合 Sustained release 包衣</span></td>
+            </tr>
+            <tr>
+              <td><b>Bottom-spray</b>（底噴，Wurster，同氣流）</td>
+              <td>Enteric-release、Sustained release<br>精密腸溶/長效薄膜衣</td>
+            </tr>
+            <tr>
+              <td><b>Tangential-spray</b>（側噴）</td>
+              <td>Enteric-release、Sustained release、Layering coatings（多層包衣）</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="grid2" style="border-top:1px solid #eee;">
+      <!-- 乾粒法 -->
+      <div class="col">
+        <div class="col-title" style="color:var(--amber); border-color:var(--amber-mid);">乾式造粒 Dry Granulation</div>
+        <ul class="item-list">
+          <li>藥物粉末須具備 <b>cohesive properties</b></li>
+          <li>不加液體黏合劑，使用乾粉 binder（MCC、Acacia 乾粉）</li>
+        </ul>
+        <span class="sub-group-label" style="margin-top:8px;">方法</span>
+        <ul class="item-list">
+          <li><b>Slugging</b>（重壓法）<br>混合 → 重擊成大錠塊 → 製粒 → 潤滑 → 壓錠（共兩次打錠）</li>
+          <li><b>Roller compaction</b>（滾壓）<br>壓力滾筒擠壓成薄塊 → 破碎過篩 → 製粒</li>
+        </ul>
+        <div class="callout callout-info" style="margin-top:8px;">
+          適用：對水或熱敏感之處方成分
+        </div>
+        <div class="callout callout-warn" style="margin-top:6px;">
+          缺點：硬度較硬、密度較高，溶離受影響
+        </div>
+      </div>
+
+      <!-- 直接壓錠 -->
+      <div class="col" style="border-right:none;">
+        <div class="col-title" style="color:var(--pink); border-color:#f4c0d1;">直接壓錠 Direct Compression (DC)</div>
+        <div class="callout callout-green" style="margin-top:4px;">
+          <b>最簡單；最不影響 BA；無需造粒</b>
+        </div>
+        <ul class="item-list" style="margin-top:8px;">
+          <li>不須添加黏合劑；不須加熱</li>
+          <li>適用：對熱不安定的藥品</li>
+          <li>主成分一般不超過總重 <b>20–25%</b></li>
+          <li>需要 cohesive、流動性好的賦形劑</li>
+        </ul>
+        <span class="sub-group-label" style="margin-top:8px;">所需賦形劑特性</span>
+        <ul class="item-list">
+          <li><b>稀釋劑</b>：MCC（首選）、Spray-dried lactose、DCP、Pregelatinized starch、Crystalline maltose</li>
+          <li><b>崩散劑</b>：Crospovidone、MCC</li>
+          <li><b>助滑劑</b>：Fumed silicon dioxide（Colloidal SiO₂）</li>
+        </ul>
+        <div class="callout callout-purple" style="margin-top:8px;">
+          直接壓錠頂裂（Capping）改善 → 減低入料速度
+        </div>
+      </div>
+    </div>
+
+    <!-- 造粒目的 -->
+    <div class="subsection" style="background:#fafaf8; border-top:1px solid #eee;">
+      <div class="subsection-title">
+        <span class="dot" style="background:#888"></span>
+        造粒目的 Purpose of Granulation
+      </div>
+      <div class="grid3">
+        <ul class="item-list">
+          <li>使藥物形成可自由流動的顆粒，<b>減少重量差異</b></li>
+        </ul>
+        <ul class="item-list">
+          <li>提高密度以提供<b>壓縮性</b></li>
+        </ul>
+        <ul class="item-list">
+          <li>增進黏合性提高<b>硬度</b>，增加含量均一度</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ============================================================ -->
+<!-- 四、包衣 -->
+<!-- ============================================================ -->
+<div class="section" id="sec4">
+  <div class="section-header c-pink">
+    <span class="num">四</span>
+    包衣 Coating
+    <span style="font-size:11px; opacity:0.8;">口訣：防底滑（防水層→底衣層→平滑層）</span>
+  </div>
+  <div class="section-body">
+
+    <div class="grid3">
+
+      <!-- 糖衣 -->
+      <div class="col">
+        <div class="col-title" style="color:var(--amber); border-color:var(--amber-mid);">糖衣包覆 Sugar Coating</div>
+        <div class="flow" style="flex-direction:column; gap:3px;">
+          <span class="flow-step">① Sealing 防水及固封</span>
+          <span class="flow-arrow" style="transform:rotate(90deg);">→</span>
+          <span class="flow-step">② Subcoating 初包衣（底衣層）</span>
+          <span class="flow-arrow" style="transform:rotate(90deg);">→</span>
+          <span class="flow-step">③ Smoothing 打平滑</span>
+          <span class="flow-arrow" style="transform:rotate(90deg);">→</span>
+          <span class="flow-step">④ Coating 著色（色素、TiO₂、Fe₂O₃）</span>
+          <span class="flow-arrow" style="transform:rotate(90deg);">→</span>
+          <span class="flow-step">⑤ Polishing 打亮</span>
+        </div>
+        <ul class="item-list" style="margin-top:8px;">
+          <li>防水層材料：PVP-stabilized Shellac、CAP、PVAP</li>
+          <li>底衣層：糖漿黏合 + 撒布劑（CaCO₃、TiO₂、Acacia）</li>
+        </ul>
+        <div class="callout callout-warn" style="margin-top:8px;">
+          ⚠ 體積增加 <b>50–100%</b>；製程最長；不適高劑量藥物
+        </div>
+      </div>
+
+      <!-- 薄膜包衣 -->
+      <div class="col">
+        <div class="col-title" style="color:var(--blue); border-color:var(--blue-mid);">薄膜包衣 Film Coating</div>
+        <span class="sub-group-label">成膜材料 Film former</span>
+        <ul class="item-list">
+          <li><b>HPMC</b>（Hydroxypropyl methylcellulose）最常用</li>
+          <li><b>HPC</b>（Hydroxypropylcellulose）</li>
+          <li><b>MC</b>（Methylcellulose）</li>
+          <li><b>PVP</b>（Polyvinylpyrrolidone）</li>
+          <li><b>EC</b>（Ethylcellulose）親脂性，阻礙藥品釋出</li>
+        </ul>
+        <span class="sub-group-label" style="margin-top:8px;">塑化劑 Plasticizer（增加膜的延展性、彈性、減少脆裂）</span>
+        <ul class="item-list">
+          <li><b>Glycerin</b>（甘油）含烴基</li>
+          <li><b>Propylene glycol</b>（丙二醇）含烴基</li>
+          <li><b>PEG</b>（Polyethylene glycol）含烴基</li>
+          <li><b>Castor oil</b>（蓖麻油）含烴基</li>
+          <li><b>Triacetin</b> 含羧基</li>
+          <li><b>Citrate esters</b> 含羧基，常用</li>
+          <li><b>Diethyl phthalate (DEP)</b>（水不溶，用於水性膜衣）</li>
+        </ul>
+        <span class="sub-group-label" style="margin-top:8px;">不透明劑 Opaquant</span>
+        <ul class="item-list">
+          <li><b>Titanium dioxide (TiO₂)</b>（1–5%）阻光</li>
+        </ul>
+        <div class="callout callout-info" style="margin-top:8px;">
+          包覆量佔錠劑總重 <b>2–6%</b>（糖衣為 50%）
+        </div>
+        <div class="callout callout-warn" style="margin-top:6px;">
+          缺點：有機溶劑具可燃性及汙染性
+        </div>
+      </div>
+
+      <!-- 腸溶包衣 -->
+      <div class="col" style="border-right:none;">
+        <div class="col-title" style="color:var(--teal); border-color:#9FE1CB;">腸溶包衣 Enteric Coating</div>
+        <div class="callout callout-info" style="margin-top:4px; margin-bottom:8px;">
+          胃中不溶 → 腸道 pH 才溶解釋放<br>
+          適用：胃酸分解藥物、刺激胃黏膜、避免胃部吸收
+        </div>
+        <ul class="item-list">
+          <li>
+            <b>Shellac</b>（蟲膠）<br>最古老，天然樹脂，水不溶性；兼具防潮固封
+          </li>
+          <li>
+            <b>CAP</b>（Cellulose acetate phthalate）<br>
+            pH &gt; 6 溶解；易水解
+          </li>
+          <li>
+            <b>PVAP</b>（Polyvinyl acetate phthalate）<br>
+            比 CAP 穩定，較低 pH 電離
+          </li>
+          <li>
+            <b>HPMCP</b><br>比 CAP 穩定
+          </li>
+          <li>
+            <b>Acrylic copolymers（Eudragit 系列）</b><br>
+            近年最優選；dissolution above pH 5.5<br>
+            Eudragit L → pH &gt; 6<br>
+            Eudragit S / FS → pH &gt; 7（迴腸釋放）
+          </li>
+          <li>
+            <b>Stearic acid</b>（硬脂酸）、<b>Beeswax</b>（蜂蠟）<br>
+            天然水不溶性材料
+          </li>
+          <li>
+            <b>Methacrylic acid copolymers</b><br>甲基丙烯酸共聚物
+          </li>
+        </ul>
+        <div class="callout callout-amber" style="margin-top:8px;">
+          phthalate 官能基在酸性環境溶解度差，通過胃後才溶解釋出
+        </div>
+      </div>
+    </div>
+
+    <!-- 微粒包衣 -->
+    <div class="subsection" style="border-top:1px solid #eee;">
+      <div class="subsection-title">
+        <span class="dot" style="background:var(--purple)"></span>
+        微粒包衣 Microencapsulation
+      </div>
+      <div class="grid2">
+        <ul class="item-list">
+          <li>目的：解決不良氣味、延長藥物作用</li>
+          <li>包衣重量：佔總重 <b>2–20%</b></li>
+          <li><b>Gelatin</b>（明膠）最常用薄衣材料，最後加甲醛硬化</li>
+          <li>合成材料：HPMC、HPC、MC、阿拉伯膠、Polyvinyl alcohol、Polyvinyl chloride</li>
+          <li>若做成 RDTs：顆粒應小到無顆粒感</li>
+        </ul>
+        <ul class="item-list">
+          <li><b>Coacervation（聚集法）</b>：聚合物溶液加入物質使產生相分離</li>
+          <li>不同溶解度溶媒 / 不同電荷性材料 / 不同 pH 值溶液</li>
+          <li>微粒散佈腸胃道，增加藥物吸收</li>
+          <li>需加入塑化劑</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ============================================================ -->
+<!-- 五、品質管制 -->
+<!-- ============================================================ -->
+<div class="section" id="sec5">
+  <div class="section-header c-purple">
+    <span class="num">五</span>
+    品質管制 Quality Control
+  </div>
+  <div class="section-body">
+
+    <div class="grid2">
+      <div class="col">
+        <div class="col-title" style="color:var(--purple); border-color:#afa9ec;">重要試驗項目</div>
+        <table class="simple-table">
+          <thead><tr><th>試驗</th><th>方法 / 儀器</th><th>標準</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>硬度 Hardness</td>
+              <td>油壓式硬度測試器</td>
+              <td>4–5 kg/inch²</td>
+            </tr>
+            <tr>
+              <td>脆度 Friability</td>
+              <td>Friabilator<br>取 10 顆，25±1 rpm，100 轉（4 min），過 16 號篩</td>
+              <td>損失重量 &lt; <b>1%</b>（最大可接受）</td>
+            </tr>
+            <tr>
+              <td>厚度 Thickness</td>
+              <td>Micrometer</td>
+              <td>厚度 ±5%</td>
+            </tr>
+            <tr>
+              <td>Weight Variation (WV)</td>
+              <td>秤重法</td>
+              <td>主成分 ≥ 25mg 且比例 ≥ 25%</td>
+            </tr>
+            <tr>
+              <td>Content Uniformity (CU)</td>
+              <td>不符 WV 條件者必須執行</td>
+              <td>每顆主成分含量符合標準<br>例：Aspirin 93–107%</td>
+            </tr>
+            <tr>
+              <td>崩散度 Disintegration</td>
+              <td>37 ± 2°C 下測試</td>
+              <td>腸溶錠：人工胃液 1 hr 不崩 → 人工腸液崩散</td>
+            </tr>
+            <tr>
+              <td>安息角 Angle of repose</td>
+              <td>Flow meter</td>
+              <td>角度大 → 潤濕程度低</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="col" style="border-right:none;">
+        <div class="col-title" style="color:var(--red); border-color:#f09595;">常見壓錠缺陷 Tablet Defects</div>
+        <table class="simple-table">
+          <thead><tr><th>缺陷</th><th>描述</th><th>原因</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><b>Capping</b>（頂裂）</td>
+              <td>錠劑頂部呈蓋狀分開</td>
+              <td>空氣被包埋、細粉太多、壓力過大、入料速度太快</td>
+            </tr>
+            <tr>
+              <td><b>Lamination</b>（層裂）</td>
+              <td>裂成數層</td>
+              <td>空氣介入、壓力過大、整體水分太多</td>
+            </tr>
+            <tr>
+              <td><b>Mottling</b>（斑點）</td>
+              <td>著色不均勻</td>
+              <td>色素遷移</td>
+            </tr>
+            <tr>
+              <td><b>Splitting</b>（分裂）</td>
+              <td>錠劑裂開</td>
+              <td>沖模損壞</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="col-title" style="color:var(--amber); border-color:var(--amber-mid); margin-top:16px;">重量差異影響因素</div>
+        <ul class="item-list">
+          <li>顆粒流動差（環境濕度）</li>
+          <li>顆粒大小差異大（粉末分離 Segregation）</li>
+          <li>下沖模長度不一致</li>
+          <li>助滑劑使用不當</li>
+          <li>機器狀況不佳</li>
+        </ul>
+        <div style="margin-top:8px;">
+          <div class="col-title" style="color:var(--text-muted); border-color:#ddd;">沖模功能</div>
+          <ul class="item-list">
+            <li><b>上沖模</b>：往下壓 → 影響<b>硬度、壓力</b></li>
+            <li><b>下沖模</b>：高低決定錠劑重量 → 影響<b>厚度、重量、充填量</b></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 重要百分比 -->
+    <div class="pct-grid" style="border-top:1px solid #eee;">
+      <div class="pct-card">
+        <div class="val">0.1–5%</div>
+        <div class="label">潤滑劑適用量</div>
+      </div>
+      <div class="pct-card">
+        <div class="val">&lt; 1%</div>
+        <div class="label">錠片最大可接受脆度</div>
+      </div>
+      <div class="pct-card">
+        <div class="val">2–20%</div>
+        <div class="label">微粒包衣重量佔總重</div>
+      </div>
+      <div class="pct-card">
+        <div class="val">10–20%</div>
+        <div class="label">壓錠最佳細顆粒比例</div>
+      </div>
+      <div class="pct-card">
+        <div class="val">20–25%</div>
+        <div class="label">直壓主成分最大比例</div>
+      </div>
+      <div class="pct-card">
+        <div class="val">50–100%</div>
+        <div class="label">糖衣包覆體積增加量</div>
+      </div>
+      <div class="pct-card">
+        <div class="val">2–6%</div>
+        <div class="label">薄膜包覆佔總重比例</div>
+      </div>
+      <div class="pct-card">
+        <div class="val">±5%</div>
+        <div class="label">厚度測量允許誤差</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ============================================================ -->
+<!-- 六、長效劑型 -->
+<!-- ============================================================ -->
+<div class="section" id="sec6">
+  <div class="section-header c-coral">
+    <span class="num">六</span>
+    長效劑型 Extended / Controlled Release
+  </div>
+  <div class="section-body">
+
+    <div class="grid2">
+      <div class="col">
+        <div class="col-title" style="color:var(--coral); border-color:#f0997b;">適合 vs 不適合長效劑型</div>
+        <div class="grid2" style="margin-top:4px;">
+          <div>
+            <span class="sub-group-label">適合</span>
+            <ul class="item-list">
+              <li>半衰期 <b>4–6 hr</b></li>
+              <li>治療指數 TI <b>&gt; 10</b></li>
+              <li>劑量低</li>
+              <li>腸胃各部位吸收均一</li>
+              <li>抗組織胺、NSAIDs（Aspirin、Indomethacin）</li>
+              <li>Potassium chloride、Propranolol</li>
+              <li>Diltiazem、Ferrous fumarate</li>
+            </ul>
+          </div>
+          <div>
+            <span class="sub-group-label">不適合</span>
+            <ul class="item-list">
+              <li>半衰期 ≤ 1/2 hr 或極長</li>
+              <li>急症藥物</li>
+              <li>口服吸收不規則</li>
+              <li>抗生素、肌肉鬆弛劑</li>
+              <li>毛地黃苷 Digitalis glycosides</li>
+              <li>Reserpine</li>
+              <li>劑量 &gt; 500 mg</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="col" style="border-right:none;">
+        <div class="col-title" style="color:var(--teal); border-color:#9FE1CB;">長效劑型設計類型</div>
+        <ul class="item-list">
+          <li>
+            <b>Matrix tablet 間質錠</b><br>
+            HPMC 親水性間質：水合後形成凝膠層，緩慢釋出（零溶）<br>
+            不溶性塑性基質（Polyethylene、Eudragits）：擴散釋放，隨糞便排出<br>
+            <span class="drug-pill">Oramorph SR</span> <span class="drug-pill">Desoxyn Gradumet</span>
+          </li>
+          <li>
+            <b>OROS 滲透幫浦型</b><br>
+            零級釋放；不受食物及 pH 影響<br>
+            滲透壓劑：MgCl₂、CaCl₂、NaCl、KCl、MgSO₄
+          </li>
+          <li>
+            <b>Ion-exchange resin tablet</b><br>
+            藥物釋放取決於腸胃道 pH 及電解質濃度<br>
+            液體長效型可遮蔽苦味
+          </li>
+          <li>
+            <b>Coated bead / Pellet tablet</b><br>
+            藥物均勻分散於千百個微小球形中，圓粒包衣<br>
+            MCC、EC、Glyceryl monostearate、Cetyl alcohol
+          </li>
+          <li>
+            <b>Compression coating</b><br>
+            適用對濕氣不穩定藥品；均一度較好；成品較小易吞嚥
+          </li>
+          <li>
+            <b>Microencapsulation tablet</b><br>
+            若做成 RDTs：顆粒應小到無感
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Extended vs Delayed -->
+    <div class="subsection" style="border-top:1px solid #eee;">
+      <div class="subsection-title">
+        <span class="dot" style="background:var(--purple)"></span>
+        Extended-release vs Delayed-release 比較
+      </div>
+      <div class="compare-row" style="background:#f4f4f2; font-weight:600; font-size:11px;">
+        <div class="compare-label">項目</div>
+        <div class="compare-a">Extended-release (XL/ER/SR)</div>
+        <div>Delayed-release (DR/腸溶)</div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-label">釋放特性</div>
+        <div class="compare-a">部分速放 + 部分緩速；0 級釋放</div>
+        <div>不立即釋出，到小腸 pH 才釋放</div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-label">目的</div>
+        <div class="compare-a">減少給藥次數；減少毒性波動</div>
+        <div>避免被胃酸破壞；減少胃部刺激</div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-label">膜衣材料</div>
+        <div class="compare-a">Acrylic resins、Shellac、EC（Ethylcellulose）</div>
+        <div>非腸溶：HPMC；腸溶：Shellac、Methacrylic acid copolymer B（迴腸釋放）</div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-label">備註</div>
+        <div class="compare-a">0 級釋放 ≠ 0 級吸收</div>
+        <div>酸性藥物 → 降低胃刺激；鹼性藥物 → 避免胃酸破壞</div>
+      </div>
+    </div>
+
+    <div class="subsection" style="border-top:1px solid #eee; background:#fafaf8;">
+      <div class="subsection-title">
+        <span class="dot" style="background:#888"></span>
+        BCS &amp; IVIVC 重點
+      </div>
+      <ul class="item-list">
+        <li><b>BCS</b>：依溶解度和穿透度分 4 級，預測藥物物化性質與 BA 的關係；口服速放不會有崩散，題幹寫「immediate-release」</li>
+        <li><b>IVIVC</b>：體外溶離試驗預測體內藥物吸收；BCS II（溶解度為速率決定步驟）→ Extended-release / Controlled-release 劑型</li>
+        <li>長效劑型<b>不可剝半或磨粉</b></li>
+        <li>口服緩釋錠兩大類：<b>間質錠 Matrix</b> 與 <b>儲藏式 Reservoir</b></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ============================================================ -->
+<!-- 七、特殊注意事項 -->
+<!-- ============================================================ -->
+<div class="section" id="sec7">
+  <div class="section-header c-green">
+    <span class="num">七</span>
+    考試重點整理 Key Points
+  </div>
+  <div class="section-body">
+
+    <div class="grid2">
+      <div class="col">
+        <div class="col-title" style="color:var(--red); border-color:#f09595;">配伍禁忌 / 注意事項</div>
+        <ul class="item-list">
+          <li><b>Lactose + Amine 類（鹼性）</b> → Maillard reaction（變色）<br>
+            特別是鹼性潤滑劑（Mg stearate）存在時更明顯
+          </li>
+          <li><b>DCP（磷酸二鈣）+ Tetracycline</b> → 螯合（chelation），影響吸收；不可併用</li>
+          <li><b>Mg stearate 過量</b> → Raincoat effect（雨衣現象）<br>
+            延遲崩散與溶離；改善：加界面活性劑
+          </li>
+          <li><b>低水溶性 / 疏水性主成分</b> → 選用<b>水溶性稀釋劑</b>以提高 BA</li>
+          <li><b>澱粉</b>不溶於冷水；MC、HPMC 冷水比熱水好溶</li>
+          <li><b>HPMC</b> 製備時先加沸水攪拌（熱水分散性高），冷卻後形成均勻膜</li>
+          <li><b>Gelatin</b> 溶液需溫熱下使用（冷卻凝固）</li>
+        </ul>
+      </div>
+      <div class="col" style="border-right:none;">
+        <div class="col-title" style="color:var(--green); border-color:#c0dd97;">考試常考重點</div>
+        <ul class="item-list">
+          <li>直接壓錠最不影響 BA：首選 MCC，其次 Spray-dried lactose、DCP</li>
+          <li>超級崩散劑用量：SSG 5%、Croscarmellose 2%、Crospovidone 2–5%</li>
+          <li>SSG = Sodium starch glycolate = Explotab；膨脹型</li>
+          <li>Crospovidone = 毛細管型；水不溶但親水，利用毛細管崩散</li>
+          <li>Flow meter 比安息角更具實用參考價值（粉末流動性）</li>
+          <li>壓錠普通壓力：3000–4000 磅（1360–1820 kg）</li>
+          <li>脆度試驗：25±1 rpm，100 轉，4 min，過 16 號篩</li>
+          <li>糖衣口訣：<b>防底滑</b>（防水層 → 底衣層 → 平滑層 → 著色 → 打亮）</li>
+          <li>Wurster Process = Bottom-spray = 適合腸溶 &amp; 持續釋放</li>
+          <li>Top-spray 不適合 Sustained release 包衣</li>
+          <li>RDT 速崩錠：Zydis 冷凍乾燥技術；含明膠、糖、水溶性賦形劑</li>
+          <li>Testosterone 口頰錠 = RDT，降低首渡效應</li>
+          <li>CaSO₄、Ca₃(PO₄)₂ 適用固醇類 / 維生素錠劑</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 粉末分離 -->
+    <div class="subsection" style="border-top:1px solid #eee; background:#fafaf8;">
+      <div class="subsection-title">
+        <span class="dot" style="background:#888"></span>
+        粉末分離 Segregation 預防
+      </div>
+      <div class="grid2">
+        <ul class="item-list">
+          <li>原因：顆粒尺寸、密度、外形、彈性係數不同</li>
+          <li>靜置時：密度影響最大</li>
+          <li>攪拌時：密度影響最小（氣旋抵消重力因素）</li>
+        </ul>
+        <ul class="item-list">
+          <li>預防：減少運送步驟次數與落差、粉塵控制、緩慢充填速率</li>
+          <li>使用偏轉器（deflector）、藥輪（vane）、分布器（distributor）</li>
+          <li>適當通風、適當漏斗設計</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</div><!-- end container -->
+
+<script>
+  document.querySelectorAll('.nav-pills a').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const id = a.getAttribute('href').slice(1);
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+</script>
+
+</body>
+</html>
