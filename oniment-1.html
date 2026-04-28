@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="zh-TW">
 <head>
 <meta charset="UTF-8">
@@ -26,398 +27,399 @@
     --mono: 'JetBrains Mono', monospace;
   }
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+- { box-sizing: border-box; margin: 0; padding: 0; }
 
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--sans);
-    line-height: 1.75;
-    font-size: 15px;
-  }
+body {
+background: var(–bg);
+color: var(–text);
+font-family: var(–sans);
+line-height: 1.75;
+font-size: 15px;
+}
 
-  /* ── HEADER ── */
-  header {
-    background: linear-gradient(135deg, #0d1b2a 0%, #1a2744 50%, #0d1b2a 100%);
-    border-bottom: 1px solid var(--border);
-    padding: 48px 0 36px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-  header::before {
-    content: '';
-    position: absolute; inset: 0;
-    background: radial-gradient(ellipse 60% 80% at 50% 0%, rgba(79,195,247,0.08) 0%, transparent 70%);
-    pointer-events: none;
-  }
-  header h1 {
-    font-family: var(--serif);
-    font-size: clamp(1.8rem, 4vw, 2.8rem);
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    color: #fff;
-  }
-  header .sub {
-    margin-top: 8px;
-    font-family: var(--mono);
-    font-size: 0.78rem;
-    color: var(--accent);
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-  }
-  header .badges {
-    margin-top: 20px;
-    display: flex; flex-wrap: wrap; gap: 8px; justify-content: center;
-  }
-  .badge {
-    display: inline-block;
-    padding: 3px 12px;
-    border-radius: 2px;
-    font-size: 0.72rem;
-    font-family: var(--mono);
-    letter-spacing: 0.08em;
-    border: 1px solid;
-  }
-  .badge-blue  { background: rgba(79,195,247,0.1);  border-color: var(--accent);  color: var(--accent);  }
-  .badge-gold  { background: rgba(255,213,79,0.1);  border-color: var(--gold);   color: var(--gold);   }
-  .badge-green { background: rgba(105,240,174,0.1); border-color: var(--green);  color: var(--green);  }
+/* ── HEADER ── */
+header {
+background: linear-gradient(135deg, #0d1b2a 0%, #1a2744 50%, #0d1b2a 100%);
+border-bottom: 1px solid var(–border);
+padding: 48px 0 36px;
+text-align: center;
+position: relative;
+overflow: hidden;
+}
+header::before {
+content: ‘’;
+position: absolute; inset: 0;
+background: radial-gradient(ellipse 60% 80% at 50% 0%, rgba(79,195,247,0.08) 0%, transparent 70%);
+pointer-events: none;
+}
+header h1 {
+font-family: var(–serif);
+font-size: clamp(1.8rem, 4vw, 2.8rem);
+font-weight: 700;
+letter-spacing: 0.05em;
+color: #fff;
+}
+header .sub {
+margin-top: 8px;
+font-family: var(–mono);
+font-size: 0.78rem;
+color: var(–accent);
+letter-spacing: 0.15em;
+text-transform: uppercase;
+}
+header .badges {
+margin-top: 20px;
+display: flex; flex-wrap: wrap; gap: 8px; justify-content: center;
+}
+.badge {
+display: inline-block;
+padding: 3px 12px;
+border-radius: 2px;
+font-size: 0.72rem;
+font-family: var(–mono);
+letter-spacing: 0.08em;
+border: 1px solid;
+}
+.badge-blue  { background: rgba(79,195,247,0.1);  border-color: var(–accent);  color: var(–accent);  }
+.badge-gold  { background: rgba(255,213,79,0.1);  border-color: var(–gold);   color: var(–gold);   }
+.badge-green { background: rgba(105,240,174,0.1); border-color: var(–green);  color: var(–green);  }
 
-  /* ── LAYOUT ── */
-  .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+/* ── LAYOUT ── */
+.container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
 
-  /* ── NAV ── */
-  nav {
-    background: var(--surface);
-    border-bottom: 1px solid var(--border);
-    position: sticky; top: 0; z-index: 100;
-  }
-  nav ul {
-    display: flex; flex-wrap: wrap; gap: 0;
-    list-style: none;
-    max-width: 1100px; margin: 0 auto;
-    padding: 0 24px;
-  }
-  nav li a {
-    display: block;
-    padding: 14px 16px;
-    font-size: 0.78rem;
-    letter-spacing: 0.05em;
-    color: var(--text-dim);
-    text-decoration: none;
-    font-family: var(--mono);
-    border-bottom: 2px solid transparent;
-    transition: color 0.2s, border-color 0.2s;
-  }
-  nav li a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+/* ── NAV ── */
+nav {
+background: var(–surface);
+border-bottom: 1px solid var(–border);
+position: sticky; top: 0; z-index: 100;
+}
+nav ul {
+display: flex; flex-wrap: wrap; gap: 0;
+list-style: none;
+max-width: 1100px; margin: 0 auto;
+padding: 0 24px;
+}
+nav li a {
+display: block;
+padding: 14px 16px;
+font-size: 0.78rem;
+letter-spacing: 0.05em;
+color: var(–text-dim);
+text-decoration: none;
+font-family: var(–mono);
+border-bottom: 2px solid transparent;
+transition: color 0.2s, border-color 0.2s;
+}
+nav li a:hover { color: var(–accent); border-bottom-color: var(–accent); }
 
-  /* ── SECTION ── */
-  .section {
-    padding: 56px 0;
-    border-bottom: 1px solid var(--border);
-  }
-  .section-header {
-    display: flex; align-items: center; gap: 16px;
-    margin-bottom: 36px;
-  }
-  .section-num {
-    font-family: var(--mono);
-    font-size: 0.7rem;
-    color: var(--text-muted);
-    letter-spacing: 0.1em;
-    min-width: 32px;
-  }
-  .section-title {
-    font-family: var(--serif);
-    font-size: 1.55rem;
-    font-weight: 700;
-    color: #fff;
-  }
-  .section-title span { color: var(--accent); }
-  .section-divider {
-    flex: 1; height: 1px;
-    background: linear-gradient(to right, var(--border), transparent);
-  }
+/* ── SECTION ── */
+.section {
+padding: 56px 0;
+border-bottom: 1px solid var(–border);
+}
+.section-header {
+display: flex; align-items: center; gap: 16px;
+margin-bottom: 36px;
+}
+.section-num {
+font-family: var(–mono);
+font-size: 0.7rem;
+color: var(–text-muted);
+letter-spacing: 0.1em;
+min-width: 32px;
+}
+.section-title {
+font-family: var(–serif);
+font-size: 1.55rem;
+font-weight: 700;
+color: #fff;
+}
+.section-title span { color: var(–accent); }
+.section-divider {
+flex: 1; height: 1px;
+background: linear-gradient(to right, var(–border), transparent);
+}
 
-  /* ── CARDS ── */
-  .card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 20px 24px;
-    margin-bottom: 20px;
-  }
-  .card h3 {
-    font-family: var(--serif);
-    font-size: 1.05rem;
-    font-weight: 600;
-    color: var(--accent);
-    margin-bottom: 12px;
-    padding-bottom: 8px;
-    border-bottom: 1px solid var(--border);
-  }
-  .card h4 {
-    font-size: 0.88rem;
-    font-weight: 500;
-    color: var(--gold);
-    margin: 14px 0 6px;
-    font-family: var(--mono);
-    letter-spacing: 0.04em;
-  }
-  .card p, .card li {
-    font-size: 0.88rem;
-    color: var(--text);
-    line-height: 1.8;
-  }
-  .card ul { padding-left: 20px; }
-  .card li { margin-bottom: 3px; }
+/* ── CARDS ── */
+.card {
+background: var(–surface);
+border: 1px solid var(–border);
+border-radius: 4px;
+padding: 20px 24px;
+margin-bottom: 20px;
+}
+.card h3 {
+font-family: var(–serif);
+font-size: 1.05rem;
+font-weight: 600;
+color: var(–accent);
+margin-bottom: 12px;
+padding-bottom: 8px;
+border-bottom: 1px solid var(–border);
+}
+.card h4 {
+font-size: 0.88rem;
+font-weight: 500;
+color: var(–gold);
+margin: 14px 0 6px;
+font-family: var(–mono);
+letter-spacing: 0.04em;
+}
+.card p, .card li {
+font-size: 0.88rem;
+color: var(–text);
+line-height: 1.8;
+}
+.card ul { padding-left: 20px; }
+.card li { margin-bottom: 3px; }
 
-  /* ── BIG TABLE ── */
-  .table-wrap { overflow-x: auto; margin: 24px 0; }
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.83rem;
-    line-height: 1.6;
-  }
-  th {
-    background: var(--surface2);
-    color: var(--accent);
-    font-family: var(--mono);
-    font-size: 0.75rem;
-    letter-spacing: 0.06em;
-    padding: 10px 14px;
-    text-align: left;
-    border: 1px solid var(--border);
-    white-space: nowrap;
-  }
-  td {
-    padding: 9px 14px;
-    border: 1px solid var(--border);
-    color: var(--text);
-    vertical-align: top;
-  }
-  tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
-  tr:hover td { background: rgba(79,195,247,0.04); }
+/* ── BIG TABLE ── */
+.table-wrap { overflow-x: auto; margin: 24px 0; }
+table {
+width: 100%;
+border-collapse: collapse;
+font-size: 0.83rem;
+line-height: 1.6;
+}
+th {
+background: var(–surface2);
+color: var(–accent);
+font-family: var(–mono);
+font-size: 0.75rem;
+letter-spacing: 0.06em;
+padding: 10px 14px;
+text-align: left;
+border: 1px solid var(–border);
+white-space: nowrap;
+}
+td {
+padding: 9px 14px;
+border: 1px solid var(–border);
+color: var(–text);
+vertical-align: top;
+}
+tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+tr:hover td { background: rgba(79,195,247,0.04); }
 
-  /* ── Q&A BLOCKS ── */
-  .qa-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(480px, 1fr));
-    gap: 14px;
-    margin-top: 20px;
-  }
-  .qa-item {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    overflow: hidden;
-  }
-  .qa-q {
-    padding: 12px 16px;
-    font-size: 0.85rem;
-    color: var(--text);
-    line-height: 1.65;
-    cursor: pointer;
-    display: flex; gap: 10px; align-items: flex-start;
-  }
-  .qa-q::before {
-    content: 'Q';
-    font-family: var(--mono);
-    font-size: 0.7rem;
-    color: var(--text-muted);
-    border: 1px solid var(--text-muted);
-    padding: 1px 5px;
-    border-radius: 2px;
-    flex-shrink: 0;
-    margin-top: 2px;
-  }
-  .qa-year {
-    font-family: var(--mono);
-    font-size: 0.68rem;
-    color: var(--text-muted);
-    padding: 4px 12px;
-    background: rgba(255,255,255,0.03);
-    border-top: 1px solid var(--border);
-    letter-spacing: 0.06em;
-  }
-  .qa-opts {
-    padding: 8px 16px 2px;
-    font-size: 0.82rem;
-    color: var(--text-dim);
-  }
-  .qa-opts div { padding: 2px 0; }
-  .qa-ans {
-    display: none;
-    padding: 10px 16px;
-    background: rgba(105,240,174,0.07);
-    border-top: 1px solid rgba(105,240,174,0.2);
-  }
-  .qa-ans-text {
-    font-family: var(--mono);
-    font-size: 0.8rem;
-    color: var(--green);
-    font-weight: 600;
-  }
-  .qa-item.open .qa-ans { display: block; }
-  .qa-item.open { border-color: rgba(105,240,174,0.3); }
+/* ── Q&A BLOCKS ── */
+.qa-grid {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(480px, 1fr));
+gap: 14px;
+margin-top: 20px;
+}
+.qa-item {
+background: var(–surface);
+border: 1px solid var(–border);
+border-radius: 4px;
+overflow: hidden;
+}
+.qa-q {
+padding: 12px 16px;
+font-size: 0.85rem;
+color: var(–text);
+line-height: 1.65;
+cursor: pointer;
+display: flex; gap: 10px; align-items: flex-start;
+}
+.qa-q::before {
+content: ‘Q’;
+font-family: var(–mono);
+font-size: 0.7rem;
+color: var(–text-muted);
+border: 1px solid var(–text-muted);
+padding: 1px 5px;
+border-radius: 2px;
+flex-shrink: 0;
+margin-top: 2px;
+}
+.qa-year {
+font-family: var(–mono);
+font-size: 0.68rem;
+color: var(–text-muted);
+padding: 4px 12px;
+background: rgba(255,255,255,0.03);
+border-top: 1px solid var(–border);
+letter-spacing: 0.06em;
+}
+.qa-opts {
+padding: 8px 16px 2px;
+font-size: 0.82rem;
+color: var(–text-dim);
+}
+.qa-opts div { padding: 2px 0; }
+.qa-ans {
+display: none;
+padding: 10px 16px;
+background: rgba(105,240,174,0.07);
+border-top: 1px solid rgba(105,240,174,0.2);
+}
+.qa-ans-text {
+font-family: var(–mono);
+font-size: 0.8rem;
+color: var(–green);
+font-weight: 600;
+}
+.qa-item.open .qa-ans { display: block; }
+.qa-item.open { border-color: rgba(105,240,174,0.3); }
 
-  /* ── HIGHLIGHT BOXES ── */
-  .info-box {
-    border-left: 3px solid;
-    padding: 14px 18px;
-    margin: 16px 0;
-    border-radius: 0 4px 4px 0;
-    font-size: 0.86rem;
-  }
-  .info-box.blue  { border-color: var(--accent);  background: rgba(79,195,247,0.06);  }
-  .info-box.gold  { border-color: var(--gold);   background: rgba(255,213,79,0.06);   }
-  .info-box.green { border-color: var(--green);  background: rgba(105,240,174,0.06);  }
-  .info-box.red   { border-color: var(--red);    background: rgba(255,82,82,0.06);    }
-  .info-box.purple{ border-color: var(--purple); background: rgba(206,147,216,0.06);  }
-  .info-box strong { font-weight: 600; }
+/* ── HIGHLIGHT BOXES ── */
+.info-box {
+border-left: 3px solid;
+padding: 14px 18px;
+margin: 16px 0;
+border-radius: 0 4px 4px 0;
+font-size: 0.86rem;
+}
+.info-box.blue  { border-color: var(–accent);  background: rgba(79,195,247,0.06);  }
+.info-box.gold  { border-color: var(–gold);   background: rgba(255,213,79,0.06);   }
+.info-box.green { border-color: var(–green);  background: rgba(105,240,174,0.06);  }
+.info-box.red   { border-color: var(–red);    background: rgba(255,82,82,0.06);    }
+.info-box.purple{ border-color: var(–purple); background: rgba(206,147,216,0.06);  }
+.info-box strong { font-weight: 600; }
 
-  /* ── FLOW / STEPS ── */
-  .steps { display: flex; flex-direction: column; gap: 0; }
-  .step {
-    display: flex; gap: 16px; align-items: flex-start;
-    padding: 14px 0;
-    border-bottom: 1px solid var(--border);
-  }
-  .step:last-child { border-bottom: none; }
-  .step-num {
-    width: 28px; height: 28px;
-    border-radius: 50%;
-    background: var(--accent);
-    color: var(--bg);
-    font-family: var(--mono);
-    font-size: 0.78rem;
-    font-weight: 700;
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
-    margin-top: 2px;
-  }
-  .step-body { font-size: 0.87rem; }
-  .step-body strong { color: var(--accent2); }
+/* ── FLOW / STEPS ── */
+.steps { display: flex; flex-direction: column; gap: 0; }
+.step {
+display: flex; gap: 16px; align-items: flex-start;
+padding: 14px 0;
+border-bottom: 1px solid var(–border);
+}
+.step:last-child { border-bottom: none; }
+.step-num {
+width: 28px; height: 28px;
+border-radius: 50%;
+background: var(–accent);
+color: var(–bg);
+font-family: var(–mono);
+font-size: 0.78rem;
+font-weight: 700;
+display: flex; align-items: center; justify-content: center;
+flex-shrink: 0;
+margin-top: 2px;
+}
+.step-body { font-size: 0.87rem; }
+.step-body strong { color: var(–accent2); }
 
-  /* ── FORMULA BOX ── */
-  .formula {
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 16px 20px;
-    font-family: var(--mono);
-    font-size: 0.82rem;
-    color: var(--text-dim);
-    margin: 12px 0;
-    overflow-x: auto;
-  }
-  .formula .component { color: var(--accent); }
-  .formula .amount { color: var(--gold); }
-  .formula .note { color: var(--text-muted); font-style: italic; }
+/* ── FORMULA BOX ── */
+.formula {
+background: var(–surface2);
+border: 1px solid var(–border);
+border-radius: 4px;
+padding: 16px 20px;
+font-family: var(–mono);
+font-size: 0.82rem;
+color: var(–text-dim);
+margin: 12px 0;
+overflow-x: auto;
+}
+.formula .component { color: var(–accent); }
+.formula .amount { color: var(–gold); }
+.formula .note { color: var(–text-muted); font-style: italic; }
 
-  /* ── GRID HELPERS ── */
-  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
-  @media (max-width: 768px) {
-    .grid-2, .grid-3 { grid-template-columns: 1fr; }
-    .qa-grid { grid-template-columns: 1fr; }
-  }
+/* ── GRID HELPERS ── */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+@media (max-width: 768px) {
+.grid-2, .grid-3 { grid-template-columns: 1fr; }
+.qa-grid { grid-template-columns: 1fr; }
+}
 
-  /* ── TAGS ── */
-  .tag {
-    display: inline-block;
-    padding: 2px 8px;
-    border-radius: 2px;
-    font-size: 0.7rem;
-    font-family: var(--mono);
-    margin: 2px 3px 2px 0;
-    letter-spacing: 0.05em;
-  }
-  .tag-blue   { background: rgba(79,195,247,0.12);  color: var(--accent);  border: 1px solid rgba(79,195,247,0.3);  }
-  .tag-gold   { background: rgba(255,213,79,0.12);  color: var(--gold);   border: 1px solid rgba(255,213,79,0.3);   }
-  .tag-green  { background: rgba(105,240,174,0.12); color: var(--green);  border: 1px solid rgba(105,240,174,0.3);  }
-  .tag-red    { background: rgba(255,82,82,0.12);   color: var(--red);    border: 1px solid rgba(255,82,82,0.3);    }
-  .tag-purple { background: rgba(206,147,216,0.12); color: var(--purple); border: 1px solid rgba(206,147,216,0.3);  }
-  .tag-orange { background: rgba(255,171,64,0.12);  color: var(--orange); border: 1px solid rgba(255,171,64,0.3);   }
+/* ── TAGS ── */
+.tag {
+display: inline-block;
+padding: 2px 8px;
+border-radius: 2px;
+font-size: 0.7rem;
+font-family: var(–mono);
+margin: 2px 3px 2px 0;
+letter-spacing: 0.05em;
+}
+.tag-blue   { background: rgba(79,195,247,0.12);  color: var(–accent);  border: 1px solid rgba(79,195,247,0.3);  }
+.tag-gold   { background: rgba(255,213,79,0.12);  color: var(–gold);   border: 1px solid rgba(255,213,79,0.3);   }
+.tag-green  { background: rgba(105,240,174,0.12); color: var(–green);  border: 1px solid rgba(105,240,174,0.3);  }
+.tag-red    { background: rgba(255,82,82,0.12);   color: var(–red);    border: 1px solid rgba(255,82,82,0.3);    }
+.tag-purple { background: rgba(206,147,216,0.12); color: var(–purple); border: 1px solid rgba(206,147,216,0.3);  }
+.tag-orange { background: rgba(255,171,64,0.12);  color: var(–orange); border: 1px solid rgba(255,171,64,0.3);   }
 
-  /* ── KEY POINT ── */
-  .key-point {
-    background: rgba(255,213,79,0.06);
-    border: 1px solid rgba(255,213,79,0.25);
-    border-radius: 4px;
-    padding: 12px 16px;
-    font-size: 0.85rem;
-    margin: 10px 0;
-    color: var(--text);
-  }
-  .key-point::before {
-    content: '★ ';
-    color: var(--gold);
-    font-size: 0.8rem;
-  }
+/* ── KEY POINT ── */
+.key-point {
+background: rgba(255,213,79,0.06);
+border: 1px solid rgba(255,213,79,0.25);
+border-radius: 4px;
+padding: 12px 16px;
+font-size: 0.85rem;
+margin: 10px 0;
+color: var(–text);
+}
+.key-point::before {
+content: ’★ ’;
+color: var(–gold);
+font-size: 0.8rem;
+}
 
-  /* ── TOC ── */
-  #toc {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 24px 28px;
-    margin: 32px 0;
-  }
-  #toc h2 {
-    font-family: var(--serif);
-    font-size: 1rem;
-    color: var(--accent);
-    margin-bottom: 16px;
-    letter-spacing: 0.05em;
-  }
-  #toc ol { padding-left: 20px; }
-  #toc li { margin: 6px 0; }
-  #toc a { color: var(--text-dim); text-decoration: none; font-size: 0.87rem; transition: color 0.2s; }
-  #toc a:hover { color: var(--accent); }
+/* ── TOC ── */
+#toc {
+background: var(–surface);
+border: 1px solid var(–border);
+border-radius: 4px;
+padding: 24px 28px;
+margin: 32px 0;
+}
+#toc h2 {
+font-family: var(–serif);
+font-size: 1rem;
+color: var(–accent);
+margin-bottom: 16px;
+letter-spacing: 0.05em;
+}
+#toc ol { padding-left: 20px; }
+#toc li { margin: 6px 0; }
+#toc a { color: var(–text-dim); text-decoration: none; font-size: 0.87rem; transition: color 0.2s; }
+#toc a:hover { color: var(–accent); }
 
-  /* ── ANSWER TOGGLE HINT ── */
-  .toggle-hint {
-    font-family: var(--mono);
-    font-size: 0.72rem;
-    color: var(--text-muted);
-    margin-bottom: 14px;
-    letter-spacing: 0.06em;
-  }
+/* ── ANSWER TOGGLE HINT ── */
+.toggle-hint {
+font-family: var(–mono);
+font-size: 0.72rem;
+color: var(–text-muted);
+margin-bottom: 14px;
+letter-spacing: 0.06em;
+}
 
-  /* compact list */
-  .compact-list { padding-left: 18px; }
-  .compact-list li { font-size: 0.86rem; color: var(--text); margin-bottom: 4px; }
+/* compact list */
+.compact-list { padding-left: 18px; }
+.compact-list li { font-size: 0.86rem; color: var(–text); margin-bottom: 4px; }
 
-  /* skin layer diagram */
-  .skin-layers {
-    display: flex; flex-direction: column; gap: 0;
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    overflow: hidden;
-    font-size: 0.82rem;
-  }
-  .skin-layer {
-    padding: 10px 18px;
-    display: flex; align-items: center; gap: 14px;
-    border-bottom: 1px solid var(--border);
-  }
-  .skin-layer:last-child { border-bottom: none; }
-  .skin-layer-num { font-family: var(--mono); font-size: 0.7rem; color: var(--text-muted); min-width: 20px; }
-  .skin-layer-name { font-weight: 500; min-width: 180px; }
-  .skin-layer-desc { color: var(--text-dim); font-size: 0.8rem; }
+/* skin layer diagram */
+.skin-layers {
+display: flex; flex-direction: column; gap: 0;
+border: 1px solid var(–border);
+border-radius: 4px;
+overflow: hidden;
+font-size: 0.82rem;
+}
+.skin-layer {
+padding: 10px 18px;
+display: flex; align-items: center; gap: 14px;
+border-bottom: 1px solid var(–border);
+}
+.skin-layer:last-child { border-bottom: none; }
+.skin-layer-num { font-family: var(–mono); font-size: 0.7rem; color: var(–text-muted); min-width: 20px; }
+.skin-layer-name { font-weight: 500; min-width: 180px; }
+.skin-layer-desc { color: var(–text-dim); font-size: 0.8rem; }
 
-  footer {
-    text-align: center;
-    padding: 32px;
-    font-size: 0.75rem;
-    color: var(--text-muted);
-    font-family: var(--mono);
-    letter-spacing: 0.06em;
-    border-top: 1px solid var(--border);
-  }
+footer {
+text-align: center;
+padding: 32px;
+font-size: 0.75rem;
+color: var(–text-muted);
+font-family: var(–mono);
+letter-spacing: 0.06em;
+border-top: 1px solid var(–border);
+}
 </style>
+
 </head>
 <body>
 
@@ -460,6 +462,7 @@
 <div class="container">
 
   <!-- TOC -->
+
   <div id="toc">
     <h2>📋 目錄</h2>
     <ol>
@@ -484,6 +487,7 @@
   </div>
 
   <!-- ═══════════════════════════ SECTION 1 ═══════════════════════════ -->
+
   <section class="section" id="overview">
     <div class="section-header">
       <span class="section-num">01</span>
@@ -491,41 +495,56 @@
       <div class="section-divider"></div>
     </div>
 
-    <div class="grid-2">
-      <div class="card">
-        <h3>主要種類</h3>
-        <h4>具局部與全身效果</h4>
-        <ul class="compact-list">
-          <li>Ointments 軟膏劑</li>
-          <li>Creams 霜劑</li>
-          <li>Gels 凝膠劑</li>
-        </ul>
-        <h4>僅局部效果</h4>
-        <ul class="compact-list">
-          <li>Pastes 糊劑</li>
-          <li>Plasters 硬膏劑</li>
-          <li>Glycerogelatins 甘油明膠</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3>投與途徑</h3>
-        <h4>Topical（局部）</h4>
-        <ul class="compact-list">
-          <li>皮膚（Skin）— 局部或全身（透皮）</li>
-          <li>眼（Eye）</li>
-          <li>鼻腔（Nasal）</li>
-          <li>直腸（Rectal）</li>
-          <li>陰道（Vaginal）</li>
-        </ul>
-        <div class="info-box blue" style="margin-top:12px">
-          <strong>局部製劑</strong>：藥物進入皮膚，作用於皮膚<br>
-          <strong>經皮製劑</strong>：藥物穿透皮膚，進入全身循環
-        </div>
-      </div>
+```
+<div class="grid-2">
+  <div class="card">
+    <h3>軟膏劑定義</h3>
+    <p style="font-size:0.87rem;margin-bottom:10px">一種或多種<strong>藥品 + 基劑</strong>形成具有適當稠度之<strong>膏狀半固體外用製劑</strong></p>
+    <h4>半固體外用製劑種類</h4>
+    <ul class="compact-list">
+      <li><strong>糊劑、膠劑、軟膏、乳劑</strong>（記法：胡椒私人）</li>
+    </ul>
+    <div class="info-box blue" style="margin-top:10px;font-size:0.83rem">
+      膠劑（Gel）可當成凝膠（gel）
     </div>
+    <h4 style="margin-top:14px">儲存</h4>
+    <ul class="compact-list">
+      <li>一般軟膏 → <strong>30°C 以下之密蓋容器（緊密容器）</strong>（與可可脂栓劑相同）</li>
+      <li>眼用軟膏 → <strong>15°C 以下之滅菌緊密容器</strong></li>
+      <li>大多數藥品保存在緊密容器</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h3>主要種類</h3>
+    <h4>具局部與全身效果</h4>
+    <ul class="compact-list">
+      <li>Ointments 軟膏劑</li>
+      <li>Creams 霜劑</li>
+      <li>Gels 凝膠劑</li>
+    </ul>
+    <h4>僅局部效果</h4>
+    <ul class="compact-list">
+      <li>Pastes 糊劑</li>
+      <li>Plasters 硬膏劑</li>
+      <li>Glycerogelatins 甘油明膠</li>
+    </ul>
+    <h4 style="margin-top:10px">投與途徑</h4>
+    <ul class="compact-list">
+      <li>皮膚（Skin）— 局部或全身（透皮）</li>
+      <li>眼（Eye）、鼻腔（Nasal）、直腸（Rectal）、陰道（Vaginal）</li>
+    </ul>
+    <div class="info-box blue" style="margin-top:10px">
+      <strong>局部製劑</strong>：藥物進入皮膚，作用於皮膚（target: skin）<br>
+      <strong>經皮製劑</strong>：藥物穿透皮膚，進入全身循環（target: 非皮膚）
+    </div>
+  </div>
+</div>
+```
+
   </section>
 
   <!-- ═══════════════════════════ SECTION 2 ═══════════════════════════ -->
+
   <section class="section" id="ointment-bases">
     <div class="section-header">
       <span class="section-num">02</span>
@@ -533,84 +552,180 @@
       <div class="section-divider"></div>
     </div>
 
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th>特性</th>
-            <th>油脂性（Oleaginous）</th>
-            <th>吸收性（Absorption）</th>
-            <th>水和性（Water-removable）</th>
-            <th>水溶性（Water-soluble）</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>代表品</strong></td>
-            <td>Yellow/White Petrolatum<br>Yellow/White Ointment</td>
-            <td>Hydrophilic Petrolatum<br>Lanolin、Cold Cream</td>
-            <td>Hydrophilic Ointment<br>（o/w emulsion）</td>
-            <td>PEG Ointment<br>Macrogol Ointment</td>
-          </tr>
-          <tr>
-            <td><strong>含水</strong></td>
-            <td>無水</td>
-            <td>無水或含水（w/o乳劑）</td>
-            <td>含水</td>
-            <td>無水</td>
-          </tr>
-          <tr>
-            <td><strong>吸水性</strong></td>
-            <td>不易吸水（疏水）</td>
-            <td>可吸水（親水）</td>
-            <td>可吸水（親水）</td>
-            <td>可吸水（親水）</td>
-          </tr>
-          <tr>
-            <td><strong>水洗性</strong></td>
-            <td>不易水洗</td>
-            <td>不易水洗</td>
-            <td>易水洗 ✓</td>
-            <td>易水洗 ✓（溶於水）</td>
-          </tr>
-          <tr>
-            <td><strong>油膩感</strong></td>
-            <td>油膩</td>
-            <td>油膩</td>
-            <td>較少油膩</td>
-            <td>不油膩</td>
-          </tr>
-          <tr>
-            <td><strong>乳劑型別</strong></td>
-            <td>—</td>
-            <td>w/o（外相=油）</td>
-            <td>o/w（外相=水）</td>
-            <td>—（非乳劑）</td>
-          </tr>
-          <tr>
-            <td><strong>特點</strong></td>
-            <td>保護、潤膚、封閉<br>水不安定抗生素之最佳基劑</td>
-            <td>保護、潤膚<br>無水型適合水不安定藥物</td>
-            <td>可吸收皮膚漿液<br>有毛髮部位可用</td>
-            <td>無油膩，不黏膩<br>主要用於固體藥物</td>
-          </tr>
-          <tr>
-            <td><strong>配伍注意</strong></td>
-            <td>只能加少量水<br>助研劑用礦物油</td>
-            <td>可加入水溶液形成w/o</td>
-            <td>含SLS（乳化劑）<br>含methylparaben等防腐劑</td>
-            <td>Phenol / Salicylic acid使其軟化<br>Penicillin / Bacitracin效力降低</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+```
+<!-- DETAILED COMPARISON TABLE -->
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>特性</th>
+        <th style="color:#90caf9">① 油脂性（Oleaginous）<br><span style="font-weight:400;font-size:0.72rem">烴類基劑</span></th>
+        <th style="color:#80cbc4">② 吸收性（Absorption）<br><span style="font-weight:400;font-size:0.72rem">無水型</span></th>
+        <th style="color:#80cbc4">③ 吸收性（Absorption）<br><span style="font-weight:400;font-size:0.72rem">W/O 乳劑型</span></th>
+        <th style="color:#a5d6a7">④ 水和性（Water-removable）<br><span style="font-weight:400;font-size:0.72rem">O/W 乳劑</span></th>
+        <th style="color:#ce93d8">⑤ 水溶性（Water-soluble）</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>吸水</strong></td>
+        <td style="text-align:center;color:var(--red)">✗</td>
+        <td style="text-align:center;color:var(--green)">✓</td>
+        <td style="text-align:center;color:var(--green)">✓</td>
+        <td style="text-align:center;color:var(--green)">✓</td>
+        <td style="text-align:center;color:var(--green)">✓</td>
+      </tr>
+      <tr>
+        <td><strong>含水</strong></td>
+        <td style="text-align:center;color:var(--red)">✗</td>
+        <td style="text-align:center;color:var(--red)">✗</td>
+        <td style="text-align:center;color:var(--green)">✓</td>
+        <td style="text-align:center;color:var(--green)">✓</td>
+        <td style="text-align:center;color:var(--red)">✗ <span style="font-size:0.72rem;color:var(--text-muted)">（高度水溶但不含水）</span></td>
+      </tr>
+      <tr>
+        <td><strong>水洗除</strong></td>
+        <td style="text-align:center;color:var(--red)">✗</td>
+        <td style="text-align:center;color:var(--red)">✗</td>
+        <td style="text-align:center;color:var(--red)">✗</td>
+        <td style="text-align:center;color:var(--green)">✓</td>
+        <td style="text-align:center;color:var(--green)">✓</td>
+      </tr>
+      <tr>
+        <td><strong>水溶</strong></td>
+        <td style="text-align:center;color:var(--red)">✗</td>
+        <td style="text-align:center;color:var(--red)">✗</td>
+        <td style="text-align:center;color:var(--red)">✗</td>
+        <td style="text-align:center;color:var(--red)">✗</td>
+        <td style="text-align:center;color:var(--green)">✓</td>
+      </tr>
+      <tr>
+        <td><strong>代表物質</strong></td>
+        <td>軟石蠟（Petrolatum）<br>單軟膏 / 黃軟膏</td>
+        <td>親水軟石蠟（Hydrophilic petrolatum）<br>無水羊毛脂（Anhydrous lanolin）<br>Aquaphor、Aquabase</td>
+        <td>冷霜（Cold cream）<br>含水羊毛脂（Hydrous lanolin）<br>Eucerin（優色林）</td>
+        <td>親水軟膏（Hydrophilic ointment）<br>消散乳霜（Vanishing cream）<br>乳霜（Cream）</td>
+        <td>聚乙二醇（PEG）<br>商品名：Carbowax</td>
+      </tr>
+      <tr>
+        <td><strong>記法</strong></td>
+        <td style="font-size:0.82rem;color:var(--text-dim)">找軟的</td>
+        <td style="font-size:0.82rem;color:var(--text-dim)">5個字的 + 2A<br>（親水軟石蠟5字、Aquaphor、Aquabase）</td>
+        <td style="font-size:0.82rem;color:var(--text-dim)">有冷羊毛<br>（冷霜 / 含冷羊毛脂 / Eucerin 記法：有[Eu]冷羊毛）</td>
+        <td style="font-size:0.82rem;color:var(--text-dim)">4個字的 + 乳霜<br>（親水軟膏4字 / 消散乳霜4字）</td>
+        <td style="font-size:0.82rem;color:var(--text-dim)">PEG</td>
+      </tr>
+      <tr>
+        <td><strong>油膩感</strong></td>
+        <td>油膩（Oleaginous）</td>
+        <td colspan="2">油膩</td>
+        <td>較少油膩</td>
+        <td>無油膩感（Greaseless）</td>
+      </tr>
+      <tr>
+        <td><strong>特點</strong></td>
+        <td>潤膚；可增加皮膚接觸時間；但吸收量少<br>水不安定抗生素最佳基劑</td>
+        <td>不含水、含親水成分、會吸水<br>可水性藥物作研合</td>
+        <td>含水、會吸水、不溶於水、不易水洗<br>比無水型可與較多水溶液研合</td>
+        <td>含水、會吸水、水可洗除、不溶於水<br>可吸收皮膚漿液；有毛髮部位適用</td>
+        <td>水溶性，又稱無油性或全水型軟膏基劑<br>含有水溶性物質，可能對發炎組織有刺激性</td>
+      </tr>
+      <tr>
+        <td><strong>配伍注意</strong></td>
+        <td>助研劑用礦物油<br>和水有關都不行</td>
+        <td>無水型適合水不安定藥物</td>
+        <td>可加入更多水溶液</td>
+        <td>含SLS（乳化劑）<br>含Parabens（防腐劑）</td>
+        <td>Phenol / Salicylic acid / Tannic acid → 軟化<br>Penicillin / Bacitracin → 藥效降低<br>可加硬脂醇（十八醇）增加硬度</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
-    <div class="info-box gold">
-      <strong>中華藥典命名對照：</strong>烴類基劑 = Oleaginous ／ 吸收性基劑 = Absorption ／ 水和性基劑 = Water-removable（o/w） ／ 水溶性基劑 = Water-soluble
-    </div>
+<!-- VISUAL CHECKLIST SUMMARY (from lecture notes) -->
+<div class="card" style="margin-top:20px;border-color:rgba(255,213,79,0.4);background:rgba(255,213,79,0.03)">
+  <h3 style="color:var(--gold)">★ 軟膏基劑總整理（必考！）表格要熟</h3>
+  <div class="info-box gold" style="margin-bottom:14px;font-size:0.82rem">
+    V4321＋水溶性基劑不含水｜記法：「吸」有嘴巴，「含」也有嘴巴，喝完「含」，杯子會被吸回收「洗」，柯子解析
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th style="color:#90caf9">烴類基劑<br>（油脂性）</th>
+          <th style="color:#80cbc4">吸收性基劑<br>（無水）</th>
+          <th style="color:#80cbc4">吸收性基劑<br>（W/O 型）</th>
+          <th style="color:#a5d6a7">水和性基劑</th>
+          <th style="color:#ce93d8">水溶性基劑</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>吸水</strong></td>
+          <td style="text-align:center"></td>
+          <td style="text-align:center;color:var(--green);font-size:1.1rem">✓</td>
+          <td style="text-align:center;color:var(--green);font-size:1.1rem">✓</td>
+          <td style="text-align:center;color:var(--green);font-size:1.1rem">✓</td>
+          <td style="text-align:center;color:var(--green);font-size:1.1rem">✓</td>
+        </tr>
+        <tr>
+          <td><strong>含水</strong></td>
+          <td style="text-align:center"></td>
+          <td style="text-align:center"></td>
+          <td style="text-align:center;color:var(--green);font-size:1.1rem">✓</td>
+          <td style="text-align:center;color:var(--green);font-size:1.1rem">✓</td>
+          <td style="text-align:center;color:var(--red);font-size:1.1rem">✗</td>
+        </tr>
+        <tr>
+          <td><strong>水洗除</strong></td>
+          <td style="text-align:center"></td>
+          <td style="text-align:center"></td>
+          <td style="text-align:center"></td>
+          <td style="text-align:center;color:var(--green);font-size:1.1rem">✓</td>
+          <td style="text-align:center;color:var(--green);font-size:1.1rem">✓</td>
+        </tr>
+        <tr>
+          <td><strong>水溶</strong></td>
+          <td style="text-align:center"></td>
+          <td style="text-align:center"></td>
+          <td style="text-align:center"></td>
+          <td style="text-align:center"></td>
+          <td style="text-align:center;color:var(--green);font-size:1.1rem">✓</td>
+        </tr>
+        <tr style="background:rgba(255,255,255,0.03)">
+          <td><strong>物質</strong></td>
+          <td style="font-size:0.82rem">軟石蠟<br>單軟膏</td>
+          <td style="font-size:0.82rem">親水軟石蠟<br>無水羊毛脂<br>Aquaphor<br>Aquabase</td>
+          <td style="font-size:0.82rem">冷霜<br>含水羊毛脂<br>Eucerin</td>
+          <td style="font-size:0.82rem">乳霜<br>親水軟膏<br>消散乳霜</td>
+          <td style="font-size:0.82rem">聚乙二醇</td>
+        </tr>
+        <tr>
+          <td><strong>記法</strong></td>
+          <td style="font-size:0.82rem;color:var(--text-dim)">找軟的</td>
+          <td style="font-size:0.82rem;color:var(--text-dim)">5個字的<br>+2A</td>
+          <td style="font-size:0.82rem;color:var(--text-dim)">有冷羊毛</td>
+          <td style="font-size:0.82rem;color:var(--text-dim)">4個字的<br>+乳霜</td>
+          <td style="font-size:0.82rem;color:var(--text-dim)">PEG</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="info-box gold" style="margin-top:16px">
+  <strong>中華藥典命名對照：</strong>烴類基劑 = Oleaginous ／ 吸收性基劑 = Absorption ／ 水和性基劑 = Water-removable（o/w） ／ 水溶性基劑 = Water-soluble
+</div>
+<div class="info-box blue" style="margin-top:8px">
+  <strong>儲存：</strong>一般軟膏 → 30°C 以下之密蓋容器（緊密容器）（可可脂栓劑相同）｜眼用軟膏 → 15°C 以下之滅菌緊密容器
+</div>
+```
+
   </section>
 
   <!-- ═══════════════════════════ SECTION 3 ═══════════════════════════ -->
+
   <section class="section" id="oleaginous">
     <div class="section-header">
       <span class="section-num">03</span>
@@ -618,106 +733,110 @@
       <div class="section-divider"></div>
     </div>
 
-    <div class="grid-3">
-      <div class="card">
-        <h3>黃軟石蠟（Petrolatum）</h3>
-        <ul class="compact-list">
-          <li>又稱 Yellow Vaseline®、Petroleum Jelly</li>
-          <li>熔點：38–60°C</li>
-          <li>幾乎可與任何藥物混合</li>
-          <li>水不安定抗生素（Penicillin、Bacitracin、Tetracycline）之最佳基劑</li>
-          <li><strong>最適合眼用軟膏基劑</strong>（未脫色）</li>
-        </ul>
-        <h4>增加吸水能力可添加</h4>
-        <ul class="compact-list">
-          <li><strong>Anhydrous lanolin</strong>（無水羊毛脂）— 15% 可使吸水達 50%</li>
-          <li><strong>Stearyl alcohol</strong>（十八醇 / 硬脂醇）</li>
-          <li><strong>Glyceryl monostearate</strong>（非離子型界面活性劑）</li>
-          <li><strong>Sorbitol oleate</strong>（山梨醇油酸酯）</li>
-          <li><strong>Cholesterol</strong>（膽固醇）</li>
-          <li><strong>Cetyl alcohol</strong>（十六醇 / 鯨蠟醇）</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3>白軟石蠟（White Petrolatum）</h3>
-        <ul class="compact-list">
-          <li>黃軟石蠟脫色版，外觀較佳</li>
-          <li>市售品多用之（White Vaseline®）</li>
-          <li>中華藥典：白軟石蠟 + 白臘 = <strong>白軟膏</strong></li>
-          <li>USP：黃軟石蠟 + 黃臘 = <strong>單軟膏（Yellow Ointment）</strong></li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3>其他烴類基劑</h3>
-        <h4>固體石蠟（Paraffin）</h4>
-        <p>熔點50–57°C，作為硬化劑（stiffening agent）</p>
-        <h4>地蠟（Ceresin）</h4>
-        <p>熔點61–78°C，硬化劑</p>
-        <h4>微晶石蠟（Microcrystalline Wax）</h4>
-        <p>改變其他蠟類結晶構造，作硬化劑；飽和烴，能穩定基劑結構，防止蠟油析出</p>
-      </div>
-    </div>
+```
+<div class="grid-3">
+  <div class="card">
+    <h3>黃軟石蠟（Petrolatum）</h3>
+    <ul class="compact-list">
+      <li>又稱 Yellow Vaseline®、Petroleum Jelly</li>
+      <li>熔點：38–60°C</li>
+      <li>幾乎可與任何藥物混合</li>
+      <li>水不安定抗生素（Penicillin、Bacitracin、Tetracycline）之最佳基劑</li>
+      <li><strong>最適合眼用軟膏基劑</strong>（未脫色）</li>
+    </ul>
+    <h4>增加吸水能力可添加</h4>
+    <ul class="compact-list">
+      <li><strong>Anhydrous lanolin</strong>（無水羊毛脂）— 15% 可使吸水達 50%</li>
+      <li><strong>Stearyl alcohol</strong>（十八醇 / 硬脂醇）</li>
+      <li><strong>Glyceryl monostearate</strong>（非離子型界面活性劑）</li>
+      <li><strong>Sorbitol oleate</strong>（山梨醇油酸酯）</li>
+      <li><strong>Cholesterol</strong>（膽固醇）</li>
+      <li><strong>Cetyl alcohol</strong>（十六醇 / 鯨蠟醇）</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h3>白軟石蠟（White Petrolatum）</h3>
+    <ul class="compact-list">
+      <li>黃軟石蠟脫色版，外觀較佳</li>
+      <li>市售品多用之（White Vaseline®）</li>
+      <li>中華藥典：白軟石蠟 + 白臘 = <strong>白軟膏</strong></li>
+      <li>USP：黃軟石蠟 + 黃臘 = <strong>單軟膏（Yellow Ointment）</strong></li>
+    </ul>
+  </div>
+  <div class="card">
+    <h3>其他烴類基劑</h3>
+    <h4>固體石蠟（Paraffin）</h4>
+    <p>熔點50–57°C，作為硬化劑（stiffening agent）</p>
+    <h4>地蠟（Ceresin）</h4>
+    <p>熔點61–78°C，硬化劑</p>
+    <h4>微晶石蠟（Microcrystalline Wax）</h4>
+    <p>改變其他蠟類結晶構造，作硬化劑；飽和烴，能穩定基劑結構，防止蠟油析出</p>
+  </div>
+</div>
 
-    <!-- Plastibase detailed card -->
-    <div class="card" style="margin-top:16px;border-color:rgba(206,147,216,0.3);background:rgba(206,147,216,0.04)">
-      <h3 style="color:var(--purple)">Plastibase®（Jelene®）— 重要市售品</h3>
-      <div class="grid-2">
-        <div>
-          <h4>組成與凝膠化機制</h4>
-          <ul class="compact-list">
-            <li>聚乙烯（Polyethylene）<strong>5%</strong> + 礦油（Mineral oil）<strong>95%</strong></li>
-            <li>由<strong>石油提煉</strong>；液體狀原料</li>
-            <li><strong>90°C 以上</strong>（接近熔點 90–91°C）：聚乙烯溶於礦油 → 製劑呈液狀</li>
-            <li><strong>90°C 以下</strong>：聚乙烯因溶解度下降而沉澱析出，長鏈聚乙烯相互混纏形成<strong>網狀架構</strong>，將礦油固定在網中 → 凝膠化（半固體）</li>
-            <li>室溫下為柔軟、油膩、無色之凍膠狀物質</li>
-            <li>可在 <strong>−15 ~ 60°C</strong> 內維持理想稠度（溫度穩定性佳）</li>
-          </ul>
-        </div>
-        <div>
-          <h4>軟化注意事項</h4>
-          <div class="info-box red">
-            下列藥物會被 Plastibase 溶解，造成軟膏<strong>過軟</strong>：<br>
-            <ul class="compact-list" style="margin-top:6px">
-              <li><strong>Menthol（薄荷醇）</strong></li>
-              <li><strong>Methyl salicylate（水楊酸甲酯）</strong></li>
-              <li><strong>Camphor（樟腦）</strong></li>
-              <li><strong>Coal tar（煤焦油）</strong> → 過軟且易脫落</li>
-            </ul>
-          </div>
-          <h4 style="margin-top:14px">牙科應用</h4>
-          <ul class="compact-list">
-            <li>可做<strong>牙科保護糊劑、口內膏基劑</strong>（因溫度變化下稠度穩定，適合飲食過程）</li>
-            <li>可與甲醇（Methanol）產生<strong>共熔現象</strong></li>
-          </ul>
-          <h4 style="margin-top:14px">Orabase® 配方</h4>
-          <div class="formula">
-            <div><span class="component">Plastibase</span>  <span class="note">— 基劑骨架</span></div>
-            <div><span class="component">Gelatin</span>      <span class="note">— 明膠，增加黏性</span></div>
-            <div><span class="component">Pectin</span>       <span class="note">— 果膠，增加黏性</span></div>
-            <div><span class="component">Sodium CMC</span>   <span class="note">— 纖維素衍生物，增加黏性</span></div>
-          </div>
-          <p style="font-size:0.8rem;color:var(--text-dim);margin-top:6px">飲食過程中易刮走藥膏，上述三種成分可增加黏附性</p>
-        </div>
-      </div>
+<!-- Plastibase detailed card -->
+<div class="card" style="margin-top:16px;border-color:rgba(206,147,216,0.3);background:rgba(206,147,216,0.04)">
+  <h3 style="color:var(--purple)">Plastibase®（Jelene®）— 重要市售品</h3>
+  <div class="grid-2">
+    <div>
+      <h4>組成與凝膠化機制</h4>
+      <ul class="compact-list">
+        <li>聚乙烯（Polyethylene）<strong>5%</strong> + 礦油（Mineral oil）<strong>95%</strong></li>
+        <li>由<strong>石油提煉</strong>；液體狀原料</li>
+        <li><strong>90°C 以上</strong>（接近熔點 90–91°C）：聚乙烯溶於礦油 → 製劑呈液狀</li>
+        <li><strong>90°C 以下</strong>：聚乙烯因溶解度下降而沉澱析出，長鏈聚乙烯相互混纏形成<strong>網狀架構</strong>，將礦油固定在網中 → 凝膠化（半固體）</li>
+        <li>室溫下為柔軟、油膩、無色之凍膠狀物質</li>
+        <li>可在 <strong>−15 ~ 60°C</strong> 內維持理想稠度（溫度穩定性佳）</li>
+      </ul>
     </div>
+    <div>
+      <h4>軟化注意事項</h4>
+      <div class="info-box red">
+        下列藥物會被 Plastibase 溶解，造成軟膏<strong>過軟</strong>：<br>
+        <ul class="compact-list" style="margin-top:6px">
+          <li><strong>Menthol（薄荷醇）</strong></li>
+          <li><strong>Methyl salicylate（水楊酸甲酯）</strong></li>
+          <li><strong>Camphor（樟腦）</strong></li>
+          <li><strong>Coal tar（煤焦油）</strong> → 過軟且易脫落</li>
+        </ul>
+      </div>
+      <h4 style="margin-top:14px">牙科應用</h4>
+      <ul class="compact-list">
+        <li>可做<strong>牙科保護糊劑、口內膏基劑</strong>（因溫度變化下稠度穩定，適合飲食過程）</li>
+        <li>可與甲醇（Methanol）產生<strong>共熔現象</strong></li>
+      </ul>
+      <h4 style="margin-top:14px">Orabase® 配方</h4>
+      <div class="formula">
+        <div><span class="component">Plastibase</span>  <span class="note">— 基劑骨架</span></div>
+        <div><span class="component">Gelatin</span>      <span class="note">— 明膠，增加黏性</span></div>
+        <div><span class="component">Pectin</span>       <span class="note">— 果膠，增加黏性</span></div>
+        <div><span class="component">Sodium CMC</span>   <span class="note">— 纖維素衍生物，增加黏性</span></div>
+      </div>
+      <p style="font-size:0.8rem;color:var(--text-dim);margin-top:6px">飲食過程中易刮走藥膏，上述三種成分可增加黏附性</p>
+    </div>
+  </div>
+</div>
 
-    <div class="card">
-      <h3>礦油分類速查</h3>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th>形態</th><th>名稱</th><th>主要用途</th></tr></thead>
-          <tbody>
-            <tr><td>液體</td><td>礦物油 / 液體石蠟（Mineral Oil / Liquid Petrolatum）</td><td>助研劑（Levigating agent）— 氧化鋅軟膏</td></tr>
-            <tr><td>半固體</td><td>黃軟石蠟（Petrolatum）</td><td>眼用軟膏基劑首選</td></tr>
-            <tr><td>半固體</td><td>白軟石蠟（White Petrolatum）</td><td>市售品常用，賣相佳</td></tr>
-            <tr><td>固體</td><td>固體石蠟 / 地蠟 / 微晶石蠟</td><td>硬化劑（熔點高）</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
+<div class="card">
+  <h3>礦油分類速查</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>形態</th><th>名稱</th><th>主要用途</th></tr></thead>
+      <tbody>
+        <tr><td>液體</td><td>礦物油 / 液體石蠟（Mineral Oil / Liquid Petrolatum）</td><td>助研劑（Levigating agent）— 氧化鋅軟膏</td></tr>
+        <tr><td>半固體</td><td>黃軟石蠟（Petrolatum）</td><td>眼用軟膏基劑首選</td></tr>
+        <tr><td>半固體</td><td>白軟石蠟（White Petrolatum）</td><td>市售品常用，賣相佳</td></tr>
+        <tr><td>固體</td><td>固體石蠟 / 地蠟 / 微晶石蠟</td><td>硬化劑（熔點高）</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+```
+
   </section>
 
   <!-- ═══════════════════════════ SECTION 4 ═══════════════════════════ -->
+
   <section class="section" id="absorption">
     <div class="section-header">
       <span class="section-num">04</span>
@@ -725,165 +844,169 @@
       <div class="section-divider"></div>
     </div>
 
-    <div class="info-box gold" style="margin-bottom:20px">
-      吸收性基劑分為兩大類型，特性不同，切勿混淆：
-    </div>
+```
+<div class="info-box gold" style="margin-bottom:20px">
+  吸收性基劑分為兩大類型，特性不同，切勿混淆：
+</div>
 
-    <!-- TYPE 1 -->
-    <div style="border:1px solid rgba(79,195,247,0.35);border-radius:6px;padding:20px 24px;margin-bottom:20px;background:rgba(79,195,247,0.04)">
-      <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
-        <span style="background:var(--accent);color:var(--bg);font-family:var(--mono);font-size:0.72rem;font-weight:700;padding:3px 10px;border-radius:2px;letter-spacing:0.06em">TYPE 1</span>
-        <span style="font-family:var(--serif);font-size:1.05rem;font-weight:600;color:var(--accent)">無水但親水型（Anhydrous）</span>
-        <span style="font-size:0.8rem;color:var(--text-dim)">— 本身無水，但可吸水並與水溶液研合形成 w/o 乳劑</span>
+<!-- TYPE 1 -->
+<div style="border:1px solid rgba(79,195,247,0.35);border-radius:6px;padding:20px 24px;margin-bottom:20px;background:rgba(79,195,247,0.04)">
+  <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
+    <span style="background:var(--accent);color:var(--bg);font-family:var(--mono);font-size:0.72rem;font-weight:700;padding:3px 10px;border-radius:2px;letter-spacing:0.06em">TYPE 1</span>
+    <span style="font-family:var(--serif);font-size:1.05rem;font-weight:600;color:var(--accent)">無水但親水型（Anhydrous）</span>
+    <span style="font-size:0.8rem;color:var(--text-dim)">— 本身無水，但可吸水並與水溶液研合形成 w/o 乳劑</span>
+  </div>
+  <div class="grid-2">
+    <div class="card">
+      <h3>Hydrophilic Petrolatum（親水軟石蠟）</h3>
+      <div class="formula">
+        <div><span class="component">Cholesterol</span>       <span class="amount">30 g</span>  <span class="note">— W/O emulsifier，主要親水來源</span></div>
+        <div><span class="component">Stearyl alcohol</span>   <span class="amount">30 g</span>  <span class="note">— 增硬度 / 熱安定性 / 皮膚滑膩感</span></div>
+        <div><span class="component">White wax</span>         <span class="amount">80 g</span></div>
+        <div><span class="component">White petrolatum</span>  <span class="amount">860 g</span></div>
       </div>
-      <div class="grid-2">
-        <div class="card">
-          <h3>Hydrophilic Petrolatum（親水軟石蠟）</h3>
-          <div class="formula">
-            <div><span class="component">Cholesterol</span>       <span class="amount">30 g</span>  <span class="note">— W/O emulsifier，主要親水來源</span></div>
-            <div><span class="component">Stearyl alcohol</span>   <span class="amount">30 g</span>  <span class="note">— 增硬度 / 熱安定性 / 皮膚滑膩感</span></div>
-            <div><span class="component">White wax</span>         <span class="amount">80 g</span></div>
-            <div><span class="component">White petrolatum</span>  <span class="amount">860 g</span></div>
-          </div>
-          <ul class="compact-list" style="margin-top:10px">
-            <li>加水後形成 <strong>w/o 型乳劑基劑</strong></li>
-            <li>可吸收自身重量 <strong>3 倍以上</strong>的水溶液</li>
-            <li>為水溶液調製軟膏時的<strong>研合輔助劑</strong></li>
-            <li>變化方：<strong>Aquaphor®、Aquabase®</strong>（含 cholesterol）</li>
-            <li><strong>Eucerin®</strong>：含 wool fat alcohol，可吸水達 700%</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>無水羊毛脂（Anhydrous Lanolin）</h3>
-          <ul class="compact-list">
-            <li>從綿羊羊毛取得的蠟樣物質</li>
-            <li>含水量 &lt;0.25%</li>
-            <li>天然乳化劑，可形成 w/o emulsion</li>
-            <li>含膽固醇、異膽固醇、氧化膽固醇</li>
-            <li>易酸敗、黏稠度大</li>
-            <li>Modified Lanolin：降低游離醇含量、農藥殘留</li>
-          </ul>
-          <div class="info-box blue" style="margin-top:10px">
-            無水吸收性基劑亦適合<strong>水不安定抗生素</strong>（與油脂性基劑同理）
-          </div>
-        </div>
+      <ul class="compact-list" style="margin-top:10px">
+        <li>加水後形成 <strong>w/o 型乳劑基劑</strong></li>
+        <li>可吸收自身重量 <strong>3 倍以上</strong>的水溶液</li>
+        <li>為水溶液調製軟膏時的<strong>研合輔助劑</strong></li>
+        <li>變化方：<strong>Aquaphor®、Aquabase®</strong>（含 cholesterol）</li>
+        <li><strong>Eucerin®</strong>：含 wool fat alcohol，可吸水達 700%</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>無水羊毛脂（Anhydrous Lanolin）</h3>
+      <ul class="compact-list">
+        <li>從綿羊羊毛取得的蠟樣物質</li>
+        <li>含水量 &lt;0.25%</li>
+        <li>天然乳化劑，可形成 w/o emulsion</li>
+        <li>含膽固醇、異膽固醇、氧化膽固醇</li>
+        <li>易酸敗、黏稠度大</li>
+        <li>Modified Lanolin：降低游離醇含量、農藥殘留</li>
+      </ul>
+      <div class="info-box blue" style="margin-top:10px">
+        無水吸收性基劑亦適合<strong>水不安定抗生素</strong>（與油脂性基劑同理）
       </div>
     </div>
+  </div>
+</div>
 
-    <!-- TYPE 2 -->
-    <div style="border:1px solid rgba(255,171,64,0.35);border-radius:6px;padding:20px 24px;background:rgba(255,171,64,0.04)">
-      <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
-        <span style="background:var(--orange);color:var(--bg);font-family:var(--mono);font-size:0.72rem;font-weight:700;padding:3px 10px;border-radius:2px;letter-spacing:0.06em">TYPE 2</span>
-        <span style="font-family:var(--serif);font-size:1.05rem;font-weight:600;color:var(--orange)">含水型 w/o 乳劑（Water-containing）</span>
-        <span style="font-size:0.8rem;color:var(--text-dim)">— 已為 w/o 乳劑，可再加入額外水溶液</span>
-      </div>
-      <div class="grid-2">
-        <div class="card">
-          <h3>含水羊毛脂（Lanolin / Hydrous Wool Fat）</h3>
-          <ul class="compact-list">
-            <li>含水量 <strong>25–30%</strong></li>
-            <li>吸收性、乳劑性基劑</li>
-            <li>含膽固醇 + 氧化膽固醇</li>
-            <li>可再進一步加入水溶液</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>Cold Cream（冷霜）</h3>
-          <div class="formula">
-            <div><span class="component">Mineral oil</span>    <span class="amount">50 g</span>  <span class="note">— 油相（研合劑）</span></div>
-            <div><span class="component">Beeswax</span>        <span class="amount">14 g</span>  <span class="note">— 硬化劑；含游離脂肪酸</span></div>
-            <div><span class="component">Borax</span>          <span class="amount">0.7 g</span> <span class="note">— 與蜂蠟游離酸→鈉肥皂（乳化劑）</span></div>
-            <div><span class="component">Purified water</span> <span class="amount">35.3 g</span></div>
-          </div>
-          <ul class="compact-list" style="margin-top:8px">
-            <li><strong>W/O 型</strong>；水分揮發後產生清涼感</li>
-            <li>水分 &gt;45% 才會製成 o/w</li>
-            <li>蜂蠟少→較軟，可加微晶蠟或鯨蠟增加硬度</li>
-            <li>現代版常改用非離子型界面活性劑代替硼砂+蜂蠟體系</li>
-          </ul>
-        </div>
-      </div>
+<!-- TYPE 2 -->
+<div style="border:1px solid rgba(255,171,64,0.35);border-radius:6px;padding:20px 24px;background:rgba(255,171,64,0.04)">
+  <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
+    <span style="background:var(--orange);color:var(--bg);font-family:var(--mono);font-size:0.72rem;font-weight:700;padding:3px 10px;border-radius:2px;letter-spacing:0.06em">TYPE 2</span>
+    <span style="font-family:var(--serif);font-size:1.05rem;font-weight:600;color:var(--orange)">含水型 w/o 乳劑（Water-containing）</span>
+    <span style="font-size:0.8rem;color:var(--text-dim)">— 已為 w/o 乳劑，可再加入額外水溶液</span>
+  </div>
+  <div class="grid-2">
+    <div class="card">
+      <h3>含水羊毛脂（Lanolin / Hydrous Wool Fat）</h3>
+      <ul class="compact-list">
+        <li>含水量 <strong>25–30%</strong></li>
+        <li>吸收性、乳劑性基劑</li>
+        <li>含膽固醇 + 氧化膽固醇</li>
+        <li>可再進一步加入水溶液</li>
+      </ul>
     </div>
+    <div class="card">
+      <h3>Cold Cream（冷霜）</h3>
+      <div class="formula">
+        <div><span class="component">Mineral oil</span>    <span class="amount">50 g</span>  <span class="note">— 油相（研合劑）</span></div>
+        <div><span class="component">Beeswax</span>        <span class="amount">14 g</span>  <span class="note">— 硬化劑；含游離脂肪酸</span></div>
+        <div><span class="component">Borax</span>          <span class="amount">0.7 g</span> <span class="note">— 與蜂蠟游離酸→鈉肥皂（乳化劑）</span></div>
+        <div><span class="component">Purified water</span> <span class="amount">35.3 g</span></div>
+      </div>
+      <ul class="compact-list" style="margin-top:8px">
+        <li><strong>W/O 型</strong>；水分揮發後產生清涼感</li>
+        <li>水分 &gt;45% 才會製成 o/w</li>
+        <li>蜂蠟少→較軟，可加微晶蠟或鯨蠟增加硬度</li>
+        <li>現代版常改用非離子型界面活性劑代替硼砂+蜂蠟體系</li>
+      </ul>
+    </div>
+  </div>
+</div>
 
-    <!-- COMPARISON TABLE -->
-    <div class="card" style="margin-top:20px;border-color:rgba(79,195,247,0.4)">
-      <h3 style="color:var(--accent)">★ 親水軟石蠟 vs 親水軟膏 比較（國考常考）</h3>
-      <div class="table-wrap" style="margin-top:12px">
-        <table>
-          <thead>
-            <tr>
-              <th>比較項目</th>
-              <th style="color:#81d4fa">Hydrophilic Petrolatum（親水軟石蠟）</th>
-              <th style="color:#69f0ae">Hydrophilic Ointment（親水軟膏）</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>基劑分類</strong></td>
-              <td>吸收性基劑（Absorption）</td>
-              <td>水和性基劑（Water-removable）</td>
-            </tr>
-            <tr>
-              <td><strong>乳劑型別</strong></td>
-              <td>w/o（加水後形成）</td>
-              <td>o/w（外相為水相）</td>
-            </tr>
-            <tr>
-              <td><strong>配方成分</strong></td>
-              <td>Cholesterol 30 g<br>Stearyl alcohol 30 g<br>White wax 80 g<br>White petrolatum 860 g</td>
-              <td>White petrolatum 250 g<br>Stearyl alcohol 250 g<br>SLS 10 g<br>Propylene glycol 120 g<br>Methylparaben/Propylparaben 0.25/0.15 g<br>Purified water 370 g</td>
-            </tr>
-            <tr>
-              <td><strong>界面活性劑</strong></td>
-              <td>Cholesterol（w/o emulsifier）</td>
-              <td>Sodium lauryl sulfate, SLS（HLB 40，親水性 → o/w）</td>
-            </tr>
-            <tr>
-              <td><strong>含水</strong></td>
-              <td>無水（本身不含水）</td>
-              <td>含水（aqueous phase 370 g）</td>
-            </tr>
-            <tr>
-              <td><strong>防腐劑</strong></td>
-              <td>不需要（無水）</td>
-              <td>需要 — Methylparaben / Propylparaben</td>
-            </tr>
-            <tr>
-              <td><strong>保濕劑</strong></td>
-              <td>無</td>
-              <td>Propylene glycol（因外相是水相，需幫助基劑滯留水分）</td>
-            </tr>
-            <tr>
-              <td><strong>水洗性</strong></td>
-              <td>不易水洗</td>
-              <td>易用水洗除 ✓</td>
-            </tr>
-            <tr>
-              <td><strong>吸收漿液</strong></td>
-              <td>可（加水形成 w/o）</td>
-              <td>可（外相為水，可與漿液融合）</td>
-            </tr>
-            <tr>
-              <td><strong>水不安定藥物</strong></td>
-              <td>無水型可適用 ✓</td>
-              <td>不適合 ✗（含水）</td>
-            </tr>
-            <tr>
-              <td><strong>制備溫度</strong></td>
-              <td>油相加熱熔化（融合法）</td>
-              <td>油相加熱至約 <strong>75°C</strong>；水相另行溶解後加入攪拌至凝固</td>
-            </tr>
-            <tr>
-              <td><strong>記法</strong></td>
-              <td colspan="2" style="color:var(--text-dim);font-size:0.82rem">親水軟石蠟本身還是軟石蠟（油質），之所以「親水」只是因為加了界面活性劑（Cholesterol）→ 吸收性基劑；<br>親水軟膏 = o/w 乳劑，外相是水 → 水和性基劑</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
+<!-- COMPARISON TABLE -->
+<div class="card" style="margin-top:20px;border-color:rgba(79,195,247,0.4)">
+  <h3 style="color:var(--accent)">★ 親水軟石蠟 vs 親水軟膏 比較（國考常考）</h3>
+  <div class="table-wrap" style="margin-top:12px">
+    <table>
+      <thead>
+        <tr>
+          <th>比較項目</th>
+          <th style="color:#81d4fa">Hydrophilic Petrolatum（親水軟石蠟）</th>
+          <th style="color:#69f0ae">Hydrophilic Ointment（親水軟膏）</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>基劑分類</strong></td>
+          <td>吸收性基劑（Absorption）</td>
+          <td>水和性基劑（Water-removable）</td>
+        </tr>
+        <tr>
+          <td><strong>乳劑型別</strong></td>
+          <td>w/o（加水後形成）</td>
+          <td>o/w（外相為水相）</td>
+        </tr>
+        <tr>
+          <td><strong>配方成分</strong></td>
+          <td>Cholesterol 30 g<br>Stearyl alcohol 30 g<br>White wax 80 g<br>White petrolatum 860 g</td>
+          <td>White petrolatum 250 g<br>Stearyl alcohol 250 g<br>SLS 10 g<br>Propylene glycol 120 g<br>Methylparaben/Propylparaben 0.25/0.15 g<br>Purified water 370 g</td>
+        </tr>
+        <tr>
+          <td><strong>界面活性劑</strong></td>
+          <td>Cholesterol（w/o emulsifier）</td>
+          <td>Sodium lauryl sulfate, SLS（HLB 40，親水性 → o/w）</td>
+        </tr>
+        <tr>
+          <td><strong>含水</strong></td>
+          <td>無水（本身不含水）</td>
+          <td>含水（aqueous phase 370 g）</td>
+        </tr>
+        <tr>
+          <td><strong>防腐劑</strong></td>
+          <td>不需要（無水）</td>
+          <td>需要 — Methylparaben / Propylparaben</td>
+        </tr>
+        <tr>
+          <td><strong>保濕劑</strong></td>
+          <td>無</td>
+          <td>Propylene glycol（因外相是水相，需幫助基劑滯留水分）</td>
+        </tr>
+        <tr>
+          <td><strong>水洗性</strong></td>
+          <td>不易水洗</td>
+          <td>易用水洗除 ✓</td>
+        </tr>
+        <tr>
+          <td><strong>吸收漿液</strong></td>
+          <td>可（加水形成 w/o）</td>
+          <td>可（外相為水，可與漿液融合）</td>
+        </tr>
+        <tr>
+          <td><strong>水不安定藥物</strong></td>
+          <td>無水型可適用 ✓</td>
+          <td>不適合 ✗（含水）</td>
+        </tr>
+        <tr>
+          <td><strong>制備溫度</strong></td>
+          <td>油相加熱熔化（融合法）</td>
+          <td>油相加熱至約 <strong>75°C</strong>；水相另行溶解後加入攪拌至凝固</td>
+        </tr>
+        <tr>
+          <td><strong>記法</strong></td>
+          <td colspan="2" style="color:var(--text-dim);font-size:0.82rem">親水軟石蠟本身還是軟石蠟（油質），之所以「親水」只是因為加了界面活性劑（Cholesterol）→ 吸收性基劑；<br>親水軟膏 = o/w 乳劑，外相是水 → 水和性基劑</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+```
+
   </section>
 
   <!-- ═══════════════════════════ SECTION 5 ═══════════════════════════ -->
+
   <section class="section" id="water-removable">
     <div class="section-header">
       <span class="section-num">05</span>
@@ -891,51 +1014,55 @@
       <div class="section-divider"></div>
     </div>
 
-    <div class="card">
-      <h3>Hydrophilic Ointment（親水軟膏）— o/w 乳劑型</h3>
-      <div class="grid-2">
-        <div>
-          <div class="formula">
-            <div><span class="component">White petrolatum</span>          <span class="amount">250 g</span>  <span class="note">— 油相（Oleaginous phase）</span></div>
-            <div><span class="component">Stearyl alcohol</span>           <span class="amount">250 g</span>  <span class="note">— 油相（幫助基劑滯留水分）</span></div>
-            <div><span class="component">Sodium lauryl sulfate (SLS)</span><span class="amount">10 g</span>   <span class="note">— 乳化劑；HLB 40，親水性 → o/w</span></div>
-            <div><span class="component">Propylene glycol</span>           <span class="amount">120 g</span>  <span class="note">— 保濕劑（因外相是水相）</span></div>
-            <div style="padding:4px 0 2px 0;font-size:0.8rem;color:var(--red);font-family:var(--mono)">⚠ 丙二醇（Propylene glycol）≠ 乙二醇（Ethylene glycol）— 乙二醇是抗凍劑，有毒，不可混淆</div>
-            <div><span class="component">Methylparaben / Propylparaben</span><span class="amount">0.25 / 0.15 g</span><span class="note">— 防腐劑（preservatives）</span></div>
-            <div><span class="component">Purified water</span>             <span class="amount">370 g</span>  <span class="note">— 水相（aqueous phase）</span></div>
-          </div>
-          <div class="info-box blue" style="margin-top:10px">
-            <strong>一般含有：</strong>antimicrobial preservatives、stabilizers（antioxidant, metal chelating agents, buffers）、humectants（glycerin, propylene glycol）、emulsifiers
-          </div>
-        </div>
-        <div>
-          <h4>製備步驟</h4>
-          <div class="steps">
-            <div class="step">
-              <div class="step-num">1</div>
-              <div class="step-body">油相（White petrolatum + Stearyl alcohol）加熱至約 <strong>75°C</strong> 熔化</div>
-            </div>
-            <div class="step">
-              <div class="step-num">2</div>
-              <div class="step-body">其餘成分（SLS、Propylene glycol、Parabens）溶解於純化水中</div>
-            </div>
-            <div class="step">
-              <div class="step-num">3</div>
-              <div class="step-body">水相加入油相中，持續攪拌至凝固（congealed）</div>
-            </div>
-          </div>
-          <div class="info-box green" style="margin-top:10px">
-            <strong>特性：</strong>可用水稀釋、易水洗、可吸收漿液（外相為水相）、有毛髮部位適用
-          </div>
-          <div class="info-box red" style="margin-top:8px">
-            <strong>注意：</strong>含水 → 需防腐劑；不適合水不安定藥物
-          </div>
-        </div>
+```
+<div class="card">
+  <h3>Hydrophilic Ointment（親水軟膏）— o/w 乳劑型</h3>
+  <div class="grid-2">
+    <div>
+      <div class="formula">
+        <div><span class="component">White petrolatum</span>          <span class="amount">250 g</span>  <span class="note">— 油相（Oleaginous phase）</span></div>
+        <div><span class="component">Stearyl alcohol</span>           <span class="amount">250 g</span>  <span class="note">— 油相（幫助基劑滯留水分）</span></div>
+        <div><span class="component">Sodium lauryl sulfate (SLS)</span><span class="amount">10 g</span>   <span class="note">— 乳化劑；HLB 40，親水性 → o/w</span></div>
+        <div><span class="component">Propylene glycol</span>           <span class="amount">120 g</span>  <span class="note">— 保濕劑（因外相是水相）</span></div>
+        <div style="padding:4px 0 2px 0;font-size:0.8rem;color:var(--red);font-family:var(--mono)">⚠ 丙二醇（Propylene glycol）≠ 乙二醇（Ethylene glycol）— 乙二醇是抗凍劑，有毒，不可混淆</div>
+        <div><span class="component">Methylparaben / Propylparaben</span><span class="amount">0.25 / 0.15 g</span><span class="note">— 防腐劑（preservatives）</span></div>
+        <div><span class="component">Purified water</span>             <span class="amount">370 g</span>  <span class="note">— 水相（aqueous phase）</span></div>
+      </div>
+      <div class="info-box blue" style="margin-top:10px">
+        <strong>一般含有：</strong>antimicrobial preservatives、stabilizers（antioxidant, metal chelating agents, buffers）、humectants（glycerin, propylene glycol）、emulsifiers
       </div>
     </div>
+    <div>
+      <h4>製備步驟</h4>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-body">油相（White petrolatum + Stearyl alcohol）加熱至約 <strong>75°C</strong> 熔化</div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-body">其餘成分（SLS、Propylene glycol、Parabens）溶解於純化水中</div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-body">水相加入油相中，持續攪拌至凝固（congealed）</div>
+        </div>
+      </div>
+      <div class="info-box green" style="margin-top:10px">
+        <strong>特性：</strong>可用水稀釋、易水洗、可吸收漿液（外相為水相）、有毛髮部位適用
+      </div>
+      <div class="info-box red" style="margin-top:8px">
+        <strong>注意：</strong>含水 → 需防腐劑；不適合水不安定藥物
+      </div>
+    </div>
+  </div>
+</div>
+```
+
   </section>
 
   <!-- ═══════════════════════════ SECTION 6 ═══════════════════════════ -->
+
   <section class="section" id="water-soluble">
     <div class="section-header">
       <span class="section-num">06</span>
@@ -943,46 +1070,53 @@
       <div class="section-divider"></div>
     </div>
 
-    <div class="grid-2">
-      <div class="card">
-        <h3>PEG Ointment（聚乙二醇軟膏）</h3>
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th>分子量</th><th>室溫狀態</th></tr></thead>
-            <tbody>
-              <tr><td>&lt;600</td><td>澄清無色液體</td></tr>
-              <tr><td>600–1000</td><td>半固體</td></tr>
-              <tr><td>&gt;1000</td><td>白色蠟狀固體</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="formula" style="margin-top:12px">
-          <div><span class="note">一般配方：</span><span class="component">PEG 3350</span> <span class="amount">400 g</span> + <span class="component">PEG 400</span> <span class="amount">600 g</span></div>
-          <div><span class="note">加水時：加入</span><span class="component">Stearyl alcohol</span> <span class="amount">50 g</span><span class="note"> 增加硬度</span></div>
-        </div>
-      </div>
-      <div class="card">
-        <h3>PEG 配伍禁忌</h3>
-        <div class="info-box red">
-          <ul class="compact-list">
-            <li><strong>Phenol、Salicylic acid、Tannic acid</strong> → 使基劑軟化</li>
-            <li><strong>Penicillin、Bacitracin</strong> → 藥效降低</li>
-            <li>苯甲酸相容性差 → 可加入 <strong>1,2,6-hexanetriol</strong> 改善</li>
-          </ul>
-        </div>
-        <h3 style="margin-top:16px">特性</h3>
-        <ul class="compact-list">
-          <li>完全無油脂成分（Greaseless）</li>
-          <li>接受度高，不油膩</li>
-          <li>主要用於固體藥物之研合</li>
-          <li>加入大量水溶液會使基劑過軟</li>
-          <li>glycol 對外傷皮膚或黏膜可能刺激</li>
-        </ul>
-      </div>
+```
+<div class="grid-2">
+  <div class="card">
+    <h3>PEG Ointment（聚乙二醇軟膏）</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>分子量</th><th>室溫狀態</th></tr></thead>
+        <tbody>
+          <tr><td>&lt;600</td><td>澄清無色液體</td></tr>
+          <tr><td>600–1000</td><td>半固體</td></tr>
+          <tr><td>&gt;1000</td><td>白色蠟狀固體</td></tr>
+        </tbody>
+      </table>
     </div>
+    <div class="formula" style="margin-top:12px">
+      <div><span class="note">一般配方：</span><span class="component">PEG 3350</span> <span class="amount">400 g</span> + <span class="component">PEG 400</span> <span class="amount">600 g</span></div>
+      <div><span class="note">加水時：加入</span><span class="component">Stearyl alcohol</span> <span class="amount">50 g</span><span class="note"> 增加硬度</span></div>
+    </div>
+  </div>
+  <div class="card">
+    <h3>PEG 配伍禁忌</h3>
+    <div class="info-box red">
+      <ul class="compact-list">
+        <li><strong>Phenol、Salicylic acid、Tannic acid</strong> → 使基劑軟化</li>
+        <li><strong>Penicillin、Bacitracin</strong> → 藥效降低</li>
+        <li>苯甲酸相容性差 → 可加入 <strong>1,2,6-hexanetriol</strong> 改善</li>
+      </ul>
+    </div>
+    <h3 style="margin-top:16px">特性</h3>
+    <ul class="compact-list">
+      <li>完全無油脂成分（Greaseless）</li>
+      <li>又稱<strong>無油性</strong>或<strong>全水型</strong>軟膏基劑</li>
+      <li>接受度高，不油膩</li>
+      <li>主要用於固體藥物之研合</li>
+      <li>加入大量水溶液會使基劑過軟</li>
+    </ul>
+    <div class="info-box red" style="margin-top:8px">
+      ⚠ 因這類基劑極性大，塗抹在傷口會有<strong>刺激性或刺痛感</strong>（對發炎組織有刺激性）
+    </div>
+  </div>
+</div>
+```
+
   </section>
 
   <!-- ═══════════════════════════ SECTION 7 ═══════════════════════════ -->
+
   <section class="section" id="prep">
     <div class="section-header">
       <span class="section-num">07</span>
@@ -990,110 +1124,114 @@
       <div class="section-divider"></div>
     </div>
 
-    <div class="grid-2">
-      <!-- INCORPORATION -->
-      <div class="card">
-        <h3>混合法（Incorporation）</h3>
-        <p style="font-size:0.84rem;color:var(--text-dim);margin-bottom:12px">將各成分混合至均勻；依據成分性質決定是否使用。</p>
+```
+<div class="grid-2">
+  <!-- INCORPORATION -->
+  <div class="card">
+    <h3>混合法（Incorporation）</h3>
+    <p style="font-size:0.84rem;color:var(--text-dim);margin-bottom:12px">將各成分混合至均勻；依據成分性質決定是否使用。</p>
 
-        <h4>操作規模</h4>
-        <ul class="compact-list">
-          <li><strong>小規模：</strong>研缽和研杵；或用藥膏抹刀在軟膏板上混合</li>
-          <li><strong>大規模：</strong>軟膏研磨機（Ointment mill）、電動研缽研杵（Unguator®）</li>
-        </ul>
+    <h4>操作規模</h4>
+    <ul class="compact-list">
+      <li><strong>小規模：</strong>研缽和研杵；或用藥膏抹刀在軟膏板上混合</li>
+      <li><strong>大規模：</strong>軟膏研磨機（Ointment mill）、電動研缽研杵（Unguator®）</li>
+    </ul>
 
-        <h4>粉末處理（避免顆粒感）</h4>
-        <div class="steps">
-          <div class="step">
-            <div class="step-num">1</div>
-            <div class="step-body"><strong>粒徑縮小</strong>：研磨（Trituration）或研調法（Levigation）— 避免最終產品有顆粒感</div>
-          </div>
-          <div class="step">
-            <div class="step-num">2</div>
-            <div class="step-body"><strong>助研劑（Levigating agent）</strong>選擇：<br>油為外相 → <strong>礦物油（Mineral oil）</strong><br>水為外相 → <strong>甘油（Glycerin）</strong></div>
-          </div>
-          <div class="step">
-            <div class="step-num">3</div>
-            <div class="step-body"><strong>幾何稀釋法</strong>（Geometric dilution）逐步研入基劑</div>
-          </div>
-        </div>
-
-        <div class="info-box red" style="margin-top:12px">
-          <strong>（B）金屬腐蝕注意：</strong>碘、有機酸、單寧、汞鹽、水楊酸 → 會腐蝕鐵器<br>
-          → 改用<strong>硬橡膠或矽膠</strong>抹刀；仍可使用 Incorporation 法製備
-        </div>
-
-        <h4 style="margin-top:14px">特殊成分處理</h4>
-        <ul class="compact-list">
-          <li><strong>樟腦（Camphor）</strong>：以乙醇（Ethanol）為溶劑，採介入粉碎法（Pulverization by intervention）</li>
-          <li><strong>祕魯香膠（Peru Balsam）</strong>：先與蓖麻油（Castor oil）1:1 研合，降低表面張力後再研入基劑</li>
-          <li><strong>天然香膠（Natural balsam）</strong>：先 1:1 混合蓖麻油再研入</li>
-        </ul>
+    <h4>粉末處理（避免顆粒感）</h4>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body"><strong>粒徑縮小</strong>：研磨（Trituration）或研調法（Levigation）— 避免最終產品有顆粒感</div>
       </div>
-
-      <!-- FUSION -->
-      <div class="card">
-        <h3>熔合法（Fusion）</h3>
-        <p style="font-size:0.84rem;color:var(--text-dim);margin-bottom:10px">將所有或部分軟膏成分一起加熱熔融，冷卻時持續攪拌至凝結。</p>
-
-        <h4>適用情境（A）</h4>
-        <p style="font-size:0.84rem;margin-bottom:8px">含有下列成分、不易以混合法混合時使用：</p>
-        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px">
-          <span class="tag tag-gold">蜂蠟 Beeswax</span>
-          <span class="tag tag-gold">石蠟 Paraffin</span>
-          <span class="tag tag-gold">硬脂醇 Stearyl alcohol</span>
-          <span class="tag tag-gold">高分子量 PEG</span>
-        </div>
-
-        <h4>添加順序原則</h4>
-        <div class="steps">
-          <div class="step">
-            <div class="step-num">A</div>
-            <div class="step-body"><strong>方法1（藥物熱穩定）</strong>：熔點最高者先加熱熔化 → 依序加入熔點次高者 → 最後加藥物 → 攪拌冷卻</div>
-          </div>
-          <div class="step">
-            <div class="step-num">B</div>
-            <div class="step-body"><strong>方法2（節能）</strong>：熔點最低者先熔化作為溶劑，依序加入其餘成分（各成分未必都暴露於最高溫）</div>
-          </div>
-        </div>
-
-        <div class="info-box red" style="margin-top:10px">
-          對<strong>熱不安定</strong>或<strong>揮發性</strong>成分：應待溫度降低至不會分解或揮發時，<strong>最後</strong>才加入
-        </div>
-
-        <h4 style="margin-top:14px">乳劑型基劑製備</h4>
-        <div class="steps">
-          <div class="step">
-            <div class="step-num">1</div>
-            <div class="step-body">油相（Waxes + oils）加熱至 <strong>70–75°C</strong></div>
-          </div>
-          <div class="step">
-            <div class="step-num">2</div>
-            <div class="step-body">水相（同樣加熱至 70–75°C）緩慢加入油相，攪拌均勻，維持 <strong>5–10 分鐘</strong></div>
-          </div>
-          <div class="step">
-            <div class="step-num">3</div>
-            <div class="step-body">緩慢冷卻並持續攪拌至凝固（congealed）</div>
-          </div>
-        </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body"><strong>助研劑（Levigating agent）</strong>選擇：<br>油為外相 → <strong>礦物油（Mineral oil）</strong><br>水為外相 → <strong>甘油（Glycerin）</strong></div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body"><strong>幾何稀釋法</strong>（Geometric dilution）逐步研入基劑</div>
       </div>
     </div>
 
-    <div class="card" style="margin-top:16px">
-      <h3>研合法 vs 熔合法 選擇原則</h3>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th>方法</th><th>適用情境</th><th>代表劑型</th></tr></thead>
-          <tbody>
-            <tr><td>混合法（Incorporation）</td><td>室溫可混合的成分；不含高熔點蠟類</td><td>ZnO ointment、硫磺軟膏</td></tr>
-            <tr><td>熔合法（Fusion）</td><td>含蜂蠟、石蠟、高分子PEG；大部分乳劑型基劑</td><td>PEG Ointment、Cold Cream、Hydrophilic Ointment</td></tr>
-          </tbody>
-        </table>
+    <div class="info-box red" style="margin-top:12px">
+      <strong>（B）金屬腐蝕注意：</strong>碘、有機酸、單寧、汞鹽、水楊酸 → 會腐蝕鐵器<br>
+      → 改用<strong>硬橡膠或矽膠</strong>抹刀；仍可使用 Incorporation 法製備
+    </div>
+
+    <h4 style="margin-top:14px">特殊成分處理</h4>
+    <ul class="compact-list">
+      <li><strong>樟腦（Camphor）</strong>：以乙醇（Ethanol）為溶劑，採介入粉碎法（Pulverization by intervention）</li>
+      <li><strong>祕魯香膠（Peru Balsam）</strong>：先與蓖麻油（Castor oil）1:1 研合，降低表面張力後再研入基劑</li>
+      <li><strong>天然香膠（Natural balsam）</strong>：先 1:1 混合蓖麻油再研入</li>
+    </ul>
+  </div>
+
+  <!-- FUSION -->
+  <div class="card">
+    <h3>熔合法（Fusion）</h3>
+    <p style="font-size:0.84rem;color:var(--text-dim);margin-bottom:10px">將所有或部分軟膏成分一起加熱熔融，冷卻時持續攪拌至凝結。</p>
+
+    <h4>適用情境（A）</h4>
+    <p style="font-size:0.84rem;margin-bottom:8px">含有下列成分、不易以混合法混合時使用：</p>
+    <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px">
+      <span class="tag tag-gold">蜂蠟 Beeswax</span>
+      <span class="tag tag-gold">石蠟 Paraffin</span>
+      <span class="tag tag-gold">硬脂醇 Stearyl alcohol</span>
+      <span class="tag tag-gold">高分子量 PEG</span>
+    </div>
+
+    <h4>添加順序原則</h4>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">A</div>
+        <div class="step-body"><strong>方法1（藥物熱穩定）</strong>：熔點最高者先加熱熔化 → 依序加入熔點次高者 → 最後加藥物 → 攪拌冷卻</div>
+      </div>
+      <div class="step">
+        <div class="step-num">B</div>
+        <div class="step-body"><strong>方法2（節能）</strong>：熔點最低者先熔化作為溶劑，依序加入其餘成分（各成分未必都暴露於最高溫）</div>
       </div>
     </div>
+
+    <div class="info-box red" style="margin-top:10px">
+      對<strong>熱不安定</strong>或<strong>揮發性</strong>成分：應待溫度降低至不會分解或揮發時，<strong>最後</strong>才加入
+    </div>
+
+    <h4 style="margin-top:14px">乳劑型基劑製備</h4>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">油相（Waxes + oils）加熱至 <strong>70–75°C</strong></div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">水相（同樣加熱至 70–75°C）緩慢加入油相，攪拌均勻，維持 <strong>5–10 分鐘</strong></div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">緩慢冷卻並持續攪拌至凝固（congealed）</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card" style="margin-top:16px">
+  <h3>研合法 vs 熔合法 選擇原則</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>方法</th><th>適用情境</th><th>代表劑型</th></tr></thead>
+      <tbody>
+        <tr><td>混合法（Incorporation）</td><td>室溫可混合的成分；不含高熔點蠟類</td><td>ZnO ointment、硫磺軟膏</td></tr>
+        <tr><td>熔合法（Fusion）</td><td>含蜂蠟、石蠟、高分子PEG；大部分乳劑型基劑</td><td>PEG Ointment、Cold Cream、Hydrophilic Ointment</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+```
+
   </section>
 
   <!-- ═══════════════════════════ SECTION 7b: ADDITIVES ═══════════════════════════ -->
+
   <section class="section" id="additives">
     <div class="section-header">
       <span class="section-num">07b</span>
@@ -1101,95 +1239,99 @@
       <div class="section-divider"></div>
     </div>
 
-    <div class="grid-2">
-      <!-- ALCOHOLS -->
-      <div class="card">
-        <h3>醇類（Alcohols）</h3>
-        <h4>單元醇（C12–C18 脂肪族醇）</h4>
-        <ul class="compact-list">
-          <li><strong>鯨蠟醇 Cetyl alcohol（C16）/ 硬脂醇 Stearyl alcohol（C18）</strong><br>
-            → 硬化劑；o/w 乳劑安定劑；給皮膚平滑舒適感</li>
-        </ul>
-        <h4>多元醇</h4>
-        <ul class="compact-list">
-          <li><strong>PEG（聚乙烯二醇）</strong>：水溶性基劑；分子量 700–1000 為半固體</li>
-          <li><strong>丙二醇（Propylene glycol）</strong>：保濕劑（humectant）</li>
-          <li><strong>甘油（Glycerol / Glycerin）</strong>：保濕劑；可防止 CMC 凝膠乾燥</li>
-        </ul>
-        <h4>環狀醇</h4>
-        <ul class="compact-list">
-          <li><strong>親水軟石蠟（Cholesterol 為主）</strong>：吸收性基劑；可吸收自身數倍水</li>
-          <li><strong>含水羊毛脂 Lanolin</strong>：吸收性/乳劑性基劑（含水量 25–30%）</li>
-          <li><strong>無水羊毛脂</strong>：吸收性基劑（含水量 &lt;0.25%）；易酸敗</li>
-        </ul>
-      </div>
+```
+<div class="grid-2">
+  <!-- ALCOHOLS -->
+  <div class="card">
+    <h3>醇類（Alcohols）</h3>
+    <h4>單元醇（C12–C18 脂肪族醇）</h4>
+    <ul class="compact-list">
+      <li><strong>鯨蠟醇 Cetyl alcohol（C16）/ 硬脂醇 Stearyl alcohol（C18）</strong><br>
+        → 硬化劑；o/w 乳劑安定劑；給皮膚平滑舒適感</li>
+    </ul>
+    <h4>多元醇</h4>
+    <ul class="compact-list">
+      <li><strong>PEG（聚乙烯二醇）</strong>：水溶性基劑；分子量 700–1000 為半固體</li>
+      <li><strong>丙二醇（Propylene glycol）</strong>：保濕劑（humectant）</li>
+      <li><strong>甘油（Glycerol / Glycerin）</strong>：保濕劑；可防止 CMC 凝膠乾燥</li>
+    </ul>
+    <h4>環狀醇</h4>
+    <ul class="compact-list">
+      <li><strong>親水軟石蠟（Cholesterol 為主）</strong>：吸收性基劑；可吸收自身數倍水</li>
+      <li><strong>含水羊毛脂 Lanolin</strong>：吸收性/乳劑性基劑（含水量 25–30%）</li>
+      <li><strong>無水羊毛脂</strong>：吸收性基劑（含水量 &lt;0.25%）；易酸敗</li>
+    </ul>
+  </div>
 
-      <!-- ACIDS -->
-      <div class="card">
-        <h3>酸類（Acids）</h3>
-        <p style="font-size:0.84rem;margin-bottom:10px">主要為 C12–C18 脂肪族酸，加鹼皂化後作為乳化劑</p>
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th>組合</th><th>產物/特性</th></tr></thead>
-            <tbody>
-              <tr><td>硬脂酸 + NaOH</td><td>鈉肥皂（o/w）；形成較硬軟膏</td></tr>
-              <tr><td>硬脂酸 + KOH</td><td>鉀肥皂（o/w）；柔軟，有<strong>珍珠光澤</strong></td></tr>
-              <tr><td>硬脂酸 + Triethanolamine</td><td>弱鹼性乳霜；品質佳，有<strong>珍珠光澤</strong></td></tr>
-              <tr><td>硬脂酸 + 硼酸鈉（Borax）</td><td>乳霜<strong>雪白但有顆粒感</strong></td></tr>
-              <tr><td>硬脂酸 + 碳酸鈉</td><td>產生 CO₂ 氣泡</td></tr>
-              <tr><td>油酸 + Ca/Mg 鹽</td><td>w/o 乳劑（多價金屬肥皂）</td></tr>
-              <tr><td>油酸 + Na/K 鹽</td><td>o/w 乳劑（單價鹼肥皂）</td></tr>
-              <tr><td>油酸 + 氫氧化銨</td><td>Petroxolin 軟膏基劑（已少用）</td></tr>
-              <tr><td>橄欖油 + Ca(OH)₂</td><td>油酸鈣（Calamine Liniment 原生肥皂法）</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
+  <!-- ACIDS -->
+  <div class="card">
+    <h3>酸類（Acids）</h3>
+    <p style="font-size:0.84rem;margin-bottom:10px">主要為 C12–C18 脂肪族酸，加鹼皂化後作為乳化劑</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>組合</th><th>產物/特性</th></tr></thead>
+        <tbody>
+          <tr><td>硬脂酸 + NaOH</td><td>鈉肥皂（o/w）；形成較硬軟膏</td></tr>
+          <tr><td>硬脂酸 + KOH</td><td>鉀肥皂（o/w）；柔軟，有<strong>珍珠光澤</strong></td></tr>
+          <tr><td>硬脂酸 + Triethanolamine</td><td>弱鹼性乳霜；品質佳，有<strong>珍珠光澤</strong></td></tr>
+          <tr><td>硬脂酸 + 硼酸鈉（Borax）</td><td>乳霜<strong>雪白但有顆粒感</strong></td></tr>
+          <tr><td>硬脂酸 + 碳酸鈉</td><td>產生 CO₂ 氣泡</td></tr>
+          <tr><td>油酸 + Ca/Mg 鹽</td><td>w/o 乳劑（多價金屬肥皂）</td></tr>
+          <tr><td>油酸 + Na/K 鹽</td><td>o/w 乳劑（單價鹼肥皂）</td></tr>
+          <tr><td>油酸 + 氫氧化銨</td><td>Petroxolin 軟膏基劑（已少用）</td></tr>
+          <tr><td>橄欖油 + Ca(OH)₂</td><td>油酸鈣（Calamine Liniment 原生肥皂法）</td></tr>
+        </tbody>
+      </table>
     </div>
+  </div>
+</div>
 
-    <div class="grid-2" style="margin-top:16px">
-      <!-- ESTERS -->
-      <div class="card">
-        <h3>酯類（Esters）</h3>
-        <h4>單元醇酯</h4>
-        <ul class="compact-list">
-          <li><strong>蜂蠟（Beeswax）</strong>：硬化劑；熔點高；含游離脂肪酸（可與 Borax 反應成肥皂）；用於製備冷霜</li>
-          <li><strong>巴西棕櫚蠟（Carnauba wax）</strong>：硬化劑；熔點84–86°C</li>
-          <li><strong>鯨蠟（Spermaceti）</strong>：增加稠度</li>
-          <li><strong>蓖麻油（Castor oil）</strong>：含羥基脂肪酸；祕魯香膠之油質性研合劑；可溶於95%乙醇</li>
-        </ul>
-        <h4>多元醇酯（乳化劑）</h4>
-        <ul class="compact-list">
-          <li><strong>Spans（Sorbitan fatty acid esters）</strong>：親油性，w/o 乳化劑；Arlacel 為類似物</li>
-          <li><strong>Tweens（Polysorbates）</strong>：親水性，o/w 乳化劑</li>
-          <li><strong>Glyceryl monostearate</strong>：使軟石蠟具吸水與乳化性質</li>
-          <li><strong>Sorbitol oleate / laurate</strong>：增加軟石蠟吸水能力</li>
-        </ul>
-      </div>
+<div class="grid-2" style="margin-top:16px">
+  <!-- ESTERS -->
+  <div class="card">
+    <h3>酯類（Esters）</h3>
+    <h4>單元醇酯</h4>
+    <ul class="compact-list">
+      <li><strong>蜂蠟（Beeswax）</strong>：硬化劑；熔點高；含游離脂肪酸（可與 Borax 反應成肥皂）；用於製備冷霜</li>
+      <li><strong>巴西棕櫚蠟（Carnauba wax）</strong>：硬化劑；熔點84–86°C</li>
+      <li><strong>鯨蠟（Spermaceti）</strong>：增加稠度</li>
+      <li><strong>蓖麻油（Castor oil）</strong>：含羥基脂肪酸；祕魯香膠之油質性研合劑；可溶於95%乙醇</li>
+    </ul>
+    <h4>多元醇酯（乳化劑）</h4>
+    <ul class="compact-list">
+      <li><strong>Spans（Sorbitan fatty acid esters）</strong>：親油性，w/o 乳化劑；Arlacel 為類似物</li>
+      <li><strong>Tweens（Polysorbates）</strong>：親水性，o/w 乳化劑</li>
+      <li><strong>Glyceryl monostearate</strong>：使軟石蠟具吸水與乳化性質</li>
+      <li><strong>Sorbitol oleate / laurate</strong>：增加軟石蠟吸水能力</li>
+    </ul>
+  </div>
 
-      <!-- STIFFENERS & MODIFIERS TABLE -->
-      <div class="card">
-        <h3>稠度調節快查表</h3>
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th>添加物</th><th>效果</th><th>備註</th></tr></thead>
-            <tbody>
-              <tr><td>固體石蠟 / 蜂蠟 / 鯨蠟</td><td>稠度 ↑ 硬化</td><td>高熔點成分</td></tr>
-              <tr><td>白蠟 / 黃蠟（White/Yellow Wax）</td><td>稠度 ↑</td><td>USP允許添加以減少溫度影響</td></tr>
-              <tr><td>Cetyl / Stearyl alcohol</td><td>稠度 ↑（硬化劑）</td><td>同時為乳劑安定劑</td></tr>
-              <tr><td>Stearic acid</td><td>稠度 ↑（較不普遍）</td><td>主要作乳化劑</td></tr>
-              <tr><td>礦物油（Mineral oil）</td><td>稠度 ↓（軟化）</td><td>常作研合劑</td></tr>
-              <tr><td>羊毛脂（Lanolin）</td><td>親水性 ↑</td><td>增加含水數</td></tr>
-              <tr><td>Glyceryl monostearate</td><td>吸水性 ↑</td><td>界面活性劑</td></tr>
-              <tr><td>Stearyl alcohol（PEG中）</td><td>硬度 ↑</td><td>取代等量PEG4000</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
+  <!-- STIFFENERS & MODIFIERS TABLE -->
+  <div class="card">
+    <h3>稠度調節快查表</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>添加物</th><th>效果</th><th>備註</th></tr></thead>
+        <tbody>
+          <tr><td>固體石蠟 / 蜂蠟 / 鯨蠟</td><td>稠度 ↑ 硬化</td><td>高熔點成分</td></tr>
+          <tr><td>白蠟 / 黃蠟（White/Yellow Wax）</td><td>稠度 ↑</td><td>USP允許添加以減少溫度影響</td></tr>
+          <tr><td>Cetyl / Stearyl alcohol</td><td>稠度 ↑（硬化劑）</td><td>同時為乳劑安定劑</td></tr>
+          <tr><td>Stearic acid</td><td>稠度 ↑（較不普遍）</td><td>主要作乳化劑</td></tr>
+          <tr><td>礦物油（Mineral oil）</td><td>稠度 ↓（軟化）</td><td>常作研合劑</td></tr>
+          <tr><td>羊毛脂（Lanolin）</td><td>親水性 ↑</td><td>增加含水數</td></tr>
+          <tr><td>Glyceryl monostearate</td><td>吸水性 ↑</td><td>界面活性劑</td></tr>
+          <tr><td>Stearyl alcohol（PEG中）</td><td>硬度 ↑</td><td>取代等量PEG4000</td></tr>
+        </tbody>
+      </table>
     </div>
+  </div>
+</div>
+```
+
   </section>
 
   <!-- ═══════════════════════════ SECTION 7c: CLASSIC PRESCRIPTIONS ═══════════════════════════ -->
+
   <section class="section" id="prescriptions">
     <div class="section-header">
       <span class="section-num">07c</span>
@@ -1197,118 +1339,122 @@
       <div class="section-divider"></div>
     </div>
 
-    <div class="grid-2">
-      <div class="card">
-        <h3>鞣酸軟膏（Tannin Ointment）</h3>
-        <span class="tag tag-blue">油脂性基劑</span>
-        <ul class="compact-list" style="margin-top:10px">
-          <li>用途：<strong>收斂劑</strong></li>
-          <li>重要成分：鞣酸（Tannic acid）、甘油（助溶劑）、無水亞硫酸鈉（抗氧化劑）</li>
-          <li>⚠ 調劑或儲藏時，<strong>切勿使用鐵製器皿</strong>（鞣酸、碘、水楊酸均會腐蝕金屬）</li>
-        </ul>
-      </div>
+```
+<div class="grid-2">
+  <div class="card">
+    <h3>鞣酸軟膏（Tannin Ointment）</h3>
+    <span class="tag tag-blue">油脂性基劑</span>
+    <ul class="compact-list" style="margin-top:10px">
+      <li>用途：<strong>收斂劑</strong></li>
+      <li>重要成分：鞣酸（Tannic acid）、甘油（助溶劑）、無水亞硫酸鈉（抗氧化劑）</li>
+      <li>⚠ 調劑或儲藏時，<strong>切勿使用鐵製器皿</strong>（鞣酸、碘、水楊酸均會腐蝕金屬）</li>
+    </ul>
+  </div>
 
-      <div class="card">
-        <h3>硫磺軟膏（Sulfur Ointment）</h3>
-        <span class="tag tag-blue">油脂性基劑</span>
-        <ul class="compact-list" style="margin-top:10px">
-          <li>每100g 含硫 9.5–10.5 g</li>
-          <li>重要成分：<strong>沉澱硫</strong>、礦物油 / 液體石蠟（<strong>研合劑</strong>）</li>
-          <li>用途：外用殺菌劑、殺疥劑</li>
-          <li>製備：研合法（Incorporation）</li>
-        </ul>
-      </div>
+  <div class="card">
+    <h3>硫磺軟膏（Sulfur Ointment）</h3>
+    <span class="tag tag-blue">油脂性基劑</span>
+    <ul class="compact-list" style="margin-top:10px">
+      <li>每100g 含硫 9.5–10.5 g</li>
+      <li>重要成分：<strong>沉澱硫</strong>、礦物油 / 液體石蠟（<strong>研合劑</strong>）</li>
+      <li>用途：外用殺菌劑、殺疥劑</li>
+      <li>製備：研合法（Incorporation）</li>
+    </ul>
+  </div>
 
-      <div class="card">
-        <h3>消散乳霜（Vanishing Cream / 雪花膏）</h3>
-        <span class="tag tag-green">O/W 乳劑型基劑</span>
-        <ul class="compact-list" style="margin-top:10px">
-          <li>又稱<strong>硬脂酸乳霜</strong></li>
-          <li>重要成分：丙二醇/甘油（保濕劑）、陰離子界面活性劑（硬脂酸+鹼）</li>
-          <li>硬脂酸含量 <strong>10–25%</strong></li>
-          <li>塗敷後水分揮發→留下薄膜（硬脂酸或其鹽類）</li>
-        </ul>
-        <div class="info-box red" style="margin-top:10px">
-          ⚠ <strong>禁忌：</strong>含陰離子界面活性劑（硬脂酸鹽），不得和<strong>酸、硬水、陽離子界面活性劑</strong>共用
-        </div>
-      </div>
+  <div class="card">
+    <h3>消散乳霜（Vanishing Cream / 雪花膏）</h3>
+    <span class="tag tag-green">O/W 乳劑型基劑</span>
+    <ul class="compact-list" style="margin-top:10px">
+      <li>又稱<strong>硬脂酸乳霜</strong></li>
+      <li>重要成分：丙二醇/甘油（保濕劑）、陰離子界面活性劑（硬脂酸+鹼）</li>
+      <li>硬脂酸含量 <strong>10–25%</strong></li>
+      <li>塗敷後水分揮發→留下薄膜（硬脂酸或其鹽類）</li>
+    </ul>
+    <div class="info-box red" style="margin-top:10px">
+      ⚠ <strong>禁忌：</strong>含陰離子界面活性劑（硬脂酸鹽），不得和<strong>酸、硬水、陽離子界面活性劑</strong>共用
+    </div>
+  </div>
 
-      <div class="card">
-        <h3>冷霜（Cold Cream）</h3>
-        <span class="tag tag-orange">W/O 乳劑型（吸收性）</span>
-        <ul class="compact-list" style="margin-top:10px">
-          <li>重要成分：<strong>蜂蠟、硼酸鈉（Borax）、礦物油</strong></li>
-          <li>蜂蠟中含游離脂肪酸 + Borax → 皂化反應 → 鈉肥皂（乳化劑）</li>
-          <li>製備：蜂蠟與礦油加熱至 70°C，再加入硼酸鈉攪拌</li>
-          <li>水分揮發→清涼感</li>
-        </ul>
-      </div>
+  <div class="card">
+    <h3>冷霜（Cold Cream）</h3>
+    <span class="tag tag-orange">W/O 乳劑型（吸收性）</span>
+    <ul class="compact-list" style="margin-top:10px">
+      <li>重要成分：<strong>蜂蠟、硼酸鈉（Borax）、礦物油</strong></li>
+      <li>蜂蠟中含游離脂肪酸 + Borax → 皂化反應 → 鈉肥皂（乳化劑）</li>
+      <li>製備：蜂蠟與礦油加熱至 70°C，再加入硼酸鈉攪拌</li>
+      <li>水分揮發→清涼感</li>
+    </ul>
+  </div>
 
-      <div class="card">
-        <h3>親水性軟膏（Hydrophilic Ointment）</h3>
-        <span class="tag tag-green">O/W 乳劑型（水合性基劑）</span>
-        <ul class="compact-list" style="margin-top:10px">
-          <li>重要成分：
-            <ul style="padding-left:16px;margin-top:4px">
-              <li>Methylparaben / Propylparaben — 防腐劑</li>
-              <li>Sodium Lauryl Sulfate（SLS）— 乳化劑</li>
-              <li>Stearyl Alcohol — 油相</li>
-              <li>White Petrolatum — 油相</li>
-              <li>Propylene glycol — 保濕劑</li>
-            </ul>
-          </li>
+  <div class="card">
+    <h3>親水性軟膏（Hydrophilic Ointment）</h3>
+    <span class="tag tag-green">O/W 乳劑型（水合性基劑）</span>
+    <ul class="compact-list" style="margin-top:10px">
+      <li>重要成分：
+        <ul style="padding-left:16px;margin-top:4px">
+          <li>Methylparaben / Propylparaben — 防腐劑</li>
+          <li>Sodium Lauryl Sulfate（SLS）— 乳化劑</li>
+          <li>Stearyl Alcohol — 油相</li>
+          <li>White Petrolatum — 油相</li>
+          <li>Propylene glycol — 保濕劑</li>
         </ul>
-      </div>
+      </li>
+    </ul>
+  </div>
 
-      <div class="card">
-        <h3>煤焦油軟膏（Coal Tar Ointment）</h3>
-        <span class="tag tag-blue">油脂性基劑</span>
-        <ul class="compact-list" style="margin-top:10px">
-          <li>重要成分：<strong>煤焦油、氧化鋅、澱粉、軟石蠟、Tween 80</strong>（分散劑，幫助水洗）</li>
-          <li>最佳製備順序（口訣：<strong>心軟澱沒</strong>→ 鋅軟石蠟澱粉煤焦油）：</li>
-        </ul>
-        <div class="steps" style="margin-top:8px">
-          <div class="step">
-            <div class="step-num">1</div>
-            <div class="step-body"><strong>氧化鋅</strong>研入軟石蠟（油質性基劑）</div>
-          </div>
-          <div class="step">
-            <div class="step-num">2</div>
-            <div class="step-body">加入<strong>澱粉</strong></div>
-          </div>
-          <div class="step">
-            <div class="step-num">3</div>
-            <div class="step-body">最後研入<strong>煤焦油</strong> → 均勻灰色軟膏（最佳）</div>
-          </div>
-        </div>
-        <div class="info-box red" style="margin-top:8px">⚠ 順序不同則顏色與品質差異極大，此順序為考點！</div>
+  <div class="card">
+    <h3>煤焦油軟膏（Coal Tar Ointment）</h3>
+    <span class="tag tag-blue">油脂性基劑</span>
+    <ul class="compact-list" style="margin-top:10px">
+      <li>重要成分：<strong>煤焦油、氧化鋅、澱粉、軟石蠟、Tween 80</strong>（分散劑，幫助水洗）</li>
+      <li>最佳製備順序（口訣：<strong>心軟澱沒</strong>→ 鋅軟石蠟澱粉煤焦油）：</li>
+    </ul>
+    <div class="steps" style="margin-top:8px">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body"><strong>氧化鋅</strong>研入軟石蠟（油質性基劑）</div>
       </div>
-
-      <div class="card">
-        <h3>氧化鋅軟膏（ZnO Ointment）</h3>
-        <span class="tag tag-blue">油脂性基劑</span>
-        <ul class="compact-list" style="margin-top:10px">
-          <li>ZnO 粉末先與<strong>液體石蠟（礦物油）</strong>研合（助研劑）再加入基劑</li>
-          <li>製備：研合法</li>
-          <li>基劑：白軟石蠟（烴類）</li>
-        </ul>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">加入<strong>澱粉</strong></div>
       </div>
-
-      <div class="card">
-        <h3>PEG 軟膏（聚乙二醇軟膏）</h3>
-        <span class="tag tag-purple">水溶性基劑</span>
-        <ul class="compact-list" style="margin-top:10px">
-          <li>PEG 4000 + PEG 400 之混合物</li>
-          <li>非離子物質，水溶性、不油膩、不水解</li>
-          <li>加水溶液時 → 加入<strong>硬脂醇（十八醇）</strong>取代等量 PEG 4000，維持硬度</li>
-          <li>加苯甲酸、水楊酸、鞣酸、酚、Bacitracin 時 → 加入 <strong>1,2,6-Hexanetriol</strong> 改善相容性</li>
-          <li>製備：<strong>熔合法（Fusion）</strong></li>
-        </ul>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">最後研入<strong>煤焦油</strong> → 均勻灰色軟膏（最佳）</div>
       </div>
     </div>
+    <div class="info-box red" style="margin-top:8px">⚠ 順序不同則顏色與品質差異極大，此順序為考點！</div>
+  </div>
+
+  <div class="card">
+    <h3>氧化鋅軟膏（ZnO Ointment）</h3>
+    <span class="tag tag-blue">油脂性基劑</span>
+    <ul class="compact-list" style="margin-top:10px">
+      <li>ZnO 粉末先與<strong>液體石蠟（礦物油）</strong>研合（助研劑）再加入基劑</li>
+      <li>製備：研合法</li>
+      <li>基劑：白軟石蠟（烴類）</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>PEG 軟膏（聚乙二醇軟膏）</h3>
+    <span class="tag tag-purple">水溶性基劑</span>
+    <ul class="compact-list" style="margin-top:10px">
+      <li>PEG 4000 + PEG 400 之混合物</li>
+      <li>非離子物質，水溶性、不油膩、不水解</li>
+      <li>加水溶液時 → 加入<strong>硬脂醇（十八醇）</strong>取代等量 PEG 4000，維持硬度</li>
+      <li>加苯甲酸、水楊酸、鞣酸、酚、Bacitracin 時 → 加入 <strong>1,2,6-Hexanetriol</strong> 改善相容性</li>
+      <li>製備：<strong>熔合法（Fusion）</strong></li>
+    </ul>
+  </div>
+</div>
+```
+
   </section>
 
   <!-- ═══════════════════════════ SECTION 8 ═══════════════════════════ -->
+
   <section class="section" id="qc">
     <div class="section-header">
       <span class="section-num">08</span>
@@ -1316,87 +1462,91 @@
       <div class="section-divider"></div>
     </div>
 
-    <div class="grid-2">
-      <div class="card">
-        <h3>最低內容量試驗（Minimum Fill）</h3>
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th>標誌量</th><th>第一階段（10件）</th><th>第二階段（再取20件，共30件）</th></tr></thead>
-            <tbody>
-              <tr>
-                <td>≦ 60 g（或 ml）</td>
-                <td>平均不低於標誌量；<br>單一不低於 <strong>90%</strong></td>
-                <td>平均不低於標誌量；<br>低於90%者不超過1件</td>
-              </tr>
-              <tr>
-                <td>&gt; 60 g（或 ml）</td>
-                <td>平均不低於標誌量；<br>單一不低於 <strong>95%</strong></td>
-                <td>平均不低於標誌量；<br>低於95%者不超過1件</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-      <div class="card">
-        <h3>微生物含量</h3>
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th>用途</th><th>需檢測菌種</th></tr></thead>
-            <tbody>
-              <tr><td>眼用軟膏</td><td>必須無菌（Sterile）</td></tr>
-              <tr><td>皮膚科產品</td><td>金黃色葡萄球菌（S. aureus）+ 綠膿桿菌（P. aeruginosa）</td></tr>
-              <tr><td>直腸、尿道、陰道</td><td>酵母菌（Yeasts）+ 黴菌（Molds）</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="info-box blue" style="margin-top:12px">
-          <strong>常用防腐劑：</strong>Methylparaben、Propylparaben、Phenols、Benzoic acid、Sorbic acid、Quaternary ammonium salts
-        </div>
-      </div>
+```
+<div class="grid-2">
+  <div class="card">
+    <h3>最低內容量試驗（Minimum Fill）</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>標誌量</th><th>第一階段（10件）</th><th>第二階段（再取20件，共30件）</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>≦ 60 g（或 ml）</td>
+            <td>平均不低於標誌量；<br>單一不低於 <strong>90%</strong></td>
+            <td>平均不低於標誌量；<br>低於90%者不超過1件</td>
+          </tr>
+          <tr>
+            <td>&gt; 60 g（或 ml）</td>
+            <td>平均不低於標誌量；<br>單一不低於 <strong>95%</strong></td>
+            <td>平均不低於標誌量；<br>低於95%者不超過1件</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
+  </div>
+  <div class="card">
+    <h3>微生物含量</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>用途</th><th>需檢測菌種</th></tr></thead>
+        <tbody>
+          <tr><td>眼用軟膏</td><td>必須無菌（Sterile）</td></tr>
+          <tr><td>皮膚科產品</td><td>金黃色葡萄球菌（S. aureus）+ 綠膿桿菌（P. aeruginosa）</td></tr>
+          <tr><td>直腸、尿道、陰道</td><td>酵母菌（Yeasts）+ 黴菌（Molds）</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="info-box blue" style="margin-top:12px">
+      <strong>常用防腐劑：</strong>Methylparaben、Propylparaben、Phenols、Benzoic acid、Sorbic acid、Quaternary ammonium salts
+    </div>
+  </div>
+</div>
 
-    <div class="card" style="margin-top:16px">
-      <h3>眼用軟膏金屬粒子試驗（USP / 中華藥典）</h3>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th>階段</th><th>取管數</th><th>合格標準</th></tr></thead>
-          <tbody>
-            <tr>
-              <td>第一階段</td>
-              <td>10 支</td>
-              <td>≥50 μm 粒子<strong>總數不超過50個</strong>；且≥50 μm 粒子超過8個的管數不超過<strong>1支</strong></td>
-            </tr>
-            <tr>
-              <td>第二階段（初檢不符時）</td>
-              <td>再取20支（共30支）</td>
-              <td>≥50 μm 粒子<strong>總數不超過150個</strong>；超過8個的管數不超過<strong>3支</strong></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="info-box purple" style="margin-top:12px">
-        <strong>方法：</strong>以顯微鏡利用金屬粒子<strong>光反射特性</strong>進行檢測；軟膏加熱熔化（85°C，2小時）後鏡檢。
-      </div>
-    </div>
+<div class="card" style="margin-top:16px">
+  <h3>眼用軟膏金屬粒子試驗（USP / 中華藥典）</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>階段</th><th>取管數</th><th>合格標準</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>第一階段</td>
+          <td>10 支</td>
+          <td>≥50 μm 粒子<strong>總數不超過50個</strong>；且≥50 μm 粒子超過8個的管數不超過<strong>1支</strong></td>
+        </tr>
+        <tr>
+          <td>第二階段（初檢不符時）</td>
+          <td>再取20支（共30支）</td>
+          <td>≥50 μm 粒子<strong>總數不超過150個</strong>；超過8個的管數不超過<strong>3支</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="info-box purple" style="margin-top:12px">
+    <strong>方法：</strong>以顯微鏡利用金屬粒子<strong>光反射特性</strong>進行檢測；軟膏加熱熔化（85°C，2小時）後鏡檢。
+  </div>
+</div>
 
-    <div class="card">
-      <h3>眼用軟膏滅菌</h3>
-      <ul class="compact-list">
-        <li>蒸氣/環氧乙烷 → 無法穿透基劑，<strong>不適用</strong></li>
-        <li>乾熱法 → <strong>175°C，2小時</strong>（可穿透基劑）</li>
-        <li>實際多採 <strong>Aseptic processing（無菌操作）</strong></li>
-      </ul>
-      <h4 style="margin-top:12px">常用防腐劑</h4>
-      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:6px">
-        <span class="tag tag-blue">Methylparaben 0.05% / Propylparaben 0.01%</span>
-        <span class="tag tag-gold">Phenylmercuric acetate 0.0008%</span>
-        <span class="tag tag-green">Chlorobutanol 0.5%</span>
-        <span class="tag tag-purple">Benzalkonium chloride 0.008%</span>
-      </div>
-    </div>
+<div class="card">
+  <h3>眼用軟膏滅菌</h3>
+  <ul class="compact-list">
+    <li>蒸氣/環氧乙烷 → 無法穿透基劑，<strong>不適用</strong></li>
+    <li>乾熱法 → <strong>175°C，2小時</strong>（可穿透基劑）</li>
+    <li>實際多採 <strong>Aseptic processing（無菌操作）</strong></li>
+  </ul>
+  <h4 style="margin-top:12px">常用防腐劑</h4>
+  <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:6px">
+    <span class="tag tag-blue">Methylparaben 0.05% / Propylparaben 0.01%</span>
+    <span class="tag tag-gold">Phenylmercuric acetate 0.0008%</span>
+    <span class="tag tag-green">Chlorobutanol 0.5%</span>
+    <span class="tag tag-purple">Benzalkonium chloride 0.008%</span>
+  </div>
+</div>
+```
+
   </section>
 
   <!-- ═══════════════════════════ SECTION 9 ═══════════════════════════ -->
+
   <section class="section" id="creams">
     <div class="section-header">
       <span class="section-num">09</span>
@@ -1404,40 +1554,44 @@
       <div class="section-divider"></div>
     </div>
 
-    <div class="info-box blue">
-      「Cream」單獨使用時，通常指 <strong>o/w 型（Water-washable）</strong>製劑。<br>
-      W/O cream = 不可水洗（如Cold Cream）；O/W cream = 可水洗（如Hydrophilic Ointment、Vanishing Cream）
-    </div>
+```
+<div class="info-box blue">
+  「Cream」單獨使用時，通常指 <strong>o/w 型（Water-washable）</strong>製劑。<br>
+  W/O cream = 不可水洗（如Cold Cream）；O/W cream = 可水洗（如Hydrophilic Ointment、Vanishing Cream）
+</div>
 
-    <div class="grid-2" style="margin-top:20px">
-      <div class="card">
-        <h3>消散乳霜（Vanishing Cream）</h3>
-        <p style="font-size:0.84rem;margin-bottom:10px">o/w 乳劑，塗敷後水分揮發，留下薄薄殘留膜</p>
-        <div class="formula">
-          <div><span class="component">Stearic acid</span>    <span class="amount">10–25%</span> <span class="note">— 主油相，兼乳化劑原料</span></div>
-          <div><span class="component">Triethanolamine</span> <span class="note">— 與硬脂酸反應成乳化劑（triethanolamine stearate）</span></div>
-          <div><span class="component">Purified water</span>  <span class="amount">60–80%</span></div>
-        </div>
-        <div class="key-point">乳化劑：Triethanolamine stearate（TEA stearate）</div>
-      </div>
-      <div class="card">
-        <h3>硬脂酸 + 鹼 製霜特性比較</h3>
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th>鹼</th><th>特性</th></tr></thead>
-            <tbody>
-              <tr><td>NaOH</td><td>形成較硬軟膏</td></tr>
-              <tr><td>KOH</td><td>較柔軟，有珍珠光澤</td></tr>
-              <tr><td>Triethanolamine</td><td>弱鹼性，質佳，有珍珠光澤</td></tr>
-              <tr><td>硼酸鹽（Borate）</td><td>較白，但容易產生顆粒</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
+<div class="grid-2" style="margin-top:20px">
+  <div class="card">
+    <h3>消散乳霜（Vanishing Cream）</h3>
+    <p style="font-size:0.84rem;margin-bottom:10px">o/w 乳劑，塗敷後水分揮發，留下薄薄殘留膜</p>
+    <div class="formula">
+      <div><span class="component">Stearic acid</span>    <span class="amount">10–25%</span> <span class="note">— 主油相，兼乳化劑原料</span></div>
+      <div><span class="component">Triethanolamine</span> <span class="note">— 與硬脂酸反應成乳化劑（triethanolamine stearate）</span></div>
+      <div><span class="component">Purified water</span>  <span class="amount">60–80%</span></div>
     </div>
+    <div class="key-point">乳化劑：Triethanolamine stearate（TEA stearate）</div>
+  </div>
+  <div class="card">
+    <h3>硬脂酸 + 鹼 製霜特性比較</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>鹼</th><th>特性</th></tr></thead>
+        <tbody>
+          <tr><td>NaOH</td><td>形成較硬軟膏</td></tr>
+          <tr><td>KOH</td><td>較柔軟，有珍珠光澤</td></tr>
+          <tr><td>Triethanolamine</td><td>弱鹼性，質佳，有珍珠光澤</td></tr>
+          <tr><td>硼酸鹽（Borate）</td><td>較白，但容易產生顆粒</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+```
+
   </section>
 
   <!-- ═══════════════════════════ SECTION 10 ═══════════════════════════ -->
+
   <section class="section" id="gels">
     <div class="section-header">
       <span class="section-num">10</span>
@@ -1445,138 +1599,142 @@
       <div class="section-divider"></div>
     </div>
 
-    <div class="grid-2">
-      <div class="card">
-        <h3>Single-phase vs Two-phase</h3>
-        <h4>Single-phase（單相）</h4>
-        <ul class="compact-list">
-          <li>巨分子均勻分布，與液體間無明顯界線</li>
-          <li>例：Poloxamer gel、Carbomer gel、Carbopol</li>
-        </ul>
-        <h4>Two-phase（二相）</h4>
-        <ul class="compact-list">
-          <li>小而明顯的微粒子凝絮物（Magma / Milk）</li>
-          <li>具搖變性（Thixotropy）</li>
-          <li>例：Al(OH)₃ gel、Mg(OH)₂（Milk of Magnesia）、Bentonite magma</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3>凝膠儲存</h3>
-        <ul class="compact-list">
-          <li>置於密封容器，防止水分散失</li>
-          <li>避免冷凍</li>
-          <li>Milk of Magnesia：溫度 &gt;35°C 會降低凝膠結構</li>
-        </ul>
-        <h3 style="margin-top:16px">Emulgel</h3>
-        <p style="font-size:0.84rem">難溶藥物溶於油相（礦油 ± paraffin），製成 o/w emulsion，再與 gel 混合。</p>
-      </div>
-    </div>
+```
+<div class="grid-2">
+  <div class="card">
+    <h3>Single-phase vs Two-phase</h3>
+    <h4>Single-phase（單相）</h4>
+    <ul class="compact-list">
+      <li>巨分子均勻分布，與液體間無明顯界線</li>
+      <li>例：Poloxamer gel、Carbomer gel、Carbopol</li>
+    </ul>
+    <h4>Two-phase（二相）</h4>
+    <ul class="compact-list">
+      <li>小而明顯的微粒子凝絮物（Magma / Milk）</li>
+      <li>具搖變性（Thixotropy）</li>
+      <li>例：Al(OH)₃ gel、Mg(OH)₂（Milk of Magnesia）、Bentonite magma</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h3>凝膠儲存</h3>
+    <ul class="compact-list">
+      <li>置於密封容器，防止水分散失</li>
+      <li>避免冷凍</li>
+      <li>Milk of Magnesia：溫度 &gt;35°C 會降低凝膠結構</li>
+    </ul>
+    <h3 style="margin-top:16px">Emulgel</h3>
+    <p style="font-size:0.84rem">難溶藥物溶於油相（礦油 ± paraffin），製成 o/w emulsion，再與 gel 混合。</p>
+  </div>
+</div>
 
-    <div class="card" style="margin-top:16px">
-      <h3>主要膠凝劑（Gelling Agents）比較</h3>
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>膠凝劑</th>
-              <th>溶解特性</th>
-              <th>pH 安定</th>
-              <th>黏度調節</th>
-              <th>特殊注意</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Carbomer（Carbopol）</strong><br><span style="font-size:0.75rem;color:var(--text-muted)">Poly(acrylic acid)</span></td>
-              <td>水中需中和才形成凝膠</td>
-              <td>pH 4.5–11</td>
-              <td>加鹼（NaOH/KOH/TEA）增加；加乙醇或 &gt;3% 電解質降低</td>
-              <td>pH &lt;4 無法形成凝膠；最大黏度在 pH 7</td>
-            </tr>
-            <tr>
-              <td><strong>Methylcellulose（MC）</strong></td>
-              <td>冷水易溶，熱水不易溶</td>
-              <td>pH 2–12</td>
-              <td>高電解質→鹽析↑黏度→沉澱；加熱(≥50°C)形成凝膠</td>
-              <td>與 Paraben 有配伍禁忌（氫鍵失效）</td>
-            </tr>
-            <tr>
-              <td><strong>HPMC（Hypromellose）</strong></td>
-              <td>冷水溶，澄清</td>
-              <td>—</td>
-              <td>凝膠化溫度50–90°C（比MC高）</td>
-              <td>眼用增稠劑常用；與黏膜接觸時間比MC長</td>
-            </tr>
-            <tr>
-              <td><strong>CMC / CMC-Na</strong></td>
-              <td>冷熱水均易溶</td>
-              <td>pH 2–10（最佳 7–9）</td>
-              <td>低pH或高pH → 黏度下降；加甘油防乾燥</td>
-              <td>與乙醇不相溶</td>
-            </tr>
-            <tr>
-              <td><strong>Tragacanth（西黃耆膠）</strong></td>
-              <td>冷水可分散（以醇/甘油/PG先潤濕更佳）</td>
-              <td>pH 4–8</td>
-              <td>可高壓蒸氣滅菌（不破壞）</td>
-              <td>0.1% Benzoic acid 防腐</td>
-            </tr>
-            <tr>
-              <td><strong>Alginic acid</strong></td>
-              <td>水中膨脹200–300倍不溶解</td>
-              <td>—</td>
-              <td>添加鈣鹽→交連→黏度增加</td>
-              <td>1–5% 凝膠增稠劑</td>
-            </tr>
-            <tr>
-              <td><strong>Sodium Alginate</strong></td>
-              <td>&gt;10% 形成凝膠</td>
-              <td>pH 4–10（pH &lt;3 沉澱）</td>
-              <td>電解質↑黏度；高濃度NaCl(~4%)鹽析</td>
-              <td>&gt;2.5% + 鈣鹽 → 較硬安定凝膠</td>
-            </tr>
-            <tr>
-              <td><strong>Gelatin</strong></td>
-              <td>冷水吸水膨脹，熱水溶解</td>
-              <td>—</td>
-              <td>濃度↑凝膠化溫度↑；37°C以上不凝膠</td>
-              <td>Type A（酸處理，豬皮）等電點 pH 7–9；Type B（鹼處理）等電點 pH 4.7–5</td>
-            </tr>
-            <tr>
-              <td><strong>Colloidal SiO₂（Aerosil®）</strong></td>
-              <td>不溶於水，形成膠體</td>
-              <td>pH 7.5 最有效</td>
-              <td>pH↑黏度↑（受pH影響；受溫度影響小）</td>
-              <td>低極性液體中形成凝膠；可產氫鍵液體中不形成</td>
-            </tr>
-            <tr>
-              <td><strong>Bentonite（皂土）</strong></td>
-              <td>水中膨脹12倍</td>
-              <td>pH ≥7（pH &lt;7 助懸力降低）</td>
-              <td>搖變性（Thixotropy）</td>
-              <td>與陽離子藥物/重金屬離子有配伍禁忌</td>
-            </tr>
-            <tr>
-              <td><strong>Poloxamer（Pluronic®）</strong></td>
-              <td>白色蠟狀，15–50% 水溶液</td>
-              <td>酸鹼穩定</td>
-              <td>熱可逆：冷時為液態，體溫時凝膠化</td>
-              <td>Poloxamer 407（F-127）最常用；乳化劑 + 凝膠基劑</td>
-            </tr>
-            <tr>
-              <td><strong>Polyvinyl Alcohol（PVA）</strong></td>
-              <td>冷水較不溶，需加熱</td>
-              <td>—</td>
-              <td>硼砂使PVA交連形成凝膠</td>
-              <td>皮膚上快速乾燥</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
+<div class="card" style="margin-top:16px">
+  <h3>主要膠凝劑（Gelling Agents）比較</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>膠凝劑</th>
+          <th>溶解特性</th>
+          <th>pH 安定</th>
+          <th>黏度調節</th>
+          <th>特殊注意</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Carbomer（Carbopol）</strong><br><span style="font-size:0.75rem;color:var(--text-muted)">Poly(acrylic acid)</span></td>
+          <td>水中需中和才形成凝膠</td>
+          <td>pH 4.5–11</td>
+          <td>加鹼（NaOH/KOH/TEA）增加；加乙醇或 &gt;3% 電解質降低</td>
+          <td>pH &lt;4 無法形成凝膠；最大黏度在 pH 7</td>
+        </tr>
+        <tr>
+          <td><strong>Methylcellulose（MC）</strong></td>
+          <td>冷水易溶，熱水不易溶</td>
+          <td>pH 2–12</td>
+          <td>高電解質→鹽析↑黏度→沉澱；加熱(≥50°C)形成凝膠</td>
+          <td>與 Paraben 有配伍禁忌（氫鍵失效）</td>
+        </tr>
+        <tr>
+          <td><strong>HPMC（Hypromellose）</strong></td>
+          <td>冷水溶，澄清</td>
+          <td>—</td>
+          <td>凝膠化溫度50–90°C（比MC高）</td>
+          <td>眼用增稠劑常用；與黏膜接觸時間比MC長</td>
+        </tr>
+        <tr>
+          <td><strong>CMC / CMC-Na</strong></td>
+          <td>冷熱水均易溶</td>
+          <td>pH 2–10（最佳 7–9）</td>
+          <td>低pH或高pH → 黏度下降；加甘油防乾燥</td>
+          <td>與乙醇不相溶</td>
+        </tr>
+        <tr>
+          <td><strong>Tragacanth（西黃耆膠）</strong></td>
+          <td>冷水可分散（以醇/甘油/PG先潤濕更佳）</td>
+          <td>pH 4–8</td>
+          <td>可高壓蒸氣滅菌（不破壞）</td>
+          <td>0.1% Benzoic acid 防腐</td>
+        </tr>
+        <tr>
+          <td><strong>Alginic acid</strong></td>
+          <td>水中膨脹200–300倍不溶解</td>
+          <td>—</td>
+          <td>添加鈣鹽→交連→黏度增加</td>
+          <td>1–5% 凝膠增稠劑</td>
+        </tr>
+        <tr>
+          <td><strong>Sodium Alginate</strong></td>
+          <td>&gt;10% 形成凝膠</td>
+          <td>pH 4–10（pH &lt;3 沉澱）</td>
+          <td>電解質↑黏度；高濃度NaCl(~4%)鹽析</td>
+          <td>&gt;2.5% + 鈣鹽 → 較硬安定凝膠</td>
+        </tr>
+        <tr>
+          <td><strong>Gelatin</strong></td>
+          <td>冷水吸水膨脹，熱水溶解</td>
+          <td>—</td>
+          <td>濃度↑凝膠化溫度↑；37°C以上不凝膠</td>
+          <td>Type A（酸處理，豬皮）等電點 pH 7–9；Type B（鹼處理）等電點 pH 4.7–5</td>
+        </tr>
+        <tr>
+          <td><strong>Colloidal SiO₂（Aerosil®）</strong></td>
+          <td>不溶於水，形成膠體</td>
+          <td>pH 7.5 最有效</td>
+          <td>pH↑黏度↑（受pH影響；受溫度影響小）</td>
+          <td>低極性液體中形成凝膠；可產氫鍵液體中不形成</td>
+        </tr>
+        <tr>
+          <td><strong>Bentonite（皂土）</strong></td>
+          <td>水中膨脹12倍</td>
+          <td>pH ≥7（pH &lt;7 助懸力降低）</td>
+          <td>搖變性（Thixotropy）</td>
+          <td>與陽離子藥物/重金屬離子有配伍禁忌</td>
+        </tr>
+        <tr>
+          <td><strong>Poloxamer（Pluronic®）</strong></td>
+          <td>白色蠟狀，15–50% 水溶液</td>
+          <td>酸鹼穩定</td>
+          <td>熱可逆：冷時為液態，體溫時凝膠化</td>
+          <td>Poloxamer 407（F-127）最常用；乳化劑 + 凝膠基劑</td>
+        </tr>
+        <tr>
+          <td><strong>Polyvinyl Alcohol（PVA）</strong></td>
+          <td>冷水較不溶，需加熱</td>
+          <td>—</td>
+          <td>硼砂使PVA交連形成凝膠</td>
+          <td>皮膚上快速乾燥</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+```
+
   </section>
 
   <!-- ═══════════════════════════ SECTION 11 ═══════════════════════════ -->
+
   <section class="section" id="misc">
     <div class="section-header">
       <span class="section-num">11</span>
@@ -1584,50 +1742,54 @@
       <div class="section-divider"></div>
     </div>
 
-    <div class="grid-3">
-      <div class="card">
-        <h3>糊劑（Pastes）</h3>
-        <ul class="compact-list">
-          <li>固體成分比例大（≥25%），稠度更大</li>
-          <li>塗敷後保持在原位（不流動）</li>
-          <li>吸收漿液（serous secretions）能力比軟膏強</li>
-          <li>不適合有毛髮部位</li>
-          <li>不在體溫下軟化（不促進吸收）</li>
-        </ul>
-        <div class="formula" style="margin-top:10px">
-          <div><span class="note">ZnO Paste（Lassar's Paste）</span></div>
-          <div><span class="component">ZnO</span> <span class="amount">25%</span> + <span class="component">Starch</span> <span class="amount">25%</span> + <span class="component">White petrolatum</span></div>
-        </div>
-      </div>
-      <div class="card">
-        <h3>硬膏劑（Plasters）</h3>
-        <ul class="compact-list">
-          <li>固態或半固態，塗敷於紙、布或塑膠背材上</li>
-          <li>黏著材料為橡膠基劑或合成樹脂</li>
-          <li>提供長時間局部接觸</li>
-          <li>無藥硬膏 → 保護或機械支撐</li>
-          <li>水楊酸硬膏（10–40%）→ 去除雞眼、疣</li>
-          <li>Adhesive tape 屬硬膏劑（Plasters）</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3>甘油明膠（Glycerogelatins）</h3>
-        <div class="formula">
-          <div><span class="component">Gelatin</span>  <span class="amount">15%</span></div>
-          <div><span class="component">Glycerin</span>  <span class="amount">40%</span></div>
-          <div><span class="component">Water</span>     <span class="amount">35%</span></div>
-          <div><span class="component">Drug</span>      <span class="amount">10%</span></div>
-        </div>
-        <ul class="compact-list" style="margin-top:10px">
-          <li>使用前加溫使其熔化，塗刷後變硬</li>
-          <li>通常以繃帶覆蓋，可停留患部數星期</li>
-          <li>代表：Zinc gelatin boot — 用於靜脈曲張潰瘍（varicose ulcers）</li>
-        </ul>
-      </div>
+```
+<div class="grid-3">
+  <div class="card">
+    <h3>糊劑（Pastes）</h3>
+    <ul class="compact-list">
+      <li>固體成分比例大（≥25%），稠度更大</li>
+      <li>塗敷後保持在原位（不流動）</li>
+      <li>吸收漿液（serous secretions）能力比軟膏強</li>
+      <li>不適合有毛髮部位</li>
+      <li>不在體溫下軟化（不促進吸收）</li>
+    </ul>
+    <div class="formula" style="margin-top:10px">
+      <div><span class="note">ZnO Paste（Lassar's Paste）</span></div>
+      <div><span class="component">ZnO</span> <span class="amount">25%</span> + <span class="component">Starch</span> <span class="amount">25%</span> + <span class="component">White petrolatum</span></div>
     </div>
+  </div>
+  <div class="card">
+    <h3>硬膏劑（Plasters）</h3>
+    <ul class="compact-list">
+      <li>固態或半固態，塗敷於紙、布或塑膠背材上</li>
+      <li>黏著材料為橡膠基劑或合成樹脂</li>
+      <li>提供長時間局部接觸</li>
+      <li>無藥硬膏 → 保護或機械支撐</li>
+      <li>水楊酸硬膏（10–40%）→ 去除雞眼、疣</li>
+      <li>Adhesive tape 屬硬膏劑（Plasters）</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h3>甘油明膠（Glycerogelatins）</h3>
+    <div class="formula">
+      <div><span class="component">Gelatin</span>  <span class="amount">15%</span></div>
+      <div><span class="component">Glycerin</span>  <span class="amount">40%</span></div>
+      <div><span class="component">Water</span>     <span class="amount">35%</span></div>
+      <div><span class="component">Drug</span>      <span class="amount">10%</span></div>
+    </div>
+    <ul class="compact-list" style="margin-top:10px">
+      <li>使用前加溫使其熔化，塗刷後變硬</li>
+      <li>通常以繃帶覆蓋，可停留患部數星期</li>
+      <li>代表：Zinc gelatin boot — 用於靜脈曲張潰瘍（varicose ulcers）</li>
+    </ul>
+  </div>
+</div>
+```
+
   </section>
 
   <!-- ═══════════════════════════ SECTION 12 ═══════════════════════════ -->
+
   <section class="section" id="skin">
     <div class="section-header">
       <span class="section-num">12</span>
@@ -1635,176 +1797,180 @@
       <div class="section-divider"></div>
     </div>
 
-    <!-- THREE LAYERS OVERVIEW -->
-    <div class="card" style="margin-bottom:20px">
-      <h3>人體皮膚三大層次（由外到內）</h3>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th>層次</th><th>厚度</th><th>記法 / 特點</th></tr></thead>
-          <tbody>
-            <tr style="background:rgba(79,195,247,0.07)">
-              <td><strong style="color:var(--accent)">表皮層（Epidermis）</strong></td>
-              <td><strong>0.16–0.8 mm</strong></td>
-              <td>具抗菌、抗化學刺激及抗過敏等效用；共分五層</td>
-            </tr>
-            <tr style="background:rgba(255,213,79,0.06)">
-              <td><strong style="color:var(--gold)">真皮層（Dermis）</strong></td>
-              <td><strong>3–5 mm</strong></td>
-              <td>記法：「真」裡面有 <strong>3</strong> 劃，「皮」有 <strong>5</strong> 劃 → 3–5 mm<br>由彈性纖維（Elastin）與膠原蛋白（Collagen）組成；含豐富血管 → 藥物到達此處進入全身循環；視為<strong>親水層</strong></td>
-            </tr>
-            <tr>
-              <td><strong>皮下脂肪（Subcutaneous fat）</strong></td>
-              <td><strong>5–20 mm</strong></td>
-              <td>三酸甘油酯為主</td>
-            </tr>
-          </tbody>
-        </table>
+```
+<!-- THREE LAYERS OVERVIEW -->
+<div class="card" style="margin-bottom:20px">
+  <h3>人體皮膚三大層次（由外到內）</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>層次</th><th>厚度</th><th>記法 / 特點</th></tr></thead>
+      <tbody>
+        <tr style="background:rgba(79,195,247,0.07)">
+          <td><strong style="color:var(--accent)">表皮層（Epidermis）</strong></td>
+          <td><strong>0.16–0.8 mm</strong></td>
+          <td>具抗菌、抗化學刺激及抗過敏等效用；共分五層</td>
+        </tr>
+        <tr style="background:rgba(255,213,79,0.06)">
+          <td><strong style="color:var(--gold)">真皮層（Dermis）</strong></td>
+          <td><strong>3–5 mm</strong></td>
+          <td>記法：「真」裡面有 <strong>3</strong> 劃，「皮」有 <strong>5</strong> 劃 → 3–5 mm<br>由彈性纖維（Elastin）與膠原蛋白（Collagen）組成；含豐富血管 → 藥物到達此處進入全身循環；視為<strong>親水層</strong></td>
+        </tr>
+        <tr>
+          <td><strong>皮下脂肪（Subcutaneous fat）</strong></td>
+          <td><strong>5–20 mm</strong></td>
+          <td>三酸甘油酯為主</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="grid-2">
+  <!-- EPIDERMAL LAYERS -->
+  <div class="card">
+    <h3>表皮五層（由外到內）</h3>
+    <div class="info-box gold" style="margin-bottom:12px;font-size:0.82rem">
+      <strong>記法口訣：腳痛又及發（外→內）</strong><br>
+      角（corneum）→ 透（lucidum）→ 顆（granulosum）→ 棘（spinosum）→ 發（germinativum）
+    </div>
+    <div class="skin-layers">
+      <div class="skin-layer" style="background:rgba(79,195,247,0.12)">
+        <span class="skin-layer-num">①</span>
+        <span class="skin-layer-name" style="color:var(--accent)">角質層（Stratum corneum）</span>
+        <span class="skin-layer-desc">藥物吸收主要屏障；pH 4.5–6.5（記 5 或 5.5）；親脂層</span>
+      </div>
+      <div class="skin-layer">
+        <span class="skin-layer-num">②</span>
+        <span class="skin-layer-name">透明層（Stratum lucidum）</span>
+        <span class="skin-layer-desc">又稱 Barrier zone；介於角質層與顆粒層之間；防止水分散失</span>
+      </div>
+      <div class="skin-layer">
+        <span class="skin-layer-num">③</span>
+        <span class="skin-layer-name">顆粒層（Stratum granulosum）</span>
+        <span class="skin-layer-desc">又稱 Granular layer；參與角質化反應</span>
+      </div>
+      <div class="skin-layer">
+        <span class="skin-layer-num">④</span>
+        <span class="skin-layer-name">棘狀層（Stratum spinosum）</span>
+        <span class="skin-layer-desc">又稱 Prickle cell layer</span>
+      </div>
+      <div class="skin-layer" style="background:rgba(255,171,64,0.09)">
+        <span class="skin-layer-num">⑤</span>
+        <span class="skin-layer-name" style="color:var(--orange)">表皮發生層（Stratum germinativum）</span>
+        <span class="skin-layer-desc">= 基底層（Basal cell layer）；最內層；表皮細胞增生來源</span>
       </div>
     </div>
+  </div>
 
-    <div class="grid-2">
-      <!-- EPIDERMAL LAYERS -->
-      <div class="card">
-        <h3>表皮五層（由外到內）</h3>
-        <div class="info-box gold" style="margin-bottom:12px;font-size:0.82rem">
-          <strong>記法口訣：腳痛又及發（外→內）</strong><br>
-          角（corneum）→ 透（lucidum）→ 顆（granulosum）→ 棘（spinosum）→ 發（germinativum）
-        </div>
-        <div class="skin-layers">
-          <div class="skin-layer" style="background:rgba(79,195,247,0.12)">
-            <span class="skin-layer-num">①</span>
-            <span class="skin-layer-name" style="color:var(--accent)">角質層（Stratum corneum）</span>
-            <span class="skin-layer-desc">藥物吸收主要屏障；pH 4.5–6.5（記 5 或 5.5）；親脂層</span>
-          </div>
-          <div class="skin-layer">
-            <span class="skin-layer-num">②</span>
-            <span class="skin-layer-name">透明層（Stratum lucidum）</span>
-            <span class="skin-layer-desc">又稱 Barrier zone；介於角質層與顆粒層之間；防止水分散失</span>
-          </div>
-          <div class="skin-layer">
-            <span class="skin-layer-num">③</span>
-            <span class="skin-layer-name">顆粒層（Stratum granulosum）</span>
-            <span class="skin-layer-desc">又稱 Granular layer；參與角質化反應</span>
-          </div>
-          <div class="skin-layer">
-            <span class="skin-layer-num">④</span>
-            <span class="skin-layer-name">棘狀層（Stratum spinosum）</span>
-            <span class="skin-layer-desc">又稱 Prickle cell layer</span>
-          </div>
-          <div class="skin-layer" style="background:rgba(255,171,64,0.09)">
-            <span class="skin-layer-num">⑤</span>
-            <span class="skin-layer-name" style="color:var(--orange)">表皮發生層（Stratum germinativum）</span>
-            <span class="skin-layer-desc">= 基底層（Basal cell layer）；最內層；表皮細胞增生來源</span>
-          </div>
-        </div>
+  <!-- STRATUM CORNEUM DETAIL -->
+  <div class="card" style="border-color:rgba(79,195,247,0.35);background:rgba(79,195,247,0.03)">
+    <h3 style="color:var(--accent)">★ 角質層（Stratum corneum）詳解</h3>
+    <div class="table-wrap" style="margin-top:10px">
+      <table>
+        <thead><tr><th>項目</th><th>內容</th></tr></thead>
+        <tbody>
+          <tr><td><strong>位置</strong></td><td>表皮層的<strong>最外層</strong></td></tr>
+          <tr>
+            <td><strong>功用</strong></td>
+            <td>防止皮膚水分流失；保護皮膚；對外界化學、物理刺激的第一道屏障</td>
+          </tr>
+          <tr>
+            <td><strong>pH</strong></td>
+            <td><strong>4.5–6.5</strong>（記 5 或 5.5）</td>
+          </tr>
+          <tr>
+            <td><strong>組成</strong></td>
+            <td>蛋白質 <strong>40%</strong>（角蛋白 Keratin）、水 <strong>40%</strong>、其他 20%</td>
+          </tr>
+          <tr>
+            <td><strong>藥物吸收</strong></td>
+            <td>藥品經皮吸收的主要屏障（<strong>速率決定步驟</strong>）<br>主要由<strong>被動擴散</strong>穿透角質層<br>通過角質層之主要途徑為<strong>脂質雙層（Intercellular path）</strong></td>
+          </tr>
+          <tr>
+            <td><strong>臨床意義</strong></td>
+            <td>易穿透角質層 → 容易到皮膚深處被吸收；難穿透 → 吸收差</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- STRATUM GERMINATIVUM + PENETRATION PATHS -->
+<div class="grid-2" style="margin-top:16px">
+  <div class="card" style="border-color:rgba(255,171,64,0.3);background:rgba(255,171,64,0.03)">
+    <h3 style="color:var(--orange)">表皮發生層（Stratum germinativum）詳解</h3>
+    <div class="table-wrap" style="margin-top:10px">
+      <table>
+        <thead><tr><th>項目</th><th>內容</th></tr></thead>
+        <tbody>
+          <tr><td><strong>位置</strong></td><td>表皮層的<strong>最內層</strong></td></tr>
+          <tr><td><strong>別名</strong></td><td>基底層（Basal cell layer）；英文縮寫常考 <span style="font-family:var(--mono);color:var(--orange)">ger</span></td></tr>
+          <tr><td><strong>功用</strong></td><td>具有細胞分裂能力；是表皮層細胞增生的主要部位</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>藥物穿透角質層三條路徑</h3>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body"><strong>Transcellular path（穿細胞）</strong>：面積最大、路徑最短；非極性藥物；不容許大分子</div>
       </div>
-
-      <!-- STRATUM CORNEUM DETAIL -->
-      <div class="card" style="border-color:rgba(79,195,247,0.35);background:rgba(79,195,247,0.03)">
-        <h3 style="color:var(--accent)">★ 角質層（Stratum corneum）詳解</h3>
-        <div class="table-wrap" style="margin-top:10px">
-          <table>
-            <thead><tr><th>項目</th><th>內容</th></tr></thead>
-            <tbody>
-              <tr><td><strong>位置</strong></td><td>表皮層的<strong>最外層</strong></td></tr>
-              <tr>
-                <td><strong>功用</strong></td>
-                <td>防止皮膚水分流失；保護皮膚；對外界化學、物理刺激的第一道屏障</td>
-              </tr>
-              <tr>
-                <td><strong>pH</strong></td>
-                <td><strong>4.5–6.5</strong>（記 5 或 5.5）</td>
-              </tr>
-              <tr>
-                <td><strong>組成</strong></td>
-                <td>蛋白質 <strong>40%</strong>（角蛋白 Keratin）、水 <strong>40%</strong>、其他 20%</td>
-              </tr>
-              <tr>
-                <td><strong>藥物吸收</strong></td>
-                <td>藥品經皮吸收的主要屏障（<strong>速率決定步驟</strong>）<br>主要由<strong>被動擴散</strong>穿透角質層<br>通過角質層之主要途徑為<strong>脂質雙層（Intercellular path）</strong></td>
-              </tr>
-              <tr>
-                <td><strong>臨床意義</strong></td>
-                <td>易穿透角質層 → 容易到皮膚深處被吸收；難穿透 → 吸收差</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body"><strong>Intercellular path（細胞間隙）</strong>：脂質雙層為連續相；<strong>主要途徑 ★</strong>；非極性藥物及小分子極性/離子均可</div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body"><strong>Appendage path（附屬器官）</strong>：毛囊、汗腺、皮脂腺；小極性分子途徑；面積小，影響有限</div>
       </div>
     </div>
+    <div class="key-point">藥物穿透角質層主要走 <strong>細胞間脂質雙層路徑</strong>（Intercellular lipid bilayer）</div>
+  </div>
+</div>
 
-    <!-- STRATUM GERMINATIVUM + PENETRATION PATHS -->
-    <div class="grid-2" style="margin-top:16px">
-      <div class="card" style="border-color:rgba(255,171,64,0.3);background:rgba(255,171,64,0.03)">
-        <h3 style="color:var(--orange)">表皮發生層（Stratum germinativum）詳解</h3>
-        <div class="table-wrap" style="margin-top:10px">
-          <table>
-            <thead><tr><th>項目</th><th>內容</th></tr></thead>
-            <tbody>
-              <tr><td><strong>位置</strong></td><td>表皮層的<strong>最內層</strong></td></tr>
-              <tr><td><strong>別名</strong></td><td>基底層（Basal cell layer）；英文縮寫常考 <span style="font-family:var(--mono);color:var(--orange)">ger</span></td></tr>
-              <tr><td><strong>功用</strong></td><td>具有細胞分裂能力；是表皮層細胞增生的主要部位</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <div class="card">
-        <h3>藥物穿透角質層三條路徑</h3>
-        <div class="steps">
-          <div class="step">
-            <div class="step-num">1</div>
-            <div class="step-body"><strong>Transcellular path（穿細胞）</strong>：面積最大、路徑最短；非極性藥物；不容許大分子</div>
-          </div>
-          <div class="step">
-            <div class="step-num">2</div>
-            <div class="step-body"><strong>Intercellular path（細胞間隙）</strong>：脂質雙層為連續相；<strong>主要途徑 ★</strong>；非極性藥物及小分子極性/離子均可</div>
-          </div>
-          <div class="step">
-            <div class="step-num">3</div>
-            <div class="step-body"><strong>Appendage path（附屬器官）</strong>：毛囊、汗腺、皮脂腺；小極性分子途徑；面積小，影響有限</div>
-          </div>
-        </div>
-        <div class="key-point">藥物穿透角質層主要走 <strong>細胞間脂質雙層路徑</strong>（Intercellular lipid bilayer）</div>
-      </div>
+<!-- LIPID COMPOSITION + PASSIVE DIFFUSION FACTORS -->
+<div class="grid-2" style="margin-top:16px">
+  <div class="card">
+    <h3>角質層脂質組成</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>成分</th><th>比例</th></tr></thead>
+        <tbody>
+          <tr><td>三酸甘油酯（Triglycerides）</td><td>57.5%</td></tr>
+          <tr><td>蠟脂（Wax esters）</td><td>26.0%</td></tr>
+          <tr><td>鯊烯（Squalene）</td><td>12%</td></tr>
+          <tr><td>膽固醇酯（Cholesterol esters）</td><td>3%</td></tr>
+          <tr><td>膽固醇（Cholesterol）</td><td>1.5%</td></tr>
+        </tbody>
+      </table>
     </div>
-
-    <!-- LIPID COMPOSITION + PASSIVE DIFFUSION FACTORS -->
-    <div class="grid-2" style="margin-top:16px">
-      <div class="card">
-        <h3>角質層脂質組成</h3>
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th>成分</th><th>比例</th></tr></thead>
-            <tbody>
-              <tr><td>三酸甘油酯（Triglycerides）</td><td>57.5%</td></tr>
-              <tr><td>蠟脂（Wax esters）</td><td>26.0%</td></tr>
-              <tr><td>鯊烯（Squalene）</td><td>12%</td></tr>
-              <tr><td>膽固醇酯（Cholesterol esters）</td><td>3%</td></tr>
-              <tr><td>膽固醇（Cholesterol）</td><td>1.5%</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="info-box blue" style="margin-top:10px">
-          人體皮膚臨界表面張力值 <strong>26–28 dyne/cm</strong>
-        </div>
-      </div>
-      <div class="card">
-        <h3>影響被動穿透角質層之因素</h3>
-        <ul class="compact-list">
-          <li><strong>藥物分子大小</strong>（分子量）</li>
-          <li><strong>分配係數</strong>（Partition coefficient）</li>
-          <li><strong>角質含水量</strong>（水合程度）</li>
-          <li><strong>角質厚度</strong></li>
-        </ul>
-        <div class="info-box gold" style="margin-top:10px">
-          皮膚表皮層厚度 <strong>0.16–0.8 mm</strong>；真皮層 <strong>3–5 mm</strong>；皮下脂肪 <strong>5–20 mm</strong>
-        </div>
-      </div>
+    <div class="info-box blue" style="margin-top:10px">
+      人體皮膚臨界表面張力值 <strong>26–28 dyne/cm</strong>
     </div>
+  </div>
+  <div class="card">
+    <h3>影響被動穿透角質層之因素</h3>
+    <ul class="compact-list">
+      <li><strong>藥物分子大小</strong>（分子量）</li>
+      <li><strong>分配係數</strong>（Partition coefficient）</li>
+      <li><strong>角質含水量</strong>（水合程度）</li>
+      <li><strong>角質厚度</strong></li>
+    </ul>
+    <div class="info-box gold" style="margin-top:10px">
+      皮膚表皮層厚度 <strong>0.16–0.8 mm</strong>；真皮層 <strong>3–5 mm</strong>；皮下脂肪 <strong>5–20 mm</strong>
+    </div>
+  </div>
+</div>
+```
+
   </section>
 
   <!-- ═══════════════════════════ SECTION 13 ═══════════════════════════ -->
+
   <section class="section" id="transdermal">
     <div class="section-header">
       <span class="section-num">13</span>
@@ -1812,135 +1978,139 @@
       <div class="section-divider"></div>
     </div>
 
-    <div class="card">
-      <h3>Fick's Law 應用</h3>
-      <div class="formula">
-        flux = dM / (S · dt) = DKCd / h = PCd
+```
+<div class="card">
+  <h3>Fick's Law 應用</h3>
+  <div class="formula">
+    flux = dM / (S · dt) = DKCd / h = PCd
+  </div>
+  <ul class="compact-list">
+    <li>D = 擴散係數；K = 分配係數；Cd = 劑型中藥物濃度；h = 皮膚厚度；S = 施用面積</li>
+    <li>吸收速率與<strong>皮膚厚度成反比</strong>；與藥物濃度、分配係數、面積成正比</li>
+    <li>軟膏吸收屬<strong>被動性擴散</strong>，符合 Fick's law</li>
+    <li>吸收速率限制步驟：在<strong>角質層的擴散作用</strong></li>
+  </ul>
+</div>
+
+<div class="card" style="margin-top:16px">
+  <h3>Higuchi 方程式（藥物由軟膏基劑釋放速率）</h3>
+  <div class="grid-2">
+    <div>
+      <h4>藥物釋放量（Q）</h4>
+      <div class="formula" style="font-size:1rem;letter-spacing:0.04em">
+        Q = √[ D(2A − Cs) · Cs · t ]
       </div>
+      <h4 style="margin-top:14px">藥物釋放速率（dQ/dt）</h4>
+      <div class="formula" style="font-size:1rem">
+        dQ/dt = √( D · A · Cs / 2t )
+      </div>
+    </div>
+    <div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>符號</th><th>意義</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Q</strong></td><td>單位時間藥物釋放量</td></tr>
+            <tr><td><strong>D</strong></td><td>擴散係數</td></tr>
+            <tr><td><strong>A</strong></td><td>總濃度（溶解 + 未溶解）</td></tr>
+            <tr><td><strong>Cs</strong></td><td>溶解度</td></tr>
+            <tr><td><strong>t</strong></td><td>時間</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="info-box gold" style="margin-top:12px">
+    <strong>結論：</strong>藥物釋放量（Q）與時間（t）成<strong>正比</strong>；藥物釋放速率（dQ/dt）與時間（t）成<strong>反比</strong>
+  </div>
+  <div class="info-box blue" style="margin-top:8px">
+    <strong>應用條件：</strong>A &gt;&gt; Cs（藥物大量過飽和懸浮在基劑中）；Q 與 √t 成正比
+  </div>
+</div>
+
+<div class="card" style="margin-top:16px">
+  <h3>影響經皮吸收的因素</h3>
+  <div class="grid-2">
+    <div>
+      <h4>藥物特性</h4>
       <ul class="compact-list">
-        <li>D = 擴散係數；K = 分配係數；Cd = 劑型中藥物濃度；h = 皮膚厚度；S = 施用面積</li>
-        <li>吸收速率與<strong>皮膚厚度成反比</strong>；與藥物濃度、分配係數、面積成正比</li>
-        <li>軟膏吸收屬<strong>被動性擴散</strong>，符合 Fick's law</li>
-        <li>吸收速率限制步驟：在<strong>角質層的擴散作用</strong></li>
+        <li>分子量：100–800（最佳300–500）</li>
+        <li>log Kow（octanol/water）：1–3.5</li>
+        <li>水溶解度：&gt;100 μg/mL</li>
+        <li>Therapeutic index 寬</li>
+        <li>未解離態優於離子態穿透</li>
       </ul>
     </div>
-
-    <div class="card" style="margin-top:16px">
-      <h3>Higuchi 方程式（藥物由軟膏基劑釋放速率）</h3>
-      <div class="grid-2">
-        <div>
-          <h4>藥物釋放量（Q）</h4>
-          <div class="formula" style="font-size:1rem;letter-spacing:0.04em">
-            Q = √[ D(2A − Cs) · Cs · t ]
-          </div>
-          <h4 style="margin-top:14px">藥物釋放速率（dQ/dt）</h4>
-          <div class="formula" style="font-size:1rem">
-            dQ/dt = √( D · A · Cs / 2t )
-          </div>
-        </div>
-        <div>
-          <div class="table-wrap">
-            <table>
-              <thead><tr><th>符號</th><th>意義</th></tr></thead>
-              <tbody>
-                <tr><td><strong>Q</strong></td><td>單位時間藥物釋放量</td></tr>
-                <tr><td><strong>D</strong></td><td>擴散係數</td></tr>
-                <tr><td><strong>A</strong></td><td>總濃度（溶解 + 未溶解）</td></tr>
-                <tr><td><strong>Cs</strong></td><td>溶解度</td></tr>
-                <tr><td><strong>t</strong></td><td>時間</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-      <div class="info-box gold" style="margin-top:12px">
-        <strong>結論：</strong>藥物釋放量（Q）與時間（t）成<strong>正比</strong>；藥物釋放速率（dQ/dt）與時間（t）成<strong>反比</strong>
-      </div>
-      <div class="info-box blue" style="margin-top:8px">
-        <strong>應用條件：</strong>A &gt;&gt; Cs（藥物大量過飽和懸浮在基劑中）；Q 與 √t 成正比
-      </div>
+    <div>
+      <h4>製劑與環境因素</h4>
+      <ul class="compact-list">
+        <li>施用面積越大 → 吸收越多</li>
+        <li>角質層越薄 → 吸收越多</li>
+        <li>皮膚水合 → 增加穿透性</li>
+        <li>接觸時間越長 → 吸收越多</li>
+        <li>藥物對皮膚親和力 &gt; 對基劑親和力 → 吸收多</li>
+      </ul>
     </div>
+  </div>
+</div>
 
-    <div class="card" style="margin-top:16px">
-      <h3>影響經皮吸收的因素</h3>
-      <div class="grid-2">
-        <div>
-          <h4>藥物特性</h4>
-          <ul class="compact-list">
-            <li>分子量：100–800（最佳300–500）</li>
-            <li>log Kow（octanol/water）：1–3.5</li>
-            <li>水溶解度：&gt;100 μg/mL</li>
-            <li>Therapeutic index 寬</li>
-            <li>未解離態優於離子態穿透</li>
-          </ul>
-        </div>
-        <div>
-          <h4>製劑與環境因素</h4>
-          <ul class="compact-list">
-            <li>施用面積越大 → 吸收越多</li>
-            <li>角質層越薄 → 吸收越多</li>
-            <li>皮膚水合 → 增加穿透性</li>
-            <li>接觸時間越長 → 吸收越多</li>
-            <li>藥物對皮膚親和力 &gt; 對基劑親和力 → 吸收多</li>
-          </ul>
-        </div>
-      </div>
+<div class="card" style="margin-top:16px">
+  <h3>穿皮吸收增進劑（Penetration Enhancers）</h3>
+  <div class="grid-2">
+    <div>
+      <h4>Azone（Laurocapram）</h4>
+      <ul class="compact-list">
+        <li>油性液體，不溶於水</li>
+        <li>低濃度（&lt;5%）即有效</li>
+        <li>作用：進入脂質雙層 → 使細胞間脂質層狀區流體化 → 降低擴散阻力</li>
+        <li>塗敷後留在皮膚表面，效果持久</li>
+        <li>在丙二醇存在下效果更佳</li>
+        <li>1% Azone 效果 = 50% DMSO 的<strong>13倍</strong></li>
+      </ul>
     </div>
+    <div>
+      <h4>DMSO（Dimethyl sulfoxide）</h4>
+      <ul class="compact-list">
+        <li>強偶極溶劑，可與水和有機溶劑互溶</li>
+        <li>作用：進入水性區，與脂質極性端交互作用，使親水區脹大</li>
+        <li>因潛在眼睛/皮膚毒性、令人不悅氣味，須高濃度（&gt;70%）才有效</li>
+        <li>使用受限</li>
+      </ul>
+    </div>
+  </div>
+  <div class="info-box green" style="margin-top:12px">
+    <strong>其他增進劑：</strong>乙醇、丙二醇、SLS（陰離子型）、Poloxamer（非離子型）、Urea、油酸（Oleic acid）、膽汁鹽、萜類（Terpenes）
+  </div>
+</div>
 
-    <div class="card" style="margin-top:16px">
-      <h3>穿皮吸收增進劑（Penetration Enhancers）</h3>
-      <div class="grid-2">
-        <div>
-          <h4>Azone（Laurocapram）</h4>
-          <ul class="compact-list">
-            <li>油性液體，不溶於水</li>
-            <li>低濃度（&lt;5%）即有效</li>
-            <li>作用：進入脂質雙層 → 使細胞間脂質層狀區流體化 → 降低擴散阻力</li>
-            <li>塗敷後留在皮膚表面，效果持久</li>
-            <li>在丙二醇存在下效果更佳</li>
-            <li>1% Azone 效果 = 50% DMSO 的<strong>13倍</strong></li>
-          </ul>
-        </div>
-        <div>
-          <h4>DMSO（Dimethyl sulfoxide）</h4>
-          <ul class="compact-list">
-            <li>強偶極溶劑，可與水和有機溶劑互溶</li>
-            <li>作用：進入水性區，與脂質極性端交互作用，使親水區脹大</li>
-            <li>因潛在眼睛/皮膚毒性、令人不悅氣味，須高濃度（&gt;70%）才有效</li>
-            <li>使用受限</li>
-          </ul>
-        </div>
-      </div>
-      <div class="info-box green" style="margin-top:12px">
-        <strong>其他增進劑：</strong>乙醇、丙二醇、SLS（陰離子型）、Poloxamer（非離子型）、Urea、油酸（Oleic acid）、膽汁鹽、萜類（Terpenes）
-      </div>
+<div class="card" style="margin-top:16px">
+  <h3>TDDS 優缺點</h3>
+  <div class="grid-2">
+    <div>
+      <h4 style="color:var(--green)">優點</h4>
+      <ul class="compact-list">
+        <li>避免首渡效應（First-pass effect）</li>
+        <li>可透過貼片延長療效、減少給藥次數</li>
+        <li>停止給藥時可移除貼片（相對可控）</li>
+        <li>避免胃腸道刺激</li>
+      </ul>
     </div>
+    <div>
+      <h4 style="color:var(--red)">缺點</h4>
+      <ul class="compact-list">
+        <li>無法快速大量傳遞藥物</li>
+        <li>皮膚刺激</li>
+        <li>藥物需具適當物理化學特性</li>
+      </ul>
+    </div>
+  </div>
+</div>
+```
 
-    <div class="card" style="margin-top:16px">
-      <h3>TDDS 優缺點</h3>
-      <div class="grid-2">
-        <div>
-          <h4 style="color:var(--green)">優點</h4>
-          <ul class="compact-list">
-            <li>避免首渡效應（First-pass effect）</li>
-            <li>可透過貼片延長療效、減少給藥次數</li>
-            <li>停止給藥時可移除貼片（相對可控）</li>
-            <li>避免胃腸道刺激</li>
-          </ul>
-        </div>
-        <div>
-          <h4 style="color:var(--red)">缺點</h4>
-          <ul class="compact-list">
-            <li>無法快速大量傳遞藥物</li>
-            <li>皮膚刺激</li>
-            <li>藥物需具適當物理化學特性</li>
-          </ul>
-        </div>
-      </div>
-    </div>
   </section>
 
   <!-- ═══════════════════════════ SECTION 14 ═══════════════════════════ -->
+
   <section class="section" id="ophthalmic">
     <div class="section-header">
       <span class="section-num">14</span>
@@ -1948,59 +2118,63 @@
       <div class="section-divider"></div>
     </div>
 
-    <div class="grid-2">
-      <div class="card">
-        <h3>角膜結構與吸收</h3>
-        <div class="skin-layers">
-          <div class="skin-layer" style="background:rgba(79,195,247,0.1)">
-            <span class="skin-layer-num">①</span>
-            <span class="skin-layer-name" style="color:var(--accent)">上皮層（Epithelial layer）</span>
-            <span class="skin-layer-desc">親脂性</span>
-          </div>
-          <div class="skin-layer">
-            <span class="skin-layer-num">②</span>
-            <span class="skin-layer-name">基質層（Stromal layer）</span>
-            <span class="skin-layer-desc">親水性</span>
-          </div>
-          <div class="skin-layer">
-            <span class="skin-layer-num">③</span>
-            <span class="skin-layer-name">內皮層（Endothelial layer）</span>
-            <span class="skin-layer-desc">較少親脂性</span>
-          </div>
-        </div>
-        <div class="info-box blue" style="margin-top:12px">
-          主要吸收途徑：<strong>角膜簡單擴散</strong>；藥物需兼具親脂與親水性才能穿透角膜
-        </div>
+```
+<div class="grid-2">
+  <div class="card">
+    <h3>角膜結構與吸收</h3>
+    <div class="skin-layers">
+      <div class="skin-layer" style="background:rgba(79,195,247,0.1)">
+        <span class="skin-layer-num">①</span>
+        <span class="skin-layer-name" style="color:var(--accent)">上皮層（Epithelial layer）</span>
+        <span class="skin-layer-desc">親脂性</span>
       </div>
-      <div class="card">
-        <h3>眼用軟膏基劑</h3>
-        <ul class="compact-list">
-          <li>最常用：<strong>白軟石蠟 + 礦物油（Mineral oil）</strong>的混合物</li>
-          <li>有時加入無水羊毛脂（水吸收劑）</li>
-          <li>也可用 PEG + mineral oil 凝膠基劑</li>
-          <li>軟化點需接近體溫</li>
-          <li>不刺激眼睛</li>
-          <li>助研劑：礦物油（Levigating agent）</li>
-        </ul>
-        <h3 style="margin-top:16px">眼用增稠劑濃度比較</h3>
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th>成分</th><th>使用濃度</th></tr></thead>
-            <tbody>
-              <tr><td>Hydroxy ethylcellulose</td><td>0.8%</td></tr>
-              <tr><td>CMC</td><td>0.4–1%</td></tr>
-              <tr><td>HPMC</td><td>1.0%</td></tr>
-              <tr><td>PVA</td><td>1.4%</td></tr>
-              <tr><td>PVP</td><td>1.7%</td></tr>
-              <tr><td>MC</td><td>2.0%</td></tr>
-            </tbody>
-          </table>
-        </div>
+      <div class="skin-layer">
+        <span class="skin-layer-num">②</span>
+        <span class="skin-layer-name">基質層（Stromal layer）</span>
+        <span class="skin-layer-desc">親水性</span>
+      </div>
+      <div class="skin-layer">
+        <span class="skin-layer-num">③</span>
+        <span class="skin-layer-name">內皮層（Endothelial layer）</span>
+        <span class="skin-layer-desc">較少親脂性</span>
       </div>
     </div>
+    <div class="info-box blue" style="margin-top:12px">
+      主要吸收途徑：<strong>角膜簡單擴散</strong>；藥物需兼具親脂與親水性才能穿透角膜
+    </div>
+  </div>
+  <div class="card">
+    <h3>眼用軟膏基劑</h3>
+    <ul class="compact-list">
+      <li>最常用：<strong>白軟石蠟 + 礦物油（Mineral oil）</strong>的混合物</li>
+      <li>有時加入無水羊毛脂（水吸收劑）</li>
+      <li>也可用 PEG + mineral oil 凝膠基劑</li>
+      <li>軟化點需接近體溫</li>
+      <li>不刺激眼睛</li>
+      <li>助研劑：礦物油（Levigating agent）</li>
+    </ul>
+    <h3 style="margin-top:16px">眼用增稠劑濃度比較</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>成分</th><th>使用濃度</th></tr></thead>
+        <tbody>
+          <tr><td>Hydroxy ethylcellulose</td><td>0.8%</td></tr>
+          <tr><td>CMC</td><td>0.4–1%</td></tr>
+          <tr><td>HPMC</td><td>1.0%</td></tr>
+          <tr><td>PVA</td><td>1.4%</td></tr>
+          <tr><td>PVP</td><td>1.7%</td></tr>
+          <tr><td>MC</td><td>2.0%</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+```
+
   </section>
 
   <!-- ═══════════════════════════ SECTION 15 ═══════════════════════════ -->
+
   <section class="section" id="qa">
     <div class="section-header">
       <span class="section-num">15</span>
@@ -2008,11 +2182,14 @@
       <div class="section-divider"></div>
     </div>
 
-    <p class="toggle-hint">► 點擊題目可展開答案</p>
+```
+<p class="toggle-hint">► 點擊題目可展開答案</p>
 
-    <div class="qa-grid" id="qaContainer">
-      <!-- Questions injected by JS -->
-    </div>
+<div class="qa-grid" id="qaContainer">
+  <!-- Questions injected by JS -->
+</div>
+```
+
   </section>
 
 </div>
@@ -2096,5 +2273,6 @@ questions.forEach((q, i) => {
   container.appendChild(div);
 });
 </script>
+
 </body>
 </html>
