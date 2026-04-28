@@ -852,7 +852,6 @@
               <td><strong>保濕劑</strong></td>
               <td>無</td>
               <td>Propylene glycol（因外相是水相，需幫助基劑滯留水分）</td>
-              <td>style="color:#FF4D00">不是乙二醇(ethylene glycol)乙二醇是抗凍劑！</th>
             </tr>
             <tr>
               <td><strong>水洗性</strong></td>
@@ -901,6 +900,7 @@
             <div><span class="component">Stearyl alcohol</span>           <span class="amount">250 g</span>  <span class="note">— 油相（幫助基劑滯留水分）</span></div>
             <div><span class="component">Sodium lauryl sulfate (SLS)</span><span class="amount">10 g</span>   <span class="note">— 乳化劑；HLB 40，親水性 → o/w</span></div>
             <div><span class="component">Propylene glycol</span>           <span class="amount">120 g</span>  <span class="note">— 保濕劑（因外相是水相）</span></div>
+            <div style="padding:4px 0 2px 0;font-size:0.8rem;color:var(--red);font-family:var(--mono)">⚠ 丙二醇（Propylene glycol）≠ 乙二醇（Ethylene glycol）— 乙二醇是抗凍劑，有毒，不可混淆</div>
             <div><span class="component">Methylparaben / Propylparaben</span><span class="amount">0.25 / 0.15 g</span><span class="note">— 防腐劑（preservatives）</span></div>
             <div><span class="component">Purified water</span>             <span class="amount">370 g</span>  <span class="note">— 水相（aqueous phase）</span></div>
           </div>
@@ -991,60 +991,89 @@
     </div>
 
     <div class="grid-2">
+      <!-- INCORPORATION -->
       <div class="card">
-        <h3>研合法（Incorporation）</h3>
-        <h4>固體藥物處理</h4>
+        <h3>混合法（Incorporation）</h3>
+        <p style="font-size:0.84rem;color:var(--text-dim);margin-bottom:12px">將各成分混合至均勻；依據成分性質決定是否使用。</p>
+
+        <h4>操作規模</h4>
+        <ul class="compact-list">
+          <li><strong>小規模：</strong>研缽和研杵；或用藥膏抹刀在軟膏板上混合</li>
+          <li><strong>大規模：</strong>軟膏研磨機（Ointment mill）、電動研缽研杵（Unguator®）</li>
+        </ul>
+
+        <h4>粉末處理（避免顆粒感）</h4>
         <div class="steps">
           <div class="step">
             <div class="step-num">1</div>
-            <div class="step-body"><strong>粒徑縮小</strong>：研磨（Trituration）或研調法（Levigation）</div>
+            <div class="step-body"><strong>粒徑縮小</strong>：研磨（Trituration）或研調法（Levigation）— 避免最終產品有顆粒感</div>
           </div>
           <div class="step">
             <div class="step-num">2</div>
-            <div class="step-body"><strong>助研劑（Levigating agent）</strong>選擇：<br>油為外相 → 礦物油（Mineral oil）<br>水為外相 → 甘油（Glycerin）</div>
+            <div class="step-body"><strong>助研劑（Levigating agent）</strong>選擇：<br>油為外相 → <strong>礦物油（Mineral oil）</strong><br>水為外相 → <strong>甘油（Glycerin）</strong></div>
           </div>
           <div class="step">
             <div class="step-num">3</div>
-            <div class="step-body"><strong>幾何稀釋法</strong>（Geometric dilution）逐步加入基劑</div>
+            <div class="step-body"><strong>幾何稀釋法</strong>（Geometric dilution）逐步研入基劑</div>
           </div>
         </div>
+
         <div class="info-box red" style="margin-top:12px">
-          <strong>注意：</strong>碘、有機酸、單寧、汞鹽、水楊酸 → 會腐蝕鐵器，應使用硬橡膠或矽膠藥刀
+          <strong>（B）金屬腐蝕注意：</strong>碘、有機酸、單寧、汞鹽、水楊酸 → 會腐蝕鐵器<br>
+          → 改用<strong>硬橡膠或矽膠</strong>抹刀；仍可使用 Incorporation 法製備
         </div>
-        <h4>特殊成分處理</h4>
+
+        <h4 style="margin-top:14px">特殊成分處理</h4>
         <ul class="compact-list">
-          <li>樟腦（Camphor）：以乙醇（Ethanol）為溶劑，採介入粉碎法（Pulverization by intervention）</li>
-          <li>祕魯香膠（Peru Balsam）：先與蓖麻油（Castor oil）1:1研合，降低表面張力後再研入基劑</li>
-          <li>天然香膠：先1:1混合蓖麻油再研入</li>
+          <li><strong>樟腦（Camphor）</strong>：以乙醇（Ethanol）為溶劑，採介入粉碎法（Pulverization by intervention）</li>
+          <li><strong>祕魯香膠（Peru Balsam）</strong>：先與蓖麻油（Castor oil）1:1 研合，降低表面張力後再研入基劑</li>
+          <li><strong>天然香膠（Natural balsam）</strong>：先 1:1 混合蓖麻油再研入</li>
         </ul>
       </div>
+
+      <!-- FUSION -->
       <div class="card">
         <h3>熔合法（Fusion）</h3>
-        <p style="font-size:0.86rem;margin-bottom:12px">適用於：含蜂蠟、石蠟、高分子量 PEG 等高熔點成分；主藥溶於熔融基劑時；製備乳劑型基劑。</p>
+        <p style="font-size:0.84rem;color:var(--text-dim);margin-bottom:10px">將所有或部分軟膏成分一起加熱熔融，冷卻時持續攪拌至凝結。</p>
+
+        <h4>適用情境（A）</h4>
+        <p style="font-size:0.84rem;margin-bottom:8px">含有下列成分、不易以混合法混合時使用：</p>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px">
+          <span class="tag tag-gold">蜂蠟 Beeswax</span>
+          <span class="tag tag-gold">石蠟 Paraffin</span>
+          <span class="tag tag-gold">硬脂醇 Stearyl alcohol</span>
+          <span class="tag tag-gold">高分子量 PEG</span>
+        </div>
+
+        <h4>添加順序原則</h4>
         <div class="steps">
           <div class="step">
             <div class="step-num">A</div>
-            <div class="step-body"><strong>方法1（藥物熱穩定）</strong>：熔點最高者先加熱熔化 → 依序加入熔點次高者 → 加入藥物 → 攪拌冷卻</div>
+            <div class="step-body"><strong>方法1（藥物熱穩定）</strong>：熔點最高者先加熱熔化 → 依序加入熔點次高者 → 最後加藥物 → 攪拌冷卻</div>
           </div>
           <div class="step">
             <div class="step-num">B</div>
-            <div class="step-body"><strong>方法2（節能）</strong>：熔點最低者先熔化，作為溶劑，依序加入其餘成分</div>
+            <div class="step-body"><strong>方法2（節能）</strong>：熔點最低者先熔化作為溶劑，依序加入其餘成分（各成分未必都暴露於最高溫）</div>
           </div>
         </div>
-        <div class="key-point">熱不穩定藥物應在最後（溫度最低時）加入</div>
-        <h4>乳劑型基劑製備</h4>
+
+        <div class="info-box red" style="margin-top:10px">
+          對<strong>熱不安定</strong>或<strong>揮發性</strong>成分：應待溫度降低至不會分解或揮發時，<strong>最後</strong>才加入
+        </div>
+
+        <h4 style="margin-top:14px">乳劑型基劑製備</h4>
         <div class="steps">
           <div class="step">
             <div class="step-num">1</div>
-            <div class="step-body">油相（Waxes + oils）加熱至 70–75°C</div>
+            <div class="step-body">油相（Waxes + oils）加熱至 <strong>70–75°C</strong></div>
           </div>
           <div class="step">
             <div class="step-num">2</div>
-            <div class="step-body">水相（70–75°C）緩慢加入油相中，攪拌均勻，維持5–10分鐘</div>
+            <div class="step-body">水相（同樣加熱至 70–75°C）緩慢加入油相，攪拌均勻，維持 <strong>5–10 分鐘</strong></div>
           </div>
           <div class="step">
             <div class="step-num">3</div>
-            <div class="step-body">緩慢冷卻並持續攪拌至凝固</div>
+            <div class="step-body">緩慢冷卻並持續攪拌至凝固（congealed）</div>
           </div>
         </div>
       </div>
@@ -1056,7 +1085,7 @@
         <table>
           <thead><tr><th>方法</th><th>適用情境</th><th>代表劑型</th></tr></thead>
           <tbody>
-            <tr><td>研合法（Incorporation）</td><td>室溫可混合的成分；不含高熔點蠟類</td><td>ZnO ointment、硫磺軟膏</td></tr>
+            <tr><td>混合法（Incorporation）</td><td>室溫可混合的成分；不含高熔點蠟類</td><td>ZnO ointment、硫磺軟膏</td></tr>
             <tr><td>熔合法（Fusion）</td><td>含蜂蠟、石蠟、高分子PEG；大部分乳劑型基劑</td><td>PEG Ointment、Cold Cream、Hydrophilic Ointment</td></tr>
           </tbody>
         </table>
@@ -1606,42 +1635,122 @@
       <div class="section-divider"></div>
     </div>
 
+    <!-- THREE LAYERS OVERVIEW -->
+    <div class="card" style="margin-bottom:20px">
+      <h3>人體皮膚三大層次（由外到內）</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>層次</th><th>厚度</th><th>記法 / 特點</th></tr></thead>
+          <tbody>
+            <tr style="background:rgba(79,195,247,0.07)">
+              <td><strong style="color:var(--accent)">表皮層（Epidermis）</strong></td>
+              <td><strong>0.16–0.8 mm</strong></td>
+              <td>具抗菌、抗化學刺激及抗過敏等效用；共分五層</td>
+            </tr>
+            <tr style="background:rgba(255,213,79,0.06)">
+              <td><strong style="color:var(--gold)">真皮層（Dermis）</strong></td>
+              <td><strong>3–5 mm</strong></td>
+              <td>記法：「真」裡面有 <strong>3</strong> 劃，「皮」有 <strong>5</strong> 劃 → 3–5 mm<br>由彈性纖維（Elastin）與膠原蛋白（Collagen）組成；含豐富血管 → 藥物到達此處進入全身循環；視為<strong>親水層</strong></td>
+            </tr>
+            <tr>
+              <td><strong>皮下脂肪（Subcutaneous fat）</strong></td>
+              <td><strong>5–20 mm</strong></td>
+              <td>三酸甘油酯為主</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
     <div class="grid-2">
+      <!-- EPIDERMAL LAYERS -->
       <div class="card">
-        <h3>表皮各層（由外到內）</h3>
+        <h3>表皮五層（由外到內）</h3>
+        <div class="info-box gold" style="margin-bottom:12px;font-size:0.82rem">
+          <strong>記法口訣：腳痛又及發（外→內）</strong><br>
+          角（corneum）→ 透（lucidum）→ 顆（granulosum）→ 棘（spinosum）→ 發（germinativum）
+        </div>
         <div class="skin-layers">
-          <div class="skin-layer" style="background:rgba(79,195,247,0.08)">
+          <div class="skin-layer" style="background:rgba(79,195,247,0.12)">
             <span class="skin-layer-num">①</span>
             <span class="skin-layer-name" style="color:var(--accent)">角質層（Stratum corneum）</span>
-            <span class="skin-layer-desc">厚度10–15μm；主要滲透障壁；pH 4.5–6.5；親脂層</span>
+            <span class="skin-layer-desc">藥物吸收主要屏障；pH 4.5–6.5（記 5 或 5.5）；親脂層</span>
           </div>
           <div class="skin-layer">
             <span class="skin-layer-num">②</span>
             <span class="skin-layer-name">透明層（Stratum lucidum）</span>
-            <span class="skin-layer-desc">防止水分散失</span>
+            <span class="skin-layer-desc">又稱 Barrier zone；介於角質層與顆粒層之間；防止水分散失</span>
           </div>
           <div class="skin-layer">
             <span class="skin-layer-num">③</span>
             <span class="skin-layer-name">顆粒層（Stratum granulosum）</span>
-            <span class="skin-layer-desc"></span>
+            <span class="skin-layer-desc">又稱 Granular layer；參與角質化反應</span>
           </div>
           <div class="skin-layer">
             <span class="skin-layer-num">④</span>
             <span class="skin-layer-name">棘狀層（Stratum spinosum）</span>
-            <span class="skin-layer-desc"></span>
+            <span class="skin-layer-desc">又稱 Prickle cell layer</span>
           </div>
-          <div class="skin-layer" style="background:rgba(255,171,64,0.06)">
+          <div class="skin-layer" style="background:rgba(255,171,64,0.09)">
             <span class="skin-layer-num">⑤</span>
-            <span class="skin-layer-name" style="color:var(--orange)">發生層（Stratum germinativum）</span>
-            <span class="skin-layer-desc">= 基底層（Basal cell layer）；最內層</span>
+            <span class="skin-layer-name" style="color:var(--orange)">表皮發生層（Stratum germinativum）</span>
+            <span class="skin-layer-desc">= 基底層（Basal cell layer）；最內層；表皮細胞增生來源</span>
           </div>
-        </div>
-        <div class="info-box gold" style="margin-top:12px">
-          <strong>真皮層（Dermis）</strong>厚度約 3–5 mm；含豐富血管；藥物到達此層即可進入全身循環；視為<strong>親水層</strong>
         </div>
       </div>
+
+      <!-- STRATUM CORNEUM DETAIL -->
+      <div class="card" style="border-color:rgba(79,195,247,0.35);background:rgba(79,195,247,0.03)">
+        <h3 style="color:var(--accent)">★ 角質層（Stratum corneum）詳解</h3>
+        <div class="table-wrap" style="margin-top:10px">
+          <table>
+            <thead><tr><th>項目</th><th>內容</th></tr></thead>
+            <tbody>
+              <tr><td><strong>位置</strong></td><td>表皮層的<strong>最外層</strong></td></tr>
+              <tr>
+                <td><strong>功用</strong></td>
+                <td>防止皮膚水分流失；保護皮膚；對外界化學、物理刺激的第一道屏障</td>
+              </tr>
+              <tr>
+                <td><strong>pH</strong></td>
+                <td><strong>4.5–6.5</strong>（記 5 或 5.5）</td>
+              </tr>
+              <tr>
+                <td><strong>組成</strong></td>
+                <td>蛋白質 <strong>40%</strong>（角蛋白 Keratin）、水 <strong>40%</strong>、其他 20%</td>
+              </tr>
+              <tr>
+                <td><strong>藥物吸收</strong></td>
+                <td>藥品經皮吸收的主要屏障（<strong>速率決定步驟</strong>）<br>主要由<strong>被動擴散</strong>穿透角質層<br>通過角質層之主要途徑為<strong>脂質雙層（Intercellular path）</strong></td>
+              </tr>
+              <tr>
+                <td><strong>臨床意義</strong></td>
+                <td>易穿透角質層 → 容易到皮膚深處被吸收；難穿透 → 吸收差</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- STRATUM GERMINATIVUM + PENETRATION PATHS -->
+    <div class="grid-2" style="margin-top:16px">
+      <div class="card" style="border-color:rgba(255,171,64,0.3);background:rgba(255,171,64,0.03)">
+        <h3 style="color:var(--orange)">表皮發生層（Stratum germinativum）詳解</h3>
+        <div class="table-wrap" style="margin-top:10px">
+          <table>
+            <thead><tr><th>項目</th><th>內容</th></tr></thead>
+            <tbody>
+              <tr><td><strong>位置</strong></td><td>表皮層的<strong>最內層</strong></td></tr>
+              <tr><td><strong>別名</strong></td><td>基底層（Basal cell layer）；英文縮寫常考 <span style="font-family:var(--mono);color:var(--orange)">ger</span></td></tr>
+              <tr><td><strong>功用</strong></td><td>具有細胞分裂能力；是表皮層細胞增生的主要部位</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
       <div class="card">
-        <h3>藥物穿透角質層路徑</h3>
+        <h3>藥物穿透角質層三條路徑</h3>
         <div class="steps">
           <div class="step">
             <div class="step-num">1</div>
@@ -1649,17 +1758,18 @@
           </div>
           <div class="step">
             <div class="step-num">2</div>
-            <div class="step-body"><strong>Intercellular path（細胞間隙）</strong>：脂質雙層為連續相；<strong>主要途徑</strong>；非極性藥物及小分子極性/離子</div>
+            <div class="step-body"><strong>Intercellular path（細胞間隙）</strong>：脂質雙層為連續相；<strong>主要途徑 ★</strong>；非極性藥物及小分子極性/離子均可</div>
           </div>
           <div class="step">
             <div class="step-num">3</div>
-            <div class="step-body"><strong>Appendage path（附屬器官）</strong>：毛囊、汗腺、皮脂腺；小極性分子主要途徑；面積小影響有限</div>
+            <div class="step-body"><strong>Appendage path（附屬器官）</strong>：毛囊、汗腺、皮脂腺；小極性分子途徑；面積小，影響有限</div>
           </div>
         </div>
-        <div class="key-point">藥物穿透角質層主要走 <strong>細胞間脂質雙層路徑</strong>（Intercellular lipid path）</div>
+        <div class="key-point">藥物穿透角質層主要走 <strong>細胞間脂質雙層路徑</strong>（Intercellular lipid bilayer）</div>
       </div>
     </div>
 
+    <!-- LIPID COMPOSITION + PASSIVE DIFFUSION FACTORS -->
     <div class="grid-2" style="margin-top:16px">
       <div class="card">
         <h3>角質層脂質組成</h3>
@@ -1688,7 +1798,7 @@
           <li><strong>角質厚度</strong></li>
         </ul>
         <div class="info-box gold" style="margin-top:10px">
-          皮膚表皮層厚度約 <strong>0.16 mm</strong>；真皮層厚度約 <strong>3–5 mm</strong>
+          皮膚表皮層厚度 <strong>0.16–0.8 mm</strong>；真皮層 <strong>3–5 mm</strong>；皮下脂肪 <strong>5–20 mm</strong>
         </div>
       </div>
     </div>
@@ -1717,24 +1827,37 @@
 
     <div class="card" style="margin-top:16px">
       <h3>Higuchi 方程式（藥物由軟膏基劑釋放速率）</h3>
-      <div class="formula">
-        Q = √[ D(2A − Cs)Cs · t ]<br>
-        <span class="note">或微分式：dQ/dt = √( ADCs / 2t )</span>
+      <div class="grid-2">
+        <div>
+          <h4>藥物釋放量（Q）</h4>
+          <div class="formula" style="font-size:1rem;letter-spacing:0.04em">
+            Q = √[ D(2A − Cs) · Cs · t ]
+          </div>
+          <h4 style="margin-top:14px">藥物釋放速率（dQ/dt）</h4>
+          <div class="formula" style="font-size:1rem">
+            dQ/dt = √( D · A · Cs / 2t )
+          </div>
+        </div>
+        <div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>符號</th><th>意義</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Q</strong></td><td>單位時間藥物釋放量</td></tr>
+                <tr><td><strong>D</strong></td><td>擴散係數</td></tr>
+                <tr><td><strong>A</strong></td><td>總濃度（溶解 + 未溶解）</td></tr>
+                <tr><td><strong>Cs</strong></td><td>溶解度</td></tr>
+                <tr><td><strong>t</strong></td><td>時間</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
-      <div class="table-wrap" style="margin-top:12px">
-        <table>
-          <thead><tr><th>符號</th><th>意義</th></tr></thead>
-          <tbody>
-            <tr><td><strong>Q</strong></td><td>每單位時間 t 釋出藥品的數量（mg/sec）</td></tr>
-            <tr><td><strong>D</strong></td><td>藥物在軟膏的擴散係數（cm²/sec）</td></tr>
-            <tr><td><strong>A</strong></td><td>藥物總濃度（溶解 + 未溶解）</td></tr>
-            <tr><td><strong>Cs</strong></td><td>每 cm³ 軟膏藥物的溶解度</td></tr>
-            <tr><td><strong>t</strong></td><td>時間</td></tr>
-          </tbody>
-        </table>
+      <div class="info-box gold" style="margin-top:12px">
+        <strong>結論：</strong>藥物釋放量（Q）與時間（t）成<strong>正比</strong>；藥物釋放速率（dQ/dt）與時間（t）成<strong>反比</strong>
       </div>
-      <div class="info-box gold" style="margin-top:10px">
-        <strong>應用條件：</strong>A &gt;&gt; Cs（即藥物大量過飽和懸浮在基劑中）；釋放量 Q 與 √t 成正比（矩形根時間關係）
+      <div class="info-box blue" style="margin-top:8px">
+        <strong>應用條件：</strong>A &gt;&gt; Cs（藥物大量過飽和懸浮在基劑中）；Q 與 √t 成正比
       </div>
     </div>
 
