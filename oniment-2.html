@@ -4,31 +4,23 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>半固體劑型 Semisolid Dosage Forms</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=JetBrains+Mono:wght@400;600&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
-<!DOCTYPE html>
-<html lang="zh-TW">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>半固體劑型 Semisolid Dosage Forms</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #f4f6fb;
-    --surface: #ffffff;
-    --surface2: #eef1f8;
-    --border: #d4daea;
-    --accent: #2563eb;
-    --accent2: #3b82f6;
-    --gold: #d97706;
-    --green: #16a34a;
-    --red: #dc2626;
-    --purple: #7c3aed;
-    --orange: #ea580c;
-    --text: #1e2433;
-    --text-dim: #4b5563;
-    --text-muted: #9ca3af;
+    --bg: #faf7f2;
+    --surface: #fffefb;
+    --surface2: #f2ede4;
+    --border: #ddd8ce;
+    --accent: #5c6f3a;
+    --accent2: #7a8f52;
+    --gold: #9a6e1a;
+    --green: #3a6e4a;
+    --red: #b83030;
+    --purple: #6a3f8a;
+    --orange: #b85a18;
+    --text: #1e1c18;
+    --text-dim: #4a4438;
+    --text-muted: #9a8f80;
     --serif: 'Noto Serif TC', serif;
     --sans: 'Noto Sans TC', sans-serif;
     --mono: 'JetBrains Mono', monospace;
@@ -41,15 +33,15 @@
     color: var(--text);
     font-family: var(--sans);
     font-weight: 400;
-    line-height: 1.8;
+    line-height: 1.85;
     font-size: 15px;
     -webkit-font-smoothing: antialiased;
   }
 
   /* ── HEADER ── */
   header {
-    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 60%, #1d4ed8 100%);
-    border-bottom: 3px solid #1d4ed8;
+    background: linear-gradient(135deg, #3a3020 0%, #5c4a2a 50%, #3a3020 100%);
+    border-bottom: 3px solid #4a3c20;
     padding: 48px 0 36px;
     text-align: center;
     position: relative;
@@ -58,21 +50,21 @@
   header::before {
     content: '';
     position: absolute; inset: 0;
-    background: radial-gradient(ellipse 60% 80% at 50% 0%, rgba(255,255,255,0.08) 0%, transparent 70%);
+    background: radial-gradient(ellipse 60% 80% at 50% 0%, rgba(220,190,120,0.1) 0%, transparent 70%);
     pointer-events: none;
   }
   header h1 {
     font-family: var(--serif);
-    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
     font-weight: 700;
     letter-spacing: 0.05em;
-    color: #fff;
+    color: #fdf4e0;
   }
   header .sub {
     margin-top: 8px;
     font-family: var(--mono);
     font-size: 0.78rem;
-    color: #bfdbfe;
+    color: #c8b888;
     letter-spacing: 0.15em;
     text-transform: uppercase;
   }
@@ -83,28 +75,27 @@
   .badge {
     display: inline-block;
     padding: 3px 12px;
-    border-radius: 20px;
+    border-radius: 2px;
     font-size: 0.72rem;
-    font-family: var(--sans);
-    font-weight: 500;
-    letter-spacing: 0.05em;
-    border: 1px solid rgba(255,255,255,0.4);
-    background: rgba(255,255,255,0.15);
-    color: #fff;
+    font-family: var(--mono);
+    letter-spacing: 0.08em;
+    border: 1px solid rgba(220,190,120,0.4);
+    background: rgba(220,190,120,0.1);
+    color: #e8d898;
   }
-  .badge-blue  { background: rgba(255,255,255,0.2); }
-  .badge-gold  { background: rgba(255,213,79,0.25); }
-  .badge-green { background: rgba(105,240,174,0.2); }
+  .badge-blue  { border-color: rgba(180,200,240,0.4); color: #c8d8f0; }
+  .badge-gold  { border-color: rgba(220,190,120,0.5); color: #e8d898; }
+  .badge-green { border-color: rgba(160,200,140,0.4); color: #c0d8a8; }
 
   /* ── LAYOUT ── */
   .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
 
   /* ── NAV ── */
   nav {
-    background: #fff;
+    background: #f5f0e8;
     border-bottom: 2px solid var(--border);
     position: sticky; top: 0; z-index: 100;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
   }
   nav ul {
     display: flex; flex-wrap: wrap; gap: 0;
@@ -114,23 +105,20 @@
   }
   nav li a {
     display: block;
-    padding: 13px 13px;
+    padding: 12px 12px;
     font-size: 0.8rem;
-    font-weight: 500;
+    font-weight: 600;
     letter-spacing: 0.02em;
     color: var(--text-dim);
     text-decoration: none;
     font-family: var(--sans);
-    border-bottom: 3px solid transparent;
+    border-bottom: 2px solid transparent;
     transition: color 0.2s, border-color 0.2s;
   }
   nav li a:hover { color: var(--accent); border-bottom-color: var(--accent); }
 
   /* ── SECTION ── */
-  .section {
-    padding: 52px 0;
-    border-bottom: 2px solid var(--border);
-  }
+  .section { padding: 52px 0; border-bottom: 1px solid var(--border); }
   .section-header {
     display: flex; align-items: center; gap: 16px;
     margin-bottom: 32px;
@@ -146,39 +134,38 @@
     font-family: var(--serif);
     font-size: 1.5rem;
     font-weight: 700;
-    color: #1e2433;
+    color: var(--text);
   }
   .section-title span { color: var(--accent); }
   .section-divider {
-    flex: 1; height: 2px;
+    flex: 1; height: 1px;
     background: linear-gradient(to right, var(--border), transparent);
   }
 
   /* ── CARDS ── */
   .card {
     background: var(--surface);
-    border: 1.5px solid var(--border);
-    border-radius: 8px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
     padding: 20px 24px;
     margin-bottom: 18px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
   }
   .card h3 {
     font-family: var(--serif);
     font-size: 1.05rem;
     font-weight: 700;
-    color: #1e3a8a;
+    color: #3a2c10;
     margin-bottom: 12px;
     padding-bottom: 8px;
-    border-bottom: 2px solid #dbeafe;
+    border-bottom: 1.5px solid #e0d4b8;
   }
   .card h4 {
-    font-size: 0.88rem;
+    font-size: 0.87rem;
     font-weight: 700;
     color: var(--gold);
     margin: 14px 0 6px;
     font-family: var(--sans);
-    letter-spacing: 0.02em;
   }
   .card p, .card li {
     font-size: 0.9rem;
@@ -190,46 +177,38 @@
 
   /* ── BIG TABLE ── */
   .table-wrap { overflow-x: auto; margin: 16px 0; }
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.85rem;
-    line-height: 1.65;
-  }
+  table { width: 100%; border-collapse: collapse; font-size: 0.85rem; line-height: 1.65; }
   th {
-    background: #1e3a8a;
-    color: #fff;
+    background: #4a3c20;
+    color: #f0e8d0;
     font-family: var(--sans);
     font-size: 0.8rem;
     font-weight: 700;
-    letter-spacing: 0.03em;
     padding: 10px 14px;
     text-align: left;
-    border: 1px solid #1d4ed8;
+    border: 1px solid #3a2c10;
   }
   td {
     padding: 9px 14px;
     border: 1px solid var(--border);
     color: var(--text);
     vertical-align: top;
-    background: #fff;
+    background: #fffefb;
   }
-  tr:nth-child(even) td { background: #f8faff; }
-  tr:hover td { background: #eff6ff; }
+  tr:nth-child(even) td { background: #f8f4ec; }
+  tr:hover td { background: #f2ecdc; }
 
   /* ── Q&A BLOCKS ── */
   .qa-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(460px, 1fr));
-    gap: 14px;
-    margin-top: 20px;
+    gap: 14px; margin-top: 20px;
   }
   .qa-item {
     background: var(--surface);
-    border: 1.5px solid var(--border);
-    border-radius: 8px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
     overflow: hidden;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
   }
   .qa-q {
     padding: 12px 16px;
@@ -240,15 +219,15 @@
     display: flex; gap: 10px; align-items: flex-start;
     transition: background 0.15s;
   }
-  .qa-q:hover { background: #eff6ff; }
+  .qa-q:hover { background: #f2ecdc; }
   .qa-q::before {
     content: 'Q';
     font-family: var(--mono);
     font-size: 0.7rem;
     color: #fff;
-    background: var(--accent);
+    background: #5c6f3a;
     padding: 2px 6px;
-    border-radius: 4px;
+    border-radius: 3px;
     flex-shrink: 0;
     margin-top: 3px;
     font-weight: 700;
@@ -258,29 +237,20 @@
     font-size: 0.68rem;
     color: #fff;
     padding: 4px 12px;
-    background: var(--accent);
+    background: #5c6f3a;
     letter-spacing: 0.06em;
   }
-  .qa-opts {
-    padding: 8px 16px 4px;
-    font-size: 0.84rem;
-    color: var(--text-dim);
-  }
+  .qa-opts { padding: 8px 16px 4px; font-size: 0.84rem; color: var(--text-dim); }
   .qa-opts div { padding: 2px 0; }
   .qa-ans {
     display: none;
     padding: 10px 16px;
-    background: #f0fdf4;
-    border-top: 2px solid #16a34a;
+    background: #f0f8e8;
+    border-top: 2px solid #5c8a40;
   }
-  .qa-ans-text {
-    font-family: var(--mono);
-    font-size: 0.82rem;
-    color: #15803d;
-    font-weight: 700;
-  }
+  .qa-ans-text { font-family: var(--mono); font-size: 0.82rem; color: #2a5a18; font-weight: 700; }
   .qa-item.open .qa-ans { display: block; }
-  .qa-item.open { border-color: #16a34a; }
+  .qa-item.open { border-color: #5c8a40; }
 
   /* ── HIGHLIGHT BOXES ── */
   .info-box {
@@ -291,15 +261,15 @@
     font-size: 0.87rem;
     line-height: 1.75;
   }
-  .info-box.blue  { border-color: #2563eb; background: #eff6ff; color: #1e3a5f; }
-  .info-box.gold  { border-color: #d97706; background: #fffbeb; color: #451a03; }
-  .info-box.green { border-color: #16a34a; background: #f0fdf4; color: #14532d; }
-  .info-box.red   { border-color: #dc2626; background: #fef2f2; color: #7f1d1d; }
-  .info-box.purple{ border-color: #7c3aed; background: #f5f3ff; color: #2e1065; }
+  .info-box.blue   { border-color: #4a6aaa; background: #edf2fc; color: #1a2a50; }
+  .info-box.gold   { border-color: #9a6e1a; background: #fdf6e4; color: #3a2800; }
+  .info-box.green  { border-color: #3a6e4a; background: #edf8f0; color: #1a3a20; }
+  .info-box.red    { border-color: #b83030; background: #fdf0f0; color: #4a0808; }
+  .info-box.purple { border-color: #6a3f8a; background: #f5f0fc; color: #2a1040; }
   .info-box strong { font-weight: 700; }
 
-  /* ── FLOW / STEPS ── */
-  .steps { display: flex; flex-direction: column; gap: 0; }
+  /* ── STEPS ── */
+  .steps { display: flex; flex-direction: column; }
   .step {
     display: flex; gap: 14px; align-items: flex-start;
     padding: 12px 0;
@@ -309,155 +279,113 @@
   .step-num {
     width: 28px; height: 28px;
     border-radius: 50%;
-    background: var(--accent);
+    background: #5c6f3a;
     color: #fff;
     font-family: var(--mono);
     font-size: 0.78rem;
     font-weight: 700;
     display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
-    margin-top: 2px;
+    flex-shrink: 0; margin-top: 2px;
   }
   .step-body { font-size: 0.88rem; color: var(--text); line-height: 1.75; }
-  .step-body strong { color: var(--accent); }
+  .step-body strong { color: #3a5020; }
 
   /* ── FORMULA BOX ── */
   .formula {
-    background: #f8faff;
-    border: 1.5px solid #dbeafe;
+    background: #f8f4ec;
+    border: 1px solid #e0d4b8;
     border-radius: 6px;
     padding: 14px 18px;
     font-family: var(--mono);
     font-size: 0.83rem;
-    color: #334155;
+    color: #3a3020;
     margin: 10px 0;
     overflow-x: auto;
     line-height: 1.9;
   }
-  .formula .component { color: #1d4ed8; font-weight: 600; }
-  .formula .amount { color: #b45309; font-weight: 600; }
-  .formula .note { color: #64748b; font-style: italic; }
+  .formula .component { color: #3a5020; font-weight: 700; }
+  .formula .amount    { color: #8a5010; font-weight: 700; }
+  .formula .note      { color: #7a6a50; font-style: italic; }
 
-  /* ── GRID HELPERS ── */
+  /* ── GRIDS ── */
   .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
   @media (max-width: 768px) {
     .grid-2, .grid-3 { grid-template-columns: 1fr; }
     .qa-grid { grid-template-columns: 1fr; }
-    nav li a { padding: 10px 10px; font-size: 0.75rem; }
+    nav li a { padding: 10px 9px; font-size: 0.74rem; }
   }
 
   /* ── TAGS ── */
   .tag {
-    display: inline-block;
-    padding: 2px 10px;
-    border-radius: 20px;
-    font-size: 0.72rem;
-    font-family: var(--sans);
-    font-weight: 600;
+    display: inline-block; padding: 2px 10px;
+    border-radius: 20px; font-size: 0.72rem;
+    font-family: var(--sans); font-weight: 600;
     margin: 2px 3px 2px 0;
-    letter-spacing: 0.03em;
   }
-  .tag-blue   { background: #dbeafe; color: #1e40af; border: 1px solid #93c5fd; }
-  .tag-gold   { background: #fef3c7; color: #92400e; border: 1px solid #fcd34d; }
-  .tag-green  { background: #dcfce7; color: #166534; border: 1px solid #86efac; }
-  .tag-red    { background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
-  .tag-purple { background: #ede9fe; color: #4c1d95; border: 1px solid #c4b5fd; }
-  .tag-orange { background: #ffedd5; color: #9a3412; border: 1px solid #fdba74; }
+  .tag-blue   { background: #e8f0fc; color: #2a4080; border: 1px solid #b8c8f0; }
+  .tag-gold   { background: #fdf0d0; color: #7a4808; border: 1px solid #e8c870; }
+  .tag-green  { background: #e8f8e8; color: #1a4a20; border: 1px solid #90d090; }
+  .tag-red    { background: #fde8e8; color: #7a1010; border: 1px solid #f0a0a0; }
+  .tag-purple { background: #f0e8fc; color: #4a1070; border: 1px solid #c0a0e0; }
+  .tag-orange { background: #fde8d0; color: #7a2808; border: 1px solid #e8a870; }
 
   /* ── KEY POINT ── */
   .key-point {
-    background: #fffbeb;
-    border: 1.5px solid #fcd34d;
+    background: #fdf8e8;
+    border: 1px solid #e0c870;
     border-radius: 6px;
     padding: 10px 14px;
     font-size: 0.87rem;
     margin: 10px 0;
-    color: #451a03;
+    color: #3a2800;
     line-height: 1.75;
   }
-  .key-point::before {
-    content: '★ ';
-    color: #d97706;
-  }
+  .key-point::before { content: '★ '; color: #9a7010; }
 
   /* ── TOC ── */
   #toc {
     background: var(--surface);
-    border: 2px solid #dbeafe;
-    border-radius: 8px;
+    border: 1.5px solid var(--border);
+    border-radius: 6px;
     padding: 24px 28px;
     margin: 32px 0;
-    box-shadow: 0 2px 8px rgba(37,99,235,0.06);
   }
-  #toc h2 {
-    font-family: var(--serif);
-    font-size: 1rem;
-    font-weight: 700;
-    color: #1e3a8a;
-    margin-bottom: 16px;
-  }
+  #toc h2 { font-family: var(--serif); font-size: 1rem; font-weight: 700; color: #3a2c10; margin-bottom: 16px; }
   #toc ol { padding-left: 20px; }
   #toc li { margin: 6px 0; }
-  #toc a { color: #2563eb; text-decoration: none; font-size: 0.88rem; transition: color 0.2s; }
-  #toc a:hover { color: #1d4ed8; text-decoration: underline; }
+  #toc a { color: #5c6f3a; text-decoration: none; font-size: 0.88rem; transition: color 0.2s; }
+  #toc a:hover { color: #3a4a20; text-decoration: underline; }
 
-  /* ── ANSWER TOGGLE HINT ── */
-  .toggle-hint {
-    font-family: var(--mono);
-    font-size: 0.72rem;
-    color: var(--text-muted);
-    margin-bottom: 14px;
-    letter-spacing: 0.06em;
-  }
+  /* ── TOGGLE HINT ── */
+  .toggle-hint { font-family: var(--mono); font-size: 0.72rem; color: var(--text-muted); margin-bottom: 14px; }
 
   /* compact list */
   .compact-list { padding-left: 18px; }
-  .compact-list li { font-size: 0.88rem; color: var(--text); margin-bottom: 5px; line-height: 1.75; }
+  .compact-list li { font-size: 0.88rem; color: var(--text); margin-bottom: 5px; line-height: 1.8; }
 
-  /* skin layer diagram */
-  .skin-layers {
-    display: flex; flex-direction: column; gap: 0;
-    border: 1.5px solid var(--border);
-    border-radius: 6px;
-    overflow: hidden;
-    font-size: 0.85rem;
-  }
-  .skin-layer {
-    padding: 10px 16px;
-    display: flex; align-items: flex-start; gap: 14px;
-    border-bottom: 1px solid var(--border);
-    background: #fff;
-  }
+  /* skin layers */
+  .skin-layers { display: flex; flex-direction: column; border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
+  .skin-layer { padding: 10px 16px; display: flex; align-items: flex-start; gap: 14px; border-bottom: 1px solid var(--border); background: var(--surface); }
   .skin-layer:last-child { border-bottom: none; }
   .skin-layer-num { font-family: var(--mono); font-size: 0.7rem; color: var(--text-muted); min-width: 20px; margin-top: 3px; }
   .skin-layer-name { font-weight: 700; min-width: 200px; color: var(--text); }
   .skin-layer-desc { color: var(--text-dim); font-size: 0.82rem; }
 
-  /* ── HIGHLIGHT / MARK ── */
-  mark {
-    background: #fef08a;
-    color: #1a1200;
-    padding: 1px 4px;
-    border-radius: 3px;
-    font-weight: 600;
-  }
-  mark.green  { background: #bbf7d0; color: #14532d; }
-  mark.blue   { background: #bfdbfe; color: #1e3a8a; }
-  mark.pink   { background: #fecdd3; color: #881337; }
-  mark.orange { background: #fed7aa; color: #7c2d12; }
+  /* ── MARK / HIGHLIGHT ── */
+  mark { background: #fce878; color: #1a1200; padding: 1px 4px; border-radius: 3px; font-weight: 700; }
+  mark.green  { background: #b8f0c0; color: #0a3010; }
+  mark.blue   { background: #b8d8f8; color: #0a1e40; }
+  mark.pink   { background: #f8c8d0; color: #4a0818; }
+  mark.orange { background: #f8d8a8; color: #4a1800; }
 
   footer {
-    text-align: center;
-    padding: 32px;
-    font-size: 0.75rem;
-    color: var(--text-muted);
-    font-family: var(--mono);
-    letter-spacing: 0.06em;
-    border-top: 2px solid var(--border);
-    background: #fff;
+    text-align: center; padding: 32px;
+    font-size: 0.75rem; color: var(--text-muted);
+    font-family: var(--mono); letter-spacing: 0.06em;
+    border-top: 1px solid var(--border);
+    background: #f5f0e8;
   }
-
 </style>
 </head>
 <body>
@@ -731,9 +659,8 @@
     </div>
 
     <!-- Plastibase detailed card -->
-    <div class="card" style="margin-top:16px;border-color:rgba(206,147,216,0.3);background:rgba(206,147,216,0.04)">
-      <h3 style="color:var(--purple)">Plastibase®（Jelene®）— 重要市售品</h3>
-      <div class="grid-2">
+    <div class="card" style="margin-top:16px;border-color:rgba(106,63,138,0.3);background:#f5f0f8">
+      <h3 style="color:var(--purple)">Plastibase®（Jelene®）— 重要市售品</h3>      <div class="grid-2">
         <div>
           <h4>組成與凝膠化機制</h4>
           <ul class="compact-list">
@@ -802,10 +729,10 @@
     </div>
 
     <!-- TYPE 1 -->
-    <div style="border:1px solid rgba(79,195,247,0.35);border-radius:6px;padding:20px 24px;margin-bottom:20px;background:rgba(79,195,247,0.04)">
+    <div style="border:1px solid rgba(92,111,58,0.35);border-radius:6px;padding:20px 24px;margin-bottom:20px;background:#ede8dc">
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
-        <span style="background:var(--accent);color:var(--bg);font-family:var(--mono);font-size:0.72rem;font-weight:700;padding:3px 10px;border-radius:2px;letter-spacing:0.06em">TYPE 1</span>
-        <span style="font-family:var(--serif);font-size:1.05rem;font-weight:600;color:var(--accent)">無水但親水型（Anhydrous）</span>
+        <span style="background:#5c6f3a;color:#fff;font-family:var(--mono);font-size:0.72rem;font-weight:700;padding:3px 10px;border-radius:2px;letter-spacing:0.06em">TYPE 1</span>
+        <span style="font-family:var(--serif);font-size:1.05rem;font-weight:700;color:#3a4820">無水但親水型（Anhydrous）</span>
         <span style="font-size:0.8rem;color:var(--text-dim)">— 本身無水，但可吸水並與水溶液研合形成 w/o 乳劑</span>
       </div>
 
@@ -864,10 +791,10 @@
     </div>
 
     <!-- TYPE 2 -->
-    <div style="border:1px solid rgba(255,171,64,0.35);border-radius:6px;padding:20px 24px;background:rgba(255,171,64,0.04)">
+    <div style="border:1px solid rgba(184,90,24,0.35);border-radius:6px;padding:20px 24px;background:#ece4d8">
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
-        <span style="background:var(--orange);color:var(--bg);font-family:var(--mono);font-size:0.72rem;font-weight:700;padding:3px 10px;border-radius:2px;letter-spacing:0.06em">TYPE 2</span>
-        <span style="font-family:var(--serif);font-size:1.05rem;font-weight:600;color:var(--orange)">含水型 w/o 乳劑（Water-containing）</span>
+        <span style="background:#b85a18;color:#fff;font-family:var(--mono);font-size:0.72rem;font-weight:700;padding:3px 10px;border-radius:2px;letter-spacing:0.06em">TYPE 2</span>
+        <span style="font-family:var(--serif);font-size:1.05rem;font-weight:700;color:#6a2c08">含水型 w/o 乳劑（Water-containing）</span>
         <span style="font-size:0.8rem;color:var(--text-dim)">— 已為 w/o 乳劑，可再加入額外水溶液</span>
       </div>
 
