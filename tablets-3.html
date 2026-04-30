@@ -1037,22 +1037,31 @@
     <h2 class="sec-title">崩散試驗 <span>Disintegration Test</span></h2>
     <div class="sec-divider"></div>
   </div>
-  <div class="info-box clay" style="margin-bottom:16px"><strong>不適用：</strong>直徑超過 5 mm 之錠劑、口含錠、咀嚼錠、Extended-release 劑型</div>
+ 
+  <div class="info-box clay" style="margin-bottom:16px">
+    <strong>不適用：</strong>直徑超過 5 mm 之錠劑、口含錠、咀嚼錠，或於規定間隔時間分次釋離藥品之錠劑或膠囊劑（Extended-release）
+  </div>
+ 
   <div class="grid-2">
     <div class="card">
-      <h3>儀器設定</h3>
+      <h3>儀器設定與標準</h3>
       <div class="table-wrap">
         <table>
           <thead><tr><th>項目</th><th>崩散試驗</th><th>溶離試驗（比較）</th></tr></thead>
           <tbody>
             <tr><td>溫度</td><td><strong>37±2°C</strong></td><td>37±0.5°C</td></tr>
-            <tr><td>篩網</td><td><strong>10 號</strong>不鏽鋼篩網</td><td>40 號篩網</td></tr>
+            <tr><td>試驗網籃/篩網</td><td><strong>10 號不鏽鋼篩網</strong></td><td>40 號篩網</td></tr>
             <tr><td>升降頻率</td><td><strong>每分鐘 28–32 次</strong></td><td>固定轉速</td></tr>
+            <tr><td>篩網距容器底部</td><td><strong>2.5±2 cm</strong></td><td>2.5±0.2 cm</td></tr>
             <tr><td>全程檢品數</td><td>18 粒（6+12）</td><td>24 粒（6+6+12）</td></tr>
           </tbody>
         </table>
       </div>
+      <div class="info-box sage" style="margin-top:10px;font-size:0.82rem">
+        <strong>完全崩散定義：</strong>存留於篩網上之殘餘錠劑已呈稀軟團塊，無可覺察之硬質部分；膠囊僅存膠囊破片
+      </div>
     </div>
+ 
     <div class="card">
       <h3>崩散試驗 S1/S2 流程</h3>
       <div class="flow-chart">
@@ -1066,34 +1075,110 @@
         <div class="fc-row" style="margin-top:8px">
           <div style="font-size:0.76rem;color:var(--text-muted)">若有 1–2 顆未崩散</div>
           <span class="fc-arrow">→</span>
-          <div class="fc-box next">再取 12 個（共 18 個）</div>
+          <div class="fc-box next">再取 12 個 sample</div>
           <span class="fc-arrow">→</span>
           <div class="fc-box cond">至少 16 顆完全崩散</div>
           <span class="fc-arrow">→</span>
           <div class="fc-box pass">✓ PASS</div>
         </div>
-        <div class="fc-row" style="margin-top:4px"><div class="fc-box fail" style="margin-left:auto">✗ FAILED</div></div>
+        <div class="fc-row" style="margin-top:4px">
+          <div class="fc-box fail" style="margin-left:auto">✗ 其他 → FAILED</div>
+        </div>
       </div>
     </div>
   </div>
+ 
   <div class="card" style="margin-top:16px">
-    <h3>各劑型崩散規定</h3>
+    <h3>各劑型崩散規定（依中華藥典）</h3>
     <div class="table-wrap">
       <table>
-        <thead><tr><th style="min-width:160px">劑型</th><th>浸液</th><th>塑膠片</th><th>規定時間</th></tr></thead>
+        <thead>
+          <tr>
+            <th style="min-width:170px">劑型</th>
+            <th style="min-width:80px">浸液</th>
+            <th style="min-width:80px">塑膠片</th>
+            <th>規定時間與判定標準</th>
+          </tr>
+        </thead>
         <tbody>
-          <tr><td><strong>未加錠衣 / 一般錠衣錠</strong></td><td>水 37±2°C</td><td>各加一塑膠片</td><td>一般 <strong>30 分鐘</strong></td></tr>
-          <tr><td><strong>腸溶衣錠</strong></td><td>①水 ②人工胃液 ③人工腸液</td><td>僅③加塑膠片</td><td>②人工胃液 1 小時→不得崩散；③繼續試驗→崩散</td></tr>
-          <tr><td><strong>口頰錠（Buccal）</strong></td><td>水 37±2°C</td><td>不投入塑膠片</td><td><strong>4 小時</strong>後全部崩散</td></tr>
-          <tr><td><strong>舌下錠（Sublingual）</strong></td><td>水 37±2°C</td><td>不投入塑膠片</td><td>依正文規定（NTG 約 2 分鐘）</td></tr>
-          <tr><td><strong>硬/軟膠囊</strong></td><td>水 37±2°C</td><td>不投入塑膠片；以 10 號篩網取代</td><td>依正文規定</td></tr>
-          <tr><td><strong>丸劑</strong></td><td>①人工胃液 60 min ②人工腸液</td><td>依加錠衣錠規定加塑膠片</td><td>人工腸液 <strong>60 分鐘</strong>後全部崩散</td></tr>
+          <tr>
+            <td><strong>未加錠衣之錠劑</strong><br><strong>加一般錠衣之錠劑</strong></td>
+            <td>水 37±2°C</td>
+            <td>各加一<strong>塑膠片</strong></td>
+            <td>
+              正文規定之崩散時限（一般為 <strong>30 分鐘</strong>）<br>
+              S1：6 粒均完全崩散 → PASS<br>
+              S2：若 1–2 粒未崩 → 另取 12 粒，共 18 粒中至少 <strong>16 粒</strong>完全崩散 → PASS
+            </td>
+          </tr>
+          <tr>
+            <td><strong>加延效（腸溶、膜衣）錠衣之錠劑</strong></td>
+            <td>
+              ① 室溫之水<br>
+              ② 37±2°C 人工胃液<br>
+              ③ 37±2°C 人工腸液
+            </td>
+            <td>僅 ③ 各加一<strong>塑膠片</strong><br>（①② 不加）</td>
+            <td>
+              ①：如錠劑加著可溶性之外錠衣，先於室溫水漬浸 <strong>5 分鐘</strong><br>
+              ②：人工胃液試驗 <strong>1 小時</strong>，提出網架檢視：<mark class="clay">不得有任何錠劑崩散、破裂或軟化</mark><br>
+              ③：改以人工腸液繼續試驗，S1：全部崩散；S2：若 1–2 粒未崩 → 再取 12 粒，共 18 粒至少 <strong>16 粒</strong>崩散 → PASS
+            </td>
+          </tr>
+          <tr>
+            <td><strong>口腔錠（Buccal tablets）</strong></td>
+            <td>水 37±2°C</td>
+            <td><strong>不投入塑膠片</strong></td>
+            <td>
+              依未加錠衣錠劑崩散度試驗法，但不投入塑膠片<br>
+              時限：<strong>4 小時</strong>後應全部崩散<br>
+              S2：若 1–2 粒未崩 → 再取 12 粒，共 18 粒至少 <strong>16 粒</strong>崩散 → PASS
+            </td>
+          </tr>
+          <tr>
+            <td><strong>舌下錠（Sublingual）</strong></td>
+            <td>水 37±2°C</td>
+            <td><strong>不投入塑膠片</strong></td>
+            <td>
+              依未加錠衣錠劑崩散度試驗法，但不投入塑膠片<br>
+              於正文所規定之崩散時限終了時，全部錠劑應完全崩散<br>
+              S2：若 1–2 粒未崩 → 再取 12 粒，共 18 粒至少 <strong>16 粒</strong>崩散 → PASS<br>
+              <span style="color:var(--text-muted);font-size:0.8rem">例：Nitroglycerin（NTG）約 2 分鐘</span>
+            </td>
+          </tr>
+          <tr>
+            <td><strong>硬膠囊劑 / 軟膠囊劑</strong></td>
+            <td>水 37±2°C</td>
+            <td><strong>不投入塑膠片</strong><br>於測定網架上方圓形塑膠板表面加一可取出之<strong>10 號篩網</strong>取代</td>
+            <td>
+              依未加錠衣錠劑崩散度試驗法，但不投入塑膠片，以 10 號篩網取代<br>
+              至規定時限：除殘存膠囊破片外，應全崩散<br>
+              S2：若 1–2 粒未崩 → 再取 12 粒，共 18 粒至少 <strong>16 粒</strong>崩散 → PASS
+            </td>
+          </tr>
+          <tr>
+            <td><strong>丸劑</strong></td>
+            <td>
+              ① 37±2°C 人工胃液 60 分鐘<br>
+              ② 若未完全崩散，改以 37±2°C 人工腸液
+            </td>
+            <td>依加錠衣錠劑規定<br>各加一<strong>塑膠片</strong></td>
+            <td>
+              ①：人工胃液 60 分鐘後提出網架檢視，如未完全崩散 → 改以人工腸液繼續試驗<br>
+              ②：人工腸液 <strong>60 分鐘</strong>後，所有丸劑均應完全崩散<br>
+              S2：若 1–2 粒未崩 → 再取 12 粒，共 18 粒至少 <strong>16 粒</strong>崩散 → PASS
+            </td>
+          </tr>
         </tbody>
       </table>
     </div>
+    <div class="info-box sage" style="margin-top:12px;font-size:0.82rem">
+      <strong>S1/S2 通用規則（所有劑型一致）：</strong><br>
+      初次取 <strong>6 粒</strong>；若有 1–2 粒未崩散 → 另取 <strong>12 粒</strong>重行試驗<br>
+      共 <strong>18 粒</strong>中，至少應有 <strong>16 粒</strong>完全崩散 → PASS；否則 FAILED
+    </div>
   </div>
 </section>
-
 <!-- ═══════ SECTION 8 溶離試驗 ═══════ -->
 <section class="section accent-dusk" id="sec8">
   <div class="section-header">
