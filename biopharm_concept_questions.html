@@ -6,21 +6,20 @@
 <title>生物藥劑學觀念題整理 112–115年</title>
 <style>
 :root {
-  --bg:#fff; --bg2:#f5f5f0; --bginfo:#e6f1fb; --bgok:#eaf3de;
-  --tx:#1a1a1a; --tx2:#6b6b65; --tx3:#9b9b95;
-  --txinfo:#185fa5; --txok:#3b6d11;
-  --bd:rgba(0,0,0,0.12); --bd2:rgba(0,0,0,0.22);
-  --bdinfo:rgba(24,95,165,0.35); --bdok:rgba(59,109,17,0.35);
-  --r8:8px; --r12:12px;
+  --bg:#fff;--bg2:#f5f5f0;--bg3:#ebebeb;--bginfo:#e6f1fb;--bgok:#eaf3de;
+  --tx:#1a1a1a;--tx2:#6b6b65;--tx3:#9b9b95;
+  --txinfo:#185fa5;--txok:#3b6d11;
+  --bd:rgba(0,0,0,0.11);--bd2:rgba(0,0,0,0.2);
+  --bdinfo:rgba(24,95,165,0.35);--bdok:rgba(59,109,17,0.35);
   --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
 }
 @media(prefers-color-scheme:dark){
   :root{
-    --bg:#1e1e1c; --bg2:#2a2a27; --bginfo:#042c53; --bgok:#173404;
-    --tx:#e8e8e2; --tx2:#9b9b95; --tx3:#6b6b65;
-    --txinfo:#85b7eb; --txok:#97c459;
-    --bd:rgba(255,255,255,0.12); --bd2:rgba(255,255,255,0.22);
-    --bdinfo:rgba(133,183,235,0.35); --bdok:rgba(151,196,89,0.35);
+    --bg:#1e1e1c;--bg2:#2a2a27;--bg3:#333330;--bginfo:#042c53;--bgok:#173404;
+    --tx:#e8e8e2;--tx2:#9b9b95;--tx3:#6b6b65;
+    --txinfo:#85b7eb;--txok:#97c459;
+    --bd:rgba(255,255,255,0.11);--bd2:rgba(255,255,255,0.2);
+    --bdinfo:rgba(133,183,235,0.35);--bdok:rgba(151,196,89,0.35);
   }
   .t-pk{background:#04342c!important;color:#5dcaa5!important}
   .t-abs{background:#042c53!important;color:#85b7eb!important}
@@ -37,20 +36,21 @@ body{font-family:var(--font);background:var(--bg2);color:var(--tx);min-height:10
 h1{font-size:22px;font-weight:500;margin-bottom:6px}
 .subtitle{font-size:14px;color:var(--tx2);margin-bottom:2rem}
 .stats{display:flex;gap:10px;margin-bottom:1.5rem;flex-wrap:wrap}
-.stat{background:var(--bg);border:0.5px solid var(--bd);border-radius:var(--r8);padding:10px 18px;min-width:110px}
+.stat{background:var(--bg);border:0.5px solid var(--bd);border-radius:8px;padding:10px 18px;min-width:110px}
 .stat-label{font-size:12px;color:var(--tx2);margin-bottom:4px}
 .stat-num{font-size:22px;font-weight:500}
 .filter-section{margin-bottom:1.5rem}
-.filter-label{font-size:11px;font-weight:500;color:var(--tx3);letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px}
+.filter-label{font-size:11px;font-weight:600;color:var(--tx3);letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px}
 .filter-bar{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
 .fbtn{padding:5px 14px;border-radius:20px;border:0.5px solid var(--bd2);background:var(--bg);color:var(--tx2);font-size:13px;font-family:var(--font);cursor:pointer;transition:background .15s}
 .fbtn:hover{background:var(--bg2)}
 .fbtn.on{background:var(--bginfo);color:var(--txinfo);border-color:var(--bdinfo);font-weight:500}
 .qlist{display:flex;flex-direction:column;gap:10px}
-.qcard{background:var(--bg);border:0.5px solid var(--bd);border-radius:var(--r12);padding:14px 16px;cursor:pointer;transition:border-color .15s}
+.qcard{background:var(--bg);border:0.5px solid var(--bd);border-radius:12px;overflow:hidden;transition:border-color .15s}
 .qcard:hover{border-color:var(--bd2)}
 .qcard.open{border-color:var(--bdinfo)}
-.qhead{display:flex;align-items:flex-start;gap:10px}
+/* clickable header */
+.qhead{display:flex;align-items:flex-start;gap:10px;padding:14px 16px;cursor:pointer;user-select:none}
 .qstem{font-size:14px;line-height:1.65;flex:1}
 .qmeta{display:flex;gap:5px;flex-shrink:0;flex-wrap:wrap;margin-top:2px}
 .arrow{font-size:13px;color:var(--tx3);flex-shrink:0;margin-top:2px;transition:transform .2s}
@@ -64,12 +64,36 @@ h1{font-size:22px;font-weight:500;margin-bottom:6px}
 .t-nr{background:#faece7;color:#993c1d}
 .t-tr{background:#eaf3de;color:#3b6d11}
 .t-cr{background:#fbeaf0;color:#993556}
-.qbody{margin-top:12px;padding-top:12px;border-top:0.5px solid var(--bd);display:none}
+/* body */
+.qbody{display:none;border-top:0.5px solid var(--bd)}
 .qcard.open .qbody{display:block}
-.ans-label{font-size:11px;color:var(--tx2);margin-bottom:8px;font-weight:500;letter-spacing:.03em}
-.opts{display:flex;flex-direction:column;gap:5px}
-.opt{font-size:13px;color:var(--tx2);line-height:1.55;padding:6px 10px;border-radius:6px;border:0.5px solid var(--bd)}
+/* options */
+.opts-section{padding:14px 16px}
+.opts{display:flex;flex-direction:column;gap:5px;margin-bottom:12px}
+.opt{font-size:13px;color:var(--tx2);line-height:1.55;padding:6px 10px;border-radius:6px;border:0.5px solid var(--bd);transition:background .2s,color .2s,border-color .2s}
 .opt.ok{background:var(--bgok);color:var(--txok);border-color:var(--bdok);font-weight:500}
+/* show-answer button */
+.ans-btn-row{display:flex;gap:8px;margin-bottom:0}
+.ans-btn{font-size:12px;padding:5px 14px;border-radius:20px;border:0.5px solid var(--bd2);background:var(--bg2);color:var(--tx2);font-family:var(--font);cursor:pointer;transition:background .15s}
+.ans-btn:hover{background:var(--bg3)}
+.ans-btn.revealed{background:var(--bgok);color:var(--txok);border-color:var(--bdok)}
+/* explanation */
+.exp-section{border-top:0.5px solid var(--bd);padding:14px 16px}
+.exp-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.exp-title{font-size:11px;font-weight:600;color:var(--tx2);letter-spacing:.04em;text-transform:uppercase}
+.exp-actions{display:flex;gap:6px}
+.ebtn{font-size:12px;padding:3px 10px;border-radius:6px;border:0.5px solid var(--bd2);background:var(--bg2);color:var(--tx2);font-family:var(--font);cursor:pointer;transition:background .15s}
+.ebtn:hover{background:var(--bg3)}
+.ebtn.save{background:var(--bginfo);color:var(--txinfo);border-color:var(--bdinfo)}
+.ebtn.del{color:#c0392b;border-color:rgba(192,57,43,0.3)}
+.exp-display{font-size:13.5px;line-height:1.8;color:var(--tx);white-space:pre-wrap;word-break:break-word}
+.exp-empty{font-size:13px;color:var(--tx3);font-style:italic}
+.exp-edit{display:none}
+.exp-edit textarea{width:100%;min-height:120px;padding:10px 12px;font-size:13.5px;line-height:1.75;font-family:var(--font);color:var(--tx);background:var(--bg2);border:0.5px solid var(--bd2);border-radius:8px;resize:vertical;outline:none;transition:border-color .15s}
+.exp-edit textarea:focus{border-color:var(--bdinfo)}
+.exp-edit .edit-actions{display:flex;gap:6px;margin-top:8px;justify-content:flex-end}
+/* note indicator on card header */
+.note-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:#f0c040;margin-left:5px;vertical-align:middle;flex-shrink:0;margin-top:5px}
 .empty{text-align:center;color:var(--tx2);font-size:14px;padding:3rem 0}
 footer{margin-top:3rem;text-align:center;font-size:12px;color:var(--tx3)}
 </style>
@@ -77,7 +101,7 @@ footer{margin-top:3rem;text-align:center;font-size:12px;color:var(--tx3)}
 <body>
 <div class="page">
   <h1>生物藥劑學觀念題整理</h1>
-  <p class="subtitle">112–115年 專技高考藥師（一）· 非計算觀念題 · 點擊題目展開選項</p>
+  <p class="subtitle">112–115年 專技高考藥師（一）· 非計算觀念題</p>
   <div class="stats" id="stats"></div>
   <div class="filter-section">
     <div class="filter-label">年份</div>
@@ -86,7 +110,7 @@ footer{margin-top:3rem;text-align:center;font-size:12px;color:var(--tx3)}
     <div class="filter-bar" id="topicBar"></div>
   </div>
   <div class="qlist" id="qlist"></div>
-  <footer>綠色選項為正確答案</footer>
+  <footer>詳解儲存於本機瀏覽器 · 黃點表示已有筆記</footer>
 </div>
 <script>
 var Q = [
@@ -172,92 +196,230 @@ var Q = [
   {y:"115-1",n:80,k:"tr",t:"基因多型性",s:"下列何者易受個體基因差異之影響？①drug receptor 之反應 ②drug-metabolizing enzyme 之活性 ③drug transporter 之表現",o:["(A) 僅①②","(B) 僅②③","(C) 僅①③","(D) ①②③"],a:3}
 ];
 
-var TM = {
-  pk: {l:"藥動學概念",c:"t-pk"},
-  abs:{l:"吸收動力學",c:"t-abs"},
-  ba: {l:"生體可用率",c:"t-ba"},
-  be: {l:"BCS/IVIVC/BE",c:"t-be"},
-  nr: {l:"腎/肝功能",c:"t-nr"},
-  tr: {l:"基因/轉運蛋白",c:"t-tr"},
-  cr: {l:"控釋劑型",c:"t-cr"}
-};
+var TM={pk:{l:"藥動學概念",c:"t-pk"},abs:{l:"吸收動力學",c:"t-abs"},ba:{l:"生體可用率",c:"t-ba"},be:{l:"BCS/IVIVC/BE",c:"t-be"},nr:{l:"腎/肝功能",c:"t-nr"},tr:{l:"基因/轉運蛋白",c:"t-tr"},cr:{l:"控釋劑型",c:"t-cr"}};
+var ay="all", at="all";
 
-var ay = "all", at = "all";
+function key(q){ return q.y+"-Q"+q.n; }
+function getNote(q){ return localStorage.getItem("note_"+key(q))||""; }
+function setNote(q,v){ if(v) localStorage.setItem("note_"+key(q),v); else localStorage.removeItem("note_"+key(q)); }
 
-function getFiltered() {
-  return Q.filter(function(q) {
-    return (ay === "all" || q.y === ay) && (at === "all" || q.k === at);
-  });
+function getFiltered(){
+  return Q.filter(function(q){ return (ay==="all"||q.y===ay)&&(at==="all"||q.k===at); });
 }
 
-function buildFilters() {
-  var years = ["all"];
-  Q.forEach(function(q){ if(years.indexOf(q.y)<0) years.push(q.y); });
-  var topics = ["all"].concat(Object.keys(TM));
-
-  var yb = document.getElementById("yearBar");
-  yb.innerHTML = "";
-  years.forEach(function(y) {
-    var b = document.createElement("button");
-    b.className = "fbtn" + (ay===y?" on":"");
-    b.textContent = y==="all"?"全部年份":y;
-    b.addEventListener("click", function(){ ay=y; render(); });
+function buildFilters(){
+  var years=["all"]; Q.forEach(function(q){ if(years.indexOf(q.y)<0) years.push(q.y); });
+  var topics=["all"].concat(Object.keys(TM));
+  var yb=document.getElementById("yearBar"); yb.innerHTML="";
+  years.forEach(function(y){
+    var b=document.createElement("button");
+    b.className="fbtn"+(ay===y?" on":"");
+    b.textContent=y==="all"?"全部年份":y;
+    b.addEventListener("click",function(){ ay=y; render(); });
     yb.appendChild(b);
   });
-
-  var tb = document.getElementById("topicBar");
-  tb.innerHTML = "";
-  topics.forEach(function(t) {
-    var b = document.createElement("button");
-    b.className = "fbtn" + (at===t?" on":"");
-    b.textContent = t==="all"?"全部主題":TM[t].l;
-    b.addEventListener("click", function(){ at=t; render(); });
+  var tb=document.getElementById("topicBar"); tb.innerHTML="";
+  topics.forEach(function(t){
+    var b=document.createElement("button");
+    b.className="fbtn"+(at===t?" on":"");
+    b.textContent=t==="all"?"全部主題":TM[t].l;
+    b.addEventListener("click",function(){ at=t; render(); });
     tb.appendChild(b);
   });
 }
 
-function buildStats(list) {
-  document.getElementById("stats").innerHTML =
-    '<div class="stat"><div class="stat-label">總題數</div><div class="stat-num">'+Q.length+'</div></div>' +
-    '<div class="stat"><div class="stat-label">目前顯示</div><div class="stat-num">'+list.length+'</div></div>';
+function buildStats(list){
+  var noted=list.filter(function(q){ return getNote(q); }).length;
+  document.getElementById("stats").innerHTML=
+    '<div class="stat"><div class="stat-label">總題數</div><div class="stat-num">'+Q.length+'</div></div>'+
+    '<div class="stat"><div class="stat-label">目前顯示</div><div class="stat-num">'+list.length+'</div></div>'+
+    (noted?'<div class="stat"><div class="stat-label">已有詳解</div><div class="stat-num">'+noted+'</div></div>':'');
 }
 
-function buildList(list) {
-  var el = document.getElementById("qlist");
-  if(!list.length){ el.innerHTML='<div class="empty">此篩選條件無題目</div>'; return; }
-  el.innerHTML = "";
-  list.forEach(function(q, i) {
-    var tm = TM[q.k];
-    var card = document.createElement("div");
-    card.className = "qcard";
+function buildCard(q){
+  var tm=TM[q.k];
+  var note=getNote(q);
+  var card=document.createElement("div");
+  card.className="qcard";
 
-    var opts = q.o.map(function(o, idx){
-      return '<div class="opt'+(idx===q.a?" ok":"")+'">'+ o +'</div>';
-    }).join("");
+  /* ── header ── */
+  var head=document.createElement("div");
+  head.className="qhead";
+  head.innerHTML=
+    '<div class="qstem">'+q.y+' 第'+q.n+'題 — '+q.s+'</div>'+
+    '<div class="qmeta">'+
+      '<span class="badge-year">'+q.y+'</span>'+
+      '<span class="tag '+tm.c+'">'+tm.l+'</span>'+
+      (note?'<span class="note-dot" title="已有詳解"></span>':'')+
+    '</div>'+
+    '<span class="arrow">▾</span>';
 
-    card.innerHTML =
-      '<div class="qhead">'+
-        '<div class="qstem">'+q.y+' 第'+q.n+'題 — '+q.s+'</div>'+
-        '<div class="qmeta">'+
-          '<span class="badge-year">'+q.y+'</span>'+
-          '<span class="tag '+tm.c+'">'+tm.l+'</span>'+
-        '</div>'+
-        '<span class="arrow">▾</span>'+
-      '</div>'+
-      '<div class="qbody">'+
-        '<div class="ans-label">選項（綠色為正確答案）</div>'+
-        '<div class="opts">'+opts+'</div>'+
-      '</div>';
+  /* ── body ── */
+  var body=document.createElement("div");
+  body.className="qbody";
 
-    card.addEventListener("click", function(){
-      this.classList.toggle("open");
-    });
-    el.appendChild(card);
+  /* options section */
+  var optsSection=document.createElement("div");
+  optsSection.className="opts-section";
+
+  var optsDiv=document.createElement("div");
+  optsDiv.className="opts";
+  q.o.forEach(function(o,i){
+    var d=document.createElement("div");
+    d.className="opt";
+    d.textContent=o;
+    optsDiv.appendChild(d);
   });
+
+  /* show-answer button */
+  var btnRow=document.createElement("div");
+  btnRow.className="ans-btn-row";
+  var ansBtn=document.createElement("button");
+  ansBtn.className="ans-btn";
+  ansBtn.textContent="顯示答案";
+  var revealed=false;
+  ansBtn.addEventListener("click",function(e){
+    e.stopPropagation();
+    if(revealed){ 
+      /* hide again */
+      optsDiv.querySelectorAll(".opt").forEach(function(d){ d.classList.remove("ok"); });
+      ansBtn.textContent="顯示答案";
+      ansBtn.classList.remove("revealed");
+      revealed=false;
+    } else {
+      optsDiv.querySelectorAll(".opt")[q.a].classList.add("ok");
+      ansBtn.textContent="隱藏答案";
+      ansBtn.classList.add("revealed");
+      revealed=true;
+    }
+  });
+  btnRow.appendChild(ansBtn);
+  optsSection.appendChild(optsDiv);
+  optsSection.appendChild(btnRow);
+
+  /* explanation section */
+  var expSection=document.createElement("div");
+  expSection.className="exp-section";
+
+  var expHeader=document.createElement("div");
+  expHeader.className="exp-header";
+  var expTitle=document.createElement("div");
+  expTitle.className="exp-title";
+  expTitle.textContent="詳解筆記";
+  var expActions=document.createElement("div");
+  expActions.className="exp-actions";
+  var editBtn=document.createElement("button");
+  editBtn.className="ebtn";
+  editBtn.textContent="編輯";
+  expActions.appendChild(editBtn);
+  expHeader.appendChild(expTitle);
+  expHeader.appendChild(expActions);
+
+  /* display */
+  var displayDiv=document.createElement("div");
+  if(note){
+    displayDiv.className="exp-display";
+    displayDiv.textContent=note;
+  } else {
+    displayDiv.className="exp-empty";
+    displayDiv.textContent="尚未新增詳解";
+  }
+
+  /* edit area */
+  var editDiv=document.createElement("div");
+  editDiv.className="exp-edit";
+  var ta=document.createElement("textarea");
+  ta.placeholder="在這裡貼上詳解或筆記…";
+  ta.value=note;
+  var editActions=document.createElement("div");
+  editActions.className="edit-actions";
+  var saveBtn=document.createElement("button");
+  saveBtn.className="ebtn save"; saveBtn.textContent="儲存";
+  var cancelBtn=document.createElement("button");
+  cancelBtn.className="ebtn"; cancelBtn.textContent="取消";
+  var delBtn=document.createElement("button");
+  delBtn.className="ebtn del"; delBtn.textContent="刪除";
+  editActions.appendChild(delBtn);
+  editActions.appendChild(cancelBtn);
+  editActions.appendChild(saveBtn);
+  editDiv.appendChild(ta);
+  editDiv.appendChild(editActions);
+
+  function enterEdit(){
+    ta.value=getNote(q);
+    displayDiv.style.display="none";
+    editDiv.style.display="block";
+    editBtn.style.display="none";
+    ta.focus();
+  }
+  function exitEdit(){
+    displayDiv.style.display="";
+    editDiv.style.display="none";
+    editBtn.style.display="";
+  }
+  function refreshDisplay(){
+    var n=getNote(q);
+    if(n){ displayDiv.className="exp-display"; displayDiv.textContent=n; }
+    else { displayDiv.className="exp-empty"; displayDiv.textContent="尚未新增詳解"; }
+    /* update dot in header */
+    var dot=head.querySelector(".note-dot");
+    if(n && !dot){
+      var newDot=document.createElement("span");
+      newDot.className="note-dot"; newDot.title="已有詳解";
+      head.querySelector(".qmeta").appendChild(newDot);
+    } else if(!n && dot){ dot.remove(); }
+  }
+
+  editBtn.addEventListener("click",function(e){ e.stopPropagation(); enterEdit(); });
+  cancelBtn.addEventListener("click",function(e){ e.stopPropagation(); exitEdit(); });
+  saveBtn.addEventListener("click",function(e){
+    e.stopPropagation();
+    setNote(q, ta.value.trim());
+    refreshDisplay();
+    exitEdit();
+  });
+  delBtn.addEventListener("click",function(e){
+    e.stopPropagation();
+    if(confirm("確定要刪除這題的詳解嗎？")){
+      setNote(q,"");
+      ta.value="";
+      refreshDisplay();
+      exitEdit();
+    }
+  });
+
+  expSection.appendChild(expHeader);
+  expSection.appendChild(displayDiv);
+  expSection.appendChild(editDiv);
+
+  body.appendChild(optsSection);
+  body.appendChild(expSection);
+
+  /* toggle open */
+  head.addEventListener("click",function(){
+    card.classList.toggle("open");
+    if(!card.classList.contains("open") && revealed){
+      optsDiv.querySelectorAll(".opt").forEach(function(d){ d.classList.remove("ok"); });
+      ansBtn.textContent="顯示答案";
+      ansBtn.classList.remove("revealed");
+      revealed=false;
+    }
+  });
+
+  card.appendChild(head);
+  card.appendChild(body);
+  return card;
 }
 
-function render() {
-  var list = getFiltered();
+function buildList(list){
+  var el=document.getElementById("qlist");
+  el.innerHTML="";
+  if(!list.length){ el.innerHTML='<div class="empty">此篩選條件無題目</div>'; return; }
+  list.forEach(function(q){ el.appendChild(buildCard(q)); });
+}
+
+function render(){
+  var list=getFiltered();
   buildFilters();
   buildStats(list);
   buildList(list);
