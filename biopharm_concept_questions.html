@@ -1,48 +1,177 @@
-
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>生物藥劑學觀念題整理 112–115年</title>
 <style>
+  :root {
+    --bg: #ffffff;
+    --bg-secondary: #f5f5f0;
+    --bg-info: #e6f1fb;
+    --bg-success: #eaf3de;
+    --text: #1a1a1a;
+    --text-secondary: #6b6b65;
+    --text-tertiary: #9b9b95;
+    --text-info: #185fa5;
+    --text-success: #3b6d11;
+    --border: rgba(0,0,0,0.12);
+    --border-secondary: rgba(0,0,0,0.22);
+    --border-info: rgba(24,95,165,0.35);
+    --border-success: rgba(59,109,17,0.35);
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-xl: 16px;
+    --font: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1e1e1c;
+      --bg-secondary: #2a2a27;
+      --bg-info: #042c53;
+      --bg-success: #173404;
+      --text: #e8e8e2;
+      --text-secondary: #9b9b95;
+      --text-tertiary: #6b6b65;
+      --text-info: #85b7eb;
+      --text-success: #97c459;
+      --border: rgba(255,255,255,0.12);
+      --border-secondary: rgba(255,255,255,0.22);
+      --border-info: rgba(133,183,235,0.35);
+      --border-success: rgba(151,196,89,0.35);
+    }
+    .t-pk { background: #04342c !important; color: #5dcaa5 !important; }
+    .t-abs { background: #042c53 !important; color: #85b7eb !important; }
+    .t-ba { background: #26215c !important; color: #afa9ec !important; }
+    .t-be { background: #412402 !important; color: #fac775 !important; }
+    .t-nr { background: #4a1b0c !important; color: #f0997b !important; }
+    .t-tr { background: #173404 !important; color: #97c459 !important; }
+    .t-cr { background: #4b1528 !important; color: #ed93b1 !important; }
+    .badge-year { background: #2a2a27 !important; color: #9b9b95 !important; border-color: rgba(255,255,255,0.12) !important; }
+    .ans-item { background: transparent; }
+  }
+
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: var(--font-sans); }
-  .container { padding: 1rem 0; }
-  .filter-bar { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 1.5rem; }
+
+  body {
+    font-family: var(--font);
+    background: var(--bg-secondary);
+    color: var(--text);
+    min-height: 100vh;
+    padding: 2rem 1rem;
+    line-height: 1.6;
+  }
+
+  .page {
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  header {
+    margin-bottom: 2rem;
+  }
+  header h1 {
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+  header p {
+    font-size: 14px;
+    color: var(--text-secondary);
+  }
+
+  .stats-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .stat-card {
+    background: var(--bg);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 10px 18px;
+    min-width: 110px;
+  }
+  .stat-label { font-size: 12px; color: var(--text-secondary); margin-bottom: 4px; }
+  .stat-num { font-size: 22px; font-weight: 500; color: var(--text); }
+
+  .filter-section { margin-bottom: 1.5rem; }
+  .filter-group-label {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--text-tertiary);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 10px;
+  }
   .filter-btn {
     padding: 5px 14px;
     border-radius: 20px;
-    border: 0.5px solid var(--color-border-secondary);
-    background: var(--color-background-primary);
-    color: var(--color-text-secondary);
+    border: 0.5px solid var(--border-secondary);
+    background: var(--bg);
+    color: var(--text-secondary);
     font-size: 13px;
+    font-family: var(--font);
     cursor: pointer;
-    transition: all 0.15s;
+    transition: background 0.15s, color 0.15s;
   }
-  .filter-btn:hover { background: var(--color-background-secondary); }
+  .filter-btn:hover { background: var(--bg-secondary); }
   .filter-btn.active {
-    background: var(--color-background-info);
-    color: var(--color-text-info);
-    border-color: var(--color-border-info);
+    background: var(--bg-info);
+    color: var(--text-info);
+    border-color: var(--border-info);
     font-weight: 500;
   }
-  .stats-row { display: flex; gap: 10px; margin-bottom: 1.5rem; flex-wrap: wrap; }
-  .stat-card {
-    background: var(--color-background-secondary);
-    border-radius: var(--border-radius-md);
-    padding: 10px 16px;
-    min-width: 110px;
-  }
-  .stat-label { font-size: 12px; color: var(--color-text-secondary); margin-bottom: 4px; }
-  .stat-num { font-size: 22px; font-weight: 500; color: var(--color-text-primary); }
+
   .q-list { display: flex; flex-direction: column; gap: 10px; }
+
   .q-card {
-    background: var(--color-background-primary);
-    border: 0.5px solid var(--color-border-tertiary);
-    border-radius: var(--border-radius-lg);
+    background: var(--bg);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-lg);
     padding: 14px 16px;
     cursor: pointer;
     transition: border-color 0.15s;
+    user-select: none;
   }
-  .q-card:hover { border-color: var(--color-border-secondary); }
-  .q-card.expanded { border-color: var(--color-border-info); }
-  .q-header { display: flex; align-items: flex-start; gap: 10px; }
-  .q-meta { display: flex; gap: 6px; flex-shrink: 0; margin-top: 1px; flex-wrap: wrap; }
+  .q-card:hover { border-color: var(--border-secondary); }
+  .q-card.expanded { border-color: var(--border-info); }
+
+  .q-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .q-stem {
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.65;
+    flex: 1;
+  }
+  .q-meta {
+    display: flex;
+    gap: 5px;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+    margin-top: 2px;
+  }
+  .expand-icon {
+    font-size: 13px;
+    color: var(--text-tertiary);
+    flex-shrink: 0;
+    margin-top: 2px;
+    transition: transform 0.2s;
+  }
+  .q-card.expanded .expand-icon { transform: rotate(180deg); }
+
   .badge {
     font-size: 11px;
     padding: 2px 8px;
@@ -50,709 +179,262 @@
     font-weight: 500;
     white-space: nowrap;
   }
-  .badge-year { background: var(--color-background-secondary); color: var(--color-text-secondary); border: 0.5px solid var(--color-border-tertiary); }
-  .badge-topic { background: var(--color-background-info); color: var(--color-text-info); }
-  .q-stem { font-size: 14px; color: var(--color-text-primary); line-height: 1.6; flex: 1; }
-  .q-ans-block { margin-top: 12px; padding-top: 12px; border-top: 0.5px solid var(--color-border-tertiary); display: none; }
+  .badge-year {
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+    border: 0.5px solid var(--border);
+  }
+
+  .topic-tag {
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .t-pk  { background: #e1f5ee; color: #0f6e56; }
+  .t-abs { background: #e6f1fb; color: #185fa5; }
+  .t-ba  { background: #eeedfe; color: #534ab7; }
+  .t-be  { background: #faeeda; color: #854f0b; }
+  .t-nr  { background: #faece7; color: #993c1d; }
+  .t-tr  { background: #eaf3de; color: #3b6d11; }
+  .t-cr  { background: #fbeaf0; color: #993556; }
+
+  .q-ans-block {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 0.5px solid var(--border);
+    display: none;
+  }
   .q-card.expanded .q-ans-block { display: block; }
-  .ans-label { font-size: 11px; color: var(--color-text-secondary); margin-bottom: 6px; font-weight: 500; letter-spacing: 0.03em; }
-  .ans-row { display: flex; flex-direction: column; gap: 4px; }
-  .ans-item { font-size: 13px; color: var(--color-text-secondary); line-height: 1.5; padding: 4px 8px; border-radius: 6px; border: 0.5px solid var(--color-border-tertiary); }
-  .ans-item.correct { background: var(--color-background-success); color: var(--color-text-success); border-color: var(--color-border-success); font-weight: 500; }
-  .expand-icon { font-size: 13px; color: var(--color-text-tertiary); margin-left: auto; flex-shrink: 0; }
-  .no-results { text-align: center; color: var(--color-text-secondary); font-size: 14px; padding: 2rem 0; }
-  .topic-tag { font-size: 11px; padding: 2px 7px; border-radius: 8px; font-weight: 500; }
-  .t-pk { background: #E1F5EE; color: #0F6E56; }
-  .t-ba { background: #EEEDFE; color: #534AB7; }
-  .t-be { background: #FAEEDA; color: #854F0B; }
-  .t-nr { background: #FAECE7; color: #993C1D; }
-  .t-abs { background: #E6F1FB; color: #185FA5; }
-  .t-cr { background: #FBEAF0; color: #993556; }
-  .t-tr { background: #EAF3DE; color: #3B6D11; }
-  @media (prefers-color-scheme: dark) {
-    .t-pk { background: #04342C; color: #5DCAA5; }
-    .t-ba { background: #26215C; color: #AFA9EC; }
-    .t-be { background: #412402; color: #FAC775; }
-    .t-nr { background: #4A1B0C; color: #F0997B; }
-    .t-abs { background: #042C53; color: #85B7EB; }
-    .t-cr { background: #4B1528; color: #ED93B1; }
-    .t-tr { background: #173404; color: #97C459; }
+
+  .ans-label {
+    font-size: 11px;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+  }
+  .ans-row { display: flex; flex-direction: column; gap: 5px; }
+  .ans-item {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.55;
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: 0.5px solid var(--border);
+  }
+  .ans-item.correct {
+    background: var(--bg-success);
+    color: var(--text-success);
+    border-color: var(--border-success);
+    font-weight: 500;
+  }
+
+  .no-results {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 14px;
+    padding: 3rem 0;
+  }
+
+  footer {
+    margin-top: 3rem;
+    text-align: center;
+    font-size: 12px;
+    color: var(--text-tertiary);
   }
 </style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <h1>生物藥劑學觀念題整理</h1>
+    <p>112–115年 專技高考藥師（一）藥劑學與生物藥劑學 · 非計算觀念題</p>
+  </header>
 
-<div class="container">
   <div class="stats-row" id="statsRow"></div>
-  <div class="filter-bar" id="filterBar"></div>
+
+  <div class="filter-section">
+    <div class="filter-group-label">年份篩選</div>
+    <div class="filter-bar" id="yearBar"></div>
+    <div class="filter-group-label">主題篩選</div>
+    <div class="filter-bar" id="topicBar"></div>
+  </div>
+
   <div class="q-list" id="qList"></div>
+
+  <footer>點擊題目可展開選項，綠色為正確答案</footer>
 </div>
 
 <script>
 const questions = [
-  {
-    year: "112-1", qn: 32, topic: "BCS分類",
-    stem: "依據 biopharmaceutics classification system（BCS）分類，下列何類型藥物最易獲得 IVIVC（in vitro-in vivo correlation）關係？",
-    opts: ["(A) class 1", "(B) class 2", "(C) class 3", "(D) class 4"],
-    ans: "B",
-    key: "be"
-  },
-  {
-    year: "112-1", qn: 46, topic: "控釋劑型",
-    stem: "有關口服同成分控釋製劑相較於其速放製劑在臨床使用之特性為何？①藥物血中濃度較少波動 ②減少給藥次數 ③增加服藥依從性 ④提高劑量調整的彈性",
-    opts: ["(A) 僅①③", "(B) 僅①②③", "(C) 僅②④", "(D) ①②③④"],
-    ans: "B",
-    key: "cr"
-  },
-  {
-    year: "112-1", qn: 48, topic: "IVIVC",
-    stem: "下列何者屬於 level A 的 in vitro-in vivo correlations（IVIVC）？",
-    opts: ["(A) 體外溶離速率常數和體內吸收速率常數", "(B) 體外溶出50%的時間和體內最高血中濃度", "(C) 體外平均溶離時間和體內平均溶離時間", "(D) 體外溶離量和體內吸收量之經時變化相關性"],
-    ans: "D",
-    key: "be"
-  },
-  {
-    year: "112-1", qn: 53, topic: "吸收動力學",
-    stem: "有關藥物口服吸收之敘述，下列何者正確？① 一級吸收速率與藥物在吸收部位的濃度及吸收量成正比 ② 零級吸收速率與藥物在吸收部位的濃度及含量成正比 ③到達最高血中濃度(Cmax)前，僅進行藥物吸收，(Cmax)後才開始排除 ④到達最高血中濃度的時間(Tmax)與吸收速率常數及排除速率常數有關",
-    opts: ["(A) ①④", "(B) ②③", "(C) ②④", "(D) ①③"],
-    ans: "A",
-    key: "abs"
-  },
-  {
-    year: "112-1", qn: 62, topic: "殘值法",
-    stem: "有關藥物經口服吸收之敘述，下列何者最適當？",
-    opts: ["(A) 殘值法（method of residuals）無法推估排除速率常數", "(B) 滯後時間（lag time）是指投藥後藥物血中濃度到達治療有效濃度的時間", "(C) 利用殘值法時，要儘量採用靠近 tmax 的數值作線性迴歸", "(D) 利用 Wagner-Nelson method 可求得吸收速率常數"],
-    ans: "D",
-    key: "abs"
-  },
-  {
-    year: "112-1", qn: 63, topic: "吸收動力學",
-    stem: "有關口服藥物經吸收達最高血中藥物濃度時之敘述，下列何者最適當？",
-    opts: ["(A) 藥物已吸收完全", "(B) 吸收速率大於排除速率", "(C) 吸收速率等於排除速率", "(D) 吸收速率小於排除速率"],
-    ans: "C",
-    key: "abs"
-  },
-  {
-    year: "112-1", qn: 66, topic: "生體可用率",
-    stem: "有關生體可用率之敘述，下列何者最適當？",
-    opts: ["(A) 用以衡量藥品在體內分布代謝的程度", "(B) 會受劑型之製劑配方或製程改變而影響", "(C) 須從特定疾病群組的受試者所得到的藥動參數", "(D) 相同藥品不同劑量會得到不同之生體可用率"],
-    ans: "B",
-    key: "ba"
-  },
-  {
-    year: "112-1", qn: 67, topic: "溶離試驗",
-    stem: "依據中華藥典，有關溶離圖比對（dissolution profile comparison）應用之敘述，下列何者錯誤？",
-    opts: ["(A) 可用以佐證藥物許可上市後變更（SUPAC）新配方藥品之相等性", "(B) 用以評估不同劑量產品時，較低強度的藥品可否免除（biowavers）體內生體相等性試驗", "(C) 若配方改變前後的溶離曲線具相似性，則相似因子（f2）至少達 50", "(D) Immediate-release 產品於三種酸鹼值中，於規定時間內應溶出≧85%"],
-    ans: "A",
-    key: "be"
-  },
-  {
-    year: "112-1", qn: 70, topic: "BCS分類",
-    stem: "根據 BCS 與 BDDCS 的觀念，下列敘述何者正確？①細胞膜轉運蛋白對於具有 BCS class 1 特性原料藥的口服吸收影響不大 ②代謝對於具有 BCS class 1 特性口服藥的生體可用率影響不大 ③代謝是評估 BCS 特性的重要依據之一 ④細胞膜轉運蛋白是評估 BDDCS 特性的重要依據之一",
-    opts: ["(A) ①③", "(B) ①④", "(C) ②④", "(D) ②③"],
-    ans: "B",
-    key: "be"
-  },
-  {
-    year: "112-1", qn: 72, topic: "非線性藥動學",
-    stem: "下列何種情況最可能造成藥物發生非線性藥動學特性？",
-    opts: ["(A) 藥物蛋白結合率高", "(B) 藥物溶解度佳", "(C) 藥物排除速率快", "(D) 藥物吸收率佳"],
-    ans: "A",
-    key: "pk"
-  },
-  {
-    year: "112-1", qn: 77, topic: "基因多型性",
-    stem: "若病人屬於 CYP2D6 ultrarapid metabolizer，其對下列何者之療效不佳？",
-    opts: ["(A) clopidogrel", "(B) omeprazole", "(C) isoniazid", "(D) amitriptyline"],
-    ans: "D",
-    key: "tr"
-  },
-  {
-    year: "112-1", qn: 80, topic: "基因多型性",
-    stem: "Phenytoin 之治療血中濃度約為 10～20 mg/L，已知其口服生體可用率大於 70%，血漿蛋白結合率大約 90%。則下列何者對 phenytoin 的血中濃度影響最大？",
-    opts: ["(A) 肝血流量", "(B) CYP2C9 基因多型性", "(C) 併用 omeprazole", "(D) CYP2D6 基因多型性"],
-    ans: "B",
-    key: "tr"
-  },
-  {
-    year: "112-2", qn: 53, topic: "藥動參數",
-    stem: "下列藥動參數之估算，何者最不會受到藥物是否具 flip-flop 特性之影響？",
-    opts: ["(A) AUC", "(B) Tmax", "(C) Cmin", "(D) Cmax"],
-    ans: "A",
-    key: "abs"
-  },
-  {
-    year: "112-2", qn: 54, topic: "吸收動力學",
-    stem: "口服投與具 dose-independent 特性的藥品後，因病況改變使得藥物排除速率常數變小，吸收速率常數未受影響，則下列藥動參數的變化何者最適當？",
-    opts: ["(A) 清除率變大", "(B) 分布體積變小", "(C) 達最高血中濃度的時間縮短", "(D) 最高血中濃度變大"],
-    ans: "D",
-    key: "abs"
-  },
-  {
-    year: "112-2", qn: 63, topic: "胃排空",
-    stem: "下列何者最易增加胃排空速率？",
-    opts: ["(A) 酒", "(B) 蛋白", "(C) 肥豬肉", "(D) 蘇打餅乾"],
-    ans: "D",
-    key: "abs"
-  },
-  {
-    year: "112-2", qn: 64, topic: "吸收動力學",
-    stem: "下列何者適用於計算二室藥動模式藥物之口服吸收速率常數？",
-    opts: ["(A) steady-state method", "(B) Loo-Riegelman method", "(C) Wagner-Nelson method", "(D) sigma-minus method"],
-    ans: "B",
-    key: "abs"
-  },
-  {
-    year: "112-2", qn: 66, topic: "生體相等性",
-    stem: "有關以血中濃度為評估標的，進行多次劑量給藥之生體相等性試驗，下列敘述何者錯誤？",
-    opts: ["(A) 採隨機、交叉實驗設計，洗除期間為10個排除半衰期", "(B) 須測定三次波谷濃度，以確定多次給藥已達穩定狀態", "(C) 可利用變異數分析經對數轉換的Cmax與AUC", "(D) 以90%信賴區間，需在對照品的75~120%間始具生體相等性"],
-    ans: "D",
-    key: "be"
-  },
-  {
-    year: "112-2", qn: 67, topic: "生體可用率",
-    stem: "下列選項為 erythromycin 口服製劑在胃中1小時的溶離率，何者對應之生體可用率最高？",
-    opts: ["(A) 100%", "(B) 80%", "(C) 60%", "(D) 40%"],
-    ans: "D",
-    key: "ba"
-  },
-  {
-    year: "112-2", qn: 68, topic: "生體可用率",
-    stem: "下列何者無法有效提升口服藥物生體可用率？",
-    opts: ["(A) 改善賦形劑組成，提升藥品在腸道吸收", "(B) 減少腎排除以減緩血中藥物濃度的下降", "(C) 抑制腸道代謝酵素及轉運蛋白", "(D) 降低肝臟首渡代謝"],
-    ans: "B",
-    key: "ba"
-  },
-  {
-    year: "112-2", qn: 69, topic: "BCS分類",
-    stem: "某藥屬於 BCS Class III，已知此藥僅由腎排除，下列何者是影響此藥口服生體可用率的主要限制步驟？",
-    opts: ["(A) 崩散作用", "(B) 溶離釋放", "(C) 腸壁通透", "(D) 首渡效應"],
-    ans: "C",
-    key: "be"
-  },
-  {
-    year: "112-2", qn: 70, topic: "代謝酵素",
-    stem: "下列藥品與其代謝 CYP 之配對，何者錯誤？",
-    opts: ["(A) desipramine－CYP2D6", "(B) midazolam－CYP3A4", "(C) repaglinide－CYP2C8", "(D) warfarin－CYP1A2"],
-    ans: "D",
-    key: "tr"
-  },
-  {
-    year: "112-2", qn: 76, topic: "基因多型性",
-    stem: "有關 ABCB1 基因多型性與藥物之關聯性，下列敘述何者錯誤？",
-    opts: ["(A) 與paclitaxel之療效有關", "(B) 與口服 digoxin 之吸收有關", "(C) 與 etoposide 之抗藥性有關", "(D) 與 simvastatin 之 myopathy 副作用有關"],
-    ans: "D",
-    key: "tr"
-  },
-  {
-    year: "112-2", qn: 77, topic: "基因多型性",
-    stem: "下列何者對帶有 CYP2C9*2 基因者，會使其藥物血中濃度升高而易產生副作用？",
-    opts: ["(A) phenytoin", "(B) codeine", "(C) cisapride", "(D) clopidogrel"],
-    ans: "A",
-    key: "tr"
-  },
-  {
-    year: "112-2", qn: 78, topic: "轉運蛋白",
-    stem: "下列何者非屬於 ABC transporter？",
-    opts: ["(A) OATP", "(B) P-gp", "(C) BCRP", "(D) MRPs"],
-    ans: "A",
-    key: "tr"
-  },
-  {
-    year: "113-1", qn: 54, topic: "靜脈輸注",
-    stem: "有關靜脈輸注之敘述，下列何者正確？",
-    opts: ["(A) 輸注速率越快，半衰期越短", "(B) 到達穩定狀態的時間與藥物半衰期有關", "(C) 輸注速率越快，越早到達穩定狀態", "(D) 到達穩定狀態的時間與藥物劑量有關"],
-    ans: "B",
-    key: "pk"
-  },
-  {
-    year: "113-1", qn: 65, topic: "賦形劑與吸收",
-    stem: "下列何種賦形劑與用途的配對，最可能縮短藥物達尖峰血中濃度之時間？",
-    opts: ["(A) Avicel-崩散劑", "(B) talc-潤滑劑", "(C) veegum-持放劑", "(D) cellulose acetate phthalate-腸衣"],
-    ans: "A",
-    key: "abs"
-  },
-  {
-    year: "113-1", qn: 66, topic: "IVIVC",
-    stem: "以體外溶離試驗來預測藥品在體內吸收的變化時，若屬 Level C 之相關性，其以藥物溶離百分比為 x 軸，下列何者為 y 軸作圖時，可得負值的線性關係？",
-    opts: ["(A) 藥物達最高血中濃度時間", "(B) 藥物吸收百分比", "(C) 藥物尖峰血中濃度", "(D) 某時間之藥物血中濃度"],
-    ans: "A",
-    key: "be"
-  },
-  {
-    year: "113-1", qn: 67, topic: "吸收部位",
-    stem: "一般口服之藥物吸收，最主要在腸道何區段？",
-    opts: ["(A) 十二指腸（duodenum）", "(B) 空腸（jejunum）", "(C) 迴腸（ileum）", "(D) 結腸（colon）"],
-    ans: "A",
-    key: "abs"
-  },
-  {
-    year: "113-1", qn: 70, topic: "BCS分類",
-    stem: "對於速放劑型之原料藥，依其 BCS 性質而言，下列敘述何者正確？①含BCS class 1的藥品，其吸收程度不會顯著影響其生體可用率 ②含BCS class 1的藥品，其生體可用率必須≧95% ③含BCS class 2的藥品，其溶離速率會顯著影響其生體可用率 ④含BCS class 3的藥品，其溶離速率會顯著影響其生體可用率",
-    opts: ["(A) ①②", "(B) ①③", "(C) ②③", "(D) ③④"],
-    ans: "B",
-    key: "be"
-  },
-  {
-    year: "113-1", qn: 74, topic: "腎功能",
-    stem: "血清中 creatinine 濃度廣用於評估下列何種生理功能？",
-    opts: ["(A) 腎近曲小管再吸收", "(B) 腎絲球體過濾", "(C) 腎近曲小管分泌", "(D) 腎動脈血流"],
-    ans: "B",
-    key: "nr"
-  },
-  {
-    year: "113-1", qn: 75, topic: "基因多型性",
-    stem: "依基因多型性（genetic polymorphism）與基因突變（mutation）之定義，其發生機率之分界點為何？",
-    opts: ["(A) 1%", "(B) 2%", "(C) 3%", "(D) 5%"],
-    ans: "A",
-    key: "tr"
-  },
-  {
-    year: "113-1", qn: 76, topic: "基因多型性",
-    stem: "服用 codeine 止痛時，若病人是屬於 CYP2D6 poor metabolizer，基於藥動學觀點，下列敘述何者正確？",
-    opts: ["(A) 止痛效果比 CYP2D6 extensive metabolizer 差", "(B) 止痛效果比 CYP2D6 extensive metabolizer 佳", "(C) 止痛效果與 CYP2D6 extensive metabolizer 相同", "(D) 無法得知止痛效果之差異"],
-    ans: "A",
-    key: "tr"
-  },
-  {
-    year: "113-1", qn: 80, topic: "腎功能調整",
-    stem: "下列何者通常較不須依據腎功能調整劑量？",
-    opts: ["(A) vancomycin", "(B) gentamicin", "(C) digoxin", "(D) lidocaine"],
-    ans: "D",
-    key: "nr"
-  },
-  {
-    year: "113-2", qn: 52, topic: "吸收動力學",
-    stem: "有關口服藥物之吸收速率常數（ka）不變，當排除速率常數（k）增加時，對血中濃度變化之影響，下列何者正確？①曲線下面積（AUC）下降 ②到達血中最高濃度的時間（Tmax）不變 ③血中最高濃度（Cmax）下降 ④血中最高濃度（Cmax）不變",
-    opts: ["(A) 僅②④", "(B) ①②④", "(C) 僅①③", "(D) ①②③"],
-    ans: "D",
-    key: "abs"
-  },
-  {
-    year: "113-2", qn: 62, topic: "腎清除率",
-    stem: "若已知藥物從尿中或血中所得實驗數據，以下列方法何者無法求得腎清除率？",
-    opts: ["(A) 尿中排泄速率對血中濃度作圖", "(B) 單位時間尿中累積排泄量對血中濃度曲線下面積作圖", "(C) 單位時間平均尿中排泄量與時間中點之血中濃度的比值", "(D) 尿中待排泄剩餘量對時間作圖"],
-    ans: "D",
-    key: "nr"
-  },
-  {
-    year: "113-2", qn: 64, topic: "吸收速率常數",
-    stem: "下列何者可推估口服藥物之吸收速率常數？",
-    opts: ["(A) 以Loo-Riegelman法用於一室藥動模式藥物", "(B) 以Wagner-Nelson法利用藥物被吸收分率數值對時間作圖", "(C) 以Wagner-Nelson法先推算出藥物分布速率常數後計算推估", "(D) 以尿藥數據計算藥物未吸收分率之對數值對時間作圖推估"],
-    ans: "D",
-    key: "abs"
-  },
-  {
-    year: "113-2", qn: 65, topic: "生體可用率",
-    stem: "某口服藥品之主成分具結晶多型性，最可能因下列何項性質之影響，使其製劑須進行生體相等性評估？",
-    opts: ["(A) 藥物腸吸收機轉", "(B) 肝臟代謝速率", "(C) 胃中安定性", "(D) 水溶解度"],
-    ans: "D",
-    key: "ba"
-  },
-  {
-    year: "113-2", qn: 68, topic: "生體相等性",
-    stem: "有關藥品生體相等性（bioequivalence）試驗設計之考量，下列何者最適當？",
-    opts: ["(A) 空腹試驗時，受試者需空腹8小時，給藥後1小時始可進食", "(B) 可採拉丁方格交叉設計，洗除期間為10個排除半衰期", "(C) 須測定三次波峰濃度，以確定多次給藥已達穩定狀態", "(D) 以臨床終點評定療效，一般須為交叉試驗設計"],
-    ans: "B",
-    key: "be"
-  },
-  {
-    year: "113-2", qn: 69, topic: "溶離速率",
-    stem: "根據 Noyes-Whitney 方程式，增加擾動（agitation）次數為藉由下列何種原因加速固態藥物的溶離速率？",
-    opts: ["(A) 增加擴散速率常數", "(B) 減少滯留層（stagnant layer）厚度", "(C) 增加顆粒接觸表面積", "(D) 加大媒液及滯留層的濃度差"],
-    ans: "B",
-    key: "ba"
-  },
-  {
-    year: "113-2", qn: 70, topic: "吸收速率",
-    stem: "下列何種賦形劑可提高口服藥品的吸收速率？",
-    opts: ["(A) disintegrants", "(B) lubricants", "(C) enteric coat", "(D) coating agent"],
-    ans: "A",
-    key: "abs"
-  },
-  {
-    year: "113-2", qn: 71, topic: "蛋白質結合",
-    stem: "下列何種情況最容易造成藥品與血漿蛋白的結合呈飽和現象？",
-    opts: ["(A) 藥品與血漿蛋白的親和力較高", "(B) 藥品濃度與血漿蛋白濃度相當", "(C) 藥品之血漿蛋白未結合分率較低", "(D) 血漿蛋白的濃度較高"],
-    ans: "B",
-    key: "pk"
-  },
-  {
-    year: "113-2", qn: 76, topic: "腎功能評估",
-    stem: "使用 Cockcroft-Gault method 計算 creatinine 之清除率，下列何者非為必要資訊？",
-    opts: ["(A) 血清中 creatinine 濃度", "(B) 年齡", "(C) 體重", "(D) 藥物腎排除分率"],
-    ans: "D",
-    key: "nr"
-  },
-  {
-    year: "113-2", qn: 77, topic: "非線性藥動學",
-    stem: "在治療劑量的範圍中，下列何種藥物之代謝一般多屬於 dose-dependent？",
-    opts: ["(A) phenytoin", "(B) methotrexate", "(C) omeprazole", "(D) L-dopa"],
-    ans: "A",
-    key: "pk"
-  },
-  {
-    year: "113-2", qn: 78, topic: "時間依賴性藥動",
-    stem: "在一般常用劑量，下列何者不具有 time-dependent pharmacokinetics 之特性？",
-    opts: ["(A) acetaminophen", "(B) carbamazepine", "(C) cisplatin", "(D) heparin"],
-    ans: "A",
-    key: "pk"
-  },
-  {
-    year: "113-2", qn: 79, topic: "腎/肝功能調整",
-    stem: "當病人腎臟與肝臟功能不良時，將會影響下列何者，因而需要調整劑量？①藥品血漿蛋白結合率 ②藥品清除率 ③擬似分布體積",
-    opts: ["(A) 僅②", "(B) 僅①③", "(C) 僅②③", "(D) ①②③"],
-    ans: "D",
-    key: "nr"
-  },
-  {
-    year: "113-2", qn: 80, topic: "肝功能調整",
-    stem: "藥物具有那些特性時，在肝臟損傷的病人相對不須調整劑量？①藥物完全由腎臟排除 ②藥物肝臟代謝比例極低（<20%），且療效範圍很寬 ③氣體或揮發性藥品，及原型藥與其活性代謝物主要藉由肺臟排除",
-    opts: ["(A) 僅①", "(B) 僅②", "(C) 僅③", "(D) ①②③"],
-    ans: "D",
-    key: "nr"
-  },
-  {
-    year: "114-1", qn: 49, topic: "多次給藥",
-    stem: "以固定劑量及間隔多次口服給藥時，下列敘述何者正確？",
-    opts: ["(A) 清除率越小，穩定狀態平均血中濃度越小", "(B) 給藥頻次越頻繁，達穩定狀態所需時間越短", "(C) 在穩定狀態下，一個給藥間隔內所排除之藥量一定等於口服劑量", "(D) 給藥間隔越長，達穩定狀態時之蓄積指數（accumulation index）越小"],
-    ans: "D",
-    key: "pk"
-  },
-  {
-    year: "114-1", qn: 50, topic: "多次給藥",
-    stem: "多次口服給藥後，有關藥品在 steady-state 時之敘述，下列何者錯誤？",
-    opts: ["(A) 可用來評估藥品的安全性", "(B) 不會受到給藥間隔的影響", "(C) 要維持低於藥品的最低中毒濃度", "(D) 可藉以判斷藥品在體內是否有蓄積"],
-    ans: "B",
-    key: "pk"
-  },
-  {
-    year: "114-1", qn: 62, topic: "首渡效應",
-    stem: "有關具高肝抽提率藥品之敘述，下列何者最適當？",
-    opts: ["(A) 若肝抽提率太高，則適合以口服方式給藥", "(B) 經口服給藥受到首渡代謝程度最小", "(C) 其代謝速率主要受肝臟代謝酵素變異之影響", "(D) 經由 sublingual 給藥，可避免首渡效應之影響"],
-    ans: "D",
-    key: "ba"
-  },
-  {
-    year: "114-1", qn: 66, topic: "BCS分類",
-    stem: "某藥品排除半衰期為6小時，每日給藥一次，最高使用劑量為每次100 mg。若分別以靜脈注射5 mg與口服20 mg後，經72小時尿中原型藥品累積排出量分別為4 mg與8 mg。依據上述資訊，該藥品屬於BCS中的何種分類？",
-    opts: ["(A) class 1", "(B) class 2", "(C) class 3", "(D) class 4"],
-    ans: "C",
-    key: "be"
-  },
-  {
-    year: "114-1", qn: 67, topic: "首渡效應",
-    stem: "下列那一種劑型或給藥途徑，藥品較會受到 first-pass effect 影響而造成生體可用率不佳之情形？",
-    opts: ["(A) 吸入劑", "(B) 口溶錠", "(C) 靜脈輸注", "(D) 經皮吸收製劑"],
-    ans: "B",
-    key: "ba"
-  },
-  {
-    year: "114-1", qn: 69, topic: "生體相等性",
-    stem: "下列何者可作為生體可用率或生體相等性試驗之評估標的？①血中藥物濃度 ②尿中藥物排泄量 ③藥效學反應 ④治療窗（therapeutic window）濃度 ⑤臨床試驗觀察標的",
-    opts: ["(A) ①②③④", "(B) ①④⑤", "(C) ③④⑤", "(D) ①②③⑤"],
-    ans: "D",
-    key: "be"
-  },
-  {
-    year: "114-1", qn: 71, topic: "非線性藥動學",
-    stem: "依下列圖形，何者可判定該藥品具有非線性藥動學的特性？",
-    opts: ["(A) 僅①③", "(B) ②③", "(C) 僅①④", "(D) ①③④"],
-    ans: "A",
-    key: "pk"
-  },
-  {
-    year: "114-1", qn: 76, topic: "基因多型性",
-    stem: "下列何項 transporter 基因多型性與 gefitinib 產生腹瀉副作用最相關？",
-    opts: ["(A) P-glycoprotein（P-gp）", "(B) OATP-1B1", "(C) breast cancer resistance protein（BCRP）", "(D) multidrug resistance-associated proteins（MRP）-2"],
-    ans: "C",
-    key: "tr"
-  },
-  {
-    year: "114-1", qn: 77, topic: "CYP代謝",
-    stem: "有關 CYP2D6 於藥品代謝之敘述，下列何者最適當？",
-    opts: ["(A) 僅有一個等位基因的變異和CYP2D6表現關聯", "(B) 和CYP2D6表現相關的基因型變異可能會反映在藥品的代謝速率上", "(C) 和CYP2D6表現相關的基因型變異頻率在不同種族中皆一致", "(D) 和CYP2D6表現相關的基因型變異不會影響抗憂鬱和抗心律不整藥品代謝"],
-    ans: "B",
-    key: "tr"
-  },
-  {
-    year: "114-1", qn: 78, topic: "基因多型性",
-    stem: "有關藥品代謝酵素之基因多型性對藥品副作用的影響，下列配對何者最不適當？",
-    opts: ["(A) fluorouracil－DPD－neurotoxicity", "(B) azathioprine－TPMT－myelotoxicity", "(C) irinotecan－UGT－diarrhea", "(D) simvastatin－CYP2C19－myopathy"],
-    ans: "D",
-    key: "tr"
-  },
-  {
-    year: "114-2", qn: 49, topic: "多次給藥",
-    stem: "連續多次口服給藥後，藥物之累積半衰期（accumulation t½）與下列何組參數最相關？",
-    opts: ["(A) ka，k", "(B) D0，k", "(C) τ，Css", "(D) τ，k"],
-    ans: "D",
-    key: "pk"
-  },
-  {
-    year: "114-2", qn: 52, topic: "吸收動力學",
-    stem: "有關口服藥物之吸收速率常數（ka）不變，當排除速率常數（k）增加時，對血中濃度變化之影響，下列何者正確？①AUC下降 ②Tmax不變 ③Cmax下降 ④Cmax不變",
-    opts: ["(A) 僅②④", "(B) ①②④", "(C) 僅①③", "(D) ①②③"],
-    ans: "C",
-    key: "abs"
-  },
-  {
-    year: "114-2", qn: 62, topic: "腎清除率",
-    stem: "若已知藥物從尿中或血中所得實驗數據，以下列方法何者無法求得腎清除率？",
-    opts: ["(A) 尿中排泄速率對血中濃度作圖", "(B) 單位時間尿中累積排泄量對血中濃度曲線下面積作圖", "(C) 單位時間平均尿中排泄量與時間中點之血中濃度的比值", "(D) 尿中待排泄剩餘量對時間作圖"],
-    ans: "D",
-    key: "nr"
-  },
-  {
-    year: "114-2", qn: 67, topic: "腸溶設計",
-    stem: "下列何種藥品在酸性環境下不安定，因此製劑時可設計成腸溶錠劑型？",
-    opts: ["(A) nifedipine", "(B) bisoprolol", "(C) erythromycin", "(D) famotidine"],
-    ans: "C",
-    key: "ba"
-  },
-  {
-    year: "114-2", qn: 68, topic: "IVIVC",
-    stem: "某藥品屬二室藥動模式，其體外－體內相關性若為 Level A 時，可用下列何種方法取得體內藥動參數？",
-    opts: ["(A) Loo-Riegelman method", "(B) Wagner-Nelson method", "(C) Higuchi equation", "(D) Michaelis-Menten equation"],
-    ans: "A",
-    key: "be"
-  },
-  {
-    year: "114-2", qn: 71, topic: "非線性藥動學",
-    stem: "有關非線性藥動學特性之敘述，下列何者正確？",
-    opts: ["(A) AUC會隨著劑量增加而等比例增加", "(B) 清除率不會隨著劑量改變而改變", "(C) 依循一階次（first-order）的排除特性", "(D) 多次劑量給藥後，在體內不會依循 principle of superposition"],
-    ans: "D",
-    key: "pk"
-  },
-  {
-    year: "114-2", qn: 75, topic: "腎功能評估",
-    stem: "某藥之總清除率為240 mL/min，其肝清除率為60 mL/min，當病人腎功能減至原來的1/3，若投藥間隔不變且維持相同之平均血中濃度，則其給藥劑量應如何調整？",
-    opts: ["(A) 調為原來的1/4", "(B) 調為原來的1/3", "(C) 調為原來的1/2", "(D) 維持不變"],
-    ans: "C",
-    key: "nr"
-  },
-  {
-    year: "114-2", qn: 76, topic: "基因多型性",
-    stem: "吸菸最可能會誘發下列何種酵素的合成量？",
-    opts: ["(A) dihydropyrimidine dehydrogenase", "(B) CYP1A2", "(C) thiopurine methyltransferase", "(D) UDP-glucuronosyltransferase"],
-    ans: "B",
-    key: "tr"
-  },
-  {
-    year: "114-2", qn: 77, topic: "基因多型性",
-    stem: "病人若是屬於N-acetyltransferase 慢代謝者（slow metabolizers），其服用下列何種藥品則易產生 neurotoxicity？",
-    opts: ["(A) procainamide", "(B) hydralazine", "(C) isoniazid", "(D) irinotecan"],
-    ans: "C",
-    key: "tr"
-  },
-  {
-    year: "114-2", qn: 79, topic: "藥物交互作用",
-    stem: "下列何種藥品與 grapefruit juice 併用時，受到之影響最小？",
-    opts: ["(A) midazolam", "(B) erythromycin", "(C) losartan", "(D) diazepam"],
-    ans: "C",
-    key: "tr"
-  },
-  {
-    year: "114-2", qn: 80, topic: "基因多型性",
-    stem: "下列何項代謝酵素之基因多型性，亞洲人比在高加索人出現代謝速率表現型為 PM（poor metabolizer）之頻率較高？",
-    opts: ["(A) CYP2B6*6", "(B) CYP2D6*4", "(C) CYP2C9*3", "(D) CYP2C19*2"],
-    ans: "D",
-    key: "tr"
-  },
-  {
-    year: "115-1", qn: 49, topic: "多次給藥",
-    stem: "有關多次口服給藥之敘述，下列何者最不適當？",
-    opts: ["(A) 可用於治療慢性疾病", "(B) 給藥間隔時間＜藥品排除半衰期會造成藥品的蓄積", "(C) 需注意藥品的蓄積以免超過最低毒性濃度", "(D) 較靜脈輸注可避免治療指數狹窄藥品的血中濃度波動"],
-    ans: "D",
-    key: "pk"
-  },
-  {
-    year: "115-1", qn: 55, topic: "吸收動力學",
-    stem: "藥品遵循線性藥動學特性且為非 flip-flop 的情形下，有關口服給藥後血中濃度變化，下列敘述何者正確？",
-    opts: ["(A) k 不變時，ka 越大，AUC 越大", "(B) k 不變時，ka 越小，半衰期越長", "(C) k 不變時，ka 越大，Tmax 越長", "(D) ka 不變時，k 越大，AUC 越小"],
-    ans: "D",
-    key: "abs"
-  },
-  {
-    year: "115-1", qn: 56, topic: "Flip-flop",
-    stem: "藥品經由口服給與後，有關 flip-flop 現象之敘述，下列何者正確？",
-    opts: ["(A) 會出現吸收雙峰現象", "(B) 存在滯後吸收時間（lag time）", "(C) 吸收速率常數＞排除速率常數", "(D) 需與靜脈注射給藥之排除速率常數值相比對後得知"],
-    ans: "D",
-    key: "abs"
-  },
-  {
-    year: "115-1", qn: 57, topic: "吸收動力學",
-    stem: "某藥品口服後，以零級速率被吸收至體內，下列敘述何者錯誤？",
-    opts: ["(A) 藥品以定速被吸收至體內", "(B) 單位時間被吸收至體內的藥量會改變", "(C) 零級吸收速率的單位可利用 mass/time 表示", "(D) 吸收速率不受胃腸道內待被吸收之藥量的影響"],
-    ans: "B",
-    key: "abs"
-  },
-  {
-    year: "115-1", qn: 63, topic: "尿液排泄",
-    stem: "單次靜脈注射（IV bolus）投與藥品後，藥品完全從腎臟以一階次動力學排除，則此藥品之排除速率常數（elimination rate constant），可利用下列何項數據之自然對數值對時間作圖，求其斜率而推知？",
-    opts: ["(A) 尿中藥品排泄速率", "(B) 尿中藥品總排泄量", "(C) 尿中藥品累積排泄量", "(D) 尿中待排泄藥品總排除速率"],
-    ans: "A",
-    key: "nr"
-  },
-  {
-    year: "115-1", qn: 67, topic: "注射劑型",
-    stem: "有關肌肉注射（IM）劑，下列敘述何者最不適當？",
-    opts: ["(A) 經由 IM 給藥後的藥品吸收通常與靜脈注射相同", "(B) 以油溶性基質作為載體，通常能讓藥品緩慢釋放", "(C) 注射在身體不同部位有可能會影響藥品的吸收", "(D) 注射部位的血流量有可能會影響藥品的吸收"],
-    ans: "A",
-    key: "abs"
-  },
-  {
-    year: "115-1", qn: 69, topic: "BCS分類",
-    stem: "下列何種藥品屬 BCS Class 2，其原料經微粒化後可大幅增加其生體可用率？①fenofibrate ② griseofulvin ③ nitrofurantoin ④ acetaminophen",
-    opts: ["(A) ①②③", "(B) ②③④", "(C) ①③④", "(D) ①②④"],
-    ans: "A",
-    key: "be"
-  },
-  {
-    year: "115-1", qn: 70, topic: "生體可用率",
-    stem: "藥品若具非常快速之溶離與吸收特性，不易以溶離試驗預測藥品體內動態，其係指在15分鐘內主成分至少已溶離多少%？",
-    opts: ["(A) 50", "(B) 75", "(C) 85", "(D) 95"],
-    ans: "C",
-    key: "ba"
-  },
-  {
-    year: "115-1", qn: 71, topic: "非線性藥動學",
-    stem: "一般治療狀況下，下列那些因素可能造成藥品呈現非線性藥動學性質？①轉運蛋白效應 ②CYP450 代謝 ③白蛋白結合 ④膽酸運輸 ⑤腎絲球過濾",
-    opts: ["(A) 僅①②③", "(B) 僅④⑤", "(C) 僅①②③④", "(D) ①②③④⑤"],
-    ans: "C",
-    key: "pk"
-  },
-  {
-    year: "115-1", qn: 75, topic: "肝功能評估",
-    stem: "以 Child-Pugh score 進行肝功能評估時，其評估指標應包括下列那些項目？① INR ②ALT/AST ③ascites ④bilirubin ⑤ALP",
-    opts: ["(A) ①②⑤", "(B) ②③④", "(C) ①③④", "(D) ③④⑤"],
-    ans: "C",
-    key: "nr"
-  },
-  {
-    year: "115-1", qn: 76, topic: "基因多型性",
-    stem: "若屬於 CYP2D6 代謝能力差的病人（poor metabolizers）時，其服用下列何種藥則療效會較差？",
-    opts: ["(A) warfarin", "(B) tamoxifen", "(C) pimozide", "(D) amitriptyline"],
-    ans: "B",
-    key: "tr"
-  },
-  {
-    year: "115-1", qn: 77, topic: "藥物交互作用",
-    stem: "吸菸病人在服用下列何項藥品時，可能會因為吸菸誘導酵素活性的表現，進而降低藥品濃度並導致治療失敗？",
-    opts: ["(A) clozapine", "(B) phenytoin", "(C) diazepam", "(D) codeine"],
-    ans: "A",
-    key: "tr"
-  },
-  {
-    year: "115-1", qn: 78, topic: "非線性藥動學",
-    stem: "具非線性藥動學之藥品，下列何種情形最容易達到飽和？",
-    opts: ["(A) 最大代謝速率較大", "(B) Michaelis-Menten 常數較小", "(C) 藥品濃度小於 Km", "(D) 藥品劑量較低"],
-    ans: "B",
-    key: "pk"
-  },
-  {
-    year: "115-1", qn: 80, topic: "基因多型性",
-    stem: "下列何者易受個體基因差異之影響？①drug receptor 之反應 ②drug-metabolizing enzyme 之活性 ③drug transporter 之表現",
-    opts: ["(A) 僅①②", "(B) 僅②③", "(C) 僅①③", "(D) ①②③"],
-    ans: "D",
-    key: "tr"
-  }
+  { year:"112-1", qn:32, topic:"BCS分類", key:"be", stem:"依據 biopharmaceutics classification system（BCS）分類，下列何類型藥物最易獲得 IVIVC（in vitro-in vivo correlation）關係？", opts:["(A) class 1","(B) class 2","(C) class 3","(D) class 4"], ans:"B" },
+  { year:"112-1", qn:46, topic:"控釋劑型", key:"cr", stem:"有關口服同成分控釋製劑相較於其速放製劑在臨床使用之特性為何？①藥物血中濃度較少波動 ②減少給藥次數 ③增加服藥依從性 ④提高劑量調整的彈性", opts:["(A) 僅①③","(B) 僅①②③","(C) 僅②④","(D) ①②③④"], ans:"B" },
+  { year:"112-1", qn:48, topic:"IVIVC", key:"be", stem:"下列何者屬於 level A 的 in vitro-in vivo correlations（IVIVC）？", opts:["(A) 體外溶離速率常數和體內吸收速率常數","(B) 體外溶出50%的時間和體內最高血中濃度","(C) 體外平均溶離時間和體內平均溶離時間","(D) 體外溶離量和體內吸收量之經時變化相關性"], ans:"D" },
+  { year:"112-1", qn:53, topic:"吸收動力學", key:"abs", stem:"有關藥物口服吸收之敘述，下列何者正確？① 一級吸收速率與藥物在吸收部位的濃度及吸收量成正比 ② 零級吸收速率與藥物在吸收部位的濃度及含量成正比 ③到達最高血中濃度(Cmax)前，僅進行藥物吸收 ④到達最高血中濃度的時間(Tmax)與吸收速率常數及排除速率常數有關", opts:["(A) ①④","(B) ②③","(C) ②④","(D) ①③"], ans:"A" },
+  { year:"112-1", qn:62, topic:"殘值法", key:"abs", stem:"有關藥物經口服吸收之敘述，下列何者最適當？", opts:["(A) 殘值法（method of residuals）無法推估排除速率常數","(B) 滯後時間（lag time）是指投藥後藥物血中濃度到達治療有效濃度的時間","(C) 利用殘值法時，要儘量採用靠近 tmax 的數值作線性迴歸","(D) 利用 Wagner-Nelson method 可求得吸收速率常數"], ans:"D" },
+  { year:"112-1", qn:63, topic:"吸收動力學", key:"abs", stem:"有關口服藥物經吸收達最高血中藥物濃度時之敘述，下列何者最適當？", opts:["(A) 藥物已吸收完全","(B) 吸收速率大於排除速率","(C) 吸收速率等於排除速率","(D) 吸收速率小於排除速率"], ans:"C" },
+  { year:"112-1", qn:66, topic:"生體可用率", key:"ba", stem:"有關生體可用率之敘述，下列何者最適當？", opts:["(A) 用以衡量藥品在體內分布代謝的程度","(B) 會受劑型之製劑配方或製程改變而影響","(C) 須從特定疾病群組的受試者所得到的藥動參數","(D) 相同藥品不同劑量會得到不同之生體可用率"], ans:"B" },
+  { year:"112-1", qn:67, topic:"溶離試驗", key:"be", stem:"依據中華藥典，有關溶離圖比對（dissolution profile comparison）應用之敘述，下列何者錯誤？", opts:["(A) 可用以佐證藥物許可上市後變更（SUPAC）新配方藥品之相等性","(B) 用以評估不同劑量產品時，較低強度的藥品可否免除生體相等性試驗","(C) 若配方改變前後的溶離曲線具相似性，則相似因子（f2）至少達 50","(D) Immediate-release 產品於三種酸鹼值中，於規定時間內應溶出≧85%"], ans:"A" },
+  { year:"112-1", qn:70, topic:"BCS分類", key:"be", stem:"根據 BCS 與 BDDCS 的觀念，下列敘述何者正確？①細胞膜轉運蛋白對於具有 BCS class 1 特性原料藥的口服吸收影響不大 ②代謝對於具有 BCS class 1 特性口服藥的生體可用率影響不大 ③代謝是評估 BCS 特性的重要依據之一 ④細胞膜轉運蛋白是評估 BDDCS 特性的重要依據之一", opts:["(A) ①③","(B) ①④","(C) ②④","(D) ②③"], ans:"B" },
+  { year:"112-1", qn:72, topic:"非線性藥動學", key:"pk", stem:"下列何種情況最可能造成藥物發生非線性藥動學特性？", opts:["(A) 藥物蛋白結合率高","(B) 藥物溶解度佳","(C) 藥物排除速率快","(D) 藥物吸收率佳"], ans:"A" },
+  { year:"112-1", qn:77, topic:"基因多型性", key:"tr", stem:"若病人屬於 CYP2D6 ultrarapid metabolizer，其對下列何者之療效不佳？", opts:["(A) clopidogrel","(B) omeprazole","(C) isoniazid","(D) amitriptyline"], ans:"D" },
+  { year:"112-1", qn:80, topic:"基因多型性", key:"tr", stem:"Phenytoin 之治療血中濃度約為 10～20 mg/L，已知其口服生體可用率大於 70%，血漿蛋白結合率大約 90%。則下列何者對 phenytoin 的血中濃度影響最大？", opts:["(A) 肝血流量","(B) CYP2C9 基因多型性","(C) 併用 omeprazole","(D) CYP2D6 基因多型性"], ans:"B" },
+  { year:"112-2", qn:53, topic:"藥動參數", key:"abs", stem:"下列藥動參數之估算，何者最不會受到藥物是否具 flip-flop 特性之影響？", opts:["(A) AUC","(B) Tmax","(C) Cmin","(D) Cmax"], ans:"A" },
+  { year:"112-2", qn:54, topic:"吸收動力學", key:"abs", stem:"口服投與具 dose-independent 特性的藥品後，因病況改變使得藥物排除速率常數變小，吸收速率常數未受影響，則下列藥動參數的變化何者最適當？", opts:["(A) 清除率變大","(B) 分布體積變小","(C) 達最高血中濃度的時間縮短","(D) 最高血中濃度變大"], ans:"D" },
+  { year:"112-2", qn:63, topic:"胃排空", key:"abs", stem:"下列何者最易增加胃排空速率？", opts:["(A) 酒","(B) 蛋白","(C) 肥豬肉","(D) 蘇打餅乾"], ans:"D" },
+  { year:"112-2", qn:64, topic:"吸收速率常數", key:"abs", stem:"下列何者適用於計算二室藥動模式藥物之口服吸收速率常數？", opts:["(A) steady-state method","(B) Loo-Riegelman method","(C) Wagner-Nelson method","(D) sigma-minus method"], ans:"B" },
+  { year:"112-2", qn:66, topic:"生體相等性", key:"be", stem:"有關以血中濃度為評估標的，進行多次劑量給藥之生體相等性試驗，下列敘述何者錯誤？", opts:["(A) 採隨機、交叉實驗設計，洗除期間為10個排除半衰期","(B) 須測定三次波谷濃度，以確定多次給藥已達穩定狀態","(C) 可利用變異數分析經對數轉換的Cmax與AUC","(D) 以90%信賴區間，需在對照品的75~120%間始具生體相等性"], ans:"D" },
+  { year:"112-2", qn:67, topic:"生體可用率", key:"ba", stem:"下列選項為 erythromycin 口服製劑在胃中1小時的溶離率，何者對應之生體可用率最高？", opts:["(A) 100%","(B) 80%","(C) 60%","(D) 40%"], ans:"D" },
+  { year:"112-2", qn:68, topic:"生體可用率", key:"ba", stem:"下列何者無法有效提升口服藥物生體可用率？", opts:["(A) 改善賦形劑組成，提升藥品在腸道吸收","(B) 減少腎排除以減緩血中藥物濃度的下降","(C) 抑制腸道代謝酵素及轉運蛋白","(D) 降低肝臟首渡代謝"], ans:"B" },
+  { year:"112-2", qn:69, topic:"BCS分類", key:"be", stem:"某藥屬於 BCS Class III，已知此藥僅由腎排除，下列何者是影響此藥口服生體可用率的主要限制步驟？", opts:["(A) 崩散作用","(B) 溶離釋放","(C) 腸壁通透","(D) 首渡效應"], ans:"C" },
+  { year:"112-2", qn:70, topic:"代謝酵素", key:"tr", stem:"下列藥品與其代謝 CYP 之配對，何者錯誤？", opts:["(A) desipramine－CYP2D6","(B) midazolam－CYP3A4","(C) repaglinide－CYP2C8","(D) warfarin－CYP1A2"], ans:"D" },
+  { year:"112-2", qn:76, topic:"基因多型性", key:"tr", stem:"有關 ABCB1 基因多型性與藥物之關聯性，下列敘述何者錯誤？", opts:["(A) 與paclitaxel之療效有關","(B) 與口服 digoxin 之吸收有關","(C) 與 etoposide 之抗藥性有關","(D) 與 simvastatin 之 myopathy 副作用有關"], ans:"D" },
+  { year:"112-2", qn:77, topic:"基因多型性", key:"tr", stem:"下列何者對帶有 CYP2C9*2 基因者，會使其藥物血中濃度升高而易產生副作用？", opts:["(A) phenytoin","(B) codeine","(C) cisapride","(D) clopidogrel"], ans:"A" },
+  { year:"112-2", qn:78, topic:"轉運蛋白", key:"tr", stem:"下列何者非屬於 ABC transporter？", opts:["(A) OATP","(B) P-gp","(C) BCRP","(D) MRPs"], ans:"A" },
+  { year:"113-1", qn:54, topic:"靜脈輸注", key:"pk", stem:"有關靜脈輸注之敘述，下列何者正確？", opts:["(A) 輸注速率越快，半衰期越短","(B) 到達穩定狀態的時間與藥物半衰期有關","(C) 輸注速率越快，越早到達穩定狀態","(D) 到達穩定狀態的時間與藥物劑量有關"], ans:"B" },
+  { year:"113-1", qn:65, topic:"賦形劑與吸收", key:"abs", stem:"下列何種賦形劑與用途的配對，最可能縮短藥物達尖峰血中濃度之時間？", opts:["(A) Avicel-崩散劑","(B) talc-潤滑劑","(C) veegum-持放劑","(D) cellulose acetate phthalate-腸衣"], ans:"A" },
+  { year:"113-1", qn:66, topic:"IVIVC", key:"be", stem:"以體外溶離試驗來預測藥品在體內吸收的變化時，若屬 Level C 之相關性，其以藥物溶離百分比為 x 軸，下列何者為 y 軸作圖時，可得負值的線性關係？", opts:["(A) 藥物達最高血中濃度時間","(B) 藥物吸收百分比","(C) 藥物尖峰血中濃度","(D) 某時間之藥物血中濃度"], ans:"A" },
+  { year:"113-1", qn:67, topic:"吸收部位", key:"abs", stem:"一般口服之藥物吸收，最主要在腸道何區段？", opts:["(A) 十二指腸（duodenum）","(B) 空腸（jejunum）","(C) 迴腸（ileum）","(D) 結腸（colon）"], ans:"A" },
+  { year:"113-1", qn:70, topic:"BCS分類", key:"be", stem:"對於速放劑型之原料藥，依其 BCS 性質，下列敘述何者正確？①含BCS class 1的藥品，其吸收程度不會顯著影響其生體可用率 ②含BCS class 1的藥品，其生體可用率必須≧95% ③含BCS class 2的藥品，其溶離速率會顯著影響其生體可用率 ④含BCS class 3的藥品，其溶離速率會顯著影響其生體可用率", opts:["(A) ①②","(B) ①③","(C) ②③","(D) ③④"], ans:"B" },
+  { year:"113-1", qn:74, topic:"腎功能", key:"nr", stem:"血清中 creatinine 濃度廣用於評估下列何種生理功能？", opts:["(A) 腎近曲小管再吸收","(B) 腎絲球體過濾","(C) 腎近曲小管分泌","(D) 腎動脈血流"], ans:"B" },
+  { year:"113-1", qn:75, topic:"基因多型性", key:"tr", stem:"依基因多型性（genetic polymorphism）與基因突變（mutation）之定義，其發生機率之分界點為何？", opts:["(A) 1%","(B) 2%","(C) 3%","(D) 5%"], ans:"A" },
+  { year:"113-1", qn:76, topic:"基因多型性", key:"tr", stem:"服用 codeine 止痛時，若病人是屬於 CYP2D6 poor metabolizer，基於藥動學觀點，下列敘述何者正確？", opts:["(A) 止痛效果比 CYP2D6 extensive metabolizer 差","(B) 止痛效果比 CYP2D6 extensive metabolizer 佳","(C) 止痛效果與 CYP2D6 extensive metabolizer 相同","(D) 無法得知止痛效果之差異"], ans:"A" },
+  { year:"113-1", qn:80, topic:"腎功能調整", key:"nr", stem:"下列何者通常較不須依據腎功能調整劑量？", opts:["(A) vancomycin","(B) gentamicin","(C) digoxin","(D) lidocaine"], ans:"D" },
+  { year:"113-2", qn:52, topic:"吸收動力學", key:"abs", stem:"有關口服藥物之 ka 不變，當 k 增加時，對血中濃度變化之影響，下列何者正確？①AUC下降 ②Tmax不變 ③Cmax下降 ④Cmax不變", opts:["(A) 僅②④","(B) ①②④","(C) 僅①③","(D) ①②③"], ans:"D" },
+  { year:"113-2", qn:62, topic:"腎清除率", key:"nr", stem:"若已知藥物從尿中或血中所得實驗數據，以下列方法何者無法求得腎清除率？", opts:["(A) 尿中排泄速率對血中濃度作圖","(B) 單位時間尿中累積排泄量對血中濃度曲線下面積作圖","(C) 單位時間平均尿中排泄量與時間中點之血中濃度的比值","(D) 尿中待排泄剩餘量對時間作圖"], ans:"D" },
+  { year:"113-2", qn:64, topic:"吸收速率常數", key:"abs", stem:"下列何者可推估口服藥物之吸收速率常數？", opts:["(A) 以Loo-Riegelman法用於一室藥動模式藥物","(B) 以Wagner-Nelson法利用藥物被吸收分率數值對時間作圖","(C) 以Wagner-Nelson法先推算出藥物分布速率常數後計算推估","(D) 以尿藥數據計算藥物未吸收分率之對數值對時間作圖推估"], ans:"D" },
+  { year:"113-2", qn:65, topic:"生體可用率", key:"ba", stem:"某口服藥品之主成分具結晶多型性，最可能因下列何項性質之影響，使其製劑須進行生體相等性評估？", opts:["(A) 藥物腸吸收機轉","(B) 肝臟代謝速率","(C) 胃中安定性","(D) 水溶解度"], ans:"D" },
+  { year:"113-2", qn:68, topic:"生體相等性", key:"be", stem:"有關藥品生體相等性（bioequivalence）試驗設計之考量，下列何者最適當？", opts:["(A) 空腹試驗時，受試者需空腹8小時，給藥後1小時始可進食","(B) 可採拉丁方格交叉設計，洗除期間為10個排除半衰期","(C) 須測定三次波峰濃度，以確定多次給藥已達穩定狀態","(D) 以臨床終點評定療效，一般須為交叉試驗設計"], ans:"B" },
+  { year:"113-2", qn:69, topic:"溶離速率", key:"ba", stem:"根據 Noyes-Whitney 方程式，增加擾動（agitation）次數為藉由下列何種原因加速固態藥物的溶離速率？", opts:["(A) 增加擴散速率常數","(B) 減少滯留層（stagnant layer）厚度","(C) 增加顆粒接觸表面積","(D) 加大媒液及滯留層的濃度差"], ans:"B" },
+  { year:"113-2", qn:70, topic:"吸收速率", key:"abs", stem:"下列何種賦形劑可提高口服藥品的吸收速率？", opts:["(A) disintegrants","(B) lubricants","(C) enteric coat","(D) coating agent"], ans:"A" },
+  { year:"113-2", qn:71, topic:"蛋白質結合", key:"pk", stem:"下列何種情況最容易造成藥品與血漿蛋白的結合呈飽和現象？", opts:["(A) 藥品與血漿蛋白的親和力較高","(B) 藥品濃度與血漿蛋白濃度相當","(C) 藥品之血漿蛋白未結合分率較低","(D) 血漿蛋白的濃度較高"], ans:"B" },
+  { year:"113-2", qn:76, topic:"腎功能評估", key:"nr", stem:"使用 Cockcroft-Gault method 計算 creatinine 之清除率，下列何者非為必要資訊？", opts:["(A) 血清中 creatinine 濃度","(B) 年齡","(C) 體重","(D) 藥物腎排除分率"], ans:"D" },
+  { year:"113-2", qn:77, topic:"非線性藥動學", key:"pk", stem:"在治療劑量的範圍中，下列何種藥物之代謝一般多屬於 dose-dependent？", opts:["(A) phenytoin","(B) methotrexate","(C) omeprazole","(D) L-dopa"], ans:"A" },
+  { year:"113-2", qn:78, topic:"時間依賴性藥動", key:"pk", stem:"在一般常用劑量，下列何者不具有 time-dependent pharmacokinetics 之特性？", opts:["(A) acetaminophen","(B) carbamazepine","(C) cisplatin","(D) heparin"], ans:"A" },
+  { year:"113-2", qn:79, topic:"腎/肝功能調整", key:"nr", stem:"當病人腎臟與肝臟功能不良時，將會影響下列何者，因而需要調整劑量？①藥品血漿蛋白結合率 ②藥品清除率 ③擬似分布體積", opts:["(A) 僅②","(B) 僅①③","(C) 僅②③","(D) ①②③"], ans:"D" },
+  { year:"113-2", qn:80, topic:"肝功能調整", key:"nr", stem:"藥物具有那些特性時，在肝臟損傷的病人相對不須調整劑量？①藥物完全由腎臟排除 ②藥物肝臟代謝比例極低（<20%），且療效範圍很寬 ③氣體或揮發性藥品，原型藥與其活性代謝物主要藉由肺臟排除", opts:["(A) 僅①","(B) 僅②","(C) 僅③","(D) ①②③"], ans:"D" },
+  { year:"114-1", qn:49, topic:"多次給藥", key:"pk", stem:"以固定劑量及間隔多次口服給藥時，下列敘述何者正確？", opts:["(A) 清除率越小，穩定狀態平均血中濃度越小","(B) 給藥頻次越頻繁，達穩定狀態所需時間越短","(C) 在穩定狀態下，一個給藥間隔內所排除之藥量一定等於口服劑量","(D) 給藥間隔越長，達穩定狀態時之蓄積指數（accumulation index）越小"], ans:"D" },
+  { year:"114-1", qn:50, topic:"多次給藥", key:"pk", stem:"多次口服給藥後，有關藥品在 steady-state 時之敘述，下列何者錯誤？", opts:["(A) 可用來評估藥品的安全性","(B) 不會受到給藥間隔的影響","(C) 要維持低於藥品的最低中毒濃度","(D) 可藉以判斷藥品在體內是否有蓄積"], ans:"B" },
+  { year:"114-1", qn:62, topic:"首渡效應", key:"ba", stem:"有關具高肝抽提率藥品之敘述，下列何者最適當？", opts:["(A) 若肝抽提率太高，則適合以口服方式給藥","(B) 經口服給藥受到首渡代謝程度最小","(C) 其代謝速率主要受肝臟代謝酵素變異之影響","(D) 經由 sublingual 給藥，可避免首渡效應之影響"], ans:"D" },
+  { year:"114-1", qn:66, topic:"BCS分類", key:"be", stem:"某藥品排除半衰期為6小時，每日給藥一次，最高使用劑量為每次100 mg。分別以靜脈注射5 mg與口服20 mg後，尿中原型累積排出量分別為4 mg與8 mg。依據上述資訊，該藥品屬於BCS何種分類？", opts:["(A) class 1","(B) class 2","(C) class 3","(D) class 4"], ans:"C" },
+  { year:"114-1", qn:67, topic:"首渡效應", key:"ba", stem:"下列那一種劑型或給藥途徑，藥品較會受到 first-pass effect 影響而造成生體可用率不佳之情形？", opts:["(A) 吸入劑","(B) 口溶錠","(C) 靜脈輸注","(D) 經皮吸收製劑"], ans:"B" },
+  { year:"114-1", qn:69, topic:"生體相等性", key:"be", stem:"下列何者可作為生體可用率或生體相等性試驗之評估標的？①血中藥物濃度 ②尿中藥物排泄量 ③藥效學反應 ④治療窗濃度 ⑤臨床試驗觀察標的", opts:["(A) ①②③④","(B) ①④⑤","(C) ③④⑤","(D) ①②③⑤"], ans:"D" },
+  { year:"114-1", qn:71, topic:"非線性藥動學", key:"pk", stem:"依下列圖形，何者可判定該藥品具有非線性藥動學的特性？（①AUC vs dose直線、②t½ vs dose上升、③Css vs dose非線性、④CL vs dose不變）", opts:["(A) 僅①③","(B) ②③","(C) 僅①④","(D) ①③④"], ans:"A" },
+  { year:"114-1", qn:76, topic:"基因多型性", key:"tr", stem:"下列何項 transporter 基因多型性與 gefitinib 產生腹瀉副作用最相關？", opts:["(A) P-glycoprotein（P-gp）","(B) OATP-1B1","(C) breast cancer resistance protein（BCRP）","(D) MRP-2"], ans:"C" },
+  { year:"114-1", qn:77, topic:"CYP代謝", key:"tr", stem:"有關 CYP2D6 於藥品代謝之敘述，下列何者最適當？", opts:["(A) 僅有一個等位基因的變異和CYP2D6表現關聯","(B) 和CYP2D6表現相關的基因型變異可能會反映在藥品的代謝速率上","(C) 和CYP2D6表現相關的基因型變異頻率在不同種族中皆一致","(D) 和CYP2D6表現相關的基因型變異不會影響抗憂鬱和抗心律不整藥品代謝"], ans:"B" },
+  { year:"114-1", qn:78, topic:"基因多型性", key:"tr", stem:"有關藥品代謝酵素之基因多型性對藥品副作用的影響，下列配對何者最不適當？", opts:["(A) fluorouracil－DPD－neurotoxicity","(B) azathioprine－TPMT－myelotoxicity","(C) irinotecan－UGT－diarrhea","(D) simvastatin－CYP2C19－myopathy"], ans:"D" },
+  { year:"114-2", qn:49, topic:"多次給藥", key:"pk", stem:"連續多次口服給藥後，藥物之累積半衰期（accumulation t½）與下列何組參數最相關？", opts:["(A) ka，k","(B) D0，k","(C) τ，Css","(D) τ，k"], ans:"D" },
+  { year:"114-2", qn:52, topic:"吸收動力學", key:"abs", stem:"有關口服藥物之 ka 不變，當 k 增加時，對血中濃度變化之影響，下列何者正確？①AUC下降 ②Tmax不變 ③Cmax下降 ④Cmax不變", opts:["(A) 僅②④","(B) ①②④","(C) 僅①③","(D) ①②③"], ans:"C" },
+  { year:"114-2", qn:67, topic:"腸溶設計", key:"ba", stem:"下列何種藥品在酸性環境下不安定，因此製劑時可設計成腸溶錠劑型？", opts:["(A) nifedipine","(B) bisoprolol","(C) erythromycin","(D) famotidine"], ans:"C" },
+  { year:"114-2", qn:68, topic:"IVIVC", key:"be", stem:"某藥品屬二室藥動模式，其體外－體內相關性若為 Level A 時，可用下列何種方法取得體內藥動參數？", opts:["(A) Loo-Riegelman method","(B) Wagner-Nelson method","(C) Higuchi equation","(D) Michaelis-Menten equation"], ans:"A" },
+  { year:"114-2", qn:71, topic:"非線性藥動學", key:"pk", stem:"有關非線性藥動學特性之敘述，下列何者正確？", opts:["(A) AUC會隨著劑量增加而等比例增加","(B) 清除率不會隨著劑量改變而改變","(C) 依循一階次（first-order）的排除特性","(D) 多次劑量給藥後，在體內不會依循 principle of superposition"], ans:"D" },
+  { year:"114-2", qn:75, topic:"腎功能調整", key:"nr", stem:"某藥之總清除率為240 mL/min，其肝清除率為60 mL/min，當病人腎功能減至原來的1/3，若投藥間隔不變且維持相同之平均血中濃度，則其給藥劑量應如何調整？", opts:["(A) 調為原來的1/4","(B) 調為原來的1/3","(C) 調為原來的1/2","(D) 維持不變"], ans:"C" },
+  { year:"114-2", qn:76, topic:"基因多型性", key:"tr", stem:"吸菸最可能會誘發下列何種酵素的合成量？", opts:["(A) dihydropyrimidine dehydrogenase","(B) CYP1A2","(C) thiopurine methyltransferase","(D) UDP-glucuronosyltransferase"], ans:"B" },
+  { year:"114-2", qn:77, topic:"基因多型性", key:"tr", stem:"病人若是屬於 N-acetyltransferase 慢代謝者（slow metabolizers），其服用下列何種藥品則易產生 neurotoxicity？", opts:["(A) procainamide","(B) hydralazine","(C) isoniazid","(D) irinotecan"], ans:"C" },
+  { year:"114-2", qn:79, topic:"藥物交互作用", key:"tr", stem:"下列何種藥品與 grapefruit juice 併用時，受到之影響最小？", opts:["(A) midazolam","(B) erythromycin","(C) losartan","(D) diazepam"], ans:"C" },
+  { year:"114-2", qn:80, topic:"基因多型性", key:"tr", stem:"下列何項代謝酵素之基因多型性，亞洲人比在高加索人出現 PM（poor metabolizer）之頻率較高？", opts:["(A) CYP2B6*6","(B) CYP2D6*4","(C) CYP2C9*3","(D) CYP2C19*2"], ans:"D" },
+  { year:"115-1", qn:49, topic:"多次給藥", key:"pk", stem:"有關多次口服給藥之敘述，下列何者最不適當？", opts:["(A) 可用於治療慢性疾病","(B) 給藥間隔時間＜藥品排除半衰期會造成藥品的蓄積","(C) 需注意藥品的蓄積以免超過最低毒性濃度","(D) 較靜脈輸注可避免治療指數狹窄藥品的血中濃度波動"], ans:"D" },
+  { year:"115-1", qn:55, topic:"吸收動力學", key:"abs", stem:"藥品遵循線性藥動學特性且為非 flip-flop 的情形下，有關口服給藥後血中濃度變化，下列敘述何者正確？", opts:["(A) k 不變時，ka 越大，AUC 越大","(B) k 不變時，ka 越小，半衰期越長","(C) k 不變時，ka 越大，Tmax 越長","(D) ka 不變時，k 越大，AUC 越小"], ans:"D" },
+  { year:"115-1", qn:56, topic:"Flip-flop", key:"abs", stem:"藥品經由口服給與後，有關 flip-flop 現象之敘述，下列何者正確？", opts:["(A) 會出現吸收雙峰現象","(B) 存在滯後吸收時間（lag time）","(C) 吸收速率常數＞排除速率常數","(D) 需與靜脈注射給藥之排除速率常數值相比對後得知"], ans:"D" },
+  { year:"115-1", qn:57, topic:"吸收動力學", key:"abs", stem:"某藥品口服後，以零級速率被吸收至體內，下列敘述何者錯誤？", opts:["(A) 藥品以定速被吸收至體內","(B) 單位時間被吸收至體內的藥量會改變","(C) 零級吸收速率的單位可利用 mass/time 表示","(D) 吸收速率不受胃腸道內待被吸收之藥量的影響"], ans:"B" },
+  { year:"115-1", qn:63, topic:"尿液排泄", key:"nr", stem:"單次靜脈注射（IV bolus）投與藥品後，藥品完全從腎臟以一階次動力學排除，則此藥品之排除速率常數，可利用下列何項數據之自然對數值對時間作圖，求其斜率而推知？", opts:["(A) 尿中藥品排泄速率","(B) 尿中藥品總排泄量","(C) 尿中藥品累積排泄量","(D) 尿中待排泄藥品總排除速率"], ans:"A" },
+  { year:"115-1", qn:67, topic:"注射劑型", key:"abs", stem:"有關肌肉注射（IM）劑，下列敘述何者最不適當？", opts:["(A) 經由 IM 給藥後的藥品吸收通常與靜脈注射相同","(B) 以油溶性基質作為載體，通常能讓藥品緩慢釋放","(C) 注射在身體不同部位有可能會影響藥品的吸收","(D) 注射部位的血流量有可能會影響藥品的吸收"], ans:"A" },
+  { year:"115-1", qn:69, topic:"BCS分類", key:"be", stem:"下列何種藥品屬 BCS Class 2，其原料經微粒化後可大幅增加其生體可用率？①fenofibrate ②griseofulvin ③nitrofurantoin ④acetaminophen", opts:["(A) ①②③","(B) ②③④","(C) ①③④","(D) ①②④"], ans:"A" },
+  { year:"115-1", qn:70, topic:"生體可用率", key:"ba", stem:"藥品若具非常快速之溶離與吸收特性，不易以溶離試驗預測藥品體內動態，其係指在15分鐘內主成分至少已溶離多少%？", opts:["(A) 50","(B) 75","(C) 85","(D) 95"], ans:"C" },
+  { year:"115-1", qn:71, topic:"非線性藥動學", key:"pk", stem:"一般治療狀況下，下列那些因素可能造成藥品呈現非線性藥動學性質？①轉運蛋白效應 ②CYP450 代謝 ③白蛋白結合 ④膽酸運輸 ⑤腎絲球過濾", opts:["(A) 僅①②③","(B) 僅④⑤","(C) 僅①②③④","(D) ①②③④⑤"], ans:"C" },
+  { year:"115-1", qn:75, topic:"肝功能評估", key:"nr", stem:"以 Child-Pugh score 進行肝功能評估時，其評估指標應包括下列那些項目？①INR ②ALT/AST ③ascites ④bilirubin ⑤ALP", opts:["(A) ①②⑤","(B) ②③④","(C) ①③④","(D) ③④⑤"], ans:"C" },
+  { year:"115-1", qn:76, topic:"基因多型性", key:"tr", stem:"若屬於 CYP2D6 代謝能力差的病人（poor metabolizers）時，其服用下列何種藥則療效會較差？", opts:["(A) warfarin","(B) tamoxifen","(C) pimozide","(D) amitriptyline"], ans:"B" },
+  { year:"115-1", qn:77, topic:"藥物交互作用", key:"tr", stem:"吸菸病人在服用下列何項藥品時，可能會因為吸菸誘導酵素活性的表現，進而降低藥品濃度並導致治療失敗？", opts:["(A) clozapine","(B) phenytoin","(C) diazepam","(D) codeine"], ans:"A" },
+  { year:"115-1", qn:78, topic:"非線性藥動學", key:"pk", stem:"具非線性藥動學之藥品，下列何種情形最容易達到飽和？", opts:["(A) 最大代謝速率較大","(B) Michaelis-Menten 常數較小","(C) 藥品濃度小於 Km","(D) 藥品劑量較低"], ans:"B" },
+  { year:"115-1", qn:80, topic:"基因多型性", key:"tr", stem:"下列何者易受個體基因差異之影響？①drug receptor 之反應 ②drug-metabolizing enzyme 之活性 ③drug transporter 之表現", opts:["(A) 僅①②","(B) 僅②③","(C) 僅①③","(D) ①②③"], ans:"D" }
 ];
 
 const topicMeta = {
-  pk: { label: "藥動學概念", cls: "t-pk" },
-  abs: { label: "吸收動力學", cls: "t-abs" },
-  ba: { label: "生體可用率", cls: "t-ba" },
-  be: { label: "BCS/IVIVC/BE", cls: "t-be" },
-  nr: { label: "腎/肝功能", cls: "t-nr" },
-  tr: { label: "基因/轉運蛋白", cls: "t-tr" },
-  cr: { label: "控釋劑型", cls: "t-cr" }
+  pk:  { label:"藥動學概念",   cls:"t-pk"  },
+  abs: { label:"吸收動力學",   cls:"t-abs" },
+  ba:  { label:"生體可用率",   cls:"t-ba"  },
+  be:  { label:"BCS/IVIVC/BE", cls:"t-be"  },
+  nr:  { label:"腎/肝功能",   cls:"t-nr"  },
+  tr:  { label:"基因/轉運蛋白",cls:"t-tr"  },
+  cr:  { label:"控釋劑型",     cls:"t-cr"  }
 };
 
 let activeYear = "all";
 let activeTopic = "all";
 
+function filtered() {
+  return questions.filter(q =>
+    (activeYear === "all" || q.year === activeYear) &&
+    (activeTopic === "all" || q.key === activeTopic)
+  );
+}
+
 function renderStats() {
-  const visible = filtered();
-  const byTopic = {};
-  visible.forEach(q => { byTopic[q.key] = (byTopic[q.key]||0)+1; });
-  const statsRow = document.getElementById("statsRow");
-  statsRow.innerHTML = `
+  const v = filtered();
+  document.getElementById("statsRow").innerHTML = `
     <div class="stat-card"><div class="stat-label">總題數</div><div class="stat-num">${questions.length}</div></div>
-    <div class="stat-card"><div class="stat-label">目前顯示</div><div class="stat-num">${visible.length}</div></div>
+    <div class="stat-card"><div class="stat-label">目前顯示</div><div class="stat-num">${v.length}</div></div>
   `;
 }
 
 function renderFilters() {
-  const years = ["all", ...new Set(questions.map(q=>q.year))];
+  const years = ["all", ...new Set(questions.map(q => q.year))];
   const topics = ["all", ...Object.keys(topicMeta)];
 
-  const fb = document.getElementById("filterBar");
-  fb.innerHTML = "";
+  document.getElementById("yearBar").innerHTML = years.map(y => `
+    <button class="filter-btn${activeYear === y ? " active" : ""}" onclick="setYear('${y}')">
+      ${y === "all" ? "全部年份" : y}
+    </button>
+  `).join("");
 
-  const yearDiv = document.createElement("div");
-  yearDiv.style.cssText = "display:flex;gap:6px;flex-wrap:wrap;align-items:center;";
-  years.forEach(y => {
-    const btn = document.createElement("button");
-    btn.className = "filter-btn" + (activeYear===y?" active":"");
-    btn.textContent = y==="all" ? "全部年份" : y.replace("-","年 第"+"次");
-    btn.onclick = () => { activeYear=y; render(); };
-    yearDiv.appendChild(btn);
-  });
-  fb.appendChild(yearDiv);
-
-  const topicDiv = document.createElement("div");
-  topicDiv.style.cssText = "display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-top:6px;";
-  topics.forEach(t => {
-    const btn = document.createElement("button");
-    btn.className = "filter-btn" + (activeTopic===t?" active":"");
-    btn.textContent = t==="all" ? "全部主題" : topicMeta[t].label;
-    btn.onclick = () => { activeTopic=t; render(); };
-    topicDiv.appendChild(btn);
-  });
-  fb.appendChild(topicDiv);
-}
-
-function filtered() {
-  return questions.filter(q => {
-    const yOk = activeYear==="all" || q.year===activeYear;
-    const tOk = activeTopic==="all" || q.key===activeTopic;
-    return yOk && tOk;
-  });
+  document.getElementById("topicBar").innerHTML = topics.map(t => `
+    <button class="filter-btn${activeTopic === t ? " active" : ""}" onclick="setTopic('${t}')">
+      ${t === "all" ? "全部主題" : topicMeta[t].label}
+    </button>
+  `).join("");
 }
 
 function renderList() {
-  const ql = document.getElementById("qList");
   const qs = filtered();
+  const el = document.getElementById("qList");
   if (!qs.length) {
-    ql.innerHTML = '<div class="no-results">此篩選條件無題目</div>';
+    el.innerHTML = '<div class="no-results">此篩選條件無題目</div>';
     return;
   }
-  ql.innerHTML = "";
-  qs.forEach((q, i) => {
-    const card = document.createElement("div");
-    card.className = "q-card";
+  el.innerHTML = qs.map((q, i) => {
     const tm = topicMeta[q.key];
-    const correctIdx = q.ans.charCodeAt(0)-65;
-    const optsHtml = q.opts.map((o,idx)=>
-      `<div class="ans-item${idx===correctIdx?" correct":""}">${o}</div>`
+    const ci = q.ans.charCodeAt(0) - 65;
+    const opts = q.opts.map((o, idx) =>
+      `<div class="ans-item${idx === ci ? " correct" : ""}">${o}</div>`
     ).join("");
-    card.innerHTML = `
-      <div class="q-header">
-        <div class="q-stem">${q.year} 第${q.qn}題 — ${q.stem}</div>
-        <div class="q-meta">
-          <span class="badge badge-year">${q.year}</span>
-          <span class="topic-tag ${tm.cls}">${tm.label}</span>
+    return `
+      <div class="q-card" id="qcard-${i}" onclick="toggle(${i})">
+        <div class="q-header">
+          <div class="q-stem">${q.year} 第${q.qn}題 — ${q.stem}</div>
+          <div class="q-meta">
+            <span class="badge badge-year">${q.year}</span>
+            <span class="topic-tag ${tm.cls}">${tm.label}</span>
+          </div>
+          <span class="expand-icon" id="icon-${i}">▾</span>
         </div>
-        <span class="expand-icon">▾</span>
-      </div>
-      <div class="q-ans-block">
-        <div class="ans-label">選項（綠色為正確答案）</div>
-        <div class="ans-row">${optsHtml}</div>
+        <div class="q-ans-block" id="ans-${i}">
+          <div class="ans-label">選項（綠色為正確答案）</div>
+          <div class="ans-row">${opts}</div>
+        </div>
       </div>
     `;
-    card.onclick = () => card.classList.toggle("expanded");
-    ql.appendChild(card);
-  });
+  }).join("");
 }
+
+function toggle(i) {
+  const card = document.getElementById("qcard-" + i);
+  card.classList.toggle("expanded");
+}
+
+function setYear(y) { activeYear = y; render(); }
+function setTopic(t) { activeTopic = t; render(); }
 
 function render() {
   renderFilters();
@@ -762,3 +444,5 @@ function render() {
 
 render();
 </script>
+</body>
+</html>
