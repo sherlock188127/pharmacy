@@ -100,6 +100,7 @@ tbody tr:hover{background:var(--surface2);}
 .q-explanation{background:var(--sage-l);border-radius:6px;padding:9px 13px;font-size:12px;color:var(--sage-d);line-height:1.7;display:none;}
 .q-block.show-ans .q-explanation{display:block;}
 drug{font-family:var(--mono);font-size:12px;color:var(--dusk-d);background:var(--dusk-l);padding:1px 5px;border-radius:4px;}
+mark{background:#ffe066;color:#4a3500;padding:1px 3px;border-radius:3px;font-weight:500;}
 .edta-grid{display:grid;gap:0;margin:10px 0;}
 .edta-item{display:grid;grid-template-columns:56px 1fr;gap:0 12px;padding:7px 0;border-bottom:1px solid var(--border);}
 .edta-item:last-child{border-bottom:none;}
@@ -464,10 +465,10 @@ p{margin:5px 0;}ul{margin:7px 0 7px 18px;}li{margin-bottom:3px;font-size:13px;li
   <ul>
     <li>大型注射劑製造商<strong>最常用</strong>的溶劑</li>
     <li>經<strong>蒸餾或逆滲透</strong>純化，總固體含量不超過 <num>1 mg/100 mL（10 ppm）</num></li>
-    <li><strong>不得含有添加物質</strong>（抗菌劑、防腐劑、抗氧化劑均不可加）</li>
-    <li>雖<strong>不要求無菌</strong>，但<strong>必須無熱原</strong> <span class="exam-star">★ 超重要</span></li>
+    <li><mark>不得含有添加物質</mark>（抗菌劑、防腐劑、抗氧化劑均不可加）</li>
+    <li><mark>不要求無菌，但必須無熱原</mark> <span class="exam-star">★</span></li>
     <li>用於製造注射產品，製備後再進行滅菌</li>
-    <li>儲存在<strong>密閉容器</strong>中，<strong>收集後 24 小時內使用</strong></li>
+    <li><mark>收集後 24 小時內使用</mark>；儲存在密閉容器中</li>
     <li>應收集在無菌且無熱原的容器中，通常為<strong>玻璃或玻璃襯裡容器</strong></li>
   </ul>
 </div>
@@ -476,11 +477,10 @@ p{margin:5px 0;}ul{margin:7px 0 7px 18px;}li{margin-bottom:3px;font-size:13px;li
 <div class="card card-mist">
   <ul>
     <li>注射用水經<strong>滅菌處理</strong></li>
-    <li><strong>不得含抗菌劑</strong></li>
-    <li>容量<strong>不得超過 1000 mL</strong></li>
-    <li>一般<strong>包裝在單劑量容器</strong>中</li>
-    <li>必須無熱原；內毒素不得超過 <num>0.25 USP EU/mL</num></li>
-    <li><strong>1000 mL 瓶裝不可靜脈注射</strong>（無等張性，低張→紅血球吸水膨脹→溶血）</li>
+    <li><mark>不得含抗菌劑</mark></li>
+    <li><mark>容量不得超過 1000 mL；一般包裝在單劑量容器中</mark></li>
+    <li>必須無熱原；<mark>內毒素不得超過 <num>0.25 USP EU/mL</num></mark></li>
+    <li><mark>1000 mL 瓶裝不可靜脈注射</mark>（無等張性，低張→紅血球吸水膨脹→溶血）</li>
     <li>使用時需加入 NaCl、葡萄糖等調整滲透壓成等張後，才可靜脈輸注</li>
     <li>例如：Sterile Ampicillin Sodium USP 乾粉 → 加入無菌注射用水溶解</li>
   </ul>
@@ -490,10 +490,10 @@ p{margin:5px 0;}ul{margin:7px 0 7px 18px;}li{margin-bottom:3px;font-size:13px;li
 <div class="card card-mist">
   <ul>
     <li>含<strong>一種或多種抗微生物劑</strong>之注射用水（看到「抑菌」就代表有加抗微生物製劑）</li>
-    <li>用於<strong>小量注射液（≤30 mL）</strong></li>
+    <li><mark>用於小量注射液（≤30 mL）</mark></li>
     <li>標籤須列出抗微生物劑名稱與比例</li>
-    <li>標示必須包含：<strong>「新生兒不可使用（NOT FOR USE IN NEONATES）」</strong></li>
-    <li><strong>新生兒禁用</strong>：含有 <drug>Benzyl alcohol 0.9%</drug>，新生兒肝臟解毒能力有限，可能致死</li>
+    <li>標示必須包含：<mark>「新生兒不可使用（NOT FOR USE IN NEONATES）」</mark></li>
+    <li><mark>新生兒禁用</mark>：含有 <drug>Benzyl alcohol 0.9%</drug>，新生兒肝臟解毒能力有限，可能致死</li>
   </ul>
 </div>
 
@@ -514,7 +514,7 @@ p{margin:5px 0;}ul{margin:7px 0 7px 18px;}li{margin-bottom:3px;font-size:13px;li
     <li>容量需 <strong>&lt;30 mL</strong> 容器使用</li>
     <li>作為載體時，需確認所添加藥劑是否與防腐劑或氯化鈉<strong>相容</strong></li>
     <li>可用於導管沖洗或靜脈輸液管維持通暢</li>
-    <li><strong>新生兒禁用</strong>，肝臟尚未成熟，苯甲酸和未代謝苯甲醇可能蓄積</li>
+    <li><mark>新生兒禁用</mark>，肝臟尚未成熟，苯甲酸和未代謝苯甲醇可能蓄積</li>
     <li>標籤必須警告：「帶有新生兒不可使用的警告」</li>
   </ul>
 </div>
