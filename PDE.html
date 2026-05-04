@@ -2,155 +2,143 @@
 <html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
-    <title>PDE5 抑制劑比較表</title>
+    <title>PDE5 抑制劑完整比較表</title>
     <style>
         body {
             font-family: "Microsoft JhengHei", "Segoe UI", sans-serif;
             padding: 40px;
-            background-color: #f0f4f8;
-            color: #333;
+            background-color: #f8fafc;
+            color: #1a202c;
         }
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: auto;
-            background: white;
+            background: #ffffff;
             padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        h2 {
+            text-align: center;
+            color: #2b6cb0;
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            border-bottom: 3px solid #2b6cb0;
+            padding-bottom: 10px;
         }
         table {
             width: 100%;
-            border-collapse: separate;
-            border-spacing: 0;
+            border-collapse: collapse;
             margin-bottom: 30px;
         }
         th, td {
-            border: 1px solid #e1e8ed;
+            border: 2px solid #cbd5e0;
             padding: 18px;
             text-align: center;
-            font-size: 1.25rem;
+            font-size: 1.3rem; /* 大字體 */
+            line-height: 1.6;
         }
         thead th {
-            background-color: #005a9c;
-            color: white;
+            background-color: #2c5282;
+            color: #ffffff;
             font-size: 1.4rem;
-            border: none;
         }
-        thead th:first-child { border-radius: 10px 0 0 0; }
-        thead th:last-child { border-radius: 0 10px 0 0; }
-        
-        tr:nth-child(even) { background-color: #f9fbff; }
-        
         .row-label {
-            background-color: #f1f6f9;
+            background-color: #ebf8ff;
             font-weight: bold;
-            color: #005a9c;
-            width: 15%;
+            color: #2a4365;
+            width: 12%;
         }
-        .structure-box {
-            height: 200px;
-            background-color: #ffffff;
-            border: 2px dashed #cbd5e0;
-            border-radius: 8px;
+        .structure-area {
+            height: 180px;
+            background-color: #fdfdfd;
+            border: 2px dashed #a0aec0;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #a0aec0;
+            color: #718096;
             font-size: 1rem;
-            transition: all 0.3s;
         }
-        .structure-box:hover {
-            border-color: #005a9c;
-            background-color: #f0f7ff;
-        }
-        .best {
+        .highlight-red {
             color: #e53e3e;
-            font-weight: 800;
-            background: #fff5f5;
-            padding: 4px 8px;
-            border-radius: 5px;
+            font-weight: 900;
+            background-color: #fff5f5;
+            padding: 2px 8px;
+            border-radius: 4px;
         }
-        .highlight {
+        .highlight-blue {
             color: #3182ce;
             font-weight: bold;
         }
-        .note-section {
+        .note-box {
             background-color: #fffaf0;
-            border-left: 6px solid #ed8936;
+            border: 2px solid #feebc8;
             padding: 25px;
-            border-radius: 8px;
+            border-radius: 10px;
         }
-        .note-section h3 {
+        .note-box h3 {
             margin-top: 0;
             color: #c05621;
-            font-size: 1.5rem;
+            font-size: 1.6rem;
         }
-        .note-section ul {
+        .note-box ul {
             margin: 0;
-            padding-left: 20px;
+            padding-left: 30px;
         }
-        .note-section li {
-            font-size: 1.3rem;
+        .note-box li {
+            font-size: 1.4rem;
             margin-bottom: 12px;
-            list-style-type: none;
-            position: relative;
+            font-weight: 500;
         }
-        .note-section li::before {
-            content: "•";
-            color: #ed8936;
-            font-weight: bold;
-            display: inline-block; 
-            width: 1em;
-            margin-left: -1em;
-        }
-        .activity-rank {
-            display: inline-block;
-            background: linear-gradient(120deg, #f6ad55 0%, #f6ad55 100%);
-            background-repeat: no-repeat;
-            background-size: 100% 0.4em;
-            background-position: 0 88%;
-            font-weight: bold;
+        .rank-tag {
+            background-color: #2d3748;
+            color: white;
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-size: 1.2rem;
         }
     </style>
 </head>
 <body>
 
 <div class="container">
+    <h2>PDE5 抑制劑藥物臨床與化學特性比較表</h2>
+    
     <table>
         <thead>
             <tr>
                 <th>項目</th>
-                <th>Sildenafil</th>
-                <th>Vardenafil</th>
-                <th>Tadalafil</th>
-                <th>Avanafil</th>
+                <th>Sildenafil<br>(Viagra 威而鋼)</th>
+                <th>Vardenafil<br>(Levitra 樂威壯)</th>
+                <th>Tadalafil<br>(Cialis 犀利士)</th>
+                <th>Avanafil<br>(Spedra 賽倍達)</th>
             </tr>
         </thead>
         <tbody>
             <tr>
                 <td class="row-label">結構</td>
-                <td><div class="structure-box">貼上 Sildenafil</div></td>
-                <td><div class="structure-box">貼上 Vardenafil</div></td>
-                <td><div class="structure-box">貼上 Tadalafil</div></td>
-                <td><div class="structure-box">貼上 Avanafil</div></td>
+                <td><div class="structure-area">【在此貼上 威而鋼 結構】</div></td>
+                <td><div class="structure-area">【在此貼上 樂威壯 結構】</div></td>
+                <td><div class="structure-area">【在此貼上 犀利士 結構】</div></td>
+                <td><div class="structure-area">【在此貼上 賽倍達 結構】</div></td>
             </tr>
             <tr>
                 <td class="row-label">脂溶性</td>
                 <td>高</td>
-                <td><span class="best">最高</span></td>
+                <td><span class="highlight-red">最高</span></td>
                 <td>低</td>
                 <td>中</td>
             </tr>
             <tr>
                 <td class="row-label">活性強弱</td>
                 <td>強</td>
-                <td><span class="best">最強</span></td>
+                <td><span class="highlight-red">最強</span></td>
                 <td>中</td>
                 <td>弱</td>
             </tr>
             <tr>
                 <td class="row-label">生體可用率</td>
-                <td><span class="highlight">高</span></td>
+                <td><span class="highlight-blue">高</span> (藍色小藥丸)</td>
                 <td>低</td>
                 <td>中</td>
                 <td>-</td>
@@ -160,32 +148,47 @@
                 <td>快</td>
                 <td>慢</td>
                 <td>中</td>
-                <td><span class="best">最快</span></td>
+                <td><span class="highlight-red">最快</span></td>
             </tr>
             <tr>
                 <td class="row-label">作用時間</td>
                 <td>中</td>
                 <td>短</td>
-                <td><mark style="background-color: #fff3cd;">長</mark></td>
+                <td><strong>長</strong> (Time 長)</td>
                 <td>-</td>
             </tr>
             <tr>
-                <td class="row-label">主要受體</td>
-                <td>PDE5, PDE6</td>
-                <td>PDE5 (改良)</td>
-                <td>PDE5, PDE11</td>
+                <td class="row-label">代謝酵素</td>
+                <td>主要：3A4<br>次要：2C9</td>
+                <td>主要：3A4<br>次要：2C9</td>
+                <td>主要：3A4</td>
+                <td>主要：3A4<br>次要：2C9</td>
+            </tr>
+            <tr>
+                <td class="row-label">活性代謝物</td>
+                <td>N-demethyl</td>
+                <td>N-demethyl</td>
+                <td><span class="highlight-blue">無 !!</span></td>
+                <td>Pyrrolidine 羥基化</td>
+            </tr>
+            <tr>
+                <td class="row-label">主要受體<br>選擇性</td>
+                <td>PDE5、PDE6<br>(影響視覺)</td>
+                <td>PDE5<br>(改良型)</td>
+                <td>PDE5、PDE11<br>(影響肌肉)</td>
                 <td>PDE5</td>
             </tr>
         </tbody>
     </table>
 
-    <div class="note-section">
-        <h3>重點筆記整理</h3>
+    <div class="note-box">
+        <h3>💡 筆記重點整理</h3>
         <ul>
-            <li><strong>作用機轉：</strong>抑制 PDE 使得 cGMP 濃度上升，進而舒張平滑肌並促使血管擴張。</li>
-            <li><strong>結構特徵：</strong>Sildenafil、Vardenafil、Tadalafil 均含有 <strong>Piperazine</strong> 環。</li>
-            <li><strong>副作用關聯：</strong>抑制 PDE6 影響視覺 (Sight)；抑制 PDE11 則易引起肌肉痠痛。</li>
-            <li><strong>活性排序：</strong><span class="activity-rank">Vardenafil > Sildenafil > Tadalafil</span></li>
+            <li><strong>機轉：</strong>抑制 PDE 使得 cGMP 濃度上升，促使血管平滑肌擴張。</li>
+            <li><strong>共同結構：</strong>Sildenafil、Vardenafil、Tadalafil 均含有 <strong>Piperazine</strong> 結構。</li>
+            <li><strong>副作用：</strong>抑制 <strong>PDE6</strong> 會造成光敏感與視力模糊 (Sight)；抑制 <strong>PDE11</strong> 會造成肌肉痠痛。</li>
+            <li><strong>活性排序：</strong><span class="rank-tag">Vardenafil > Sildenafil > Tadalafil</span>。</li>
+            <li><strong>特別註記：</strong>Tadalafil 的代謝酵素只有 3A4，因此作用時間最長，藥效較平緩。</li>
         </ul>
     </div>
 </div>
