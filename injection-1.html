@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>注射劑 完整版 Parenteral Preparations</title>
+<title>注射劑 完整版</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@300;400;500&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -25,13 +25,13 @@ body{font-family:var(--sans);font-size:14px;color:var(--text);background:var(--b
 .header-tag{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--sage);margin-bottom:16px;display:flex;align-items:center;gap:10px;}
 .header-tag::before{content:'';display:inline-block;width:28px;height:1px;background:var(--sage);}
 .page-header h1{font-family:var(--serif);font-size:clamp(2rem,4vw,3rem);font-weight:700;color:#f5f0ea;letter-spacing:.02em;line-height:1.2;margin-bottom:8px;}
-.page-header .en-title{font-family:var(--mono);font-size:13px;color:rgba(245,240,234,.45);letter-spacing:.1em;}
+.en-title{font-family:var(--mono);font-size:13px;color:rgba(245,240,234,.45);letter-spacing:.1em;}
 .header-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px;}
 .header-pill{font-family:var(--mono);font-size:11px;padding:4px 12px;border-radius:20px;border:1px solid rgba(245,240,234,.2);color:rgba(245,240,234,.6);}
 .content{max-width:940px;margin:0 auto;padding:40px 24px 80px;}
 .section{margin-bottom:52px;}
 .section-title{font-family:var(--serif);font-size:18px;font-weight:700;color:var(--text);margin-bottom:20px;padding-bottom:10px;border-bottom:2px solid var(--border2);display:flex;align-items:center;gap:10px;}
-.section-title .icon{width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;}
+.icon{width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;}
 .icon-sage{background:var(--sage-l);color:var(--sage-d);}
 .icon-clay{background:var(--clay-l);color:var(--clay-d);}
 .icon-dusk{background:var(--dusk-l);color:var(--dusk-d);}
@@ -54,7 +54,7 @@ body{font-family:var(--sans);font-size:14px;color:var(--text);background:var(--b
 .card-sand{border-left:3px solid var(--sand);}
 .card-rose{border-left:3px solid var(--rose);}
 .card-mist{border-left:3px solid var(--mist);}
-.badge{display:inline-block;font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.05em;padding:2px 8px;border-radius:10px;vertical-align:middle;white-space:nowrap;}
+.badge{display:inline-block;font-family:var(--mono);font-size:10px;font-weight:600;padding:2px 8px;border-radius:10px;vertical-align:middle;white-space:nowrap;}
 .badge-sage{background:var(--sage-l);color:var(--sage-d);}
 .badge-clay{background:var(--clay-l);color:var(--clay-d);}
 .badge-dusk{background:var(--dusk-l);color:var(--dusk-d);}
@@ -78,9 +78,9 @@ tbody tr:last-child td{border-bottom:none;}
 tbody tr:hover{background:var(--surface2);}
 .kv-list{display:grid;gap:5px;margin:8px 0;}
 .kv-row{display:flex;gap:12px;align-items:baseline;}
-.kv-label{font-family:var(--mono);font-size:11px;color:var(--text-muted);min-width:96px;flex-shrink:0;letter-spacing:.04em;}
+.kv-label{font-family:var(--mono);font-size:11px;color:var(--text-muted);min-width:100px;flex-shrink:0;}
 .kv-val{font-size:13px;color:var(--text);}
-/* Q blocks — JS toggles .open */
+/* ── 考題互動 ── */
 .q-block{background:var(--surface);border:1px solid var(--border);border-radius:10px;margin-bottom:8px;overflow:hidden;}
 .q-header{padding:11px 15px;cursor:pointer;display:flex;align-items:flex-start;gap:10px;user-select:none;transition:background .15s;}
 .q-header:hover{background:var(--surface2);}
@@ -88,12 +88,23 @@ tbody tr:hover{background:var(--surface2);}
 .q-stem{font-size:13px;color:var(--text);flex:1;font-weight:500;line-height:1.6;}
 .q-arrow{font-size:11px;color:var(--text-muted);flex-shrink:0;margin-top:3px;transition:transform .2s;}
 .q-block.open .q-arrow{transform:rotate(90deg);}
-.q-body{display:none;border-top:1px solid var(--border);padding:11px 15px 13px;}
+.q-body{display:none;border-top:1px solid var(--border);padding:12px 15px 14px;}
 .q-block.open .q-body{display:block;}
-.q-opts{font-size:13px;color:var(--text-dim);line-height:2.1;margin-bottom:9px;}
-.q-opts .correct{color:var(--sage-d);font-weight:500;}
-.q-explanation{background:var(--sage-l);border-radius:6px;padding:9px 13px;font-size:12px;color:var(--sage-d);line-height:1.7;}
+.q-opts{font-size:13px;color:var(--text-dim);line-height:2.2;margin-bottom:10px;}
+.q-opts div{padding:2px 6px;border-radius:4px;transition:background .15s;}
+.q-opts div.revealed-correct{background:var(--sage-l);color:var(--sage-d);font-weight:500;}
+.q-opts div.revealed-wrong{color:var(--text-muted);text-decoration:line-through;}
+.q-btn-row{display:flex;gap:8px;margin-bottom:10px;}
+.q-btn{font-family:var(--mono);font-size:11px;padding:4px 12px;border-radius:8px;border:1px solid var(--border2);background:var(--surface2);color:var(--text-dim);cursor:pointer;transition:all .15s;}
+.q-btn:hover{background:var(--border);color:var(--text);}
+.q-explanation{background:var(--sage-l);border-radius:6px;padding:9px 13px;font-size:12px;color:var(--sage-d);line-height:1.7;display:none;}
+.q-block.show-ans .q-explanation{display:block;}
 drug{font-family:var(--mono);font-size:12px;color:var(--dusk-d);background:var(--dusk-l);padding:1px 5px;border-radius:4px;}
+.edta-grid{display:grid;gap:0;margin:10px 0;}
+.edta-item{display:grid;grid-template-columns:56px 1fr;gap:0 12px;padding:7px 0;border-bottom:1px solid var(--border);}
+.edta-item:last-child{border-bottom:none;}
+.edta-label{font-family:var(--mono);font-size:11px;color:var(--mist-d);padding-top:2px;letter-spacing:0.04em;align-self:start;}
+.edta-val{font-size:13px;color:var(--text);line-height:1.6;}
 num{font-family:var(--mono);font-weight:600;color:var(--clay-d);}
 .toc{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px 22px;margin-bottom:38px;}
 .toc-title{font-family:var(--serif);font-size:12px;font-weight:600;color:var(--text-muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px;}
@@ -101,11 +112,45 @@ num{font-family:var(--mono);font-weight:600;color:var(--clay-d);}
 .toc-grid a{font-size:12px;color:var(--dusk-d);text-decoration:none;display:flex;align-items:center;gap:5px;padding:3px 0;}
 .toc-grid a:hover{color:var(--clay-d);}
 .toc-grid a::before{content:'·';color:var(--border2);}
-.hl-sand td:first-child{background:var(--sand-l);}
-p{margin:5px 0;}
-ul{margin:7px 0 7px 18px;}
-li{margin-bottom:3px;font-size:13px;line-height:1.75;}
-strong{font-weight:500;}
+p{margin:5px 0;}ul{margin:7px 0 7px 18px;}li{margin-bottom:3px;font-size:13px;line-height:1.75;}strong{font-weight:500;}
+
+/* ── 數線圖 ── */
+.numline-wrap{margin:14px 0 8px;padding:14px 18px;background:var(--dusk-l);border-radius:10px;border:1px solid var(--border);}
+.numline-labels{display:flex;align-items:center;gap:0;margin-bottom:6px;position:relative;height:24px;}
+.nl-num{font-family:var(--mono);font-weight:700;font-size:14px;color:var(--dusk-d);position:absolute;}
+.nl-5{left:4%;}
+.nl-3{left:32%;}
+.nl-1{left:74%;}
+.nl-right-label{position:absolute;right:0;font-size:12px;color:var(--dusk-d);font-family:var(--mono);background:white;padding:2px 8px;border-radius:6px;border:1px solid var(--dusk);}
+.numline-bar{position:relative;height:40px;}
+.nl-arrow{position:absolute;left:2%;top:8px;font-size:18px;color:var(--dusk);}
+.nl-line{position:absolute;left:8%;right:26%;top:16px;height:2px;background:var(--dusk);}
+.nl-tick{position:absolute;top:-18px;}
+.nl-tick::after{content:'';position:absolute;top:18px;left:50%;width:1px;height:14px;background:var(--dusk-d);}
+.nl-tick span{font-family:var(--mono);font-size:11px;color:var(--dusk-d);white-space:nowrap;transform:translateX(-50%);display:block;}
+.nl-tick-3{left:30%;}
+.nl-tick-10{left:72%;}
+
+/* ── 容量測定卡 ── */
+.meas-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px 16px;}
+.meas-single{border-top:3px solid var(--dusk);}
+.meas-multi{border-top:3px solid var(--sage);}
+.meas-title{font-family:var(--serif);font-size:13px;font-weight:700;color:var(--text-dim);margin-bottom:10px;}
+.meas-table{display:grid;gap:1px;background:var(--border);border-radius:6px;overflow:hidden;}
+.meas-row{display:grid;grid-template-columns:1fr 1fr;background:var(--surface);padding:7px 12px;font-size:13px;}
+.meas-head{background:var(--surface2);font-family:var(--serif);font-size:11px;font-weight:600;color:var(--text-muted);}
+.meas-hi{background:#fff8e0;}
+
+/* ── 易注射度快速記憶 ── */
+.syr-quickref{background:#fff8e0;border:2px solid #e8c97a;border-radius:10px;padding:14px 18px;margin:10px 0 14px;}
+.syr-qr-title{font-family:var(--serif);font-size:13px;font-weight:700;color:#7a4f00;margin-bottom:10px;}
+.syr-qr-grid{display:grid;grid-template-columns:60px 1fr 1fr;gap:4px 12px;margin-bottom:8px;}
+.syr-qr-head{font-family:var(--mono);font-size:11px;color:#7a4f00;font-weight:600;}
+.syr-qr-label{font-family:var(--mono);font-size:12px;color:var(--text-dim);display:flex;align-items:center;}
+.syr-qr-val{font-family:var(--mono);font-size:18px;font-weight:700;text-align:center;padding:4px;border-radius:6px;}
+.syr-easy{background:#dff0e8;color:#1a5c35;}
+.syr-visc{background:#e8dff0;color:#3d1a5c;}
+.syr-qr-note{font-size:12px;color:#7a4f00;font-family:var(--mono);}
 </style>
 </head>
 <body>
@@ -115,53 +160,30 @@ strong{font-weight:500;}
     <h1>注射劑</h1>
     <div class="en-title">Parenteral Preparations — Complete Edition</div>
     <div class="header-pills">
-      <span class="header-pill">基本概念 &amp; 途徑</span>
-      <span class="header-pill">PCA</span>
-      <span class="header-pill">分類 USP/TWP</span>
-      <span class="header-pill">注射用水</span>
-      <span class="header-pill">添加物</span>
-      <span class="header-pill">容器 &amp; 玻璃</span>
-      <span class="header-pill">熱原 &amp; 家兔</span>
-      <span class="header-pill">BET/LAL</span>
-      <span class="header-pill">滅菌法</span>
-      <span class="header-pill">生物指示劑</span>
-      <span class="header-pill">無菌試驗</span>
-      <span class="header-pill">微粒物質</span>
-      <span class="header-pill">抗氧化劑 &amp; 防腐劑</span>
-      <span class="header-pill">溶媒 &amp; 潔淨室</span>
+      <span class="header-pill">基本概念 &amp; 途徑</span><span class="header-pill">PCA</span><span class="header-pill">分類 USP/TWP</span>
+      <span class="header-pill">注射用水 USP+TWP</span><span class="header-pill">添加物</span><span class="header-pill">容器 &amp; 玻璃</span>
+      <span class="header-pill">熱原 &amp; 家兔</span><span class="header-pill">BET/LAL</span><span class="header-pill">滅菌法</span>
+      <span class="header-pill">生物指示劑</span><span class="header-pill">無菌試驗</span><span class="header-pill">微粒物質</span>
+      <span class="header-pill">潔淨室</span><span class="header-pill">溶媒</span><span class="header-pill">抗氧化劑 &amp; 防腐劑</span>
     </div>
   </div>
 </div>
 <div class="content">
 <!-- TOC -->
 <div class="toc">
-  <div class="toc-title">目錄 Contents</div>
+  <div class="toc-title">目錄</div>
   <div class="toc-grid">
-    <a href="#concept">基本概念</a>
-    <a href="#routes">注射途徑詳述</a>
-    <a href="#pca">PCA 病人自控鎮痛</a>
-    <a href="#classification">注射劑分類 USP/TWP</a>
-    <a href="#wfi">注射用水（USP + TWP）</a>
-    <a href="#additives">添加物規定</a>
-    <a href="#container">容器：單 vs 多劑量</a>
-    <a href="#glass">玻璃容器 Type I–NP</a>
-    <a href="#route-table">注射途徑容量總表</a>
-    <a href="#pyrogen">熱原（Pyrogen）</a>
-    <a href="#rabbit">家兔試驗</a>
-    <a href="#lal">BET / LAL 試驗</a>
-    <a href="#sterilization">滅菌法 USP 5種</a>
-    <a href="#twp-steril">滅菌法 TWP 4種</a>
-    <a href="#bi">生物指示劑 BI</a>
-    <a href="#sterility">無菌試驗</a>
-    <a href="#particles">微粒物質檢查</a>
-    <a href="#cleanroom">潔淨室 &amp; HEPA</a>
-    <a href="#vehicle">溶媒分類</a>
-    <a href="#antioxidant">抗氧化劑</a>
-    <a href="#preservative">防腐劑</a>
-    <a href="#haloperidol">Haloperidol</a>
-    <a href="#risk">ASHP 危險水平</a>
+    <a href="#concept">基本概念</a><a href="#routes">注射途徑詳述</a><a href="#pca">PCA</a>
+    <a href="#classification">注射劑分類 USP/TWP</a><a href="#wfi-usp">注射用水 USP</a><a href="#wfi-twp">注射用水 TWP</a>
+    <a href="#additives">添加物規定</a><a href="#container">容器：單 vs 多劑量</a><a href="#glass">玻璃容器</a>
+    <a href="#route-table">注射途徑容量 &amp; 易注射度</a><a href="#pyrogen">熱原</a><a href="#rabbit">家兔試驗</a>
+    <a href="#lal">BET / LAL 試驗</a><a href="#sterilization">滅菌法 USP</a><a href="#twp-steril">滅菌法 TWP</a>
+    <a href="#bi">生物指示劑</a><a href="#sterility">無菌試驗</a><a href="#particles">微粒物質</a>
+    <a href="#cleanroom">潔淨室 &amp; HEPA</a><a href="#vehicle">溶媒</a><a href="#antioxidant">抗氧化劑</a>
+    <a href="#preservative">防腐劑</a><a href="#haloperidol">Haloperidol</a><a href="#risk">ASHP 危險水平</a>
   </div>
 </div>
+
 <!-- ═══ 1. 基本概念 ═══ -->
 <div class="section" id="concept">
 <div class="section-title"><span class="icon icon-dusk">⬡</span>基本概念</div>
@@ -176,13 +198,14 @@ strong{font-weight:500;}
     <div class="sub-title sage">整體特性</div>
     <ul>
       <li>吸收速度快，生體可用率接近 <num>100%</num></li>
-      <li>必須<strong>澄清透明</strong>，不可添加著色劑</li>
-      <li>需滅菌；熱原（內毒素）限量 ≤ <num>0.25 EU/mL</num> <span class="exam-star">★ 4–5次</span></li>
+      <li>須<strong>澄清透明</strong>，不可添加著色劑（干擾雜質判讀）</li>
+      <li>必須滅菌；熱原限量 ≤ <num>0.25 EU/mL</num> <span class="exam-star">★ 4–5次</span></li>
       <li>採 <num>100%</num> 逐支全面檢查（非抽樣）</li>
+      <li>多劑量容器須加入<strong>抑菌劑</strong>（防腐劑）</li>
     </ul>
   </div>
   <div class="card card-clay">
-    <div class="sub-title clay">降低藥物吸附</div>
+    <div class="sub-title clay">降低吸附設計</div>
     <ul>
       <li>添加<strong>白蛋白</strong></li>
       <li><strong>縮小</strong>輸注導管<strong>內徑</strong></li>
@@ -194,535 +217,1526 @@ strong{font-weight:500;}
 <div class="table-wrap"><table>
 <thead><tr><th>藥品</th><th>規定</th></tr></thead>
 <tbody>
-<tr><td><drug>Vasopressin</drug></td><td>冷藏避光；注射液<strong>不得冷凍</strong></td></tr>
-<tr><td><drug>Methocarbamol</drug></td><td>溶於 <drug>Polyethylene glycol 300</drug> 水溶液</td></tr>
-<tr><td><drug>Apomorphine HCl</drug></td><td>可加 <drug>Sodium bisulfite 0.05%</drug> 作安定劑</td></tr>
-<tr><td><drug>Alprostadil（前列腺素 E1）</drug></td><td>使用<strong>無水酒精</strong>製成之滅菌溶液</td></tr>
+<tr><td><drug>Vasopressin（加壓素）</drug></td><td>注射劑須<strong>冷藏避光</strong>儲存；注射液<strong>不得冷凍</strong></td></tr>
+<tr><td><drug>Methocarbamol（美索卡巴莫）</drug></td><td>注射液溶於 <drug>Polyethylene glycol 300（PEG 300）</drug> 水溶液</td></tr>
+<tr><td><drug>Apomorphine hydrochloride（阿朴嗎啡）</drug></td><td>注射液中可加入 <drug>Sodium bisulfite 0.05%</drug> 作安定劑（抗氧化劑）</td></tr>
+<tr><td><drug>Alprostadil（前列腺素 E1）</drug></td><td>注射劑使用<strong>無水酒精</strong>製成之滅菌溶液</td></tr>
 </tbody></table></div>
+<div class="sub-title clay">歷屆考題</div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">111-2</span><span class="q-stem">下列何種方式無法降低藥物吸附在靜脈注射容器內襯、給藥裝置或導管之現象？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="no">(A) 添加白蛋白</div>
+      <div data-ans="yes">(B) 調整為等滲透壓</div>
+      <div data-ans="no">(C) 縮小輸注導管內徑</div>
+      <div data-ans="no">(D) 縮短輸注導管長度</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">調整滲透壓不影響藥物在管壁上的吸附。降低吸附的方式：白蛋白、縮小內徑、縮短長度。</div>
+  </div>
 </div>
-
+<div class="q-block">
+  <div class="q-header"><span class="q-year">111-2</span><span class="q-stem">依中華藥典規定，注射劑貯存於多劑量容器中，除另有規定外，須加入下列何種成分？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="no">(A) 抗氧化劑</div><div data-ans="no">(B) 緩衝劑</div>
+      <div data-ans="yes">(C) 抑菌劑</div><div data-ans="no">(D) 等張劑</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">多劑量注射劑須加入抑菌劑（防腐劑）以防多次取用時污染。</div>
+  </div>
+</div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">109-1</span><span class="q-stem">依中華藥典第八版，下列何藥須冷藏避光貯之，且其注射液不得冷凍？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="no">(A) cyclosporine</div><div data-ans="no">(B) digoxin</div>
+      <div data-ans="no">(C) perphenazine</div><div data-ans="yes">(D) vasopressin</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">Vasopressin 注射劑須冷藏避光保存，且不得冷凍。</div>
+  </div>
+</div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">107-2</span><span class="q-stem">下列何類物質是絕對禁止添加於注射劑中？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="no">(A) 緩衝劑</div><div data-ans="no">(B) 安定劑</div>
+      <div data-ans="yes">(C) 著色劑</div><div data-ans="no">(D) 抗菌劑</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">注射劑需保持澄清透明，藥典明訂禁止添加著色劑，否則干擾雜質判讀。</div>
+  </div>
+</div>
+</div>
 <!-- ═══ 2. 注射途徑 ═══ -->
 <div class="section" id="routes">
-<div class="section-title"><span class="icon icon-clay">⬡</span>注射途徑詳述</div>
+<div class="section-title"><span class="icon icon-clay">⬡</span>注射給藥途徑詳述</div>
 <div class="table-wrap"><table>
 <thead><tr><th>途徑</th><th>用量</th><th>針號</th><th>深度</th><th>容器</th><th>記憶</th></tr></thead>
 <tbody>
 <tr><td><strong>皮內 ID</strong></td><td><num>0.1 mL</num>（最少）</td><td>23–26 G</td><td>3/8 英吋</td><td>多劑量</td><td>ID 反過來像 0.1</td></tr>
-<tr><td><strong>皮下 SC</strong></td><td><num>1.3–2 mL</num></td><td>24–26 G</td><td>3/8–1 英吋</td><td>多劑量</td><td>下顎 2 ml</td></tr>
-<tr><td><strong>肌肉 IM</strong></td><td><num>2–5 mL</num></td><td>20–22 G</td><td>2–3 英吋</td><td>多劑量</td><td>飢餓 2 ml</td></tr>
-<tr><td><strong>靜脈 IV</strong></td><td>≤ <num>1 L</num></td><td>—</td><td>—</td><td>單劑量</td><td>V 像 L</td></tr>
+<tr><td><strong>皮下 SC</strong></td><td><num>1.3–2 mL</num></td><td>24–26 G</td><td>3/8–1 英吋</td><td>多劑量</td><td>下顎（2 ml）</td></tr>
+<tr><td><strong>肌肉 IM</strong></td><td><num>2–5 mL</num></td><td>20–22 G</td><td>2–3 英吋</td><td>多劑量</td><td>飢餓（2 ml）</td></tr>
+<tr><td><strong>靜脈 IV</strong></td><td>≤ <num>1 L</num>（常見 1000 mL）</td><td>—</td><td>—</td><td>單劑量</td><td>V 像 L（1L）</td></tr>
 <tr><td><strong>脊內 IS</strong></td><td>≤ <num>20 mL</num>；必須等張</td><td>—</td><td>—</td><td>單劑量</td><td>IS 鏡像 21</td></tr>
 </tbody></table></div>
 
-<div class="card-grid">
-  <div class="card card-clay">
-    <div class="sub-title clay">靜脈 IV 重點</div>
-    <ul>
-      <li>起效最快；藥物<strong>無法回收</strong></li>
-      <li>肘前靜脈<strong>非首選</strong>（外滲風險高）</li>
-      <li>流速 <num>42–150 mL/h</num>；刺激性溶液易血栓</li>
-      <li>IV 脂肪乳劑乳化劑：<strong>蛋黃卵磷脂</strong>（egg yolk phospholipids）</li>
-    </ul>
-  </div>
-  <div class="card card-sage">
-    <div class="sub-title sage">肌肉 IM 重點</div>
-    <ul>
-      <li>可打水性 / 油性 / 懸浮液（後兩者吸收較慢）</li>
-      <li>臀部最多 <num>5 mL</num>；三角肌最多 <num>2 mL</num></li>
-      <li><strong>Z型軌技術（Z-track）</strong>：適用染色藥（iron dextran）/ 刺激性藥（diazepam），防止藥液滲入皮下</li>
-      <li>嬰兒：避免臀部（可能傷坐骨神經），用三角肌或大腿</li>
-    </ul>
-  </div>
-  <div class="card card-mist">
-    <div class="sub-title mist">皮下 SC / 皮內 ID</div>
-    <ul>
-      <li>SC 舒適量 <num>1.3 mL</num>；&gt;2 mL 易痛</li>
-      <li>SC 不適合：刺激性藥、黏稠懸液、有硬結部位</li>
-      <li>ID 用於診斷（結核菌素試驗、過敏測試）；注射部位：前臂前側</li>
-    </ul>
+<div class="sub-title clay">靜脈注射（IV）重點</div>
+<div class="card card-clay">
+  <ul>
+    <li>起效最迅速，可準確即時達到最佳血液濃度；缺點：<strong>無法回收</strong>已注入藥物</li>
+    <li>肘前靜脈<strong>並非首選</strong>（活動量大，外滲風險高）；斜面朝上插針，方向與血流一致</li>
+    <li>常見流速：<num>42–150 mL/h</num></li>
+    <li>輸注刺激性溶液易促成血栓（thrombus）→ 滯留血管形成栓塞（embolus）</li>
+  </ul>
+</div>
+
+<div class="sub-title dusk">靜脈注射脂肪乳劑（IV Emulsions）</div>
+<div class="card card-dusk">
+  <div class="kv-list">
+    <div class="kv-row"><span class="kv-label">適應症</span><span class="kv-val">需長期腸外營養（通常超過 5 天）患者之熱量和必需脂肪酸來源</span></div>
+    <div class="kv-row"><span class="kv-label">成分</span><span class="kv-val">大豆油（≤30%）＋ <strong>蛋黃卵磷脂（egg yolk phospholipids）作為乳化劑</strong> ＋ 含甘油之注射用水</span></div>
+    <div class="kv-row"><span class="kv-label">常見產品</span><span class="kv-val">Intralipid 20–30%（Baxter）；Liposyn II/III 10–30%（Hospira）</span></div>
+    <div class="kv-row"><span class="kv-label">給藥</span><span class="kv-val">可經由週邊靜脈或中心靜脈輸注施用</span></div>
   </div>
 </div>
 
-<div class="sub-title dusk">易注射度（Syringeability）補充容量 <span class="exam-star">★</span></div>
-<div class="table-wrap"><table>
-<thead><tr><th>標誌容量 (mL)</th><th>易流動液 (mL)</th><th>黏性液 (mL)</th></tr></thead>
-<tbody>
-<tr><td>0.5</td><td>0.10</td><td>0.12</td></tr>
-<tr><td>1</td><td>0.10</td><td>0.15</td></tr>
-<tr><td>2</td><td>0.15</td><td>0.25</td></tr>
-<tr style="background:var(--sand-l)"><td><strong>5</strong></td><td><strong>0.3</strong></td><td><strong>0.5</strong></td></tr>
-<tr style="background:var(--sand-l)"><td><strong>10</strong></td><td><strong>0.5</strong></td><td><strong>0.7</strong></td></tr>
-<tr><td>20</td><td>0.6</td><td>0.8</td></tr>
-<tr><td>30</td><td>0.8</td><td>1.2</td></tr>
-<tr><td>≥ 50</td><td><strong>2%</strong></td><td><strong>3%</strong></td></tr>
-</tbody></table></div>
-<div class="info-box sand" style="font-size:12px">記憶碼（5ml, 10ml）：<strong>3、5 / 5、7</strong>（加零 0.3、0.5、0.5、0.7）</div>
+<div class="sub-title sage">肌肉注射（IM）重點</div>
+<div class="card card-sage">
+  <ul>
+    <li>效果慢於 IV，但作用時間較長；可施打<strong>水溶液、油溶液或懸浮液</strong>（後兩者吸收較慢）</li>
+    <li>吸收速度：溶液中藥物 &gt; 混懸液；水性製劑 &gt; 油性製劑</li>
+    <li>注射位置：成人用<strong>臀大肌上面外側</strong>（最常用）；嬰兒避免臀部（可能靠近坐骨神經），用上臂三角肌或大腿中外側肌</li>
+    <li>用量限制：臀部肌肉最多 <num>5 mL</num>；手臂三角肌最多 <num>2 mL</num></li>
+    <li>可能副作用：神經傷害、膿腫、囊腫、血栓、血腫、皮膚脫落、癱瘓</li>
+  </ul>
+  <div class="info-box sage" style="margin-top:10px;font-size:12px">
+    <strong>Z型軌技術（Z-track Technique）：</strong>適用可能染色（如 iron dextran）或組織刺激性藥物（如 diazepam）。注射前拉緊皮膚向側方移動 → 插針回吸確認無回血 → 緩慢注射後拔針 → 放開皮膚形成Z字型通道，防止藥液滲入皮下組織。
+  </div>
+</div>
+
+<div class="sub-title mist">皮下注射（SC）重點</div>
+<div class="card card-mist">
+  <ul>
+    <li>注射部位：上臂外側表面鬆散組織間隙、腿部外側或下腹部</li>
+    <li>注射量：舒適量為 <num>1.3 mL</num>；大於 <num>2 mL</num> 易引起疼痛</li>
+    <li>不適合 SC 的情況：刺激性藥物、黏稠懸液、硬結 / 脫皮 / 膿腫</li>
+  </ul>
+</div>
+
+<div class="sub-title sand">皮內注射（ID）重點</div>
+<div class="card card-sand">
+  <ul>
+    <li>將藥物淺層注射於表皮與皮下組織間的<strong>真皮層</strong></li>
+    <li>常用於診斷用藥、脫敏 / 免疫（如結核菌素試驗、過敏測試）</li>
+    <li>注射部位：<strong>前臂前側</strong></li>
+    <li>注射量：僅需 <num>0.1 mL</num>（最少）</li>
+  </ul>
+</div>
+
+<div class="sub-title rose">特殊通道（Central Venous Catheter）</div>
+<div class="card card-rose">
+  <ul>
+    <li>適用需長期重複注射：化療、長期抗生素、TPN；使用數天至數個月</li>
+    <li>不用時以<strong>肝素</strong>維持導管暢通</li>
+    <li>導管材質：PVC、Teflon（聚四氟乙烯）、Polyethylene（在X光可見）</li>
+    <li>常見：Broviac、Hickman 導管（注射端口未植入皮下）</li>
+    <li>風險：導管斷裂、穿刺部位感染、<strong>導管性敗血症</strong></li>
+  </ul>
+</div>
 
 <div class="sub-title clay">歷屆考題</div>
-<div class="q-block"><div class="q-header"><span class="q-year">112-2</span><span class="q-stem">下列注射途徑中，何者可容許之注射體積最少？</span><span class="q-arrow">▶</span></div><div class="q-body"><div class="q-opts">(A) 靜脈<br>(B) 肌肉<br>(C) 皮下<br><span class="correct">✓ (D) 皮內注射（0.1 mL）</span></div><div class="q-explanation">皮內注射為各途徑中最少，通常僅 0.1 mL。</div></div></div>
-<div class="q-block"><div class="q-header"><span class="q-year">109-2</span><span class="q-stem">有關無菌製劑注射途徑和可注射量，下列何者錯誤？</span><span class="q-arrow">▶</span></div><div class="q-body"><div class="q-opts">(A) intraspinal 8 mL ✓<br><span class="correct">✓ (B) intramuscular 6 mL（錯：IM 上限 2–5 mL）</span><br>(C) subcutaneous 1.3 mL ✓<br>(D) intradermal 0.1 mL ✓</div><div class="q-explanation">IM 正確注射量為 2–5 mL，6 mL 超出上限。</div></div></div>
-<div class="q-block"><div class="q-header"><span class="q-year">IV乳劑</span><span class="q-stem">下列何種乳化劑可用於靜脈注射脂肪乳劑（Intralipid）？</span><span class="q-arrow">▶</span></div><div class="q-body"><div class="q-opts">(A) acacia<br>(B) Tween 80<br>(C) sodium lauryl sulfate<br><span class="correct">✓ (D) egg yolk phospholipids</span></div><div class="q-explanation">IV 脂肪乳劑的乳化劑為<strong>蛋黃卵磷脂</strong>，與人體生理相容。</div></div></div>
-<div class="q-block"><div class="q-header"><span class="q-year">108-1（易注射度）</span><span class="q-stem">標誌容量 10 mL、黏性液體，充填量需增加之最少限度？</span><span class="q-arrow">▶</span></div><div class="q-body"><div class="q-opts">(A) 0.5<br><span class="correct">✓ (B) 0.7</span><br>(C) 1.0<br>(D) 1.2</div><div class="q-explanation">10 mL 黏性液體對應增加 0.7 mL。</div></div></div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">112-2</span><span class="q-stem">下列注射途徑中，何者可容許之注射體積最少？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="no">(A) 靜脈注射</div><div data-ans="no">(B) 肌肉注射</div>
+      <div data-ans="no">(C) 皮下注射</div><div data-ans="yes">(D) 皮內注射</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">皮內注射（Intradermal）可注射體積最少，通常僅 0.1 mL。</div>
+  </div>
 </div>
-
+<div class="q-block">
+  <div class="q-header"><span class="q-year">109-2</span><span class="q-stem">有關無菌製劑注射途徑可注射量，下列敘述何者錯誤？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="no">(A) intraspinal route 可一次注射 8 mL</div>
+      <div data-ans="yes">(B) intramuscular route 可一次注射 6 mL</div>
+      <div data-ans="no">(C) subcutaneous route 可一次注射 1.3 mL</div>
+      <div data-ans="no">(D) intradermal route 可一次注射 0.1 mL</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">肌肉注射（IM）正確可注射量是 2–5 mL，6 mL 超過上限，選項 (B) 錯誤。</div>
+  </div>
+</div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">考題</span><span class="q-stem">下列何者不屬於注射給藥途徑（Parenteral route）？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="no">(A) intradermal route</div><div data-ans="no">(B) intramuscular route</div>
+      <div data-ans="yes">(C) intranasal route</div><div data-ans="no">(D) intraspinal route</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">鼻內給藥（Intranasal）屬於局部給藥途徑，不屬於注射（Parenteral）途徑。</div>
+  </div>
+</div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">考題</span><span class="q-stem">下列何種乳化劑可用於靜脈注射的脂肪乳劑（例如：Intralipid）？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="no">(A) acacia</div><div data-ans="no">(B) Tween 80</div>
+      <div data-ans="no">(C) sodium lauryl sulfate</div><div data-ans="yes">(D) egg yolk phospholipids（蛋黃卵磷脂）</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">靜脈注射脂肪乳劑使用蛋黃卵磷脂（egg yolk phospholipids）作為乳化劑，天然磷脂，與人體相容。</div>
+  </div>
+</div>
+</div>
 <!-- ═══ 3. PCA ═══ -->
 <div class="section" id="pca">
 <div class="section-title"><span class="icon icon-rose">⬡</span>PCA 病人自控鎮痛</div>
 <div class="card card-rose">
   <div class="kv-list">
-    <div class="kv-row"><span class="kv-label">最常用藥</span><span class="kv-val"><drug>Morphine sulfate</drug>（narcotic analgesics）</span></div>
-    <div class="kv-row"><span class="kv-label">適應症</span><span class="kv-val">外科手術、分娩、鐮狀細胞危機、癌症慢性疼痛</span></div>
-    <div class="kv-row"><span class="kv-label">給藥途徑</span><span class="kv-val">IV / SC / 硬膜外（epidural）</span></div>
-    <div class="kv-row"><span class="kv-label">設定參數</span><span class="kv-val">負荷劑量、基本輸注速率、每次劑量、<strong>鎖定間隔時間</strong>、時間內最大總劑量</span></div>
+    <div class="kv-row"><span class="kv-label">最常用藥</span><span class="kv-val"><drug>Morphine sulfate</drug>（成癮性麻醉止痛劑，narcotic analgesics）</span></div>
+    <div class="kv-row"><span class="kv-label">其他藥品</span><span class="kv-val">Fentanyl（強 50–100×）、Hydromorphone、Oxycodone、Meperidine（代謝物易蓄積）</span></div>
+    <div class="kv-row"><span class="kv-label">適應症</span><span class="kv-val">各種外科手術疼痛、分娩疼痛、鐮狀細胞危機（sickle cell crisis）、癌症相關慢性惡性疼痛</span></div>
+    <div class="kv-row"><span class="kv-label">給藥途徑</span><span class="kv-val">靜脈注射（IV）、皮下注射（SC）、硬膜外注射（epidural）</span></div>
+    <div class="kv-row"><span class="kv-label">設備功能</span><span class="kv-val">提供靜脈推注（IV bolus）達快速鎮痛 ＋ 緩慢恆速輸注維持穩態濃度</span></div>
+    <div class="kv-row"><span class="kv-label">設定參數</span><span class="kv-val">負荷劑量（loading dose）、基本輸注速率、每次指示劑量、<strong>鎖定間隔時間</strong>、指定時間內最大劑量</span></div>
   </div>
 </div>
-<div class="q-block"><div class="q-header"><span class="q-year">PCA常考</span><span class="q-stem">最常用於 PCA 的注射劑含有哪一個藥品？</span><span class="q-arrow">▶</span></div><div class="q-body"><div class="q-opts">(A) Piroxicam<br>(B) Pentazocine<br><span class="correct">✓ (C) Morphine sulfate</span><br>(D) Diclofenac sodium</div><div class="q-explanation">PCA 使用 narcotic analgesics，Morphine sulfate 為代表。</div></div></div>
+<div class="sub-title clay">歷屆考題</div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">考題</span><span class="q-stem">最常用於 patient-controlled analgesia（PCA）的注射劑含有下列哪一個藥品？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="no">(A) Piroxicam</div><div data-ans="no">(B) Pentazocine</div>
+      <div data-ans="yes">(C) Morphine sulfate</div><div data-ans="no">(D) Diclofenac sodium</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">PCA 主要用來輸注成癮性麻醉止痛劑（narcotic analgesics），Morphine sulfate 是最常用的代表性藥品。</div>
+  </div>
 </div>
+</div>
+
 <!-- ═══ 4. 分類 ═══ -->
 <div class="section" id="classification">
 <div class="section-title"><span class="icon icon-sage">⬡</span>注射劑分類（USP / TWP）</div>
 <div class="sub-title sage">USP 分類（5種）</div>
 <div class="table-wrap"><table>
-<thead><tr><th>分類</th><th>英文名</th><th>說明</th><th>例子</th></tr></thead>
+<thead><tr><th>分類</th><th>英文</th><th>說明</th><th>例子</th></tr></thead>
 <tbody>
-<tr><td>注射液</td><td>Injection</td><td>藥物或其溶液液體製劑</td><td>Insulin Injection</td></tr>
-<tr><td>乾粉注射劑</td><td>For Injection</td><td>乾燥固體，加媒劑成溶液；<strong>不安定藥品</strong>，配完 24 hr 內用完</td><td>Cefuroxime for Injection</td></tr>
-<tr><td>注射乳劑</td><td>Injectable Emulsion</td><td>藥物溶解或分散在乳劑媒劑中</td><td>Propofol</td></tr>
-<tr><td>注射用懸液劑</td><td>Injectable Suspension</td><td>固體懸浮於液體媒劑</td><td>Methylprednisolone Acetate</td></tr>
-<tr><td>乾粉注射用懸液劑</td><td>For Injectable Suspension</td><td>加媒劑後成懸液劑</td><td>Imipenem and Cilastatin</td></tr>
+<tr><td>注射液</td><td>Injection</td><td>藥物或其溶液的液體製劑</td><td>Insulin Injection, USP</td></tr>
+<tr><td>乾粉注射劑</td><td>For Injection</td><td>乾燥固體，加適當媒劑後製成溶液；<strong>不安定藥品</strong>才做成乾粉，配完 24 hr 內用完</td><td>Cefuroxime for Injection, USP</td></tr>
+<tr><td>注射乳劑</td><td>Injectable Emulsion</td><td>藥物溶解或分散在乳劑媒劑中</td><td>Propofol, USP</td></tr>
+<tr><td>注射用懸液劑</td><td>Injectable Suspension</td><td>藥物固體懸浮於適當液體媒劑中</td><td>Methylprednisolone Acetate Suspension</td></tr>
+<tr><td>乾粉注射用懸液劑</td><td>For Injectable Suspension</td><td>乾燥固體，加媒劑後製成懸液劑</td><td>Imipenem and Cilastatin for Injectable Suspension</td></tr>
 </tbody></table></div>
 
 <div class="sub-title dusk">TWP IX 分類（7種）</div>
 <div class="table-wrap"><table>
-<thead><tr><th>#</th><th>名稱</th><th>說明</th></tr></thead>
+<thead><tr><th>#</th><th>名稱格式</th><th>說明</th></tr></thead>
 <tbody>
 <tr><td>1</td><td>「成分名」注射劑</td><td>液劑，由原料藥或其溶液製備</td></tr>
-<tr><td>2</td><td>注射用「成分名」<strong>乾粉</strong></td><td>固體，加溶劑成溶液；對應 USP 第 2 類</td></tr>
-<tr><td>3</td><td>「成分名」注射乳劑</td><td>原料藥溶解或分散於乳劑後注射</td></tr>
-<tr><td>4</td><td>「成分名」注射懸液</td><td>固體懸浮於溶劑中</td></tr>
-<tr><td>5</td><td>注射懸液用「成分名」<strong>乾粉</strong></td><td>加溶劑形成懸液劑</td></tr>
-<tr><td>6</td><td>「成分名」注射<strong>持釋</strong>懸液劑</td><td>配方使藥物一定時間內持續釋出</td></tr>
-<tr><td>7</td><td>注射持釋懸液用「成分名」<strong>乾粉</strong></td><td>加溶劑形成持釋懸液</td></tr>
+<tr><td>2</td><td>注射用「成分名」<strong>乾粉</strong></td><td>固體，加溶劑成溶液；品質須符合注射劑規格；對應 USP 第 2 類</td></tr>
+<tr><td>3</td><td>「成分名」注射乳劑</td><td>原料藥溶解或分散於適當乳劑後供注射</td></tr>
+<tr><td>4</td><td>「成分名」注射懸液</td><td>原料藥固體懸浮於適當溶劑中供注射</td></tr>
+<tr><td>5</td><td>注射懸液用「成分名」<strong>乾粉</strong></td><td>加入適當溶劑形成懸液劑供注射，品質須符合懸液劑規格</td></tr>
+<tr><td>6</td><td>「成分名」注射<strong>持釋</strong>懸液劑</td><td>固體懸浮於溶劑中，配方設計使藥物一定時間內持續釋出</td></tr>
+<tr><td>7</td><td>注射持釋懸液用「成分名」<strong>乾粉</strong></td><td>加溶劑形成持釋懸液，持續釋放，品質須符合持釋劑型規格</td></tr>
 </tbody></table></div>
-<div class="info-box sage" style="font-size:12px"><strong>命名原則：</strong>注射劑不需標示注射途徑（靜脈/肌肉/皮下）。須使用特定載體時加入：「成分名」氯化鈉注射液。眼用軟膏等劑型重疊需標「眼用」。</div>
+<div class="info-box sage" style="font-size:12px">
+  <strong>命名注意：</strong>須使用非注射用水的輸液作為載體時，命名為「成分名」「載體名」注射劑（例：成分名氯化鈉注射液）。<br>
+  所有注射途徑給藥的溶液劑，一律命名為「成分名」注射劑，不需另外標示注射途徑（靜脈/肌肉/皮下）。<br>
+  眼用軟膏等同一劑型可用於不同途徑者，需在名稱中標示「眼用」。
+</div>
+</div>
+<!-- ═══ 5. 注射用水 USP ═══ -->
+<div class="section" id="wfi-usp">
+<div class="section-title"><span class="icon icon-mist">⬡</span>注射用水 USP（6種）</div>
+
+<div class="sub-title mist">1. Water for Injection USP（注射用水）</div>
+<div class="card card-mist">
+  <ul>
+    <li>大型注射劑製造商<strong>最常用</strong>的溶劑</li>
+    <li>經<strong>蒸餾或逆滲透</strong>純化，總固體含量不超過 <num>1 mg/100 mL（10 ppm）</num></li>
+    <li><strong>不得含有添加物質</strong>（抗菌劑、防腐劑、抗氧化劑均不可加）</li>
+    <li>雖<strong>不要求無菌</strong>，但<strong>必須無熱原</strong> <span class="exam-star">★ 超重要</span></li>
+    <li>用於製造注射產品，製備後再進行滅菌</li>
+    <li>儲存在<strong>密閉容器</strong>中，<strong>收集後 24 小時內使用</strong></li>
+    <li>應收集在無菌且無熱原的容器中，通常為<strong>玻璃或玻璃襯裡容器</strong></li>
+  </ul>
 </div>
 
-<!-- ═══ 5. 注射用水 ═══ -->
-<div class="section" id="wfi">
-<div class="section-title"><span class="icon icon-mist">⬡</span>注射用水 USP + TWP</div>
+<div class="sub-title mist">2. Sterile Water for Injection USP（滅菌注射用水）</div>
+<div class="card card-mist">
+  <ul>
+    <li>注射用水經<strong>滅菌處理</strong></li>
+    <li><strong>不得含抗菌劑</strong></li>
+    <li>容量<strong>不得超過 1000 mL</strong></li>
+    <li>一般<strong>包裝在單劑量容器</strong>中</li>
+    <li>必須無熱原；內毒素不得超過 <num>0.25 USP EU/mL</num></li>
+    <li><strong>1000 mL 瓶裝不可靜脈注射</strong>（無等張性，低張→紅血球吸水膨脹→溶血）</li>
+    <li>使用時需加入 NaCl、葡萄糖等調整滲透壓成等張後，才可靜脈輸注</li>
+    <li>例如：Sterile Ampicillin Sodium USP 乾粉 → 加入無菌注射用水溶解</li>
+  </ul>
+</div>
 
-<div class="sub-title mist">USP 注射用水總整理</div>
-<div class="table-wrap"><table>
-<thead><tr><th>名稱</th><th>熱原/內毒素</th><th>無菌</th><th>抗菌劑</th><th>重要限制</th></tr></thead>
-<tbody>
-<tr>
-  <td><strong>Water for Injection</strong><br>注射用水</td>
-  <td>✓ 無熱原（必須）</td><td>✗</td><td>✗ 不得含</td>
-  <td>24 hr 內使用；玻璃容器；<strong>不得供靜脈注射</strong>（未等張）</td>
-</tr>
-<tr style="background:var(--sage-l)">
-  <td><strong>Sterile Water for Injection</strong><br>滅菌注射用水</td>
-  <td>✓ ≤ <num>0.25 EU/mL</num></td><td>✓</td><td>✗ 不得含</td>
-  <td>≤ 1000 mL；單劑量；<strong>1000 mL 不可直接 IV</strong>（低張→溶血）；可加 NaCl 等調等張後才可 IV</td>
-</tr>
-<tr style="background:var(--clay-l)">
-  <td><strong>Bacteriostatic Water for Injection</strong><br>抑菌注射用水</td>
-  <td>—</td><td>—</td><td>✓ 含（標示）</td>
-  <td>≤ 30 mL；<strong>新生兒禁用</strong>（benzyl alcohol 0.9%）</td>
-</tr>
-<tr>
-  <td><strong>Sodium Chloride Injection</strong><br>氯化鈉注射液</td>
-  <td>—</td><td>✓</td><td>✗</td>
-  <td>等張；Na⁺/Cl⁻ 各 154 mEq/L；可沖洗導管</td>
-</tr>
-<tr style="background:var(--clay-l)">
-  <td><strong>Bacteriostatic Sodium Chloride Injection</strong><br>抑菌氯化鈉注射液</td>
-  <td>—</td><td>✓</td><td>✓ 含</td>
-  <td>&lt; 30 mL；<strong>新生兒禁用</strong>；用作載體須確認相容性</td>
-</tr>
-<tr>
-  <td><strong>Ringer's Injection</strong><br>林格氏注射液</td>
-  <td>—</td><td>✓</td><td>✗</td>
-  <td>含 NaCl/KCl/CaCl₂；乳酸林格氏可作全身<strong>鹼化劑</strong></td>
-</tr>
-</tbody></table></div>
+<div class="sub-title mist">3. Bacteriostatic Water for Injection USP（抑菌注射用水）</div>
+<div class="card card-mist">
+  <ul>
+    <li>含<strong>一種或多種抗微生物劑</strong>之注射用水（看到「抑菌」就代表有加抗微生物製劑）</li>
+    <li>用於<strong>小量注射液（≤30 mL）</strong></li>
+    <li>標籤須列出抗微生物劑名稱與比例</li>
+    <li>標示必須包含：<strong>「新生兒不可使用（NOT FOR USE IN NEONATES）」</strong></li>
+    <li><strong>新生兒禁用</strong>：含有 <drug>Benzyl alcohol 0.9%</drug>，新生兒肝臟解毒能力有限，可能致死</li>
+  </ul>
+</div>
 
-<div class="sub-title dusk">TWP IX 注射用水（5種）</div>
-<div class="table-wrap"><table>
-<thead><tr><th>名稱</th><th>熱原/內毒素</th><th>無菌/抗菌</th><th>特殊標示</th></tr></thead>
-<tbody>
-<tr>
-  <td><strong>純淨水</strong><br>Purified Water</td>
-  <td>未規定</td><td>無要求</td>
-  <td>不得供<strong>靜脈注射</strong>用</td>
-</tr>
-<tr>
-  <td><strong>無菌純淨水</strong><br>Sterile Purified Water</td>
-  <td>未規定</td><td>有要求；不含抗菌劑</td>
-  <td>不得供靜脈注射；<strong>不可直接與乾粉針劑混合進行皮下注射</strong></td>
-</tr>
-<tr style="background:var(--sage-l)">
-  <td><strong>注射用水</strong><br>Water for Injection</td>
-  <td>≤ 0.25 IU/mL</td><td>無要求；不含抗菌劑</td>
-  <td>不得供靜脈注射；<strong>藥廠製備注射劑用</strong>；微生物 ≤ 10 CFU/100 mL</td>
-</tr>
-<tr style="background:var(--sage-l)">
-  <td><strong>無菌注射用水</strong><br>Sterile Water for Injection</td>
-  <td>≤ 0.25 IU/mL</td><td>有要求；不含抗菌劑</td>
-  <td>單劑量容器 ≤ 1 L；Type I 或 II 玻璃；<strong>未調等張不得供血管注射</strong></td>
-</tr>
-<tr>
-  <td><strong>無菌灌洗用水</strong><br>Sterile Water for Irrigation</td>
-  <td>≤ 0.25 IU/mL</td><td>有要求；不含抗菌劑</td>
-  <td>容量超過 1 L；<strong>僅供灌洗，不得注射</strong>；血液透析用</td>
-</tr>
-</tbody></table></div>
-<div class="info-box clay" style="font-size:12px">
-  <strong>新生兒禁用口訣：</strong>有「抑菌」二字的水 = 含防腐劑 = 新生兒禁用。<br>
-  <strong>要求無菌的水：</strong>看名稱有「無菌（Sterile）」或「抑菌（Bacteriostatic）」就要求無菌。<br>
-  <strong>純淨水 vs 無菌純淨水：</strong>兩者均<strong>未要求無內毒素</strong>（因不用在注射）。
+<div class="sub-title mist">4. Sodium Chloride Injection USP（氯化鈉注射液）</div>
+<div class="card card-mist">
+  <ul>
+    <li>含氯化鈉於注射用水中的<strong>無菌等張溶液</strong></li>
+    <li>不含抗菌劑，但每公升含 Na⁺、Cl⁻ 各約 <num>154 mEq</num></li>
+    <li>可用作胃腸外給藥藥物溶液或懸浮液的無菌媒劑之載體</li>
+    <li>亦可用於<strong>導管或靜脈輸液管沖洗以保持通暢</strong></li>
+  </ul>
+</div>
+
+<div class="sub-title mist">5. Bacteriostatic Sodium Chloride Injection USP（抑菌氯化鈉注射液）</div>
+<div class="card card-mist">
+  <ul>
+    <li>0.9% 氯化鈉在注射用水中的<strong>無菌等滲</strong>溶液，含一種或多種<strong>抗菌劑</strong></li>
+    <li>容量需 <strong>&lt;30 mL</strong> 容器使用</li>
+    <li>作為載體時，需確認所添加藥劑是否與防腐劑或氯化鈉<strong>相容</strong></li>
+    <li>可用於導管沖洗或靜脈輸液管維持通暢</li>
+    <li><strong>新生兒禁用</strong>，肝臟尚未成熟，苯甲酸和未代謝苯甲醇可能蓄積</li>
+    <li>標籤必須警告：「帶有新生兒不可使用的警告」</li>
+  </ul>
+</div>
+
+<div class="sub-title mist">6. Ringer's Injection USP（林格氏注射液）</div>
+<div class="card card-mist">
+  <ul>
+    <li>含<strong>氯化鈉、氯化鉀、氯化鈣</strong>於注射用水之無菌溶液</li>
+    <li>可作為其他藥物媒劑或單獨作為電解質補充劑或血漿增容劑</li>
+    <li><strong>乳酸林格氏注射液（Lactated Ringer's Injection USP）</strong>：含乳酸鈉（Sodium Lactate），可用於<strong>全身鹼化劑</strong>與電解質補充劑（如結石病人體內較酸，可用鹼化劑緩解）</li>
+  </ul>
 </div>
 
 <div class="sub-title clay">歷屆考題</div>
-<div class="q-block"><div class="q-header"><span class="q-year">114-1</span><span class="q-stem">有關 Water for Injection 之敘述，下列何者正確？</span><span class="q-arrow">▶</span></div><div class="q-body"><div class="q-opts">(A) 必須無菌（錯）<br><span class="correct">✓ (B) 必須無熱原</span><br>(C) 可添加抑菌劑（錯）<br>(D) 可添加等滲劑（錯）</div><div class="q-explanation">WFI 最基本要求是<strong>無熱原</strong>，不要求無菌，且不可添加任何附加物。</div></div></div>
-<div class="q-block"><div class="q-header"><span class="q-year">109-2</span><span class="q-stem">有關 Water for Injection (USP) 之敘述，下列何者錯誤？</span><span class="q-arrow">▶</span></div><div class="q-body"><div class="q-opts">(A) 需蒸餾或逆滲透純化 ✓<br>(B) 總固體含量 ≤ 1 mg/100 mL ✓<br><span class="correct">✓ (C) 必須為無菌（錯：不要求無菌）</span><br>(D) 必須無熱原 ✓</div><div class="q-explanation">WFI 不強制無菌，但必須無熱原（pyrogen-free）。</div></div></div>
-<div class="q-block"><div class="q-header"><span class="q-year">112-1</span><span class="q-stem">有關滅菌注射用水之敘述，下列何者最適當？</span><span class="q-arrow">▶</span></div><div class="q-body"><div class="q-opts">(A) 1 L 瓶裝可直接 IV（錯：低張）<br>(B) 內毒素上限 0.025 EU/mL（錯：0.25）<br><span class="correct">✓ (C) 一般包裝在單劑量容器中</span><br>(D) 可添加抗菌劑（錯）</div><div class="q-explanation">滅菌注射用水為單劑量包裝，1000 mL 不可直接 IV（低張→溶血）。</div></div></div>
-<div class="q-block"><div class="q-header"><span class="q-year">110-2</span><span class="q-stem">FDA 建議停止哪種成分作為新生兒注射劑防腐劑？</span><span class="q-arrow">▶</span></div><div class="q-body"><div class="q-opts"><span class="correct">✓ (A) benzyl alcohol</span><br>(B) butylhydroxy anisole<br>(C) hypophosphorous acid<br>(D) sodium metabisulfite</div><div class="q-explanation">Benzyl alcohol 造成新生兒代謝困難，可能致死，FDA 禁用於新生兒注射劑。</div></div></div>
-<div class="q-block"><div class="q-header"><span class="q-year">TWP水類考題</span><span class="q-stem">下列哪種水在中華藥典中未要求無內毒素？</span><span class="q-arrow">▶</span></div><div class="q-body"><div class="q-opts">(A) Sterile water for injection<br>(B) Water for injection<br><span class="correct">✓ (C) Sterile purified water（無菌純淨水）</span><br>(D) Sterile water for irrigation</div><div class="q-explanation">無菌純淨水不用於注射，故中華藥典未要求必須無內毒素。</div></div></div>
-<div class="q-block"><div class="q-header"><span class="q-year">TWP水類</span><span class="q-stem">依藥典，下列各種「水」中，哪些未被規定必須為無菌？</span><span class="q-arrow">▶</span></div><div class="q-body"><div class="q-opts"><span class="correct">✓ (A) ①純淨水 ②注射用水</span><br>(B) ①③<br>(C) ①④<br>(D) ②③</div><div class="q-explanation">名稱無「Sterile」或「Bacteriostatic」→ 不要求無菌。純淨水 &amp; 注射用水均未強制無菌。</div></div></div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">114-1</span><span class="q-stem">有關注射用水（Water for Injection）之敘述，下列何者正確？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="no">(A) 必須無菌</div><div data-ans="yes">(B) 必須無熱原</div>
+      <div data-ans="no">(C) 可添加抑菌劑</div><div data-ans="no">(D) 可添加等滲劑</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">(A) 錯：WFI 並非必須無菌，僅在用於無菌製劑調配時才需進一步滅菌。(B) 正確：WFI 必須無熱原。(C)(D) 錯：WFI 不可添加防腐劑或任何附加物。</div>
+  </div>
 </div>
-<!-- ═══ 6. 添加物 ═══ -->
+<div class="q-block">
+  <div class="q-header"><span class="q-year">109-2</span><span class="q-stem">有關 Water for Injection (USP) 之敘述，下列何者錯誤？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="no">(A) 需經過蒸餾或逆滲透法純化</div>
+      <div data-ans="no">(B) 總固體含量不得超過 1 mg/100 mL</div>
+      <div data-ans="yes">(C) 必須為無菌</div>
+      <div data-ans="no">(D) 必須無熱原</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">(C) 錯誤。注射用水不要求無菌，但必須無熱原。</div>
+  </div>
+</div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">107-1</span><span class="q-stem">有關注射用水（Water for Injection, USP）之敘述，下列何者最正確？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="no">(A) 必須是無菌的</div>
+      <div data-ans="no">(B) 沒要求需具備無熱原反應（pyrogen free）</div>
+      <div data-ans="no">(C) 儲存於一般容器即可</div>
+      <div data-ans="yes">(D) 一般是在收集後 24 小時內使用</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">(A) 錯：不必須無菌。(B) 錯：強制要求無熱原。(C) 錯：須存於無菌且無熱原的玻璃或玻璃襯裡容器。(D) 正確：應於 24 小時內使用。</div>
+  </div>
+</div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">112-1</span><span class="q-stem">有關滅菌注射用水（Sterile Water for Injection）之敘述，下列何者最適當？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="no">(A) 1 L 的瓶裝可以直接以靜脈注射給藥</div>
+      <div data-ans="no">(B) 內毒素之容許含量上限為 0.025 USP EU/mL</div>
+      <div data-ans="yes">(C) 一般是包裝在單劑量的容器中</div>
+      <div data-ans="no">(D) 可添加抗菌劑</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">(A) 錯：因無調等張，1000 mL 不可直接靜脈注射（低張→溶血）。(B) 錯：上限為 0.25，非 0.025。(C) 正確：單劑量包裝。(D) 錯：不得添加抗菌劑。</div>
+  </div>
+</div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">110-2</span><span class="q-stem">FDA 強烈建議，應停止下列何者做為新生兒注射劑之防腐成分？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="yes">(A) benzyl alcohol</div><div data-ans="no">(B) butylhydroxy anisole</div>
+      <div data-ans="no">(C) hypophosphorous acid</div><div data-ans="no">(D) sodium metabisulfite</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">Benzyl alcohol 造成新生兒代謝困難，可能致死，FDA 禁用於新生兒注射劑。</div>
+  </div>
+</div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">110-1</span><span class="q-stem">下列注射劑何者須標示「不可用於新生兒」？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="no">(A) 純淨水</div><div data-ans="no">(B) 注射用水</div>
+      <div data-ans="yes">(C) 抑菌注射用水</div><div data-ans="no">(D) 無菌注射用水</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">(A)(B)(D) 均無抗菌劑，可用於新生兒。(C) 抑菌注射用水含防腐劑（如 benzyl alcohol），須標示不可用於新生兒。</div>
+  </div>
+</div>
+</div>
+<!-- ═══ 6. 注射用水 TWP ═══ -->
+<div class="section" id="wfi-twp">
+<div class="section-title"><span class="icon icon-mist">⬡</span>注射用水 TWP IX（5種）</div>
+
+<div class="sub-title mist">1. 純淨水（Purified Water）</div>
+<div class="card card-mist">
+  <ul>
+    <li>本品不得含有其他附加物質</li>
+    <li><strong>不得供作靜脈注射用製劑之調製</strong>；靜脈注射用製劑應使用注射用水、抑菌注射用水或滅菌注射用水</li>
+    <li>要求：總有機碳、水導電度、微生物限量（每 mL 不得超過 <num>100 CFU</num>）</li>
+    <li>標誌：應標示「<strong>不得供靜脈注射用</strong>」</li>
+  </ul>
+</div>
+
+<div class="sub-title mist">2. 無菌純淨水（Sterile Purified Water）</div>
+<div class="card card-mist">
+  <ul>
+    <li>本品為經滅菌處理並適當包裝之純淨水</li>
+    <li><strong>本品不含抗菌劑</strong></li>
+    <li><strong>不得供注射或調製注射劑之用</strong></li>
+    <li>要求：易氧化物質、無菌試驗、水導電度（≤10 mL → ≤25 μS/cm；&gt;10 mL → ≤5 μS/cm）、總有機碳</li>
+    <li>標誌：標示「<strong>不得供靜脈注射</strong>」；<strong>不可直接與乾粉針劑混合，進行皮下注射</strong>（需達注射用水等級）</li>
+    <li>中華藥典未要求必須無內毒素（因不用在注射）</li>
+  </ul>
+</div>
+
+<div class="sub-title mist">3. 注射用水（Water for Injection）</div>
+<div class="card card-mist">
+  <ul>
+    <li>本品為<strong>標準飲用水經蒸餾或更佳之純化（如逆滲透）過程製成</strong></li>
+    <li>需經由滅菌，以供體內注入製劑之用</li>
+    <li><strong>主要用途為藥廠製備注射劑</strong>（滅菌後使用）</li>
+    <li>細菌內毒素：每 mL 不得超過 <num>0.25 IU/mL</num></li>
+    <li>微生物限量：每 100 mL 不得超過 <num>10 CFU</num></li>
+    <li>水導電度（大批量）、總有機碳均須符合規定</li>
+    <li>標誌：標示「<strong>不含抗菌劑或其他物質</strong>」，並標示「<strong>不得供靜脈注射用</strong>」（因未調等張）</li>
+  </ul>
+</div>
+
+<div class="sub-title mist">4. 無菌注射用水（Sterile Water for Injection）</div>
+<div class="card card-mist">
+  <ul>
+    <li>本品為<strong>經滅菌並適當包裝</strong>之注射用水</li>
+    <li><strong>本品不得含有抗菌劑或其他附加物質</strong></li>
+    <li>細菌內毒素：不得超過 <num>0.25 IU/mL</num></li>
+    <li>水導電度：≤10 mL → <num>≤25 μS/cm</num>；&gt;10 mL → <num>≤5 μS/cm</num></li>
+    <li>包裝：置於<strong>注射劑單劑量玻璃或塑膠容器</strong>，容量<strong>不得超過 1 L</strong>；玻璃容器應為 Type I 或 Type II</li>
+    <li>標誌：「不含抗菌劑或其他附加物」；<strong>如未經添加適當之成分調節為等滲透壓，不得供血管注射之用</strong>（若加氯化鈉調成等張，則可）</li>
+  </ul>
+</div>
+
+<div class="sub-title mist">5. 無菌灌洗用水（Sterile Water for Irrigation）【中華藥典特有】</div>
+<div class="card card-mist">
+  <ul>
+    <li>本品係將注射用水，以適當灌洗液劑容器包裝所成之<strong>滅菌灌洗液（血液透析用）</strong></li>
+    <li>本品<strong>不含抗菌劑或其他附加物</strong></li>
+    <li>細菌內毒素：不得超過 <num>0.25 IU/mL</num></li>
+    <li>包裝：可超過 1000 mL 容量之<strong>單劑量、易傾倒</strong>之玻璃或塑膠容器；玻璃應為 Type I 或 Type II</li>
+    <li>標誌：應<strong>顯著註明</strong>「<strong>僅供灌洗使用（外用，超過 1000 mL），不得供注射之用</strong>」</li>
+  </ul>
+</div>
+
+<div class="sub-title sage">TWP Summary — 注射媒液要求</div>
+<div class="table-wrap"><table>
+<thead><tr><th>分類</th><th>熱原 / 內毒素</th><th>無菌 / 抗菌</th><th>其他重點</th></tr></thead>
+<tbody>
+<tr><td><strong>純淨水</strong></td><td>未規定</td><td>無要求</td><td>不得供靜脈注射</td></tr>
+<tr><td><strong>無菌純淨水</strong></td><td>未規定</td><td>有無菌要求；不含抗菌劑</td><td>不得供靜脈注射；不可直接與乾粉針混合皮下注射</td></tr>
+<tr style="background:var(--sage-l)"><td><strong>注射用水</strong></td><td>&lt;0.25 IU/mL</td><td>無要求；不含抗菌劑</td><td>不得供靜脈注射；藥廠製備注射劑用；微生物 ≤10 CFU/100 mL</td></tr>
+<tr style="background:var(--sage-l)"><td><strong>無菌注射用水</strong></td><td>&lt;0.25 IU/mL</td><td>有無菌要求；不含抗菌劑</td><td>單劑量容器 ≤1 L；未調等張不得供血管注射</td></tr>
+<tr><td><strong>無菌灌洗用水</strong></td><td>&lt;0.25 IU/mL</td><td>有無菌要求；不含抗菌劑</td><td>僅供灌洗（外用 &gt;1L）；不得供注射</td></tr>
+</tbody></table></div>
+
+<div class="sub-title clay">歷屆考題</div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">TWP考題</span><span class="q-stem">依中華藥典，下列何者可經添加適當之成分調節為等滲透壓，始得供血管注射使用？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="yes">(A) Sterile Water for Injection（無菌注射用水）</div>
+      <div data-ans="no">(B) Water for Injection（注射用水）</div>
+      <div data-ans="no">(C) Purified Water（純淨水）</div>
+      <div data-ans="no">(D) Sterile Water for Irrigation（無菌灌洗用水）</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">無菌注射用水加入 NaCl 等調整滲透壓後，才可供血管注射。注射用水標示「不得供靜脈注射用」；灌洗用水只供灌洗。</div>
+  </div>
+</div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">TWP考題</span><span class="q-stem">下列那一種水在中華藥典中未要求無內毒素？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="no">(A) Sterile water for injection</div>
+      <div data-ans="no">(B) Water for injection</div>
+      <div data-ans="yes">(C) Sterile purified water（無菌純淨水）</div>
+      <div data-ans="no">(D) Sterile water for irrigation</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">無菌純淨水不用於注射，中華藥典未要求必須無內毒素。</div>
+  </div>
+</div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">TWP考題</span><span class="q-stem">下列那一項不符合無菌注射用水要求？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="no">(A) 無熱原</div>
+      <div data-ans="no">(B) 每 mL 含 0.1 單位 USP 內毒素</div>
+      <div data-ans="no">(C) 無菌</div>
+      <div data-ans="yes">(D) 2 L 容量包裝</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">無菌注射用水應包裝於不超過 1 L 的容器內，2 L 不符規定。</div>
+  </div>
+</div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">TWP考題</span><span class="q-stem">下列何者不可直接與乾粉針劑混合，進行皮下注射？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="yes">(A) 無菌純淨水</div><div data-ans="no">(B) 無菌注射用水</div>
+      <div data-ans="no">(C) 葡萄糖注射液</div><div data-ans="no">(D) 氯化鈉注射液</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">無菌純淨水不得直接用於注射，不可與乾粉針劑混合後使用（需達注射用水等級）。</div>
+  </div>
+</div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">TWP考題</span><span class="q-stem">依藥典規定，下列各種不同規格的「水」中，哪些並未被規定必須為無菌？①純淨水 ②注射用水 ③無菌注射用水 ④加抑菌劑注射用水</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="yes">(A) ①②</div><div data-ans="no">(B) ①③</div>
+      <div data-ans="no">(C) ①④</div><div data-ans="no">(D) ②③</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">純淨水與注射用水未強制規定需為無菌。名稱有「無菌（Sterile）」或「抑菌（Bacteriostatic）」才要求無菌。</div>
+  </div>
+</div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">TWP考題</span><span class="q-stem">灌洗用與透析用滅菌溶液之容量超過多少時，容器上應標示「不得供靜脈注射用」？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="no">(A) 10 mL</div><div data-ans="no">(B) 500 mL</div>
+      <div data-ans="yes">(C) 1 L</div><div data-ans="no">(D) 100 mL</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">超過 1 公升須標註「不得供靜脈注射用」。</div>
+  </div>
+</div>
+</div>
+<!-- ═══ 7. 添加物 ═══ -->
 <div class="section" id="additives">
-<div class="section-title"><span class="icon icon-sand">⬡</span>添加物規定</div>
-<div class="info-box clay"><strong>絕對禁止：</strong>注射劑中嚴格禁止添加<strong>著色劑</strong>（干擾澄清度 &amp; 雜質判讀）。注射量超過 <num>5 mL</num> 時附加物選擇應特別注意。</div>
+<div class="section-title"><span class="icon icon-sand">⬡</span>添加物（Added Substances）規定</div>
+<div class="info-box clay">
+  <strong>一般說明：</strong>除非個論禁止，可加入合適添加物以提高製劑穩定性及可用性。<br>
+  <strong>絕對禁止：</strong>嚴格禁止僅為著色效果而添加<strong>著色劑</strong>於注射劑。<br>
+  注射量超過 <num>5 mL</num> 時，對附加物之選擇應予以特別的注意。
+</div>
 <div class="card-grid">
   <div class="card card-sand">
-    <div class="sub-title sand">防腐劑（USP）</div>
+    <div class="sub-title sand">防腐劑 USP 上限</div>
     <div class="table-wrap" style="margin:0"><table>
     <thead><tr><th>成分</th><th>上限 (%)</th></tr></thead>
     <tbody>
     <tr><td>有機汞化合物（如 Thimerosal）</td><td>0.01</td></tr>
     <tr><td><drug>Benzalkonium chloride</drug></td><td>0.01</td></tr>
-    <tr><td><drug>Chlorobutanol</drug></td><td>0.5</td></tr>
-    <tr><td><drug>Phenol</drug></td><td>0.5</td></tr>
-    <tr><td><drug>Cresol</drug></td><td>0.5</td></tr>
+    <tr><td><drug>Chlorobutanol</drug>（氯丁醇）</td><td>0.5</td></tr>
+    <tr><td><drug>Phenol</drug>（酚）</td><td>0.5</td></tr>
+    <tr><td><drug>Cresol</drug>（煤餾油酚）</td><td>0.5</td></tr>
     </tbody></table></div>
+    <p style="font-size:12px;color:var(--text-muted);margin-top:6px">汞及陽離子界面活性劑 ≤0.01%；氯丁醇、甲酚、苯酚及類似物 ≤0.5%</p>
   </div>
   <div class="card card-dusk">
-    <div class="sub-title dusk">抗氧化劑（USP）</div>
+    <div class="sub-title dusk">抗氧化劑 USP 上限</div>
     <div class="table-wrap" style="margin:0"><table>
     <thead><tr><th>成分</th><th>上限 (%)</th></tr></thead>
     <tbody>
-    <tr><td>Sulfite / bisulfite / metabisulfite</td><td>0.2</td></tr>
+    <tr><td>Sulfite（亞硫酸鹽）</td><td>0.2</td></tr>
+    <tr><td>Disulfite（焦亞硫酸鹽）</td><td>0.2</td></tr>
+    <tr><td>Metabisulfite（偏亞硫酸鹽）</td><td>0.2</td></tr>
     <tr><td><drug>Sulfur dioxide（SO₂）</drug></td><td>0.2</td></tr>
     </tbody></table></div>
-    <p style="font-size:12px;margin-top:8px;color:var(--text-muted)">惰性氣體（N₂）可取代空氣防止氧化，需在標籤中標明。</p>
+    <p style="font-size:12px;color:var(--text-muted);margin-top:6px">惰性氣體（如 N₂）可取代空氣防止氧化，需在標籤中標明</p>
   </div>
   <div class="card card-mist">
     <div class="sub-title mist">螯合劑 EDTA</div>
-    <div class="kv-list">
-      <div class="kv-row"><span class="kv-label">全名</span><span class="kv-val"><drug>Ethylenediaminetetraacetic acid</drug></span></div>
-      <div class="kv-row"><span class="kv-label">別名</span><span class="kv-val"><drug>Edetate disodium</drug></span></div>
-      <div class="kv-row"><span class="kv-label">濃度</span><span class="kv-val">0.01–0.075%</span></div>
-      <div class="kv-row"><span class="kv-label">作用</span><span class="kv-val">螯合銅、鎳等金屬，減少金屬促氧化</span></div>
+    <div class="edta-grid">
+      <div class="edta-item"><span class="edta-label">全名</span><span class="edta-val"><drug>Ethylenediaminetetraacetic acid</drug><span style="font-size:12px;color:var(--text-muted);display:block;margin-top:2px">乙二胺四乙酸</span></span></div>
+      <div class="edta-item"><span class="edta-label">別名</span><span class="edta-val"><drug>Edetate disodium</drug></span></div>
+      <div class="edta-item"><span class="edta-label">結構</span><span class="edta-val">含 <strong>2 個氮原子</strong>與 <strong>4 個羧酸基</strong>（–COOH）</span></div>
+      <div class="edta-item"><span class="edta-label">濃度</span><span class="edta-val"><num>0.01–0.075%</num></span></div>
+      <div class="edta-item"><span class="edta-label">機轉</span><span class="edta-val">螯合銅、鎳等金屬離子（錯化物），減少金屬促進氧化還原反應</span></div>
     </div>
   </div>
 </div>
 <div class="sub-title clay">歷屆考題</div>
-<div class="q-block"><div class="q-header"><span class="q-year">114-1</span><span class="q-stem">注射劑中嚴格禁止加入下列何種添加劑？</span><span class="q-arrow">▶</span></div><div class="q-body"><div class="q-opts"><span class="correct">✓ (A) 著色劑</span><br>(B) 抗菌劑<br>(C) 緩衝劑<br>(D) 安定劑</div><div class="q-explanation">著色劑絕對禁止加入注射劑。</div></div></div>
-<div class="q-block"><div class="q-header"><span class="q-year">111-1</span><span class="q-stem">注射劑中添加 edetate disodium 之主要用途？</span><span class="q-arrow">▶</span></div><div class="q-body"><div class="q-opts">(A) solubilizing agent<br><span class="correct">✓ (B) chelating agent</span><br>(C) alkalinizing agent<br>(D) antimicrobial preservative</div><div class="q-explanation">EDTA 為螯合劑，螯合金屬離子防止氧化反應。</div></div></div>
-<div class="q-block"><div class="q-header"><span class="q-year">110-2</span><span class="q-stem">注射劑的注射用量超過若干 mL 時，對於附加物之選擇應予特別注意？</span><span class="q-arrow">▶</span></div><div class="q-body"><div class="q-opts">(A) 1<br>(B) 2<br>(C) 3<br><span class="correct">✓ (D) 5</span></div><div class="q-explanation">注射量超過 5 mL 時附加物選擇須特別注意。</div></div></div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">114-1</span><span class="q-stem">下列注射劑產品中嚴格禁止加入下列何種添加劑？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="yes">(A) 著色劑</div><div data-ans="no">(B) 抗菌劑</div>
+      <div data-ans="no">(C) 緩衝劑</div><div data-ans="no">(D) 安定劑</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">著色劑絕對禁止加入注射劑，會干擾澄清度與雜質判讀。</div>
+  </div>
 </div>
-
-<!-- ═══ 7. 容器 ═══ -->
+<div class="q-block">
+  <div class="q-header"><span class="q-year">111-1</span><span class="q-stem">注射劑中添加 edetate disodium，其主要用途為何？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="no">(A) solubilizing agent</div><div data-ans="yes">(B) chelating agent</div>
+      <div data-ans="no">(C) alkalinizing agent</div><div data-ans="no">(D) antimicrobial preservative</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">EDTA 為螯合劑（chelating agent），螯合金屬離子防止氧化反應。</div>
+  </div>
+</div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">110-2</span><span class="q-stem">依中華藥典規定，注射劑的注射用量超過若干 mL 時，對於附加物之選擇應予以特別的注意？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="no">(A) 1</div><div data-ans="no">(B) 2</div>
+      <div data-ans="no">(C) 3</div><div data-ans="yes">(D) 5</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">添加物超過 5 mL 時，應特別留意其選擇與使用。</div>
+  </div>
+</div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">109-2</span><span class="q-stem">有關注射劑中添加 sulfur dioxide 為抗氧化劑時，其含量上限為多少百分比？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="no">(A) 0.01</div><div data-ans="no">(B) 0.1</div>
+      <div data-ans="yes">(C) 0.2</div><div data-ans="no">(D) 0.5</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">二氧化硫（sulfur dioxide）濃度上限為 0.2%。</div>
+  </div>
+</div>
+</div>
+<!-- ═══ 8. 容器 ═══ -->
 <div class="section" id="container">
 <div class="section-title"><span class="icon icon-dusk">⬡</span>容器分類：單劑量 vs 多劑量</div>
 <div class="card-grid">
   <div class="card card-dusk">
     <div class="sub-title dusk">單劑量容器</div>
     <div class="kv-list">
-      <div class="kv-row"><span class="kv-label">注射部位</span><span class="kv-val">靜脈 / 脊內 / 心內 / 小腦（跟生命相關）</span></div>
+      <div class="kv-row"><span class="kv-label">使用次數</span><span class="kv-val">單次注射</span></div>
+      <div class="kv-row"><span class="kv-label">注射部位</span><span class="kv-val">靜脈、脊內、心內、小腦（記：跟生命相關器官）</span></div>
       <div class="kv-row"><span class="kv-label">用量限制</span><span class="kv-val"><num>10 mL</num></span></div>
-      <div class="kv-row"><span class="kv-label">容器容量</span><span class="kv-val">≤ <num>1 L</num>（超過須標「不得供注射用」）</span></div>
+      <div class="kv-row"><span class="kv-label">容器容量</span><span class="kv-val">≤ <num>1 L</num>（超過則不得供注射用）</span></div>
     </div>
   </div>
   <div class="card card-sage">
     <div class="sub-title sage">多劑量容器</div>
     <div class="kv-list">
-      <div class="kv-row"><span class="kv-label">注射部位</span><span class="kv-val">皮內 / 皮下 / 肌肉（農場很多皮皮雞）</span></div>
+      <div class="kv-row"><span class="kv-label">使用次數</span><span class="kv-val">可多次注射</span></div>
+      <div class="kv-row"><span class="kv-label">注射部位</span><span class="kv-val">皮內、皮下、肌肉注射（記：農場很多皮皮雞）</span></div>
       <div class="kv-row"><span class="kv-label">單位劑量</span><span class="kv-val">≤ <num>10</num> 個</span></div>
       <div class="kv-row"><span class="kv-label">容器容量</span><span class="kv-val">≤ <num>30 mL</num></span></div>
-      <div class="kv-row"><span class="kv-label">蓋塞測試</span><span class="kv-val"><strong>自合能力</strong>測試（僅限多劑量）</span></div>
+      <div class="kv-row"><span class="kv-label">備註</span><span class="kv-val">容量超過 1 公升者（如灌洗、透析用）須標示「不得供注射用」</span></div>
+      <div class="kv-row"><span class="kv-label">蓋塞測試</span><span class="kv-val"><strong>自合能力測試</strong>僅適用多劑量容器之彈性蓋塞</span></div>
     </div>
-    <div class="info-box sage" style="margin-top:8px;font-size:12px">三多商圈多美食 → 30 mL、10單位</div>
+    <div class="info-box sage" style="margin-top:8px;font-size:12px">記憶碼：三多商圈多美食 → 30 mL、多劑量、10 個單位劑量</div>
   </div>
 </div>
-<div class="sub-title sand">單劑量容器容量測定取樣數</div>
-<div class="table-wrap"><table>
-<thead><tr><th>標誌體積</th><th>取樣數</th><th>記憶</th></tr></thead>
-<tbody>
-<tr><td>≥ <num>10 mL</num></td><td><num>1</num> 個</td><td rowspan="3">右寫到左：1 → 3 → 5</td></tr>
-<tr><td><num>3–10 mL</num></td><td><num>3</num> 個</td></tr>
-<tr><td>≤ <num>3 mL</num></td><td><num>5</num> 個</td></tr>
-</tbody></table></div>
-<div class="info-box mist" style="font-size:12px">多劑量容器：無論容量，一律取 <strong>1 個</strong>檢品。</div>
-<div class="sub-title clay">歷屆考題</div>
-<div class="q-block"><div class="q-header"><span class="q-year">113-2</span><span class="q-stem">下列何種途徑之注射劑必須為單劑量包裝？</span><span class="q-arrow">▶</span></div><div class="q-body"><div class="q-opts">(A) 肌內注射<br><span class="correct">✓ (B) 靜脈注射</span><br>(C) 皮下注射<br>(D) 皮內注射</div><div class="q-explanation">靜脈、脊內、心內、小腦等高風險部位須單劑量容器。</div></div></div>
-<div class="q-block"><div class="q-header"><span class="q-year">112-1</span><span class="q-stem">下列何種蓋塞效能性測試，僅在多劑量容器彈性蓋塞上測試？</span><span class="q-arrow">▶</span></div><div class="q-body"><div class="q-opts">(A) 穿透性<br>(B) 碎裂性<br><span class="correct">✓ (C) 自合能力</span><br>(D) 安定性</div><div class="q-explanation">自合能力測試僅適用多劑量容器之彈性蓋塞。</div></div></div>
+
+<div class="sub-title sand">容器內注射液容量測定（單劑量）</div>
+
+<!-- 數線圖 -->
+<div class="numline-wrap">
+  <div class="numline-labels">
+    <span class="nl-num nl-5">5 個</span>
+    <span class="nl-num nl-3">3 個</span>
+    <span class="nl-num nl-1">1 個</span>
+    <span class="nl-right-label">右寫到左 1、3、5</span>
+  </div>
+  <div class="numline-bar">
+    <div class="nl-arrow">◀</div>
+    <div class="nl-line">
+      <div class="nl-tick nl-tick-3"><span>3 mL</span></div>
+      <div class="nl-tick nl-tick-10"><span>10 mL</span></div>
+    </div>
+  </div>
 </div>
 
-<!-- ═══ 8. 玻璃容器 ═══ -->
+<div class="card-grid" style="margin-top:12px">
+  <div class="meas-card meas-single">
+    <div class="meas-title">單劑量容器</div>
+    <div class="meas-table">
+      <div class="meas-row meas-head"><span>標誌體積</span><span>取樣數</span></div>
+      <div class="meas-row meas-hi"><span>≥ <strong>10 mL</strong></span><span><strong>1</strong> 個</span></div>
+      <div class="meas-row"><span><strong>3–10 mL</strong></span><span><strong>3</strong> 個</span></div>
+      <div class="meas-row meas-hi"><span>≤ <strong>3 mL</strong></span><span><strong>5</strong> 個</span></div>
+    </div>
+  </div>
+  <div class="meas-card meas-multi">
+    <div class="meas-title">多劑量容器</div>
+    <div class="meas-table">
+      <div class="meas-row meas-head"><span>標誌體積</span><span>取樣數</span></div>
+      <div class="meas-row meas-hi"><span>任何容量</span><span><strong>1</strong> 個</span></div>
+    </div>
+    <p style="font-size:12px;color:var(--text-muted);margin-top:8px">方法同單劑量，無論容量一律取 1 個</p>
+  </div>
+</div>
+
+<div class="sub-title dusk">注射劑標籤</div>
+<div class="card card-dusk">
+  <ul>
+    <li>標籤係指注射劑容器上<strong>任何標誌</strong>，包含圖形、文字等</li>
+    <li>容器上除標誌外，應保留適當之<strong>空餘面積</strong>，以便檢視內容物</li>
+    <li>若標籤面積過小，需至少標示：<strong>名稱、含量、容量</strong>（有效期限不一定要標）</li>
+  </ul>
+</div>
+
+<div class="sub-title clay">歷屆考題</div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">113-2</span><span class="q-stem">下列何種途徑之注射劑必須為單劑量包裝？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="no">(A) 肌內注射</div><div data-ans="yes">(B) 靜脈注射</div>
+      <div data-ans="no">(C) 皮下注射</div><div data-ans="no">(D) 皮內注射</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">靜脈、脊內、心內、小腦等部位注射屬高風險途徑，須使用單劑量包裝。</div>
+  </div>
+</div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">112-1</span><span class="q-stem">下列何種蓋塞效能性測試，僅在多劑量容器之彈性蓋塞上測試？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="no">(A) 穿透性</div><div data-ans="no">(B) 碎裂性</div>
+      <div data-ans="yes">(C) 自合能力</div><div data-ans="no">(D) 安定性</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">自合能力測試僅應用於多劑量容器之彈性蓋塞（單劑量容器不須測試）。</div>
+  </div>
+</div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">110-2</span><span class="q-stem">依中華藥典，除另有規定外，多劑量容器內貯存注射劑之總容量應為何？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="yes">(A) 不得大於 10 個單劑量且總容量 ≤ 30 mL</div>
+      <div data-ans="no">(B) 不得大於 10 個單劑量且總容量 ≤ 50 mL</div>
+      <div data-ans="no">(C) 不得大於 5 個單劑量且總容量 ≤ 30 mL</div>
+      <div data-ans="no">(D) 不得大於 5 個單劑量且總容量 ≤ 50 mL</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">三多多美食記法：30 mL、10 單位劑量為上限。</div>
+  </div>
+</div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">112-2</span><span class="q-stem">依規定進行容器內注射液容量之測定，下列何者最適當？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="yes">(A) 單劑量容器標誌容量 ≥ 10 mL 者，取 ≥1 個作檢測</div>
+      <div data-ans="no">(B) 單劑量容器標誌容量 ≤ 3 mL 者，取 ≥3 個（應取 5 個）</div>
+      <div data-ans="no">(C) 多劑量容器標誌容量 ≥ 10 mL 者，取 ≥2 個（應取 1 個）</div>
+      <div data-ans="no">(D) 多劑量容器標誌容量 ≤ 3 mL 者，取 ≥3 個（多劑量一律 1 個）</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">單劑量 ≥10 mL → 1 個；3–10 mL → 3 個；≤3 mL → 5 個。多劑量無論容量一律取 1 個。</div>
+  </div>
+</div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">109-2</span><span class="q-stem">依中華藥典，注射劑直接容器標上要求標註事項中，如因標籤面積過小，下列何者不是「至少須註明」之項目？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="no">(A) 藥名</div><div data-ans="no">(B) 含量</div>
+      <div data-ans="no">(C) 容量</div><div data-ans="yes">(D) 有效期限</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">名稱、含量、容量為必要項目；有效期限雖重要，但在小容器標籤上不一定要標。</div>
+  </div>
+</div>
+</div>
+<!-- ═══ 9. 玻璃容器 ═══ -->
 <div class="section" id="glass">
 <div class="section-title"><span class="icon icon-clay">⬡</span>玻璃容器 Type I–NP</div>
 <div class="table-wrap"><table>
 <thead><tr><th>Type</th><th>材質</th><th>適用</th><th>特性</th></tr></thead>
 <tbody>
-<tr><td><span class="badge badge-sage">Type I</span></td><td><drug>Borosilicate glass</drug>（硼矽玻璃）</td><td><strong>任何目的</strong>（最廣）；SVPs 用</td><td>膨脹係數<strong>最小</strong>；耐變性<strong>最大</strong></td></tr>
-<tr><td><span class="badge badge-dusk">Type II</span></td><td>處理過的蘇打石灰玻璃</td><td>乾粉、油溶液、<strong>酸性</strong>水溶液</td><td>比 III 穩定</td></tr>
+<tr><td><span class="badge badge-sage">Type I</span></td><td><drug>Borosilicate glass</drug>（硼矽玻璃）</td><td><strong>任何目的</strong>（最廣）；小體積注射劑（SVPs）</td><td>膨脹係數<strong>最小</strong>；耐變性<strong>最大</strong></td></tr>
+<tr><td><span class="badge badge-dusk">Type II</span></td><td>蘇打石灰玻璃（經鹼處理）</td><td>乾粉、油溶液、<strong>酸性</strong>水溶液</td><td>比 Type III 穩定</td></tr>
 <tr><td><span class="badge badge-sand">Type III</span></td><td>蘇打石灰玻璃</td><td>乾粉、油溶液</td><td>易溶出氧化物較多</td></tr>
-<tr><td><span class="badge badge-rose">Type NP</span></td><td>一般蘇打石灰玻璃</td><td><strong>不得供注射用</strong></td><td>—</td></tr>
+<tr><td><span class="badge badge-rose">Type NP</span></td><td>一般蘇打石灰玻璃（當 IV 看）</td><td><strong>不得供注射用</strong></td><td>—</td></tr>
 </tbody></table></div>
 <div class="info-box sage" style="font-size:12px">
-  <strong>口訣：</strong>數字越小功能越廣；soda-lime → Type II / III / NP；Type I = borosilicate。<br>
-  <strong>安瓿裂隙試驗：</strong>僅適用安瓿；色素 <drug>Methylene blue</drug>（亞甲基藍，陽離子介面活性劑）。
+  <strong>口訣：</strong>數字越小功能越廣；Type I 最強最廣、NP 最弱不能用。<br>
+  <strong>soda-lime glass：</strong>Type II、III、NP；Type I 才是 borosilicate。<br>
+  <strong>膨脹係數：</strong>越大→遇外在環境變化越易膨脹；Type I 最小→熱脹冷縮最不明顯→最安定。<br>
+  <strong>加酸或鹼多為 Type I；</strong>Type II 適合酸性，不適合鹼性。
+</div>
+
+<div class="sub-title mist">安瓿（Ampule）裂隙試驗</div>
+<div class="card card-mist">
+  <ul>
+    <li>注射用安瓿為玻璃<strong>密封封閉容器</strong></li>
+    <li>可用色素溶液進行<strong>裂隙試驗</strong>以測試安瓿是否滲漏或熔封完整</li>
+    <li><strong>裂隙試驗在注射劑中只適合安瓿（Ampule）使用</strong></li>
+    <li>裂隙試驗色素：<drug>Methylene blue（亞甲基藍）</drug> → 陽離子型介面活性劑，可降低表面張力</li>
+  </ul>
+</div>
+
+<div class="sub-title clay">歷屆考題</div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">111-1</span><span class="q-stem">常用於藥品容器之 Type I、II、III 等三類玻璃之特性，下列何者最適當？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="yes">(A) Type I 玻璃具最小的熱膨脹係數</div>
+      <div data-ans="no">(B) Type I 和 Type II 均屬於 soda-lime 玻璃</div>
+      <div data-ans="no">(C) Type III 玻璃之重金屬氧化物游離現象最少</div>
+      <div data-ans="no">(D) Type I 玻璃在生產過程中須添加 sulfur dioxide</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">(A) 正確。Type I 為硼矽玻璃，膨脹係數最小，耐變性最大。(B) 錯：Type I 是 borosilicate，非 soda-lime。(C) 錯：Type I 游離最少。(D) 錯：SO₂ 是 Type II 製程用的。</div>
+  </div>
+</div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">109-2</span><span class="q-stem">有關無菌產品所使用之玻璃容器的相關規定，下列何者錯誤？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="no">(A) Type II 玻璃適用於乾粉及油溶液</div>
+      <div data-ans="no">(B) Type III 玻璃適用於乾粉及油溶液</div>
+      <div data-ans="yes">(C) Type II 玻璃適用於鹼性緩衝溶液</div>
+      <div data-ans="no">(D) Type I 為矽酸硼玻璃</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">(C) 錯誤。Type II 適合酸性，不適合鹼性；加酸或鹼多用 Type I。</div>
+  </div>
+</div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">106-2</span><span class="q-stem">有關玻璃材質容器的敘述，下列何者錯誤？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="no">(A) Type I 玻璃屬 borosilicate glass，最安定</div>
+      <div data-ans="no">(B) Type II 屬 soda-lime-silica glass，可用於眼用溶液與耳藥劑</div>
+      <div data-ans="no">(C) Type III 含有較多之易溶出氧化物</div>
+      <div data-ans="yes">(D) 小體積注射劑之玻璃容器，一般使用 Type III 玻璃製成</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">(D) 錯誤。小體積注射劑（SVPs）使用 Type I 硼矽玻璃，非 Type III。</div>
+  </div>
+</div>
+</div>
+
+<!-- ═══ 10. 注射途徑容量表 + 易注射度 ═══ -->
+<div class="section" id="route-table">
+<div class="section-title"><span class="icon icon-sand">⬡</span>注射途徑總表 &amp; 易注射度</div>
+<div class="table-wrap"><table>
+<thead><tr><th>注射方法</th><th>特性</th><th>劑量</th><th>記憶</th><th>儲存</th></tr></thead>
+<tbody>
+<tr><td><strong>肌肉注射 IM</strong></td><td>水溶液、油溶液皆可</td><td>≤ <num>2 mL</num><br>臀部最多 5 mL</td><td>几兩劃（2ml 飢餓）</td><td>多劑量</td></tr>
+<tr><td><strong>皮下注射 SC</strong></td><td>注入皮膚最下層</td><td>≤ <num>2 mL</num></td><td>sub-在…之下（2ml 下顎）</td><td>多劑量</td></tr>
+<tr><td><strong>皮內注射 ID</strong></td><td>使用劑量<strong>最小</strong></td><td><num>0.1–0.2 mL</num></td><td>ID 反過來像 0.1</td><td>多劑量</td></tr>
+<tr><td><strong>脊內注射 IS</strong></td><td>必為等張</td><td>≤ <num>20 mL</num></td><td>IS 鏡像 21</td><td>單劑量</td></tr>
+<tr><td><strong>靜脈注射 IV</strong></td><td>藥效快，生體可用率接近 100%</td><td>≤ <num>1 L</num></td><td>V 像 L</td><td>單劑量</td></tr>
+</tbody></table></div>
+
+<div class="sub-title dusk">易注射度（Syringeability）<span class="exam-star">★</span></div>
+<div class="card card-dusk">
+  <ul>
+    <li>注射用懸浮劑含不溶性固體，需進行易注射度檢查（黏度、密度、顆粒大小）</li>
+    <li>提高易注射度：<strong>降低黏度、降低密度、減少顆粒半徑</strong></li>
+    <li>使用前需搖勻；油性注射劑不可靜脈注射（→肺栓塞）</li>
+  </ul>
+</div>
+<div class="sub-title sand">標誌體積與最少增加量</div>
+
+<!-- 快速記憶卡 -->
+<div class="syr-quickref">
+  <div class="syr-qr-title">★ 國考最常考數值（填入 3.5.5.7，前面補零）</div>
+  <div class="syr-qr-grid">
+    <div class="syr-qr-head"></div><div class="syr-qr-head">易流動液</div><div class="syr-qr-head">黏性液</div>
+    <div class="syr-qr-label">5 mL</div>
+    <div class="syr-qr-val syr-easy"><num>0.3</num></div>
+    <div class="syr-qr-val syr-visc"><num>0.5</num></div>
+    <div class="syr-qr-label">10 mL</div>
+    <div class="syr-qr-val syr-easy"><num>0.5</num></div>
+    <div class="syr-qr-val syr-visc"><num>0.7</num></div>
+  </div>
+  <div class="syr-qr-note">填入 3、5、5、7 → 前面補零 → 0.3、0.5、0.5、0.7</div>
+</div>
+
+<div class="table-wrap"><table>
+<thead><tr><th>標誌容量 (mL)</th><th>易流動液增加量 (mL)</th><th>黏性液增加量 (mL)</th></tr></thead>
+<tbody>
+<tr><td>0.5</td><td>0.10</td><td>0.12</td></tr>
+<tr><td>1</td><td>0.10</td><td>0.15</td></tr>
+<tr><td>2</td><td>0.15</td><td>0.25</td></tr>
+<tr style="background:#fff8e0;font-weight:500"><td>5 ⭐</td><td>0.3</td><td>0.5</td></tr>
+<tr style="background:#fff8e0;font-weight:500"><td>10 ⭐</td><td>0.5</td><td>0.7</td></tr>
+<tr><td>20</td><td>0.6</td><td>0.8</td></tr>
+<tr><td>30</td><td>0.8</td><td>1.2</td></tr>
+<tr style="background:var(--sand-l);font-weight:500"><td>≥ 50</td><td><strong>2%</strong></td><td><strong>3%</strong></td></tr>
+</tbody></table></div>
+<div class="info-box sand" style="font-size:12px">
+  計算例：100 mL 易流動液 → 添加量 2 mL（2%）；300 mL 黏性液 → 添加量 9 mL（3%）
 </div>
 <div class="sub-title clay">歷屆考題</div>
-<div class="q-block"><div class="q-header"><span class="q-year">111-1</span><span class="q-stem">三類玻璃特性，下列何者最適當？</span><span class="q-arrow">▶</span></div><div class="q-body"><div class="q-opts"><span class="correct">✓ (A) Type I 具最小熱膨脹係數</span><br>(B) I 和 II 均屬 soda-lime（錯：I 是 borosilicate）<br>(C) III 重金屬游離最少（錯：I 最少）<br>(D) I 生產須加 SO₂（錯）</div><div class="q-explanation">Type I = 硼矽玻璃，膨脹係數最小，耐變性最大。</div></div></div>
-<div class="q-block"><div class="q-header"><span class="q-year">106-2</span><span class="q-stem">有關玻璃材質容器，下列何者錯誤？</span><span class="q-arrow">▶</span></div><div class="q-body"><div class="q-opts">(A)(B)(C) 正確<br><span class="correct">✓ (D) 小體積注射劑一般使用 Type III（錯：應為 Type I）</span></div><div class="q-explanation">小體積注射劑（SVPs）使用 Type I 硼矽玻璃。</div></div></div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">108-1</span><span class="q-stem">若某注射劑之標誌容量為 10.0 mL，且其為黏性液體，則充填量需增加容量之最少限度為多少 mL？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="no">(A) 0.5</div><div data-ans="yes">(B) 0.7</div>
+      <div data-ans="no">(C) 1.0</div><div data-ans="no">(D) 1.2</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">查表：標誌容量 10 mL 對應黏性液體需增加 0.7 mL。</div>
+  </div>
 </div>
-<!-- ═══ 9. 熱原 ═══ -->
+<div class="q-block">
+  <div class="q-header"><span class="q-year">107-2</span><span class="q-stem">標誌容量 50 mL 以上的易流動液體注射劑，其注射所需增加容量的最少限度為多少？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="no">(A) 1 毫升</div><div data-ans="no">(B) 2 毫升</div>
+      <div data-ans="no">(C) 容量之 1%</div><div data-ans="yes">(D) 容量之 2%</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">50 mL 以上之易流動液體，最少添加容量為 2%。</div>
+  </div>
+</div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">104-1</span><span class="q-stem">若某注射劑之標誌容量為 150.0 mL 且其為黏性液體，則充填量需增加容量之最少限度為何？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="no">(A) 3.0 mL</div><div data-ans="yes">(B) 4.5 mL</div>
+      <div data-ans="no">(C) 6.0 mL</div><div data-ans="no">(D) 7.5 mL</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">150 mL × 黏性液體 3%（≥50 mL）= 4.5 mL。</div>
+  </div>
+</div>
+</div>
+<!-- ═══ 11. 熱原 ═══ -->
 <div class="section" id="pyrogen">
 <div class="section-title"><span class="icon icon-clay">⬡</span>熱原（Pyrogen）<span class="exam-star" style="margin-left:8px">★ 超高頻</span></div>
 <div class="card-grid">
   <div class="card card-clay">
-    <div class="sub-title clay">來源 &amp; 效力</div>
+    <div class="sub-title clay">定義 &amp; 來源</div>
     <ul>
-      <li>微生物在水溶液中的<strong>代謝物</strong></li>
-      <li><strong>G(−) 陰性菌效價最強</strong>，主要為<drug>Lipopolysaccharide（LPS）</drug></li>
-      <li>最大污染源：<strong>水</strong>（非器具 / 人員）</li>
-      <li>活性部位：<strong>脂質部分（Lipid A）</strong>，非蛋白質</li>
+      <li>熱原是微生物（G(+)、G(-)、黴菌）<strong>在水溶液的代謝物</strong></li>
+      <li><strong>革蘭氏陰性菌（G(-)）效價最強</strong>，主要為 <drug>Lipopolysaccharide（LPS）脂多醣</drug></li>
+      <li>最大污染源：<strong>水</strong>（注意不是實驗器具或操作人員）</li>
+      <li>熱原活性部位：<strong>脂質（Lipid A）</strong>，非蛋白質部分</li>
     </ul>
   </div>
   <div class="card card-rose">
     <div class="sub-title rose">人體反應</div>
     <ul>
-      <li>發熱 → 血管擴張 → <strong>低血壓</strong></li>
-      <li>淋巴球數下降；<strong>CRP 上升</strong></li>
-      <li>注射量 <strong>≥ 5 mL</strong> → 不得含熱原；&lt;5 mL 可能不含</li>
+      <li>發熱 → 血管擴張 → <strong>低血壓</strong>（血壓下降）</li>
+      <li>淋巴球數下降</li>
+      <li><strong>CRP（C反應蛋白）上升</strong>（由肝臟生成，為發炎指標）</li>
+      <li>惡寒、敗血性休克（嚴重時）</li>
     </ul>
   </div>
   <div class="card card-mist">
-    <div class="sub-title mist">限量 &amp; 去除</div>
-    <div class="kv-list">
-      <div class="kv-row"><span class="kv-label">限量</span><span class="kv-val">≤ <num>0.25 EU/mL</num></span></div>
-      <div class="kv-row"><span class="kv-label">乾熱去除</span><span class="kv-val">160°C / 2 hr；或 250°C / 30 min（玻璃器具）</span></div>
-      <div class="kv-row"><span class="kv-label">氧化劑</span><span class="kv-val"><drug>KMnO₄</drug>＋<drug>Ba(OH)₂</drug></span></div>
-      <div class="kv-row"><span class="kv-label">其他</span><span class="kv-val">逆滲透、陰離子交換樹脂</span></div>
-      <div class="kv-row"><span class="kv-label">無效</span><span class="kv-val"><strong>高壓蒸氣（濕熱）無法去除熱原</strong></span></div>
-    </div>
+    <div class="sub-title mist">限量 &amp; 容量規定</div>
+    <ul>
+      <li>注射用水及無菌注射用水：內毒素 ≤ <num>0.25 EU/mL</num> <span class="exam-star">★</span></li>
+      <li>注射容量 <strong>≥ 5 mL</strong> 者 → <strong>不得含熱原</strong></li>
+      <li>&lt;5 mL 者 → 可能不含熱原，但須注意附加物選擇</li>
+    </ul>
   </div>
 </div>
-<div class="sub-title dusk">內毒素閾值（各注射途徑）</div>
-<div class="table-wrap"><table>
-<thead><tr><th>途徑</th><th>閾值</th></tr></thead>
-<tbody>
-<tr><td>肌肉 / 靜脈 / 皮下</td><td>5 EU/kg/hr</td></tr>
-<tr style="background:var(--clay-l)"><td><strong>鞘內注射（Intrathecal）</strong></td><td><strong>0.2 EU/kg/hr</strong>（最低，最嚴格）</td></tr>
-</tbody></table></div>
-<div class="sub-title sage">歷屆考題</div>
-<div class="q-block"><div class="q-header"><span class="q-year">113-2</span><span class="q-stem">Pyrogen 主要為何類物質？</span><span class="q-arrow">▶</span></div><div class="q-body"><div class="q-opts">(A) endonucleases<br><span class="correct">✓ (B) lipopolysaccharides</span><br>(C) phospholipids<br>(D) toxoids</div><div class="q-explanation">熱原主要為 G(−) 菌細胞外膜的<strong>脂多醣（LPS）</strong>。</div></div></div>
-<div class="q-block"><div class="q-header"><span class="q-year">112-1</span><span class="q-stem">有關熱原的敘述，下列何者最適當（可選兩項）？</span><span class="q-arrow">▶</span></div><div class="q-body"><div class="q-opts"><span class="correct">✓ (A) 內毒素是熱原的一種亞型</span><br>(B) 主要來自 G(+)（錯：G(−)）<br><span class="correct">✓ (C) 靜脈注射中微量即可引起發燒</span><br>(D) 熱原是無機的，無法氧化去除（錯：有機，可氧化去除）</div><div class="q-explanation">熱原主要為 G(−) 菌 LPS；為有機物，可用氧化法去除。</div></div></div>
-<div class="q-block"><div class="q-header"><span class="q-year">101-1</span><span class="q-stem">下列關於熱原之敘述，何者錯誤？</span><span class="q-arrow">▶</span></div><div class="q-body"><div class="q-opts">(A)(B)(C) 正確<br><span class="correct">✓ (D) 生物活性主要在其蛋白質部分（錯：在脂質 Lipid A）</span></div><div class="q-explanation">內毒素活性部位為<strong>脂質（Lipid A）</strong>，非蛋白質。</div></div></div>
-</div>
 
-<!-- ═══ 10. 家兔試驗 ═══ -->
+<div class="sub-title dusk">去除熱原方法</div>
+<div class="table-wrap"><table>
+<thead><tr><th>方法</th><th>條件</th><th>備註</th></tr></thead>
+<tbody>
+<tr><td>乾熱滅菌法</td><td>160°C 下加熱 2 小時</td><td>最常用</td></tr>
+<tr><td>玻璃器具去熱原</td><td><num>250°C</num> 加熱至少 <num>30 分鐘</num></td><td>試驗用注射器、針頭、玻璃器皿</td></tr>
+<tr><td>氧化劑法</td><td><drug>KMnO₄</drug>（高錳酸鉀）+ <drug>Ba(OH)₂</drug>（氫氧化鋇）</td><td>熱原是有機的，可氧化成易排除的氣體或不揮發性固體</td></tr>
+<tr><td>逆滲透法</td><td>—</td><td>有效</td></tr>
+<tr><td>陰離子交換樹脂</td><td>—</td><td>有效</td></tr>
+<tr style="background:var(--clay-l)"><td>高壓蒸氣滅菌 / 濕熱法</td><td>—</td><td><strong>無法去除熱原</strong></td></tr>
+</tbody></table></div>
+
+<div class="sub-title sand">內毒素限量值（各注射途徑）</div>
+<div class="table-wrap"><table>
+<thead><tr><th>注射途徑</th><th>限量值</th></tr></thead>
+<tbody>
+<tr><td>Intramuscular route（肌肉注射）</td><td>5 EU/kg/hr</td></tr>
+<tr><td>Intravenous route（靜脈注射）</td><td>5 EU/kg/hr</td></tr>
+<tr><td>Subcutaneous route（皮下注射）</td><td>5 EU/kg/hr</td></tr>
+<tr style="background:var(--clay-l)"><td><strong>Intrathecal route（鞘內注射）</strong></td><td><strong>0.2 EU/kg/hr</strong>（最低）</td></tr>
+</tbody></table></div>
+
+<div class="sub-title clay">歷屆考題</div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">113-2</span><span class="q-stem">Pyrogen 主要為下列何項物質？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="no">(A) endonucleases</div><div data-ans="yes">(B) lipopolysaccharides</div>
+      <div data-ans="no">(C) phospholipids</div><div data-ans="no">(D) toxoids</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">熱原主要為 G(-) 菌細胞外膜的脂多醣（Lipopolysaccharide，LPS）。</div>
+  </div>
+</div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">113-1</span><span class="q-stem">下列注射途徑，何者之人類內毒素熱原限值最小？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="no">(A) Intramuscular route</div><div data-ans="no">(B) Intravenous route</div>
+      <div data-ans="yes">(C) Intrathecal route</div><div data-ans="no">(D) Subcutaneous route</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">鞘內注射限值最嚴格（0.2 EU/kg/hr），其餘皆為 5 EU/kg/hr。</div>
+  </div>
+</div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">112-1</span><span class="q-stem">有關熱原的敘述，下列何者最適當？（可選兩項）</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="yes">(A) 內毒素是熱原的一種亞型</div>
+      <div data-ans="no">(B) 主要來自革蘭氏陽性菌的代謝物（錯：G(-)）</div>
+      <div data-ans="yes">(C) 在靜脈注射液中只要有微量存在即可引起發燒</div>
+      <div data-ans="no">(D) 熱原是無機的，無法氧化去除（錯：有機，可氧化去除）</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">正解為 (A)(C)。熱原為有機物（可氧化去除）；主要來自 G(-) 菌（非 G(+)）。</div>
+  </div>
+</div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">101-1</span><span class="q-stem">下列關於熱原（pyrogens）之敘述，何者錯誤？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="no">(A) 熱原係由細菌產生之代謝產物</div>
+      <div data-ans="no">(B) G(-) 所產生之內毒素（endotoxins）為效價最強的熱原之一</div>
+      <div data-ans="no">(C) 細菌內毒素（endotoxins）為高分子量之 lipopolysaccharides</div>
+      <div data-ans="yes">(D) 熱原（endotoxins）之生物活性主要在其蛋白質部分</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">(D) 錯誤。內毒素之生物活性主要在其分子的<strong>脂質部分（Lipid A）</strong>，非蛋白質部分。</div>
+  </div>
+</div>
+</div>
+<!-- ═══ 12. 家兔試驗 ═══ -->
 <div class="section" id="rabbit">
-<div class="section-title"><span class="icon icon-sage">⬡</span>家兔試驗（Rabbit Test）</div>
+<div class="section-title"><span class="icon icon-sage">⬡</span>家兔試驗（Pyrogen Test）</div>
 <div class="table-wrap"><table>
 <thead><tr><th>條件</th><th>規定</th><th>記憶</th></tr></thead>
 <tbody>
-<tr><td>體重</td><td>≥ <num>1.5 kg</num>，健康成年</td><td>抓 3 隻</td></tr>
+<tr><td>動物</td><td>取 <num>3</num> 隻健康成年家兔，體重 ≥ <num>1.5 kg</num></td><td>抓 3 隻</td></tr>
 <tr><td>正常體溫</td><td><num>38.9–39.8°C</num></td><td>達美樂電話 3939889</td></tr>
-<tr><td>溫度計</td><td>刻度 0.1°C；肛門 <num>7.5 cm</num></td><td></td></tr>
+<tr><td>體溫變化</td><td>溫度變化 ≤ <num>3°C</num></td><td>抓三隻，溫度也 &lt;3</td></tr>
+<tr><td>溫度計</td><td>單位刻度 <num>0.1°C</num>；插入部位：<strong>肛門</strong>；插入深度：<num>7.5 cm</num></td><td></td></tr>
 <tr><td>注射部位</td><td><strong>耳靜脈</strong></td><td>★ 至少考 3 次</td></tr>
-<tr><td>注射量</td><td><num>10 mL/kg</num></td><td>注射都跟十有關</td></tr>
-<tr><td>注射時間</td><td>≤ <num>10 分鐘</num></td><td></td></tr>
-<tr><td>去熱原器具</td><td>250°C 乾熱 <num>30</num> 分鐘</td><td></td></tr>
-<tr><td>休息（無反應）</td><td><num>2</num> 天</td><td rowspan="2">有無都跟 2 有關</td></tr>
-<tr><td>休息（有反應）</td><td><num>2</num> 週</td></tr>
+<tr><td>注射量</td><td>每公斤 <num>10 mL</num>（10 mL/kg）</td><td>注射都跟十有關</td></tr>
+<tr><td>注射時間</td><td>不得超過 <num>10 分鐘</num></td><td></td></tr>
+<tr><td>器具去熱原</td><td>實驗用注射器、針頭、玻璃器皿置於 <num>250°C</num> 乾熱 <num>30 分鐘</num></td><td></td></tr>
+<tr><td>試驗後休息</td><td>無熱原反應 → 休息 <num>2 天</num>；有熱原反應 → 休息 <num>2 週</num></td><td>有無都跟 2 有關</td></tr>
 </tbody></table></div>
 
 <div class="sub-title clay">結果判定</div>
 <div class="table-wrap"><table>
-<thead><tr><th>階段</th><th>判定條件</th></tr></thead>
+<thead><tr><th>試驗階段</th><th>判定條件</th></tr></thead>
 <tbody>
-<tr><td>第一次（3 隻）</td><td>全部 3 隻體溫均 <strong>未超過 0.5°C</strong> → 無熱原<br>≥1 隻超過 → 進入第二次</td></tr>
-<tr><td>第二次（共 8 隻）</td><td>超過 0.5°C <strong>≤ 2 隻</strong>，且全部 8 隻體溫上升總和 <strong>≤ 3.3°C</strong> → 無熱原</td></tr>
+<tr><td>第 1 階段（3 隻）</td><td>無 1 隻體溫上升超過 <num>0.5°C</num> → 判定<strong>無熱原</strong><br>若有 1 隻或以上超過 0.5°C → 進入第 2 階段</td></tr>
+<tr><td>第 2 階段（共 8 隻）</td><td>再取 5 隻，合計共 8 隻；符合以下<strong>兩條件</strong>均符合 → 判定<strong>無熱原</strong>：<br>① 超過 0.5°C 的家兔<strong>不超過 3 隻（至多 2 隻）</strong><br>② 全部 8 隻體溫上升總和<strong>不超過 3.3°C</strong></td></tr>
 </tbody></table></div>
-<div class="info-box clay" style="font-size:12px"><strong>NSAID 干擾：</strong>NSAIDs 具解熱作用，壓低家兔體溫，使結果失準 → 不適合用家兔做熱原試驗。</div>
-
-<div class="sub-title sage">歷屆考題</div>
-<div class="q-block"><div class="q-header"><span class="q-year">113-2</span><span class="q-stem">有關執行熱原試驗之敘述，下列何者最適當？</span><span class="q-arrow">▶</span></div><div class="q-body"><div class="q-opts">(A) 每公斤注射 1 mL（錯：10 mL/kg）<br>(B) 注射時間 ≤ 20 分鐘（錯：10 分鐘）<br>(C) 每 30 分鐘測一次（錯：無特定規定）<br><span class="correct">✓ (D) 無任一隻體溫升高 0.5°C 或以上 → 無熱原</span></div><div class="q-explanation">第一次試驗，全部 3 隻未超過 0.5°C 即視為無熱原。</div></div></div>
-<div class="q-block"><div class="q-header"><span class="q-year">114-1</span><span class="q-stem">以實驗兔進行熱原試驗，下列結果何者可確認判定為不合格？</span><span class="q-arrow">▶</span></div><div class="q-body"><div class="q-opts">(A) 3 隻：下降 0.4°C、上升 0.4°C、上升 0.4°C → 合格<br>(B) 3 隻：上升 0.4°C、0.4°C、0.6°C → 需第二次（尚未判定）<br><span class="correct">✓ (C) 8 隻：0.6、0.6、0.6、0.6、0.2、0.2、0.2、0.2 → 4 隻超過 0.5°C → 不合格</span><br>(D) 8 隻：0.6、0.6、0.4、0.4、0.4、0.4、0.2、0.2 → 2 隻超，總和 2.8°C → 合格</div><div class="q-explanation">第二次 8 隻：超過 0.5°C 不得超過 2 隻；總和 ≤ 3.3°C。(C) 有 4 隻超過，不合格。</div></div></div>
-<div class="q-block"><div class="q-header"><span class="q-year">107-2</span><span class="q-stem">以家兔進行熱原試驗時，應採何種注射方式？</span><span class="q-arrow">▶</span></div><div class="q-body"><div class="q-opts"><span class="correct">✓ (A) 耳靜脈</span><br>(B) 頸靜脈<br>(C) 皮下<br>(D) 肌肉</div><div class="q-explanation">固定注射部位為<strong>耳靜脈</strong>。</div></div></div>
+<div class="info-box clay" style="font-size:12px">
+  <strong>NSAID 干擾：</strong>NSAIDs（如 aspirin）頻繁給予可能干擾家兔試驗結果（解熱作用造成體溫下降），不適合用家兔做熱原試驗。
 </div>
 
-<!-- ═══ 11. BET/LAL ═══ -->
+<div class="sub-title sage">歷屆考題</div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">114-1</span><span class="q-stem">依據中華藥典，以實驗兔進行熱原試驗，下列結果何者可確認判定為不合格？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="no">(A) 3 隻，體溫分別為下降 0.4°C、上升 0.4°C、上升 0.4°C</div>
+      <div data-ans="no">(B) 3 隻，體溫分別為上升 0.4°C、0.4°C、0.6°C</div>
+      <div data-ans="yes">(C) 8 隻，體溫分別為上升 0.6、0.6、0.6、0.6、0.2、0.2、0.2、0.2°C</div>
+      <div data-ans="no">(D) 8 隻，體溫分別為上升 0.6、0.6、0.4、0.4、0.4、0.4、0.2、0.2°C</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">(A) 無一隻超過 0.5°C → 合格。(B) 1 隻超過 → 需第 2 階段，尚無法判定。(C) 4 隻超過 0.5°C，超過「至多 2 隻」標準 → 不合格。(D) 2 隻超過，總和 2.8°C ≤ 3.3°C → 合格。</div>
+  </div>
+</div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">113-2</span><span class="q-stem">依中華藥典，有關執行熱原試驗之敘述，下列何者最適當？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="no">(A) 家兔每公斤體重注射熱原 1 毫升</div>
+      <div data-ans="no">(B) 被注射的時間不得超過 20 分鐘</div>
+      <div data-ans="no">(C) 注射後的 1 至 5 小時，每隔 30 分鐘記錄一次體溫</div>
+      <div data-ans="yes">(D) 家兔無任一隻體溫升高 0.5°C 或以上，產品即視為無熱原</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">(A) 錯：10 mL/kg。(B) 錯：不超過 10 分鐘。(C) 藥典未如此規定。(D) 正確：第一次試驗，無一隻超過 0.5°C 即無熱原。</div>
+  </div>
+</div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">110-2</span><span class="q-stem">有關熱原（pyrogens）及熱原試驗之敘述，下列何者錯誤？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="no">(A) 熱原主要係由 G(-) 菌之細胞壁內脂多醣而來</div>
+      <div data-ans="no">(B) 熱原試驗目的為測試藥品於注射後使病人發熱之程度，不超過規定最低限度為準則</div>
+      <div data-ans="no">(C) 熱原試驗所使用之注射器、針頭及玻璃器皿等可置於 250°C 中乾熱 30 分鐘去除熱原</div>
+      <div data-ans="yes">(D) 依中華藥典，熱原試驗需以不超過 1 mL/kg 的用量，於 10 分鐘內經兔子耳靜脈注入</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">(D) 錯誤。中華藥典規定為不超過 10 mL/kg，而非 1 mL/kg。</div>
+  </div>
+</div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">107-1</span><span class="q-stem">有關執行熱原試驗之敘述，下列何者最正確？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="no">(A) 給與之劑量是每公斤體重使用藥品 5 毫升</div>
+      <div data-ans="yes">(B) 注射的時間不得超過 10 分鐘</div>
+      <div data-ans="no">(C) 動物無一隻超過 0.3°C 即視為無熱原</div>
+      <div data-ans="no">(D) 試驗動物無熱原反應者，應經 24 小時以上休養方可再使用</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">(A) 錯：標準劑量為每公斤 10 mL。(B) 正確。(C) 錯：判定標準為不超過 0.5°C。(D) 錯：無反應休息 2 天，有反應休息 2 週。</div>
+  </div>
+</div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">105-1</span><span class="q-stem">下列何種藥品之注射劑不適合採用家兔作為熱原試驗動物？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="yes">(A) NSAIDs</div><div data-ans="no">(B) Hormones</div>
+      <div data-ans="no">(C) Antihistamines</div><div data-ans="no">(D) Antihypertensive agents</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">NSAIDs 可能抑制家兔發燒反應（具解熱效果），造成檢驗失準，故不適合。</div>
+  </div>
+</div>
+</div>
+<!-- ═══ 13. BET/LAL ═══ -->
 <div class="section" id="lal">
-<div class="section-title"><span class="icon icon-dusk">⬡</span>BET / LAL 試驗（細菌內毒素試驗）</div>
+<div class="section-title"><span class="icon icon-dusk">⬡</span>細菌內毒素試驗 BET / LAL</div>
 <div class="card-grid">
   <div class="card card-dusk">
     <div class="sub-title dusk">基本特性</div>
     <ul>
-      <li>全名：<drug>Bacterial Endotoxin Test</drug> / <drug>Limulus Amebocyte Lysate</drug></li>
-      <li>1956 年 Bang 發現：鱟血液遇 G(−) 菌產生凝膠反應</li>
-      <li><strong>體外試驗（in vitro）</strong>；比家兔法敏感且可定量</li>
-      <li>試劑：<strong>鱟（ㄏㄡˋ）酵素試劑</strong></li>
-      <li>判定：<strong>形成凝膠</strong>（B 色變 / C 凝膠同出現時以凝膠為準）</li>
+      <li>全名：<drug>Bacterial Endotoxin Test（BET）</drug> / <drug>Limulus Amebocyte Lysate（LAL）</drug></li>
+      <li>1956 年 Bang 發現：美洲鱟（Limulus polyphemus）的血液遇到 G(-) 菌會產生凝膠反應</li>
+      <li><strong>體外試驗（in vitro）</strong>；比家兔試驗更敏感且<strong>可定量</strong></li>
+      <li>試劑：<strong>鱟（ㄏㄡˋ）酵素試劑</strong>（鱟阿米巴樣細胞溶解物）</li>
+      <li>內毒素來源：<strong>大腸桿菌（E. coli）</strong></li>
+      <li>對 <strong>G(-) 內毒素有效</strong>；對 G(+) 無反應</li>
     </ul>
   </div>
   <div class="card card-sage">
-    <div class="sub-title sage">TWP 三種方法</div>
+    <div class="sub-title sage">優點</div>
     <ul>
-      <li><strong>凝膠法</strong>：最基本，觀察是否形成凝膠；不一致時以此為準</li>
-      <li><strong>濁度法</strong>：測混濁程度（光度定量）</li>
-      <li><strong>呈色法</strong>：加合成肽色原，測顏色變化（光度定量）</li>
+      <li>反應迅速</li>
+      <li>敏感度高</li>
+      <li>操作簡單</li>
+      <li>可避免動物使用</li>
+      <li>FDA 已認可作為家兔試驗替代法</li>
     </ul>
   </div>
 </div>
+
+<div class="sub-title mist">TWP 三種細菌內毒素檢驗法</div>
+<div class="table-wrap"><table>
+<thead><tr><th>方法</th><th>原理</th><th>說明</th></tr></thead>
+<tbody>
+<tr style="background:var(--sage-l)"><td><strong>凝膠法（gel-clot technique）</strong></td><td>最基本，觀察是否形成凝膠</td><td>利用內毒素與 BET 試劑反應形成凝膠，進行限量或定量試驗；不一致時以此法為<strong>最終判定依據</strong></td></tr>
+<tr><td><strong>濁度法（turbidimetric technique）</strong></td><td>內毒素與試劑反應後產生混濁</td><td>利用光度定量法測定混濁變化（內毒素含量越多混濁越多）</td></tr>
+<tr><td><strong>呈色法（chromogenic technique）</strong></td><td>加入顏色基質，與內毒素反應後產生顏色</td><td>利用光度定量法檢測合成肽色原複合物裂解時產生之顏色變化</td></tr>
+</tbody></table></div>
+<div class="info-box mist" style="font-size:12px">三種方法結果不一致時，以<strong>凝膠法</strong>為最終判定依據。試驗過程中應避免受內毒素污染。</div>
+
 <div class="sub-title clay">LAL 試驗干擾藥品</div>
 <div class="table-wrap"><table>
 <thead><tr><th>類別</th><th>藥品</th><th>記憶</th></tr></thead>
 <tbody>
-<tr style="background:var(--clay-l)"><td><strong>完全不能用 LAL</strong></td><td><drug>Vancomycin</drug>、<drug>Sulfisoxazole</drug>、<drug>Oxacillin</drug></td><td>不能反鎖哦（Van、Sul、O）</td></tr>
-<tr><td>需稀釋兩倍以上<br>（不能原液）</td><td><drug>Meperidine</drug>、<drug>Promethazine</drug>、<drug>Diphenhydramine</drug>、<drug>Thiamine</drug></td><td>死媒婆帶賽（釋 Me、Pro、Di、Thi）</td></tr>
-<tr style="background:var(--sage-l)"><td>不需稀釋</td><td><drug>Pentobarbital</drug></td><td>布希偏頭痛</td></tr>
+<tr style="background:var(--clay-l)"><td><strong>完全不能用 LAL 試驗</strong></td><td><drug>Vancomycin</drug>、<drug>Sulfisoxazole</drug>、<drug>Oxacillin</drug></td><td>不能反鎖哦（Van、Sul、O）</td></tr>
+<tr><td>體積過小，需<strong>稀釋兩倍以上</strong>才可用</td><td><drug>Meperidine</drug>、<drug>Promethazine</drug>、<drug>Diphenhydramine</drug>、<drug>Thiamine</drug></td><td>死媒婆帶賽（釋 Me、Pro、Di、Thi）</td></tr>
+<tr style="background:var(--sage-l)"><td>不需稀釋</td><td><drug>Pentobarbital</drug></td><td>布希偏頭痛（不需 Pento～tal）</td></tr>
 </tbody></table></div>
-<div class="sub-title sage">歷屆考題</div>
-<div class="q-block"><div class="q-header"><span class="q-year">112-2</span><span class="q-stem">下列何種注射劑不可直接使用 LAL 方法測定內毒素？（選一個）</span><span class="q-arrow">▶</span></div><div class="q-body"><div class="q-opts">(A) meperidine HCl（需稀釋，也不可直接原液）<br>(B) oxacillin sodium（完全不能）<br>(C) sulfisoxazole（完全不能）<br><span class="correct">✓ (D) vancomycin HCl（完全不能）</span></div><div class="q-explanation">1234 都不行，但 meperidine 是「稀釋後可用」；B/C/D 完全不能用 LAL。</div></div></div>
-<div class="q-block"><div class="q-header"><span class="q-year">108-2</span><span class="q-stem">BET 試劑與細菌內毒素結合後會？</span><span class="q-arrow">▶</span></div><div class="q-body"><div class="q-opts">(A) 形成沉澱<br>(B) 顏色改變<br><span class="correct">✓ (C) 形成凝膠</span><br>(D) 吸光波長改變</div><div class="q-explanation">中華藥典以<strong>凝膠法</strong>為最終判定依據。B（顏色）也可能發生，但凝膠優先。</div></div></div>
-<div class="q-block"><div class="q-header"><span class="q-year">111-1</span><span class="q-stem">有關 BET 試驗之敘述，下列何者錯誤？</span><span class="q-arrow">▶</span></div><div class="q-body"><div class="q-opts">(A) endotoxin 會導致熱原性反應 ✓<br><span class="correct">✓ (B) amebocyte lysate 對 G(+) endotoxin 有足夠靈敏度（錯：對 G(−) 有效）</span><br>(C) 可避免動物使用 ✓<br>(D) 含量升高反應顯著增加 ✓</div><div class="q-explanation">LAL 對 G(−) 內毒素有效，G(+) 不適用。</div></div></div>
+
+<div class="sub-title mist">MAT（單核球活化試驗）</div>
+<div class="card card-mist">
+  <ul>
+    <li>作為<strong>家兔熱原試驗</strong>的替代</li>
+    <li>可偵測範圍更廣：G(+) / G(-) 內毒素、病毒、真菌、產品或製程相關污染物</li>
+    <li>第九版補充：MAT 適用範圍更廣，可涵蓋更多試驗種類</li>
+  </ul>
 </div>
-<!-- ═══ 12. 滅菌法 USP ═══ -->
+
+<div class="sub-title sage">歷屆考題</div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">112-2</span><span class="q-stem">下列哪些注射劑不可直接使用 LAL 方法測定內毒素？①meperidine HCl ②oxacillin sodium ③sulfisoxazole ④vancomycin HCl</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="no">(A) 僅①②</div><div data-ans="no">(B) 僅③④</div>
+      <div data-ans="no">(C) 僅①②③</div><div data-ans="yes">(D) ①②③④</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">四種藥物均不可直接原液使用 LAL。②③④完全不能用；①meperidine 需稀釋後才能用（也不能原液直接用）。</div>
+  </div>
+</div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">111-1</span><span class="q-stem">有關注射劑進行細菌內毒素（BET）試驗之敘述，下列何者錯誤？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="no">(A) endotoxin 於人體會導致熱原性反應</div>
+      <div data-ans="yes">(B) amebocyte lysate 對 G(+) endotoxin 之反應有足夠之靈敏度</div>
+      <div data-ans="no">(C) 可避免動物的使用以避免動物保護之爭議</div>
+      <div data-ans="no">(D) endotoxin 與 BET 試劑之反應會因 endotoxin 含量升高而顯著增加</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">(B) 錯誤。LAL 試驗對 G(-) 內毒素有效，對 G(+) 無反應，無足夠靈敏度。</div>
+  </div>
+</div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">108-2</span><span class="q-stem">細菌內毒素檢驗法利用 Limulus polyphemus 的 amoebocyte lysate 製成之 BET 試劑，其檢測原理是與細菌內毒素結合後會？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="no">(A) 形成沉澱</div><div data-ans="no">(B) 顏色改變</div>
+      <div data-ans="yes">(C) 形成凝膠</div><div data-ans="no">(D) 吸收波長改變</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">B（顏色改變）與 C（形成凝膠）均可能發生，但中華藥典以<strong>形成凝膠</strong>為最終判定依據。</div>
+  </div>
+</div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">110-1</span><span class="q-stem">下列那些製劑，不建議以原液使用 LAL 法測定內毒素？①vancomycin HCl 注射液 ②meperidine HCl 注射液 ③血漿蛋白 ④無菌注射用水</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="yes">(A) 僅①②</div><div data-ans="no">(B) 僅②③</div>
+      <div data-ans="no">(C) 僅①④</div><div data-ans="no">(D) ①②③④</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">①vancomycin 完全不能用；②meperidine 需稀釋後才能用（不可原液）。③血漿蛋白、④無菌注射用水不在干擾名單內。</div>
+  </div>
+</div>
+</div>
+<!-- ═══ 14. 滅菌法 USP ═══ -->
 <div class="section" id="sterilization">
 <div class="section-title"><span class="icon icon-sand">⬡</span>滅菌法 USP（5種）</div>
 <div class="table-wrap"><table>
-<thead><tr><th>方法</th><th>機轉</th><th>條件</th><th>適用 / 注意</th></tr></thead>
+<thead><tr><th>方法</th><th>機轉</th><th>條件</th><th>適用 / 不適用</th></tr></thead>
 <tbody>
 <tr style="background:var(--sage-l)">
-  <td><strong>1. 蒸氣滅菌</strong><br>Steam</td>
-  <td>濕熱→<strong>蛋白質變性凝固</strong></td>
-  <td>115.5°C / 10 lb / 30 min<br>121.5°C / 15 lb / <strong>20 min（常用）</strong><br>126.5°C / 20 lb / 15 min<br>→ 溫度↑壓力↑時間↓</td>
-  <td>密封容器（安瓿）、散裝溶液、玻璃器皿、手術器械<br>❌ 油劑、不含水製劑<br>❌ <strong>無法去除熱原</strong></td>
+  <td><strong>1. 蒸氣滅菌</strong><br>Steam Sterilization</td>
+  <td>濕熱 → <strong>蛋白質變性與凝固</strong>（真正破壞微生物的是溫度，壓力只是為了達高溫）</td>
+  <td>115.5°C / 10 lb / 30 min<br>121.5°C / 15 lb / <strong>20 min（常用）</strong><br>126.5°C / 20 lb / 15 min<br><strong>溫度↑壓力↑→滅菌時間↓</strong></td>
+  <td>✓ 密封容器（如安瓿）、散裝溶液、玻璃器皿、培養基、手術器械<br>✗ 油劑、脂肪、含油製劑<br>✗ 可能受水分凝結損壞之粉末<br>❌ <strong>無法去除熱原</strong></td>
 </tr>
 <tr>
-  <td><strong>2. 乾熱滅菌</strong><br>Dry Heat</td>
-  <td>細胞<strong>脫水後緩慢氧化</strong></td>
-  <td>150–170°C / 至少 <strong>2 hr</strong> 以上<br>（玻璃器具去熱原：250°C / 30 min）</td>
-  <td>非揮發油類、<strong>甘油</strong>、石蠟、<strong>氧化鋅</strong>、礦物油、玻璃器皿<br>（需<strong>更高溫更長時間</strong>）</td>
+  <td><strong>2. 乾熱滅菌</strong><br>Dry Heat Sterilization</td>
+  <td>微生物細胞<strong>脫水後緩慢氧化</strong>（非蛋白質變性；需更高溫更長時間）</td>
+  <td>溫度：<num>150–170°C</num><br>時間：至少 <num>2 小時</num>以上</td>
+  <td>✓ 不揮發油類（非水性）、<strong>甘油</strong>、各種石油產品、<strong>石蠟</strong>、<strong>氧化鋅</strong>、玻璃器皿<br>✓ 乾燥化學品、非水溶液</td>
 </tr>
 <tr style="background:var(--dusk-l)">
-  <td><strong>3. 過濾滅菌</strong><br>Filtration</td>
-  <td>過濾介質<strong>吸附 + 篩選</strong>（物理）</td>
-  <td>孔徑 ≤ 0.22 μm；速度快</td>
-  <td>熱敏感溶液、臨時調配<br>❌ <strong>無法選擇去除特定細菌</strong><br>❌ <strong>不適合用生物指示劑（BI）</strong></td>
+  <td><strong>3. 過濾滅菌</strong><br>Sterilization by Filtration</td>
+  <td>過濾介質上的<strong>吸附</strong>或透過<strong>篩選機制物理去除微生物</strong>（不能選擇性去除特定細菌）</td>
+  <td>孔徑 0.22 μm；速度快</td>
+  <td>✓ <strong>熱敏感溶液</strong>、臨時調配注射用藥品溶液<br>✗ 無法選擇性去除特定細菌<br>✗ <strong>不適合使用生物指示劑（BI）</strong><br>低劑量藥物（&lt;5 mg）有濾器吸附問題（0.22 μm 膜影響 amphotericin B 活性）</td>
 </tr>
 <tr>
-  <td><strong>4. 氣體滅菌</strong><br>Gas（環氧乙烷）</td>
-  <td>干擾微生物<strong>細胞代謝</strong></td>
-  <td>50–60°C；相對濕度 60%；<strong>4–16 hr</strong><br>（需稀釋 + 專業人員操作；具爆炸性）</td>
-  <td><strong>最終塑膠包裝</strong>產品（導管、針頭、注射器）<br>不耐熱酶製劑；橡膠/塑膠滅菌後<strong>須靜置再用</strong></td>
+  <td><strong>4. 氣體滅菌</strong><br>Gas Sterilization</td>
+  <td>干擾微生物<strong>細胞代謝</strong>；與微生物蛋白質反應使代謝物無法被利用</td>
+  <td>氣體：<drug>環氧乙烯（Ethylene oxide）</drug>（有毒、易燃，需稀釋）<br>溫度：50–60°C；相對濕度：60%<br>時間：<num>4–16 小時</num>（因溫度不高耗時較久）</td>
+  <td>✓ <strong>最終塑膠包裝中</strong>的醫療器具（導管、針頭、注射器）<br>✓ 不耐熱酶製劑、某些抗生素<br>⚠ 需專業人員操作；橡膠/塑膠滅菌後<strong>須靜置一段時間再使用</strong><br>⚠ 與空氣混合<strong>高度易燃（具爆炸性）</strong></td>
 </tr>
 <tr>
-  <td><strong>5. 離子輻射</strong><br>Radiation</td>
-  <td>破壞細胞化學物質 / 染色體</td>
-  <td>放射源：<drug>Co-60</drug>（γ 射線）<br>成本<strong>最高</strong>；需專業設備</td>
-  <td>已裝固體藥品之玻璃容器最終滅菌</td>
+  <td><strong>5. 離子輻射滅菌</strong><br>Ionizing Radiation</td>
+  <td>① 形成破壞細胞的有害新化學物質<br>② 破壞染色體核蛋白</td>
+  <td>放射源：<drug>鈷（Co-60）</drug> / 锎（Cf-137）釋放之 γ 射線<br>成本<strong>最高</strong>；需高度專業化設備</td>
+  <td>✓ 已裝固體藥品之玻璃容器最終滅菌（如固體乾粉）</td>
 </tr>
 </tbody></table></div>
 
-<div class="sub-title clay">歷屆考題</div>
-<div class="q-block"><div class="q-header"><span class="q-year">113-2</span><span class="q-stem">有關滅菌法之敘述，下列何者錯誤？</span><span class="q-arrow">▶</span></div><div class="q-body"><div class="q-opts">(A) 高壓蒸氣最主要機制為蛋白質變性 ✓<br><span class="correct">✓ (B) 乾熱最主要機制是將細菌蛋白質還原（錯：應為脫水後緩慢氧化）</span><br>(C) B. subtilis 為高壓蒸氣 BI ✓<br>(D) B. atrophaeus 為乾熱 BI ✓</div><div class="q-explanation">乾熱機轉是<strong>脫水後緩慢氧化</strong>，非還原蛋白質。</div></div></div>
-<div class="q-block"><div class="q-header"><span class="q-year">113-1</span><span class="q-stem">有關蒸氣滅菌（steam sterilization）之敘述，下列何者最適當？</span><span class="q-arrow">▶</span></div><div class="q-body"><div class="q-opts">(A) 適合油脂類注射劑（錯：用乾熱）<br><span class="correct">✓ (B) 壓力越高，所需時間越短</span><br>(C) 溫度越高，時間越長（錯：時間越短）<br>(D) 不適合玻璃器具（錯：適合）</div><div class="q-explanation">蒸氣滅菌：溫度↑壓力↑→時間↓。</div></div></div>
-<div class="q-block"><div class="q-header"><span class="q-year">113-1</span><span class="q-stem">有關氣體滅菌法（gas sterilization）之敘述，下列何者錯誤？</span><span class="q-arrow">▶</span></div><div class="q-body"><div class="q-opts">(A) 機制為與微生物蛋白質反應 ✓<br>(B) 中華藥典使用環氧乙烯 ✓<br><span class="correct">✓ (C) 2 小時內可完成（錯：需 4–16 hr）</span><br>(D) 適用熱及濕度敏感藥品 ✓</div><div class="q-explanation">氣體滅菌（環氧乙烷）需 4–16 小時，溫度不高故耗時。</div></div></div>
-<div class="q-block"><div class="q-header"><span class="q-year">107-2</span><span class="q-stem">下列何者不是過濾滅菌法的優點？</span><span class="q-arrow">▶</span></div><div class="q-body"><div class="q-opts"><span class="correct">✓ (A) 可有效選擇去除特定細菌（錯：無法）</span><br>(B) 滅菌時間短 ✓<br>(C) 可用於不耐熱物質 ✓<br>(D) 適用於臨時調配注射用藥品溶液 ✓</div><div class="q-explanation">過濾滅菌無法<strong>選擇性</strong>去除特定細菌，為其缺點。</div></div></div>
-<div class="q-block"><div class="q-header"><span class="q-year">108-1</span><span class="q-stem">下列哪些物質可以使用乾熱滅菌法？①甘油 ②石蠟 ③氧化鋅</span><span class="q-arrow">▶</span></div><div class="q-body"><div class="q-opts">(A) 僅 1<br>(B) 僅 2,3<br>(C) 僅 1,2<br><span class="correct">✓ (D) 1,2,3</span></div><div class="q-explanation">甘油、石蠟、氧化鋅皆為乾熱滅菌適用物質（非水性）。</div></div></div>
-<div class="q-block"><div class="q-header"><span class="q-year">106-2</span><span class="q-stem">相對而言，下列滅菌法中何者整體成本最高？</span><span class="q-arrow">▶</span></div><div class="q-body"><div class="q-opts">(A) 高壓蒸氣<br>(B) 氣體<br><span class="correct">✓ (C) 放射滅菌法</span><br>(D) 乾熱</div><div class="q-explanation">離子輻射滅菌需高度專業化設備，成本最高。</div></div></div>
+<div class="sub-title dusk">過濾滅菌膜材質</div>
+<div class="card card-dusk">
+  <ul>
+    <li>醋酸纖維素（cellulose acetate）、硝化纖維素（cellulose nitrate）</li>
+    <li>氟碳丙烯酸聚合物（fluorocarbonate acrylic）、聚碳酸酯（polycarbonate）</li>
+    <li>聚酯（polyester）、PVC、尼龍（Vinyl nylon）、聚四氟乙烯（Teflon）</li>
+    <li>纖維素硝酸鹽會吸附藥物（含殘留氫氧基）；碳氫化合物與濾膜間可能有疏水相互作用</li>
+  </ul>
 </div>
 
-<!-- ═══ 13. TWP 滅菌 ═══ -->
+<div class="sub-title clay">歷屆考題</div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">114-1</span><span class="q-stem">有關注射製劑滅菌方法之敘述，下列何者錯誤？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="no">(A) 乾熱滅菌法可用於非揮發油、對熱安定之粉末、非水性溶液之滅菌</div>
+      <div data-ans="no">(B) 過濾滅菌法須注意濾器與微生物之電荷、溶液的 pH 值、溫度與壓力</div>
+      <div data-ans="yes">(C) 蒸氣滅菌法是利用濕熱讓微生物脫水氧化，與壓力及溫度有關</div>
+      <div data-ans="no">(D) 確認藥品無化學反應後，氣體滅菌法可用於對熱不安定之酵素製劑</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">(C) 錯誤。「脫水氧化」是乾熱滅菌的機轉；蒸氣滅菌的機轉是<strong>蛋白質變性與凝固</strong>。</div>
+  </div>
+</div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">113-2</span><span class="q-stem">有關滅菌法之敘述，下列何者錯誤？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="no">(A) 高壓蒸氣滅菌法最主要滅菌機制，是使細菌蛋白質發生變性反應</div>
+      <div data-ans="yes">(B) 乾熱滅菌法最主要滅菌機制，是將細菌蛋白質還原</div>
+      <div data-ans="no">(C) B. subtilis 為常用於高壓蒸氣滅菌法之 biological indicator</div>
+      <div data-ans="no">(D) B. atrophaeus 為常用於乾熱滅菌法之 biological indicator</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">(B) 錯誤。乾熱滅菌是使微生物<strong>脫水後緩慢氧化</strong>，不是還原蛋白質。</div>
+  </div>
+</div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">113-1</span><span class="q-stem">有關蒸氣滅菌（steam sterilization）之敘述，下列何者最適當？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="no">(A) 適合用於油脂類注射劑之滅菌</div>
+      <div data-ans="yes">(B) 滅菌時使用的壓力越高，滅菌所需要的時間越短</div>
+      <div data-ans="no">(C) 滅菌時使用的溫度越高，滅菌所需要的時間越長</div>
+      <div data-ans="no">(D) 不適合用於玻璃器具之滅菌</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">(A) 錯：油脂用乾熱。(B) 正確：壓力↑溫度↑→時間↓。(C) 錯：溫度越高時間越短。(D) 錯：玻璃器皿適合蒸氣滅菌。</div>
+  </div>
+</div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">113-1</span><span class="q-stem">有關氣體滅菌法（gas sterilization）之敘述，下列何者錯誤？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="no">(A) 最主要滅菌機制為與微生物蛋白質產生反應，使代謝物無法再被微生物所利用</div>
+      <div data-ans="no">(B) 依中華藥典，容器滅菌若採用該方法時，應使用環氧乙烯進行滅菌</div>
+      <div data-ans="yes">(C) 使用環氧乙烯進行滅菌時，一般可在 2 小時內完成整個滅菌程序</div>
+      <div data-ans="no">(D) 適用於對熱及濕度敏感之藥品進行滅菌</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">(C) 錯誤。環氧乙烯滅菌需 4–16 小時，溫度不高故耗時較久，無法在 2 小時內完成。</div>
+  </div>
+</div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">107-2</span><span class="q-stem">下列何者不是過濾滅菌法的優點？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="yes">(A) 可有效選擇去除特定細菌</div>
+      <div data-ans="no">(B) 滅菌所需時間短</div>
+      <div data-ans="no">(C) 可用於不耐熱物質</div>
+      <div data-ans="no">(D) 適用於需臨時調配之注射用藥品溶液</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">(A) 錯誤：過濾滅菌無法選擇性去除特定細菌，此為其缺點。</div>
+  </div>
+</div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">108-1</span><span class="q-stem">下列那些物質可以使用乾熱滅菌法來滅菌？①甘油 ②石蠟 ③氧化鋅</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="no">(A) 僅 1</div><div data-ans="no">(B) 僅 2,3</div>
+      <div data-ans="no">(C) 僅 1,2</div><div data-ans="yes">(D) 1,2,3</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">甘油、石蠟、氧化鋅三者皆為非水性產品，均適合乾熱滅菌。</div>
+  </div>
+</div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">107-1</span><span class="q-stem">以環氧乙烯進行滅菌時，下列敘述何者最正確？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="no">(A) 不需受專門訓練人員亦可操作</div>
+      <div data-ans="no">(B) 橡膠或塑膠物質滅菌後可立即使用</div>
+      <div data-ans="yes">(C) 環氧乙烯具有毒性</div>
+      <div data-ans="no">(D) 環氧乙烯很安定，在空氣中不具爆炸性</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">(A) 錯：需專業訓練人員。(B) 錯：橡膠或塑膠滅菌後須靜置一段時間再使用。(C) 正確：具毒性、可燃性。(D) 錯：具爆炸性，需用惰性氣體稀釋。</div>
+  </div>
+</div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">106-2</span><span class="q-stem">相對而言，下列滅菌法中何者之整體成本最高？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="no">(A) 高壓蒸氣滅菌法</div><div data-ans="no">(B) 氣體滅菌法</div>
+      <div data-ans="yes">(C) 放射滅菌法</div><div data-ans="no">(D) 乾熱滅菌法</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">離子輻射滅菌需高度專業化設備，整體成本最高。</div>
+  </div>
+</div>
+</div>
+<!-- ═══ 15. TWP 滅菌 ═══ -->
 <div class="section" id="twp-steril">
 <div class="section-title"><span class="icon icon-mist">⬡</span>滅菌法 TWP（4種）</div>
 <div class="table-wrap"><table>
 <thead><tr><th>方法</th><th>條件 / 說明</th></tr></thead>
 <tbody>
-<tr><td><strong>1. 高壓蒸氣滅菌法</strong></td><td>115–116°C / 30 min；121°C / 20 min；126°C / 15 min<br>❌ <strong>無法消除內毒素</strong></td></tr>
-<tr><td><strong>2. 過濾滅菌法</strong></td><td>過濾後在無菌狀態置於已滅菌容器；可含<strong>抑菌劑</strong>；適用熱不穩定藥品</td></tr>
-<tr><td><strong>3. 油液 / 油質懸液滅菌法</strong></td><td>&lt;30 mL → 150°C / 1 hr；&gt;30 mL → 時間延長確保每容器達標</td></tr>
-<tr><td><strong>4. 容器之滅菌法</strong></td><td>加熱：160°C / ≥1 hr<br>高壓蒸氣：115–116°C / ≥30 min<br>環氧乙烯：橡膠/塑膠滅菌後<strong>須靜置後再用</strong>；專業人員操作</td></tr>
+<tr><td><strong>1. 高壓蒸氣滅菌法</strong></td><td>115–116°C / 30 min；121°C / 20 min；126°C / 15 min<br>適用：一般注射劑製劑，密封容器中之水性溶液<br>❌ <strong>無法消除內毒素</strong></td></tr>
+<tr><td><strong>2. 過濾滅菌法</strong></td><td>將溶液以適當濾菌器過濾，並在無菌狀態下置於已滅菌之容器內封閉<br>溶液中可含<strong>適當之抑菌劑</strong>以抑制微生物生長<br>適用：熱不穩定藥品製劑（不能加熱滅菌者）</td></tr>
+<tr><td><strong>3. 油液或油質懸液滅菌法</strong></td><td>藥品用<strong>油</strong>或<strong>油酸乙酯（Ethyl Oleate）</strong>製成溶液或懸液，置容器封閉後加熱滅菌<br>&lt;30 mL → <num>150°C / 1 小時</num><br>&gt;30 mL → 時間延長，確保每個容器皆達 150°C 加熱 1 小時<br>若內容物在 150°C 會變質，可<strong>預先將油加熱 1 小時</strong>，再於無菌狀態製備</td></tr>
+<tr><td><strong>4. 容器之滅菌法</strong></td><td>容器先洗淨除去油脂，再以下列方法之一滅菌：<br>・<strong>加熱滅菌</strong>：各容器保持於 <num>160°C</num> 上至少經 <num>1 小時</num><br>・<strong>高壓蒸氣</strong>：115–116°C，受熱 30 分鐘以上<br>・<strong>環氧乙烯滅菌</strong>：需<strong>專門訓練人員</strong>操作；橡膠或塑膠物質滅菌後<strong>須靜置一段時間再使用</strong><br>滅菌效率與：①環氧乙烯濃度 ②溫度 ③滅菌時限 ④微生物帶水量 密切相關</td></tr>
 </tbody></table></div>
 <div class="sub-title clay">歷屆考題</div>
-<div class="q-block"><div class="q-header"><span class="q-year">114-1</span><span class="q-stem">有關注射製劑滅菌方法之敘述，下列何者錯誤？</span><span class="q-arrow">▶</span></div><div class="q-body"><div class="q-opts">(A) 乾熱可用於非揮發油、熱安定粉末、非水性溶液 ✓<br>(B) 過濾需注意電荷、pH、溫度、壓力 ✓<br><span class="correct">✓ (C) 蒸氣滅菌是讓微生物脫水氧化（錯：那是乾熱的機轉；蒸氣是蛋白質變性）</span><br>(D) 氣體滅菌可用於不耐熱酶製劑 ✓</div><div class="q-explanation">蒸氣滅菌機轉為<strong>蛋白質變性凝固</strong>；脫水氧化是乾熱的機轉。</div></div></div>
-<div class="q-block"><div class="q-header"><span class="q-year">109-2</span><span class="q-stem">有關滅菌法的選擇，下列何者錯誤？</span><span class="q-arrow">▶</span></div><div class="q-body"><div class="q-opts">(A) 油質懸液劑乾熱 150°C 1 hr ✓<br>(B) 醫療用插管用氣體滅菌 ✓<br>(C) 培養基用高壓蒸氣 ✓<br><span class="correct">✓ (D) 甘油不宜採用乾熱滅菌（錯：甘油適合乾熱）</span></div><div class="q-explanation">甘油屬非水性物質，適合乾熱滅菌。</div></div></div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">109-2</span><span class="q-stem">有關滅菌法的選擇，下列何者錯誤？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="no">(A) 油質懸液劑以乾熱法滅菌時，應於 150°C 加熱 1 小時</div>
+      <div data-ans="no">(B) 已裝填於包材中之醫療用插管，通常使用氣體滅菌法</div>
+      <div data-ans="no">(C) 培養基應選用高壓蒸氣滅菌法</div>
+      <div data-ans="yes">(D) 甘油不宜採用乾熱滅菌法</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">(D) 錯誤。甘油屬於適合乾熱滅菌之非揮發油類。</div>
+  </div>
+</div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">109-1</span><span class="q-stem">下列滅菌法中，何者可用於最終包裝產品之滅菌？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="no">(A) 高壓蒸汽滅菌法</div><div data-ans="yes">(B) 氣體滅菌法</div>
+      <div data-ans="no">(C) 過濾滅菌法</div><div data-ans="no">(D) 乾熱滅菌法</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">氣體滅菌法可用於最終塑膠包裝中的產品滅菌。</div>
+  </div>
+</div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">114-1</span><span class="q-stem">有關注射製劑滅菌方法之敘述，下列何者錯誤？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="no">(A) 乾熱滅菌法可用於非揮發油、對熱安定之粉末、非水性溶液之滅菌</div>
+      <div data-ans="no">(B) 過濾滅菌法須注意濾器與微生物之電荷、溶液的 pH 值、溫度與壓力</div>
+      <div data-ans="yes">(C) 蒸氣滅菌法是利用濕熱讓微生物脫水氧化，與壓力及溫度有關</div>
+      <div data-ans="no">(D) 確認藥品無化學反應或有害作用後，氣體滅菌法可用於對熱不安定之酵素製劑</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">(C) 錯誤。此為乾熱滅菌法之機轉；蒸氣滅菌是蛋白質變性與凝固。</div>
+  </div>
+</div>
 </div>
 
-<!-- ═══ 14. 生物指示劑 ═══ -->
+<!-- ═══ 16. 生物指示劑 ═══ -->
 <div class="section" id="bi">
 <div class="section-title"><span class="icon icon-rose">⬡</span>生物指示劑（Biologic Indicator, BI）</div>
 <div class="card card-rose">
-  <p>特定微生物對抗特殊滅菌過程之顯示製品；主要使用<strong>細菌孢子</strong>（最難消滅）。孢子加到載體（濾紙條）→ 滅菌後如不生長 = 培養基不變色 = 滅菌成功。</p>
+  <ul>
+    <li>特定微生物對抗特殊滅菌過程（高壓蒸氣、乾熱、輻射、氣體）之顯示特製製品</li>
+    <li>主要使用<strong>細菌孢子</strong>（最難消滅的微生物之一）</li>
+    <li>形式：孢子加到載體（如濾紙條）＋ 培養基（medium）</li>
+    <li>結果：滅菌成功 → 孢子不生長 → 培養基<strong>不變色</strong>；滅菌失敗 → 孢子存活 → 培養基<strong>變色</strong></li>
+  </ul>
 </div>
+
 <div class="sub-title dusk">USP BI 配對</div>
 <div class="table-wrap"><table>
 <thead><tr><th>滅菌法</th><th>生物指示劑</th></tr></thead>
 <tbody>
-<tr><td>高壓蒸氣 / 氣體（環氧乙烷）</td><td><drug>Bacillus stearothermophilus</drug>（嗜熱芽孢桿菌）</td></tr>
-<tr><td>乾熱滅菌</td><td><drug>Bacillus subtilis</drug>（枯草桿菌）</td></tr>
-<tr><td>離子輻射</td><td><drug>Bacillus subtilis</drug> / <drug>B. stearothermophilus</drug> / <drug>B. pumilus</drug></td></tr>
-<tr style="background:var(--clay-l)"><td>過濾滅菌</td><td><strong>不適合使用 BI</strong>（改用微生物懸浮液）</td></tr>
+<tr><td>高壓蒸氣滅菌（Steam）</td><td><drug>Bacillus stearothermophilus</drug>（嗜熱芽孢桿菌）</td></tr>
+<tr><td>氣體滅菌法（環氧乙烷 ethylene oxide）</td><td><drug>Bacillus stearothermophilus</drug>（嗜熱芽孢桿菌）</td></tr>
+<tr><td>乾熱滅菌法</td><td><drug>Bacillus subtilis</drug>（枯草桿菌）</td></tr>
+<tr><td>離子輻射滅菌法</td><td><drug>Bacillus subtilis</drug> / <drug>Bacillus stearothermophilus</drug> / <drug>Bacillus pumilus</drug></td></tr>
+<tr style="background:var(--clay-l)"><td>過濾滅菌</td><td><strong>不適合使用 BI</strong>（使用微生物懸浮液進行濾膜驗證）</td></tr>
 </tbody></table></div>
+
 <div class="sub-title mist">TWP BI 配對（中華藥典第九版）</div>
 <div class="table-wrap"><table>
 <thead><tr><th>滅菌法</th><th>生物指示劑</th><th>記憶</th></tr></thead>
 <tbody>
-<tr><td>濕熱滅菌</td><td><drug>Geobacillus stearothermophilus</drug>（嗜熱脂肪芽胞桿菌）</td><td></td></tr>
-<tr><td>環氧乙烷氣體</td><td><drug>Bacillus atrophaeus</drug>（枯草芽孢桿菌）</td><td>air 像 atr</td></tr>
-<tr><td>乾熱</td><td><drug>Bacillus atrophaeus</drug></td><td>天乾熱沒有空氣（air→atr）</td></tr>
-<tr><td>游離輻射</td><td><drug>Bacillus pumilus</drug>（短小芽胞桿菌）</td><td>輻射發出來 piu；pu → pumilus</td></tr>
+<tr><td>濕熱滅菌（高壓蒸氣）</td><td><drug>Geobacillus stearothermophilus</drug>（嗜熱脂肪芽胞桿菌）</td><td></td></tr>
+<tr><td>環氧乙烷氣體滅菌法</td><td><drug>Bacillus atrophaeus</drug>（枯草芽孢桿菌）</td><td>air 像 atr</td></tr>
+<tr><td>乾熱法滅菌</td><td><drug>Bacillus atrophaeus</drug>（枯草芽孢桿菌）</td><td>天乾熱沒空氣，air→atr</td></tr>
+<tr><td>游離輻射滅菌法</td><td><drug>Bacillus pumilus</drug>（短小芽胞桿菌）</td><td>輻射發出來 piu；pu→pumilus</td></tr>
 </tbody></table></div>
-<div class="info-box mist" style="font-size:12px">
-  <strong>過濾滅菌微生物懸浮液：</strong>孔徑 &lt;0.22 μm → <drug>Brevundimonas diminuta</drug>（dm記點22）；孔徑 0.1 μm → <drug>Acholeplasma laidlawii</drug>（0.1跟賴）
+
+<div class="sub-title sage">過濾滅菌微生物懸浮液</div>
+<div class="card card-sage">
+  <ul>
+    <li>孔徑 &lt;0.22 μm 過濾系統：使用 <drug>Brevundimonas diminuta（缺陷短波單胞菌）</drug>懸浮液（dm 記點 22）</li>
+    <li>孔徑 0.1 μm 或更小過濾系統：使用 <drug>Acholeplasma laidlawii（葉氏黴漿菌）</drug>懸浮液（0.1 跟賴）</li>
+  </ul>
 </div>
+
+<div class="sub-title sand">F₀ 值 &amp; D 值</div>
+<div class="card card-sand">
+  <div class="kv-list">
+    <div class="kv-row"><span class="kv-label">D 值</span><span class="kv-val">在一定溫度下，使微生物數量下降 90%（下降 1 個 log 值）所需的時間</span></div>
+    <div class="kv-row"><span class="kv-label">F₀ 值</span><span class="kv-val">以 121°C 為基準，在不同溫度下換算成與 121°C 相同殺菌效力所需的時間（分鐘）</span></div>
+    <div class="kv-row"><span class="kv-label">公式</span><span class="kv-val">F₀ = D₁₂₁ × (log A – log B)<br>D₁₂₁ = 生物指示劑在 121°C 之 D 值；A = 初始微生物數；B = 存活微生物數</span></div>
+  </div>
+  <p style="font-size:12px;color:var(--text-muted);margin-top:8px">公式知道概念即可，不需計算。F₀ 值越高 = 殺菌效力越大。</p>
+</div>
+
 <div class="sub-title clay">歷屆考題</div>
-<div class="q-block"><div class="q-header"><span class="q-year">111-2</span><span class="q-stem">乾熱法滅菌，最常使用何種微生物芽胞作為滅菌指示劑？</span><span class="q-arrow">▶</span></div><div class="q-body"><div class="q-opts"><span class="correct">✓ (A) Bacillus subtilis（枯草桿菌）</span><br>(B) E. coli<br>(C) Pseudomonas aeruginosa<br>(D) Candida albicans</div><div class="q-explanation">乾熱滅菌 BI = Bacillus subtilis（USP）/ Bacillus atrophaeus（TWP）。</div></div></div>
-<div class="q-block"><div class="q-header"><span class="q-year">107-1</span><span class="q-stem">下列滅菌法中，何者不適合於滅菌操作時加入 BI 作確認？</span><span class="q-arrow">▶</span></div><div class="q-body"><div class="q-opts">(A) 氣體滅菌<br><span class="correct">✓ (B) 過濾滅菌</span><br>(C) 乾熱<br>(D) 高壓蒸氣</div><div class="q-explanation">過濾滅菌不適合 BI，應用微生物懸浮液進行濾膜驗證。</div></div></div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">111-2</span><span class="q-stem">乾熱法滅菌法，最常使用何種微生物之芽胞作為滅菌指示劑？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="yes">(A) Bacillus subtilis（枯草桿菌）</div>
+      <div data-ans="no">(B) Escherichia coli（E. coli）</div>
+      <div data-ans="no">(C) Pseudomonas aeruginosa（綠膿桿菌）</div>
+      <div data-ans="no">(D) Candida albicans（白色念珠菌）</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">乾熱滅菌常用 Bacillus subtilis（枯草桿菌）作為生物指示劑（TWP 則用 B. atrophaeus）。</div>
+  </div>
 </div>
-<!-- ═══ 15. 無菌試驗 ═══ -->
+<div class="q-block">
+  <div class="q-header"><span class="q-year">107-1</span><span class="q-stem">下列滅菌法中，何者不適合於滅菌操作時加入 biological indicator 作確認？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="no">(A) 氣體滅菌法</div><div data-ans="yes">(B) 過濾滅菌法</div>
+      <div data-ans="no">(C) 乾熱滅菌法</div><div data-ans="no">(D) 高壓蒸汽滅菌法</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">過濾滅菌不適合使用生物指示劑，應使用微生物懸浮液進行濾膜驗證。</div>
+  </div>
+</div>
+</div>
+<!-- ═══ 17. 無菌試驗 ═══ -->
 <div class="section" id="sterility">
 <div class="section-title"><span class="icon icon-sage">⬡</span>無菌試驗（Sterility Test）</div>
-<div class="info-box sage" style="font-size:12px">本試驗不是為了證明每批完全無菌，而是<strong>設計上的確認</strong>；應在 <strong>Class 100（ISO 5）</strong> 潔淨環境下操作。</div>
+<div class="info-box sage" style="font-size:12px">本試驗適用於標示為「無菌」之藥物產品（注射劑、生物製劑、疫苗、眼用製劑）。設計目的<strong>不是</strong>為了證明每批完全無菌或已完全滅菌；無菌性應透過滅菌程序或無菌製程之確效來達成。須在 <strong>Class 100（ISO 5）</strong> 潔淨環境下操作。</div>
 
 <div class="sub-title dusk">培養基選擇</div>
 <div class="table-wrap"><table>
-<thead><tr><th>培養基</th><th>目標微生物</th><th>檢查對象</th><th>條件</th></tr></thead>
+<thead><tr><th>培養基</th><th>目標微生物</th><th>檢查對象</th><th>溫度</th></tr></thead>
 <tbody>
 <tr>
-  <td><strong>硫醇乙酸鹽培養基 I</strong><br>Fluid thioglycollate I</td>
-  <td>金黃色葡萄球菌（好氧）<br>綠膿桿菌（好氧）<br>產芽孢梭菌（厭氧）</td>
-  <td><strong>外觀澄明</strong>液體製劑<br>好氧菌 / 厭氧菌</td>
-  <td>30–35°C / 有氧<br>5–7 天</td>
+  <td><strong>硫醇乙酸鹽培養基 I</strong><br>Fluid thioglycollate medium</td>
+  <td>金黃色葡萄球菌（<em>Staphylococcus aureus</em>，好氧）<br>綠膿桿菌（<em>Pseudomonas aeruginosa</em>，好氧）<br>產芽孢梭菌（<em>Clostridium sporogenes</em>，厭氧）</td>
+  <td><strong>外觀澄明</strong>之液體製劑；檢查厭氧菌或好氧菌</td>
+  <td>30–35°C / 有氧 / 5–7 天</td>
 </tr>
 <tr>
-  <td><strong>硫醇乙酸鹽培養基 II</strong><br>Fluid thioglycollate II</td>
-  <td>產芽孢梭菌（厭氧）</td>
-  <td><strong>混濁或具黏性</strong>製劑<br>厭氧菌 / 好氧菌</td>
-  <td>30–35°C / 厭氧<br>5–7 天</td>
+  <td><strong>硫醇乙酸鹽培養基 II</strong><br>Fluid thioglycollate medium II</td>
+  <td>產芽孢梭菌（<em>Clostridium sporogenes</em>，厭氧）</td>
+  <td><strong>混濁或具黏性</strong>之製劑；檢查厭氧菌或好氧菌</td>
+  <td>30–35°C / 厭氧 / 5–7 天</td>
 </tr>
 <tr>
   <td><strong>大豆分解蛋白質乾酪素培養基</strong><br>Soybean-casein digest medium</td>
-  <td>枯草桿菌（好氧）<br>白色念珠菌（黴菌）<br>巴西麴菌（黴菌）</td>
-  <td><strong>微量好氧菌或黴菌</strong></td>
-  <td>20–25°C / 有氧<br>5–7 天</td>
+  <td>枯草桿菌（<em>Bacillus subtilis</em>，好氧）<br>白色念珠菌（<em>Candida albicans</em>，黴菌）<br>巴西麴菌（<em>Aspergillus brasiliensis</em>，黴菌）</td>
+  <td>檢查<strong>微量好氧菌或黴菌</strong></td>
+  <td>20–25°C / 有氧 / 5–7 天</td>
 </tr>
 </tbody></table></div>
 
@@ -730,210 +1744,601 @@ strong{font-weight:500;}
   <div class="card card-dusk">
     <div class="sub-title dusk">微孔濾膜過濾法</div>
     <ul>
-      <li>孔徑 ≤ <num>0.45 μm</num>；直徑約 50 mm</li>
-      <li>纖維素硝酸鹽：水性、油性、低乙醇濃度</li>
-      <li>纖維素乙酸鹽：<strong>高乙醇濃度</strong></li>
-      <li>抗生素需用<strong>抵消抗生素作用之專用濾膜</strong></li>
-      <li>油類檢品濾膜使用前需<strong>完全乾燥</strong></li>
+      <li>孔徑 ≤ <num>0.45 μm</num>；直徑約 <num>50 mm</num></li>
+      <li><strong>纖維素硝酸鹽</strong>：適用水性、油性與低乙醇濃度（但可能無法抵抗高濃度乙醇）</li>
+      <li><strong>纖維素乙酸鹽</strong>：適用高乙醇濃度</li>
+      <li>抗生素需用<strong>可抵消抗生素作用之專用濾膜</strong></li>
+      <li>油類檢品：濾膜使用前必須<strong>完全乾燥</strong></li>
     </ul>
   </div>
   <div class="card card-sage">
     <div class="sub-title sage">直接接種法</div>
     <ul>
-      <li>硫醇乙酸鹽培養基：30–35°C，<strong>≥14 天</strong></li>
-      <li>大豆乾酪素培養基：20–25°C，<strong>≥14 天</strong></li>
-      <li>油類製劑每日輕搖，但厭氧條件<strong>避免搖動</strong></li>
-      <li><strong>所有醫療器材</strong>（除標示「無菌具管路」者）→ 用直接接種法</li>
+      <li>硫醇乙酸鹽培養基：30–35°C，觀察 <strong>≥14 天</strong></li>
+      <li>大豆乾酪素培養基：20–25°C，觀察 <strong>≥14 天</strong></li>
+      <li>培養基混濁無法觀察：14 天後取 ≥1 mL 轉入新鮮培養基，再觀察 4 天</li>
+      <li>油類製劑每日輕搖；厭氧條件<strong>避免搖動</strong>（以維持厭氧條件）</li>
+      <li><strong>所有醫療器材</strong>（除標示「無菌具管路」者外）→ 宜採<strong>直接接種法</strong></li>
     </ul>
   </div>
 </div>
 
 <div class="sub-title clay">歷屆考題</div>
-<div class="q-block"><div class="q-header"><span class="q-year">111-2</span><span class="q-stem">硫醇乙酸鹽培養基 I 不適用於下列何菌株？</span><span class="q-arrow">▶</span></div><div class="q-body"><div class="q-opts">(A) 金黃色葡萄球菌<br>(B) 綠膿桿菌<br><span class="correct">✓ (C) 白色念珠菌（黴菌 → 用大豆乾酪素培養基）</span><br>(D) 產芽孢梭菌</div><div class="q-explanation">白色念珠菌（黴菌）需用<strong>大豆分解蛋白質乾酪素培養基</strong>。</div></div></div>
-<div class="q-block"><div class="q-header"><span class="q-year">111-1</span><span class="q-stem">硫醇乙酸鹽培養基 II 最適合用來培養？</span><span class="q-arrow">▶</span></div><div class="q-body"><div class="q-opts">(A) 金黃色葡萄球菌<br>(B) 綠膿桿菌<br><span class="correct">✓ (C) 產芽孢梭菌</span><br>(D) 枯草桿菌</div><div class="q-explanation">培養基 II 用於<strong>混濁或具黏性製劑</strong>的厭氧菌（產芽孢梭菌）。</div></div></div>
-<div class="q-block"><div class="q-header"><span class="q-year">110-1</span><span class="q-stem">除標示為無菌具管路醫療器材外，所有醫療器材進行無菌試驗，下列何者正確？</span><span class="q-arrow">▶</span></div><div class="q-body"><div class="q-opts">(A) 使用 0.45 μm 濾膜<br>(B) 使用 0.22 μm 濾膜<br>(C) 使用 PE 材質濾膜<br><span class="correct">✓ (D) 不適用微孔濾膜過濾法（→ 直接接種法）</span></div><div class="q-explanation">所有醫療器材（除「無菌具管路」外）應採直接接種法。</div></div></div>
-<div class="q-block"><div class="q-header"><span class="q-year">105-2</span><span class="q-stem">直接接種法應培養觀察幾天以上？</span><span class="q-arrow">▶</span></div><div class="q-body"><div class="q-opts">(A) 3<br>(B) 7<br><span class="correct">✓ (C) 14</span><br>(D) 21</div><div class="q-explanation">直接接種法須觀察<strong>14 日以上</strong>。</div></div></div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">111-2</span><span class="q-stem">無菌試驗使用之硫醇乙酸鹽培養基 I，不適用於下列何菌株進行培養基適用試驗？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="no">(A) 金黃色葡萄球菌</div><div data-ans="no">(B) 綠膿桿菌</div>
+      <div data-ans="yes">(C) 白色念珠菌</div><div data-ans="no">(D) 產芽孢梭菌</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">白色念珠菌為黴菌，應使用大豆分解蛋白質乾酪素培養基，而非硫醇乙酸鹽培養基 I。</div>
+  </div>
 </div>
-
-<!-- ═══ 16. 微粒物質 ═══ -->
+<div class="q-block">
+  <div class="q-header"><span class="q-year">111-1</span><span class="q-stem">依中華藥典無菌試驗法，硫醇乙酸鹽培養基 II 最適合用來培養下列何菌種？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="no">(A) 金黃色葡萄球菌</div><div data-ans="no">(B) 綠膿桿菌</div>
+      <div data-ans="yes">(C) 產芽孢梭菌</div><div data-ans="no">(D) 枯草桿菌</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">硫醇乙酸鹽培養基 II 專門用於培養產芽孢梭菌，適用混濁或具黏性製劑。</div>
+  </div>
+</div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">110-1</span><span class="q-stem">依中華藥典，除標示為無菌具管路醫療器材外，所有醫療器材進行無菌試驗檢查時，下列何者正確？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="no">(A) 使用孔徑 0.45 μm 濾膜</div><div data-ans="no">(B) 使用孔徑 0.22 μm 濾膜</div>
+      <div data-ans="no">(C) 使用 PE 材質濾膜</div><div data-ans="yes">(D) 不適用微孔濾膜過濾法</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">所有醫療器材（除「無菌具管路」外）宜採直接接種法，不適用微孔濾膜過濾法。</div>
+  </div>
+</div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">105-2</span><span class="q-stem">依中華藥典進行無菌試驗時，採用直接接種法應培養觀察幾天以上？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="no">(A) 3</div><div data-ans="no">(B) 7</div>
+      <div data-ans="yes">(C) 14</div><div data-ans="no">(D) 21</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">直接接種法須觀察 14 日以上。</div>
+  </div>
+</div>
+</div>
+<!-- ═══ 18. 微粒物質 ═══ -->
 <div class="section" id="particles">
 <div class="section-title"><span class="icon icon-clay">⬡</span>微粒物質檢查法</div>
-<div class="info-box clay" style="font-size:12px">微粒物質可能導致<strong>血栓與血管阻塞</strong>。優先使用<strong>光阻法</strong>；黏度高（乳劑/膠質/微脂體）或易生氣泡者 → 改用<strong>鏡檢法</strong>。</div>
+<div class="info-box clay" style="font-size:12px">微粒物質可能導致<strong>血栓與血管阻塞</strong>。優先使用<strong>光阻法</strong>；黏度高（乳劑/膠質/微脂體）或易生氣泡者 → 改用<strong>鏡檢法</strong>。檢品黏度過高可適當稀釋後再測定。</div>
 
-<div class="sub-title dusk">小體積注射劑（≤100 mL，per 容器）</div>
-<div class="table-wrap"><table>
-<thead><tr><th>方法</th><th>≥10 μm</th><th>≥25 μm</th></tr></thead>
-<tbody>
-<tr><td>光阻法</td><td>&lt; <num>6,000</num> 個</td><td>&lt; <num>600</num> 個</td></tr>
-<tr><td>鏡檢法</td><td>&lt; <num>3,000</num> 個（÷2）</td><td>&lt; <num>300</num> 個（÷2）</td></tr>
-</tbody></table></div>
+<div class="sub-title dusk">光阻微粒物質測計法</div>
+<div class="card card-dusk">
+  <ul>
+    <li>根據<strong>光阻原理</strong>，使用雷射光與偵測器系統</li>
+    <li>粒子通過光源與偵測器之間時，根據遮光程度推估粒徑</li>
+    <li>可測定粒徑範圍：<num>1–300 μm</num></li>
+    <li>使用前需校正；校正使用 <num>10–25 μm</num> 的圓球形微粒懸浮於無微粒水中（注意避免凝聚）</li>
+  </ul>
+</div>
 
-<div class="sub-title sage">大體積注射劑（&gt;100 mL，per mL）</div>
+<div class="sub-title mist">鏡檢微粒物質測計法</div>
+<div class="card card-mist">
+  <ul>
+    <li>使用<strong>雙眼顯微鏡、過濾裝置</strong>，收集微粒供檢查</li>
+    <li>目鏡與物鏡皆為 10×；<strong>總放大倍率 100 ± 10×</strong></li>
+    <li>目鏡測微計含：十字線分為 4 等份之大圓圈（圓盤觀察區）、透明及黑色 10 μm 及 25 μm 對照圓圈</li>
+    <li>校正後之長度計相對誤差<strong>不得超過 ±2%</strong></li>
+  </ul>
+</div>
+
+<div class="sub-title sage">微粒限量標準</div>
 <div class="table-wrap"><table>
-<thead><tr><th>方法</th><th>≥10 μm</th><th>≥25 μm</th></tr></thead>
+<thead><tr><th>劑型</th><th>方法</th><th>≥ 10 μm</th><th>≥ 25 μm</th><th>≥ 50 μm</th></tr></thead>
 <tbody>
-<tr><td>光阻法</td><td>&lt; <num>25</num> 個</td><td>&lt; <num>3</num> 個</td></tr>
-<tr><td>鏡檢法</td><td>&lt; <num>12</num> 個（÷2）</td><td>&lt; <num>2</num> 個（÷2）</td></tr>
+<tr><td rowspan="2"><strong>大體積注射劑</strong><br>(&gt;100 mL，per mL）</td><td>光阻法</td><td>&lt; <num>25</num> 個</td><td>&lt; <num>3</num> 個</td><td>—</td></tr>
+<tr><td>鏡檢法</td><td>&lt; <num>12</num> 個</td><td>&lt; <num>2</num> 個</td><td>—</td></tr>
+<tr><td rowspan="2"><strong>小體積注射劑</strong><br>(≤100 mL，per 容器）</td><td>光阻法</td><td>&lt; <num>6,000</num> 個</td><td>&lt; <num>600</num> 個</td><td>—</td></tr>
+<tr><td>鏡檢法</td><td>&lt; <num>3,000</num> 個</td><td>&lt; <num>300</num> 個</td><td>—</td></tr>
+<tr><td rowspan="2"><strong>眼用溶液劑</strong><br>(per mL）</td><td>光阻法</td><td>&lt; <num>50</num> 個</td><td>&lt; <num>5</num> 個</td><td>&lt; <num>2</num> 個</td></tr>
+<tr><td>鏡檢法</td><td>&lt; <num>50</num> 個</td><td>&lt; <num>5</num> 個</td><td>&lt; <num>2</num> 個</td></tr>
 </tbody></table></div>
-<div class="info-box mist" style="font-size:12px"><strong>規律：</strong>鏡檢法限值 = 光阻法 ÷ 2。大體積（per mL）標準最嚴格；眼用溶液劑（per mL）標準次之；小體積（per 容器）最寬。</div>
+<div class="info-box mist" style="font-size:12px">
+  <strong>規律：</strong>鏡檢法限值 = 光阻法 ÷ 2（眼用除外）。<br>
+  <strong>嚴格程度：</strong>大體積注射劑（per mL）最嚴格 → 眼用溶液劑次之 → 小體積注射劑（per 容器）最寬。
+</div>
 
 <div class="sub-title clay">歷屆考題</div>
-<div class="q-block"><div class="q-header"><span class="q-year">108-1</span><span class="q-stem">光阻法，容量 100 mL 以上注射劑，每 mL ≥10 μm 者，不得超過多少個？</span><span class="q-arrow">▶</span></div><div class="q-body"><div class="q-opts">(A) 5<br>(B) 10<br><span class="correct">✓ (C) 25</span><br>(D) 50</div><div class="q-explanation">大體積注射劑光阻法：≥10 μm → &lt;25 個/mL。</div></div></div>
-<div class="q-block"><div class="q-header"><span class="q-year">105-2</span><span class="q-stem">容量少於 100 mL，光阻法，per 容器：≥10 μm 不超過 a 個、≥25 μm 不超過 b 個，(a, b) 為？</span><span class="q-arrow">▶</span></div><div class="q-body"><div class="q-opts">(A) (25, 3)<br>(B) (100, 10)<br>(C) (1000, 100)<br><span class="correct">✓ (D) (6000, 600)</span></div><div class="q-explanation">小體積光阻法：≥10 μm &lt;6000；≥25 μm &lt;600。</div></div></div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">108-1</span><span class="q-stem">以光阻微粒測定法進行微粒物質檢查時，容量 100 mL 以上的注射劑，每 mL 等於或大於 10 μm 者，容許範圍不得超過多少個？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="no">(A) 5</div><div data-ans="no">(B) 10</div>
+      <div data-ans="yes">(C) 25</div><div data-ans="no">(D) 50</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">大體積注射劑（≥100 mL）使用光阻法：≥10 μm → &lt;25 個/mL。</div>
+  </div>
 </div>
-<!-- ═══ 17. 潔淨室 ═══ -->
+<div class="q-block">
+  <div class="q-header"><span class="q-year">106-2</span><span class="q-stem">容量 100 mL 以下之注射劑，以鏡檢微粒測計法進行檢查時，以每容器計算，等於或大於 25 μm 者，依中華藥典規定不得超過多少個？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="no">(A) 30</div><div data-ans="no">(B) 60</div>
+      <div data-ans="no">(C) 600</div><div data-ans="yes">(D) 300（鏡檢法）</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">小體積注射劑鏡檢法：≥25 μm → &lt;300 個/容器（光阻法為 600，鏡檢法 ÷2 = 300）。</div>
+  </div>
+</div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">105-2</span><span class="q-stem">注射劑容量少於 100 mL 者，以每容器計算，大於或等於 10 μm 者不超過 a 個，大於或等於 25 μm 者不超過 b 個，(a, b) 為多少？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="no">(A) (25, 3)</div><div data-ans="no">(B) (100, 10)</div>
+      <div data-ans="no">(C) (1000, 100)</div><div data-ans="yes">(D) (6000, 600)</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">小體積注射劑光阻法（優先使用）：≥10 μm → &lt;6000；≥25 μm → &lt;600（per 容器）。</div>
+  </div>
+</div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">105-2</span><span class="q-stem">依中華藥典，注射劑進行升血壓物質檢驗時，是採用何種動物進行測試？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="no">(A) 老鼠</div><div data-ans="no">(B) 兔子</div>
+      <div data-ans="yes">(C) 狗（或貓）</div><div data-ans="no">(D) 猴子</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">升血壓試驗 → 試驗動物：<strong>貓或狗</strong>；試劑：Adrenaline（腎上腺素）。降血壓試驗 → 試驗動物：<strong>貓</strong>；試劑：Histamine（組織胺）。</div>
+  </div>
+</div>
+</div>
+<!-- ═══ 19. 潔淨室 ═══ -->
 <div class="section" id="cleanroom">
-<div class="section-title"><span class="icon icon-mist">⬡</span>潔淨室 &amp; HEPA</div>
+<div class="section-title"><span class="icon icon-mist">⬡</span>調配場所 &amp; 潔淨室</div>
 <div class="card card-mist">
   <div class="sub-title mist">紫外光滅菌</div>
   <div class="kv-list">
-    <div class="kv-row"><span class="kv-label">波長</span><span class="kv-val"><num>254 nm</num>（= 2537 Å）；UV 200–380 nm</span></div>
-    <div class="kv-row"><span class="kv-label">光源</span><span class="kv-val">汞蒸氣燈；適用乾淨室 &amp; 層流櫃</span></div>
-    <div class="kv-row"><span class="kv-label">耐受力</span><span class="kv-val"><strong>黴菌芽胞 &gt; 細菌芽胞</strong></span></div>
+    <div class="kv-row"><span class="kv-label">原理</span><span class="kv-val">利用細胞內<strong>核酸吸收紫外光</strong>之特性，達到滅菌效果</span></div>
+    <div class="kv-row"><span class="kv-label">波長</span><span class="kv-val"><num>254 nm</num>（= <num>2537 Å</num>）；UV 範圍：200–380 nm</span></div>
+    <div class="kv-row"><span class="kv-label">光源</span><span class="kv-label2">汞蒸氣燈；可用於乾淨室內及平行式層流櫃</span></div>
+    <div class="kv-row"><span class="kv-label">耐受力</span><span class="kv-val"><strong>黴菌芽胞 &gt; 細菌芽胞</strong>（黴菌芽胞更難用 UV 殺死）</span></div>
   </div>
-</div>
-<div class="sub-title dusk">潔淨室等級對照</div>
-<div class="table-wrap"><table>
-<thead><tr><th>Class（美）</th><th>≥0.5μm / ft³（美）</th><th>≥0.5μm / m³（歐）</th><th>Grade</th><th>ISO</th></tr></thead>
-<tbody>
-<tr style="background:var(--sage-l)"><td><strong>100</strong></td><td>100</td><td>3,500</td><td><strong>A、B 級</strong></td><td><strong>ISO 5</strong></td></tr>
-<tr><td>1,000</td><td>1,000</td><td>35,000</td><td>—</td><td>ISO 6</td></tr>
-<tr><td>10,000</td><td>10,000</td><td>350,000</td><td>C 級</td><td>ISO 7</td></tr>
-<tr><td>100,000</td><td>100,000</td><td>3,500,000</td><td>D 級</td><td>ISO 8</td></tr>
-</tbody></table></div>
-<div class="info-box mist" style="font-size:12px">
-  <strong>記憶法：</strong>Class 10ⁿ = ISO (n+3)；例 Class 100 = 10² → ISO 5<br>
-  「<strong>5A 和牛 100 元</strong>」→ ISO 5 = Grade A = Class 100 ｜ 「<strong>七夕花一萬</strong>」→ ISO 7 = Grade C = Class 10,000<br>
-  無菌調劑：Class 100；化療藥物：<strong>負壓</strong>
-</div>
-<div class="sub-title sage">HEPA</div>
-<div class="card card-sage">
-  <div class="kv-list">
-    <div class="kv-row"><span class="kv-label">過濾效率</span><span class="kv-val">≥ <num>0.3 μm</num> 粒子 <strong>99.997%</strong> <span class="exam-star">★</span></span></div>
-    <div class="kv-row"><span class="kv-label">流速</span><span class="kv-val"><num>100 ± 20</num> fpm（80–120 ft/min）</span></div>
-    <div class="kv-row"><span class="kv-label">檢測</span><span class="kv-val">DOP 煙霧檢測法（Dioctyl phthalate smoke test）</span></div>
-  </div>
-</div>
-<div class="sub-title clay">歷屆考題</div>
-<div class="q-block"><div class="q-header"><span class="q-year">111-2</span><span class="q-stem">關於紫外光滅菌法，下列何者錯誤？</span><span class="q-arrow">▶</span></div><div class="q-body"><div class="q-opts">(A) 最常用波長 2537 Å ✓<br><span class="correct">✓ (B) 細菌芽胞耐受力比黴菌芽胞強（錯：黴菌 &gt; 細菌）</span><br>(C) 可用於乾淨室及層流櫃 ✓<br>(D) 核酸吸收紫外光 ✓</div><div class="q-explanation">耐受順序：黴菌芽胞 &gt; 細菌芽胞。</div></div></div>
-<div class="q-block"><div class="q-header"><span class="q-year">112-1</span><span class="q-stem">有關無菌操作之敘述，下列何者正確？</span><span class="q-arrow">▶</span></div><div class="q-body"><div class="q-opts"><span class="correct">✓ (A) HEPA 可過濾至少 99.99% 之 ≥0.3 μm 粒子</span><br>(B) 無菌試驗應在 Class 1000（錯：Class 100）<br>(C) 層流設備流速 70 fpm（錯：100±20）<br>(D) Class 1000 表示小於 0.5 μm 不超過 1000 粒（錯：≥0.5 μm）</div><div class="q-explanation">HEPA 過濾效率 ≥99.997%（≥0.3μm）；無菌試驗需 Class 100。</div></div></div>
 </div>
 
-<!-- ═══ 18. 溶媒 ═══ -->
+<div class="sub-title dusk">清潔室（潔淨區）標準</div>
+<div class="table-wrap"><table>
+<thead><tr><th>Class（美）</th><th>≥0.5μm 粒子 / ft³</th><th>≥0.5μm 粒子 / m³（歐）</th><th>Grade（歐）</th><th>ISO</th><th>5μm↑（美）</th></tr></thead>
+<tbody>
+<tr style="background:var(--sage-l)"><td><strong>100</strong></td><td>100</td><td>3,500</td><td><strong>A、B 級</strong></td><td><strong>ISO 5</strong></td><td>—</td></tr>
+<tr><td>1,000</td><td>1,000</td><td>35,000</td><td>—</td><td>ISO 6</td><td><num>7</num></td></tr>
+<tr><td>10,000</td><td>10,000</td><td>350,000</td><td>C 級</td><td>ISO 7</td><td><num>70</num></td></tr>
+<tr><td>100,000</td><td>100,000</td><td>3,500,000</td><td>D 級</td><td>ISO 8</td><td><num>700</num></td></tr>
+</tbody></table></div>
+<div class="info-box mist" style="font-size:12px">
+  <strong>記憶法：</strong>Class 10ⁿ = ISO (n+3)；例：Class 100 = 10² → 2+3 = ISO 5<br>
+  「<strong>5A 和牛 100 元</strong>」→ ISO 5 = Grade A = Class 100<br>
+  「<strong>七夕花一萬</strong>」→ ISO 7 = Grade C = Class 10,000<br>
+  <strong>清潔室內部保持正壓</strong>（防外面汙染進入）；<strong>化療藥物 / 有毒藥品 → 用負壓</strong>
+</div>
+
+<div class="sub-title dusk">實驗室各區域</div>
+<div class="card card-dusk">
+  <div class="kv-list">
+    <div class="kv-row"><span class="kv-label">前室</span><span class="kv-val">ISO 8（Class 100,000）</span></div>
+    <div class="kv-row"><span class="kv-label">清潔室</span><span class="kv-val">ISO 7（Class 10,000）</span></div>
+    <div class="kv-row"><span class="kv-label">層流操作台</span><span class="kv-val">ISO 5（Class 100）— 越接近操作台要求越嚴格</span></div>
+  </div>
+</div>
+
+<div class="sub-title sage">HEPA 高效率空氣過濾網</div>
+<div class="card card-sage">
+  <div class="kv-list">
+    <div class="kv-row"><span class="kv-label">過濾效率</span><span class="kv-val">≥ <num>0.3 μm</num> 以上粒子可高達 <strong>99.997%</strong> <span class="exam-star">★</span></span></div>
+    <div class="kv-row"><span class="kv-label">流速</span><span class="kv-val"><num>100 ± 20 fpm</num>（80–120 feet per minute）</span></div>
+    <div class="kv-row"><span class="kv-label">檢測方式</span><span class="kv-val">DOP 煙霧檢測法（Dioctyl phthalate smoke test）</span></div>
+  </div>
+</div>
+
+<div class="sub-title clay">歷屆考題</div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">111-2</span><span class="q-stem">關於紫外光滅菌法之敘述，下列何者錯誤？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="no">(A) 最常使用的波長為 2,537 Å</div>
+      <div data-ans="yes">(B) 細菌芽胞對紫外線的耐受力比黴菌芽胞強</div>
+      <div data-ans="no">(C) 可用於乾淨的室內及平行式層流櫃</div>
+      <div data-ans="no">(D) 細胞內的核酸能夠吸收紫外光</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">(B) 錯誤。耐受力排序：黴菌芽胞 &gt; 細菌芽胞，非細菌芽胞更強。</div>
+  </div>
+</div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">109-2</span><span class="q-stem">依中華藥典規定，無菌試驗應施行在何等級之潔淨環境下進行？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="yes">(A) Class 100</div><div data-ans="no">(B) Class 1,000</div>
+      <div data-ans="no">(C) Class 10,000</div><div data-ans="no">(D) Class 100,000</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">無菌試驗應在 Class 100（ISO 5，Grade A/B）環境下進行。</div>
+  </div>
+</div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">109-1</span><span class="q-stem">下列何者為 Class 100 之定義？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="no">(A) 每立方英呎空間中不小於 5 μm 的總粒子數不可超過 100 粒</div>
+      <div data-ans="no">(B) 每立方公尺空間中不小於 0.5 μm 的總粒子數不可超過 100 粒</div>
+      <div data-ans="no">(C) 每立方公尺空間中不大於 0.5 μm 的總粒子數不可超過 100 粒</div>
+      <div data-ans="yes">(D) 每立方英呎空間中不小於 0.5 μm 的總粒子數不可超過 100 粒</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">Class 100 為美國標準，單位是 ft³（立方英呎），≥0.5 μm 粒子 ≤100 顆。</div>
+  </div>
+</div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">112-1</span><span class="q-stem">有關無菌操作之敘述，下列何者正確？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="yes">(A) 使用之 HEPA filter 可過濾至少 99.99% 之粒徑大於或等於 0.3 μm 粒子</div>
+      <div data-ans="no">(B) 進行無菌試驗時應在 Class 1,000 環境下（錯：Class 100）</div>
+      <div data-ans="no">(C) 層流設備流速應維持在 70 fpm ±20%（錯：100±20）</div>
+      <div data-ans="no">(D) Class 1,000 表示每立方英呎中小於 0.5 μm 不超過 1,000（錯：應為 ≥0.5 μm）</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">(A) 正確：HEPA 過濾效率 ≥99.997%（≥0.3 μm），題目說 99.99% 為較低值仍正確。無菌試驗需 Class 100；層流流速 100±20 fpm。</div>
+  </div>
+</div>
+</div>
+<!-- ═══ 20. 溶媒 ═══ -->
 <div class="section" id="vehicle">
 <div class="section-title"><span class="icon icon-sand">⬡</span>溶媒分類</div>
 <div class="table-wrap"><table>
 <thead><tr><th></th><th>水溶性溶媒</th><th>油性（非水溶性）溶媒</th></tr></thead>
 <tbody>
-<tr><td>功用</td><td>助溶、降低水解速率</td><td>助溶油溶性藥品、延長作用時間</td></tr>
-<tr><td>給藥</td><td>靜脈注射</td><td><strong>肌肉注射</strong>（靜脈 → 肺栓塞）</td></tr>
-<tr><td>常用</td><td>水、乙醇、丙醇、甘油、PEG、NaCl</td><td>芝麻油、玉米油、棉籽油、花生油</td></tr>
-<tr><td>禁用</td><td>—</td><td><strong>礦物油</strong>（無法被人體吸收）</td></tr>
+<tr><td>功用</td><td>助溶（增加溶解度）、降低藥品水解速率</td><td>助溶（增加油溶性藥品溶解度）、延長藥品作用時間</td></tr>
+<tr><td>給藥方式</td><td>靜脈注射</td><td><strong>肌肉注射</strong>（油性藥靜脈注射易造成肺栓塞）</td></tr>
+<tr><td>常用溶媒</td><td>水、乙醇、丙醇、甘油、PEG、NaCl（調節等張）</td><td>胡麻油（芝麻油）、玉米油、棉籽油、花生油、蓖麻油、橄欖油</td></tr>
+<tr><td>禁用</td><td>—</td><td><strong>礦物油（Mineral oil）</strong>：無法被人體吸收，且可能有腹瀉作用</td></tr>
+<tr><td>基本要求</td><td>—</td><td>無刺激、無毒、無過敏、<strong>本身無藥理活性</strong>；沸點須夠高可加熱滅菌；冷卻至 10°C 時仍須為澄明液體</td></tr>
 </tbody></table></div>
-<div class="info-box sand" style="font-size:12px">
-  <strong>油品規格：</strong>皂化價 185–200；碘價 79–141；10°C 時仍為澄明液體<br>
-  <strong>記法：</strong>帶 cy → 棉籽；帶 ca → 蓖麻；Di/Pro → 花生；其餘多胡麻油
-</div>
-<div class="sub-title dusk">常見油溶性注射藥品</div>
-<div class="table-wrap"><table>
-<thead><tr><th>藥品</th><th>溶媒</th><th>類別</th></tr></thead>
-<tbody>
-<tr><td><drug>Dimercaprol</drug></td><td>花生油</td><td>解毒劑</td></tr>
-<tr><td><drug>Progesterone in oil</drug></td><td>胡麻油 / 花生油</td><td>黃體素</td></tr>
-<tr><td><drug>Hydroxyprogesterone caproate</drug></td><td>蓖麻油</td><td>黃體素</td></tr>
-<tr><td><drug>Estradiol cypionate</drug></td><td>棉籽油</td><td>雌激素</td></tr>
-<tr><td><drug>Testosterone cypionate</drug></td><td>棉籽油</td><td>雄性素</td></tr>
-<tr><td><drug>Haloperidol decanoate</drug></td><td>胡麻油</td><td>抗精神病</td></tr>
-</tbody></table></div>
-<div class="sub-title clay">歷屆考題</div>
-<div class="q-block"><div class="q-header"><span class="q-year">111-2</span><span class="q-stem">有關全油性媒液作為注射劑之敘述，下列何者錯誤？</span><span class="q-arrow">▶</span></div><div class="q-body"><div class="q-opts"><span class="correct">✓ (A) 可作為靜脈注射（錯：只能肌肉注射，IV → 肺栓塞）</span><br>(B) 可使用玉米油 ✓<br>(C) 必須符合法定碘價和皂化價 ✓<br>(D) 10°C 時為透明 ✓</div><div class="q-explanation">全油性注射劑禁用 IV，否則可能造成油栓塞。</div></div></div>
-<div class="q-block"><div class="q-header"><span class="q-year">110-1</span><span class="q-stem">依中華藥典，以脂肪油作注射溶媒時，皂化價及碘價分別為何？</span><span class="q-arrow">▶</span></div><div class="q-body"><div class="q-opts"><span class="correct">✓ (A) 皂化價 185–200；碘價 79–141</span><br>(B) 碘價在前（順序錯）<br>(C)(D) 數字不符</div><div class="q-explanation">注意題目先問皂化價 → 選 (A)。</div></div></div>
+
+<div class="sub-title sand">非水溶性溶媒（中華藥典）規格</div>
+<div class="card card-sand">
+  <div class="kv-list">
+    <div class="kv-row"><span class="kv-label">皂化價</span><span class="kv-val"><num>185–200</num>（長到 185 看造化）</span></div>
+    <div class="kv-row"><span class="kv-label">碘價</span><span class="kv-val"><num>79–141</num>（脂肪酸酯碘價 ≤140；動物脂肪碘價 ≤90）</span></div>
+    <div class="kv-row"><span class="kv-label">不皂化物</span><span class="kv-val">不得超過 1.5%</span></div>
+    <div class="kv-row"><span class="kv-label">酸價</span><span class="kv-val">不得超過 0.2</span></div>
+    <div class="kv-row"><span class="kv-label">過氧化價</span><span class="kv-val">不得超過 5.0</span></div>
+    <div class="kv-row"><span class="kv-label">水分</span><span class="kv-val">不得超過 0.1%</span></div>
+  </div>
+  <div class="info-box sand" style="margin-top:10px;font-size:12px">不得含有礦物油或石蠟（paraffin），因為這些物質不被身體組織吸收。</div>
 </div>
 
-<!-- ═══ 19. 抗氧化劑 ═══ -->
+<div class="sub-title dusk">常見油溶性注射藥品</div>
+<div class="table-wrap"><table>
+<thead><tr><th>藥品</th><th>使用植物油</th><th>功用類別</th></tr></thead>
+<tbody>
+<tr><td><drug>Dimercaprol</drug></td><td><strong>花生油</strong>（Peanut oil）</td><td>解毒劑（砷、鉛中毒）</td></tr>
+<tr><td><drug>Progesterone in oil</drug></td><td>胡麻油（Sesame oil）or <strong>花生油</strong></td><td>黃體素（progestin）</td></tr>
+<tr><td><drug>Diethylstilbestrol</drug></td><td>—</td><td>雌激素（estrogen）</td></tr>
+<tr><td><drug>Hydroxyprogesterone caproate</drug></td><td><strong>蓖麻油</strong>（Castor oil）</td><td>黃體素（progestin）</td></tr>
+<tr><td><drug>Estradiol valerate</drug></td><td>胡麻油（Sesame oil）</td><td>雌激素（estrogen）</td></tr>
+<tr><td><drug>Estradiol cypionate</drug></td><td><strong>棉籽油</strong>（Cotton seed oil）</td><td>雌激素（estrogen）</td></tr>
+<tr><td><drug>Testosterone cypionate</drug></td><td><strong>棉籽油</strong>（Cotton seed oil）</td><td>雄性素（androgen）</td></tr>
+<tr><td><drug>Fluphenazine enanthate</drug></td><td>胡麻油（Sesame oil）</td><td>抗精神病（antipsychotic）</td></tr>
+<tr><td><drug>Testosterone enanthate</drug></td><td>胡麻油（Sesame oil）</td><td>雄性素（androgen）</td></tr>
+<tr><td><drug>Haloperidol decanoate</drug></td><td>胡麻油或芝麻油（Sesame oil）</td><td>抗精神病（antipsychotic）</td></tr>
+</tbody></table></div>
+<div class="info-box sand" style="font-size:12px">
+  <strong>記法：</strong>帶 cy（cypionate）→ 棉籽；帶 ca（caproate）→ 蓖麻；Di/Pro → 花生；其他多用<strong>胡麻油</strong>。
+</div>
+
+<div class="sub-title clay">歷屆考題</div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">112-2</span><span class="q-stem">有關注射劑選用非水性媒液特性之敘述，下列何者錯誤？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="no">(A) 沸點必須夠高，而得以進行加熱滅菌</div>
+      <div data-ans="no">(B) 玉米油、棉子油、花生油和芝麻油是注射劑常使用之不揮發性油</div>
+      <div data-ans="yes">(C) 選用的媒液可具藥理活性，以增強藥效</div>
+      <div data-ans="no">(D) 此類油性注射劑供肌肉注射</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">(C) 錯誤。選用媒液應<strong>不具藥理活性</strong>，以避免干擾藥物作用，不能為增效目的選用。</div>
+  </div>
+</div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">111-2</span><span class="q-stem">有關全油性媒液作為注射劑（oleaginous injection）之敘述，下列何者錯誤？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="yes">(A) 可作為靜脈注射</div>
+      <div data-ans="no">(B) 可使用玉米油作為媒液</div>
+      <div data-ans="no">(C) 所使用之油品必須符合法定碘價和皂化價</div>
+      <div data-ans="no">(D) 必須在 10°C 時仍為澄明</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">(A) 錯誤。油性注射劑禁用於靜脈注射，否則易造成肺栓塞。</div>
+  </div>
+</div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">110-1</span><span class="q-stem">依中華藥典，以脂肪油作為注射之溶媒時，皂化價及碘價分別為何？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="yes">(A) 185–200，79–141</div>
+      <div data-ans="no">(B) 79–141，185–200（順序錯）</div>
+      <div data-ans="no">(C) 160–225，69–151</div>
+      <div data-ans="no">(D) 69–151，160–225</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">依中華藥典：皂化價 185–200，碘價 79–141。注意題目先問皂化價，選 (A)。</div>
+  </div>
+</div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">108-2</span><span class="q-stem">下列何種 nonaqueous vehicle 最不適合使用於注射劑？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="no">(A) alcohol</div><div data-ans="no">(B) glycerin</div>
+      <div data-ans="yes">(C) mineral oil</div><div data-ans="no">(D) castor oil</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">礦物油（mineral oil）無法被人體吸收且具刺激性，不可用於注射劑。</div>
+  </div>
+</div>
+</div>
+
+<!-- ═══ 21. 抗氧化劑 ═══ -->
 <div class="section" id="antioxidant">
 <div class="section-title"><span class="icon icon-rose">⬡</span>抗氧化劑 Antioxidants</div>
 <div class="card-grid">
   <div class="card card-dusk">
-    <div class="sub-title dusk">水溶性</div>
+    <div class="sub-title dusk">水溶性抗氧化劑</div>
     <div class="table-wrap" style="margin:0"><table>
-    <thead><tr><th>藥品</th><th>適用 pH</th></tr></thead>
+    <thead><tr><th>成分名稱</th><th>化學式</th><th>濃度上限</th><th>適用 pH</th></tr></thead>
     <tbody>
-    <tr><td><drug>Sodium metabisulfite</drug></td><td>酸性（字最多→酸民幹話最多）</td></tr>
-    <tr><td><drug>Sodium bisulfite</drug></td><td>中性（bi=二，合兩邊）</td></tr>
-    <tr><td><drug>Sodium sulfite</drug></td><td>鹼性（前面啥都沒有）</td></tr>
-    <tr><td><drug>Ascorbic acid（Vit C）</drug></td><td>通用</td></tr>
+    <tr style="background:#e8f4e8"><td><drug>Sodium metabisulfite</drug><br><small>偏亞硫酸鈉・焦亞硫酸鈉</small></td><td style="font-family:var(--mono);font-size:11px">Na₂S₂O₅</td><td><strong>0.2%</strong></td><td><span style="background:#fde8e8;padding:1px 6px;border-radius:4px;font-size:11px">酸性</span></td></tr>
+    <tr><td><drug>Sodium bisulfite</drug> <span style="font-size:11px;color:var(--text-muted)">鐘擺 0.15%</span><br><small>亞硫酸氫鈉</small></td><td style="font-family:var(--mono);font-size:11px">NaHSO₃</td><td>0.15%</td><td><span style="background:#e8f0e8;padding:1px 6px;border-radius:4px;font-size:11px">中性</span></td></tr>
+    <tr><td><drug>Sodium sulfite</drug><br><small>亞硫酸鈉</small></td><td style="font-family:var(--mono);font-size:11px">Na₂SO₃</td><td>—</td><td><span style="background:#e8e8f4;padding:1px 6px;border-radius:4px;font-size:11px">鹼性</span></td></tr>
+    <tr style="background:#fff8e0"><td><drug>Ascorbic acid（Vit C）</drug><br><small>抗壞血酸（維生素 C）C 一割</small></td><td>—</td><td><strong style="color:var(--clay-d)">0.1%</strong></td><td>通用</td></tr>
+    </tbody></table></div>
+    <div class="info-box dusk" style="margin-top:8px;font-size:12px">
+      <strong>記：</strong>metabisulfite 字最多 → 酸民幹話最多（酸性）；bisulfite（bi=二，有酸有鹼合起來）→ 中性；sulfite 前面啥都沒有想成減不到東西（鹼性）<br>
+      <strong>維他命：</strong>B、C 水溶；A、D、E、K 油溶
+    </div>
+  </div>
+  <div class="card" style="border-left:3px solid #c97a3d;background:var(--surface)">
+    <div class="sub-title" style="color:#7a4a1a">油溶性抗氧化劑（BABE）</div>
+    <div class="table-wrap" style="margin:0"><table>
+    <thead><tr><th>成分名稱</th><th>中文</th><th>濃度上限</th><th>記憶</th></tr></thead>
+    <tbody>
+    <tr style="background:#fff8e0"><td><drug>α-Tocopherol（Vit E）</drug></td><td>α-生育酚（維生素 E）</td><td><strong style="color:var(--clay-d)">0.5%</strong> <span class="exam-star">E第五字母</span></td><td>BABE 的 E</td></tr>
+    <tr><td><drug>Butylhydroxy anisole（BHA）</drug></td><td>丁基羥基甲氧苯</td><td><strong style="color:var(--clay-d)">0.02%</strong></td><td>BABE 的 BA</td></tr>
+    <tr><td><drug>Butylhydroxy toluene（BHT）</drug></td><td>二丁基羥基甲苯</td><td><strong style="color:var(--clay-d)">0.02%</strong></td><td>BABE 的 B</td></tr>
+    <tr><td><drug>Ascorbyl palmitate</drug></td><td>抗壞血酸棕櫚酸酯</td><td>—</td><td>BABE 的 A</td></tr>
     </tbody></table></div>
   </div>
-  <div class="card card-rose">
-    <div class="sub-title rose">油溶性 BABE</div>
-    <ul>
-      <li><drug>α-Tocopherol（Vit E）</drug></li>
-      <li><drug>BHA（Butylhydroxy anisole）</drug></li>
-      <li><drug>BHT（Butylhydroxy toluene）</drug></li>
-      <li><drug>Ascorbyl palmitate</drug></li>
-    </ul>
-    <div class="info-box rose" style="margin-top:8px;font-size:12px">記：B+HA + B+HT + E + A = <strong>BABE</strong></div>
+</div>
+<div class="sub-title clay">歷屆考題</div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">110-2</span><span class="q-stem">腎上腺素注射液加入 sodium bisulfite 之主要目的為何？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="no">(A) 防腐作用</div><div data-ans="no">(B) 防止水解</div>
+      <div data-ans="yes">(C) 防止氧化</div><div data-ans="no">(D) 緩衝劑</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">Sodium bisulfite 為水溶性抗氧化劑，常用於防止腎上腺素氧化失效。</div>
+  </div>
+</div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">110-1</span><span class="q-stem">注射劑中常添加 ascorbic acid 之主要作用為何？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="no">(A) 保存劑</div><div data-ans="yes">(B) 抗氧化劑</div>
+      <div data-ans="no">(C) 螯合劑</div><div data-ans="no">(D) 緩衝劑</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">Ascorbic acid（維他命 C）為水溶性抗氧化劑。</div>
   </div>
 </div>
 </div>
 
-<!-- ═══ 20. 防腐劑 ═══ -->
+<!-- ═══ 22. 防腐劑 ═══ -->
 <div class="section" id="preservative">
 <div class="section-title"><span class="icon icon-clay">⬡</span>防腐劑 Preservatives</div>
 <div class="table-wrap"><table>
-<thead><tr><th>藥品</th><th>濃度 (%)</th><th>記憶</th></tr></thead>
+<thead><tr><th>藥品</th><th>中文名稱</th><th>濃度 (%)</th><th>備註</th></tr></thead>
 <tbody>
-<tr style="background:var(--clay-l)"><td><drug>Benzyl alcohol</drug></td><td><strong>2</strong></td><td>唯一整數，最高</td></tr>
-<tr><td><drug>Chlorobutanol</drug></td><td>0.5</td><td>3+2=5 → 0.5</td></tr>
-<tr><td><drug>Phenol</drug></td><td>0.5</td><td>Ph 音近 five</td></tr>
-<tr><td><drug>Phenylethyl alcohol</drug></td><td>0.5</td><td>同上</td></tr>
-<tr><td><drug>Cresol</drug></td><td>0.4</td><td>3+1=4 → 0.4</td></tr>
-<tr><td><drug>Sulphur dioxide（SO₂）</drug></td><td>0.2</td><td>O₂ 多一點 → 0.2；兼抗氧化劑</td></tr>
-<tr><td><drug>Methylparaben</drug></td><td>0.1</td><td>b 切一半 = 0.1</td></tr>
-<tr><td><drug>Propylparaben</drug></td><td>0.05</td><td>pro → 剖半</td></tr>
-<tr><td><drug>Butylparaben</drug></td><td>0.01–0.02</td><td>碳鏈最長，濃度最低</td></tr>
-<tr><td><drug>Benzalkonium chloride</drug></td><td>0.01</td><td>字最長藥效最強；陽離子介面活性劑</td></tr>
-<tr><td><drug>Thimerosal</drug></td><td>0.01</td><td></td></tr>
-<tr style="background:var(--rose-l)"><td><drug>Phenylmercuric nitrate</drug></td><td>0.002–0.004</td><td>最低！</td></tr>
+<tr style="background:#fde8e8"><td><drug>Benzyl alcohol</drug></td><td>苯甲醇</td><td><strong style="color:#c00;font-size:15px">2</strong></td><td>β 就是 2；新生兒禁用（gasping syndrome）</td></tr>
+<tr style="background:#fff8e0"><td><drug>Chlorobutanol</drug></td><td>氯丁醇</td><td><strong>0.5</strong></td><td>3+2=5；不能高溫高壓滅菌以免分解，久置會分解出 HCl 使 pH 下降</td></tr>
+<tr style="background:#fff8e0"><td><drug>Phenol</drug></td><td>酚</td><td><strong>0.5</strong></td><td>Ph 發的音就是 five</td></tr>
+<tr style="background:#fff8e0"><td><drug>Phenylethyl alcohol</drug></td><td>苯乙醇</td><td><strong>0.5</strong></td><td>Ph 發的音就是 five</td></tr>
+<tr style="background:#fff8e0"><td><drug>Cresol</drug></td><td>煤餾油酚（甲酚）</td><td><strong>0.4</strong></td><td>有四字；3+1=4</td></tr>
+<tr style="background:#fff3cd"><td><drug>Sulphur dioxide（SO₂）</drug> ☆</td><td>二氧化硫</td><td><strong>0.2</strong></td><td>O₂ 中間加一點；<strong>國考考很多次</strong>；兼具防腐劑 &amp; 抗氧化劑</td></tr>
+<tr><td><drug>Methylparaben</drug><br><small>(Methyl p-hydroxybenzoate)</small></td><td>對羥基苯甲酸甲酯</td><td>0.1</td><td>b 切一半 = 0.1；1C</td></tr>
+<tr><td><drug>Propylparaben</drug></td><td>對羥基苯甲酸丙酯</td><td>0.05</td><td>Pro 想成剖半 = 0.05；3C</td></tr>
+<tr style="background:#e8f4e8"><td><drug>Butylparaben</drug></td><td>對羥基苯甲酸丁酯</td><td>0.01–0.02</td><td>4C；跟下面幾個一起記</td></tr>
+<tr style="background:#e8f4e8"><td><drug>Benzalkonium chloride</drug></td><td>氯化苯甲烴銨</td><td>0.01</td><td>字最長，藥效最強，濃度一點點就可以；陽離子型介面活性劑，可產生殺菌、抗感染效果</td></tr>
+<tr style="background:#e8f4e8"><td><drug>Thimerosal</drug></td><td>硫汞</td><td>0.01</td><td>眼用的話用於 cefazolin；0.01</td></tr>
+<tr style="background:#f4e8f4"><td><drug>Phenylmercuric nitrate</drug></td><td>硝酸苯基汞</td><td><strong>0.002–0.004</strong></td><td>比常態濃度更小；最低！有此選項優先選</td></tr>
 </tbody></table></div>
+<div class="info-box clay" style="font-size:12px">
+  <strong>粉色底（0.5）：</strong>Chlorobutanol、Phenol、Phenylethyl alcohol — 歷年考過<br>
+  <strong>Paraben 系列：</strong>碳鏈越長（C 數越多）所需濃度越低；前面的碳越多使用濃度越低<br>
+  <strong>多數防腐劑 0.幾%</strong>，唯 Benzyl alcohol 例外（整數 2%）<br>
+  <strong>SO₂ 二氧化硫：</strong>可作為防腐劑與抗氧化劑
+</div>
 <div class="sub-title clay">歷屆考題</div>
-<div class="q-block"><div class="q-header"><span class="q-year">111-1</span><span class="q-stem">眼用溶液中「氯化苯甲羥銨」之添加濃度，下列何者最適當？</span><span class="q-arrow">▶</span></div><div class="q-body"><div class="q-opts">(A) 0.001%<br><span class="correct">✓ (B) 0.01%</span><br>(C) 0.1%<br>(D) 1.0%</div><div class="q-explanation">Benzalkonium chloride 法定濃度 <strong>0.01%</strong>。</div></div></div>
-<div class="q-block"><div class="q-header"><span class="q-year">109-2</span><span class="q-stem">注射劑中添加 sulfur dioxide 為抗氧化劑時，含量上限為？</span><span class="q-arrow">▶</span></div><div class="q-body"><div class="q-opts">(A) 0.01%<br>(B) 0.1%<br><span class="correct">✓ (C) 0.2%</span><br>(D) 0.5%</div><div class="q-explanation">SO₂ 兼具防腐劑 &amp; 抗氧化劑功能，上限 <strong>0.2%</strong>。</div></div></div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">113-1</span><span class="q-stem">可用於眼用溶液之法定抑菌劑名稱及濃度之敘述，下列何者正確？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="no">(A) 0.05% chlorobutanol（錯：應為 0.5%）</div>
+      <div data-ans="yes">(B) 0.5% phenylethyl alcohol</div>
+      <div data-ans="no">(C) 0.01% phenylmercuric nitrate（錯：應為 0.002%）</div>
+      <div data-ans="no">(D) 0.001% benzalkonium chloride（錯：應為 0.01%）</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">(B) 正確。phenylethyl alcohol 眼用製劑法定濃度為 0.5%。</div>
+  </div>
+</div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">111-1</span><span class="q-stem">眼用溶液中「氯化苯甲羥銨」之添加濃度，下列何者最適當？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="no">(A) 0.001%</div><div data-ans="yes">(B) 0.01%</div>
+      <div data-ans="no">(C) 0.1%</div><div data-ans="no">(D) 1.0%</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">Benzalkonium chloride（氯化苯甲羥銨）法定濃度為 0.01%。</div>
+  </div>
+</div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">112-1</span><span class="q-stem">下列何者為最常用的 antifungal preservative？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="yes">(A) butylparaben</div><div data-ans="no">(B) monothioglycerol</div>
+      <div data-ans="no">(C) butylated hydroxyanisole</div><div data-ans="no">(D) sodium formaldehyde</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">butylparaben（對羥基苯甲酸丁酯）屬於 paraben 類，常用於抗黴菌保存。monothioglycerol 和 BHA 為抗氧化劑。</div>
+  </div>
+</div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">107-1</span><span class="q-stem">下列化合物作為糖漿劑的保存劑時，何者所需濃度最低？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="yes">(A) butylparaben（0.02%）</div>
+      <div data-ans="no">(B) benzoic acid（0.1–0.2%）</div>
+      <div data-ans="no">(C) methylparaben（0.1%）</div>
+      <div data-ans="no">(D) sorbic acid（0.1%）</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">paraben 系列碳鏈越長所需濃度越低；butylparaben（4C）濃度最低。若選項有 phenylmercuric nitrate 則優先選它。</div>
+  </div>
+</div>
 </div>
 
-<!-- ═══ 21. Haloperidol ═══ -->
+<!-- ═══ 23. Haloperidol ═══ -->
 <div class="section" id="haloperidol">
 <div class="section-title"><span class="icon icon-dusk">⬡</span>Haloperidol 劑型比較</div>
 <div class="table-wrap"><table>
 <thead><tr><th>劑型</th><th>溶解性</th><th>給藥</th><th>達峰時間</th><th>備註</th></tr></thead>
 <tbody>
-<tr><td><drug>Haloperidol decanoate</drug></td><td>脂溶性</td><td>肌肉注射</td><td>較<strong>慢</strong></td><td>胡麻油；間隔 <strong>4 週</strong></td></tr>
-<tr><td><drug>Haloperidol lactate</drug></td><td>水溶性</td><td>口服 / 肌肉注射</td><td>約 <strong>20 分鐘</strong>達峰</td><td>水溶性吸收快；加 Lactic acid 促溶</td></tr>
+<tr>
+  <td><drug>Haloperidol decanoate</drug></td>
+  <td>脂溶性</td><td>肌肉注射</td><td>較<strong>慢</strong>（長效型）</td>
+  <td>配方於胡麻油（Sesame oil）供肌肉注射；給藥間隔約 <strong>4 週</strong></td>
+</tr>
+<tr>
+  <td><drug>Haloperidol lactate</drug></td>
+  <td>水溶性</td><td>口服 / 肌肉注射</td><td>肌注後約 <strong>20 分鐘</strong>達峰</td>
+  <td>水溶性較大，吸收較快；Haloperidol 不易溶於水，配方可加 <drug>Lactic acid（乳酸）</drug>促溶</td>
+</tr>
 </tbody></table></div>
-<div class="q-block"><div class="q-header"><span class="q-year">106-1</span><span class="q-stem">有關 haloperidol 肌肉注射劑之敘述，下列何者正確？</span><span class="q-arrow">▶</span></div><div class="q-body"><div class="q-opts">(A) decanoate 為水溶性（錯：脂溶性）<br>(B) lactate 溶於 sesame oil（錯：水溶性）<br>(C) decanoate 達峰時間較短（錯：較長）<br><span class="correct">✓ (D) decanoate 建議給藥間隔 4 週</span></div><div class="q-explanation">Haloperidol decanoate 為長效型脂溶性，每 4 週肌注一次。</div></div></div>
+<div class="sub-title clay">歷屆考題</div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">106-1</span><span class="q-stem">有關 haloperidol 肌肉注射劑之敘述，下列何者正確？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="no">(A) Haloperidol decanoate 為水溶性注射劑（錯：脂溶性）</div>
+      <div data-ans="no">(B) Haloperidol lactate 溶於 sesame oil（錯：水溶性）</div>
+      <div data-ans="no">(C) Haloperidol decanoate 較 haloperidol lactate 達尖峰濃度時間較短（錯：較長）</div>
+      <div data-ans="yes">(D) Haloperidol decanoate 注射劑建議之給藥間隔為 4 週</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">(D) 正確。Haloperidol decanoate 為長效型脂溶性製劑，每 4 週肌注一次。</div>
+  </div>
+</div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">105-1</span><span class="q-stem">有關 haloperidol 劑型之敘述，下列何者正確？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="no">(A) Haloperidol lactate 為脂溶性，配方於胡麻油中供肌肉注射</div>
+      <div data-ans="no">(B) Haloperidol lactate 為水溶性，僅可供口服給藥</div>
+      <div data-ans="yes">(C) Haloperidol decanoate 為脂溶性，肌肉注射間隔為 4 週</div>
+      <div data-ans="no">(D) Haloperidol decanoate 為水溶性，肌肉注射約 20 分鐘可達尖峰濃度</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">(A) 錯：lactate 為水溶性。(B) 錯：lactate 可口服也可肌注。(C) 正確。(D) 錯：decanoate 為脂溶性，吸收較慢。</div>
+  </div>
+</div>
 </div>
 
-<!-- ═══ 22. ASHP ═══ -->
+<!-- ═══ 24. ASHP ═══ -->
 <div class="section" id="risk">
 <div class="section-title"><span class="icon icon-rose">⬡</span>ASHP 無菌產品危險水平分級</div>
+<div class="info-box rose" style="font-size:12px">依美國衛生系統藥師協會（ASHP）出版之《藥局製備無菌產品指引》，將藥局製備的無菌產品區分為 3 個危險等級。</div>
 <div class="table-wrap"><table>
-<thead><tr><th>等級</th><th>適用</th><th>記憶</th></tr></thead>
+<thead><tr><th>等級</th><th>適用範圍</th><th>記憶</th></tr></thead>
 <tbody>
-<tr><td><span class="badge badge-sage">低度風險</span></td><td>大容量注射液容器（LVPs）</td><td>大體積→毒性被稀釋</td></tr>
-<tr><td><span class="badge badge-sand">中度風險</span></td><td>TPN（全靜脈營養）、眼用製劑</td><td></td></tr>
-<tr><td><span class="badge badge-clay">高度風險</span></td><td>使用<strong>非無菌原料</strong>製備無菌產品</td><td>有菌原料 → 高風險</td></tr>
+<tr><td><span class="badge badge-sage">低度風險（Level 1）</span></td><td>大容量注射液容器（LVPs）</td><td>大體積 → 毒性高也被稀釋</td></tr>
+<tr><td><span class="badge badge-sand">中度風險（Level 2）</span></td><td>TPN（全靜脈營養）、眼用製劑</td><td></td></tr>
+<tr><td><span class="badge badge-clay">高度風險（Level 3）</span></td><td>使用<strong>非無菌原料</strong>製備無菌產品（從終端滅菌前之非無菌成分調配的產品）</td><td>有菌原料 → 高風險</td></tr>
 </tbody></table></div>
-<div class="q-block"><div class="q-header"><span class="q-year">109-1</span><span class="q-stem">以非無菌粉末調配成為無菌產品，屬何種程度風險？</span><span class="q-arrow">▶</span></div><div class="q-body"><div class="q-opts">(A) 不能調配<br>(B) 低度<br>(C) 中度<br><span class="correct">✓ (D) 高度風險</span></div><div class="q-explanation">非無菌成分製備無菌製劑 → ASHP <strong>第 3 級（高度風險）</strong>。</div></div></div>
-<div class="q-block"><div class="q-header"><span class="q-year">107-1</span><span class="q-stem">調配靜脈營養溶液（TPN）屬何種程度風險？</span><span class="q-arrow">▶</span></div><div class="q-body"><div class="q-opts">(A) 無風險<br>(B) 低度<br><span class="correct">✓ (C) 中度風險</span><br>(D) 高度</div><div class="q-explanation">TPN 製程複雜屬<strong>中度風險</strong>。</div></div></div>
+<div class="sub-title clay">歷屆考題</div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">109-1</span><span class="q-stem">在醫院或藥局內以非無菌粉末調配成為無菌產品，此屬於何種程度的風險？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="no">(A) 不能調配</div><div data-ans="no">(B) 低度風險</div>
+      <div data-ans="no">(C) 中度風險</div><div data-ans="yes">(D) 高度風險</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">使用非無菌成分製備無菌製劑 → ASHP 第 3 級（高度風險）。</div>
+  </div>
+</div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">108-2</span><span class="q-stem">依 ASHP，將「從終端滅菌前之非無菌成分調配的產品」列為第幾級危險水平？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="no">(A) 2</div><div data-ans="yes">(B) 3</div>
+      <div data-ans="no">(C) 4</div><div data-ans="no">(D) 5</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">ASHP 分為三個等級，第 3 級為高風險等級，適用於使用非無菌成分製備無菌產品。</div>
+  </div>
+</div>
+<div class="q-block">
+  <div class="q-header"><span class="q-year">107-1</span><span class="q-stem">在醫院或藥局內調配靜脈營養溶液（TPN）是屬於何種程度的風險？</span><span class="q-arrow">▶</span></div>
+  <div class="q-body">
+    <div class="q-opts">
+      <div data-ans="no">(A) 無風險</div><div data-ans="no">(B) 低度風險</div>
+      <div data-ans="yes">(C) 中度風險</div><div data-ans="no">(D) 高度風險</div>
+    </div>
+    <div class="q-btn-row"><button class="q-btn ans-btn">顯示答案</button></div>
+    <div class="q-explanation">TPN 製劑製程複雜，屬於中度風險作業。</div>
+  </div>
+</div>
 </div>
 
 </div><!-- /content -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+  // Toggle Q blocks open/close
   document.querySelectorAll('.q-header').forEach(function(header) {
     header.addEventListener('click', function() {
       this.closest('.q-block').classList.toggle('open');
+    });
+  });
+  // Show answer button
+  document.querySelectorAll('.ans-btn').forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      var block = this.closest('.q-block');
+      block.classList.add('show-ans');
+      block.querySelectorAll('.q-opts div').forEach(function(opt) {
+        if (opt.dataset.ans === 'yes') opt.classList.add('revealed-correct');
+        else opt.classList.add('revealed-wrong');
+      });
+      this.disabled = true;
+      this.textContent = '已顯示';
     });
   });
 });
