@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <title>PDE5 抑制劑比較表</title>
+    <style>
+        body {
+            font-family: "Microsoft JhengHei", "Segoe UI", sans-serif;
+            padding: 40px;
+            background-color: #f0f4f8;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin-bottom: 30px;
+        }
+        th, td {
+            border: 1px solid #e1e8ed;
+            padding: 18px;
+            text-align: center;
+            font-size: 1.25rem;
+        }
+        thead th {
+            background-color: #005a9c;
+            color: white;
+            font-size: 1.4rem;
+            border: none;
+        }
+        thead th:first-child { border-radius: 10px 0 0 0; }
+        thead th:last-child { border-radius: 0 10px 0 0; }
+        
+        tr:nth-child(even) { background-color: #f9fbff; }
+        
+        .row-label {
+            background-color: #f1f6f9;
+            font-weight: bold;
+            color: #005a9c;
+            width: 15%;
+        }
+        .structure-box {
+            height: 200px;
+            background-color: #ffffff;
+            border: 2px dashed #cbd5e0;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #a0aec0;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        .structure-box:hover {
+            border-color: #005a9c;
+            background-color: #f0f7ff;
+        }
+        .best {
+            color: #e53e3e;
+            font-weight: 800;
+            background: #fff5f5;
+            padding: 4px 8px;
+            border-radius: 5px;
+        }
+        .highlight {
+            color: #3182ce;
+            font-weight: bold;
+        }
+        .note-section {
+            background-color: #fffaf0;
+            border-left: 6px solid #ed8936;
+            padding: 25px;
+            border-radius: 8px;
+        }
+        .note-section h3 {
+            margin-top: 0;
+            color: #c05621;
+            font-size: 1.5rem;
+        }
+        .note-section ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        .note-section li {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            list-style-type: none;
+            position: relative;
+        }
+        .note-section li::before {
+            content: "•";
+            color: #ed8936;
+            font-weight: bold;
+            display: inline-block; 
+            width: 1em;
+            margin-left: -1em;
+        }
+        .activity-rank {
+            display: inline-block;
+            background: linear-gradient(120deg, #f6ad55 0%, #f6ad55 100%);
+            background-repeat: no-repeat;
+            background-size: 100% 0.4em;
+            background-position: 0 88%;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <table>
+        <thead>
+            <tr>
+                <th>項目</th>
+                <th>Sildenafil</th>
+                <th>Vardenafil</th>
+                <th>Tadalafil</th>
+                <th>Avanafil</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="row-label">結構</td>
+                <td><div class="structure-box">貼上 Sildenafil</div></td>
+                <td><div class="structure-box">貼上 Vardenafil</div></td>
+                <td><div class="structure-box">貼上 Tadalafil</div></td>
+                <td><div class="structure-box">貼上 Avanafil</div></td>
+            </tr>
+            <tr>
+                <td class="row-label">脂溶性</td>
+                <td>高</td>
+                <td><span class="best">最高</span></td>
+                <td>低</td>
+                <td>中</td>
+            </tr>
+            <tr>
+                <td class="row-label">活性強弱</td>
+                <td>強</td>
+                <td><span class="best">最強</span></td>
+                <td>中</td>
+                <td>弱</td>
+            </tr>
+            <tr>
+                <td class="row-label">生體可用率</td>
+                <td><span class="highlight">高</span></td>
+                <td>低</td>
+                <td>中</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td class="row-label">Onset</td>
+                <td>快</td>
+                <td>慢</td>
+                <td>中</td>
+                <td><span class="best">最快</span></td>
+            </tr>
+            <tr>
+                <td class="row-label">作用時間</td>
+                <td>中</td>
+                <td>短</td>
+                <td><mark style="background-color: #fff3cd;">長</mark></td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td class="row-label">主要受體</td>
+                <td>PDE5, PDE6</td>
+                <td>PDE5 (改良)</td>
+                <td>PDE5, PDE11</td>
+                <td>PDE5</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="note-section">
+        <h3>重點筆記整理</h3>
+        <ul>
+            <li><strong>作用機轉：</strong>抑制 PDE 使得 cGMP 濃度上升，進而舒張平滑肌並促使血管擴張。</li>
+            <li><strong>結構特徵：</strong>Sildenafil、Vardenafil、Tadalafil 均含有 <strong>Piperazine</strong> 環。</li>
+            <li><strong>副作用關聯：</strong>抑制 PDE6 影響視覺 (Sight)；抑制 PDE11 則易引起肌肉痠痛。</li>
+            <li><strong>活性排序：</strong><span class="activity-rank">Vardenafil > Sildenafil > Tadalafil</span></li>
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>
