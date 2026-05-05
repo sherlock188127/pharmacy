@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>膠囊劑 Capsules — 藥師國考重點整理</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@300;400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #F5F2EC;
+    --surface: #FFFDF8;
+    --surface2: #F0EDE4;
+    --ink: #1C1A14;
+    --ink2: #5C5849;
+    --ink3: #9C9888;
+    --accent: #C84B2F;
+    --accent2: #2A6049;
+    --accent3: #1E3D6E;
+    --gold: #B8841A;
+    --border: rgba(28,26,20,0.12);
+    --border2: rgba(28,26,20,0.06);
+    --hard: #C84B2F;
+    --soft: #2A6049;
+    --tag-bg: rgba(200,75,47,0.08);
+    --tag-border: rgba(200,75,47,0.25);
+  }
+
+  body {
+    font-family: 'Noto Sans TC', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+    font-size: 15px;
+  }
+
+  .page-wrap {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 64px 0 48px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    color: var(--ink3);
+    text-transform: uppercase;
+  }
+  .hero h1 {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--ink);
+  }
+  .hero h1 span { color: var(--accent); }
+  .hero-sub {
+    font-size: 15px;
+    color: var(--ink2);
+    max-width: 560px;
+  }
+  .hero-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+  }
+  .tag {
+    font-size: 12px;
+    font-family: 'DM Mono', monospace;
+    padding: 4px 10px;
+    border-radius: 4px;
+    background: var(--tag-bg);
+    border: 1px solid var(--tag-border);
+    color: var(--accent);
+  }
+
+  /* ── NAV ── */
+  .toc {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px 28px;
+    margin-bottom: 48px;
+  }
+  .toc-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink3);
+    margin-bottom: 14px;
+  }
+  .toc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 4px 24px;
+  }
+  .toc a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13.5px;
+    color: var(--ink2);
+    text-decoration: none;
+    padding: 5px 0;
+    border-bottom: 1px solid transparent;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .toc a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+  .toc-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--ink3);
+    min-width: 20px;
+  }
+
+  /* ── SECTION ── */
+  section { margin-bottom: 56px; }
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--ink);
+  }
+  .section-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--ink3);
+    padding: 2px 8px;
+    background: var(--surface2);
+    border-radius: 3px;
+  }
+  .section-header h2 {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  /* ── COMPARE TABLE ── */
+  .compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .compare-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .compare-card-header {
+    padding: 14px 20px;
+    font-family: 'Noto Serif TC', serif;
+    font-size: 16px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .hard-header { background: rgba(200,75,47,0.08); color: var(--hard); border-bottom: 2px solid var(--hard); }
+  .soft-header { background: rgba(42,96,73,0.08); color: var(--soft); border-bottom: 2px solid var(--soft); }
+  .compare-card-body { padding: 16px 20px; }
+  .compare-row {
+    display: flex;
+    gap: 10px;
+    padding: 7px 0;
+    border-bottom: 1px solid var(--border2);
+    font-size: 13.5px;
+  }
+  .compare-row:last-child { border-bottom: none; }
+  .compare-row-label {
+    min-width: 70px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--ink3);
+    padding-top: 2px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* ── INFO TABLE ── */
+  .info-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+    background: var(--surface);
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .info-table th {
+    background: var(--surface2);
+    padding: 10px 16px;
+    text-align: left;
+    font-size: 12px;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink2);
+    border-bottom: 1px solid var(--border);
+  }
+  .info-table td {
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--border2);
+    vertical-align: top;
+    line-height: 1.6;
+  }
+  .info-table tr:last-child td { border-bottom: none; }
+  .info-table tr:hover td { background: var(--surface2); }
+  .mono { font-family: 'DM Mono', monospace; font-size: 12.5px; }
+  .pill {
+    display: inline-block;
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 20px;
+    font-family: 'DM Mono', monospace;
+  }
+  .pill-red { background: rgba(200,75,47,0.1); color: var(--accent); }
+  .pill-green { background: rgba(42,96,73,0.1); color: var(--accent2); }
+  .pill-blue { background: rgba(30,61,110,0.1); color: var(--accent3); }
+  .pill-gold { background: rgba(184,132,26,0.1); color: var(--gold); }
+
+  /* ── KEY POINT CARD ── */
+  .keypoint {
+    background: var(--surface);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+    padding: 16px 20px;
+    margin: 16px 0;
+    font-size: 14px;
+  }
+  .keypoint strong {
+    color: var(--accent);
+    font-weight: 700;
+  }
+  .keypoint-green { border-left-color: var(--accent2); }
+  .keypoint-green strong { color: var(--accent2); }
+  .keypoint-blue { border-left-color: var(--accent3); }
+  .keypoint-blue strong { color: var(--accent3); }
+
+  /* ── GELATIN TYPE TABLE ── */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+  /* ── EXCIPIENT GRID ── */
+  .excipient-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    gap: 12px;
+    margin-top: 16px;
+  }
+  .excipient-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 16px;
+  }
+  .excipient-role {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink3);
+    margin-bottom: 6px;
+  }
+  .excipient-name { font-size: 13px; font-weight: 500; color: var(--ink); margin-bottom: 4px; }
+  .excipient-eg { font-size: 12px; color: var(--ink2); line-height: 1.5; }
+
+  /* ── SIZE TABLE ── */
+  .size-viz {
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+    padding: 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+  }
+  .capsule-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+  .capsule-shape {
+    background: linear-gradient(135deg, #C84B2F 0%, #8B2E18 100%);
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+  }
+  .capsule-vol {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--ink3);
+  }
+  .capsule-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  /* ── TEST TABLE ── */
+  .test-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 16px;
+  }
+  .test-row {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    border-bottom: 1px solid var(--border2);
+  }
+  .test-row:last-child { border-bottom: none; }
+  .test-label {
+    padding: 12px 16px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink3);
+    background: var(--surface2);
+    border-right: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+  }
+  .test-val {
+    padding: 12px 16px;
+    font-size: 13.5px;
+    line-height: 1.6;
+  }
+
+  /* ── QUESTION BLOCK ── */
+  .q-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-top: 16px;
+    overflow: hidden;
+  }
+  .q-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    cursor: pointer;
+    background: var(--surface2);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+    user-select: none;
+  }
+  .q-header:hover { border-bottom-color: var(--border); }
+  .q-header.open { border-bottom: 1px solid var(--border); }
+  .q-year {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    background: rgba(200,75,47,0.08);
+    border: 1px solid rgba(200,75,47,0.2);
+    padding: 2px 8px;
+    border-radius: 3px;
+  }
+  .q-stem { font-size: 14px; color: var(--ink); flex: 1; margin: 0 12px; line-height: 1.5; }
+  .q-toggle {
+    font-size: 16px;
+    color: var(--ink3);
+    transition: transform 0.2s;
+    min-width: 20px;
+    text-align: center;
+  }
+  .q-toggle.open { transform: rotate(90deg); }
+  .q-body { padding: 14px 16px; display: none; }
+  .q-body.open { display: block; }
+  .q-choice {
+    display: flex;
+    gap: 10px;
+    padding: 6px 10px;
+    border-radius: 5px;
+    font-size: 13.5px;
+    margin-bottom: 4px;
+  }
+  .q-choice.correct { background: rgba(42,96,73,0.08); color: var(--soft); font-weight: 500; }
+  .q-choice-key { font-family: 'DM Mono', monospace; min-width: 18px; font-size: 12px; }
+  .q-explain {
+    margin-top: 10px;
+    padding: 10px 12px;
+    background: var(--bg);
+    border-radius: 6px;
+    font-size: 13px;
+    color: var(--ink2);
+    line-height: 1.6;
+    border-left: 2px solid var(--accent2);
+  }
+
+  /* ── FLOW STEPS ── */
+  .steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 16px;
+  }
+  .step {
+    display: flex;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border2);
+  }
+  .step:last-child { border-bottom: none; }
+  .step-num {
+    min-width: 28px;
+    height: 28px;
+    background: var(--accent);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .step-content { font-size: 14px; line-height: 1.6; }
+  .step-title { font-weight: 500; color: var(--ink); margin-bottom: 3px; }
+  .step-desc { color: var(--ink2); font-size: 13px; }
+
+  /* ── FOOTER ── */
+  .footer {
+    text-align: center;
+    padding: 32px 0 0;
+    border-top: 1px solid var(--border);
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--ink3);
+    letter-spacing: 0.06em;
+  }
+
+  @media (max-width: 640px) {
+    .hero h1 { font-size: 28px; }
+    .compare-grid { grid-template-columns: 1fr; }
+    .two-col { grid-template-columns: 1fr; }
+    .test-row { grid-template-columns: 1fr; }
+    .test-label { border-right: none; border-bottom: 1px solid var(--border2); }
+  }
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-eyebrow">藥劑學 · 固體劑型 II</div>
+    <h1>膠囊劑<br><span>Capsules</span></h1>
+    <p class="hero-sub">國考重點整理：硬膠囊 vs 軟膠囊、明膠分型、賦形劑、尺寸規格、法定檢驗要求</p>
+    <div class="hero-tags">
+      <span class="tag">硬膠囊</span>
+      <span class="tag">軟膠囊</span>
+      <span class="tag">明膠 Gelatin</span>
+      <span class="tag">USP / 中華藥典</span>
+      <span class="tag">歷屆考題</span>
+    </div>
+  </div>
+
+  <!-- TOC -->
+  <div class="toc">
+    <div class="toc-title">目錄 Contents</div>
+    <div class="toc-grid">
+      <a href="#s1"><span class="toc-num">01</span>膠囊劑概述與優勢</a>
+      <a href="#s2"><span class="toc-num">02</span>硬膠囊 vs 軟膠囊比較</a>
+      <a href="#s3"><span class="toc-num">03</span>明膠性質與分型</a>
+      <a href="#s4"><span class="toc-num">04</span>硬膠囊賦形劑</a>
+      <a href="#s5"><span class="toc-num">05</span>膠囊尺寸規格</a>
+      <a href="#s6"><span class="toc-num">06</span>製備流程</a>
+      <a href="#s7"><span class="toc-num">07</span>法定檢驗要求（USP/中華藥典）</a>
+      <a href="#s8"><span class="toc-num">08</span>歷屆國考題演練</a>
+    </div>
+  </div>
+
+  <!-- S1: 概述 -->
+  <section id="s1">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <h2>膠囊劑概述與優勢</h2>
+    </div>
+    <table class="info-table">
+      <tr><th>優勢</th><th>說明</th></tr>
+      <tr><td>攜帶與計量</td><td>攜帶方便、準確計量，不需量取設備</td></tr>
+      <tr><td>辨識性</td><td>形狀、顏色、刻印使劑型容易辨識</td></tr>
+      <tr><td>包裝成本</td><td>比相應液體劑型之包裝、運送成本低</td></tr>
+      <tr><td>安定性</td><td>比相應液體劑型安定性好、架貯期長</td></tr>
+      <tr><td>調配彈性</td><td>硬明膠膠囊常供藥師<strong>臨時調配處方</strong>使用</td></tr>
+      <tr><td>釋放設計</td><td>可設計為 <span class="pill pill-blue">extended-release</span> 或 <span class="pill pill-gold">delayed-release</span></td></tr>
+      <tr><td>生體可用率</td><td>水溶液劑型 BAV 通常 > 膠囊劑</td></tr>
+    </table>
+    <div class="keypoint">
+      <strong>考點：</strong>錠劑<em>和</em>膠囊劑皆可製成 extended-release，非膠囊劑專利，也非只能 immediate-release。
+    </div>
+    <div class="keypoint keypoint-blue">
+      <strong>給藥途徑：</strong>主要為口服；亦可直腸、陰道給藥。<strong>不</strong>用於口腔黏膜（buccal）。
+    </div>
+  </section>
+
+  <!-- S2: 比較 -->
+  <section id="s2">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <h2>硬膠囊 vs 軟膠囊比較</h2>
+    </div>
+    <div class="compare-grid">
+      <div class="compare-card">
+        <div class="compare-card-header hard-header">💊 硬膠囊 Hard Capsule</div>
+        <div class="compare-card-body">
+          <div class="compare-row"><span class="compare-row-label">組成</span><span>膠囊體（body）+ 膠囊帽（cap）兩部分</span></div>
+          <div class="compare-row"><span class="compare-row-label">成分</span><span>明膠、蔗糖（硬化劑）、水</span></div>
+          <div class="compare-row"><span class="compare-row-label">水分</span><span>殼含 <strong>13～16%</strong> 水分</span></div>
+          <div class="compare-row"><span class="compare-row-label">可充填</span><span>粉末、顆粒、半固體、不互溶脂肪油或揮發油；<em>不宜</em>充填>5%水溶液</span></div>
+          <div class="compare-row"><span class="compare-row-label">密封</span><span>Coni-snap、明膠帶封、熱熔封、液態濕潤封</span></div>
+          <div class="compare-row"><span class="compare-row-label">透明度</span><span>加 TiO₂ → 遮光不透明；含甘油 → 透明</span></div>
+        </div>
+      </div>
+      <div class="compare-card">
+        <div class="compare-card-header soft-header">💊 軟膠囊 Soft Capsule</div>
+        <div class="compare-card-body">
+          <div class="compare-row"><span class="compare-row-label">組成</span><span>單一部分（one piece）</span></div>
+          <div class="compare-row"><span class="compare-row-label">成分</span><span>明膠 + <strong>塑化劑</strong>（甘油、sorbitol）+ 水 + 防腐劑</span></div>
+          <div class="compare-row"><span class="compare-row-label">水分</span><span>殼含 <strong>6～13%</strong> 水分</span></div>
+          <div class="compare-row"><span class="compare-row-label">可充填</span><span>密封液體、懸液、固體粉末；不宜含>5%水或低分子量揮發性有機溶劑</span></div>
+          <div class="compare-row"><span class="compare-row-label">外觀</span><span>橢圓形、卵形或球形</span></div>
+          <div class="compare-row"><span class="compare-row-label">塑化劑</span><span>越多 → 越<strong>軟</strong>；越少 → 越硬</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="keypoint">
+      <strong>考點（軟膠囊媒液選擇）：</strong>不適合充填 ①水性液體（>5% 水）②低分子量水溶性揮發有機物（如乙醇、丙酮、酸、胺、酯）。<br>
+      最適媒液：與水不互溶之非揮發性液體（如橄欖油）或與水可互溶之<em>非揮發性</em>液體（PEG）。
+    </div>
+  </section>
+
+  <!-- S3: 明膠 -->
+  <section id="s3">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <h2>明膠 Gelatin 性質與分型</h2>
+    </div>
+    <p style="color:var(--ink2);font-size:14px;margin-bottom:16px;">明膠由動物皮、白色結締組織或骨骼的膠原質（collagen）經<strong>部分水解</strong>而得。</p>
+    <div class="two-col">
+      <table class="info-table">
+        <tr><th colspan="2">Type A 明膠</th></tr>
+        <tr><td class="mono">來源</td><td>豬皮（pork skin）</td></tr>
+        <tr><td class="mono">處理</td><td>酸處理（acid process）</td></tr>
+        <tr><td class="mono">等電點</td><td><strong>pH 7～9</strong></td></tr>
+        <tr><td class="mono">特性</td><td>可塑性、彈性、透明性</td></tr>
+        <tr><td class="mono">最適乳化 pH</td><td>3.2（帶正電）</td></tr>
+      </table>
+      <table class="info-table">
+        <tr><th colspan="2">Type B 明膠</th></tr>
+        <tr><td class="mono">來源</td><td>骨骼 / 獸皮（bovine）</td></tr>
+        <tr><td class="mono">處理</td><td>鹼處理（alkali process）</td></tr>
+        <tr><td class="mono">等電點</td><td><strong>pH 4.7～5</strong></td></tr>
+        <tr><td class="mono">特性</td><td>硬度</td></tr>
+        <tr><td class="mono">最適乳化 pH</td><td>8（帶負電）</td></tr>
+      </table>
+    </div>
+    <div class="keypoint keypoint-green">
+      <strong>製造原則：</strong>豬皮明膠（彈性）+ 骨頭明膠（硬度）<strong>混用</strong>，非單一來源。粗粒細粒亦宜<strong>併用</strong>，以確保完全溶解。
+    </div>
+    <table class="info-table" style="margin-top:16px;">
+      <tr><th>成分</th><th>目的</th></tr>
+      <tr><td>蔗糖</td><td>硬化劑（硬膠囊）；增加甘味、咀嚼性（軟膠囊，≤5%）</td></tr>
+      <tr><td>TiO₂</td><td><strong>遮光 / 不透明劑</strong>（非抗氧化、非增彈性）</td></tr>
+      <tr><td>FD&C / D&C 染料、氧化鐵</td><td>著色劑</td></tr>
+      <tr><td>甘油、sorbitol（多元醇）</td><td><strong>塑化劑</strong>（軟膠囊）；增加可塑性、彈性</td></tr>
+      <tr><td>Methylparaben / propylparaben、sorbic acid</td><td>防腐劑（軟膠囊，因含水）</td></tr>
+      <tr><td>SO₂ (0.15%)</td><td>防止製造過程中腐敗（USP 規定）</td></tr>
+    </table>
+    <div class="keypoint">
+      <strong>貯藏條件：</strong>高濕 → 吸濕變軟影響溶離；過乾 → 失水變脆。建議使用乾燥劑（silica gel、黏土、活性碳）貯存。
+    </div>
+  </section>
+
+  <!-- S4: 賦形劑 -->
+  <section id="s4">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <h2>硬膠囊賦形劑（Excipients）</h2>
+    </div>
+    <div class="excipient-grid">
+      <div class="excipient-card">
+        <div class="excipient-role">稀釋劑 Diluent</div>
+        <div class="excipient-name">增加體積、利於輸送</div>
+        <div class="excipient-eg">Lactose, Starch, MCC (microcrystalline cellulose)</div>
+      </div>
+      <div class="excipient-card">
+        <div class="excipient-role">吸收劑 Absorbent</div>
+        <div class="excipient-name">防止易液化藥物液化</div>
+        <div class="excipient-eg">Magnesium carbonate, Colloidal SiO₂, Light Mg oxide</div>
+      </div>
+      <div class="excipient-card">
+        <div class="excipient-role">崩散劑 Disintegrant</div>
+        <div class="excipient-name">防在腸胃結塊、促崩散</div>
+        <div class="excipient-eg">Pregelatinized starch, Croscarmellose (Ac-Di-Sol), Na starch glycolate (Explotab)</div>
+      </div>
+      <div class="excipient-card">
+        <div class="excipient-role">濕潤劑 Wetting Agent</div>
+        <div class="excipient-name">幫助疏水性藥物濕潤</div>
+        <div class="excipient-eg">Sodium lauryl sulfate (SLS)<br><em>亦可改善 Mg stearate 延遲溶離</em></div>
+      </div>
+      <div class="excipient-card">
+        <div class="excipient-role">滑動劑 Glidant</div>
+        <div class="excipient-name">改善粉末流動性</div>
+        <div class="excipient-eg">Fumed silicon dioxide (膠態矽), Talc</div>
+      </div>
+      <div class="excipient-card">
+        <div class="excipient-role">潤滑劑 Lubricant</div>
+        <div class="excipient-name">幫助充填、防黏</div>
+        <div class="excipient-eg">Magnesium stearate, Ca stearate, Stearic acid, Talc<br><em>Mg stearate 疏水 → 可延遲溶離</em></div>
+      </div>
+    </div>
+    <div class="keypoint">
+      <strong>Stearic acid</strong> 不具崩散作用（是潤滑劑）。<strong>Methylcellulose</strong> 不具崩散或濕潤疏水性作用（不適合用來防止疏水性藥物腸中結塊）。
+    </div>
+    <div class="keypoint keypoint-blue">
+      <strong>Eutectic 混合物（如薄荷 + 水楊酸等量研合）：</strong>添加 <strong>碳酸鎂（Mg carbonate）</strong> 隔開或吸收，防止液化。
+    </div>
+  </section>
+
+  <!-- S5: 尺寸 -->
+  <section id="s5">
+    <div class="section-header">
+      <span class="section-num">05</span>
+      <h2>膠囊尺寸規格</h2>
+    </div>
+    <p style="font-size:14px;color:var(--ink2);margin-bottom:8px;">人用空明膠膠囊：最大 <strong>000 號</strong>，最小 <strong>5 號</strong>；號數<strong>越大，容量越小</strong>。獸醫用：10、11、12 號。</p>
+    <div class="size-viz">
+      <div class="capsule-item">
+        <div class="capsule-shape" style="width:88px;height:26px;">000</div>
+        <div class="capsule-vol">1.37 mL</div>
+        <div class="capsule-num">000</div>
+      </div>
+      <div class="capsule-item">
+        <div class="capsule-shape" style="width:78px;height:24px;">00</div>
+        <div class="capsule-vol">0.95 mL</div>
+        <div class="capsule-num">00</div>
+      </div>
+      <div class="capsule-item">
+        <div class="capsule-shape" style="width:68px;height:23px;">0</div>
+        <div class="capsule-vol">0.68 mL</div>
+        <div class="capsule-num">0 ★</div>
+      </div>
+      <div class="capsule-item">
+        <div class="capsule-shape" style="width:60px;height:21px;">1</div>
+        <div class="capsule-vol">0.50 mL</div>
+        <div class="capsule-num">1</div>
+      </div>
+      <div class="capsule-item">
+        <div class="capsule-shape" style="width:52px;height:19px;">2</div>
+        <div class="capsule-vol">0.37 mL</div>
+        <div class="capsule-num">2</div>
+      </div>
+      <div class="capsule-item">
+        <div class="capsule-shape" style="width:44px;height:17px;">3</div>
+        <div class="capsule-vol">0.27 mL</div>
+        <div class="capsule-num">3</div>
+      </div>
+      <div class="capsule-item">
+        <div class="capsule-shape" style="width:36px;height:15px;">4</div>
+        <div class="capsule-vol">0.20 mL</div>
+        <div class="capsule-num">4</div>
+      </div>
+      <div class="capsule-item">
+        <div class="capsule-shape" style="width:28px;height:13px;">5</div>
+        <div class="capsule-vol">0.13 mL</div>
+        <div class="capsule-num">5</div>
+      </div>
+    </div>
+    <div class="keypoint">
+      <strong>考點：</strong>一般病患可吞嚥最大尺寸為 <strong>0 號</strong>（★）；空明膠膠囊最大為 000 號（非 0 號）。充填量約 65 mg～1 g 粉末物質。充填量由「膠囊體」決定，帽用於密封。
+    </div>
+  </section>
+
+  <!-- S6: 製備流程 -->
+  <section id="s6">
+    <div class="section-header">
+      <span class="section-num">06</span>
+      <h2>製備流程</h2>
+    </div>
+    <p style="font-size:15px;font-weight:500;margin-bottom:12px;color:var(--ink2);">硬膠囊殼製備</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <div class="step-title">釘膜（pin）浸入熔融明膠混合液</div>
+          <div class="step-desc">控溫貯池；浸入深度與時間決定長度與厚度</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <div class="step-title">升起釘膜，在控溫控濕氣流下乾燥</div>
+          <div class="step-desc">冷卻固化</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <div class="step-title">機器切割成適當長度</div>
+          <div class="step-desc">分切為膠囊體與膠囊帽</div>
+        </div>
+      </div>
+    </div>
+    <p style="font-size:15px;font-weight:500;margin:24px 0 12px;color:var(--ink2);">軟膠囊製備方式</p>
+    <table class="info-table">
+      <tr><th>製法</th><th>特色</th></tr>
+      <tr><td><strong>板模法</strong> Plate process</td><td>半自動；最早商業用法；真空吸入模洞</td></tr>
+      <tr><td><strong>旋轉模子法</strong> Rotary die</td><td>大量連續製造；最常用工業法</td></tr>
+      <tr><td><strong>往返模子法</strong> Reciprocating die</td><td>垂直往復式模子，類似旋轉法</td></tr>
+      <tr><td><strong>無縫式製法</strong>（吹泡法）</td><td>可得<strong>無縫圓球狀</strong>軟膠囊；冷卻媒液中硬化；連續大量生產；<strong>非</strong>階段式製程</td></tr>
+    </table>
+    <p style="font-size:15px;font-weight:500;margin:24px 0 12px;color:var(--ink2);">硬膠囊充填方式</p>
+    <table class="info-table">
+      <tr><th>規模</th><th>方法</th><th>說明</th></tr>
+      <tr><td>小規模</td><td><strong>Punch method</strong> 衝壓法</td><td>適用<strong>粉末</strong>；粉末厚度約膠囊體高度 1/3～1/4</td></tr>
+      <tr><td>小規模（顆粒）</td><td>逐一從包藥紙倒入</td><td>顆粒性藥品</td></tr>
+      <tr><td>大規模</td><td>手動 / 自動充填機</td><td>轉速慢→充填量多；漏斗粉末高→充填量多</td></tr>
+    </table>
+    <div class="keypoint keypoint-blue">
+      <strong>充填量計算密度：</strong>使用 <strong>tapped density</strong>（振實密度）估算粉末占用膠囊體積，非 bulk density 或 true density。
+    </div>
+  </section>
+
+  <!-- S7: 法定要求 -->
+  <section id="s7">
+    <div class="section-header">
+      <span class="section-num">07</span>
+      <h2>法定檢驗要求（USP / 中華藥典）</h2>
+    </div>
+
+    <p style="font-size:15px;font-weight:500;margin-bottom:12px;">崩散度試驗 Disintegration Test</p>
+    <div class="test-block">
+      <div class="test-row"><div class="test-label">溫度</div><div class="test-val"><strong>35～39°C</strong>（非 37±0.5°C，37°C 是溶離試驗）</div></div>
+      <div class="test-row"><div class="test-label">頻率</div><div class="test-val">每分鐘 <strong>29～32</strong> 次上下震盪</div></div>
+      <div class="test-row"><div class="test-label">提升高度</div><div class="test-val">5.3～5.7 cm</div></div>
+      <div class="test-row"><div class="test-label">浸入深度</div><div class="test-val">篩網浸在液面下 2.5 cm</div></div>
+      <div class="test-row"><div class="test-label">判定</div><div class="test-val">先取 6 粒；若 1～2 粒未崩散，再取 12 粒；共 18 粒中至少 <strong>16 粒</strong>完全崩散</div></div>
+    </div>
+
+    <p style="font-size:15px;font-weight:500;margin:20px 0 12px;">溶離度試驗 Dissolution Test</p>
+    <div class="test-block">
+      <div class="test-row"><div class="test-label">溫度</div><div class="test-val"><strong>37 ± 0.5°C</strong></div></div>
+      <div class="test-row"><div class="test-label">裝置 I</div><div class="test-val">不銹鋼網籃（basket）—— 網孔為 <strong>40 網目篩網</strong>（非 10 目，非 20 目）</div></div>
+      <div class="test-row"><div class="test-label">底距</div><div class="test-val">網籃與容器底距 <strong>2.5 cm</strong>（3.5 ± 0.5 cm 為錯誤選項！）</div></div>
+      <div class="test-row"><div class="test-label">轉速</div><div class="test-val">25～150 rpm</div></div>
+    </div>
+
+    <p style="font-size:15px;font-weight:500;margin:20px 0 12px;">劑型單元含量均一度（Uniformity of Dosage Units）</p>
+    <table class="info-table">
+      <tr><th>試驗法</th><th>適用</th><th>操作重點</th></tr>
+      <tr>
+        <td><strong>重量差異</strong><br>Weight Variation</td>
+        <td>充填液體之膠囊劑</td>
+        <td>個別稱重後，去除膠囊殼，計算內容物淨重；依含量測定項計算每粒有效成分量</td>
+      </tr>
+      <tr>
+        <td><strong>含量均一度</strong><br>Content Uniformity</td>
+        <td>固體粉末膠囊（主成分 &lt; 取樣量時）</td>
+        <td>取 10 粒，使用適當方法分別測定含量，調整稀釋次數</td>
+      </tr>
+    </table>
+
+    <p style="font-size:15px;font-weight:500;margin:20px 0 12px;">安定性試驗（Stability Testing）— 常見相對濕度</p>
+    <table class="info-table">
+      <tr><th>RH%</th><th>是否為建議條件</th></tr>
+      <tr><td class="mono">60 ± 5%</td><td><span class="pill pill-green">有建議</span></td></tr>
+      <tr><td class="mono">65 ± 5%</td><td><span class="pill pill-green">有建議</span></td></tr>
+      <tr><td class="mono">70 ± 5%</td><td><span class="pill pill-red">無建議（考點！）</span></td></tr>
+      <tr><td class="mono">75 ± 5%</td><td><span class="pill pill-green">有建議</span></td></tr>
+    </table>
+  </section>
+
+  <!-- S8: 考題 -->
+  <section id="s8">
+    <div class="section-header">
+      <span class="section-num">08</span>
+      <h2>歷屆國考題演練</h2>
+    </div>
+
+    <!-- Q1 -->
+    <div class="q-block">
+      <div class="q-header" onclick="toggleQ(this)">
+        <span class="q-year">113-2</span>
+        <span class="q-stem">有關「硬膠囊劑」常用賦形劑，下列何者不具崩散劑作用？</span>
+        <span class="q-toggle">▶</span>
+      </div>
+      <div class="q-body">
+        <div class="q-choice">A. pregelatinized starch</div>
+        <div class="q-choice">B. croscarmellose</div>
+        <div class="q-choice">C. sodium starch glycolate</div>
+        <div class="q-choice correct">D. stearic acid ✓</div>
+        <div class="q-explain">Stearic acid 為<strong>潤滑劑</strong>（lubricant），無崩散作用。A、B、C 均為崩散劑（B、C 更是超崩散劑 superdisintegrants）。</div>
+      </div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="q-block">
+      <div class="q-header" onclick="toggleQ(this)">
+        <span class="q-year">112-2</span>
+        <span class="q-stem">依中華藥典，充填液體之膠囊劑，其單位劑量均一度的測試方法為何？</span>
+        <span class="q-toggle">▶</span>
+      </div>
+      <div class="q-body">
+        <div class="q-choice">A. 崩散度試驗</div>
+        <div class="q-choice">B. 脆度試驗</div>
+        <div class="q-choice correct">C. 重量差異試驗 ✓</div>
+        <div class="q-choice">D. 溶離度試驗</div>
+        <div class="q-explain">充填液體之膠囊劑採用<strong>重量差異（Weight Variation）</strong>法測定單位劑量均一度，因液體均一性好，以重量推算含量即可。</div>
+      </div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="q-block">
+      <div class="q-header" onclick="toggleQ(this)">
+        <span class="q-year">111-1</span>
+        <span class="q-stem">有關「崩散度試驗」之敘述，下列何者錯誤？</span>
+        <span class="q-toggle">▶</span>
+      </div>
+      <div class="q-body">
+        <div class="q-choice correct">A. 維持 37±0.5℃ 恆溫，篩網為 20 號篩 ✓（錯誤）</div>
+        <div class="q-choice">B. 網架升降頻率每分鐘 29～32 週期</div>
+        <div class="q-choice">C. 網架提升高度為 5.3～5.7 公分</div>
+        <div class="q-choice">D. 篩網應浸在液面下 2.5 公分</div>
+        <div class="q-explain">崩散度試驗溫度為 <strong>35～39°C</strong>（非 37±0.5°C），後者是溶離試驗的溫度。崩散試驗之篩網也非 20 號篩。</div>
+      </div>
+    </div>
+
+    <!-- Q4 -->
+    <div class="q-block">
+      <div class="q-header" onclick="toggleQ(this)">
+        <span class="q-year">110-2</span>
+        <span class="q-stem">明膠膠囊殼內添加二氧化鈦之主要目的為何？</span>
+        <span class="q-toggle">▶</span>
+      </div>
+      <div class="q-body">
+        <div class="q-choice">A. 具彈性</div>
+        <div class="q-choice">B. 抗氧化</div>
+        <div class="q-choice">C. 防潮性</div>
+        <div class="q-choice correct">D. 遮光性 ✓</div>
+        <div class="q-explain">TiO₂ 為<strong>不透明劑</strong>（opacifier），用以遮光。甘油才是增加彈性的塑化劑；抗氧化劑例如 Na thiosulfate、防潮與 TiO₂ 無關。</div>
+      </div>
+    </div>
+
+    <!-- Q5 -->
+    <div class="q-block">
+      <div class="q-header" onclick="toggleQ(this)">
+        <span class="q-year">107-2</span>
+        <span class="q-stem">製備軟膠囊劑時，不宜使用下列何種液體為原料藥媒液，因易使膠殼軟化？</span>
+        <span class="q-toggle">▶</span>
+      </div>
+      <div class="q-body">
+        <div class="q-choice correct">A. 含乙醇水溶液 ✓</div>
+        <div class="q-choice">B. 氫化植物油</div>
+        <div class="q-choice">C. 聚乙二醇（PEG）</div>
+        <div class="q-choice">D. 異丙醇</div>
+        <div class="q-explain">含乙醇（低分子量水溶性揮發性有機物）的<strong>水溶液</strong>含水量高，可使明膠殼軟化；PEG（非揮發性水可互溶）及氫化植物油（水不互溶）均適合充填於軟膠囊。</div>
+      </div>
+    </div>
+
+    <!-- Q6 -->
+    <div class="q-block">
+      <div class="q-header" onclick="toggleQ(this)">
+        <span class="q-year">102-2</span>
+        <span class="q-stem">Type A gelatin 之等電點（isoelectric point）範圍在 pH 多少？</span>
+        <span class="q-toggle">▶</span>
+      </div>
+      <div class="q-body">
+        <div class="q-choice">A. 1～3</div>
+        <div class="q-choice">B. 4～6</div>
+        <div class="q-choice correct">C. 7～9 ✓</div>
+        <div class="q-choice">D. 11～13</div>
+        <div class="q-explain">Type A（豬皮，酸處理）等電點 pH 7～9；Type B（骨骼，鹼處理）等電點 pH 4.7～5。</div>
+      </div>
+    </div>
+
+  </section>
+
+  <div class="footer">膠囊劑重點整理 · 藥師國考準備 · 製自講義整合</div>
+
+</div>
+
+<script>
+function toggleQ(header) {
+  const body = header.nextElementSibling;
+  const arrow = header.querySelector('.q-toggle');
+  const isOpen = body.classList.contains('open');
+  body.classList.toggle('open', !isOpen);
+  header.classList.toggle('open', !isOpen);
+  arrow.classList.toggle('open', !isOpen);
+}
+</script>
+</body>
+</html>
