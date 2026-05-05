@@ -675,13 +675,27 @@ ul.dot-list li strong { color: var(--ink); }
       <div>
         <h4>主要優勢</h4>
         <ul class="dot-list">
+          <li>口服固體劑型市佔率<strong>第二</strong>（第一為錠劑）</li>
           <li>成人口服首選，<strong>攜帶方便</strong></li>
           <li>準確計量，<strong>不需量取設備</strong></li>
           <li>形狀、顏色、刻印使劑型易辨識</li>
           <li>包裝運送成本<strong>低於液體劑型</strong></li>
           <li>安定性優、<strong>架貯期較液體劑型長</strong></li>
-          <li>硬膠囊適合藥師<strong>臨時調配</strong>處方</li>
-          <li>可設計為 extended-release / delayed-release</li>
+          <li>硬膠囊適合藥師<strong>臨時調配</strong>處方（如兒童不喜歡吃藥粉，可裝入膠囊避免苦味）</li>
+          <li>可設計為 extended-release / delayed-release
+            <div style="margin-top:6px;display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:0.79rem;font-weight:400">
+              <div style="background:var(--slate-l);border-left:3px solid var(--slate);border-radius:0 5px 5px 0;padding:7px 10px;color:var(--slate-d)">
+                <div style="font-family:var(--mono);font-size:0.66rem;font-weight:700;letter-spacing:0.06em;margin-bottom:3px">EXTENDED-RELEASE</div>
+                <div style="font-family:var(--serif);font-size:0.88rem;font-weight:700;color:var(--slate-d);margin-bottom:3px">延釋（中華藥典第九版）</div>
+                <div style="color:var(--ink-sub);line-height:1.6">延長藥物釋放時間<br>通常一天服用 <strong>1～2 次</strong><br><em>顆粒包膜不同厚度→接力釋放</em></div>
+              </div>
+              <div style="background:var(--pine-l);border-left:3px solid var(--pine);border-radius:0 5px 5px 0;padding:7px 10px;color:var(--pine-d)">
+                <div style="font-family:var(--mono);font-size:0.66rem;font-weight:700;letter-spacing:0.06em;margin-bottom:3px">DELAYED-RELEASE</div>
+                <div style="font-family:var(--serif);font-size:0.88rem;font-weight:700;color:var(--pine-d);margin-bottom:3px">遲釋（中華藥典第九版）</div>
+                <div style="color:var(--ink-sub);line-height:1.6">在胃中<strong>不溶解</strong>，到腸道才釋放藥物<br>膠囊劑亦可設計為此類型</div>
+              </div>
+            </div>
+          </li>
         </ul>
       </div>
       <div>
@@ -690,14 +704,75 @@ ul.dot-list li strong { color: var(--ink); }
           <li>口服（最常見）：整粒吞服</li>
           <li>可打開與食物/飲料混服（不影響藥效時）</li>
           <li>可經鼻胃管灌食</li>
+          <li><strong>陰道給藥：</strong>明膠在體溫下可於陰道溶解，可治療泌尿道感染或補充女性荷爾蒙</li>
           <li>追蹤 GI 通過情形</li>
         </ul>
         <div class="info-box cream" style="margin-top:8px;font-size:0.79rem">
           <strong>γ-scintigraphy：</strong>添加 γ 射線追蹤器（非侵入性）<br>
-          <strong>Heidelberg capsule：</strong>pH 敏感無線電遙測裝置
+          <strong>Heidelberg capsule：</strong>pH 敏感無線電遙測裝置，偵測胃到腸的 pH 變化，用於診斷
         </div>
       </div>
     </div>
+
+    <h4 style="margin-top:12px">膠囊殼材料</h4>
+    <div class="grid-2" style="margin-bottom:0">
+      <div class="info-box cream" style="font-size:0.8rem">
+        <strong>主流：明膠殼</strong>（豬皮或獸骨）<br>
+        屬葷食，素食者或特定宗教族群可能拒絕，可告知病人並協助換劑型
+      </div>
+      <div class="info-box pine" style="font-size:0.8rem">
+        <strong>素食膠囊（中華藥典第九版已加入）</strong><br>
+        最常用：<strong>HPMC</strong>（羥丙甲基纖維素）<br>
+        其他：海藻膠<br>
+        原理與明膠類似（冷水軟化膨脹→加熱成 sol→冷卻成 gel）
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>膠囊劑的特殊用途</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>用途</th><th>說明</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>分隔不可配伍藥物</td>
+            <td>兩種有交互作用的成分，分別打成小錠片再裝入同一膠囊，降低接觸機會（現較少見）</td>
+          </tr>
+          <tr>
+            <td>強效藥定量充填</td>
+            <td>先將一次劑量打成小錠片，直接放入而不需秤量，減少操作誤差（現較少見）</td>
+          </tr>
+          <tr>
+            <td>臨床雙盲試驗</td>
+            <td>將外觀不同的藥品和安慰劑統一裝入<strong>不透明膠囊</strong>，使受試者無法辨識，避免心理影響</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>可拆 vs 不可拆膠囊</h3>
+    <div class="info-box cream" style="margin-bottom:10px;font-size:0.81rem">
+      藥師收到醫師處方要求拆開膠囊時，須能判斷是否可拆。判斷依據在特殊劑型設計章節會詳細說明。
+    </div>
+    <div class="grid-2">
+      <div class="info-box pine" style="font-size:0.8rem">
+        <strong>✓ 可拆（設計在顆粒）</strong><br>
+        延釋/遲釋設計在<strong>顆粒的包膜</strong>上<br>
+        → 拆開膠囊殼，顆粒仍有包膜保護<br>
+        → 只是不能磨粉、不能嚼碎
+      </div>
+      <div class="info-box danger" style="font-size:0.8rem">
+        <strong>✗ 不可拆（設計在整顆膠囊）</strong><br>
+        ① 包膜設計在<strong>膠囊殼表面</strong>（少見）<br>
+        ② 粉末充填後吸水膨脹形成<strong>整體結構</strong>，靠膠囊形狀控制釋放<br>
+        → 拆開即破壞釋放機制
+      </div>
+    </div>
+  </div>
+
     <div class="info-box warn" style="margin-top:4px">
       <strong>⚠ 常考比較：</strong>水溶液劑型 BA &gt; 膠囊劑；錠劑與膠囊劑<strong>均可</strong>製成 extended-release（選「膠囊只能 immediate-release」→ 錯）
     </div>
@@ -756,14 +831,15 @@ ul.dot-list li strong { color: var(--ink); }
     <h3>明膠 Gelatin — 囊殼主材質</h3>
     <div class="info-box cream">
       <strong>來源：</strong>動物皮、骨骼之<strong>膠原質 (collagen)</strong> 經部分水解而得。形態：細粉、粗粉、碎片、薄片（粗粒細粒宜並用）。<br>
-      <strong>USP：</strong>允許含 0.15% SO₂ 以防製造過程分解。
+      <strong>溶解原理：</strong>冷水中軟化膨脹（吸水）→ 加熱形成黏稠 sol（膠溶）→ 冷卻後形成 gel（凝膠）<br>
+      <strong>USP：</strong>允許含 0.15% SO₂ 以防製造過程分解（乾燥明膠安定，但吸濕後易被微生物分解）
     </div>
     <div class="grid-2" style="margin-top:10px">
       <div class="info-box red">
         <strong>Type A — 酸處理（豬皮）</strong><br>
         等電點 pH <span class="tag red">7 ~ 9</span><br>
         作乳化劑最適 pH = 3.2（帶正電）<br>
-        <span style="font-size:0.78rem">特性：塑性、彈性、透明性</span>
+        <span style="font-size:0.78rem">特性：塑性、彈性、透明性（Q 軟感）</span>
       </div>
       <div class="info-box slate">
         <strong>Type B — 鹼處理（骨骼/獸皮）</strong><br>
@@ -773,18 +849,31 @@ ul.dot-list li strong { color: var(--ink); }
       </div>
     </div>
     <div class="info-box pine" style="font-size:0.8rem">
-      <strong>實際應用：</strong>豬皮＋骨頭明膠<strong>配合使用</strong>（非單一來源）；囊殼製造與藥物充填<strong>通常是分開</strong>操作。
+      <strong>實際應用：</strong>豬皮（彈性Q感）＋骨頭（硬度）<strong>配合使用</strong>（單一來源易太軟或太脆）；粗粒細粒亦宜並用（純細粉接觸水迅速黏成一坨，反而不易溶）；囊殼製造與藥物充填<strong>通常是分開</strong>操作。
+    </div>
+
+    <h4>明膠的多重藥劑學用途</h4>
+    <div class="table-wrap" style="margin-bottom:12px">
+      <table>
+        <thead><tr><th>用途</th><th>原理</th></tr></thead>
+        <tbody>
+          <tr><td><strong>膠囊殼</strong></td><td>形成膜後乾燥成型</td></tr>
+          <tr><td><strong>保護性膠體</strong></td><td>大分子，包覆厭溶酶性膠體（如金膠體）表面，防止聚集沉澱</td></tr>
+          <tr><td><strong>乳化劑</strong></td><td>包覆油滴，隔開油滴與油滴，防止油水分層</td></tr>
+          <tr><td><strong>助懸劑 / 黏合劑</strong></td><td>泡水後黏黏，可幫助懸浮或黏合顆粒</td></tr>
+        </tbody>
+      </table>
     </div>
 
     <h4>其他囊殼成分</h4>
     <div class="table-wrap">
       <table>
-        <thead><tr><th>成分</th><th>功能</th></tr></thead>
+        <thead><tr><th>成分</th><th>功能</th><th>說明</th></tr></thead>
         <tbody>
-          <tr><td><span class="tag warn">蔗糖</span></td><td>硬化劑</td></tr>
-          <tr><td><span class="tag red">TiO₂ 二氧化鈦</span></td><td><strong>不透明遮光劑</strong>（最常考）</td></tr>
-          <tr><td>FD&amp;C / D&amp;C 染料、氧化鐵</td><td>著色劑</td></tr>
-          <tr><td>纖維素衍生物、海藻膠</td><td>替代明膠的囊殼材料</td></tr>
+          <tr><td><span class="tag warn">蔗糖</span></td><td>硬化劑（硬膠囊）<br>甘味/咀嚼性（軟膠囊，≤5%）</td><td>硬硬脆脆，增加殼硬度</td></tr>
+          <tr><td><span class="tag red">TiO₂ 二氧化鈦</span></td><td><strong>不透明遮光劑</strong></td><td>明膠本身透明（淡黃），加 TiO₂ 後：① 顏色更鮮豔（紅更紅、綠更綠）② 膠囊不透光→藥品可避光</td></tr>
+          <tr><td>FD&amp;C / D&amp;C 染料<br>氧化鐵（紅色系）</td><td>著色劑</td><td>FD&C = Food, Drug &amp; Cosmetic 核准染料；氧化鐵為天然紅棕色系</td></tr>
+          <tr><td>纖維素衍生物（HPMC）、海藻膠</td><td>替代明膠的素食囊殼材料</td><td>中華藥典第九版已加入</td></tr>
         </tbody>
       </table>
     </div>
@@ -796,17 +885,15 @@ ul.dot-list li strong { color: var(--ink); }
       <div>
         <ul class="dot-list">
           <li><strong>水分含量：13 ~ 16%</strong>（TWP: 10~16%）</li>
-          <li>高濕度 → 吸濕扭曲，影響溶離</li>
-          <li>極乾燥 → 失水<strong>變脆</strong></li>
-          <li>可放乾燥劑：silica gel、黏土、活性碳</li>
+          <li>高濕度 → 吸濕扭曲，影響溶離（容器可放乾燥劑：silica gel、黏土、活性碳）</li>
+          <li>極乾燥 → 失水<strong>變脆</strong>（冰箱濕度高勿放；浴室更不可）</li>
         </ul>
       </div>
       <div>
         <ul class="dot-list">
-          <li>冷水中不溶，<strong>吸 10 倍水分軟化</strong></li>
-          <li>溶於熱水及溫熱胃液 → 快速溶解釋藥</li>
-          <li>明膠殼被<strong>胃蛋白酶</strong>分解吸收</li>
+          <li>冷水中不溶；在<strong>37°C 溫熱胃液</strong>中快速溶解（胃蛋白酶也助分解）</li>
           <li>一般為 immediate-release；亦可腸溶/持效</li>
+          <li><strong>吞嚥技巧：</strong>吞前先用水或唾液濕潤，乾乾的遇水黏喉嚨，濕潤後變滑順好吞</li>
         </ul>
       </div>
     </div>
@@ -1013,15 +1100,49 @@ ul.dot-list li strong { color: var(--ink); }
 
   <div class="card">
     <h3>特殊膠囊殼設計</h3>
-    <div class="table-wrap">
+    <div class="table-wrap" style="margin-bottom:12px">
       <table>
-        <thead><tr><th>名稱</th><th>特色</th></tr></thead>
+        <thead><tr><th>名稱</th><th>外觀</th><th>特色</th></tr></thead>
         <tbody>
-          <tr><td><span class="tag gold">Pulvules®</span> (Eli Lilly)</td><td>囊體末端尖，帽保持圓頭</td></tr>
-          <tr><td><span class="tag red">Spansule®</span></td><td>兩端尖頭；圓粒包覆<strong>數種厚度的相同包材</strong>（控制釋放）</td></tr>
-          <tr><td><span class="tag pine">Snap-fit® / Coni-snap®</span></td><td>鎖勾設計確實套合，防摻假 (tamper evident)；可 &gt;180,000 粒/hr</td></tr>
+          <tr>
+            <td><span class="tag gold">Pulvules®</span><br><small>(Eli Lilly)</small></td>
+            <td>囊體末端<strong>尖</strong>，帽圓頭</td>
+            <td>商品辨識設計</td>
+          </tr>
+          <tr>
+            <td><span class="tag red">Spansule®</span><br><small>(SmithKline)</small></td>
+            <td>兩端皆<strong>尖</strong></td>
+            <td>圓粒包覆<strong>數種厚度的相同包材</strong>，達到延釋效果（見下方說明）</td>
+          </tr>
+          <tr>
+            <td><span class="tag pine">Snap-fit® / Coni-snap®</span></td>
+            <td>有<strong>鎖勾凹槽</strong></td>
+            <td>確實套合，密封性佳（可裝液體）；&gt;180,000 粒/hr</td>
+          </tr>
+          <tr>
+            <td><span class="tag slate">Coni-snap Supro®</span></td>
+            <td>膠囊體露出部分<strong>極短</strong></td>
+            <td>防摻假（tamper evident）設計，難以施力打開（見下方說明）</td>
+          </tr>
         </tbody>
       </table>
+    </div>
+
+    <div class="grid-2">
+      <div class="info-box gold" style="font-size:0.8rem">
+        <strong>Spansule® 延釋原理</strong><br>
+        裡面的顆粒用相同材質（如甲基纖維素）包膜，但包<strong>不同厚度</strong>：<br>
+        · 薄膜：先溶解→藥品快速釋出→血中濃度快速上升<br>
+        · 厚膜：慢慢溶解→接力補充→維持血中濃度不下降<br>
+        <em>用相同材質是因為釋放機轉一致，才好計算不同厚度的時間差；用不同材質機轉不同，計算複雜</em>
+      </div>
+      <div class="info-box slate" style="font-size:0.8rem">
+        <strong>Coni-snap Supro® 防摻假原理</strong><br>
+        膠囊體外露部分極短 → 很難用手指握住施力 → 無法拆開而不破壞外觀<br>
+        目的：防止管制藥品被挖出後蓋回（藥局數顆數時不會發現）<br>
+        打開後一定留下痕跡 → 可辨識是否被開過<br>
+        <em>Tamper evident 泛指「打開與未打開外觀不同」的設計，不限此品牌</em>
+      </div>
     </div>
   </div>
 </section>
@@ -1065,18 +1186,22 @@ ul.dot-list li strong { color: var(--ink); }
       <div>
         <h4>特殊充填情況</h4>
         <ul class="dot-list">
-          <li>半固體：捲起撒 corn starch 塞入；或熔融倒入冷卻</li>
-          <li>液體：micropipette 或 calibrated dropper</li>
-          <li>脂肪油/揮發油 → 可裝鎖合膠囊</li>
-          <li><strong>水性液體不適合</strong>充填硬膠囊</li>
+          <li><strong>半固體充填：</strong>
+            <span class="ex-sub" style="display:block;margin-top:2px">① 灑 corn starch 搓成小條，塞入（不沾手）<br>② 加熱熔融後用 pipette 倒入，冷卻固化<br>③ 流動性差者先與 corn starch 混合再搓條</span>
+          </li>
+          <li><strong>液體充填：</strong>micropipette 或 calibrated dropper；可搭配自動充填機
+            <span class="ex-sub" style="display:block;margin-top:2px">例：Progesterone + peanut oil，計算每粒體積（總量÷100粒），用 pipette 取量充填</span>
+          </li>
+          <li>脂肪油/揮發油 → 可裝鎖合膠囊（有卡榫較佳）</li>
+          <li><strong>水性液體不適合</strong>充填硬膠囊（殼會變軟）</li>
         </ul>
       </div>
       <div>
         <h4>密封方式</h4>
         <ul class="dot-list">
           <li>Coni-snap 預製環扣鎖合</li>
-          <li>有色明膠帶密封（Kapseals）</li>
-          <li>熱熔封（接合處產生環狀痕跡）</li>
+          <li>有色明膠帶密封（Kapseals）— 機器滾過去即封一圈，速度快</li>
+          <li>熱熔封（接合處熔融乾燥後黏合，留下環狀痕跡）</li>
           <li>液體濕潤劑低溫熱結合（40~45°C）</li>
           <li>臨時：帽內緣塗熱明膠液後立即套合</li>
         </ul>
@@ -1085,7 +1210,20 @@ ul.dot-list li strong { color: var(--ink); }
     <h4>清潔</h4>
     <ul class="dot-list">
       <li>小規模：乾淨紗布/棉布個別擦拭</li>
-      <li>大規模：附加<strong>真空除塵器</strong>或清潔磨光機</li>
+      <li>大規模：附加<strong>真空除塵器</strong>或清潔磨光機（膠囊從入口倒進去，內部刷子傳送時同時清潔表面）</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>半自動充填機運作原理</h3>
+    <div class="info-box cream" style="font-size:0.81rem;margin-bottom:10px">
+      三個主要步驟：① 空膠囊定向（膠囊帽在上）→ 拆開分離 ② 藥粉充填 ③ 套合收集
+    </div>
+    <ul class="dot-list">
+      <li><strong>定向原理：</strong>膠囊帽較短較重，落下時走不同路徑，自動排列成帽上體下</li>
+      <li><strong>充填：</strong>給料槽推過來，轉一圈粉末掉入膠囊體；流動性差→分佈不均（滑動劑的重要性）</li>
+      <li><strong>套合：</strong>下方凸起裝置往上推，膠囊體與帽合併；若機台精密度偏差會產生瑕疵品</li>
+      <li>膠囊體<strong>轉速慢</strong> → 停留久 → 充填量多；漏斗<strong>粉末高</strong> → 壓力大 → 充填量多</li>
     </ul>
   </div>
 </section>
@@ -1194,7 +1332,7 @@ ul.dot-list li strong { color: var(--ink); }
         <tbody>
           <tr>
             <td>溫度</td>
-            <td style="background:#fffbe6;font-weight:600">35 ~ 39°C</td>
+            <td style="background:#fffbe6;font-weight:600">35 ~ 39°C<br><span style="font-size:0.75rem;font-weight:400;color:var(--ink-muted)">（±2°C，因裝置上下開放）</span></td>
             <td style="background:#fffbe6;font-weight:600">37 ± 0.5°C</td>
           </tr>
           <tr>
@@ -1204,26 +1342,38 @@ ul.dot-list li strong { color: var(--ink); }
           </tr>
           <tr>
             <td>篩網／網籃</td>
-            <td style="background:#fffbe6;font-weight:600">10 號篩</td>
+            <td style="background:#fffbe6;font-weight:600">10 號篩（2 mm 孔徑）<br><span style="font-size:0.75rem;font-weight:400;color:var(--ink-muted)">第九版改為 2 ± 0.2 mm</span></td>
             <td style="background:#fffbe6;font-weight:600">40 號篩（40 mesh）</td>
           </tr>
           <tr>
             <td>網架提升高度</td>
-            <td>5.3 ~ 5.7 cm</td>
+            <td>5.3 ~ 5.7 cm（53 ~ 57 mm）</td>
             <td>—</td>
           </tr>
           <tr>
-            <td>篩網／網籃距底</td>
-            <td>液面下 2.5 cm</td>
-            <td style="background:#fffbe6;font-weight:600">2.5 ± 0.2 cm</td>
+            <td>篩網距液面（最高點）</td>
+            <td style="background:#fffbe6;font-weight:600">液面下至少 <strong>15 mm（1.5 cm）</strong><br><span style="font-size:0.75rem;font-weight:400;color:var(--ink-muted)">第九版；舊版第八版為 2.5 cm，國考見到 25 mm 亦可接受</span></td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td>網籃距底（最低點）</td>
+            <td>距底部 25 mm（2.5 cm）</td>
+            <td style="background:#fffbe6;font-weight:600">2.5 ± 0.2 cm<br><span style="font-size:0.75rem;font-weight:400;color:var(--ink-muted)">（3.5 ± 0.5 cm 為錯誤選項）</span></td>
           </tr>
           <tr>
             <td>取樣數</td>
-            <td>先 6 粒；不合格再取 12 粒<br>（18 粒中 ≥16 通過）</td>
-            <td>依各品目規定</td>
+            <td>先 6 粒；若 1～2 粒未崩散再取 12 粒<br>（18 粒中 ≥16 通過）</td>
+            <td>先取 6 粒；不合格再取 6 粒（共 12）；再不合格再取 12（共 24）</td>
+          </tr>
+          <tr>
+            <td>崩散終點定義</td>
+            <td colspan="2">呈<strong>稀軟團塊</strong>，沒有可察覺到的硬質部分（不需完全不見）</td>
           </tr>
         </tbody>
       </table>
+    </div>
+    <div class="info-box cream" style="margin-top:8px;font-size:0.8rem">
+      <strong>崩散 vs 溶離溫度差別原因：</strong>崩散裝置上下開放，溫度不易精準控制，故允許 ±2°C 範圍；溶離裝置密閉，可維持 ±0.5°C 精準溫控。
     </div>
   </div>
 
