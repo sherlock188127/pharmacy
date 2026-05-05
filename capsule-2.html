@@ -462,6 +462,168 @@ ul.dot-list li strong { color: var(--ink); }
 .exam-explain.show { display: block; }
 .exam-explain strong { color: var(--ink); }
 
+/* ── HARD vs SOFT COMPARE ── */
+.compare-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+@media (max-width: 660px) { .compare-wrap { grid-template-columns: 1fr; } }
+.compare-col {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.compare-col-header {
+  padding: 10px 16px;
+  font-family: var(--serif);
+  font-size: 0.92rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.compare-col-header.hard { background: var(--crimson-l); color: var(--crimson-d); border-bottom: 2px solid var(--crimson-m); }
+.compare-col-header.soft { background: var(--pine-l);    color: var(--pine-d);    border-bottom: 2px solid var(--pine); }
+.compare-col-body { padding: 4px 0; }
+.compare-row-item {
+  display: flex;
+  gap: 8px;
+  padding: 6px 16px;
+  border-bottom: 1px solid var(--border2);
+  font-size: 0.81rem;
+  line-height: 1.6;
+}
+.compare-row-item:last-child { border-bottom: none; }
+.compare-row-label {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  color: var(--ink-muted);
+  min-width: 62px;
+  flex-shrink: 0;
+  padding-top: 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* ── EXCIPIENT COLOUR CARDS ── */
+:root {
+  --ex-dil:#1E3D6E; --ex-dil-bg:rgba(30,61,110,0.07);  --ex-dil-bd:rgba(30,61,110,0.28);
+  --ex-abs:#6B3D8A; --ex-abs-bg:rgba(107,61,138,0.07); --ex-abs-bd:rgba(107,61,138,0.28);
+  --ex-dis:#2A6049; --ex-dis-bg:rgba(42,96,73,0.07);   --ex-dis-bd:rgba(42,96,73,0.28);
+  --ex-wet:#9a7a30; --ex-wet-bg:rgba(154,122,48,0.07); --ex-wet-bd:rgba(154,122,48,0.28);
+  --ex-gli:#3D7A8A; --ex-gli-bg:rgba(61,122,138,0.07); --ex-gli-bd:rgba(61,122,138,0.28);
+  --ex-lub:#8b1a1a; --ex-lub-bg:rgba(139,26,26,0.07);  --ex-lub-bd:rgba(139,26,26,0.28);
+}
+.ex-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(255px, 1fr));
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.ex-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  overflow: hidden;
+}
+.ex-head {
+  padding: 9px 14px 8px;
+  border-bottom: 1px solid;
+}
+.ex-role {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.ex-fn {
+  font-size: 0.78rem;
+  color: var(--ink-sub);
+  margin-top: 1px;
+}
+.ex-body { padding: 6px 14px 10px; }
+.ex-item {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 4px;
+  padding: 4px 0;
+  border-bottom: 1px solid var(--border2);
+  font-size: 0.81rem;
+  color: var(--ink);
+  line-height: 1.5;
+}
+.ex-item:last-child { border-bottom: none; }
+.ex-item::before { content: '·'; font-weight: 700; font-size: 1rem; flex-shrink: 0; margin-top: 0; color: inherit; }
+.ex-sub { font-size: 0.73rem; color: var(--ink-muted); font-style: italic; display: block; margin-top: 1px; }
+.ex-warn-text { color: var(--crimson-m) !important; font-style: italic; }
+
+.ex-dil .ex-head { background: var(--ex-dil-bg); border-color: var(--ex-dil-bd); }
+.ex-dil .ex-role, .ex-dil .ex-item::before { color: var(--ex-dil); }
+.ex-abs .ex-head { background: var(--ex-abs-bg); border-color: var(--ex-abs-bd); }
+.ex-abs .ex-role, .ex-abs .ex-item::before { color: var(--ex-abs); }
+.ex-dis .ex-head { background: var(--ex-dis-bg); border-color: var(--ex-dis-bd); }
+.ex-dis .ex-role, .ex-dis .ex-item::before { color: var(--ex-dis); }
+.ex-wet .ex-head { background: var(--ex-wet-bg); border-color: var(--ex-wet-bd); }
+.ex-wet .ex-role, .ex-wet .ex-item::before { color: var(--ex-wet); }
+.ex-gli .ex-head { background: var(--ex-gli-bg); border-color: var(--ex-gli-bd); }
+.ex-gli .ex-role, .ex-gli .ex-item::before { color: var(--ex-gli); }
+.ex-lub .ex-head { background: var(--ex-lub-bg); border-color: var(--ex-lub-bd); }
+.ex-lub .ex-role, .ex-lub .ex-item::before { color: var(--ex-lub); }
+
+/* ── SIZE VISUALIZER ── */
+.size-viz {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  padding: 20px 16px 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+.sz-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+.sz-cap {
+  background: linear-gradient(135deg, var(--crimson-m) 0%, var(--crimson-d) 100%);
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  font-weight: 600;
+}
+.sz-label {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--ink);
+  text-align: center;
+}
+.sz-vol {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  color: var(--ink-muted);
+}
+.sz-asp {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  color: var(--pine-d);
+  font-weight: 600;
+}
+.sz-special { color: var(--gold-d); }
+
 /* scrollbar */
 ::-webkit-scrollbar { width: 5px; height: 5px; }
 ::-webkit-scrollbar-track { background: var(--bg2); }
@@ -483,6 +645,7 @@ ul.dot-list li strong { color: var(--ink); }
 <div class="nav-wrap">
   <nav class="nav">
     <a href="#overview">概述</a>
+    <a href="#compare">硬軟比較</a>
     <a href="#hard">硬膠囊</a>
     <a href="#hard-fill">充填密封</a>
     <a href="#soft">軟膠囊</a>
@@ -538,6 +701,46 @@ ul.dot-list li strong { color: var(--ink); }
     <div class="info-box warn" style="margin-top:4px">
       <strong>⚠ 常考比較：</strong>水溶液劑型 BA &gt; 膠囊劑；錠劑與膠囊劑<strong>均可</strong>製成 extended-release（選「膠囊只能 immediate-release」→ 錯）
     </div>
+  </div>
+</section>
+
+<!-- ═══ 01b COMPARE ═══ -->
+<section class="section" id="compare">
+  <div class="section-header">
+    <span class="section-num">01b</span>
+    <h2 class="section-title">硬膠囊 vs 軟膠囊 <span>Hard vs Soft Comparison</span></h2>
+    <div class="section-divider"></div>
+  </div>
+  <div class="compare-wrap">
+    <div class="compare-col">
+      <div class="compare-col-header hard">💊 硬膠囊 Hard Capsule</div>
+      <div class="compare-col-body">
+        <div class="compare-row-item"><span class="compare-row-label">組成</span><span>膠囊體（body）＋ 膠囊帽（cap）<strong>兩部分</strong></span></div>
+        <div class="compare-row-item"><span class="compare-row-label">囊殼成分</span><span>明膠、蔗糖（硬化劑）、水<br><em>無塑化劑；無防腐劑</em></span></div>
+        <div class="compare-row-item"><span class="compare-row-label">水分含量</span><span><strong>13 ~ 16%</strong></span></div>
+        <div class="compare-row-item"><span class="compare-row-label">可充填物</span><span>粉末、顆粒、半固體、脂肪油/揮發油（鎖合）<br><span style="color:var(--crimson-m)">✗ 不宜充填 &gt;5% 水溶液</span></span></div>
+        <div class="compare-row-item"><span class="compare-row-label">密封方式</span><span>Coni-snap 環扣、明膠帶封、熱熔封、低溫濕潤封</span></div>
+        <div class="compare-row-item"><span class="compare-row-label">遮光</span><span>加 TiO₂ → 不透明；加甘油 → 透明</span></div>
+        <div class="compare-row-item"><span class="compare-row-label">製造</span><span>囊殼製造與藥物充填<strong>分開</strong>操作</span></div>
+        <div class="compare-row-item"><span class="compare-row-label">臨調</span><span>常用於藥師<strong>臨時調配處方</strong></span></div>
+      </div>
+    </div>
+    <div class="compare-col">
+      <div class="compare-col-header soft">💊 軟膠囊 Soft Capsule</div>
+      <div class="compare-col-body">
+        <div class="compare-row-item"><span class="compare-row-label">組成</span><span><strong>單一部分</strong>（one piece）</span></div>
+        <div class="compare-row-item"><span class="compare-row-label">囊殼成分</span><span>明膠 ＋ <strong>塑化劑</strong>（甘油、sorbitol）＋ 水 ＋ <strong>防腐劑</strong><br><em>塑化劑↑ → 較軟；塑化劑↓ → 較硬</em></span></div>
+        <div class="compare-row-item"><span class="compare-row-label">水分含量</span><span><strong>6 ~ 13%</strong>（因含水需加防腐劑）</span></div>
+        <div class="compare-row-item"><span class="compare-row-label">可充填物</span><span>液體、懸液、固體粉末/顆粒/錠片<br><span style="color:var(--crimson-m)">✗ 不宜：&gt;5% 水、低分子量揮發有機物（醇、酮、酸、胺、酯）</span></span></div>
+        <div class="compare-row-item"><span class="compare-row-label">外觀</span><span>橢圓形、卵形或<strong>球形</strong></span></div>
+        <div class="compare-row-item"><span class="compare-row-label">遮光</span><span>加 TiO₂ → 不透明</span></div>
+        <div class="compare-row-item"><span class="compare-row-label">製造</span><span>充填與密封<strong>同步完成</strong>（板模法、旋轉模、吹泡法等）</span></div>
+        <div class="compare-row-item"><span class="compare-row-label">最適媒液</span><span>與水不互溶非揮發性（橄欖油）或<br>可互溶非揮發性（<strong>PEG</strong>）</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="info-box warn">
+    <strong>共同點：</strong>硬/軟膠囊崩散試驗裝置及規範<strong>相同</strong>；皆可製成 extended-release / delayed-release；給藥途徑皆可口服、直腸、陰道，<strong>不用於</strong>口腔黏膜（buccal）。
   </div>
 </section>
 
@@ -611,73 +814,185 @@ ul.dot-list li strong { color: var(--ink); }
 
   <div class="card">
     <h3>囊殼大小 Capsule Sizes</h3>
-    <div class="info-box red" style="margin-bottom:10px;font-size:0.82rem">
+    <div class="info-box red" style="margin-bottom:12px;font-size:0.82rem">
       充填量約 <strong>65 mg ~ 1 g</strong> 之粉末。號數越大容量越<strong>小</strong>（最大 <span class="tag warn">000</span>，最小 <span class="tag red">5</span>，人用最大可吞嚥 <span class="tag gold">0</span>）
     </div>
+
+    <!-- Visual size chart -->
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:16px;margin-bottom:12px;overflow-x:auto">
+      <!-- row labels -->
+      <div style="display:grid;grid-template-columns:64px repeat(8,1fr);gap:4px;align-items:center;margin-bottom:8px">
+        <div style="font-family:var(--mono);font-size:0.65rem;color:var(--ink-muted)">號數</div>
+        <div style="text-align:center;font-family:var(--mono);font-size:0.72rem;font-weight:700;color:var(--ink)">000</div>
+        <div style="text-align:center;font-family:var(--mono);font-size:0.72rem;font-weight:700;color:var(--ink)">00</div>
+        <div style="text-align:center;font-family:var(--mono);font-size:0.72rem;font-weight:700;color:var(--gold-d)">0 ★</div>
+        <div style="text-align:center;font-family:var(--mono);font-size:0.72rem;font-weight:700;color:var(--ink)">1</div>
+        <div style="text-align:center;font-family:var(--mono);font-size:0.72rem;font-weight:700;color:var(--ink)">2</div>
+        <div style="text-align:center;font-family:var(--mono);font-size:0.72rem;font-weight:700;color:var(--ink)">3</div>
+        <div style="text-align:center;font-family:var(--mono);font-size:0.72rem;font-weight:700;color:var(--ink)">4</div>
+        <div style="text-align:center;font-family:var(--mono);font-size:0.72rem;font-weight:700;color:var(--ink)">5</div>
+      </div>
+      <!-- capsule shapes row -->
+      <div style="display:grid;grid-template-columns:64px repeat(8,1fr);gap:4px;align-items:flex-end;margin-bottom:8px">
+        <div style="font-family:var(--mono);font-size:0.65rem;color:var(--ink-muted)">形狀</div>
+        <div style="display:flex;justify-content:center"><div style="background:linear-gradient(135deg,var(--crimson-m),var(--crimson-d));border-radius:50px;width:78px;height:24px"></div></div>
+        <div style="display:flex;justify-content:center"><div style="background:linear-gradient(135deg,var(--crimson-m),var(--crimson-d));border-radius:50px;width:66px;height:21px"></div></div>
+        <div style="display:flex;justify-content:center"><div style="background:linear-gradient(135deg,var(--gold),var(--gold-d));border-radius:50px;width:56px;height:18px"></div></div>
+        <div style="display:flex;justify-content:center"><div style="background:linear-gradient(135deg,var(--crimson-m),var(--crimson-d));border-radius:50px;width:48px;height:16px"></div></div>
+        <div style="display:flex;justify-content:center"><div style="background:linear-gradient(135deg,var(--crimson-m),var(--crimson-d));border-radius:50px;width:40px;height:14px"></div></div>
+        <div style="display:flex;justify-content:center"><div style="background:linear-gradient(135deg,var(--crimson-m),var(--crimson-d));border-radius:50px;width:33px;height:12px"></div></div>
+        <div style="display:flex;justify-content:center"><div style="background:linear-gradient(135deg,var(--crimson-m),var(--crimson-d));border-radius:50px;width:26px;height:10px"></div></div>
+        <div style="display:flex;justify-content:center"><div style="background:linear-gradient(135deg,var(--crimson-m),var(--crimson-d));border-radius:50px;width:20px;height:8px"></div></div>
+      </div>
+      <!-- water row -->
+      <div style="display:grid;grid-template-columns:64px repeat(8,1fr);gap:4px;align-items:center;padding:5px 0;border-top:1px solid var(--border2)">
+        <div style="font-family:var(--mono);font-size:0.65rem;color:var(--ink-muted)">Water<br>(mL)</div>
+        <div style="text-align:center;font-family:var(--mono);font-size:0.72rem;color:var(--ink-sub)">1.37</div>
+        <div style="text-align:center;font-family:var(--mono);font-size:0.72rem;color:var(--ink-sub)">0.95</div>
+        <div style="text-align:center;font-family:var(--mono);font-size:0.72rem;color:var(--ink-sub)">0.68</div>
+        <div style="text-align:center;font-family:var(--mono);font-size:0.72rem;color:var(--ink-sub)">0.50</div>
+        <div style="text-align:center;font-family:var(--mono);font-size:0.72rem;color:var(--ink-sub)">0.37</div>
+        <div style="text-align:center;font-family:var(--mono);font-size:0.72rem;color:var(--ink-sub)">0.30</div>
+        <div style="text-align:center;font-family:var(--mono);font-size:0.72rem;color:var(--ink-sub)">0.21</div>
+        <div style="text-align:center;font-family:var(--mono);font-size:0.72rem;color:var(--ink-sub)">0.13</div>
+      </div>
+      <!-- aspirin row -->
+      <div style="display:grid;grid-template-columns:64px repeat(8,1fr);gap:4px;align-items:center;padding:5px 0;border-top:1px solid var(--border2)">
+        <div style="font-family:var(--mono);font-size:0.65rem;color:var(--pine-d);font-weight:600">Aspirin<br>(mg)</div>
+        <div style="text-align:center;font-family:var(--mono);font-size:0.72rem;color:var(--pine-d)">1040</div>
+        <div style="text-align:center;font-family:var(--mono);font-size:0.72rem;color:var(--pine-d)">650</div>
+        <div style="text-align:center;font-family:var(--mono);font-size:0.72rem;color:var(--crimson-m);font-weight:700">520</div>
+        <div style="text-align:center;font-family:var(--mono);font-size:0.72rem;color:var(--crimson-m);font-weight:700">325</div>
+        <div style="text-align:center;font-family:var(--mono);font-size:0.72rem;color:var(--pine-d)">260</div>
+        <div style="text-align:center;font-family:var(--mono);font-size:0.72rem;color:var(--pine-d)">195</div>
+        <div style="text-align:center;font-family:var(--mono);font-size:0.72rem;color:var(--pine-d)">62</div>
+        <div style="text-align:center;font-family:var(--mono);font-size:0.72rem;color:var(--pine-d)">97</div>
+      </div>
+      <div style="margin-top:8px;font-size:0.71rem;color:var(--ink-muted)">★ 0 號為一般病患可吞嚥最大尺寸（金色）　<span style="color:var(--crimson-m);font-weight:600">紅色</span> = 常用臨床劑量（aspirin 325 mg / 520 mg）</div>
+    </div>
+
+    <!-- Data table -->
     <div class="table-wrap">
       <table>
-        <thead><tr><th>號數</th><th>容量 (mL)</th><th>備註</th></tr></thead>
+        <thead><tr><th>號數</th><th>Water (mL)</th><th>Aspirin (mg)</th><th>備註</th></tr></thead>
         <tbody>
-          <tr><td><span class="tag warn">000</span></td><td>1.37</td><td>最大（人用）</td></tr>
-          <tr><td><span class="tag red">00</span></td><td>0.95</td><td></td></tr>
-          <tr><td><span class="tag gold">0</span></td><td>0.68</td><td>一般病患可吞嚥之最大尺寸</td></tr>
-          <tr><td><span class="tag red">1</span></td><td>0.50</td><td></td></tr>
-          <tr><td><span class="tag red">2</span></td><td>0.37</td><td></td></tr>
-          <tr><td><span class="tag red">3</span></td><td>0.27</td><td></td></tr>
-          <tr><td><span class="tag red">4</span></td><td>0.20</td><td></td></tr>
-          <tr><td><span class="tag red">5</span></td><td>0.13</td><td>最小（人用）</td></tr>
-          <tr><td>10, 11, 12</td><td>更大</td><td>獸醫用</td></tr>
+          <tr><td><span class="tag warn">000</span></td><td>1.37</td><td>1040</td><td>最大（人用）</td></tr>
+          <tr><td><span class="tag red">00</span></td><td>0.95</td><td>650</td><td></td></tr>
+          <tr><td><span class="tag gold">0</span></td><td>0.68</td><td style="color:var(--crimson-m);font-weight:600">520</td><td>一般病患可吞嚥之最大尺寸 ★</td></tr>
+          <tr><td><span class="tag red">1</span></td><td>0.50</td><td style="color:var(--crimson-m);font-weight:600">325</td><td></td></tr>
+          <tr><td><span class="tag red">2</span></td><td>0.37</td><td>260</td><td></td></tr>
+          <tr><td><span class="tag red">3</span></td><td>0.30</td><td>195</td><td></td></tr>
+          <tr><td><span class="tag red">4</span></td><td>0.21</td><td>62</td><td></td></tr>
+          <tr><td><span class="tag red">5</span></td><td>0.13</td><td>97</td><td>最小（人用）</td></tr>
+          <tr><td>10, 11, 12</td><td>更大</td><td>—</td><td>獸醫用</td></tr>
         </tbody>
       </table>
     </div>
     <div class="info-box danger" style="margin-top:8px;font-size:0.79rem">
-      <strong>⚠ 常考陷阱：</strong>「空膠殼最大者為 0 號」→ <strong>錯</strong>（最大為 000）
+      <strong>⚠ 常考陷阱：</strong>「空膠殼最大者為 0 號」→ <strong>錯</strong>（最大為 000）；0 號是一般病患可吞嚥的最大尺寸。
     </div>
   </div>
 
   <div class="card">
     <h3>硬膠囊配方賦形劑</h3>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>功能</th><th>代表成分</th><th>備註</th></tr></thead>
-        <tbody>
-          <tr>
-            <td><span class="tag gold">稀釋劑</span></td>
-            <td>lactose, starch, MCC</td>
-            <td>增加體積，提供粉末凝集</td>
-          </tr>
-          <tr>
-            <td><span class="tag red">崩散劑</span></td>
-            <td>pregelatinized starch<br>croscarmellose (Ac-Di-Sol)<br>sodium starch glycolate (Primojel)</td>
-            <td>防止在 GI 中結塊；幫助崩散</td>
-          </tr>
-          <tr>
-            <td><span class="tag pine">吸收劑</span></td>
-            <td>MgCO₃, colloidal SiO₂, light MgO</td>
-            <td>防止易液化藥品液化；<strong>PEG ✗ 不適合</strong></td>
-          </tr>
-          <tr>
-            <td><span class="tag slate">潤濕劑</span></td>
-            <td>sodium lauryl sulfate (SLS)</td>
-            <td>幫助疏水藥物濕潤；Mg stearate 疏水 → 加 SLS 改善</td>
-          </tr>
-          <tr>
-            <td><span class="tag warn">滑動劑 / 潤滑劑</span></td>
-            <td>fumed SiO₂ (glidant)<br>Mg stearate, stearic acid, talc</td>
-            <td>Mg stearate 厭水 → 可延遲溶離；stearic acid ≠ 崩散劑</td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="ex-grid">
+
+      <div class="ex-card ex-dil">
+        <div class="ex-head">
+          <div class="ex-role">稀釋劑 Diluent</div>
+          <div class="ex-fn">增加體積、利於充填輸送</div>
+        </div>
+        <div class="ex-body">
+          <div class="ex-item">Lactose（乳糖）</div>
+          <div class="ex-item">Starch（澱粉）</div>
+          <div class="ex-item">MCC — Microcrystalline cellulose（微晶纖維素）</div>
+        </div>
+      </div>
+
+      <div class="ex-card ex-abs">
+        <div class="ex-head">
+          <div class="ex-role">吸收劑 Absorbent</div>
+          <div class="ex-fn">防止易液化藥物液化</div>
+        </div>
+        <div class="ex-body">
+          <div class="ex-item">Magnesium carbonate（碳酸鎂）
+            <span class="ex-sub">薄荷＋水楊酸共熔 → 加 MgCO₃ 隔開</span>
+          </div>
+          <div class="ex-item">Colloidal SiO₂（膠態二氧化矽）</div>
+          <div class="ex-item">Light magnesium oxide（輕質氧化鎂）</div>
+          <div class="ex-item ex-warn-text">PEG ✗ — 不適合（反而可助液化）</div>
+        </div>
+      </div>
+
+      <div class="ex-card ex-dis">
+        <div class="ex-head">
+          <div class="ex-role">崩散劑 Disintegrant</div>
+          <div class="ex-fn">防在腸胃結塊、促崩散</div>
+        </div>
+        <div class="ex-body">
+          <div class="ex-item">Pregelatinized starch（預膠化澱粉）</div>
+          <div class="ex-item">Croscarmellose sodium（Ac-Di-Sol）
+            <span class="ex-sub">superdisintegrant；交聯羧甲基纖維素鈉</span>
+          </div>
+          <div class="ex-item">Sodium starch glycolate（Explotab / Primojel）
+            <span class="ex-sub">superdisintegrant；交聯澱粉衍生物</span>
+          </div>
+          <div class="ex-item ex-warn-text">Stearic acid ✗ — 潤滑劑，非崩散劑</div>
+          <div class="ex-item ex-warn-text">Methylcellulose ✗ — 不具疏水濕潤作用</div>
+        </div>
+      </div>
+
+      <div class="ex-card ex-wet">
+        <div class="ex-head">
+          <div class="ex-role">濕潤劑 Wetting Agent</div>
+          <div class="ex-fn">幫助疏水性藥物濕潤</div>
+        </div>
+        <div class="ex-body">
+          <div class="ex-item">Sodium lauryl sulfate（SLS）
+            <span class="ex-sub">亦可改善 Mg stearate 造成的溶離延遲</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="ex-card ex-gli">
+        <div class="ex-head">
+          <div class="ex-role">滑動劑 Glidant</div>
+          <div class="ex-fn">改善粉末流動性（自動充填機必備）</div>
+        </div>
+        <div class="ex-body">
+          <div class="ex-item">Fumed silicon dioxide（膠態矽 / Aerosil）
+            <span class="ex-sub">最常用滑動劑，改善流動性首選</span>
+          </div>
+          <div class="ex-item">Talc（滑石粉）</div>
+          <div class="ex-item ex-warn-text">CaCl₂ ✗ — 不具滑動劑功能</div>
+        </div>
+      </div>
+
+      <div class="ex-card ex-lub">
+        <div class="ex-head">
+          <div class="ex-role">潤滑劑 Lubricant</div>
+          <div class="ex-fn">幫助充填、防黏模</div>
+        </div>
+        <div class="ex-body">
+          <div class="ex-item">Magnesium stearate（硬脂酸鎂）
+            <span class="ex-sub">疏水性 → 延遲溶離；可加 SLS 改善</span>
+          </div>
+          <div class="ex-item">Calcium stearate（硬脂酸鈣）</div>
+          <div class="ex-item">Stearic acid（硬脂酸）</div>
+          <div class="ex-item">Talc（滑石粉）</div>
+        </div>
+      </div>
+
     </div>
-    <div class="grid-2" style="margin-top:10px">
+    <div class="grid-2" style="margin-top:4px">
       <div class="info-box warn" style="font-size:0.8rem">
-        <strong>共熔物 (Eutectic mixture) 處理：</strong><br>
+        <strong>共熔物 (Eutectic) 處理：</strong><br>
         薄荷 + 水楊酸等量研合 → 添加 <strong>MgCO₃（碳酸鎂）</strong>隔開避免液化
       </div>
       <div class="info-box danger" style="font-size:0.8rem">
         <strong>陷阱整理：</strong><br>
         stearic acid → 潤滑劑（<strong>非</strong>崩散劑）<br>
-        PEG → <strong>非</strong>吸收劑<br>
+        PEG → <strong>非</strong>吸收劑（反而助液化）<br>
         CaCl₂ → <strong>非</strong>滑動劑
       </div>
     </div>
@@ -877,37 +1192,112 @@ ul.dot-list li strong { color: var(--ink); }
       <table>
         <thead><tr><th>項目</th><th>崩散度 Disintegration</th><th>溶離度 Dissolution</th></tr></thead>
         <tbody>
-          <tr><td>溫度</td><td><strong>35 ~ 39°C</strong></td><td><strong>37 ± 0.5°C</strong></td></tr>
-          <tr><td>震盪/轉速</td><td>29 ~ 32 次/min（上下）</td><td>25 ~ 150 rpm</td></tr>
-          <tr><td>篩網</td><td><strong>10 號篩</strong></td><td>裝置 I：10 號篩（40 mesh）</td></tr>
-          <tr><td>網架高度</td><td>提升 5.3 ~ 5.7 cm</td><td>—</td></tr>
-          <tr><td>篩網/網籃距底</td><td>液面下 2.5 cm</td><td><strong>2.5 ± 0.2 cm</strong></td></tr>
-          <tr><td>取樣數</td><td>先 6 粒；不合格再取 12 粒（18 粒中 ≥16 通過）</td><td>依各品目規定</td></tr>
+          <tr>
+            <td>溫度</td>
+            <td style="background:#fffbe6;font-weight:600">35 ~ 39°C</td>
+            <td style="background:#fffbe6;font-weight:600">37 ± 0.5°C</td>
+          </tr>
+          <tr>
+            <td>震盪／轉速</td>
+            <td>29 ~ 32 次/min（上下）</td>
+            <td>25 ~ 150 rpm</td>
+          </tr>
+          <tr>
+            <td>篩網／網籃</td>
+            <td style="background:#fffbe6;font-weight:600">10 號篩</td>
+            <td style="background:#fffbe6;font-weight:600">40 號篩（40 mesh）</td>
+          </tr>
+          <tr>
+            <td>網架提升高度</td>
+            <td>5.3 ~ 5.7 cm</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td>篩網／網籃距底</td>
+            <td>液面下 2.5 cm</td>
+            <td style="background:#fffbe6;font-weight:600">2.5 ± 0.2 cm</td>
+          </tr>
+          <tr>
+            <td>取樣數</td>
+            <td>先 6 粒；不合格再取 12 粒<br>（18 粒中 ≥16 通過）</td>
+            <td>依各品目規定</td>
+          </tr>
         </tbody>
       </table>
-    </div>
-    <div class="info-box danger" style="margin-top:8px;font-size:0.79rem">
-      <strong>⚠ 最常錯：</strong>崩散溫度是 <strong>35~39°C</strong>，不是 37±0.5°C（那是溶離的）；篩網是 <strong>10 號篩</strong>，不是 20 號篩；網籃距底 <strong>2.5 cm</strong>（不是 3.5 cm）。
     </div>
   </div>
 
   <div class="card">
     <h3>劑型單元含量均一度 Uniformity of Dosage Units</h3>
+
+    <div class="info-box cream" style="margin-bottom:14px;font-size:0.81rem">
+      含量均一度可由 <strong>重量差異</strong> 及／或 <strong>含量均一度</strong> 兩種方法測定，擇一或合併使用。
+    </div>
+
+    <!-- Two method cards side by side -->
     <div class="grid-2">
-      <div class="info-box red">
-        <strong>Weight Variation 重量差異</strong><br>
-        取 10 個個別稱重<br>
-        硬膠囊：取出內容物 → 稱空殼 → 相減得淨重<br>
-        軟膠囊：溶劑洗出 → 室溫 30 min → 稱殼重<br>
-        <span class="tag red" style="margin-top:6px;display:inline-block">充填液體膠囊 → 用此法</span>
+
+      <!-- Weight Variation -->
+      <div style="background:var(--surface);border:2px solid var(--crimson-m);border-radius:10px;overflow:hidden">
+        <div style="background:var(--crimson-l);padding:10px 16px;border-bottom:1px solid var(--crimson-m)">
+          <div style="font-family:var(--mono);font-size:0.68rem;color:var(--crimson-m);font-weight:700;letter-spacing:0.08em">METHOD 1</div>
+          <div style="font-family:var(--serif);font-size:0.97rem;font-weight:700;color:var(--crimson-d)">重量差異法</div>
+          <div style="font-size:0.78rem;color:var(--crimson-d)">Weight Variation</div>
+        </div>
+        <div style="padding:12px 16px">
+          <div style="font-size:0.79rem;font-weight:600;color:var(--ink-sub);margin-bottom:8px">適用：</div>
+          <div style="background:var(--crimson-l);border-radius:5px;padding:6px 10px;font-size:0.8rem;color:var(--crimson-d);font-weight:600;margin-bottom:10px">
+            充填<strong>液體</strong>之膠囊劑
+          </div>
+          <div style="font-size:0.79rem;font-weight:600;color:var(--ink-sub);margin-bottom:6px">操作：</div>
+          <div style="font-size:0.8rem;color:var(--ink-sub);line-height:1.8">
+            取 <strong>10 個</strong>個別稱總重<br>
+            <span style="color:var(--crimson-m)">▸ 硬膠囊：</span>取出內容物 → 稱空殼 → 相減得淨重<br>
+            <span style="color:var(--crimson-m)">▸ 軟膠囊：</span>溶劑洗出內容物 → 室溫 30 min → 稱殼重<br>
+            依含量測定項計算每粒有效成分量
+          </div>
+        </div>
       </div>
-      <div class="info-box pine">
-        <strong>Content Uniformity 含量均一度</strong><br>
-        取 10 個個別分析實際含量<br>
-        依各品目含量測定法計算每粒有效成分量<br><br>
-        力價 (Potency) 另外規範，不等於劑型均一度
+
+      <!-- Content Uniformity -->
+      <div style="background:var(--surface);border:2px solid var(--pine);border-radius:10px;overflow:hidden">
+        <div style="background:var(--pine-l);padding:10px 16px;border-bottom:1px solid var(--pine)">
+          <div style="font-family:var(--mono);font-size:0.68rem;color:var(--pine);font-weight:700;letter-spacing:0.08em">METHOD 2</div>
+          <div style="font-family:var(--serif);font-size:0.97rem;font-weight:700;color:var(--pine-d)">含量均一度</div>
+          <div style="font-size:0.78rem;color:var(--pine-d)">Content Uniformity</div>
+        </div>
+        <div style="padding:12px 16px">
+          <div style="font-size:0.79rem;font-weight:600;color:var(--ink-sub);margin-bottom:8px">適用：</div>
+          <div style="background:var(--pine-l);border-radius:5px;padding:6px 10px;font-size:0.8rem;color:var(--pine-d);font-weight:600;margin-bottom:10px">
+            固體粉末膠囊（主成分含量較少時）
+          </div>
+          <div style="font-size:0.79rem;font-weight:600;color:var(--ink-sub);margin-bottom:6px">操作：</div>
+          <div style="font-size:0.8rem;color:var(--ink-sub);line-height:1.8">
+            取 <strong>10 個</strong>個別分析實際含量<br>
+            調整稀釋次數，使最終溶液濃度符合規定<br>
+            依各品目含量測定項計算每粒有效成分量<br>
+            <span style="color:var(--pine);font-size:0.77rem">力價 (Potency) 另外規範，≠ 劑型均一度</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Hard vs Soft procedure detail -->
+    <div style="margin-top:10px;background:var(--surface2);border-radius:8px;padding:12px 16px;font-size:0.8rem">
+      <div style="font-weight:600;color:var(--ink-sub);margin-bottom:8px;font-family:var(--serif)">膠囊前處理方式比較</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        <div>
+          <div style="font-family:var(--mono);font-size:0.68rem;color:var(--crimson-m);font-weight:700;margin-bottom:4px">硬膠囊</div>
+          <div style="color:var(--ink-sub);line-height:1.7">個別稱重 → 取出內容物 → 再稱空殼 → 相減得淨重</div>
+        </div>
+        <div>
+          <div style="font-family:var(--mono);font-size:0.68rem;color:var(--pine);font-weight:700;margin-bottom:4px">軟膠囊</div>
+          <div style="color:var(--ink-sub);line-height:1.7">個別稱重 → 用適當溶劑洗出內容物 → 室溫放置 <strong>30 min</strong> → 再稱殼重</div>
+        </div>
       </div>
     </div>
+
   </div>
 </section>
 
