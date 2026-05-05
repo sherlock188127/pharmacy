@@ -1,0 +1,1425 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>膠囊劑 Capsules</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@300;400;500&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:        #f7f3ec;
+  --bg2:       #f0ebe0;
+  --surface:   #fdfaf5;
+  --surface2:  #ede8dc;
+  --border:    #d8d0c0;
+  --border2:   #c4b89e;
+
+  --crimson:   #8b1a1a;
+  --crimson-m: #b22222;
+  --crimson-l: #f5e8e8;
+  --crimson-d: #5c0e0e;
+
+  --gold:      #9a7a30;
+  --gold-l:    #f5edd8;
+  --gold-d:    #6b5018;
+
+  --pine:      #3a5c45;
+  --pine-l:    #ddeee3;
+  --pine-d:    #1e3828;
+
+  --slate:     #3d5068;
+  --slate-l:   #dde5ef;
+  --slate-d:   #1e2e40;
+
+  --ink:       #2a2018;
+  --ink-sub:   #4a3c2e;
+  --ink-muted: #7a6e60;
+
+  --mono:  'JetBrains Mono', monospace;
+  --serif: 'Noto Serif TC', serif;
+  --sans:  'Noto Sans TC', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.75;
+  font-size: 0.875rem;
+}
+
+/* ── HERO ── */
+.hero {
+  background: var(--crimson-d);
+  background-image: linear-gradient(135deg, #3d0a0a 0%, #6b1515 50%, #8b1a1a 100%);
+  padding: 52px 48px 42px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 40px,
+    rgba(255,255,255,0.02) 40px,
+    rgba(255,255,255,0.02) 80px
+  );
+}
+.hero-inner { position: relative; max-width: 960px; margin: 0 auto; z-index: 1; }
+.hero-tag {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.hero h1 {
+  font-family: var(--serif);
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.25;
+  margin-bottom: 6px;
+}
+.hero h1 em {
+  font-style: normal;
+  color: rgba(255,255,255,0.55);
+  font-weight: 400;
+  font-size: 1.25rem;
+  display: block;
+  margin-top: 2px;
+}
+.hero-sub {
+  color: rgba(255,255,255,0.6);
+  font-size: 0.81rem;
+  margin-top: 6px;
+}
+
+/* ── NAV ── */
+.nav-wrap {
+  background: var(--surface);
+  border-bottom: 2px solid var(--crimson-l);
+  position: sticky; top: 0; z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.nav {
+  max-width: 960px; margin: 0 auto;
+  display: flex; overflow-x: auto;
+  scrollbar-width: none;
+}
+.nav::-webkit-scrollbar { display: none; }
+.nav a {
+  display: block;
+  padding: 12px 18px;
+  font-size: 0.78rem;
+  font-family: var(--sans);
+  font-weight: 500;
+  color: var(--ink-muted);
+  text-decoration: none;
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  transition: color 0.15s, border-color 0.15s;
+}
+.nav a:hover { color: var(--crimson); border-bottom-color: var(--crimson); }
+
+/* ── LAYOUT ── */
+.container { max-width: 960px; margin: 0 auto; padding: 36px 24px 72px; }
+
+/* ── SECTION ── */
+.section { margin-bottom: 52px; }
+.section-header {
+  display: flex; align-items: center; gap: 14px;
+  margin-bottom: 20px;
+}
+.section-num {
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  font-weight: 600;
+  color: var(--crimson);
+  background: var(--crimson-l);
+  border-radius: 4px;
+  padding: 3px 8px;
+  letter-spacing: 0.06em;
+  flex-shrink: 0;
+}
+.section-title {
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--crimson-d);
+}
+.section-title span {
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: 0.8rem;
+  color: var(--ink-muted);
+  margin-left: 8px;
+}
+.section-divider { flex: 1; height: 1px; background: var(--border); }
+
+/* ── CARD ── */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px 22px;
+  margin-bottom: 14px;
+}
+.card h3 {
+  font-family: var(--serif);
+  font-size: 0.97rem;
+  font-weight: 700;
+  color: var(--crimson-d);
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+.card h4 {
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--ink-sub);
+  margin: 12px 0 6px;
+}
+
+/* ── GRID ── */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin-bottom: 14px; }
+@media (max-width: 660px) { .grid-2, .grid-3 { grid-template-columns: 1fr; } }
+
+/* ── INFO BOXES ── */
+.info-box {
+  border-radius: 7px;
+  padding: 10px 14px;
+  font-size: 0.82rem;
+  line-height: 1.7;
+  margin-bottom: 8px;
+}
+.info-box:last-child { margin-bottom: 0; }
+.info-box strong { font-weight: 600; }
+.info-box.red    { background: var(--crimson-l); border-left: 3px solid var(--crimson-m); color: var(--crimson-d); }
+.info-box.gold   { background: var(--gold-l);    border-left: 3px solid var(--gold);      color: var(--gold-d); }
+.info-box.pine   { background: var(--pine-l);    border-left: 3px solid var(--pine);      color: var(--pine-d); }
+.info-box.slate  { background: var(--slate-l);   border-left: 3px solid var(--slate);     color: var(--slate-d); }
+.info-box.cream  { background: var(--bg2);       border-left: 3px solid var(--border2);   color: var(--ink-sub); }
+.info-box.warn   { background: #fdf4dc;           border-left: 3px solid #c9972a;          color: #7a5010; }
+.info-box.danger { background: #fde8e8;           border-left: 3px solid #b84444;          color: #7a2020; }
+
+/* ── TAG ── */
+.tag {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.69rem;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 3px;
+  margin: 1px 2px;
+}
+.tag.red   { background: var(--crimson-l); color: var(--crimson-d); }
+.tag.gold  { background: var(--gold-l);    color: var(--gold-d); }
+.tag.pine  { background: var(--pine-l);    color: var(--pine-d); }
+.tag.slate { background: var(--slate-l);   color: var(--slate-d); }
+.tag.warn  { background: #fdf0cc;          color: #7a5010; }
+.tag.danger{ background: #fde8e8;          color: #8a2424; }
+
+/* ── TABLE ── */
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 0.81rem; }
+th {
+  background: var(--surface2);
+  color: var(--ink-sub);
+  font-weight: 600;
+  padding: 8px 12px;
+  text-align: left;
+  border-bottom: 2px solid var(--border2);
+}
+td {
+  padding: 7px 12px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  color: var(--ink-sub);
+}
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: var(--bg2); }
+
+/* ── FLOW ── */
+.flow {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 6px; padding: 8px 0;
+}
+.flow-step {
+  background: var(--crimson-l);
+  border: 1px solid var(--crimson-m);
+  border-radius: 6px;
+  padding: 5px 12px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--crimson-d);
+  white-space: nowrap;
+}
+.flow-arrow { color: var(--ink-muted); font-size: 0.9rem; }
+
+/* ── LIST ── */
+ul.dot-list { list-style: none; padding: 0; }
+ul.dot-list li {
+  padding: 2px 0 2px 16px;
+  position: relative;
+  color: var(--ink-sub);
+  font-size: 0.83rem;
+  line-height: 1.7;
+}
+ul.dot-list li::before {
+  content: '·'; position: absolute; left: 0;
+  color: var(--crimson-m); font-weight: 700;
+}
+ul.dot-list li strong { color: var(--ink); }
+
+/* ── STABILITY TABLE ── */
+.stability-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border: 1px solid var(--border2);
+  border-radius: 8px;
+  overflow: hidden;
+  font-size: 0.8rem;
+}
+.sg-cell {
+  padding: 10px 12px;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.sg-cell:nth-child(4n) { border-right: none; }
+.sg-cell.header {
+  background: var(--crimson-d);
+  color: #fff;
+  font-weight: 700;
+  font-family: var(--serif);
+  text-align: center;
+}
+.sg-cell.label {
+  background: var(--surface2);
+  font-weight: 600;
+  color: var(--ink-sub);
+}
+.sg-cell.value {
+  background: var(--surface);
+  color: var(--ink-sub);
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+}
+.sg-cell.highlight {
+  background: var(--crimson-l);
+  color: var(--crimson-d);
+  font-weight: 700;
+  text-align: center;
+}
+.sg-bottom { border-bottom: none; }
+
+/* ═══════════════════════════════════
+   EXAM QUESTION INTERACTIVE STYLES
+═══════════════════════════════════ */
+.exam-section-title {
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--crimson-d);
+  margin-bottom: 18px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--crimson-l);
+}
+
+.exam-q {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+
+.exam-q-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px 10px;
+  cursor: pointer;
+  user-select: none;
+}
+.exam-q-header:hover .exam-q-stem { color: var(--crimson); }
+
+.exam-q-year {
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  font-weight: 600;
+  color: var(--crimson-m);
+  background: var(--crimson-l);
+  border-radius: 3px;
+  padding: 2px 8px;
+  flex-shrink: 0;
+}
+.exam-q-stem {
+  font-weight: 600;
+  font-size: 0.86rem;
+  color: var(--ink);
+  line-height: 1.55;
+  transition: color 0.15s;
+  flex: 1;
+}
+.exam-q-toggle {
+  font-size: 0.75rem;
+  color: var(--ink-muted);
+  flex-shrink: 0;
+  transition: transform 0.2s;
+}
+.exam-q.open .exam-q-toggle { transform: rotate(180deg); }
+
+.exam-q-body {
+  display: none;
+  padding: 0 16px 14px;
+}
+.exam-q.open .exam-q-body { display: block; }
+
+/* options */
+.exam-opts { display: flex; flex-direction: column; gap: 6px; margin-bottom: 10px; }
+
+.exam-opt {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  font-size: 0.83rem;
+  color: var(--ink-sub);
+  transition: background 0.12s, border-color 0.12s;
+  user-select: none;
+}
+.exam-opt:hover:not(.revealed) { background: var(--bg2); border-color: var(--border2); }
+
+.exam-opt .opt-label {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--ink-muted);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.exam-opt .opt-text { flex: 1; line-height: 1.55; }
+.exam-opt .opt-icon { flex-shrink: 0; font-size: 0.85rem; opacity: 0; transition: opacity 0.15s; }
+
+/* correct / wrong states */
+.exam-opt.correct {
+  background: var(--pine-l);
+  border-color: var(--pine);
+}
+.exam-opt.correct .opt-label { color: var(--pine-d); }
+.exam-opt.correct .opt-icon  { opacity: 1; color: var(--pine); }
+
+.exam-opt.wrong {
+  background: var(--crimson-l);
+  border-color: var(--crimson-m);
+}
+.exam-opt.wrong .opt-label { color: var(--crimson-d); }
+.exam-opt.wrong .opt-icon  { opacity: 1; color: var(--crimson-m); }
+
+.exam-opt.revealed { cursor: default; }
+
+/* explain btn */
+.exam-explain-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--crimson-m);
+  background: transparent;
+  border: 1px solid var(--crimson-m);
+  border-radius: 4px;
+  padding: 4px 12px;
+  cursor: pointer;
+  transition: background 0.12s, color 0.12s;
+  margin-bottom: 8px;
+}
+.exam-explain-btn:hover { background: var(--crimson-l); }
+
+.exam-explain {
+  display: none;
+  background: var(--gold-l);
+  border: 1px solid var(--gold);
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-size: 0.82rem;
+  color: var(--gold-d);
+  line-height: 1.7;
+}
+.exam-explain.show { display: block; }
+.exam-explain strong { color: var(--ink); }
+
+/* scrollbar */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: var(--bg2); }
+::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 4px; }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">Pharmaceutics &nbsp;·&nbsp; Solid Dosage Forms</div>
+    <h1>膠囊劑 <em>Capsules</em></h1>
+    <div class="hero-sub">硬膠囊・軟膠囊・公定書要求・歷屆考題</div>
+  </div>
+</div>
+
+<!-- NAV -->
+<div class="nav-wrap">
+  <nav class="nav">
+    <a href="#overview">概述</a>
+    <a href="#hard">硬膠囊</a>
+    <a href="#hard-fill">充填密封</a>
+    <a href="#soft">軟膠囊</a>
+    <a href="#compendial">公定書要求</a>
+    <a href="#stability">安定性試驗</a>
+    <a href="#exam">歷屆考題</a>
+  </nav>
+</div>
+
+<div class="container">
+
+<!-- ═══ 01 OVERVIEW ═══ -->
+<section class="section" id="overview">
+  <div class="section-header">
+    <span class="section-num">01</span>
+    <h2 class="section-title">膠囊劑概述 <span>Overview</span></h2>
+    <div class="section-divider"></div>
+  </div>
+
+  <div class="card">
+    <h3>定義與優勢</h3>
+    <div class="info-box red" style="margin-bottom:12px">
+      <strong>定義：</strong>藥品與/或惰性物質充填在小的明膠殼內之固體劑型。<br>
+      依組成分 <span class="tag red">硬膠囊 Hard</span>（囊體＋囊帽，兩部分）與 <span class="tag pine">軟膠囊 Soft</span>（單一部分）。
+    </div>
+    <div class="grid-2">
+      <div>
+        <h4>主要優勢</h4>
+        <ul class="dot-list">
+          <li>成人口服首選，<strong>攜帶方便</strong></li>
+          <li>準確計量，<strong>不需量取設備</strong></li>
+          <li>形狀、顏色、刻印使劑型易辨識</li>
+          <li>包裝運送成本<strong>低於液體劑型</strong></li>
+          <li>安定性優、<strong>架貯期較液體劑型長</strong></li>
+          <li>硬膠囊適合藥師<strong>臨時調配</strong>處方</li>
+          <li>可設計為 extended-release / delayed-release</li>
+        </ul>
+      </div>
+      <div>
+        <h4>給藥途徑</h4>
+        <ul class="dot-list">
+          <li>口服（最常見）：整粒吞服</li>
+          <li>可打開與食物/飲料混服（不影響藥效時）</li>
+          <li>可經鼻胃管灌食</li>
+          <li>追蹤 GI 通過情形</li>
+        </ul>
+        <div class="info-box cream" style="margin-top:8px;font-size:0.79rem">
+          <strong>γ-scintigraphy：</strong>添加 γ 射線追蹤器（非侵入性）<br>
+          <strong>Heidelberg capsule：</strong>pH 敏感無線電遙測裝置
+        </div>
+      </div>
+    </div>
+    <div class="info-box warn" style="margin-top:4px">
+      <strong>⚠ 常考比較：</strong>水溶液劑型 BA &gt; 膠囊劑；錠劑與膠囊劑<strong>均可</strong>製成 extended-release（選「膠囊只能 immediate-release」→ 錯）
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 02 HARD ═══ -->
+<section class="section" id="hard">
+  <div class="section-header">
+    <span class="section-num">02</span>
+    <h2 class="section-title">硬膠囊 <span>Hard Gelatin Capsules</span></h2>
+    <div class="section-divider"></div>
+  </div>
+
+  <div class="card">
+    <h3>明膠 Gelatin — 囊殼主材質</h3>
+    <div class="info-box cream">
+      <strong>來源：</strong>動物皮、骨骼之<strong>膠原質 (collagen)</strong> 經部分水解而得。形態：細粉、粗粉、碎片、薄片（粗粒細粒宜並用）。<br>
+      <strong>USP：</strong>允許含 0.15% SO₂ 以防製造過程分解。
+    </div>
+    <div class="grid-2" style="margin-top:10px">
+      <div class="info-box red">
+        <strong>Type A — 酸處理（豬皮）</strong><br>
+        等電點 pH <span class="tag red">7 ~ 9</span><br>
+        作乳化劑最適 pH = 3.2（帶正電）<br>
+        <span style="font-size:0.78rem">特性：塑性、彈性、透明性</span>
+      </div>
+      <div class="info-box slate">
+        <strong>Type B — 鹼處理（骨骼/獸皮）</strong><br>
+        等電點 pH <span class="tag slate">4.7 ~ 5</span><br>
+        作乳化劑最適 pH = 8（帶負電）<br>
+        <span style="font-size:0.78rem">特性：賦予囊殼硬度</span>
+      </div>
+    </div>
+    <div class="info-box pine" style="font-size:0.8rem">
+      <strong>實際應用：</strong>豬皮＋骨頭明膠<strong>配合使用</strong>（非單一來源）；囊殼製造與藥物充填<strong>通常是分開</strong>操作。
+    </div>
+
+    <h4>其他囊殼成分</h4>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>成分</th><th>功能</th></tr></thead>
+        <tbody>
+          <tr><td><span class="tag warn">蔗糖</span></td><td>硬化劑</td></tr>
+          <tr><td><span class="tag red">TiO₂ 二氧化鈦</span></td><td><strong>不透明遮光劑</strong>（最常考）</td></tr>
+          <tr><td>FD&amp;C / D&amp;C 染料、氧化鐵</td><td>著色劑</td></tr>
+          <tr><td>纖維素衍生物、海藻膠</td><td>替代明膠的囊殼材料</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>硬膠囊殼性質</h3>
+    <div class="grid-2">
+      <div>
+        <ul class="dot-list">
+          <li><strong>水分含量：13 ~ 16%</strong>（TWP: 10~16%）</li>
+          <li>高濕度 → 吸濕扭曲，影響溶離</li>
+          <li>極乾燥 → 失水<strong>變脆</strong></li>
+          <li>可放乾燥劑：silica gel、黏土、活性碳</li>
+        </ul>
+      </div>
+      <div>
+        <ul class="dot-list">
+          <li>冷水中不溶，<strong>吸 10 倍水分軟化</strong></li>
+          <li>溶於熱水及溫熱胃液 → 快速溶解釋藥</li>
+          <li>明膠殼被<strong>胃蛋白酶</strong>分解吸收</li>
+          <li>一般為 immediate-release；亦可腸溶/持效</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>囊殼大小 Capsule Sizes</h3>
+    <div class="info-box red" style="margin-bottom:10px;font-size:0.82rem">
+      充填量約 <strong>65 mg ~ 1 g</strong> 之粉末。號數越大容量越<strong>小</strong>（最大 <span class="tag warn">000</span>，最小 <span class="tag red">5</span>，人用最大可吞嚥 <span class="tag gold">0</span>）
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>號數</th><th>容量 (mL)</th><th>備註</th></tr></thead>
+        <tbody>
+          <tr><td><span class="tag warn">000</span></td><td>1.37</td><td>最大（人用）</td></tr>
+          <tr><td><span class="tag red">00</span></td><td>0.95</td><td></td></tr>
+          <tr><td><span class="tag gold">0</span></td><td>0.68</td><td>一般病患可吞嚥之最大尺寸</td></tr>
+          <tr><td><span class="tag red">1</span></td><td>0.50</td><td></td></tr>
+          <tr><td><span class="tag red">2</span></td><td>0.37</td><td></td></tr>
+          <tr><td><span class="tag red">3</span></td><td>0.27</td><td></td></tr>
+          <tr><td><span class="tag red">4</span></td><td>0.20</td><td></td></tr>
+          <tr><td><span class="tag red">5</span></td><td>0.13</td><td>最小（人用）</td></tr>
+          <tr><td>10, 11, 12</td><td>更大</td><td>獸醫用</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="info-box danger" style="margin-top:8px;font-size:0.79rem">
+      <strong>⚠ 常考陷阱：</strong>「空膠殼最大者為 0 號」→ <strong>錯</strong>（最大為 000）
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>硬膠囊配方賦形劑</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>功能</th><th>代表成分</th><th>備註</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><span class="tag gold">稀釋劑</span></td>
+            <td>lactose, starch, MCC</td>
+            <td>增加體積，提供粉末凝集</td>
+          </tr>
+          <tr>
+            <td><span class="tag red">崩散劑</span></td>
+            <td>pregelatinized starch<br>croscarmellose (Ac-Di-Sol)<br>sodium starch glycolate (Primojel)</td>
+            <td>防止在 GI 中結塊；幫助崩散</td>
+          </tr>
+          <tr>
+            <td><span class="tag pine">吸收劑</span></td>
+            <td>MgCO₃, colloidal SiO₂, light MgO</td>
+            <td>防止易液化藥品液化；<strong>PEG ✗ 不適合</strong></td>
+          </tr>
+          <tr>
+            <td><span class="tag slate">潤濕劑</span></td>
+            <td>sodium lauryl sulfate (SLS)</td>
+            <td>幫助疏水藥物濕潤；Mg stearate 疏水 → 加 SLS 改善</td>
+          </tr>
+          <tr>
+            <td><span class="tag warn">滑動劑 / 潤滑劑</span></td>
+            <td>fumed SiO₂ (glidant)<br>Mg stearate, stearic acid, talc</td>
+            <td>Mg stearate 厭水 → 可延遲溶離；stearic acid ≠ 崩散劑</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid-2" style="margin-top:10px">
+      <div class="info-box warn" style="font-size:0.8rem">
+        <strong>共熔物 (Eutectic mixture) 處理：</strong><br>
+        薄荷 + 水楊酸等量研合 → 添加 <strong>MgCO₃（碳酸鎂）</strong>隔開避免液化
+      </div>
+      <div class="info-box danger" style="font-size:0.8rem">
+        <strong>陷阱整理：</strong><br>
+        stearic acid → 潤滑劑（<strong>非</strong>崩散劑）<br>
+        PEG → <strong>非</strong>吸收劑<br>
+        CaCl₂ → <strong>非</strong>滑動劑
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>硬膠囊殼製造流程</h3>
+    <div class="flow">
+      <div class="flow-step">釘膜浸入控溫熔融明膠液</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">依所需厚度決定浸入深度與時間</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">升起後控溫控濕氣流乾燥</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">機器切割成適當長度</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>特殊膠囊殼設計</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>名稱</th><th>特色</th></tr></thead>
+        <tbody>
+          <tr><td><span class="tag gold">Pulvules®</span> (Eli Lilly)</td><td>囊體末端尖，帽保持圓頭</td></tr>
+          <tr><td><span class="tag red">Spansule®</span></td><td>兩端尖頭；圓粒包覆<strong>數種厚度的相同包材</strong>（控制釋放）</td></tr>
+          <tr><td><span class="tag pine">Snap-fit® / Coni-snap®</span></td><td>鎖勾設計確實套合，防摻假 (tamper evident)；可 &gt;180,000 粒/hr</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 03 FILLING ═══ -->
+<section class="section" id="hard-fill">
+  <div class="section-header">
+    <span class="section-num">03</span>
+    <h2 class="section-title">充填、密封與清潔 <span>Filling · Sealing · Cleaning</span></h2>
+    <div class="section-divider"></div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>小規模充填（Punch Method）</h3>
+      <ul class="dot-list">
+        <li>粉末 → <strong>衝壓法 (Punch method)</strong></li>
+        <li>厚度約為膠囊體高度的 <strong>1/3 ~ 1/4</strong></li>
+        <li>顆粒 → 秤重後由包藥紙逐一倒入</li>
+        <li>非強效藥：第一粒充填後稱重，之後定期稱重</li>
+        <li>強效藥：<strong>每一顆都要稱重</strong></li>
+      </ul>
+      <div class="info-box gold" style="margin-top:10px;font-size:0.8rem">
+        估算乳糖添加量 → 採用 <strong>tapped density</strong>（非 bulk 或 true density）
+      </div>
+    </div>
+    <div class="card">
+      <h3>大規模充填（自動充填機）</h3>
+      <ul class="dot-list">
+        <li>膠囊體<strong>轉速慢</strong> → 停留久 → 充填量多</li>
+        <li>給料漏斗<strong>粉末高度高</strong> → 充填量多</li>
+        <li>流動順暢 → 充填均勻</li>
+        <li>充填總重量由<strong>膠囊體</strong>控制（非帽與體總和）</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>特殊充填 / 密封 / 清潔</h3>
+    <div class="grid-2">
+      <div>
+        <h4>特殊充填情況</h4>
+        <ul class="dot-list">
+          <li>半固體：捲起撒 corn starch 塞入；或熔融倒入冷卻</li>
+          <li>液體：micropipette 或 calibrated dropper</li>
+          <li>脂肪油/揮發油 → 可裝鎖合膠囊</li>
+          <li><strong>水性液體不適合</strong>充填硬膠囊</li>
+        </ul>
+      </div>
+      <div>
+        <h4>密封方式</h4>
+        <ul class="dot-list">
+          <li>Coni-snap 預製環扣鎖合</li>
+          <li>有色明膠帶密封（Kapseals）</li>
+          <li>熱熔封（接合處產生環狀痕跡）</li>
+          <li>液體濕潤劑低溫熱結合（40~45°C）</li>
+          <li>臨時：帽內緣塗熱明膠液後立即套合</li>
+        </ul>
+      </div>
+    </div>
+    <h4>清潔</h4>
+    <ul class="dot-list">
+      <li>小規模：乾淨紗布/棉布個別擦拭</li>
+      <li>大規模：附加<strong>真空除塵器</strong>或清潔磨光機</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ═══ 04 SOFT ═══ -->
+<section class="section" id="soft">
+  <div class="section-header">
+    <span class="section-num">04</span>
+    <h2 class="section-title">軟膠囊 <span>Soft Gelatin Capsules</span></h2>
+    <div class="section-divider"></div>
+  </div>
+
+  <div class="card">
+    <h3>囊殼組成</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>成分</th><th>功能</th><th>備註</th></tr></thead>
+        <tbody>
+          <tr><td>明膠</td><td>主材質</td><td></td></tr>
+          <tr><td><span class="tag pine">甘油 / 山梨醇 (sorbitol)</span></td><td><strong>塑化劑</strong> Plasticizer</td><td>塑化劑↑ → 囊殼較<strong>軟</strong></td></tr>
+          <tr><td>水</td><td>溶媒</td><td>含水 6~13% → 需加<strong>防腐劑</strong></td></tr>
+          <tr><td>Methylparaben / Propylparaben; sorbic acid</td><td>防腐劑</td><td>因含水分</td></tr>
+          <tr><td>TiO₂</td><td>不透明遮光劑</td><td></td></tr>
+          <tr><td>蔗糖（≤5%）</td><td>增加甘味及咀嚼性</td><td>非增加硬度</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>適合 / 不適合充填物質</h3>
+    <div class="grid-2">
+      <div class="info-box pine">
+        <strong>✓ 適合充填</strong>
+        <ul class="dot-list" style="margin-top:6px">
+          <li>與水不互溶之液體（植物油、芳香油）</li>
+          <li>與水可互溶之<strong>非揮發性</strong>液體（<strong>PEG</strong>、polysorbate 80）</li>
+          <li>與水可互溶之<strong>較不揮發性</strong>（PG、isopropyl alcohol）</li>
+          <li>固體：糊狀、乾粉、顆粒、預製錠片</li>
+        </ul>
+      </div>
+      <div>
+        <div class="info-box danger">
+          <strong>✗ 不適合（易使囊殼軟化）</strong>
+          <ul class="dot-list" style="margin-top:6px">
+            <li>超過 <strong>5% 的水</strong></li>
+            <li>低分子量水溶性揮發性有機物（alcohols, ketones, acids, amines, esters）</li>
+            <li><strong>含乙醇水溶液</strong> → 易軟化膠殼</li>
+          </ul>
+        </div>
+        <div class="info-box warn" style="margin-top:6px;font-size:0.79rem">
+          <strong>考點：</strong>軟膠囊媒液較不影響 BA → <strong>PEG</strong>（B）
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>軟膠囊製造方法</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>製法</th><th>特色</th><th>易錯點</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><span class="tag gold">Plate process 板模法</span></td>
+            <td>半自動；商業最早</td>
+            <td>真空吸進模洞 → 充填 → 壓合密封</td>
+          </tr>
+          <tr>
+            <td><span class="tag red">Rotary die 旋轉模法</span></td>
+            <td>連續大量生產，最常用</td>
+            <td>兩條連續明膠帶 → 旋轉模輥軋 → 充填 → 壓力+熱密封 → 切割</td>
+          </tr>
+          <tr>
+            <td><span class="tag slate">Reciprocating die 往返模法</span></td>
+            <td>垂直式往復模</td>
+            <td>同旋轉模，改為垂直往復</td>
+          </tr>
+          <tr>
+            <td><span class="tag pine">無縫式（吹泡法）</span></td>
+            <td>無縫圓球狀；連續生產；需冷卻媒液</td>
+            <td>一步法（充填密封同步），<strong>非先預製膠殼</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="info-box danger" style="margin-top:8px;font-size:0.79rem">
+      <strong>⚠ 吹泡法：</strong>「通常先預製膠殼，再行充填，即進行階段式製程」→ <strong>錯</strong>（吹泡法是一步法）
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 05 COMPENDIAL ═══ -->
+<section class="section" id="compendial">
+  <div class="section-header">
+    <span class="section-num">05</span>
+    <h2 class="section-title">公定書要求 <span>Compendial Requirements</span></h2>
+    <div class="section-divider"></div>
+  </div>
+
+  <div class="card">
+    <h3>崩散度試驗 vs 溶離度試驗</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>項目</th><th>崩散度 Disintegration</th><th>溶離度 Dissolution</th></tr></thead>
+        <tbody>
+          <tr><td>溫度</td><td><strong>35 ~ 39°C</strong></td><td><strong>37 ± 0.5°C</strong></td></tr>
+          <tr><td>震盪/轉速</td><td>29 ~ 32 次/min（上下）</td><td>25 ~ 150 rpm</td></tr>
+          <tr><td>篩網</td><td><strong>10 號篩</strong></td><td>裝置 I：10 號篩（40 mesh）</td></tr>
+          <tr><td>網架高度</td><td>提升 5.3 ~ 5.7 cm</td><td>—</td></tr>
+          <tr><td>篩網/網籃距底</td><td>液面下 2.5 cm</td><td><strong>2.5 ± 0.2 cm</strong></td></tr>
+          <tr><td>取樣數</td><td>先 6 粒；不合格再取 12 粒（18 粒中 ≥16 通過）</td><td>依各品目規定</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="info-box danger" style="margin-top:8px;font-size:0.79rem">
+      <strong>⚠ 最常錯：</strong>崩散溫度是 <strong>35~39°C</strong>，不是 37±0.5°C（那是溶離的）；篩網是 <strong>10 號篩</strong>，不是 20 號篩；網籃距底 <strong>2.5 cm</strong>（不是 3.5 cm）。
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>劑型單元含量均一度 Uniformity of Dosage Units</h3>
+    <div class="grid-2">
+      <div class="info-box red">
+        <strong>Weight Variation 重量差異</strong><br>
+        取 10 個個別稱重<br>
+        硬膠囊：取出內容物 → 稱空殼 → 相減得淨重<br>
+        軟膠囊：溶劑洗出 → 室溫 30 min → 稱殼重<br>
+        <span class="tag red" style="margin-top:6px;display:inline-block">充填液體膠囊 → 用此法</span>
+      </div>
+      <div class="info-box pine">
+        <strong>Content Uniformity 含量均一度</strong><br>
+        取 10 個個別分析實際含量<br>
+        依各品目含量測定法計算每粒有效成分量<br><br>
+        力價 (Potency) 另外規範，不等於劑型均一度
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 06 STABILITY ═══ -->
+<section class="section" id="stability">
+  <div class="section-header">
+    <span class="section-num">06</span>
+    <h2 class="section-title">安定性試驗 <span>Stability Testing</span></h2>
+    <div class="section-divider"></div>
+  </div>
+
+  <div class="card">
+    <h3>安定性試驗條件一覽表</h3>
+    <div class="stability-grid">
+      <div class="sg-cell header">試驗類型</div>
+      <div class="sg-cell header">溫度 (°C)</div>
+      <div class="sg-cell header">相對濕度 RH%</div>
+      <div class="sg-cell header">最短時間</div>
+
+      <div class="sg-cell label">長期試驗 Long-term</div>
+      <div class="sg-cell value">25 ± 2</div>
+      <div class="sg-cell value">60 ± 5</div>
+      <div class="sg-cell value">12 個月</div>
+
+      <div class="sg-cell label">中間試驗 Intermediate</div>
+      <div class="sg-cell value">30 ± 2</div>
+      <div class="sg-cell value">65 ± 5</div>
+      <div class="sg-cell value">6 個月</div>
+
+      <div class="sg-cell label">加速試驗 Accelerated</div>
+      <div class="sg-cell value">40 ± 2</div>
+      <div class="sg-cell value">75 ± 5</div>
+      <div class="sg-cell value">6 個月</div>
+
+      <div class="sg-cell label sg-bottom">冷藏品 Refrigerated</div>
+      <div class="sg-cell value sg-bottom">5 ± 3</div>
+      <div class="sg-cell value sg-bottom">—</div>
+      <div class="sg-cell value sg-bottom">12 個月</div>
+    </div>
+
+    <div class="info-box danger" style="margin-top:12px">
+      <strong>⚠ 考點：</strong>一般儲存條件下<strong>未建議使用 RH 70±5%</strong>（建議的是 60±5、65±5、75±5）。
+    </div>
+
+    <h4 style="margin-top:16px">水分穿透試驗 Moisture Permeation Test</h4>
+    <div class="info-box cream" style="font-size:0.81rem">
+      USP 要求；測定單一單位/單劑量容器的水分穿透。<br>
+      方法：將劑量單位與<strong>顯色乾燥劑圓粒</strong>一起包裝 → 放置已知 RH 下 → 觀察乾燥劑顏色變化及重量差異。
+    </div>
+  </div>
+</section>
+
+<!-- ═══ EXAM ═══ -->
+<section class="section" id="exam">
+  <div class="section-header">
+    <span class="section-num">07</span>
+    <h2 class="section-title">歷屆考題 <span>Past Exam Questions</span></h2>
+    <div class="section-divider"></div>
+  </div>
+
+  <!-- Q1 -->
+  <div class="exam-q" data-answer="B">
+    <div class="exam-q-header" onclick="toggleQ(this)">
+      <span class="exam-q-year">110-2</span>
+      <span class="exam-q-stem">下列何者適宜作為軟膠囊劑之媒液，且通常較不會影響口服之生體可用率？</span>
+      <span class="exam-q-toggle">▼</span>
+    </div>
+    <div class="exam-q-body">
+      <div class="exam-opts">
+        <div class="exam-opt" onclick="selectOpt(this,'A')"><span class="opt-label">A</span><span class="opt-text">與水不互溶之非揮發性液體，如：橄欖油</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'B')"><span class="opt-label">B</span><span class="opt-text">與水可互溶之非揮發性液體，如：聚乙二醇</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'C')"><span class="opt-label">C</span><span class="opt-text">與水可互溶之不易揮發性液體，如：異丙醇</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'D')"><span class="opt-label">D</span><span class="opt-text">與水不互溶之揮發性液體，如：正己烷</span><span class="opt-icon"></span></div>
+      </div>
+      <button class="exam-explain-btn" onclick="toggleExplain(this)">▸ 顯示詳解</button>
+      <div class="exam-explain">
+        <strong>答案：B</strong><br>
+        PEG（聚乙二醇）與水可互溶且非揮發性，生體可用率影響最小。揮發性有機物（如正己烷、異丙醇等）會滲出囊殼；橄欖油雖常用，但屬不互溶類，BA 影響相對較大。
+      </div>
+    </div>
+  </div>
+
+  <!-- Q2 -->
+  <div class="exam-q" data-answer="D">
+    <div class="exam-q-header" onclick="toggleQ(this)">
+      <span class="exam-q-year">112-2</span>
+      <span class="exam-q-stem">有關「硬膠囊劑」常用之賦形劑，下列何者不具崩散劑作用？</span>
+      <span class="exam-q-toggle">▼</span>
+    </div>
+    <div class="exam-q-body">
+      <div class="exam-opts">
+        <div class="exam-opt" onclick="selectOpt(this,'A')"><span class="opt-label">A</span><span class="opt-text">pregelatinized starch</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'B')"><span class="opt-label">B</span><span class="opt-text">croscarmellose</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'C')"><span class="opt-label">C</span><span class="opt-text">sodium starch glycolate</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'D')"><span class="opt-label">D</span><span class="opt-text">stearic acid</span><span class="opt-icon"></span></div>
+      </div>
+      <button class="exam-explain-btn" onclick="toggleExplain(this)">▸ 顯示詳解</button>
+      <div class="exam-explain">
+        <strong>答案：D（stearic acid）</strong><br>
+        stearic acid 是<strong>潤滑劑</strong>，不具崩散功能。A、B、C 皆為崩散劑（superdisintegrants），尤其 B（Ac-Di-Sol）和 C（Primojel）是超崩散劑。
+      </div>
+    </div>
+  </div>
+
+  <!-- Q3 -->
+  <div class="exam-q" data-answer="C">
+    <div class="exam-q-header" onclick="toggleQ(this)">
+      <span class="exam-q-year">112-1</span>
+      <span class="exam-q-stem">疏水性藥物製備為硬膠囊劑時，可添加輔助成分以減少藥物在腸中結塊而不易擴散之現象，下列何者不具此作用？</span>
+      <span class="exam-q-toggle">▼</span>
+    </div>
+    <div class="exam-q-body">
+      <div class="exam-opts">
+        <div class="exam-opt" onclick="selectOpt(this,'A')"><span class="opt-label">A</span><span class="opt-text">sodium starch glycolate</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'B')"><span class="opt-label">B</span><span class="opt-text">sodium lauryl sulfate</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'C')"><span class="opt-label">C</span><span class="opt-text">methylcellulose</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'D')"><span class="opt-label">D</span><span class="opt-text">croscarmellose</span><span class="opt-icon"></span></div>
+      </div>
+      <button class="exam-explain-btn" onclick="toggleExplain(this)">▸ 顯示詳解</button>
+      <div class="exam-explain">
+        <strong>答案：C（methylcellulose）</strong><br>
+        A（崩散劑）、B（潤濕劑 SLS）、D（崩散劑）皆能幫助疏水藥物分散。methylcellulose 為黏稠劑，不具幫助擴散之作用。
+      </div>
+    </div>
+  </div>
+
+  <!-- Q4 -->
+  <div class="exam-q" data-answer="D">
+    <div class="exam-q-header" onclick="toggleQ(this)">
+      <span class="exam-q-year">110-1</span>
+      <span class="exam-q-stem">若硬膠囊中含有易液化之藥品成分，可添加適當吸收劑改善，下列何種成分最不適合做為此用途之吸收劑？</span>
+      <span class="exam-q-toggle">▼</span>
+    </div>
+    <div class="exam-q-body">
+      <div class="exam-opts">
+        <div class="exam-opt" onclick="selectOpt(this,'A')"><span class="opt-label">A</span><span class="opt-text">magnesium carbonate</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'B')"><span class="opt-label">B</span><span class="opt-text">colloidal silicon dioxide</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'C')"><span class="opt-label">C</span><span class="opt-text">light magnesium oxide</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'D')"><span class="opt-label">D</span><span class="opt-text">polyethylene glycol</span><span class="opt-icon"></span></div>
+      </div>
+      <button class="exam-explain-btn" onclick="toggleExplain(this)">▸ 顯示詳解</button>
+      <div class="exam-explain">
+        <strong>答案：D（PEG）</strong><br>
+        PEG 本身在室溫可能為半固體或液體，反而可能使藥品更容易液化，不適合作為吸收劑。MgCO₃、colloidal SiO₂、light MgO 皆可吸收液化藥品。
+      </div>
+    </div>
+  </div>
+
+  <!-- Q5 -->
+  <div class="exam-q" data-answer="B">
+    <div class="exam-q-header" onclick="toggleQ(this)">
+      <span class="exam-q-year">107-1</span>
+      <span class="exam-q-stem">自動化生產硬膠囊劑時，有時為了增加藥物粉末流動性，可添加下列何種物質來改善？</span>
+      <span class="exam-q-toggle">▼</span>
+    </div>
+    <div class="exam-q-body">
+      <div class="exam-opts">
+        <div class="exam-opt" onclick="selectOpt(this,'A')"><span class="opt-label">A</span><span class="opt-text">lactose</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'B')"><span class="opt-label">B</span><span class="opt-text">fumed silicon dioxide</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'C')"><span class="opt-label">C</span><span class="opt-text">magnesium oxide</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'D')"><span class="opt-label">D</span><span class="opt-text">titanium dioxide</span><span class="opt-icon"></span></div>
+      </div>
+      <button class="exam-explain-btn" onclick="toggleExplain(this)">▸ 顯示詳解</button>
+      <div class="exam-explain">
+        <strong>答案：B（fumed silicon dioxide）</strong><br>
+        Fumed SiO₂（膠態矽）是<strong>滑動劑 (glidant)</strong>，最常用於改善粉末流動性。lactose 是稀釋劑；MgO、TiO₂ 無此功能。
+      </div>
+    </div>
+  </div>
+
+  <!-- Q6 -->
+  <div class="exam-q" data-answer="B">
+    <div class="exam-q-header" onclick="toggleQ(this)">
+      <span class="exam-q-year">107-1</span>
+      <span class="exam-q-stem">以硬脂酸鎂為膠囊劑之潤滑劑時，若導致難溶性藥物之溶離速率降低而影響吸收時，通常可於配方中添加何者來改善？</span>
+      <span class="exam-q-toggle">▼</span>
+    </div>
+    <div class="exam-q-body">
+      <div class="exam-opts">
+        <div class="exam-opt" onclick="selectOpt(this,'A')"><span class="opt-label">A</span><span class="opt-text">澱粉</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'B')"><span class="opt-label">B</span><span class="opt-text">硫酸月桂酯鈉（SLS）</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'C')"><span class="opt-label">C</span><span class="opt-text">苯甲酸鈉</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'D')"><span class="opt-label">D</span><span class="opt-text">硫代硫酸鈉</span><span class="opt-icon"></span></div>
+      </div>
+      <button class="exam-explain-btn" onclick="toggleExplain(this)">▸ 顯示詳解</button>
+      <div class="exam-explain">
+        <strong>答案：B（SLS）</strong><br>
+        Mg stearate 具厭水性，包覆藥物顆粒後阻礙溶離。SLS（sodium lauryl sulfate）為<strong>潤濕劑</strong>，能改善疏水性藥物之濕潤，抵消 Mg stearate 的不良影響。
+      </div>
+    </div>
+  </div>
+
+  <!-- Q7 -->
+  <div class="exam-q" data-answer="D">
+    <div class="exam-q-header" onclick="toggleQ(this)">
+      <span class="exam-q-year">113-2</span>
+      <span class="exam-q-stem">明膠膠囊殼內添加二氧化鈦之主要目的為何？</span>
+      <span class="exam-q-toggle">▼</span>
+    </div>
+    <div class="exam-q-body">
+      <div class="exam-opts">
+        <div class="exam-opt" onclick="selectOpt(this,'A')"><span class="opt-label">A</span><span class="opt-text">具彈性</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'B')"><span class="opt-label">B</span><span class="opt-text">抗氧化</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'C')"><span class="opt-label">C</span><span class="opt-text">防潮性</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'D')"><span class="opt-label">D</span><span class="opt-text">遮光性</span><span class="opt-icon"></span></div>
+      </div>
+      <button class="exam-explain-btn" onclick="toggleExplain(this)">▸ 顯示詳解</button>
+      <div class="exam-explain">
+        <strong>答案：D（遮光性）</strong><br>
+        TiO₂ 是<strong>不透明劑 (opacifier)</strong>，主要功能為遮光（阻光性），不具抗氧化或防潮功能。彈性由塑化劑（甘油、山梨醇）提供。
+      </div>
+    </div>
+  </div>
+
+  <!-- Q8 -->
+  <div class="exam-q" data-answer="A">
+    <div class="exam-q-header" onclick="toggleQ(this)">
+      <span class="exam-q-year">113-1</span>
+      <span class="exam-q-stem">有關「崩散度試驗」之敘述，下列何者錯誤？</span>
+      <span class="exam-q-toggle">▼</span>
+    </div>
+    <div class="exam-q-body">
+      <div class="exam-opts">
+        <div class="exam-opt" onclick="selectOpt(this,'A')"><span class="opt-label">A</span><span class="opt-text">維持 37±0.5℃ 恆溫，篩網為 20 號篩</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'B')"><span class="opt-label">B</span><span class="opt-text">網架升降頻率每分鐘 29～32 週期</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'C')"><span class="opt-label">C</span><span class="opt-text">網架提升高度為 5.3～5.7 公分</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'D')"><span class="opt-label">D</span><span class="opt-text">篩網應浸在液面下 2.5 公分</span><span class="opt-icon"></span></div>
+      </div>
+      <button class="exam-explain-btn" onclick="toggleExplain(this)">▸ 顯示詳解</button>
+      <div class="exam-explain">
+        <strong>答案：A（錯誤）</strong><br>
+        崩散度試驗溫度為 <strong>35~39°C</strong>（非 37±0.5°C；37±0.5°C 是溶離試驗的溫度）；篩網為 <strong>10 號篩</strong>（非 20 號篩）。A 選項兩處皆錯，為最佳答案。
+      </div>
+    </div>
+  </div>
+
+  <!-- Q9 -->
+  <div class="exam-q" data-answer="D">
+    <div class="exam-q-header" onclick="toggleQ(this)">
+      <span class="exam-q-year">111-1</span>
+      <span class="exam-q-stem">依中華藥典，有關溶離度試驗法之規定，下列何者錯誤？</span>
+      <span class="exam-q-toggle">▼</span>
+    </div>
+    <div class="exam-q-body">
+      <div class="exam-opts">
+        <div class="exam-opt" onclick="selectOpt(this,'A')"><span class="opt-label">A</span><span class="opt-text">可以用水當媒液</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'B')"><span class="opt-label">B</span><span class="opt-text">溫度必須為 37 ± 0.5℃</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'C')"><span class="opt-label">C</span><span class="opt-text">裝置Ｉ為 40 網目篩網</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'D')"><span class="opt-label">D</span><span class="opt-text">網籃與容器底之距離維持在 3.5 ± 0.5 公分</span><span class="opt-icon"></span></div>
+      </div>
+      <button class="exam-explain-btn" onclick="toggleExplain(this)">▸ 顯示詳解</button>
+      <div class="exam-explain">
+        <strong>答案：D（錯誤）</strong><br>
+        網籃底距試驗槽底應為 <strong>2.5 ± 0.2 cm</strong>，不是 3.5±0.5 cm。A、B、C 皆正確。
+      </div>
+    </div>
+  </div>
+
+  <!-- Q10 -->
+  <div class="exam-q" data-answer="C">
+    <div class="exam-q-header" onclick="toggleQ(this)">
+      <span class="exam-q-year">112-2</span>
+      <span class="exam-q-stem">依中華藥典，充填液體之膠囊劑，其單位劑量均一度的測試方法為何？</span>
+      <span class="exam-q-toggle">▼</span>
+    </div>
+    <div class="exam-q-body">
+      <div class="exam-opts">
+        <div class="exam-opt" onclick="selectOpt(this,'A')"><span class="opt-label">A</span><span class="opt-text">崩散度試驗</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'B')"><span class="opt-label">B</span><span class="opt-text">脆度試驗</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'C')"><span class="opt-label">C</span><span class="opt-text">重量差異試驗</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'D')"><span class="opt-label">D</span><span class="opt-text">溶離度試驗</span><span class="opt-icon"></span></div>
+      </div>
+      <button class="exam-explain-btn" onclick="toggleExplain(this)">▸ 顯示詳解</button>
+      <div class="exam-explain">
+        <strong>答案：C（重量差異試驗）</strong><br>
+        充填液體之膠囊劑，因為內容物均一，以重量差異 (Weight Variation) 反映含量均一度即可。脆度試驗是錠劑的項目。
+      </div>
+    </div>
+  </div>
+
+  <!-- Q11 -->
+  <div class="exam-q" data-answer="C">
+    <div class="exam-q-header" onclick="toggleQ(this)">
+      <span class="exam-q-year">110-2</span>
+      <span class="exam-q-stem">依安定性試驗基準，在一般儲存條件下，並未建議使用下列何種相對濕度範圍（RH%）？</span>
+      <span class="exam-q-toggle">▼</span>
+    </div>
+    <div class="exam-q-body">
+      <div class="exam-opts">
+        <div class="exam-opt" onclick="selectOpt(this,'A')"><span class="opt-label">A</span><span class="opt-text">60±5</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'B')"><span class="opt-label">B</span><span class="opt-text">65±5</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'C')"><span class="opt-label">C</span><span class="opt-text">70±5</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'D')"><span class="opt-label">D</span><span class="opt-text">75±5</span><span class="opt-icon"></span></div>
+      </div>
+      <button class="exam-explain-btn" onclick="toggleExplain(this)">▸ 顯示詳解</button>
+      <div class="exam-explain">
+        <strong>答案：C（70±5% 未建議）</strong><br>
+        一般儲存條件建議之 RH%：長期 60±5（25°C）、中間 65±5（30°C）、加速 75±5（40°C）。<strong>70±5% 不在建議清單內</strong>。
+      </div>
+    </div>
+  </div>
+
+  <!-- Q12 -->
+  <div class="exam-q" data-answer="D">
+    <div class="exam-q-header" onclick="toggleQ(this)">
+      <span class="exam-q-year">108-1</span>
+      <span class="exam-q-stem">有關軟膠囊劑之特色，下列敘述何者最適當？</span>
+      <span class="exam-q-toggle">▼</span>
+    </div>
+    <div class="exam-q-body">
+      <div class="exam-opts">
+        <div class="exam-opt" onclick="selectOpt(this,'A')"><span class="opt-label">A</span><span class="opt-text">相較於硬膠囊，軟膠囊較不適合自動化大量生產</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'B')"><span class="opt-label">B</span><span class="opt-text">僅可供口服使用</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'C')"><span class="opt-label">C</span><span class="opt-text">膠殼中不可含塑化劑</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'D')"><span class="opt-label">D</span><span class="opt-text">有時亦可供固體粉末之充填</span><span class="opt-icon"></span></div>
+      </div>
+      <button class="exam-explain-btn" onclick="toggleExplain(this)">▸ 顯示詳解</button>
+      <div class="exam-explain">
+        <strong>答案：D</strong><br>
+        軟膠囊可充填固體粉末、顆粒、糊狀物或液體。A 錯（旋轉模法可大量生產）；B 錯（亦可直腸、陰道用）；C 錯（塑化劑如甘油、山梨醇是軟膠囊殼必要成分）。
+      </div>
+    </div>
+  </div>
+
+  <!-- Q13 -->
+  <div class="exam-q" data-answer="D">
+    <div class="exam-q-header" onclick="toggleQ(this)">
+      <span class="exam-q-year">108-1</span>
+      <span class="exam-q-stem">有關以吹泡法製備「軟膠囊劑」之敘述，下列何者錯誤？</span>
+      <span class="exam-q-toggle">▼</span>
+    </div>
+    <div class="exam-q-body">
+      <div class="exam-opts">
+        <div class="exam-opt" onclick="selectOpt(this,'A')"><span class="opt-label">A</span><span class="opt-text">可得無縫圓球狀之軟膠囊</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'B')"><span class="opt-label">B</span><span class="opt-text">製備時常須借助冷卻媒劑之冷卻</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'C')"><span class="opt-label">C</span><span class="opt-text">可連續大量生產</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'D')"><span class="opt-label">D</span><span class="opt-text">通常先預製膠殼，再行內液之充填，即進行階段式製程</span><span class="opt-icon"></span></div>
+      </div>
+      <button class="exam-explain-btn" onclick="toggleExplain(this)">▸ 顯示詳解</button>
+      <div class="exam-explain">
+        <strong>答案：D（錯誤）</strong><br>
+        吹泡法（無縫式）為<strong>一步法</strong>：外側皮膜液包覆內容液 → 斷流+表面張力形成球形 → 冷卻硬化。充填與密封同步進行，<strong>並非先預製膠殼再充填</strong>的階段式製程。
+      </div>
+    </div>
+  </div>
+
+  <!-- Q14 -->
+  <div class="exam-q" data-answer="C">
+    <div class="exam-q-header" onclick="toggleQ(this)">
+      <span class="exam-q-year">105-1</span>
+      <span class="exam-q-stem">Type B gelatin 之等電點（isoelectric point）在 pH 多少？</span>
+      <span class="exam-q-toggle">▼</span>
+    </div>
+    <div class="exam-q-body">
+      <div class="exam-opts">
+        <div class="exam-opt" onclick="selectOpt(this,'A')"><span class="opt-label">A</span><span class="opt-text">pH 2</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'B')"><span class="opt-label">B</span><span class="opt-text">pH 5</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'C')"><span class="opt-label">C</span><span class="opt-text">pH 8</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'D')"><span class="opt-label">D</span><span class="opt-text">pH 11</span><span class="opt-icon"></span></div>
+      </div>
+      <button class="exam-explain-btn" onclick="toggleExplain(this)">▸ 顯示詳解</button>
+      <div class="exam-explain">
+        <strong>答案：B（pH 4.7～5）</strong><br>
+        Type B（鹼處理，骨骼/獸皮）等電點 pH 4.7～5，作乳化劑最適 pH = 8（此時帶負電）。<br>
+        Type A（酸處理，豬皮）等電點 pH 7～9，作乳化劑最適 pH = 3.2（帶正電）。<br>
+        本題選項以 5 代表，最接近 4.7～5 → <strong>B</strong>。
+      </div>
+    </div>
+  </div>
+
+  <!-- Q15 -->
+  <div class="exam-q" data-answer="B">
+    <div class="exam-q-header" onclick="toggleQ(this)">
+      <span class="exam-q-year">103-2</span>
+      <span class="exam-q-stem">Type A gelatin 之等電點（isoelectric point）範圍在 pH 多少？</span>
+      <span class="exam-q-toggle">▼</span>
+    </div>
+    <div class="exam-q-body">
+      <div class="exam-opts">
+        <div class="exam-opt" onclick="selectOpt(this,'A')"><span class="opt-label">A</span><span class="opt-text">pH 1 ~ 3</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'B')"><span class="opt-label">B</span><span class="opt-text">pH 4 ~ 6</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'C')"><span class="opt-label">C</span><span class="opt-text">pH 7 ~ 9</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'D')"><span class="opt-label">D</span><span class="opt-text">pH 11 ~ 13</span><span class="opt-icon"></span></div>
+      </div>
+      <button class="exam-explain-btn" onclick="toggleExplain(this)">▸ 顯示詳解</button>
+      <div class="exam-explain">
+        <strong>答案：C（pH 7～9）</strong><br>
+        Type A（豬皮，酸處理）等電點 pH 7～9。本題選項以 7～9 對應 C。注意：本題選項 C 即為正確答案，與上題不同。
+      </div>
+    </div>
+  </div>
+
+  <!-- Q16 -->
+  <div class="exam-q" data-answer="B">
+    <div class="exam-q-header" onclick="toggleQ(this)">
+      <span class="exam-q-year">101-1</span>
+      <span class="exam-q-stem">藥師臨時調劑小數量膠囊劑時，以 punch method 進行充填，依各成分之密度計算其占據膠囊體積百分比，估算乳糖添加量，計算時應採用何種密度？</span>
+      <span class="exam-q-toggle">▼</span>
+    </div>
+    <div class="exam-q-body">
+      <div class="exam-opts">
+        <div class="exam-opt" onclick="selectOpt(this,'A')"><span class="opt-label">A</span><span class="opt-text">bulk density</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'B')"><span class="opt-label">B</span><span class="opt-text">tapped density</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'C')"><span class="opt-label">C</span><span class="opt-text">true density</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'D')"><span class="opt-label">D</span><span class="opt-text">granule density</span><span class="opt-icon"></span></div>
+      </div>
+      <button class="exam-explain-btn" onclick="toggleExplain(this)">▸ 顯示詳解</button>
+      <div class="exam-explain">
+        <strong>答案：B（tapped density）</strong><br>
+        Punch method 充填時粉末受到擠壓，以 <strong>tapped density（振實密度）</strong>最能代表粉末在膠囊中被填壓後的實際體積，因此估算乳糖加量時採用 tapped density 最適當。
+      </div>
+    </div>
+  </div>
+
+  <!-- Q17 -->
+  <div class="exam-q" data-answer="D">
+    <div class="exam-q-header" onclick="toggleQ(this)">
+      <span class="exam-q-year">113-1</span>
+      <span class="exam-q-stem">有關「膠囊劑」與其他劑型之比較，下列敘述何者最不適當？</span>
+      <span class="exam-q-toggle">▼</span>
+    </div>
+    <div class="exam-q-body">
+      <div class="exam-opts">
+        <div class="exam-opt" onclick="selectOpt(this,'A')"><span class="opt-label">A</span><span class="opt-text">水溶液劑型之藥物生體可用率，通常會高於膠囊劑</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'B')"><span class="opt-label">B</span><span class="opt-text">膠囊劑在包裝與運送之成本，通常比相應之液體劑型低</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'C')"><span class="opt-label">C</span><span class="opt-text">藥物製成膠囊劑，通常比相應之液體劑型有更長之架貯期</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'D')"><span class="opt-label">D</span><span class="opt-text">錠劑可製備成 extended-release 劑型，而膠囊劑僅能製備為 immediate-release 劑型</span><span class="opt-icon"></span></div>
+      </div>
+      <button class="exam-explain-btn" onclick="toggleExplain(this)">▸ 顯示詳解</button>
+      <div class="exam-explain">
+        <strong>答案：D（最不適當）</strong><br>
+        膠囊劑<strong>同樣可以</strong>設計成 extended-release（持效性）或 delayed-release（延緩性）劑型，例如 Spansule 設計。D 選項說法明顯錯誤。
+      </div>
+    </div>
+  </div>
+
+  <!-- Q18 -->
+  <div class="exam-q" data-answer="C">
+    <div class="exam-q-header" onclick="toggleQ(this)">
+      <span class="exam-q-year">102-2</span>
+      <span class="exam-q-stem">有關「膠囊劑」之敘述，下列何者較正確？</span>
+      <span class="exam-q-toggle">▼</span>
+    </div>
+    <div class="exam-q-body">
+      <div class="exam-opts">
+        <div class="exam-opt" onclick="selectOpt(this,'A')"><span class="opt-label">A</span><span class="opt-text">主成分含量通常不需標示出</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'B')"><span class="opt-label">B</span><span class="opt-text">硬或軟膠囊劑進行崩散試驗時，其使用之裝置及規範稍有不同</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'C')"><span class="opt-label">C</span><span class="opt-text">溶離試驗之時程，依各品目之規定而異</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'D')"><span class="opt-label">D</span><span class="opt-text">軟膠囊劑通常只允許填充液體溶液</span><span class="opt-icon"></span></div>
+      </div>
+      <button class="exam-explain-btn" onclick="toggleExplain(this)">▸ 顯示詳解</button>
+      <div class="exam-explain">
+        <strong>答案：C</strong><br>
+        A 錯（所有法定膠囊劑必須標示每劑量有效成分量）；B 錯（硬/軟膠囊崩散試驗裝置及規範<strong>相同</strong>）；D 錯（軟膠囊亦可充填固體粉末）；C 正確：溶離試驗時程因品目而異。
+      </div>
+    </div>
+  </div>
+
+</section>
+</div><!-- /container -->
+
+<script>
+function toggleQ(header) {
+  const q = header.closest('.exam-q');
+  q.classList.toggle('open');
+}
+
+function selectOpt(opt, chosen) {
+  const q = opt.closest('.exam-q');
+  const correct = q.dataset.answer;
+  // Prevent re-clicking after revealed
+  if (opt.classList.contains('revealed')) return;
+
+  // Mark all as revealed
+  q.querySelectorAll('.exam-opt').forEach(o => o.classList.add('revealed'));
+
+  // Mark correct
+  q.querySelectorAll('.exam-opt').forEach(o => {
+    const label = o.querySelector('.opt-label').textContent;
+    if (label === correct) {
+      o.classList.add('correct');
+      o.querySelector('.opt-icon').textContent = '✓';
+    }
+  });
+
+  // Mark chosen wrong if incorrect
+  if (chosen !== correct) {
+    opt.classList.add('wrong');
+    opt.querySelector('.opt-icon').textContent = '✗';
+  }
+}
+
+function toggleExplain(btn) {
+  const box = btn.nextElementSibling;
+  const isOpen = box.classList.contains('show');
+  box.classList.toggle('show');
+  btn.textContent = isOpen ? '▸ 顯示詳解' : '▾ 收起詳解';
+}
+
+// Sticky nav highlight
+const sections = document.querySelectorAll('.section');
+const navLinks = document.querySelectorAll('.nav a');
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      navLinks.forEach(a => { a.style.color=''; a.style.borderBottomColor=''; });
+      const link = document.querySelector(`.nav a[href="#${e.target.id}"]`);
+      if (link) { link.style.color='var(--crimson)'; link.style.borderBottomColor='var(--crimson)'; }
+    }
+  });
+}, { rootMargin: '-40% 0px -55% 0px' });
+sections.forEach(s => io.observe(s));
+</script>
+</body>
+</html>
