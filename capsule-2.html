@@ -462,6 +462,46 @@ ul.dot-list li strong { color: var(--ink); }
 .exam-explain.show { display: block; }
 .exam-explain strong { color: var(--ink); }
 
+/* ── 補充筆記 ── */
+.exam-note-wrap {
+  display: none;
+  margin-top: 8px;
+}
+.exam-note-wrap.show { display: block; }
+.exam-note-label {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--ink-muted);
+  letter-spacing: 0.06em;
+  margin-bottom: 4px;
+}
+.exam-note-ta {
+  width: 100%;
+  min-height: 72px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-family: var(--sans);
+  font-size: 0.81rem;
+  color: var(--ink);
+  line-height: 1.65;
+  resize: vertical;
+  outline: none;
+  transition: border-color 0.15s;
+}
+.exam-note-ta:focus { border-color: var(--crimson-m); }
+.exam-note-ta::placeholder { color: var(--ink-muted); }
+.exam-note-saved {
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  color: var(--pine);
+  opacity: 0;
+  margin-left: 8px;
+  transition: opacity 0.3s;
+}
+
 /* ── HARD vs SOFT COMPARE ── */
 .compare-wrap {
   display: grid;
@@ -2405,22 +2445,14 @@ function toggleQ(header) {
 function selectOpt(opt, chosen) {
   const q = opt.closest('.exam-q');
   const correct = q.dataset.answer;
-  // Prevent re-clicking after revealed
   if (opt.classList.contains('revealed')) return;
-
-  // Mark all as revealed
   q.querySelectorAll('.exam-opt').forEach(o => o.classList.add('revealed'));
-
-  // Mark correct
   q.querySelectorAll('.exam-opt').forEach(o => {
-    const label = o.querySelector('.opt-label').textContent;
-    if (label === correct) {
+    if (o.querySelector('.opt-label').textContent === correct) {
       o.classList.add('correct');
       o.querySelector('.opt-icon').textContent = '✓';
     }
   });
-
-  // Mark chosen wrong if incorrect
   if (chosen !== correct) {
     opt.classList.add('wrong');
     opt.querySelector('.opt-icon').textContent = '✗';
@@ -2428,11 +2460,40 @@ function selectOpt(opt, chosen) {
 }
 
 function toggleExplain(btn) {
-  const box = btn.nextElementSibling;
-  const isOpen = box.classList.contains('show');
-  box.classList.toggle('show');
-  btn.textContent = isOpen ? '▸ 顯示詳解' : '▾ 收起詳解';
+  const box = btn.nextElementSibling;          // .exam-explain
+  const noteWrap = box.nextElementSibling;     // .exam-note-wrap
+  const open = box.classList.toggle('show');
+  if (noteWrap) noteWrap.classList.toggle('show', open);
+  btn.textContent = open ? '▾ 收起詳解' : '▸ 顯示詳解';
 }
+
+// Inject note textarea after every .exam-explain
+document.querySelectorAll('.exam-explain').forEach((box, idx) => {
+  const qid = 'capsule-q-' + idx;
+  const wrap = document.createElement('div');
+  wrap.className = 'exam-note-wrap';
+  wrap.innerHTML =
+    '<div class="exam-note-label">📝 補充筆記 <span class="exam-note-saved" id="saved-' + idx + '">已儲存 ✓</span></div>' +
+    '<textarea class="exam-note-ta" placeholder="在這裡貼補充資訊、易混淆點、老師補充..." id="note-' + idx + '"></textarea>';
+  box.after(wrap);
+
+  // Load saved note
+  try {
+    const saved = localStorage.getItem(qid);
+    if (saved) document.getElementById('note-' + idx).value = saved;
+  } catch(e) {}
+
+  // Auto-save on input
+  document.getElementById('note-' + idx).addEventListener('input', function() {
+    try {
+      localStorage.setItem(qid, this.value);
+      const tag = document.getElementById('saved-' + idx);
+      tag.style.opacity = '1';
+      clearTimeout(tag._t);
+      tag._t = setTimeout(() => { tag.style.opacity = '0'; }, 1500);
+    } catch(e) {}
+  });
+});
 
 // Sticky nav highlight
 const sections = document.querySelectorAll('.section');
