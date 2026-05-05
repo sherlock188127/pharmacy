@@ -1369,28 +1369,51 @@ ul.dot-list li strong { color: var(--ink); }
 
   <div class="card">
     <h3>適合 / 不適合充填物質</h3>
+
+    <div class="table-wrap" style="margin-bottom:12px">
+      <table>
+        <thead><tr><th>分類</th><th>可充填</th><th>舉例</th></tr></thead>
+        <tbody>
+          <tr>
+            <td rowspan="3"><span class="tag pine">✓ 液體</span></td>
+            <td>與水<strong>不互溶</strong>之揮發性與非揮發性液體</td>
+            <td>vegetable oils, aromatic oils<br>aromatic &amp; aliphatic hydrocarbons<br>chlorinated hydrocarbons<br>ethers, esters, alcohols, organic acids</td>
+          </tr>
+          <tr>
+            <td>與水<strong>可互溶</strong>之<strong>非揮發性</strong>液體</td>
+            <td><strong>PEG</strong>（聚乙二醇）<br>non-ionic surfactants（如 polysorbate 80 / Tween 80）</td>
+          </tr>
+          <tr>
+            <td>與水可互溶之<strong>較不揮發性</strong>化合物</td>
+            <td>propylene glycol (PG)<br>isopropyl alcohol（異丙醇）</td>
+          </tr>
+          <tr>
+            <td><span class="tag pine">✓ 固體</span></td>
+            <td>糊狀物、乾粉、顆粒、預製小錠片</td>
+            <td>如葉黃素顆粒、各種固體粉末</td>
+          </tr>
+          <tr>
+            <td rowspan="2"><span class="tag danger" style="background:var(--crimson-l);color:var(--crimson-d)">✗ 不適合</span></td>
+            <td>超過 <strong>5% 的水</strong></td>
+            <td>水容易滲出接縫，使膠殼軟化</td>
+          </tr>
+          <tr>
+            <td>低分子量水溶性<strong>揮發性</strong>有機物</td>
+            <td>alcohols（乙醇）, ketones（丙酮）<br>acids, amines, esters<br>→ 容易由接縫揮發滲漏，使膠殼軟化</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
     <div class="grid-2">
-      <div class="info-box pine">
-        <strong>✓ 適合充填</strong>
-        <ul class="dot-list" style="margin-top:6px">
-          <li>與水不互溶之液體（植物油、芳香油）</li>
-          <li>與水可互溶之<strong>非揮發性</strong>液體（<strong>PEG</strong>、polysorbate 80）</li>
-          <li>與水可互溶之<strong>較不揮發性</strong>（PG、isopropyl alcohol）</li>
-          <li>固體：糊狀、乾粉、顆粒、預製錠片</li>
-        </ul>
+      <div class="info-box pine" style="font-size:0.8rem">
+        <strong>關鍵判斷原則：</strong><br>
+        與水<strong>不互溶</strong>者（如植物油）→ 不管揮發不揮發，基本都可以裝<br>
+        與水<strong>可互溶</strong>者 → 要看<strong>揮發性</strong>：非揮發性（PEG）可以；揮發性（乙醇）不行
       </div>
-      <div>
-        <div class="info-box danger">
-          <strong>✗ 不適合（易使囊殼軟化）</strong>
-          <ul class="dot-list" style="margin-top:6px">
-            <li>超過 <strong>5% 的水</strong></li>
-            <li>低分子量水溶性揮發性有機物（alcohols, ketones, acids, amines, esters）</li>
-            <li><strong>含乙醇水溶液</strong> → 易軟化膠殼</li>
-          </ul>
-        </div>
-        <div class="info-box warn" style="margin-top:6px;font-size:0.79rem">
-          <strong>考點：</strong>軟膠囊媒液較不影響 BA → <strong>PEG</strong>（B）
-        </div>
+      <div class="info-box warn" style="font-size:0.8rem">
+        <strong>考點：</strong>軟膠囊媒液較不影響口服 BA → <strong>PEG</strong>（與水可互溶之非揮發性液體）<br><br>
+        同樣是醇類：isopropyl alcohol（較不揮發）→ 可以；ethanol（揮發性強）→ 不行
       </div>
     </div>
   </div>
