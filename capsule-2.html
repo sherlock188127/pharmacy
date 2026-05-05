@@ -981,6 +981,50 @@ ul.dot-list li strong { color: var(--ink); }
   </div>
 
   <div class="card">
+    <h3>配方開發 — 主成分（API）</h3>
+    <div class="info-box cream" style="margin-bottom:12px;font-size:0.81rem">
+      主成分一定有，大部分是粉末狀。混合時主成分與其他成分的<strong>密度與粒子大小宜相似</strong>，才能混合均勻。研磨至 50～1000 μm 或更小。
+    </div>
+
+    <h4>液體藥物的處理</h4>
+    <div class="info-box slate" style="margin-bottom:10px;font-size:0.81rem">
+      液體雖不常見，但可充填於膠囊中，依特性不同處理方式也不同：
+    </div>
+    <div class="table-wrap" style="margin-bottom:12px">
+      <table>
+        <thead><tr><th>液體類型</th><th>處理方式</th><th>例子</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>水性液體</td>
+            <td><span style="color:var(--crimson-m);font-weight:600">✗ 不適合直接充填</span><br>膠囊殼遇水會變軟<br>若要充填需先與惰性粉末混合成<strong>軟塊或糊</strong>再置入</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>不影響殼安定性的脂肪油或揮發油</td>
+            <td>可裝於<strong>鎖合的膠囊</strong>中，以免外漏<br>也可將接口處用封條封起</td>
+            <td>魚油、植物油</td>
+          </tr>
+          <tr>
+            <td>Eutectic mixtures 或<br>混合後會液化的藥品</td>
+            <td>添加<strong>稀釋劑或吸收劑</strong>隔開或吸收<br>（表面積大的細粉，吸收效果佳）</td>
+            <td>MgCO₃、kaolin、<br>light MgO</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h4>MCC — Microcrystalline Cellulose 的特殊地位</h4>
+    <div class="info-box pine" style="font-size:0.8rem">
+      MCC 是硬膠囊配方中<strong>一人多功能</strong>的明星賦形劑：<br>
+      <span class="tag pine" style="margin-right:4px">稀釋劑</span> 擴充體積<br>
+      <span class="tag pine" style="margin-right:4px">崩散劑</span> 崩散效果佳<br>
+      <span class="tag pine" style="margin-right:4px">滑動劑</span> 改善流動性<br>
+      <span class="tag pine" style="margin-right:4px">潤滑劑</span> 防黏<br>
+      缺點：<strong>價格較貴</strong>，所以不是所有配方都用他，有時還是需要另外加其他賦形劑。
+    </div>
+  </div>
+
+  <div class="card">
     <h3>硬膠囊配方賦形劑</h3>
     <div class="ex-grid">
 
@@ -1087,14 +1131,44 @@ ul.dot-list li strong { color: var(--ink); }
 
   <div class="card">
     <h3>硬膠囊殼製造流程</h3>
-    <div class="flow">
-      <div class="flow-step">釘膜浸入控溫熔融明膠液</div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-step">依所需厚度決定浸入深度與時間</div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-step">升起後控溫控濕氣流乾燥</div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-step">機器切割成適當長度</div>
+    <div class="info-box cream" style="margin-bottom:12px;font-size:0.81rem">
+      <strong>前置：</strong>冷水讓明膠軟化膨脹 → 加熱成黏稠 sol（膠溶）→ 若需著色此時加入色素
+    </div>
+    <div class="flow" style="flex-direction:column;gap:0;align-items:stretch">
+
+      <div style="display:flex;align-items:flex-start;gap:12px;padding:10px 0;border-bottom:1px solid var(--border2)">
+        <div style="background:var(--crimson-m);color:#fff;font-family:var(--mono);font-size:0.68rem;font-weight:700;border-radius:4px;padding:3px 8px;flex-shrink:0;margin-top:2px">1 · Dipping</div>
+        <div style="font-size:0.82rem;color:var(--ink-sub);line-height:1.65"><strong>沾模</strong>：釘膜（pin）浸入溫熱的明膠液，明膠黏附在模型上。浸入深度與時間決定膠囊的長度與厚度。</div>
+      </div>
+
+      <div style="display:flex;align-items:flex-start;gap:12px;padding:10px 0;border-bottom:1px solid var(--border2)">
+        <div style="background:var(--crimson-m);color:#fff;font-family:var(--mono);font-size:0.68rem;font-weight:700;border-radius:4px;padding:3px 8px;flex-shrink:0;margin-top:2px">2 · Spinning</div>
+        <div style="font-size:0.82rem;color:var(--ink-sub);line-height:1.65"><strong>翻轉</strong>：釘膜取出後翻轉旋轉，使明膠液分佈均勻。若不翻轉，底部因重力積聚會形成尖頭，厚薄不均。</div>
+      </div>
+
+      <div style="display:flex;align-items:flex-start;gap:12px;padding:10px 0;border-bottom:1px solid var(--border2)">
+        <div style="background:var(--crimson-m);color:#fff;font-family:var(--mono);font-size:0.68rem;font-weight:700;border-radius:4px;padding:3px 8px;flex-shrink:0;margin-top:2px">3 · Drying</div>
+        <div style="font-size:0.82rem;color:var(--ink-sub);line-height:1.65"><strong>乾燥</strong>：在控溫控濕氣流下乾燥，成膜冷卻固化。</div>
+      </div>
+
+      <div style="display:flex;align-items:flex-start;gap:12px;padding:10px 0;border-bottom:1px solid var(--border2)">
+        <div style="background:var(--crimson-m);color:#fff;font-family:var(--mono);font-size:0.68rem;font-weight:700;border-radius:4px;padding:3px 8px;flex-shrink:0;margin-top:2px">4 · Stripping</div>
+        <div style="font-size:0.82rem;color:var(--ink-sub);line-height:1.65"><strong>取下</strong>：將乾燥的膠囊殼從釘膜上取下（收取步驟）。</div>
+      </div>
+
+      <div style="display:flex;align-items:flex-start;gap:12px;padding:10px 0;border-bottom:1px solid var(--border2)">
+        <div style="background:var(--crimson-m);color:#fff;font-family:var(--mono);font-size:0.68rem;font-weight:700;border-radius:4px;padding:3px 8px;flex-shrink:0;margin-top:2px">5 · Trimming</div>
+        <div style="font-size:0.82rem;color:var(--ink-sub);line-height:1.65"><strong>裁切</strong>：沾模後開口不平整，且沾的長度比需要多，以機器裁切至所需長度，使開口平整。</div>
+      </div>
+
+      <div style="display:flex;align-items:flex-start;gap:12px;padding:10px 0">
+        <div style="background:var(--crimson-m);color:#fff;font-family:var(--mono);font-size:0.68rem;font-weight:700;border-radius:4px;padding:3px 8px;flex-shrink:0;margin-top:2px">6 · Joining</div>
+        <div style="font-size:0.82rem;color:var(--ink-sub);line-height:1.65"><strong>套合</strong>：將膠囊體與膠囊帽套合在一起，完成空膠囊殼製造。</div>
+      </div>
+
+    </div>
+    <div class="info-box warn" style="margin-top:10px;font-size:0.81rem">
+      <strong>⚠ 常考重點：</strong>以上六步驟<strong>沒有充填藥品</strong>。硬膠囊殼製造與藥物充填是<strong>分開的兩個步驟</strong>——先做好空殼，再拆開充填，再蓋回。軟膠囊則充填與密封<strong>同時完成</strong>。
     </div>
   </div>
 
@@ -1902,6 +1976,419 @@ ul.dot-list li strong { color: var(--ink); }
       <div class="exam-explain">
         <strong>答案：C</strong><br>
         A 錯（所有法定膠囊劑必須標示每劑量有效成分量）；B 錯（硬/軟膠囊崩散試驗裝置及規範<strong>相同</strong>）；D 錯（軟膠囊亦可充填固體粉末）；C 正確：溶離試驗時程因品目而異。
+      </div>
+    </div>
+  </div>
+
+  <!-- Q20 -->
+  <div class="exam-q" data-answer="A">
+    <div class="exam-q-header" onclick="toggleQ(this)">
+      <span class="exam-q-year">109-2</span>
+      <span class="exam-q-stem">明膠膠囊殼內，添加二氧化鈦之主要目的為何？</span>
+      <span class="exam-q-toggle">▼</span>
+    </div>
+    <div class="exam-q-body">
+      <div class="exam-opts">
+        <div class="exam-opt" onclick="selectOpt(this,'A')"><span class="opt-label">A</span><span class="opt-text">具阻光性</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'B')"><span class="opt-label">B</span><span class="opt-text">具彈性</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'C')"><span class="opt-label">C</span><span class="opt-text">具抗氧化作用</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'D')"><span class="opt-label">D</span><span class="opt-text">使其內所含之不溶性成分能均勻分散</span><span class="opt-icon"></span></div>
+      </div>
+      <button class="exam-explain-btn" onclick="toggleExplain(this)">▸ 顯示詳解</button>
+      <div class="exam-explain">
+        <strong>答案：A（阻光性）</strong><br>
+        TiO₂（二氧化鈦）是<strong>不透明劑（opacifier）</strong>，加入後膠囊殼不透光，一方面使顏色更鮮豔，一方面保護對光敏感的藥品。彈性靠塑化劑（甘油、sorbitol）；抗氧化靠 Na thiosulfate 等；均勻分散靠濕潤劑或崩散劑。
+      </div>
+    </div>
+  </div>
+
+  <!-- Q21 -->
+  <div class="exam-q" data-answer="A">
+    <div class="exam-q-header" onclick="toggleQ(this)">
+      <span class="exam-q-year">109-2</span>
+      <span class="exam-q-stem">有關明膠膠囊殼之製備時，有關明膠之使用或其特性，下列何者錯誤？</span>
+      <span class="exam-q-toggle">▼</span>
+    </div>
+    <div class="exam-q-body">
+      <div class="exam-opts">
+        <div class="exam-opt" onclick="selectOpt(this,'A')"><span class="opt-label">A</span><span class="opt-text">宜選用來自豬皮或豬骨頭的單一來源之明膠為佳，若混用時膠殼較易破碎</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'B')"><span class="opt-label">B</span><span class="opt-text">明膠原料之粒徑應適當調配，粗粉及細粉皆不宜太多</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'C')"><span class="opt-label">C</span><span class="opt-text">明膠原料內若含有磷酸鈣雜質太多時易導致膠殼製造時之困難度增加</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'D')"><span class="opt-label">D</span><span class="opt-text">明膠應符合膠凝結力（bloom strength）及微生物限量之規定</span><span class="opt-icon"></span></div>
+      </div>
+      <button class="exam-explain-btn" onclick="toggleExplain(this)">▸ 顯示詳解</button>
+      <div class="exam-explain">
+        <strong>答案：A（錯誤）</strong><br>
+        正確做法是豬皮明膠（彈性）與骨頭明膠（硬度）<strong>混合使用</strong>，而非單一來源。豬皮得到的Q彈、骨頭得到的較硬，兩者配合使用才能使膠殼兼具硬度與彈性。粗粒細粒也宜並用，原理相同（B正確）。
+      </div>
+    </div>
+  </div>
+
+  <!-- Q22 -->
+  <div class="exam-q" data-answer="C">
+    <div class="exam-q-header" onclick="toggleQ(this)">
+      <span class="exam-q-year">105-1</span>
+      <span class="exam-q-stem">關於「明膠硬膠囊」之敘述，下列何者正確？</span>
+      <span class="exam-q-toggle">▼</span>
+    </div>
+    <div class="exam-q-body">
+      <div class="exam-opts">
+        <div class="exam-opt" onclick="selectOpt(this,'A')"><span class="opt-label">A</span><span class="opt-text">四環素膠囊之生體可用率，並不會因長期貯存於高濕度下而受影響</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'B')"><span class="opt-label">B</span><span class="opt-text">膠囊劑口服後，於胃酸中其囊殼會因吸水而軟化，但並不溶解</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'C')"><span class="opt-label">C</span><span class="opt-text">硬膠囊殼之組成成分主要有：明膠、蔗糖、水等</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'D')"><span class="opt-label">D</span><span class="opt-text">膠囊殼通常具阻隔水分之功能，故適宜充填吸潮性之藥物</span><span class="opt-icon"></span></div>
+      </div>
+      <button class="exam-explain-btn" onclick="toggleExplain(this)">▸ 顯示詳解</button>
+      <div class="exam-explain">
+        <strong>答案：C</strong><br>
+        A 錯：高濕度貯存→膠囊殼吸濕變軟→影響溶離→影響 BA，四環素膠囊已有研究顯示受影響。<br>
+        B 錯：胃液溫熱（37°C）＋胃蛋白酶→明膠殼<strong>會溶解</strong>，不只是軟化。<br>
+        C ✓ 正確：硬膠囊殼主要成分：明膠＋蔗糖（硬化劑）＋水。<br>
+        D 錯：膠囊殼不具阻水功能，高濕度下反而吸濕，不適合充填吸潮性藥物（應用乾燥劑保護）。
+      </div>
+    </div>
+  </div>
+
+  <!-- Q23 -->
+  <div class="exam-q" data-answer="B">
+    <div class="exam-q-header" onclick="toggleQ(this)">
+      <span class="exam-q-year">104-1</span>
+      <span class="exam-q-stem">有關於製造膠囊殼所用之「明膠」，下列之敘述何者錯誤？</span>
+      <span class="exam-q-toggle">▼</span>
+    </div>
+    <div class="exam-q-body">
+      <div class="exam-opts">
+        <div class="exam-opt" onclick="selectOpt(this,'A')"><span class="opt-label">A</span><span class="opt-text">其規格宜包括顏色、pH、黏度、雜質、膠凝結力等檢查</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'B')"><span class="opt-label">B</span><span class="opt-text">其來源應兼併來自豬皮或骨頭，且經部分水解而得者</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'C')"><span class="opt-label">C</span><span class="opt-text">其粒徑宜併用粗粒與細粒者，不宜偏廢</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'D')"><span class="opt-label">D</span><span class="opt-text">「微生物限量」之檢測可用來確保其製程係以發酵法而得者</span><span class="opt-icon"></span></div>
+      </div>
+      <button class="exam-explain-btn" onclick="toggleExplain(this)">▸ 顯示詳解</button>
+      <div class="exam-explain">
+        <strong>答案：D（錯誤）</strong><br>
+        微生物限量試驗的目的是<strong>控制明膠的含菌數</strong>（總菌數 ≤1000 CFU，不得含大腸桿菌、沙門氏桿菌），並非確認製程是否為發酵法。明膠是由膠原質水解而得，不是發酵法。
+      </div>
+    </div>
+  </div>
+
+  <!-- Q24 -->
+  <div class="exam-q" data-answer="C">
+    <div class="exam-q-header" onclick="toggleQ(this)">
+      <span class="exam-q-year">110-1</span>
+      <span class="exam-q-stem">有關Spansule類包覆型圓粒膠囊劑型之敘述，下列何者正確？</span>
+      <span class="exam-q-toggle">▼</span>
+    </div>
+    <div class="exam-q-body">
+      <div class="exam-opts">
+        <div class="exam-opt" onclick="selectOpt(this,'A')"><span class="opt-label">A</span><span class="opt-text">圓粒包覆一種厚度的相同包材</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'B')"><span class="opt-label">B</span><span class="opt-text">圓粒包覆一種厚度的不同包材</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'C')"><span class="opt-label">C</span><span class="opt-text">圓粒包覆數種厚度的相同包材</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'D')"><span class="opt-label">D</span><span class="opt-text">圓粒包覆數種厚度的不同包材</span><span class="opt-icon"></span></div>
+      </div>
+      <button class="exam-explain-btn" onclick="toggleExplain(this)">▸ 顯示詳解</button>
+      <div class="exam-explain">
+        <strong>答案：C</strong><br>
+        Spansule® 用<strong>相同包材</strong>（如甲基纖維素）包覆，但<strong>厚度不同</strong>：薄的先釋放，厚的接力釋放，以維持穩定血中濃度。用相同材質是因為釋放機轉一致（同為溶離型），方便計算不同厚度對應的釋放時間差。
+      </div>
+    </div>
+  </div>
+
+  <!-- Q25 -->
+  <div class="exam-q" data-answer="D">
+    <div class="exam-q-header" onclick="toggleQ(this)">
+      <span class="exam-q-year">113-2</span>
+      <span class="exam-q-stem">現場調製充填小數量膠囊時，下列何者最適合使用 punch method？</span>
+      <span class="exam-q-toggle">▼</span>
+    </div>
+    <div class="exam-q-body">
+      <div class="exam-opts">
+        <div class="exam-opt" onclick="selectOpt(this,'A')"><span class="opt-label">A</span><span class="opt-text">懸浮性藥品</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'B')"><span class="opt-label">B</span><span class="opt-text">顆粒性藥品</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'C')"><span class="opt-label">C</span><span class="opt-text">油溶性藥品</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'D')"><span class="opt-label">D</span><span class="opt-text">粉末性藥品</span><span class="opt-icon"></span></div>
+      </div>
+      <button class="exam-explain-btn" onclick="toggleExplain(this)">▸ 顯示詳解</button>
+      <div class="exam-explain">
+        <strong>答案：D（粉末性藥品）</strong><br>
+        Punch method（衝壓法）是把粉末在尺上壓成平台，再用膠囊體按壓填入。顆粒流動性太好，按壓後顆粒會掉出，不適合；液體和油溶性藥品更不適用。
+      </div>
+    </div>
+  </div>
+
+  <!-- Q26 -->
+  <div class="exam-q" data-answer="A">
+    <div class="exam-q-header" onclick="toggleQ(this)">
+      <span class="exam-q-year">110-2</span>
+      <span class="exam-q-stem">有關「膠囊劑」之敘述，下列何者錯誤？</span>
+      <span class="exam-q-toggle">▼</span>
+    </div>
+    <div class="exam-q-body">
+      <div class="exam-opts">
+        <div class="exam-opt" onclick="selectOpt(this,'A')"><span class="opt-label">A</span><span class="opt-text">以機械製備時，總充填重量由膠囊體和帽子之重量總和控制</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'B')"><span class="opt-label">B</span><span class="opt-text">膠囊殼號數越大，其充填量越少</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'C')"><span class="opt-label">C</span><span class="opt-text">膠囊殼號數的選擇，主要依藥物量和安定性為考量</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'D')"><span class="opt-label">D</span><span class="opt-text">膠囊劑應該保存於適當濕度處，以避免沾黏</span><span class="opt-icon"></span></div>
+      </div>
+      <button class="exam-explain-btn" onclick="toggleExplain(this)">▸ 顯示詳解</button>
+      <div class="exam-explain">
+        <strong>答案：A（錯誤）</strong><br>
+        充填量由<strong>膠囊體（body）</strong>決定，帽（cap）只是用來密封，不控制充填量。所以不是「帽與體總和控制」。B正確：號數越大容量越小。D正確：太濕吸濕沾黏，太乾變脆。
+      </div>
+    </div>
+  </div>
+
+  <!-- Q27 -->
+  <div class="exam-q" data-answer="A">
+    <div class="exam-q-header" onclick="toggleQ(this)">
+      <span class="exam-q-year">108-1</span>
+      <span class="exam-q-stem">有關「硬膠囊劑」之敘述，下列何者最適當？</span>
+      <span class="exam-q-toggle">▼</span>
+    </div>
+    <div class="exam-q-body">
+      <div class="exam-opts">
+        <div class="exam-opt" onclick="selectOpt(this,'A')"><span class="opt-label">A</span><span class="opt-text">可以充填某些液體成分，例如脂肪油或揮發油</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'B')"><span class="opt-label">B</span><span class="opt-text">所謂適當之充填，通常係指其粉粒能填滿至膠囊蓋</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'C')"><span class="opt-label">C</span><span class="opt-text">正常的膠囊殼含 6～10% 的水分</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'D')"><span class="opt-label">D</span><span class="opt-text">一般膠囊殼呈透明狀，通常係因其殼內含明膠、水、蔗糖、及甘油所致</span><span class="opt-icon"></span></div>
+      </div>
+      <button class="exam-explain-btn" onclick="toggleExplain(this)">▸ 顯示詳解</button>
+      <div class="exam-explain">
+        <strong>答案：A</strong><br>
+        A ✓：脂肪油或揮發油與水不互溶，不會使明膠殼軟化，可裝在鎖合的硬膠囊中。<br>
+        B 錯：適當充填是<strong>填滿膠囊體（body）</strong>，帽（cap）是用來密封的。<br>
+        C 錯：硬膠囊殼正常含水 <strong>13～16%</strong>（非 6~10%，那是軟膠囊的範圍）。<br>
+        D 錯：硬膠囊殼不含甘油，甘油是軟膠囊的塑化劑。透明是明膠本身的特性。
+      </div>
+    </div>
+  </div>
+
+  <!-- Q28 -->
+  <div class="exam-q" data-answer="A">
+    <div class="exam-q-header" onclick="toggleQ(this)">
+      <span class="exam-q-year">105-2</span>
+      <span class="exam-q-stem">有關「硬明膠膠囊劑」之敘述，何者較正確？</span>
+      <span class="exam-q-toggle">▼</span>
+    </div>
+    <div class="exam-q-body">
+      <div class="exam-opts">
+        <div class="exam-opt" onclick="selectOpt(this,'A')"><span class="opt-label">A</span><span class="opt-text">所謂適當之充填，通常係指其粉粒能填滿囊體而非囊蓋</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'B')"><span class="opt-label">B</span><span class="opt-text">貯藏時，宜置於濕度10%以下之乾燥環境中</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'C')"><span class="opt-label">C</span><span class="opt-text">膠囊殼若呈透明狀，通常係因其殼內含甘油所致</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'D')"><span class="opt-label">D</span><span class="opt-text">膠囊殼中不宜充填液體藥物</span><span class="opt-icon"></span></div>
+      </div>
+      <button class="exam-explain-btn" onclick="toggleExplain(this)">▸ 顯示詳解</button>
+      <div class="exam-explain">
+        <strong>答案：A</strong><br>
+        A ✓：充填填滿囊體（body），帽（cap）蓋上密封。<br>
+        B 錯：濕度 10% 以下<strong>過於乾燥</strong>，膠囊殼會失水變脆；應維持適當濕度。<br>
+        C 錯：透明是明膠本身的特性，<strong>甘油是軟膠囊</strong>的塑化劑，硬膠囊不含甘油。<br>
+        D 錯：脂肪油、揮發油（與水不互溶者）可裝入鎖合的硬膠囊。
+      </div>
+    </div>
+  </div>
+
+  <!-- Q29 -->
+  <div class="exam-q" data-answer="C">
+    <div class="exam-q-header" onclick="toggleQ(this)">
+      <span class="exam-q-year">106-1</span>
+      <span class="exam-q-stem">假設 "acetaminophen with codeine capsules" 之配方組成為：acetaminophen 325 mg；codeine phosphate 30 mg；sodium starch glycolate q.s.；magnesium stearate q.s. 及 stearic acid q.s.；其中所含 sodium starch glycolate 之主要用途為何？</span>
+      <span class="exam-q-toggle">▼</span>
+    </div>
+    <div class="exam-q-body">
+      <div class="exam-opts">
+        <div class="exam-opt" onclick="selectOpt(this,'A')"><span class="opt-label">A</span><span class="opt-text">填充劑</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'B')"><span class="opt-label">B</span><span class="opt-text">潤滑劑</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'C')"><span class="opt-label">C</span><span class="opt-text">崩散劑</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'D')"><span class="opt-label">D</span><span class="opt-text">黏合劑</span><span class="opt-icon"></span></div>
+      </div>
+      <button class="exam-explain-btn" onclick="toggleExplain(this)">▸ 顯示詳解</button>
+      <div class="exam-explain">
+        <strong>答案：C（崩散劑）</strong><br>
+        Sodium starch glycolate（Explotab / Primojel）是<strong>superdisintegrant（超級崩散劑）</strong>，交聯結構吸水膨脹，促進膠囊內容物崩散。配方中 magnesium stearate 和 stearic acid 才是潤滑劑。
+      </div>
+    </div>
+  </div>
+
+  <!-- Q30 -->
+  <div class="exam-q" data-answer="D">
+    <div class="exam-q-header" onclick="toggleQ(this)">
+      <span class="exam-q-year">106-1</span>
+      <span class="exam-q-stem">欲將薄荷與水楊酸以等量（w/w）比例研合時，為避免共熔物或液化之現象出現，通常可預行添加下列何者以避免之？</span>
+      <span class="exam-q-toggle">▼</span>
+    </div>
+    <div class="exam-q-body">
+      <div class="exam-opts">
+        <div class="exam-opt" onclick="selectOpt(this,'A')"><span class="opt-label">A</span><span class="opt-text">三酸甘油酯</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'B')"><span class="opt-label">B</span><span class="opt-text">乳酸</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'C')"><span class="opt-label">C</span><span class="opt-text">聚乙二醇</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'D')"><span class="opt-label">D</span><span class="opt-text">碳酸鎂</span><span class="opt-icon"></span></div>
+      </div>
+      <button class="exam-explain-btn" onclick="toggleExplain(this)">▸ 顯示詳解</button>
+      <div class="exam-explain">
+        <strong>答案：D（碳酸鎂）</strong><br>
+        薄荷＋水楊酸等量研合會形成共熔物（eutectic mixture）而液化。添加<strong>吸收劑</strong>（MgCO₃、kaolin、light MgO 等）隔開兩者，可防止液化。PEG 本身在室溫是液態或半固體，不適合；三酸甘油酯和乳酸亦無此效果。
+      </div>
+    </div>
+  </div>
+
+  <!-- Q31 -->
+  <div class="exam-q" data-answer="A">
+    <div class="exam-q-header" onclick="toggleQ(this)">
+      <span class="exam-q-year">105-2</span>
+      <span class="exam-q-stem">下列有關於「硬膠囊劑」之副料中，何者通常對於粉粒之流動性助益不大？</span>
+      <span class="exam-q-toggle">▼</span>
+    </div>
+    <div class="exam-q-body">
+      <div class="exam-opts">
+        <div class="exam-opt" onclick="selectOpt(this,'A')"><span class="opt-label">A</span><span class="opt-text">氯化鈣</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'B')"><span class="opt-label">B</span><span class="opt-text">滑石粉</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'C')"><span class="opt-label">C</span><span class="opt-text">硬脂酸鎂</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'D')"><span class="opt-label">D</span><span class="opt-text">膠態矽</span><span class="opt-icon"></span></div>
+      </div>
+      <button class="exam-explain-btn" onclick="toggleExplain(this)">▸ 顯示詳解</button>
+      <div class="exam-explain">
+        <strong>答案：A（氯化鈣）</strong><br>
+        CaCl₂（氯化鈣）不是滑動劑也不是潤滑劑，對流動性沒有助益。B 滑石粉、C 硬脂酸鎂、D 膠態矽（fumed SiO₂）都是常用的滑動劑或潤滑劑，可改善粉末流動性。
+      </div>
+    </div>
+  </div>
+
+  <!-- Q32 -->
+  <div class="exam-q" data-answer="B">
+    <div class="exam-q-header" onclick="toggleQ(this)">
+      <span class="exam-q-year">114-1</span>
+      <span class="exam-q-stem">下列何者可增加軟膠囊的塑化性？</span>
+      <span class="exam-q-toggle">▼</span>
+    </div>
+    <div class="exam-q-body">
+      <div class="exam-opts">
+        <div class="exam-opt" onclick="selectOpt(this,'A')"><span class="opt-label">A</span><span class="opt-text">ethanol</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'B')"><span class="opt-label">B</span><span class="opt-text">sorbitol</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'C')"><span class="opt-label">C</span><span class="opt-text">sugar</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'D')"><span class="opt-label">D</span><span class="opt-text">titanium dioxide</span><span class="opt-icon"></span></div>
+      </div>
+      <button class="exam-explain-btn" onclick="toggleExplain(this)">▸ 顯示詳解</button>
+      <div class="exam-explain">
+        <strong>答案：B（sorbitol）</strong><br>
+        Sorbitol（山梨醇）是多元醇，與甘油同為軟膠囊殼的<strong>塑化劑（plasticizer）</strong>，使膠囊殼軟Q有彈性。Ethanol 易揮發且會使殼軟化滲漏；sugar 在硬膠囊是硬化劑；TiO₂ 是遮光劑。
+      </div>
+    </div>
+  </div>
+
+  <!-- Q33 -->
+  <div class="exam-q" data-answer="C">
+    <div class="exam-q-header" onclick="toggleQ(this)">
+      <span class="exam-q-year">108-2</span>
+      <span class="exam-q-stem">有關「軟明膠膠囊殼」之性質，下列敘述何者最正確？</span>
+      <span class="exam-q-toggle">▼</span>
+    </div>
+    <div class="exam-q-body">
+      <div class="exam-opts">
+        <div class="exam-opt" onclick="selectOpt(this,'A')"><span class="opt-label">A</span><span class="opt-text">含 plasticizer 量多時則較硬</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'B')"><span class="opt-label">B</span><span class="opt-text">通常不含水</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'C')"><span class="opt-label">C</span><span class="opt-text">通常含防腐劑</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'D')"><span class="opt-label">D</span><span class="opt-text">大小一致</span><span class="opt-icon"></span></div>
+      </div>
+      <button class="exam-explain-btn" onclick="toggleExplain(this)">▸ 顯示詳解</button>
+      <div class="exam-explain">
+        <strong>答案：C（通常含防腐劑）</strong><br>
+        A 錯：塑化劑越多→越<strong>軟</strong>（不是越硬）。<br>
+        B 錯：軟膠囊殼含水 6～13%，<strong>有水分</strong>。<br>
+        C ✓：正因含水，容易滋生微生物，故需加防腐劑（methylparaben、propylparaben、sorbic acid）。<br>
+        D 錯：軟膠囊可做成橢圓形、卵形、球形等多種外觀，不一定大小一致。
+      </div>
+    </div>
+  </div>
+
+  <!-- Q34 -->
+  <div class="exam-q" data-answer="A">
+    <div class="exam-q-header" onclick="toggleQ(this)">
+      <span class="exam-q-year">107-2</span>
+      <span class="exam-q-stem">製備軟膠囊劑時，不宜使用下列何種液體為原料藥之媒液，因易使膠殼軟化？</span>
+      <span class="exam-q-toggle">▼</span>
+    </div>
+    <div class="exam-q-body">
+      <div class="exam-opts">
+        <div class="exam-opt" onclick="selectOpt(this,'A')"><span class="opt-label">A</span><span class="opt-text">含乙醇水溶液</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'B')"><span class="opt-label">B</span><span class="opt-text">氫化植物油</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'C')"><span class="opt-label">C</span><span class="opt-text">聚乙二醇</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'D')"><span class="opt-label">D</span><span class="opt-text">異丙醇</span><span class="opt-icon"></span></div>
+      </div>
+      <button class="exam-explain-btn" onclick="toggleExplain(this)">▸ 顯示詳解</button>
+      <div class="exam-explain">
+        <strong>答案：A（含乙醇水溶液）</strong><br>
+        含乙醇水溶液含水量高，乙醇又是低分子量水溶性揮發性有機物，容易使明膠殼軟化並從接縫滲漏。PEG（非揮發性水可互溶）及氫化植物油（水不互溶）均適合。
+      </div>
+    </div>
+  </div>
+
+  <!-- Q35 -->
+  <div class="exam-q" data-answer="A">
+    <div class="exam-q-header" onclick="toggleQ(this)">
+      <span class="exam-q-year">104-2</span>
+      <span class="exam-q-stem">關於「軟膠囊」之敘述，下列何者正確？</span>
+      <span class="exam-q-toggle">▼</span>
+    </div>
+    <div class="exam-q-body">
+      <div class="exam-opts">
+        <div class="exam-opt" onclick="selectOpt(this,'A')"><span class="opt-label">A</span><span class="opt-text">囊殼組成成分主要有：明膠、多元醇等</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'B')"><span class="opt-label">B</span><span class="opt-text">其囊殼因不含水分，故不必另含抗菌劑</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'C')"><span class="opt-label">C</span><span class="opt-text">囊殼可因二氧化鈦之添加而使成透明狀</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'D')"><span class="opt-label">D</span><span class="opt-text">軟膠囊內不宜充填固體粉末或錠劑</span><span class="opt-icon"></span></div>
+      </div>
+      <button class="exam-explain-btn" onclick="toggleExplain(this)">▸ 顯示詳解</button>
+      <div class="exam-explain">
+        <strong>答案：A</strong><br>
+        A ✓：軟膠囊殼主要成分：明膠＋<strong>多元醇（甘油、山梨醇）</strong>等塑化劑。<br>
+        B 錯：含水 6～13%，正因含水<strong>需加防腐劑</strong>。<br>
+        C 錯：TiO₂ 是<strong>遮光劑</strong>，加入後變<strong>不透明</strong>，而非透明。<br>
+        D 錯：軟膠囊<strong>可以充填固體粉末、顆粒、小錠片</strong>。
+      </div>
+    </div>
+  </div>
+
+  <!-- Q36 -->
+  <div class="exam-q" data-answer="D">
+    <div class="exam-q-header" onclick="toggleQ(this)">
+      <span class="exam-q-year">111-1</span>
+      <span class="exam-q-stem">依中華藥典，有關溶離度試驗之敘述，下列何者錯誤？</span>
+      <span class="exam-q-toggle">▼</span>
+    </div>
+    <div class="exam-q-body">
+      <div class="exam-opts">
+        <div class="exam-opt" onclick="selectOpt(this,'A')"><span class="opt-label">A</span><span class="opt-text">不銹鋼網籃之網孔為10網目篩網</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'B')"><span class="opt-label">B</span><span class="opt-text">馬達之轉速範圍於25至150 rpm</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'C')"><span class="opt-label">C</span><span class="opt-text">不銹鋼網籃底距試驗槽底應維持2.5 cm</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'D')"><span class="opt-label">D</span><span class="opt-text">一般使用溶離媒液的溫度保持在37±0.5℃</span><span class="opt-icon"></span></div>
+      </div>
+      <button class="exam-explain-btn" onclick="toggleExplain(this)">▸ 顯示詳解</button>
+      <div class="exam-explain">
+        <strong>答案：A（錯誤）</strong><br>
+        溶離裝置 I 的網籃網孔為 <strong>40 網目篩網</strong>（40 mesh），不是 10 網目。10 號篩是崩散度試驗所用。B、C、D 皆正確。
+      </div>
+    </div>
+  </div>
+
+</section>
+    <div class="exam-q-header" onclick="toggleQ(this)">
+      <span class="exam-q-year">107-2</span>
+      <span class="exam-q-stem">依中華藥典於硬膠囊殼之製造及膠囊劑之貯藏，下列敘述何者不適當？</span>
+      <span class="exam-q-toggle">▼</span>
+    </div>
+    <div class="exam-q-body">
+      <div class="exam-opts">
+        <div class="exam-opt" onclick="selectOpt(this,'A')"><span class="opt-label">A</span><span class="opt-text">膠囊殼通常於製造初期係以沾模沾取熱的明膠液</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'B')"><span class="opt-label">B</span><span class="opt-text">將製作膠囊殼之沾模取出後，使成膜冷卻及乾燥，並完成收取之步驟</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'C')"><span class="opt-label">C</span><span class="opt-text">空膠囊於填充前必須貯放於緊密容器，防止吸潮</span><span class="opt-icon"></span></div>
+        <div class="exam-opt" onclick="selectOpt(this,'D')"><span class="opt-label">D</span><span class="opt-text">明膠常為酸或鹼水解而得，故囊殼並無微生物污染之虞</span><span class="opt-icon"></span></div>
+      </div>
+      <button class="exam-explain-btn" onclick="toggleExplain(this)">▸ 顯示詳解</button>
+      <div class="exam-explain">
+        <strong>答案：D（不適當）</strong><br>
+        A ✓ 正確：製造初期以沾模（dipping）沾取溫熱明膠液。<br>
+        B ✓ 正確：取出後乾燥冷卻，再完成收取（stripping）步驟。<br>
+        C ✓ 正確：空膠囊吸濕後變軟變形，需貯放於緊密容器防潮。<br>
+        D ✗ 錯誤：明膠雖經酸或鹼水解，<strong>乾燥狀態安定，但吸濕後容易被微生物分解</strong>，因此 USP 允許添加 0.15% SO₂（二氧化硫）作為防腐劑。明膠本身的含菌數有微生物限量規範（總菌數 ≤1000 CFU，且不得含大腸桿菌、沙門氏桿菌）。
       </div>
     </div>
   </div>
