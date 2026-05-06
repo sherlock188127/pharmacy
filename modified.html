@@ -6,1430 +6,1697 @@
 <title>固體口服修飾釋放劑型 | 藥學筆記</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700;900&family=Noto+Sans+TC:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #0d1117;
-    --bg2: #161b22;
-    --bg3: #1c2330;
-    --border: #30363d;
-    --accent: #58a6ff;
-    --accent2: #3fb950;
-    --accent3: #d29922;
-    --accent4: #f85149;
-    --accent5: #bc8cff;
-    --text: #e6edf3;
-    --text2: #8b949e;
-    --text3: #6e7681;
-    --highlight: rgba(88,166,255,0.1);
-    --highlight2: rgba(63,185,80,0.1);
-    --highlight3: rgba(210,153,34,0.1);
-    --highlight4: rgba(248,81,73,0.1);
-    --highlight5: rgba(188,140,255,0.1);
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Noto Sans TC', sans-serif;
-    font-size: 15px;
-    line-height: 1.8;
-    min-height: 100vh;
-  }
-
-  /* Header */
-  .site-header {
-    background: var(--bg2);
-    border-bottom: 1px solid var(--border);
-    padding: 2rem 2rem 1.5rem;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    backdrop-filter: blur(10px);
-  }
-
-  .site-header h1 {
-    font-family: 'Noto Serif TC', serif;
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: var(--accent);
-    letter-spacing: 0.05em;
-  }
-
-  .site-header p {
-    font-size: 0.8rem;
-    color: var(--text3);
-    margin-top: 0.2rem;
-    font-family: 'JetBrains Mono', monospace;
-  }
-
-  /* Layout */
-  .layout {
-    display: grid;
-    grid-template-columns: 240px 1fr;
-    min-height: calc(100vh - 80px);
-  }
-
-  /* Sidebar */
-  .sidebar {
-    background: var(--bg2);
-    border-right: 1px solid var(--border);
-    padding: 1.5rem 0;
-    position: sticky;
-    top: 80px;
-    height: calc(100vh - 80px);
-    overflow-y: auto;
-  }
-
-  .sidebar::-webkit-scrollbar { width: 4px; }
-  .sidebar::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
-
-  .sidebar-section {
-    padding: 0.5rem 0;
-  }
-
-  .sidebar-label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.65rem;
-    color: var(--text3);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    padding: 0.5rem 1.2rem;
-  }
-
-  .sidebar a {
-    display: block;
-    padding: 0.4rem 1.2rem;
-    color: var(--text2);
-    text-decoration: none;
-    font-size: 0.82rem;
-    transition: all 0.15s;
-    border-left: 2px solid transparent;
-  }
-
-  .sidebar a:hover {
-    color: var(--text);
-    background: var(--bg3);
-    border-left-color: var(--accent);
-  }
-
-  /* Main content */
-  .main {
-    padding: 2.5rem 3rem;
-    max-width: 900px;
-  }
-
-  /* Section */
-  .section {
-    margin-bottom: 4rem;
-  }
-
-  .section-title {
-    font-family: 'Noto Serif TC', serif;
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--text);
-    border-bottom: 2px solid var(--accent);
-    padding-bottom: 0.6rem;
-    margin-bottom: 1.8rem;
-    display: flex;
-    align-items: center;
-    gap: 0.7rem;
-  }
-
-  .section-num {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.75rem;
-    color: var(--accent);
-    background: var(--highlight);
-    padding: 0.2rem 0.5rem;
-    border-radius: 4px;
-    border: 1px solid var(--accent);
-  }
-
-  .subsection-title {
-    font-family: 'Noto Serif TC', serif;
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--accent2);
-    margin: 2rem 0 0.8rem;
-    padding-left: 0.8rem;
-    border-left: 3px solid var(--accent2);
-  }
-
-  /* Cards */
-  .card {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 1.2rem 1.5rem;
-    margin-bottom: 1rem;
-    transition: border-color 0.2s;
-  }
-
-  .card:hover { border-color: var(--accent); }
-
-  .card-title {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.85rem;
-    color: var(--accent);
-    font-weight: 500;
-    margin-bottom: 0.5rem;
-  }
-
-  /* Info grid */
-  .info-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    margin-bottom: 1rem;
-  }
-
-  .info-box {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 1rem 1.2rem;
-  }
-
-  .info-box.blue { border-left: 3px solid var(--accent); background: linear-gradient(to right, var(--highlight), var(--bg2)); }
-  .info-box.green { border-left: 3px solid var(--accent2); background: linear-gradient(to right, var(--highlight2), var(--bg2)); }
-  .info-box.yellow { border-left: 3px solid var(--accent3); background: linear-gradient(to right, var(--highlight3), var(--bg2)); }
-  .info-box.red { border-left: 3px solid var(--accent4); background: linear-gradient(to right, var(--highlight4), var(--bg2)); }
-  .info-box.purple { border-left: 3px solid var(--accent5); background: linear-gradient(to right, var(--highlight5), var(--bg2)); }
-
-  .info-box h4 {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.75rem;
-    color: var(--text2);
-    margin-bottom: 0.5rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-
-  /* Table */
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 1.5rem;
-    font-size: 0.85rem;
-  }
-
-  th {
-    background: var(--bg3);
-    border: 1px solid var(--border);
-    padding: 0.6rem 0.8rem;
-    text-align: left;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.75rem;
-    color: var(--accent);
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-
-  td {
-    border: 1px solid var(--border);
-    padding: 0.6rem 0.8rem;
-    color: var(--text2);
-    vertical-align: top;
-  }
-
-  tr:nth-child(even) td { background: var(--bg2); }
-  tr:hover td { background: var(--bg3); color: var(--text); }
-
-  /* List */
-  ul, ol {
-    padding-left: 1.5rem;
-    color: var(--text2);
-  }
-
-  li { margin-bottom: 0.3rem; }
-
-  li strong {
-    color: var(--text);
-    font-weight: 500;
-  }
-
-  /* Drug name */
-  .drug {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.82rem;
-    color: var(--accent3);
-    background: var(--highlight3);
-    padding: 0.1rem 0.4rem;
-    border-radius: 3px;
-  }
-
-  /* Material name */
-  .material {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.82rem;
-    color: var(--accent5);
-    background: var(--highlight5);
-    padding: 0.1rem 0.4rem;
-    border-radius: 3px;
-  }
-
-  /* Note */
-  .note {
-    background: var(--highlight3);
-    border: 1px solid var(--accent3);
-    border-radius: 6px;
-    padding: 0.8rem 1rem;
-    margin: 0.8rem 0;
-    font-size: 0.85rem;
-    color: var(--text2);
-  }
-
-  .note::before {
-    content: '📝 ';
-  }
-
-  .note strong { color: var(--accent3); }
-
-  /* Warn */
-  .warn {
-    background: var(--highlight4);
-    border: 1px solid var(--accent4);
-    border-radius: 6px;
-    padding: 0.8rem 1rem;
-    margin: 0.8rem 0;
-    font-size: 0.85rem;
-    color: var(--text2);
-  }
-
-  .warn::before { content: '⚠️ '; }
-  .warn strong { color: var(--accent4); }
-
-  /* Tip */
-  .tip {
-    background: var(--highlight2);
-    border: 1px solid var(--accent2);
-    border-radius: 6px;
-    padding: 0.8rem 1rem;
-    margin: 0.8rem 0;
-    font-size: 0.85rem;
-    color: var(--text2);
-  }
-
-  .tip::before { content: '💡 '; }
-  .tip strong { color: var(--accent2); }
-
-  /* Q&A section */
-  .qa-block {
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    overflow: hidden;
-    margin-bottom: 1rem;
-  }
-
-  .qa-question {
-    background: var(--bg3);
-    padding: 0.8rem 1rem;
-    font-size: 0.88rem;
-    color: var(--text);
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 1rem;
-    user-select: none;
-    transition: background 0.2s;
-  }
-
-  .qa-question:hover { background: #21262d; }
-
-  .qa-year {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.7rem;
-    color: var(--text3);
-    white-space: nowrap;
-    margin-top: 0.15rem;
-    flex-shrink: 0;
-  }
-
-  .qa-toggle {
-    font-size: 0.75rem;
-    color: var(--text3);
-    flex-shrink: 0;
-    transition: transform 0.2s;
-  }
-
-  .qa-body {
-    display: none;
-    padding: 0.8rem 1rem;
-    border-top: 1px solid var(--border);
-    background: var(--bg2);
-  }
-
-  .qa-body.show { display: block; }
-
-  .qa-block.open .qa-toggle { transform: rotate(180deg); }
-
-  .qa-options {
-    list-style: none;
-    padding: 0;
-    margin: 0.4rem 0;
-  }
-
-  .qa-options li {
-    padding: 0.4rem 0.7rem;
-    border-radius: 4px;
-    font-size: 0.85rem;
-    margin-bottom: 0.3rem;
-    color: var(--text2);
-    background: var(--bg3);
-    border: 1px solid var(--border);
-    cursor: pointer;
-    transition: all 0.15s;
-    user-select: none;
-  }
-
-  .qa-options li:hover { border-color: var(--accent); color: var(--text); }
-
-  .qa-options li.revealed-correct {
-    background: var(--highlight2);
-    border-color: var(--accent2);
-    color: var(--accent2);
-    font-weight: 500;
-    cursor: default;
-  }
-
-  .qa-options li.revealed-wrong {
-    background: var(--highlight4);
-    border-color: var(--accent4);
-    color: var(--accent4);
-    cursor: default;
-  }
-
-  .qa-explain-btn {
-    display: inline-block;
-    margin-top: 0.7rem;
-    padding: 0.35rem 0.9rem;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.75rem;
-    color: var(--accent3);
-    border: 1px solid var(--accent3);
-    border-radius: 4px;
-    cursor: pointer;
-    background: var(--highlight3);
-    transition: all 0.15s;
-    user-select: none;
-  }
-
-  .qa-explain-btn:hover { background: rgba(210,153,34,0.2); }
-
-  .qa-explain {
-    display: none;
-    margin-top: 0.6rem;
-    padding: 0.7rem 0.8rem;
-    border-top: 1px solid var(--border);
-    font-size: 0.83rem;
-    color: var(--text2);
-    line-height: 1.7;
-    border-radius: 4px;
-    background: var(--bg3);
-  }
-
-  .qa-explain.show { display: block; }
-
-  .qa-note-area {
-    display: none;
-    margin-top: 0.6rem;
-  }
-
-  .qa-note-area.show { display: block; }
-
-  .qa-note-label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.7rem;
-    color: var(--text3);
-    margin-bottom: 0.3rem;
-  }
-
-  .qa-note-area textarea {
-    width: 100%;
-    min-height: 60px;
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    color: var(--text);
-    font-family: 'Noto Sans TC', sans-serif;
-    font-size: 0.82rem;
-    padding: 0.5rem 0.7rem;
-    resize: vertical;
-    outline: none;
-    transition: border-color 0.15s;
-    line-height: 1.6;
-  }
-
-  .qa-note-area textarea:focus { border-color: var(--accent); }
-
-  .qa-note-save {
-    display: inline-block;
-    margin-top: 0.3rem;
-    padding: 0.2rem 0.6rem;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.7rem;
-    color: var(--accent2);
-    border: 1px solid var(--accent2);
-    border-radius: 3px;
-    cursor: pointer;
-    background: var(--highlight2);
-    transition: all 0.15s;
-  }
-
-  .qa-note-save:hover { background: rgba(63,185,80,0.2); }
-  .qa-note-saved { color: var(--text3) !important; border-color: var(--text3) !important; }
-
-  /* Flow */
-  .flow {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-    margin: 0.8rem 0;
-    font-size: 0.82rem;
-  }
-
-  .flow-step {
-    background: var(--bg3);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 0.3rem 0.7rem;
-    color: var(--text);
-  }
-
-  .flow-arrow { color: var(--accent); font-weight: bold; }
-
-  /* Tag */
-  .tag {
-    display: inline-block;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.68rem;
-    padding: 0.15rem 0.4rem;
-    border-radius: 3px;
-    margin: 0.1rem;
-    font-weight: 500;
-  }
-
-  .tag-blue { background: var(--highlight); color: var(--accent); border: 1px solid rgba(88,166,255,0.3); }
-  .tag-green { background: var(--highlight2); color: var(--accent2); border: 1px solid rgba(63,185,80,0.3); }
-  .tag-red { background: var(--highlight4); color: var(--accent4); border: 1px solid rgba(248,81,73,0.3); }
-  .tag-purple { background: var(--highlight5); color: var(--accent5); border: 1px solid rgba(188,140,255,0.3); }
-
-  /* Mechanism box */
-  .mech-box {
-    background: var(--bg3);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 1rem 1.2rem;
-    margin: 0.8rem 0;
-  }
-
-  .mech-title {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.72rem;
-    color: var(--text3);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-bottom: 0.5rem;
-  }
-
-  /* Responsive */
-  @media (max-width: 768px) {
-    .layout { grid-template-columns: 1fr; }
-    .sidebar { display: none; }
-    .main { padding: 1.5rem; }
-    .info-grid { grid-template-columns: 1fr; }
-  }
-
-  /* Scrollbar */
-  ::-webkit-scrollbar { width: 6px; }
-  ::-webkit-scrollbar-track { background: var(--bg); }
-  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
-
-  p { color: var(--text2); margin-bottom: 0.5rem; }
-
-  hr {
-    border: none;
-    border-top: 1px solid var(--border);
-    margin: 1.5rem 0;
-  }
+:root {
+  --bg: #0d1117;
+  --bg2: #161b22;
+  --bg3: #1c2330;
+  --border: #30363d;
+  --accent: #58a6ff;
+  --accent2: #3fb950;
+  --accent3: #d29922;
+  --accent4: #f85149;
+  --accent5: #bc8cff;
+  --text: #e6edf3;
+  --text2: #8b949e;
+  --text3: #6e7681;
+  --hl1: rgba(88,166,255,0.1);
+  --hl2: rgba(63,185,80,0.1);
+  --hl3: rgba(210,153,34,0.1);
+  --hl4: rgba(248,81,73,0.1);
+  --hl5: rgba(188,140,255,0.1);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans TC',sans-serif;font-size:15px;line-height:1.8;}
+::-webkit-scrollbar{width:6px;}::-webkit-scrollbar-track{background:var(--bg);}::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px;}
+
+/* HEADER */
+.hdr{background:var(--bg2);border-bottom:1px solid var(--border);padding:1.4rem 2rem;position:sticky;top:0;z-index:100;}
+.hdr h1{font-family:'Noto Serif TC',serif;font-size:1.3rem;font-weight:700;color:var(--accent);}
+.hdr p{font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:var(--text3);margin-top:0.15rem;}
+
+/* LAYOUT */
+.layout{display:grid;grid-template-columns:230px 1fr;min-height:calc(100vh - 68px);}
+
+/* SIDEBAR */
+.sidebar{background:var(--bg2);border-right:1px solid var(--border);padding:1rem 0;position:sticky;top:68px;height:calc(100vh - 68px);overflow-y:auto;}
+.sidebar::-webkit-scrollbar{width:3px;}
+.nav-label{font-family:'JetBrains Mono',monospace;font-size:0.62rem;color:var(--text3);text-transform:uppercase;letter-spacing:.1em;padding:.5rem 1rem .2rem;}
+.sidebar a{display:block;padding:.35rem 1rem;color:var(--text2);text-decoration:none;font-size:0.8rem;border-left:2px solid transparent;transition:all .15s;}
+.sidebar a:hover{color:var(--text);background:var(--bg3);border-left-color:var(--accent);}
+
+/* MAIN */
+.main{padding:2rem 2.5rem;max-width:920px;}
+
+/* SECTION */
+.sec{margin-bottom:3.5rem;}
+.sec-title{font-family:'Noto Serif TC',serif;font-size:1.4rem;font-weight:700;border-bottom:2px solid var(--accent);padding-bottom:.5rem;margin-bottom:1.5rem;display:flex;align-items:center;gap:.6rem;}
+.sec-num{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--accent);background:var(--hl1);padding:.15rem .4rem;border-radius:3px;border:1px solid var(--accent);}
+.sub-title{font-family:'Noto Serif TC',serif;font-size:1rem;font-weight:600;color:var(--accent2);margin:1.8rem 0 .7rem;padding-left:.7rem;border-left:3px solid var(--accent2);}
+
+/* GRID */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin-bottom:1rem;}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.9rem;margin-bottom:1rem;}
+
+/* INFO BOX */
+.box{background:var(--bg2);border:1px solid var(--border);border-radius:7px;padding:1rem 1.2rem;}
+.box h4{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.4rem;}
+.box.blue{border-left:3px solid var(--accent);background:linear-gradient(to right,var(--hl1),var(--bg2));}
+.box.green{border-left:3px solid var(--accent2);background:linear-gradient(to right,var(--hl2),var(--bg2));}
+.box.yellow{border-left:3px solid var(--accent3);background:linear-gradient(to right,var(--hl3),var(--bg2));}
+.box.red{border-left:3px solid var(--accent4);background:linear-gradient(to right,var(--hl4),var(--bg2));}
+.box.purple{border-left:3px solid var(--accent5);background:linear-gradient(to right,var(--hl5),var(--bg2));}
+
+/* NOTE / TIP / WARN */
+.note,.tip,.warn{border-radius:6px;padding:.7rem 1rem;margin:.7rem 0;font-size:.84rem;color:var(--text2);}
+.note{background:var(--hl3);border:1px solid var(--accent3);}
+.note::before{content:'📝 ';}
+.tip{background:var(--hl2);border:1px solid var(--accent2);}
+.tip::before{content:'💡 ';}
+.warn{background:var(--hl4);border:1px solid var(--accent4);}
+.warn::before{content:'⚠️ ';}
+.note strong{color:var(--accent3);}.tip strong{color:var(--accent2);}.warn strong{color:var(--accent4);}
+
+/* TABLE */
+table{width:100%;border-collapse:collapse;margin-bottom:1.2rem;font-size:.84rem;}
+th{background:var(--bg3);border:1px solid var(--border);padding:.55rem .8rem;text-align:left;font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--accent);font-weight:500;text-transform:uppercase;letter-spacing:.05em;}
+td{border:1px solid var(--border);padding:.55rem .8rem;color:var(--text2);vertical-align:top;}
+tr:nth-child(even) td{background:var(--bg2);}
+tr:hover td{background:var(--bg3);color:var(--text);}
+
+/* INLINE CODES */
+.drug{font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--accent3);background:var(--hl3);padding:.05rem .35rem;border-radius:3px;}
+.mat{font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--accent5);background:var(--hl5);padding:.05rem .35rem;border-radius:3px;}
+.tag{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:.67rem;padding:.12rem .38rem;border-radius:3px;margin:.1rem;}
+.tg{background:var(--hl1);color:var(--accent);border:1px solid rgba(88,166,255,.3);}
+.tgg{background:var(--hl2);color:var(--accent2);border:1px solid rgba(63,185,80,.3);}
+.tgr{background:var(--hl4);color:var(--accent4);border:1px solid rgba(248,81,73,.3);}
+.tgp{background:var(--hl5);color:var(--accent5);border:1px solid rgba(188,140,255,.3);}
+
+/* FLOW */
+.flow{display:flex;align-items:center;flex-wrap:wrap;gap:.35rem;margin:.7rem 0;font-size:.82rem;}
+.fs{background:var(--bg3);border:1px solid var(--border);border-radius:4px;padding:.28rem .65rem;color:var(--text);}
+.fa{color:var(--accent);font-weight:bold;}
+
+/* MECHANISM */
+.mech{background:var(--bg3);border:1px solid var(--border);border-radius:7px;padding:.9rem 1.1rem;margin:.7rem 0;}
+.mech-t{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.4rem;}
+
+p{color:var(--text2);margin-bottom:.45rem;}
+ul,ol{padding-left:1.4rem;color:var(--text2);}
+li{margin-bottom:.25rem;}
+li strong{color:var(--text);}
+hr{border:none;border-top:1px solid var(--border);margin:1.2rem 0;}
+
+/* ===== QA STYLES ===== */
+.qa-block{border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:.9rem;}
+.qa-q{background:var(--bg3);padding:.8rem 1rem;font-size:.87rem;color:var(--text);cursor:pointer;display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;user-select:none;transition:background .15s;}
+.qa-q:hover{background:#21262d;}
+.qa-meta{display:flex;gap:.5rem;align-items:center;flex-shrink:0;}
+.qa-year{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--text3);white-space:nowrap;}
+.qa-arr{font-size:.72rem;color:var(--text3);transition:transform .2s;}
+.qa-block.open .qa-arr{transform:rotate(180deg);}
+.qa-body{display:none;padding:.85rem 1rem;border-top:1px solid var(--border);background:var(--bg2);}
+.qa-body.show{display:block;}
+.qa-opts{list-style:none;padding:0;margin:.3rem 0;}
+.qa-opts li{padding:.4rem .75rem;border-radius:4px;font-size:.84rem;margin-bottom:.3rem;color:var(--text2);background:var(--bg3);border:1px solid var(--border);cursor:pointer;transition:all .15s;user-select:none;}
+.qa-opts li:hover:not(.r-ok):not(.r-ng){border-color:var(--accent);color:var(--text);}
+.r-ok{background:var(--hl2)!important;border-color:var(--accent2)!important;color:var(--accent2)!important;font-weight:500;cursor:default!important;}
+.r-ng{background:var(--hl4)!important;border-color:var(--accent4)!important;color:var(--accent4)!important;cursor:default!important;}
+.show-ex-btn{display:inline-block;margin-top:.6rem;padding:.3rem .8rem;font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--accent3);border:1px solid var(--accent3);border-radius:4px;cursor:pointer;background:var(--hl3);transition:all .15s;user-select:none;}
+.show-ex-btn:hover{background:rgba(210,153,34,.2);}
+.qa-explain{display:none;margin-top:.55rem;padding:.65rem .8rem;border-top:1px solid var(--border);font-size:.82rem;color:var(--text2);line-height:1.75;border-radius:4px;background:var(--bg3);}
+.qa-explain.show{display:block;}
+.note-area{display:none;margin-top:.6rem;}
+.note-area.show{display:block;}
+.note-lbl{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--text3);margin-bottom:.25rem;}
+.note-area textarea{width:100%;min-height:58px;background:var(--bg);border:1px solid var(--border);border-radius:4px;color:var(--text);font-family:'Noto Sans TC',sans-serif;font-size:.82rem;padding:.45rem .65rem;resize:vertical;outline:none;transition:border-color .15s;line-height:1.6;}
+.note-area textarea:focus{border-color:var(--accent);}
+.save-btn{display:inline-block;margin-top:.25rem;padding:.18rem .55rem;font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--accent2);border:1px solid var(--accent2);border-radius:3px;cursor:pointer;background:var(--hl2);transition:all .15s;}
+.save-btn:hover{background:rgba(63,185,80,.2);}
+.saved{color:var(--text3)!important;border-color:var(--text3)!important;}
+
+/* QA category header */
+.qa-cat{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--accent5);text-transform:uppercase;letter-spacing:.1em;margin:1.4rem 0 .6rem;padding:.2rem .5rem;border-left:2px solid var(--accent5);}
+
+@media(max-width:768px){.layout{grid-template-columns:1fr;}.sidebar{display:none;}.main{padding:1.2rem;}.grid2,.grid3{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
 
-<header class="site-header">
+<header class="hdr">
   <h1>固體口服修飾釋放劑型</h1>
   <p>Solid Oral Modified-Release Dosage Forms · Pharmaceutics IV</p>
 </header>
 
 <div class="layout">
-  <nav class="sidebar">
-    <div class="sidebar-section">
-      <div class="sidebar-label">術語</div>
-      <a href="#terminology">釋放型別定義</a>
-      <a href="#rationale">延釋理論基礎</a>
-      <a href="#candidates">候選藥物條件</a>
+<nav class="sidebar">
+  <div class="nav-label">術語 & 基礎</div>
+  <a href="#s-term">釋放型別定義</a>
+  <a href="#s-rationale">延釋理論基礎</a>
+  <a href="#s-cand">候選藥物條件</a>
+  <div class="nav-label">延釋技術</div>
+  <a href="#t1">① Coated Beads</a>
+  <a href="#t2">② Multitablet</a>
+  <a href="#t3">③ Microencapsulation</a>
+  <a href="#t4">④ Hydrophilic Matrix</a>
+  <a href="#t5">⑤ Inert Plastic Matrix</a>
+  <a href="#t6">⑥ Complex Formation</a>
+  <a href="#t7">⑦ Ion-Exchange Resins</a>
+  <a href="#t8">⑧ Osmotic Pump</a>
+  <a href="#t9">⑨ Repeat Action</a>
+  <div class="nav-label">遲釋 & 規範</div>
+  <a href="#s-delayed">Delayed-Release</a>
+  <a href="#s-ivivc">IVIVC</a>
+  <a href="#s-ref">技術速查表</a>
+  <div class="nav-label">歷屆考題</div>
+  <a href="#qa-cand">候選藥物</a>
+  <a href="#qa-tech">各技術</a>
+  <a href="#qa-osmotic">滲透壓</a>
+  <a href="#qa-ivivc">IVIVC</a>
+  <a href="#qa-delayed">遲釋 & 綜合</a>
+</nav>
+
+<main class="main">
+
+<!-- ===== 術語 ===== -->
+<section class="sec" id="s-term">
+  <h2 class="sec-title"><span class="sec-num">01</span>術語定義</h2>
+
+  <div class="grid2">
+    <div class="box blue">
+      <h4>Immediate Release 原態釋放</h4>
+      <p>未做任何修飾，依原來狀態釋放。吃下去→崩散→溶離，無特殊設計。</p>
     </div>
-    <div class="sidebar-section">
-      <div class="sidebar-label">延釋技術</div>
-      <a href="#t1">① Coated Beads</a>
-      <a href="#t2">② Multitablet System</a>
-      <a href="#t3">③ Microencapsulation</a>
-      <a href="#t4">④ Hydrophilic Matrix</a>
-      <a href="#t5">⑤ Inert Plastic Matrix</a>
-      <a href="#t6">⑥ Complex Formation</a>
-      <a href="#t7">⑦ Ion-Exchange Resins</a>
-      <a href="#t8">⑧ Osmotic Pump</a>
-      <a href="#t9">⑨ Repeat Action</a>
+    <div class="box purple">
+      <h4>Modified-Release 修飾釋放</h4>
+      <p>藥物釋放的速率或時間與原態釋放不同。大多為錠劑或膠囊，也有眼用、注射、皮下、陰道製劑及經皮貼片。常見為延釋(ER)與遲釋(Delayed-release)。</p>
     </div>
-    <div class="sidebar-section">
-      <div class="sidebar-label">遲釋 & 規範</div>
-      <a href="#delayed">Delayed-Release</a>
-      <a href="#ivivc">IVIVC</a>
-      <a href="#qa">歷屆考題</a>
+  </div>
+
+  <table>
+    <thead><tr><th>術語</th><th>英文縮寫</th><th>定義重點</th><th>備註</th></tr></thead>
+    <tbody>
+      <tr><td><strong>延釋</strong></td><td><span class="mat">Extended-Release (ER)</span></td><td>FDA定義：可減少傳統劑型給藥次數；以控制方式於預定速率、期間、位置釋放藥物</td><td>與SR/CR/LA等常互換使用</td></tr>
+      <tr><td><strong>持續釋放</strong></td><td><span class="mat">Sustained-Release (SR)</span></td><td>維持持續的藥物釋放</td><td rowspan="5" style="vertical-align:middle;text-align:center;color:var(--text3);">這些術語<br>大多與ER<br>意義相近</td></tr>
+      <tr><td><strong>控制釋放</strong></td><td><span class="mat">Controlled-Release (CR)</span></td><td>以設計控制釋放速率</td></tr>
+      <tr><td><strong>定時釋放</strong></td><td><span class="mat">Timed-Release (TR)</span></td><td>定時釋放</td></tr>
+      <tr><td><strong>長效作用</strong></td><td><span class="mat">Long-Acting (LA)</span></td><td>延長作用時間</td></tr>
+      <tr><td><strong>控速遞藥</strong></td><td><span class="mat">Rate-Controlled Delivery</span></td><td>遞藥速率由裝置特性控制，非由生理/環境因素控制</td></tr>
+      <tr><td><strong>遲釋</strong></td><td><span class="mat">Delayed-Release</span></td><td>非立即釋放，在特定時間（時間基礎或pH基礎）釋放；多為腸衣錠/膠囊</td><td>腸溶製劑最具代表</td></tr>
+      <tr><td><strong>重複作用</strong></td><td><span class="mat">Repeat Action</span></td><td>含兩個劑量：一個立即釋放，第二個延遲釋放（如 bilayered tablets）</td><td>脈衝式釋放設計</td></tr>
+      <tr><td><strong>標靶釋放</strong></td><td><span class="mat">Targeted Release</span></td><td>釋放集中於特定身體部位、組織或吸收位置</td><td>化療藥品常用</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ===== 理論基礎 ===== -->
+<section class="sec" id="s-rationale">
+  <h2 class="sec-title"><span class="sec-num">02</span>延釋理論基礎</h2>
+
+  <p>傳統劑型一天需服多次，血中濃度有波峰波谷：波谷落到MEC以下→失效；波峰超過MTC以上→副作用。Extended-release目的是讓血中濃度平穩維持在治療窗內。</p>
+
+  <div class="grid2">
+    <div class="box green">
+      <h4>✅ 優點</h4>
+      <ul>
+        <li>血中濃度波動少，<strong>較少副作用</strong></li>
+        <li><strong>減少給藥次數</strong>（一天1~2次）</li>
+        <li>增加便利性與<strong>服藥依順性</strong></li>
+        <li>降低健康照顧成本</li>
+        <li>維持有效治療濃度時間延長</li>
+      </ul>
     </div>
-  </nav>
-
-  <main class="main">
-
-    <!-- 術語 -->
-    <section class="section" id="terminology">
-      <h2 class="section-title"><span class="section-num">01</span>術語定義</h2>
-
-      <div class="info-grid">
-        <div class="info-box blue">
-          <h4>Immediate Release 原態釋放</h4>
-          <p>未做任何修飾，依原來狀態釋放。無特殊設計，吃下去即崩散→溶離。</p>
-        </div>
-        <div class="info-box purple">
-          <h4>Modified-Release 修飾釋放</h4>
-          <p>藥物釋放的速率或時間與原態釋放不同。大多為錠劑或膠囊，也有眼用、注射、皮下、陰道製劑及經皮貼片。</p>
-        </div>
-      </div>
-
-      <table>
-        <thead>
-          <tr>
-            <th>術語</th>
-            <th>英文</th>
-            <th>定義重點</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>延釋</strong></td>
-            <td><span class="material">Extended-Release (ER)</span></td>
-            <td>FDA定義：可減少傳統劑型給藥次數；以控制方式於預定速率、期間、位置釋放</td>
-          </tr>
-          <tr>
-            <td><strong>遲釋</strong></td>
-            <td><span class="material">Delayed-Release</span></td>
-            <td>非立即釋放，在特定時間（時間基礎或pH基礎）釋放；多為腸衣錠/膠囊</td>
-          </tr>
-          <tr>
-            <td><strong>重複作用</strong></td>
-            <td><span class="material">Repeat Action</span></td>
-            <td>含兩個劑量：一個立即釋放，第二個延遲釋放（如 bilayered tablets）</td>
-          </tr>
-          <tr>
-            <td><strong>標靶釋放</strong></td>
-            <td><span class="material">Targeted Release</span></td>
-            <td>釋放集中於特定身體部位、組織或吸收位置</td>
-          </tr>
-          <tr>
-            <td><strong>控速遞藥</strong></td>
-            <td><span class="material">Rate-Controlled Delivery</span></td>
-            <td>遞藥速率由裝置特性控制，而非由生理或環境因素（pH、蠕動）控制</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <div class="note">SR、CR、TR、SA、PA、LA 等術語與 <strong>Extended-Release 常互換使用</strong>，多用於描述口服給藥劑型，在不同教科書間可能有些微差異。</div>
-    </section>
-
-    <!-- 理論基礎 -->
-    <section class="section" id="rationale">
-      <h2 class="section-title"><span class="section-num">02</span>延釋理論基礎</h2>
-
-      <div class="info-grid">
-        <div class="info-box green">
-          <h4>✅ 優點</h4>
-          <ul>
-            <li>血中濃度波動少，較少副作用</li>
-            <li>減少給藥次數（一天1~2次）</li>
-            <li>增加便利性與服藥依順性</li>
-            <li>降低健康照顧成本</li>
-          </ul>
-        </div>
-        <div class="info-box red">
-          <h4>❌ 缺點</h4>
-          <ul>
-            <li><strong>劑量調整彈性差</strong>：不能磨粉、壓碎或拆開膠囊</li>
-            <li><strong>Dose Dumping 劑量傾釋</strong>：製備不良時，24小時份量一次全部釋出→血中濃度過高→嚴重風險</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="note">典型設計：<strong>部分劑量速放釋出（loading dose）+ 部分劑量緩速釋出</strong>，讓血中濃度快速到達治療範圍後持續維持。</div>
-    </section>
-
-    <!-- 候選藥物 -->
-    <section class="section" id="candidates">
-      <h2 class="section-title"><span class="section-num">03</span>延釋候選藥物條件</h2>
-
-      <div class="card">
-        <div class="card-title">最適合的藥物特性</div>
-        <table>
-          <thead>
-            <tr><th>條件</th><th>說明</th><th>不適合的情況</th></tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>半衰期</strong></td>
-              <td>最適合 <strong>4~6 小時</strong></td>
-              <td>半衰期 &lt;2 hr（劑量太大難設計）；半衰期很長（不需要設計）</td>
-            </tr>
-            <tr>
-              <td><strong>單劑量</strong></td>
-              <td>不適合太大</td>
-              <td>單劑量過大→錠劑體積大→難吞嚥</td>
-            </tr>
-            <tr>
-              <td><strong>藥理機轉</strong></td>
-              <td>非影響酵素系統者較適合</td>
-              <td>影響酶系統→殘留效應→本身已有延長作用→不需ER</td>
-            </tr>
-            <tr>
-              <td><strong>吸收</strong></td>
-              <td>胃腸道<strong>均一吸收</strong>；水溶解度良好</td>
-              <td>吸收差或吸收速率變化難預測者</td>
-            </tr>
-            <tr>
-              <td><strong>治療指數</strong></td>
-              <td>良好（therapeutic index 適中）</td>
-              <td>治療指數太窄→風險高（裝載劑量大，稍微多釋放就超標）</td>
-            </tr>
-            <tr>
-              <td><strong>適應症</strong></td>
-              <td>用於<strong>慢性病</strong>治療</td>
-              <td>急性治療需快速達效，不適合緩慢釋放</td>
-            </tr>
-          </tbody>
-        </table>
-        <div class="tip">口訣：<strong>半衰期4~6小時、慢性病、均一吸收</strong> → 三個最常考的關鍵條件。</div>
-      </div>
-    </section>
-
-    <!-- 技術1 -->
-    <section class="section" id="t1">
-      <h2 class="section-title"><span class="section-num">T1</span>Coated Beads / Granules / Microspheres</h2>
-      <p>包衣小珠、顆粒或微粒小球。利用傳統包衣缽或空氣懸浮包衣法製備。</p>
-
-      <h3 class="subsection-title">製備方式</h3>
-      <div class="info-grid">
-        <div class="info-box blue">
-          <h4>藥物劑量小</h4>
-          <p>藥品噴在 <span class="material">sugar/starch 糖珠</span> (nonpareil seeds, 425–850 μm) 或 <span class="material">MCC 小球</span> (170–600 μm) 表面，再噴包衣層。</p>
-        </div>
-        <div class="info-box green">
-          <h4>藥物劑量大</h4>
-          <p>藥品可自行形成圓球，直接噴上包衣層。</p>
-        </div>
-      </div>
-
-      <h3 class="subsection-title">包衣材料（考試重點）</h3>
-      <div class="card">
-        <div class="card-title">適合的包衣材料（水難溶性）</div>
-        <div style="display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:0.8rem;">
-          <span class="tag tag-purple">Beeswax 蜂蠟</span>
-          <span class="tag tag-purple">Carnauba Wax 棕櫚蠟</span>
-          <span class="tag tag-purple">Glyceryl Monostearate</span>
-          <span class="tag tag-purple">Cetyl Alcohol</span>
-          <span class="tag tag-purple">Ethylcellulose (EC)</span>
-          <span class="tag tag-blue">Aquacoat® / Surelease® (EC水性膜衣系統)</span>
-        </div>
-        <div class="warn"><strong>HPMC（Hydroxypropyl Methylcellulose）</strong>是水溶性的，<strong>最不適合</strong>作為 coated beads 的包覆材料！（考過2次：108、113年）</div>
-      </div>
-
-      <div class="note">典型直徑約 1 mm；一個劑量單位約 100 個以上；有 3~4 種釋放組合（不同包衣厚度→不同釋放時間）。市售例：<span class="drug">Spansule capsule</span></div>
-    </section>
-
-    <!-- 技術2 -->
-    <section class="section" id="t2">
-      <h2 class="section-title"><span class="section-num">T2</span>Multitablet System 多錠片系統</h2>
-      <p>多個球形小錠片（直徑 3–4 mm），裝入一個明膠膠囊（8–10 個 minitablets）。</p>
+    <div class="box red">
+      <h4>❌ 缺點</h4>
       <ul>
-        <li>部分小錠片：<strong>未包衣</strong> → 立即釋放</li>
-        <li>部分小錠片：<strong>包衣</strong> → 延長釋放</li>
-        <li>可分離不可配伍的成分，避免接觸</li>
+        <li><strong>劑量調整彈性差</strong>：不能磨粉、壓碎、拆開膠囊→破壞設計</li>
+        <li><strong>Dose Dumping 劑量傾釋</strong>：製備不良時，一天份量一次全釋出→血中濃度過高→嚴重風險</li>
+        <li>製備成本較高</li>
+        <li>不同廠牌間生體可用率可能不同，<strong>不可任意替換</strong></li>
       </ul>
-      <div class="note">因打錠工具（punch/die）要求精密，市面上較少見，現多被其他劑型取代。</div>
-    </section>
+    </div>
+  </div>
 
-    <!-- 技術3 -->
-    <section class="section" id="t3">
-      <h2 class="section-title"><span class="section-num">T3</span>Microencapsulated Drug 微粒膠囊包衣</h2>
+  <div class="note">典型設計：<strong>部分劑量立即釋出（loading dose）+ 部分劑量緩速釋出</strong>，讓血中濃度快速到達治療範圍後持續維持。</div>
 
-      <div class="mech-box">
-        <div class="mech-title">Microspheres vs Microcapsules</div>
-        <div class="info-grid">
-          <div class="info-box blue">
-            <h4>Microspheres</h4>
-            <p>中間是<strong>固體</strong>（實心），藥品分散在基質中</p>
-          </div>
-          <div class="info-box purple">
-            <h4>Microcapsules</h4>
-            <p>中間是<strong>液體或氣體</strong>，有明顯的 wall material 包覆核心</p>
-          </div>
-        </div>
-      </div>
+  <h3 class="sub-title">臨床使用注意事項</h3>
+  <ul>
+    <li>不能壓碎錠片/圓粒給幼兒使用</li>
+    <li>不能使用作為調配成其他劑型</li>
+    <li><strong>不能與速放劑型交替使用</strong>（生體可用率不同）</li>
+    <li>需告知病人會排出<strong>劑型空殼</strong>（正常現象，尤其osmotic pump）</li>
+    <li>在穩定狀態後不能與速放製劑交替（Cmax不同）</li>
+  </ul>
+</section>
 
-      <h3 class="subsection-title">包覆材料</h3>
-      <div style="display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:0.8rem;">
-        <span class="tag tag-green">Gelatin 明膠（最常用天然材料）</span>
-        <span class="tag tag-blue">Polyvinyl Alcohol (PVA)</span>
-        <span class="tag tag-blue">Ethylcellulose</span>
-        <span class="tag tag-blue">Polyvinyl Chloride</span>
-      </div>
-      <div class="warn"><strong>Lactose 乳糖</strong>是水溶性的，最不適合作為包覆材料。</div>
+<!-- ===== 候選藥物 ===== -->
+<section class="sec" id="s-cand">
+  <h2 class="sec-title"><span class="sec-num">03</span>延釋候選藥物條件</h2>
 
-      <h3 class="subsection-title">Coacervation 共聚/凝聚</h3>
-      <div class="info-grid">
-        <div class="info-box blue">
-          <h4>Simple Coacervation</h4>
-          <p>一種 polymer，藉由降低溶解度沉澱析出。方法：</p>
-          <ul>
-            <li>添加 non-solvent（如酒精）</li>
-            <li>添加 inorganic salts（鹽析）</li>
-            <li>改變溫度</li>
-          </ul>
-        </div>
-        <div class="info-box purple">
-          <h4>Complex Coacervation</h4>
-          <p>兩種相反電荷的親水 polymers（例：帶正電 Gelatin Type A + 帶負電 Acacia），電荷被中和→凝聚→包覆藥品。以 <span class="material">Glutaraldehyde</span> 或 <span class="material">Formaldehyde</span> 交聯硬化。</p>
-        </div>
-      </div>
+  <table>
+    <thead><tr><th>條件</th><th>適合</th><th>不適合 / 不需要</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>半衰期</strong></td>
+        <td>最適合 <strong>4~6小時</strong></td>
+        <td>半衰期 <strong>&lt;2 hr</strong>：難設計，裝載劑量太高<br>半衰期 <strong>很長</strong>：本身在體內停留久，不需要設計ER</td>
+      </tr>
+      <tr>
+        <td><strong>單劑量</strong></td>
+        <td>不適合太大</td>
+        <td>單劑量過大→錠劑體積大→難吞嚥</td>
+      </tr>
+      <tr>
+        <td><strong>藥理機轉</strong></td>
+        <td>非影響酵素系統者</td>
+        <td>影響酶系統（誘導/抑制）→殘留效應→本身作用時間已較長→不需ER</td>
+      </tr>
+      <tr>
+        <td><strong>胃腸道吸收</strong></td>
+        <td><strong>均一吸收</strong>；水溶解度良好；足夠胃腸道停留時間</td>
+        <td>吸收差、吸收速率變化難預測者；水溶解度差且吸收不佳者</td>
+      </tr>
+      <tr>
+        <td><strong>治療指數</strong></td>
+        <td>適中（理論上TI窄有優勢，但實際上TI<strong>太窄</strong>風險高）</td>
+        <td>TI太窄：裝載劑量大，稍微多釋放→超過MTC</td>
+      </tr>
+      <tr>
+        <td><strong>適應症</strong></td>
+        <td>用於<strong>慢性病</strong>治療</td>
+        <td>急性治療需快速達效</td>
+      </tr>
+    </tbody>
+  </table>
 
-      <div class="warn">不可用來引發相分離的是：<strong>不同分子量的膠體（B）</strong>。不同分子量≠不同溶解度。（1091考題）</div>
+  <div class="tip">國考口訣：<strong>半衰期4~6小時 ✓ 慢性病 ✓ 均一吸收 ✓</strong> 是最高頻考點</div>
 
-      <h3 class="subsection-title">調整釋放速率的方法</h3>
+  <div class="warn">最適合做成 ER 的半衰期：<strong>4~6小時（C選項）</strong>。&lt;1hr 或 &lt;2hr 不行，&gt;8hr 也不需要。</div>
+
+  <h3 class="sub-title">適合/不適合的例子</h3>
+  <div class="grid2">
+    <div class="box green">
+      <h4>✅ 適合做 ER</h4>
+      <p><span class="drug">Aspirin</span>：慢性止痛、抗凝<br>
+      <span class="drug">Ferrous Fumarate</span>：鐵劑，治慢性貧血<br>
+      <span class="drug">Morphine Sulfate</span>：慢性癌痛</p>
+    </div>
+    <div class="box red">
+      <h4>❌ 不適合做 ER</h4>
+      <p><span class="drug">Ampicillin</span>：吸收不均、半衰期短<br>
+      <span class="drug">Penicillin G</span>：不穩定，腸道吸收差<br>
+      <span class="drug">Furosemide</span>：吸收差且需快速作用（急性）<br>
+      <span class="drug">Levodopa</span>：吸收速率變化大（不均一吸收）</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 延釋技術 ===== -->
+<section class="sec" id="t1">
+  <h2 class="sec-title"><span class="sec-num">T1</span>Coated Beads / Granules / Microspheres 包衣小珠</h2>
+
+  <p>將藥品包覆在小珠上（或以小珠為核），外包不同厚度的障壁性包衣，厚度不同→釋放時間不同→3~4種組合→裝成一顆膠囊。直徑約1mm，一個劑量單位>100個小珠。</p>
+
+  <h3 class="sub-title">製備方式（依藥物劑量）</h3>
+  <div class="grid2">
+    <div class="box blue">
+      <h4>藥物劑量小</h4>
+      <p>藥品噴在惰性核心上：</p>
       <ul>
-        <li>改變<strong>核心藥物：wall polymer 比例</strong>（wall polymer 通常佔 2~20%）</li>
-        <li>改變<strong>包衣聚合物種類</strong></li>
-        <li>改變<strong>微膠囊化方法</strong></li>
+        <li><span class="mat">Nonpareil seeds</span>（sugar/starch糖珠，425~850μm）</li>
+        <li><span class="mat">MCC小球</span>（170~600μm）</li>
       </ul>
+      <p>再噴上包衣層控制釋放速率</p>
+    </div>
+    <div class="box green">
+      <h4>藥物劑量大</h4>
+      <p>藥品可直接成型為小球，再噴上包衣層即可</p>
+    </div>
+  </div>
 
-      <div class="note">優點：口服後顆粒散布在腸胃道形成大面積，增進吸收。市售例：<span class="drug">Micro-K Extencaps</span>（KCl）</div>
-    </section>
+  <h3 class="sub-title">包衣材料（考試核心）</h3>
+  <div class="box yellow">
+    <h4>適合的水難溶性包衣材料</h4>
+    <div style="margin:.4rem 0;">
+      <span class="tag tgp">Beeswax 蜂蠟</span>
+      <span class="tag tgp">Carnauba Wax 棕櫚蠟</span>
+      <span class="tag tgp">Glyceryl Monostearate</span>
+      <span class="tag tgp">Cetyl Alcohol</span>
+      <span class="tag tgp">Ethylcellulose (EC)</span>
+    </div>
+    <p style="font-size:.82rem;margin-top:.4rem;">水性EC膜衣系統：<span class="mat">Aquacoat®</span>（FMC）、<span class="mat">Surelease®</span>（Colorcon）</p>
+  </div>
+  <div class="warn"><strong>HPMC（Hydroxypropyl Methylcellulose）水溶性</strong>→最不適合作為 coated beads 包覆材料！（108、113年各考一次）</div>
 
-    <!-- 技術4 -->
-    <section class="section" id="t4">
-      <h2 class="section-title"><span class="section-num">T4</span>Hydrophilic Matrix System 親水性間質系統</h2>
+  <div class="tip">Glyceryl monostearate 也有非離子型介面活性，但熔點較高（軟膏章節也有出現）；Cetyl Alcohol 也是蠟質特性，熔點高→可當硬化劑。</div>
 
-      <p>藥物與緩慢溶蝕的親水性賦形劑混合造粒再壓錠。</p>
+  <div class="note">市售例：<span class="drug">Spansule capsule</span>（典型coated beads膠囊設計）</div>
+</section>
 
-      <div class="card">
-        <div class="card-title">主要控釋材質（考試核心）</div>
-        <div class="tag tag-green" style="font-size:0.9rem; padding: 0.3rem 0.8rem;">HPMC (Hydroxypropyl Methylcellulose / Hypromellose)</div>
-        <p style="margin-top:0.5rem;">HPMC &gt; 20% 可產生滿意的釋放速率。量少→黏合劑；量多→凝膠化控釋。</p>
-      </div>
+<section class="sec" id="t2">
+  <h2 class="sec-title"><span class="sec-num">T2</span>Multitablet System 多錠片系統</h2>
 
-      <h3 class="subsection-title">釋放機轉（雙重）</h3>
-      <div class="flow">
-        <div class="flow-step">錠片接觸胃液</div>
-        <span class="flow-arrow">→</span>
-        <div class="flow-step">表面HPMC水合</div>
-        <span class="flow-arrow">→</span>
-        <div class="flow-step">形成凝膠層</div>
-        <span class="flow-arrow">→</span>
-        <div class="flow-step">藥物由凝膠層<br><strong>擴散（Diffusion）</strong>釋出</div>
-        <span class="flow-arrow">→</span>
-        <div class="flow-step">外層持續<br><strong>溶蝕（Erosion）</strong></div>
-        <span class="flow-arrow">→</span>
-        <div class="flow-step">藥物繼續釋放</div>
-      </div>
+  <p>多個球形小錠片（直徑3~4mm），8~10顆裝入一個明膠膠囊。</p>
+  <ul>
+    <li>部分小錠片<strong>未包衣</strong>→立即釋放</li>
+    <li>部分小錠片<strong>包衣</strong>→延長釋放</li>
+    <li>可分隔<strong>不可配伍</strong>的成分（打成不同小錠再裝膠囊，避免接觸）</li>
+  </ul>
+  <div class="note">因需要特殊微小punch/die，製備精度高，市面上較少見，現多被其他劑型取代。</div>
+</section>
 
-      <div class="note">水不溶性藥物主要靠 <strong>Erosion 溶蝕</strong>；水溶性藥物主要靠 <strong>Diffusion 擴散</strong>。</div>
+<section class="sec" id="t3">
+  <h2 class="sec-title"><span class="sec-num">T3</span>Microencapsulated Drug 微粒膠囊包衣</h2>
 
-      <div class="info-grid">
-        <div class="info-box green">
-          <h4>市售例</h4>
-          <p><span class="drug">Oramorph SR tablets</span>（morphine sulfate）</p>
-          <p><span class="drug">Madopar® HBS</span>（Levodopa）→ HBS系統，凝膠狀plug浮於液面，延長胃部停留時間</p>
-        </div>
-        <div class="info-box blue">
-          <h4>製備特色</h4>
-          <p>可製備成<strong>單層、雙層、三層或內外核心錠</strong>，以及延長釋放膠囊（HBS系統）。<strong>不需</strong>加塑化劑。</p>
-        </div>
-      </div>
+  <div class="grid2">
+    <div class="box blue">
+      <h4>Microspheres</h4>
+      <p>中間是<strong>固體（實心）</strong>，藥品分散在基質中</p>
+    </div>
+    <div class="box purple">
+      <h4>Microcapsules</h4>
+      <p>中間是<strong>液體或氣體</strong>，有明顯的 wall material 包覆核心。課本所指的 microencapsulation 多指此類。</p>
+    </div>
+  </div>
 
-      <div class="warn">HBS 膠囊（如 Madopar® HBS）<strong>不可打開膠囊服用</strong>，否則無法維持凝膠plug形狀，失去緩釋效果。</div>
-    </section>
+  <h3 class="sub-title">歷史背景</h3>
+  <p>1930年代：為了找碳紙的替代品，把染料包成微粒塗在紙上，筆尖壓力破膜→染料釋出，但手掌面積大→壓力不足→不破→乾淨。後來此原理應用於藥品。</p>
 
-    <!-- 技術5 -->
-    <section class="section" id="t5">
-      <h2 class="section-title"><span class="section-num">T5</span>Inert Plastic Matrix System 惰性塑膠間質</h2>
+  <h3 class="sub-title">包覆材料</h3>
+  <div style="margin:.4rem 0 .7rem;">
+    <span class="tag tgg">Gelatin 明膠（最常用天然材料）</span>
+    <span class="tag tg">Polyvinyl Alcohol (PVA)</span>
+    <span class="tag tg">Ethylcellulose</span>
+    <span class="tag tg">Polyvinyl Chloride</span>
+  </div>
+  <div class="warn"><strong>Lactose 乳糖</strong>是水溶性的，會自己溶解→最不適合作包覆材料。</div>
 
-      <p>藥物與水不溶性惰性材料混合造粒壓錠。</p>
-
-      <div class="card">
-        <div class="card-title">常用惰性材料</div>
-        <div style="display:flex; flex-wrap:wrap; gap:0.5rem;">
-          <span class="tag tag-purple">Polyethylene (PE)</span>
-          <span class="tag tag-purple">Polyvinyl Acetate</span>
-          <span class="tag tag-purple">Polymethacrylate (Eudragit®)</span>
-        </div>
-      </div>
-
-      <div class="info-grid">
-        <div class="info-box blue">
-          <h4>釋放機轉</h4>
-          <p><strong>擴散（Diffusion）</strong>為主。水分從縫隙進入形成水性通道，藥品從通道擴散釋出。矩陣本身不溶解，隨糞便排出。</p>
-        </div>
-        <div class="info-box yellow">
-          <h4>注意</h4>
-          <p>水不溶性藥物用此系統釋放效率較差（靠擴散，藥品不溶→難釋出）。排便可見錠片空殼，屬正常現象。</p>
-        </div>
-      </div>
-
-      <div class="note">市售例：<span class="drug">Gradumet</span>（Ferrous Sulphate, Abbott）；Eudragit® 作為控釋材質。</div>
-      <div class="tip">這種劑型製備方式（造粒→壓錠）<strong>與傳統錠劑製備最接近</strong>，差異最小。（1061考題）</div>
-    </section>
-
-    <!-- 技術6 -->
-    <section class="section" id="t6">
-      <h2 class="section-title"><span class="section-num">T6</span>Complex Formation 複合物形成</h2>
-
-      <p>藥物與化學物質結合形成複合物 complex，依環境 pH 緩慢溶解釋放。</p>
-
-      <div class="card">
-        <div class="card-title">最常用材質（考試重點）</div>
-        <div class="tag tag-green" style="font-size:0.9rem; padding: 0.3rem 0.8rem;">Tannic Acid（鞣酸）</div>
-        <p style="margin-top:0.5rem;">優勢：① 多個 OH 基 → 與帶正電藥品結合更穩固；② 天然來源，安全性高；③ 有收斂效果，可緩解某些鹼性藥品對胃腸道的刺激。</p>
-      </div>
-
-      <div class="note">市售例：<span class="drug">Rynatan</span>（chlorpheniramine + phenylephrine tannate）</div>
-    </section>
-
-    <!-- 技術7 -->
-    <section class="section" id="t7">
-      <h2 class="section-title"><span class="section-num">T7</span>Ion-Exchange Resins 離子交換樹脂</h2>
-
-      <div class="info-grid">
-        <div class="info-box blue">
-          <h4>陽離子性藥物（帶正電）</h4>
-          <p>接於<strong>陰離子交換樹脂</strong>（帶負電，如 SO₃⁻）。在<strong>胃（酸性）</strong>→ H⁺ 濃度高 → 離子交換→ 藥物釋出。<strong>胃 &gt; 腸</strong></p>
-        </div>
-        <div class="info-box purple">
-          <h4>陰離子性藥物（帶負電）</h4>
-          <p>接於<strong>陽離子交換樹脂</strong>（帶正電）。在<strong>腸（鹼性）</strong>→ 負離子多 → 離子交換→ 藥物釋出。<strong>腸 &gt; 胃</strong></p>
-        </div>
-      </div>
-
-      <div class="mech-box">
-        <div class="mech-title">進階版：包衣離子交換樹脂</div>
-        <p>在樹脂-藥物複合物外再加 polymer barrier coating（如乙基纖維素），需完成兩個步驟才能釋藥：①離子交換 + ②擴散穿過包衣層 → 延長藥效至 12 小時。</p>
-        <div class="note" style="margin-top:0.5rem;">可遮蔽藥品苦味（C選項考點：1032年）。市售例：<span class="drug">Tussionex Pennkinetic</span>（hydrocodone + chlorpheniramine polistirex）</div>
-      </div>
-
-      <div class="warn">
-        <strong>重要觀念：</strong><br>
-        · 使用<strong>不可溶性</strong>樹脂（不是可溶性）<br>
-        · 帶負電樹脂（anionic resin）吸附帶<strong>正電</strong>藥物（不是負電）<br>
-        · 腸胃道中受食物、電解質、pH 影響<br>
-        · 藥物釋放速率取決於<strong>離子交換環境（pH、電解質濃度）</strong>，而非藥物溶解度
-      </div>
-    </section>
-
-    <!-- 技術8 -->
-    <section class="section" id="t8">
-      <h2 class="section-title"><span class="section-num">T8</span>Osmotic Pump 滲透壓幫浦</h2>
-
-      <div class="card">
-        <div class="card-title">最常用半透膜材質</div>
-        <div class="tag tag-green" style="font-size:0.9rem; padding: 0.3rem 0.8rem;">Cellulose Acetate (醋酸纖維素)</div>
-      </div>
-
-      <div class="info-grid">
-        <div class="info-box blue">
-          <h4>EOP：Elementary Osmotic Pump（簡單型）</h4>
-          <ul>
-            <li>核心：藥物 + 滲透壓劑，外覆半透膜，雷射打孔 (0.4 mm)</li>
-            <li>水進入→溶解滲透壓劑→產生滲透壓→推藥液從小孔釋出</li>
-            <li>適用：水溶性藥物（水不溶者推出困難）</li>
-            <li>釋放遵循 <strong>Zero-order（零級動力學）</strong></li>
-          </ul>
-        </div>
-        <div class="info-box purple">
-          <h4>PPOP：Push-Pull Osmotic Pump（推拉型）</h4>
-          <ul>
-            <li>核心分兩層：<strong>藥物層</strong> + <strong>推進層（高分子滲透劑）</strong></li>
-            <li>水進入→推進層膨脹→推擠藥物層→藥物從孔釋出</li>
-            <li>可釋放水不溶性藥物（懸浮態也能推出）</li>
-            <li>市售例：<span class="drug">OROS system (Alza) / Procardia XL (nifedipine) / Glucotrol XL (glipizide)</span></li>
-          </ul>
-        </div>
-      </div>
-
-      <h3 class="subsection-title">釋放速率影響因素</h3>
-      <div class="info-grid">
-        <div class="info-box green">
-          <h4>✅ 會影響</h4>
-          <ul>
-            <li>膜的表面積</li>
-            <li><strong>膜的厚度</strong>（最易影響）</li>
-            <li>膜的組成</li>
-            <li>輸送孔的直徑</li>
-          </ul>
-        </div>
-        <div class="info-box red">
-          <h4>❌ 不影響</h4>
-          <ul>
-            <li>胃腸道 pH 值</li>
-            <li>進食狀態</li>
-            <li>胃腸蠕動度</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="warn">惰性殼（生物惰性成分）在胃腸道保持完整，<strong>從糞便排出不會被人體吸收</strong>，不代表藥物沒有吸收！</div>
-
-      <h3 class="subsection-title">COER 系統（進階版）</h3>
-      <div class="card">
-        <div class="card-title">Covera-HS (verapamil)：服藥後 4~5 小時才開始釋放</div>
-        <div class="flow">
-          <div class="flow-step">吞服</div>
-          <span class="flow-arrow">→</span>
-          <div class="flow-step">水進入半透膜</div>
-          <span class="flow-arrow">→</span>
-          <div class="flow-step">Delay Coat（緩慢溶解層）溶解</div>
-          <span class="flow-arrow">→</span>
-          <div class="flow-step">Push Layer 擴張</div>
-          <span class="flow-arrow">→</span>
-          <div class="flow-step">藥物由 micropore 定速釋放</div>
-        </div>
-        <p style="margin-top:0.5rem; font-size:0.83rem;">延遲機制：<strong>在核心與半透膜之間加了緩慢溶解包衣層（delay coat）</strong>。用於治療清晨高血壓（睡前服用，清晨發揮藥效）。</p>
-      </div>
-    </section>
-
-    <!-- 技術9 -->
-    <section class="section" id="t9">
-      <h2 class="section-title"><span class="section-num">T9</span>Repeat Action Tablets 重複作用錠</h2>
-
-      <div class="card">
-        <div class="card-title">結構設計</div>
-        <div class="flow">
-          <div class="flow-step" style="border-color:var(--accent2);">速放藥層（外殼）</div>
-          <span class="flow-arrow">+</span>
-          <div class="flow-step" style="border-color:var(--accent3);">控釋膜層（barrier coat）</div>
-          <span class="flow-arrow">+</span>
-          <div class="flow-step" style="border-color:var(--accent4);">核蕊藥錠（delayed）</div>
-        </div>
-        <p style="margin-top:0.7rem; font-size:0.83rem;">內核心藥物在服藥後 <strong>4~6 小時</strong> 釋放。</p>
-      </div>
-
-      <div class="info-grid">
-        <div class="info-box green">
-          <h4>適合條件</h4>
-          <ul>
-            <li>治療需重複給藥的慢性病</li>
-            <li>藥物劑量低</li>
-            <li>吸收與排泄速率較快速</li>
-          </ul>
-        </div>
-        <div class="info-box blue">
-          <h4>市售例</h4>
-          <p><span class="drug">Clarinase Repetabs®</span>（pseudoephedrine + loratadine）</p>
-          <p><span class="drug">Proventil Repetabs®</span>（albuterol）</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Delayed Release -->
-    <section class="section" id="delayed">
-      <h2 class="section-title"><span class="section-num">DR</span>Delayed-Release 遲釋口服劑型</h2>
-
-      <p>藥物延遲至小腸才釋放，主要機轉為<strong>腸溶包衣（Enteric Coating）</strong>。</p>
-
-      <h3 class="subsection-title">設計目的</h3>
-      <div class="info-grid">
-        <div class="info-box red">
-          <h4>保護藥物</h4>
-          <p>避免被胃酸破壞：<span class="drug">Erythromycin</span>、<span class="drug">Omeprazole (PPI)</span></p>
-        </div>
-        <div class="info-box yellow">
-          <h4>保護胃</h4>
-          <p>減少藥物對胃的刺激：<span class="drug">Aspirin</span>、<span class="drug">KCl</span>、<span class="drug">Doxycycline</span></p>
-        </div>
-        <div class="info-box green">
-          <h4>最佳吸收/局部治療</h4>
-          <p>藥物在小腸有較好吸收或治療腸道疾病：<span class="drug">Mesalamine</span>（治潰瘍性大腸炎，用 Eudragit S pH≥7 溶解）</p>
-        </div>
-      </div>
-
-      <h3 class="subsection-title">腸溶包衣材料</h3>
-      <table>
-        <thead>
-          <tr><th>材料</th><th>特性</th><th>溶解pH</th></tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><span class="material">Shellac 蟲膠</span></td>
-            <td>天然材料，腸溶性</td>
-            <td>pH &gt;7</td>
-          </tr>
-          <tr>
-            <td><span class="material">Cellulose Acetate Phthalate (CAP)</span></td>
-            <td>最常用合成腸溶材料</td>
-            <td>pH ~6</td>
-          </tr>
-          <tr>
-            <td><span class="material">Polyvinyl Acetate Phthalate (PVAP)</span></td>
-            <td>合成腸溶材料</td>
-            <td>pH &gt;5</td>
-          </tr>
-          <tr>
-            <td><span class="material">HPMCP</span></td>
-            <td>HPMC + phthalate</td>
-            <td>pH ~5–6</td>
-          </tr>
-          <tr>
-            <td><span class="material">Eudragit S (Methacrylic acid copolymer B)</span></td>
-            <td>溶於迴腸（ileum）以下</td>
-            <td>pH ≥7</td>
-          </tr>
-        </tbody>
-      </table>
-      <div class="warn"><strong>HPMC（Hydroxypropyl Methylcellulose）</strong>是水溶性的，<strong>最不適合</strong>作為腸溶包衣材料！</div>
-    </section>
-
-    <!-- IVIVC -->
-    <section class="section" id="ivivc">
-      <h2 class="section-title"><span class="section-num">IVC</span>IVIVC：體外-體內相關性</h2>
-
-      <p>In Vitro–In Vivo Correlation：比較體外溶離試驗與體內血中濃度的相關性，節省臨床試驗時間與成本。</p>
-
-      <table>
-        <thead>
-          <tr><th>Level</th><th>比較對象</th><th>說明</th><th>實用性</th></tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Level A</strong></td>
-            <td>全部體外溶離曲線 ↔ 全部體內吸收曲線（點對點關係）</td>
-            <td>最常提交；信息量最大；最有預測價值</td>
-            <td style="color:var(--accent2)">最高</td>
-          </tr>
-          <tr>
-            <td><strong>Level B</strong></td>
-            <td>平均體外溶離時間 ↔ 平均體內溶離時間 or 平均體內滯留時間<br>體外溶離速率常數 ↔ 吸收速率常數</td>
-            <td>特性總結參數之間的關係</td>
-            <td style="color:var(--accent3)">中等</td>
-          </tr>
-          <tr>
-            <td><strong>Level C</strong></td>
-            <td>體外特定時間溶離量（如 T50）↔ 體內特定參數（Cmax 或 AUC）</td>
-            <td>單一點對點；在配方開發早期有用；無法反映曲線完整形狀</td>
-            <td style="color:var(--accent4)">最低</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <h3 class="subsection-title">IVIVC 建立條件（FDA 指引）</h3>
+  <h3 class="sub-title">Coacervation 共聚/凝聚</h3>
+  <div class="grid2">
+    <div class="box blue">
+      <h4>Simple Coacervation 簡單共聚</h4>
+      <p>一種polymer，降低自身溶解度→沉澱析出→包覆藥品</p>
+      <p><strong>引發方式：</strong></p>
       <ul>
-        <li>溶離裝置：<strong>USP Type I（網籃）or Type II（槳式）</strong> 為優先</li>
-        <li>溶離液 pH：<strong>不超過 6.8</strong> 的水性媒液（難溶藥物可加 1% SLS）</li>
-        <li>每批至少測 <strong>12 粒</strong>個別劑量單位</li>
-        <li>受試者：<strong>空腹狀態</strong>；6~36 名</li>
-        <li>研究設計：<strong>交叉研究</strong>最佳</li>
+        <li>添加 non-solvent（如加酒精→降低水溶性）</li>
+        <li>添加 inorganic salts（鹽析效果）</li>
+        <li>改變溫度</li>
       </ul>
-    </section>
+    </div>
+    <div class="box purple">
+      <h4>Complex Coacervation 複合共聚</h4>
+      <p>兩種<strong>相反電荷</strong>的親水 polymers，互相中和→共聚沉澱→包覆藥品</p>
+      <p>最常見：帶正電 <span class="mat">Gelatin Type A</span> + 帶負電 <span class="mat">Acacia（阿拉伯膠）</span></p>
+      <p>以 <span class="mat">Glutaraldehyde</span> 或 <span class="mat">Formaldehyde</span> 交聯硬化→收縮成硬球</p>
+    </div>
+  </div>
 
-    <!-- 考題總覽 -->
-    <section class="section" id="qa">
-      <h2 class="section-title"><span class="section-num">QA</span>重要歷屆考題</h2>
+  <div class="warn">不可用來引發相分離的：<strong>不同分子量的膠體（B）</strong>。不同分子量≠不同溶解度，無法造成相分離。（1091考題）</div>
 
-      <!-- Q1 -->
-      <div class="qa-block" id="q1">
-        <div class="qa-question" onclick="toggleQA('q1')">
-          <span>口服控釋製劑，下列何者<strong>錯誤</strong>？</span>
-          <div style="display:flex;gap:0.5rem;align-items:center">
-            <span class="qa-year">113-2</span>
-            <span class="qa-toggle">▼</span>
-          </div>
-        </div>
-        <div class="qa-body" id="q1-body">
-          <ul class="qa-options" id="q1-opts">
-            <li onclick="revealOpt('q1',this,'wrong')">A. 體內半衰期4~6小時之內的藥品，適合製備成控釋劑型</li>
-            <li onclick="revealOpt('q1',this,'correct')">B. Ion-exchange resins 之藥物釋放速率通常取決於藥物溶解度</li>
-            <li onclick="revealOpt('q1',this,'wrong')">C. Osmotic pump 之藥物溶液通透半透膜的速率和媒液pH值無關</li>
-            <li onclick="revealOpt('q1',this,'wrong')">D. Microencapsulation 可以利用包衣與核心之重量比來調控藥物釋放速率</li>
-          </ul>
-          <div class="qa-explain-btn" onclick="toggleExplain('q1')">顯示詳解</div>
-          <div class="qa-explain" id="q1-explain">離子交換樹脂藥物釋放取決於<strong>胃腸道pH值與電解質濃度</strong>（離子交換環境），<strong>不是</strong>取決於藥物溶解度。</div>
-          <div class="qa-note-area" id="q1-note">
-            <div class="qa-note-label">📝 補充筆記</div>
-            <textarea id="q1-ta" placeholder="在這裡輸入補充筆記..."></textarea>
-            <div class="qa-note-save" onclick="saveNote('q1')">儲存筆記</div>
-          </div>
-        </div>
-      </div>
+  <h3 class="sub-title">調整釋放速率</h3>
+  <ul>
+    <li>改變<strong>核心藥物：wall polymer 比例</strong>（wall polymer 通常佔 <strong>2~20%</strong>）</li>
+    <li>改變<strong>包衣聚合物種類</strong></li>
+    <li>改變<strong>微膠囊化方法</strong></li>
+  </ul>
 
-      <!-- Q2 -->
-      <div class="qa-block" id="q2">
-        <div class="qa-question" onclick="toggleQA('q2')">
-          <span>當一個藥物具有<strong>極長的血漿半衰期</strong>，下列何者是其最方便的劑型設計？</span>
-          <div style="display:flex;gap:0.5rem;align-items:center">
-            <span class="qa-year">107-1</span>
-            <span class="qa-toggle">▼</span>
-          </div>
-        </div>
-        <div class="qa-body" id="q2-body">
-          <ul class="qa-options" id="q2-opts">
-            <li onclick="revealOpt('q2',this,'correct')">A. 速放型（Immediate-Release）</li>
-            <li onclick="revealOpt('q2',this,'wrong')">B. 長效型（Extended-Release）</li>
-            <li onclick="revealOpt('q2',this,'wrong')">C. 腸溶型（Enteric-Release）</li>
-            <li onclick="revealOpt('q2',this,'wrong')">D. 黏著型（Adhesive-Release）</li>
-          </ul>
-          <div class="qa-explain-btn" onclick="toggleExplain('q2')">顯示詳解</div>
-          <div class="qa-explain" id="q2-explain">半衰期本來就很長的藥物，在體內停留時間久，<strong>不需要</strong>設計成延長釋放，直接用速放型即可。反之半衰期太短（&lt;2hr）也不適合 ER。</div>
-          <div class="qa-note-area" id="q2-note">
-            <div class="qa-note-label">📝 補充筆記</div>
-            <textarea id="q2-ta" placeholder="在這裡輸入補充筆記..."></textarea>
-            <div class="qa-note-save" onclick="saveNote('q2')">儲存筆記</div>
-          </div>
-        </div>
-      </div>
+  <h3 class="sub-title">優點</h3>
+  <ul>
+    <li>口服後顆粒<strong>散布整個胃腸道</strong>→大面積→增進吸收</li>
+    <li>可遮蔽藥品苦味</li>
+  </ul>
 
-      <!-- Q3 -->
-      <div class="qa-block" id="q3">
-        <div class="qa-question" onclick="toggleQA('q3')">
-          <span>藥物具有下列何項特性，<strong>最適合</strong>開發為口服持續釋放錠劑？</span>
-          <div style="display:flex;gap:0.5rem;align-items:center">
-            <span class="qa-year">111-1</span>
-            <span class="qa-toggle">▼</span>
-          </div>
-        </div>
-        <div class="qa-body" id="q3-body">
-          <ul class="qa-options" id="q3-opts">
-            <li onclick="revealOpt('q3',this,'wrong')">A. 半衰期小於1小時</li>
-            <li onclick="revealOpt('q3',this,'wrong')">B. 治療濃度範圍較窄</li>
-            <li onclick="revealOpt('q3',this,'wrong')">C. 劑量較大</li>
-            <li onclick="revealOpt('q3',this,'correct')">D. 在腸胃道各部位吸收均一</li>
-          </ul>
-          <div class="qa-explain-btn" onclick="toggleExplain('q3')">顯示詳解</div>
-          <div class="qa-explain" id="q3-explain">在胃腸道<strong>各部位均一吸收</strong>是 ER 劑型最重要的藥物特性，確保藥品在整段胃腸道停留期間都能被有效吸收。半衰期需在適中範圍（4~6hr），劑量不能太大，治療指數不能太窄。</div>
-          <div class="qa-note-area" id="q3-note">
-            <div class="qa-note-label">📝 補充筆記</div>
-            <textarea id="q3-ta" placeholder="在這裡輸入補充筆記..."></textarea>
-            <div class="qa-note-save" onclick="saveNote('q3')">儲存筆記</div>
-          </div>
-        </div>
-      </div>
+  <div class="note">市售例：<span class="drug">Micro-K Extencaps</span>（KCl，Wyeth）。名稱解碼：Micro=微粒、K=KCl、Extencap=extended capsule</div>
+</section>
 
-      <!-- Q4 -->
-      <div class="qa-block" id="q4">
-        <div class="qa-question" onclick="toggleQA('q4')">
-          <span>比較 EOP 和 PPOP 二種滲透壓控釋系統，下列敘述何者<strong>錯誤</strong>？</span>
-          <div style="display:flex;gap:0.5rem;align-items:center">
-            <span class="qa-year">110-2</span>
-            <span class="qa-toggle">▼</span>
-          </div>
-        </div>
-        <div class="qa-body" id="q4-body">
-          <ul class="qa-options" id="q4-opts">
-            <li onclick="revealOpt('q4',this,'correct')">A. PPOP 比 EOP 多了一層吸水膨脹的高分子層，使藥物能遵循 first order kinetics 釋放</li>
-            <li onclick="revealOpt('q4',this,'wrong')">B. 在 PPOP 系統，藥物層及高分子層均會加入 osmotic agents</li>
-            <li onclick="revealOpt('q4',this,'wrong')">C. 和 EOP 相比，PPOP 提高了水溶性不佳藥物的遞送效率</li>
-            <li onclick="revealOpt('q4',this,'wrong')">D. 在 PPOP 系統，不論是溶解狀態或懸浮的藥物均可自此系統釋放</li>
-          </ul>
-          <div class="qa-explain-btn" onclick="toggleExplain('q4')">顯示詳解</div>
-          <div class="qa-explain" id="q4-explain">PPOP 系統藥物釋放遵循 <strong>Zero-order（零級）動力學</strong>，而非 First-order（一級）。驅動力是固定的滲透壓梯度，與藥物濃度無關，故為零級動力學。</div>
-          <div class="qa-note-area" id="q4-note">
-            <div class="qa-note-label">📝 補充筆記</div>
-            <textarea id="q4-ta" placeholder="在這裡輸入補充筆記..."></textarea>
-            <div class="qa-note-save" onclick="saveNote('q4')">儲存筆記</div>
-          </div>
-        </div>
-      </div>
+<section class="sec" id="t4">
+  <h2 class="sec-title"><span class="sec-num">T4</span>Hydrophilic Matrix System 親水性間質系統</h2>
 
-      <!-- Q5 -->
-      <div class="qa-block" id="q5">
-        <div class="qa-question" onclick="toggleQA('q5')">
-          <span>下列何者屬於 <strong>Level A</strong> 的 IVIVC？</span>
-          <div style="display:flex;gap:0.5rem;align-items:center">
-            <span class="qa-year">112-1</span>
-            <span class="qa-toggle">▼</span>
-          </div>
-        </div>
-        <div class="qa-body" id="q5-body">
-          <ul class="qa-options" id="q5-opts">
-            <li onclick="revealOpt('q5',this,'wrong')">A. 體外溶離速率常數和體內吸收速率常數</li>
-            <li onclick="revealOpt('q5',this,'wrong')">B. 體外溶出 50% 的時間和體內最高血中濃度</li>
-            <li onclick="revealOpt('q5',this,'wrong')">C. 體外平均溶離時間和體內平均溶離時間</li>
-            <li onclick="revealOpt('q5',this,'correct')">D. 體外溶離量和體內吸收量之經時變化相關性</li>
-          </ul>
-          <div class="qa-explain-btn" onclick="toggleExplain('q5')">顯示詳解</div>
-          <div class="qa-explain" id="q5-explain"><strong>Level A = 點對點（point-to-point）關係</strong>，是全部體外溶離時程 vs 全部體內吸收時程的比較，信息量最大，預測性最高。<br>Level B = 平均時間對平均時間（總結參數）。Level C = 某時間點溶離量 vs Cmax 或 AUC。</div>
-          <div class="qa-note-area" id="q5-note">
-            <div class="qa-note-label">📝 補充筆記</div>
-            <textarea id="q5-ta" placeholder="在這裡輸入補充筆記..."></textarea>
-            <div class="qa-note-save" onclick="saveNote('q5')">儲存筆記</div>
-          </div>
-        </div>
-      </div>
+  <p>藥物與緩慢溶蝕的親水性賦形劑<strong>混合造粒後壓錠</strong>，是最接近傳統錠劑製備的ER技術。</p>
 
-      <!-- Q6 -->
-      <div class="qa-block" id="q6">
-        <div class="qa-question" onclick="toggleQA('q6')">
-          <span>下列何種長效性劑型的製備與<strong>傳統錠劑製備沒有太大差異</strong>？</span>
-          <div style="display:flex;gap:0.5rem;align-items:center">
-            <span class="qa-year">106-2</span>
-            <span class="qa-toggle">▼</span>
-          </div>
-        </div>
-        <div class="qa-body" id="q6-body">
-          <ul class="qa-options" id="q6-opts">
-            <li onclick="revealOpt('q6',this,'wrong')">A. Ion-exchange resin tablets</li>
-            <li onclick="revealOpt('q6',this,'wrong')">B. Microencapsulation tablets</li>
-            <li onclick="revealOpt('q6',this,'wrong')">C. Pellet tablets</li>
-            <li onclick="revealOpt('q6',this,'correct')">D. Matrix tablets</li>
-          </ul>
-          <div class="qa-explain-btn" onclick="toggleExplain('q6')">顯示詳解</div>
-          <div class="qa-explain" id="q6-explain">Matrix tablets（基質錠）製備方式就是<strong>造粒→壓錠</strong>，跟一般錠劑製備流程最接近，差異最小。Microencapsulation 需要 coacervation 等特殊步驟，差異最大。</div>
-          <div class="qa-note-area" id="q6-note">
-            <div class="qa-note-label">📝 補充筆記</div>
-            <textarea id="q6-ta" placeholder="在這裡輸入補充筆記..."></textarea>
-            <div class="qa-note-save" onclick="saveNote('q6')">儲存筆記</div>
-          </div>
-        </div>
-      </div>
+  <div class="box yellow">
+    <h4>主要控釋材質（考試核心）</h4>
+    <div><span class="tag tgg" style="font-size:.85rem;padding:.2rem .6rem;">HPMC（Hydroxypropyl Methylcellulose / Hypromellose）</span></div>
+    <ul style="margin-top:.5rem;">
+      <li>用量 <strong>&gt;20%</strong> 才能產生滿意的凝膠化控釋效果</li>
+      <li>用量少→黏合劑；用量多→凝膠化控釋</li>
+      <li>HPMC完全分散在配方中，以濕粒法或滾壓法（乾粒法）造粒，再壓製成錠</li>
+    </ul>
+  </div>
 
-    </section>
+  <h3 class="sub-title">釋放機轉（雙重）</h3>
+  <div class="flow">
+    <div class="fs">接觸胃液</div><span class="fa">→</span>
+    <div class="fs">HPMC水合</div><span class="fa">→</span>
+    <div class="fs">表面形成凝膠層</div><span class="fa">→</span>
+    <div class="fs">藥物<strong>擴散</strong>出凝膠層</div><span class="fa">→</span>
+    <div class="fs">外層持續<strong>溶蝕</strong></div><span class="fa">→</span>
+    <div class="fs">內部水分繼續滲透→更多藥物釋放</div>
+  </div>
+  <div class="grid2">
+    <div class="box blue">
+      <h4>水溶性藥物</h4>
+      <p>主要靠 <strong>Diffusion 擴散</strong>：溶解在凝膠層的水性通道中緩慢擴散出去</p>
+    </div>
+    <div class="box purple">
+      <h4>水不溶性藥物</h4>
+      <p>主要靠 <strong>Erosion 溶蝕</strong>：等外層凝膠溶蝕後暴露出藥物再釋出</p>
+    </div>
+  </div>
 
-    <!-- 快速對照表 -->
-    <section class="section">
-      <h2 class="section-title"><span class="section-num">REF</span>技術速查對照表</h2>
-      <table>
-        <thead>
-          <tr><th>技術</th><th>關鍵材料</th><th>釋放機轉</th><th>市售例</th></tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Coated Beads</td>
-            <td>EC, Beeswax, Carnauba Wax</td>
-            <td>擴散（障壁包衣）</td>
-            <td>Spansule</td>
-          </tr>
-          <tr>
-            <td>Microencapsulation</td>
-            <td>Gelatin, EC, PVA</td>
-            <td>擴散（wall membrane）</td>
-            <td>Micro-K Extencaps (KCl)</td>
-          </tr>
-          <tr>
-            <td>Hydrophilic Matrix</td>
-            <td><strong>HPMC</strong></td>
-            <td>擴散 + 溶蝕（雙重）</td>
-            <td>Oramorph SR, Madopar HBS</td>
-          </tr>
-          <tr>
-            <td>Inert Plastic Matrix</td>
-            <td>PE, PVAc, Eudragit®</td>
-            <td>擴散（水性通道）</td>
-            <td>Gradumet (FeSO₄)</td>
-          </tr>
-          <tr>
-            <td>Complex Formation</td>
-            <td><strong>Tannic Acid</strong></td>
-            <td>依 pH 緩慢解離</td>
-            <td>Rynatan</td>
-          </tr>
-          <tr>
-            <td>Ion-Exchange Resins</td>
-            <td>樹脂（不可溶性）± EC包衣</td>
-            <td>離子交換（受pH、電解質影響）</td>
-            <td>Ionamin, Tussionex</td>
-          </tr>
-          <tr>
-            <td>Osmotic Pump (EOP/PPOP)</td>
-            <td><strong>Cellulose Acetate</strong>（半透膜）</td>
-            <td>滲透壓驅動（Zero-order）</td>
-            <td>Procardia XL, Glucotrol XL, Covera-HS</td>
-          </tr>
-          <tr>
-            <td>Repeat Action</td>
-            <td>控釋膜層隔開兩劑量</td>
-            <td>立即釋放 + 延遲釋放</td>
-            <td>Clarinase Repetabs</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
+  <h3 class="sub-title">可製備的劑型</h3>
+  <ul>
+    <li><strong>單層錠</strong>：全部含HPMC→完整延長釋放</li>
+    <li><strong>雙層/三層錠</strong>：一層不含HPMC（立即釋放）+ 一層含HPMC（延長釋放）</li>
+    <li><strong>內外核心錠</strong>：外層速放，內核延放</li>
+    <li><strong>HBS膠囊</strong>（Hydrodynamically Balanced System）：見下方</li>
+  </ul>
 
-  </main>
+  <div class="mech">
+    <div class="mech-t">HBS系統特殊設計</div>
+    <p>膠囊內含HPMC粉末/顆粒。吃下去到胃→水分進入→HPMC水合→膠囊殼溶解後維持凝膠狀plug→<strong>密度低→浮在胃液上</strong>→不隨蠕動快速排出→延長胃部停留時間→適合主要在小腸上段吸收的藥物。</p>
+    <div class="warn" style="margin-top:.5rem;">HBS膠囊（如 <span class="drug">Madopar® HBS</span>）<strong>不可打開膠囊服用</strong>！拆開後無法形成凝膠plug，失去緩釋效果。主成分：Levodopa（主要吸收在小腸上段）</div>
+  </div>
+
+  <div class="note">不需加塑化劑（塑化劑是給膠囊殼用的，打錠不需要）。市售例：<span class="drug">Oramorph SR tablets</span>（morphine sulfate，AllPharma）</div>
+</section>
+
+<section class="sec" id="t5">
+  <h2 class="sec-title"><span class="sec-num">T5</span>Inert Plastic Matrix System 惰性塑膠間質</h2>
+
+  <p>藥物與<strong>水不溶性</strong>惰性材料混合造粒壓錠。間質本身不溶解、保持原形隨糞便排出。</p>
+
+  <div class="box yellow">
+    <h4>常用惰性材料</h4>
+    <span class="tag tgp">Polyethylene (PE)</span>
+    <span class="tag tgp">Polyvinyl Acetate（PVAc，非水溶性）</span>
+    <span class="tag tgp">Polymethacrylate（Eudragit®）</span>
+    <p style="margin-top:.4rem;font-size:.82rem;">注意：<span class="mat">Polyvinyl Alcohol (PVA)</span> 是水溶性的（當增稠劑、眼藥水用），<span class="mat">Polyvinyl Acetate (PVAc)</span> 才是水不溶性</p>
+  </div>
+
+  <h3 class="sub-title">釋放機轉：擴散（Diffusion）</h3>
+  <div class="flow">
+    <div class="fs">水分從縫隙進入</div><span class="fa">→</span>
+    <div class="fs">形成水性通道</div><span class="fa">→</span>
+    <div class="fs">藥品溶於水中</div><span class="fa">→</span>
+    <div class="fs">從通道擴散出去</div>
+  </div>
+
+  <div class="grid2">
+    <div class="box green"><h4>水溶性藥物</h4><p>可溶於水性通道→擴散效果佳</p></div>
+    <div class="box red"><h4>水不溶性藥物</h4><p>難溶於水性通道→釋放效率較差，不太適合此系統</p></div>
+  </div>
+
+  <div class="note">錠劑空殼從糞便排出屬正常現象，不代表藥物未吸收。市售例：<span class="drug">Gradumet</span>（Abbott，Ferrous Sulphate，Eudragit® 為控釋材質）</div>
+  <div class="tip">製備方式（造粒→壓錠）<strong>與傳統錠劑製備最接近，差異最小</strong>（1061考點）。</div>
+</section>
+
+<section class="sec" id="t6">
+  <h2 class="sec-title"><span class="sec-num">T6</span>Complex Formation 複合物形成</h2>
+
+  <p>藥物與化學物質結合形成複合物（complex），依環境pH緩慢溶解→藥物慢慢解離→產生藥效。</p>
+
+  <div class="box yellow">
+    <h4>最常用材質（考試核心）</h4>
+    <div><span class="tag tgg" style="font-size:.85rem;padding:.2rem .6rem;">Tannic Acid 鞣酸（單寧酸）</span></div>
+    <p style="margin-top:.5rem;"><strong>為何最常用（三大優勢）：</strong></p>
+    <ul>
+      <li>有大量 OH 基→與帶正電藥品結合更穩固</li>
+      <li>天然來源（植物中提取）→安全性高、毒性低</li>
+      <li>有<strong>收斂效果</strong>→可緩解鹼性藥品對胃腸道的刺激</li>
+    </ul>
+  </div>
+
+  <p>常搭配帶正電（鹼性）藥品使用，形成 tannate salt，依體液pH緩慢解離。</p>
+  <div class="note">市售例：<span class="drug">Rynatan</span>（Wallace）：chlorpheniramine tannate + phenylephrine tannate。名稱中 "-tan" 即 tannic acid 的暗示。</div>
+</section>
+
+<section class="sec" id="t7">
+  <h2 class="sec-title"><span class="sec-num">T7</span>Ion-Exchange Resins 離子交換樹脂</h2>
+
+  <p>藥物先與離子交換樹脂（insoluble resin，不可溶）結合形成複合物，到體內需先進行<strong>離子交換</strong>才能釋放藥物。</p>
+
+  <div class="grid2">
+    <div class="box blue">
+      <h4>陽離子性藥物（帶正電）</h4>
+      <p>→ 接在 <strong>陰離子交換樹脂</strong>（帶負電，如SO₃⁻）</p>
+      <p>→ 胃（酸性）中H⁺多 → H⁺取代藥物 → 藥物釋出</p>
+      <p>→ <strong>胃部釋出 &gt; 小腸</strong></p>
+    </div>
+    <div class="box purple">
+      <h4>陰離子性藥物（帶負電）</h4>
+      <p>→ 接在 <strong>陽離子交換樹脂</strong>（帶正電）</p>
+      <p>→ 腸（鹼性）中負離子多 → 負離子取代藥物 → 藥物釋出</p>
+      <p>→ <strong>小腸釋出 &gt; 胃部</strong></p>
+    </div>
+  </div>
+
+  <div class="warn">
+    <strong>常見混淆點：</strong><br>
+    · 使用<strong>不可溶性</strong>樹脂（insoluble resin）<br>
+    · 陰離子樹脂（anionic resin）吸附<strong>帶正電</strong>藥物（不是帶負電）<br>
+    · 藥物釋放速率取決於<strong>pH和電解質濃度</strong>，<strong>不是</strong>藥物溶解度<br>
+    · 受食物及各營養成分影響（離子會競爭交換）
+  </div>
+
+  <h3 class="sub-title">進階版：包衣離子交換樹脂</h3>
+  <div class="mech">
+    <div class="mech-t">Polymer Barrier Coating + Bead Technology</div>
+    <p>在樹脂-藥物複合物外再包一層polymer barrier（如乙基纖維素）。需完成兩個步驟才釋藥：</p>
+    <div class="flow">
+      <div class="fs">離子交換釋出藥物</div><span class="fa">→</span>
+      <div class="fs">藥物再穿透包衣層擴散</div><span class="fa">→</span>
+      <div class="fs">產生藥效</div>
+    </div>
+    <p>可延長藥效至12小時。包含藥物的聚合物顆粒夠小，可以懸浮→同時製備液體劑型（緩釋懸浮劑）。</p>
+  </div>
+
+  <div class="note">市售例：<span class="drug">Ionamin capsules</span>（phentermine resin）；<span class="drug">Tussionex Pennkinetic</span>（hydrocodone polistirex + chlorpheniramine polistirex 懸浮劑）</div>
+  <div class="tip">離子交換樹脂可遮蔽藥品苦味（樹脂把藥品接住，舌頭感覺不到苦味）—此為1032年考點。</div>
+</section>
+
+<section class="sec" id="t8">
+  <h2 class="sec-title"><span class="sec-num">T8</span>Osmotic Pump 滲透壓幫浦</h2>
+
+  <p>以<strong>滲透壓梯度</strong>（非濃度梯度）為驅動力，將藥物定速推出。</p>
+
+  <div class="box yellow">
+    <h4>最常用半透膜材質（考試核心）</h4>
+    <div><span class="tag tgg" style="font-size:.85rem;padding:.2rem .6rem;">Cellulose Acetate 醋酸纖維素</span></div>
+    <p style="margin-top:.3rem;font-size:.82rem;">半透膜：水分可穿過，藥品不能穿過→藥品只能從雷射打的小孔出去</p>
+  </div>
+
+  <h3 class="sub-title">EOP vs PPOP 比較</h3>
+  <div class="grid2">
+    <div class="box blue">
+      <h4>EOP：Elementary Osmotic Pump 簡單型</h4>
+      <ul>
+        <li>核心：<strong>單層</strong>（藥物 + 滲透壓劑混合）</li>
+        <li>外覆半透膜，雷射打孔（直徑0.4mm）</li>
+        <li>水進入→溶解滲透壓劑→產生壓力→推藥液從孔釋出</li>
+        <li>適用：<strong>水溶性藥物</strong>（水不溶者難推出）</li>
+        <li>後期滲透壓劑減少→推力變弱→釋放速率可能不穩定</li>
+      </ul>
+    </div>
+    <div class="box purple">
+      <h4>PPOP：Push-Pull Osmotic Pump 推拉型</h4>
+      <ul>
+        <li>核心：<strong>雙層</strong>（藥物層 + 推進層），中間有彈性膜隔開</li>
+        <li>水進入→推進層吸水膨脹→推擠藥物層→藥物從孔釋出</li>
+        <li>可釋放<strong>水不溶性藥物</strong>（懸浮態也能被推出）</li>
+        <li>推進層始終存在→推力恆定→<strong>Zero-order 釋放</strong></li>
+        <li>市售：<span class="drug">OROS system (Alza)</span>、<span class="drug">Procardia XL</span>、<span class="drug">Glucotrol XL</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="sub-title">常用滲透壓劑（Osmotic Agents）</h3>
+  <p>產生滲透壓：π = MRT，需高分子量的水溶性高分子</p>
+  <div style="margin:.4rem 0;">
+    <span class="tag tg">Methylcellulose (MC)</span>
+    <span class="tag tg">HPMC</span>
+    <span class="tag tg">Sodium CMC</span>
+    <span class="tag tg">PVP</span>
+    <span class="tag tg">Carbopol</span>
+    <span class="tag tg">Polyethylene Oxide (PEO，大分子量PEG)</span>
+  </div>
+
+  <h3 class="sub-title">釋放速率影響因素</h3>
+  <div class="grid2">
+    <div class="box green">
+      <h4>✅ 會影響</h4>
+      <ul>
+        <li>膜的<strong>表面積</strong></li>
+        <li>膜的<strong>厚度</strong>（最易影響★）</li>
+        <li>膜的<strong>組成</strong></li>
+        <li>輸送孔的<strong>直徑</strong></li>
+        <li>滲透壓梯度大小</li>
+      </ul>
+    </div>
+    <div class="box red">
+      <h4>❌ 不影響（重要考點）</h4>
+      <ul>
+        <li>胃腸道 <strong>pH 值</strong></li>
+        <li>進食狀態（<strong>食物</strong>）</li>
+        <li>胃腸<strong>蠕動度</strong></li>
+        <li>媒液pH值（體外溶離試驗也無關）</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="sub-title">COER 系統（進階版 Osmotic）</h3>
+  <div class="mech">
+    <div class="mech-t">Covera-HS（Verapamil HCl）：服藥後4~5小時才開始釋放</div>
+    <p>用途：治療清晨高血壓，睡前服用，清晨才發揮藥效。</p>
+    <div class="flow">
+      <div class="fs">吞服</div><span class="fa">→</span>
+      <div class="fs">水穿入半透膜</div><span class="fa">→</span>
+      <div class="fs">Delay Coat緩慢溶解（~4-5hr）</div><span class="fa">→</span>
+      <div class="fs">水繼續進入</div><span class="fa">→</span>
+      <div class="fs">Push Layer擴張</div><span class="fa">→</span>
+      <div class="fs">藥物由micropore定速釋放</div>
+    </div>
+    <div class="note" style="margin-top:.4rem;">延遲機制：<strong>核心與半透膜之間加了緩慢溶解包衣層（delay coat）</strong>（1102考點：答案D）</div>
+  </div>
+
+  <div class="warn">惰性殼（生物惰性成分）在胃腸道保持完整，<strong>從糞便排出不代表藥物沒有吸收</strong>！（Adalat OROS®、Glucotrol XL 都會排殼）</div>
+</section>
+
+<section class="sec" id="t9">
+  <h2 class="sec-title"><span class="sec-num">T9</span>Repeat Action Tablets 重複作用錠</h2>
+
+  <p>含兩個劑量，一個立即釋放（外層），另一個延遲釋放（內核），兩者以控釋膜層隔開。</p>
+
+  <div class="box yellow">
+    <h4>結構（考點）</h4>
+    <div class="flow">
+      <div class="fs" style="border-color:var(--accent2);">速放藥層（外殼）</div>
+      <span class="fa">+</span>
+      <div class="fs" style="border-color:var(--accent3);">控釋膜層（barrier coat）</div>
+      <span class="fa">+</span>
+      <div class="fs" style="border-color:var(--accent4);">核蕊藥錠（4~6小時後釋放）</div>
+    </div>
+  </div>
+
+  <div class="note">市售例：<span class="drug">Clarinase Repetabs®</span>（外層：pseudoephedrine + loratadine立即釋放；內核：pseudoephedrine延遲釋放。loratadine半衰期長，不需放內核）；<span class="drug">Proventil Repetabs®</span>（albuterol）</div>
+  <div class="tip">Repetabs 的 "-tab" 暗示是錠劑，"Repe-" 暗示 repeat action。</div>
+</section>
+
+<!-- ===== 遲釋 ===== -->
+<section class="sec" id="s-delayed">
+  <h2 class="sec-title"><span class="sec-num">DR</span>Delayed-Release 遲釋口服劑型</h2>
+
+  <p>藥物延遲至<strong>小腸</strong>才釋放，主要機轉為<strong>腸溶包衣（Enteric Coating）</strong>，是遲釋劑型最具代表性的設計。</p>
+
+  <h3 class="sub-title">設計目的</h3>
+  <div class="grid3">
+    <div class="box red">
+      <h4>保護藥物不被胃酸破壞</h4>
+      <p><span class="drug">Erythromycin</span><br><span class="drug">Omeprazole（PPI）</span><br><span class="drug">Esomeprazole</span><br><span class="drug">Dexlansoprazole</span></p>
+    </div>
+    <div class="box yellow">
+      <h4>保護胃不受藥物刺激</h4>
+      <p><span class="drug">Aspirin</span><br><span class="drug">KCl</span><br><span class="drug">Doxycycline</span><br><span class="drug">Oxtriphylline</span></p>
+    </div>
+    <div class="box green">
+      <h4>小腸有較好吸收/局部治療</h4>
+      <p><span class="drug">Mesalamine</span>（治潰瘍性大腸炎，需到迴腸/結腸才釋放）</p>
+    </div>
+  </div>
+
+  <h3 class="sub-title">腸溶包衣材料與溶解pH</h3>
+  <table>
+    <thead><tr><th>材料</th><th>溶解pH</th><th>說明</th></tr></thead>
+    <tbody>
+      <tr><td><span class="mat">Shellac 蟲膠</span></td><td>pH &gt;7</td><td>天然材料，腸溶性</td></tr>
+      <tr><td><span class="mat">Cellulose Acetate Phthalate (CAP)</span></td><td>pH ~6</td><td>最常用合成腸溶材料，erythromycin常用</td></tr>
+      <tr><td><span class="mat">Polyvinyl Acetate Phthalate (PVAP)</span></td><td>pH &gt;5</td><td>合成腸溶材料</td></tr>
+      <tr><td><span class="mat">HPMCP（HP-55/HP-50）</span></td><td>pH ~5–6</td><td>HPMC + phthalate基</td></tr>
+      <tr><td><span class="mat">Eudragit L（Methacrylic acid copolymer A）</span></td><td>pH ≥6</td><td>溶於小腸上段（十二指腸）</td></tr>
+      <tr><td><span class="mat">Eudragit S（Methacrylic acid copolymer B）</span></td><td>pH ≥7</td><td>溶於<strong>迴腸（ileum）以下</strong>，mesalamine常用</td></tr>
+      <tr><td><span class="mat">Fats / Fatty acids / Waxes</span></td><td>—</td><td>基本腸溶材料</td></tr>
+    </tbody>
+  </table>
+  <div class="warn"><strong>HPMC</strong>（非phthalate酯化的一般HPMC）是水溶性的，<strong>最不適合</strong>作為腸溶包衣材料！</div>
+
+  <div class="note">Dexilant® 60mg capsule（dexlansoprazole）：含兩種不同 pH-dependent 溶解特性的顆粒，一種在小腸前段溶解，另一種在後段溶解→雙重延遲釋放（考過：答案A coated beads + enteric-coated capsules）</div>
+</section>
+
+<!-- ===== IVIVC ===== -->
+<section class="sec" id="s-ivivc">
+  <h2 class="sec-title"><span class="sec-num">IVC</span>IVIVC：體外-體內相關性</h2>
+
+  <p>In Vitro–In Vivo Correlation：比較<strong>體外溶離試驗</strong>與<strong>體內血中濃度</strong>的相關性。可用來預測體內行為、節省臨床試驗成本、建立溶離規定。</p>
+
+  <table>
+    <thead><tr><th>Level</th><th>比較對象</th><th>相關性質</th><th>實用性</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong style="color:var(--accent2);">Level A</strong></td>
+        <td>全部體外溶離時程 ↔ 全部體內吸收時程<br><em>（點對點，point-to-point）</em></td>
+        <td>最完整，信息量最大；最常提交給FDA</td>
+        <td style="color:var(--accent2);">最高★★★</td>
+      </tr>
+      <tr>
+        <td><strong style="color:var(--accent3);">Level B</strong></td>
+        <td>平均體外溶離時間 ↔ 平均體內溶離/滯留時間<br>體外溶離速率常數 ↔ 體內吸收速率常數</td>
+        <td>總結參數比較；不同曲線形狀可能得到相同平均值→較不精確</td>
+        <td style="color:var(--accent3);">中★★</td>
+      </tr>
+      <tr>
+        <td><strong style="color:var(--accent4);">Level C</strong></td>
+        <td>某時間點體外溶離量（或T50） ↔ Cmax 或 AUC</td>
+        <td>單點比較；配方開發早期有用；無法反映曲線完整形狀</td>
+        <td style="color:var(--accent4);">最低★</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 class="sub-title">IVIVC 建立標準條件（FDA指引）</h3>
+  <ul>
+    <li>溶離裝置：優先 <strong>USP Type I（網籃）or Type II（槳式）</strong>；某些情況可用 Type III（往復式）或 IV（川流槽式）</li>
+    <li>溶離液pH：<strong>不超過 6.8</strong> 的水性媒液（水難溶性藥物可加 1% SLS）</li>
+    <li>每批至少測 <strong>12 粒</strong>個別劑量單位的溶離圖</li>
+    <li>體內研究：受試者<strong>空腹狀態</strong>；6~36 名受試者</li>
+    <li>研究設計：<strong>交叉研究</strong>最佳，也可平行研究</li>
+  </ul>
+</section>
+
+<!-- ===== 速查表 ===== -->
+<section class="sec" id="s-ref">
+  <h2 class="sec-title"><span class="sec-num">REF</span>技術速查對照表</h2>
+  <table>
+    <thead><tr><th>技術</th><th>關鍵材料</th><th>釋放機轉</th><th>市售例</th></tr></thead>
+    <tbody>
+      <tr><td>① Coated Beads</td><td>EC, Beeswax, Carnauba Wax, Glyceryl Monostearate, Cetyl Alcohol</td><td>擴散（障壁包衣）</td><td>Spansule</td></tr>
+      <tr><td>③ Microencapsulation</td><td>Gelatin（天然）, EC, PVA, PVC</td><td>擴散（wall membrane）</td><td>Micro-K Extencaps（KCl）</td></tr>
+      <tr><td>④ Hydrophilic Matrix</td><td><strong>HPMC</strong>（&gt;20%）</td><td>擴散 + 溶蝕（雙重）</td><td>Oramorph SR, Madopar HBS</td></tr>
+      <tr><td>⑤ Inert Plastic Matrix</td><td>PE, PVAc, Eudragit®</td><td>擴散（水性通道）</td><td>Gradumet（FeSO₄）</td></tr>
+      <tr><td>⑥ Complex Formation</td><td><strong>Tannic Acid</strong></td><td>依pH緩慢解離</td><td>Rynatan</td></tr>
+      <tr><td>⑦ Ion-Exchange Resins</td><td>Insoluble resin（± EC包衣）</td><td>離子交換（受pH、電解質影響）</td><td>Ionamin, Tussionex</td></tr>
+      <tr><td>⑧ Osmotic Pump EOP/PPOP</td><td><strong>Cellulose Acetate</strong>（半透膜）</td><td>滲透壓驅動（Zero-order）</td><td>Procardia XL, Glucotrol XL, Covera-HS（COER）</td></tr>
+      <tr><td>⑨ Repeat Action</td><td>速放層 + 控釋膜 + 核蕊</td><td>立即釋放 + 延遲釋放</td><td>Clarinase Repetabs</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ===== 考題區 ===== -->
+<section class="sec" id="qa-cand">
+  <h2 class="sec-title"><span class="sec-num">QA</span>歷屆考題</h2>
+  <p style="font-size:.82rem;color:var(--text3);margin-bottom:1rem;">點選選項查看對錯 · 按「顯示詳解」查看解析 · 詳解下方可輸入補充筆記</p>
+
+  <div class="qa-cat">候選藥物條件</div>
+
+  <!-- Q: 1011 最適合控釋劑型半衰期 -->
+  <div class="qa-block" id="q_t1">
+    <div class="qa-q" onclick="toggleQA('q_t1')">
+      <span>最適合製備為控釋劑型的藥品，其於體內之半衰期為：</span>
+      <div class="qa-meta"><span class="qa-year">100-1</span><span class="qa-arr">▼</span></div>
+    </div>
+    <div class="qa-body" id="q_t1-body">
+      <ul class="qa-opts" id="q_t1-opts">
+        <li onclick="revealOpt('q_t1',this,'wrong')">A. 小於30分鐘</li>
+        <li onclick="revealOpt('q_t1',this,'wrong')">B. 小於1小時</li>
+        <li onclick="revealOpt('q_t1',this,'correct')">C. 4~6小時</li>
+        <li onclick="revealOpt('q_t1',this,'wrong')">D. 大於8小時</li>
+      </ul>
+      <div class="show-ex-btn" onclick="toggleExplain('q_t1')">顯示詳解</div>
+      <div class="qa-explain" id="q_t1-explain">半衰期 &lt;2hr→難設計（24hr劑量太大）；半衰期很長（&gt;8hr）→體內本身停留久，不需要ER；<strong>4~6hr 最適合</strong>，一天吃三次就8hr，需要設計成ER才能減少次數。</div>
+      <div class="note-area" id="q_t1-note"><div class="note-lbl">📝 補充筆記</div><textarea id="q_t1-ta" placeholder="輸入補充筆記..."></textarea><div class="save-btn" onclick="saveNote('q_t1')">儲存筆記</div></div>
+    </div>
+  </div>
+
+  <!-- Q: 1141 最適合ER的藥物 -->
+  <div class="qa-block" id="q_t2">
+    <div class="qa-q" onclick="toggleQA('q_t2')">
+      <span>下列何種藥品相對<strong>最適合</strong>製備成口服extended-release products？</span>
+      <div class="qa-meta"><span class="qa-year">114-1</span><span class="qa-arr">▼</span></div>
+    </div>
+    <div class="qa-body" id="q_t2-body">
+      <ul class="qa-opts" id="q_t2-opts">
+        <li onclick="revealOpt('q_t2',this,'wrong')">A. 用於治療慢性疾病，水溶解度差且吸收不佳的藥品</li>
+        <li onclick="revealOpt('q_t2',this,'wrong')">B. 用於治療急性疾病，半衰期小於2小時且吸收不佳的藥品</li>
+        <li onclick="revealOpt('q_t2',this,'wrong')">C. 用於治療急性疾病，半衰期長且吸收快速的藥品</li>
+        <li onclick="revealOpt('q_t2',this,'correct')">D. 用於治療慢性疾病，排除半衰期短但大於2小時的藥品</li>
+      </ul>
+      <div class="show-ex-btn" onclick="toggleExplain('q_t2')">顯示詳解</div>
+      <div class="qa-explain" id="q_t2-explain">B、C為急性疾病直接刪除。A：雖然慢性病OK，但水溶解度差且吸收不佳→不適合ER（需均一吸收）。D：慢性病 ✓、排除半衰期太短（但仍需&gt;2hr）✓ → 最適合。</div>
+      <div class="note-area" id="q_t2-note"><div class="note-lbl">📝 補充筆記</div><textarea id="q_t2-ta" placeholder="輸入補充筆記..."></textarea><div class="save-btn" onclick="saveNote('q_t2')">儲存筆記</div></div>
+    </div>
+  </div>
+
+  <!-- Q: 1111 最適合ER的特性 -->
+  <div class="qa-block" id="q_t3">
+    <div class="qa-q" onclick="toggleQA('q_t3')">
+      <span>藥物具有下列何項特性，最適合開發為口服<strong>持續釋放</strong>錠劑？</span>
+      <div class="qa-meta"><span class="qa-year">111-1</span><span class="qa-arr">▼</span></div>
+    </div>
+    <div class="qa-body" id="q_t3-body">
+      <ul class="qa-opts" id="q_t3-opts">
+        <li onclick="revealOpt('q_t3',this,'wrong')">A. 半衰期小於1小時</li>
+        <li onclick="revealOpt('q_t3',this,'wrong')">B. 治療濃度範圍較窄</li>
+        <li onclick="revealOpt('q_t3',this,'wrong')">C. 劑量較大</li>
+        <li onclick="revealOpt('q_t3',this,'correct')">D. 在腸胃道各部位吸收均一</li>
+      </ul>
+      <div class="show-ex-btn" onclick="toggleExplain('q_t3')">顯示詳解</div>
+      <div class="qa-explain" id="q_t3-explain">在胃腸道<strong>各部位均一吸收</strong>確保藥品停留整段胃腸道期間都能有效吸收，是ER最關鍵特性。半衰期&lt;1hr→太短不適合；TI窄→風險高；劑量大→錠片大難吞。</div>
+      <div class="note-area" id="q_t3-note"><div class="note-lbl">📝 補充筆記</div><textarea id="q_t3-ta" placeholder="輸入補充筆記..."></textarea><div class="save-btn" onclick="saveNote('q_t3')">儲存筆記</div></div>
+    </div>
+  </div>
+
+  <!-- Q: 1102 不適合ER的特性 -->
+  <div class="qa-block" id="q_t4">
+    <div class="qa-q" onclick="toggleQA('q_t4')">
+      <span>具有下列何項特性之藥物，最適合發展為口服extended-release製劑？</span>
+      <div class="qa-meta"><span class="qa-year">110-2</span><span class="qa-arr">▼</span></div>
+    </div>
+    <div class="qa-body" id="q_t4-body">
+      <ul class="qa-opts" id="q_t4-opts">
+        <li onclick="revealOpt('q_t4',this,'wrong')">A. 用於治療急性疾病</li>
+        <li onclick="revealOpt('q_t4',this,'correct')">B. 從胃腸道均一吸收</li>
+        <li onclick="revealOpt('q_t4',this,'wrong')">C. 半衰期約1小時</li>
+        <li onclick="revealOpt('q_t4',this,'wrong')">D. 治療指數狹窄</li>
+      </ul>
+      <div class="show-ex-btn" onclick="toggleExplain('q_t4')">顯示詳解</div>
+      <div class="qa-explain" id="q_t4-explain">A急性→不適合；C半衰期1hr→太短；D治療指數狹窄→風險高；B均一吸收 ✓</div>
+      <div class="note-area" id="q_t4-note"><div class="note-lbl">📝 補充筆記</div><textarea id="q_t4-ta" placeholder="輸入補充筆記..."></textarea><div class="save-btn" onclick="saveNote('q_t4')">儲存筆記</div></div>
+    </div>
+  </div>
+
+  <!-- Q: 1092 不適合ER的特性 -->
+  <div class="qa-block" id="q_t5">
+    <div class="qa-q" onclick="toggleQA('q_t5')">
+      <span>下列何種特性的藥物<strong>最不適合或不需要</strong>製備成長效性（extended-release）劑型？</span>
+      <div class="qa-meta"><span class="qa-year">109-2</span><span class="qa-arr">▼</span></div>
+    </div>
+    <div class="qa-body" id="q_t5-body">
+      <ul class="qa-opts" id="q_t5-opts">
+        <li onclick="revealOpt('q_t5',this,'correct')">A. 吸收速率極慢者</li>
+        <li onclick="revealOpt('q_t5',this,'wrong')">B. 治療指數適中者</li>
+        <li onclick="revealOpt('q_t5',this,'wrong')">C. 排除或吸收速率適中者</li>
+        <li onclick="revealOpt('q_t5',this,'wrong')">D. 臨床使用於慢性症狀者</li>
+      </ul>
+      <div class="show-ex-btn" onclick="toggleExplain('q_t5')">顯示詳解</div>
+      <div class="qa-explain" id="q_t5-explain">吸收速率極慢→吸收差→不適合ER（需均一且良好吸收）。其他選項都是適合ER的特性。</div>
+      <div class="note-area" id="q_t5-note"><div class="note-lbl">📝 補充筆記</div><textarea id="q_t5-ta" placeholder="輸入補充筆記..."></textarea><div class="save-btn" onclick="saveNote('q_t5')">儲存筆記</div></div>
+    </div>
+  </div>
+
+  <!-- Q: 1071 半衰期長 -->
+  <div class="qa-block" id="q_t6">
+    <div class="qa-q" onclick="toggleQA('q_t6')">
+      <span>當一個藥物具有<strong>極長的血漿半衰期</strong>，下列何者是其最方便的劑型設計？</span>
+      <div class="qa-meta"><span class="qa-year">107-1</span><span class="qa-arr">▼</span></div>
+    </div>
+    <div class="qa-body" id="q_t6-body">
+      <ul class="qa-opts" id="q_t6-opts">
+        <li onclick="revealOpt('q_t6',this,'correct')">A. 速放型（immediate-release）</li>
+        <li onclick="revealOpt('q_t6',this,'wrong')">B. 長效型（extended-release）</li>
+        <li onclick="revealOpt('q_t6',this,'wrong')">C. 腸溶型（enteric-release）</li>
+        <li onclick="revealOpt('q_t6',this,'wrong')">D. 黏著型（adhesive-release）</li>
+      </ul>
+      <div class="show-ex-btn" onclick="toggleExplain('q_t6')">顯示詳解</div>
+      <div class="qa-explain" id="q_t6-explain">半衰期極長→藥物在體內本身就能停留很久→<strong>不需要</strong>設計成ER→用速放型即可，最方便。</div>
+      <div class="note-area" id="q_t6-note"><div class="note-lbl">📝 補充筆記</div><textarea id="q_t6-ta" placeholder="輸入補充筆記..."></textarea><div class="save-btn" onclick="saveNote('q_t6')">儲存筆記</div></div>
+    </div>
+  </div>
+
+  <!-- Q: 適合ER的藥物例子 1011 -->
+  <div class="qa-block" id="q_t7">
+    <div class="qa-q" onclick="toggleQA('q_t7')">
+      <span>下列何藥品最適合做為口服緩釋劑型？</span>
+      <div class="qa-meta"><span class="qa-year">101-1</span><span class="qa-arr">▼</span></div>
+    </div>
+    <div class="qa-body" id="q_t7-body">
+      <ul class="qa-opts" id="q_t7-opts">
+        <li onclick="revealOpt('q_t7',this,'wrong')">A. Ampicillin</li>
+        <li onclick="revealOpt('q_t7',this,'correct')">B. Aspirin</li>
+        <li onclick="revealOpt('q_t7',this,'wrong')">C. Levodopa</li>
+        <li onclick="revealOpt('q_t7',this,'wrong')">D. Furosemide</li>
+      </ul>
+      <div class="show-ex-btn" onclick="toggleExplain('q_t7')">顯示詳解</div>
+      <div class="qa-explain" id="q_t7-explain">Ampicillin：吸收不均一；Levodopa：吸收速率變化大且不均一（在小腸前段吸收）；Furosemide：急性用藥、吸收差；<strong>Aspirin</strong>：用於慢性止痛/抗凝、在胃腸道吸收良好 → 最適合。</div>
+      <div class="note-area" id="q_t7-note"><div class="note-lbl">📝 補充筆記</div><textarea id="q_t7-ta" placeholder="輸入補充筆記..."></textarea><div class="save-btn" onclick="saveNote('q_t7')">儲存筆記</div></div>
+    </div>
+  </div>
+
+  <!-- Q: 1002 適合ER的藥物 -->
+  <div class="qa-block" id="q_t8">
+    <div class="qa-q" onclick="toggleQA('q_t8')">
+      <span>下列何藥物最適合作為口服緩釋劑型？</span>
+      <div class="qa-meta"><span class="qa-year">100-2</span><span class="qa-arr">▼</span></div>
+    </div>
+    <div class="qa-body" id="q_t8-body">
+      <ul class="qa-opts" id="q_t8-opts">
+        <li onclick="revealOpt('q_t8',this,'wrong')">A. Penicillin G</li>
+        <li onclick="revealOpt('q_t8',this,'wrong')">B. Cephalexin</li>
+        <li onclick="revealOpt('q_t8',this,'wrong')">C. Cloxacillin</li>
+        <li onclick="revealOpt('q_t8',this,'correct')">D. Ferrous fumarate</li>
+      </ul>
+      <div class="show-ex-btn" onclick="toggleExplain('q_t8')">顯示詳解</div>
+      <div class="qa-explain" id="q_t8-explain">Penicillin G、Cephalexin、Cloxacillin：抗生素，吸收不穩定且為急性感染用藥；<strong>Ferrous fumarate</strong>：鐵劑，用於慢性缺鐵性貧血，長期使用，適合做ER（也可減少胃腸刺激）。</div>
+      <div class="note-area" id="q_t8-note"><div class="note-lbl">📝 補充筆記</div><textarea id="q_t8-ta" placeholder="輸入補充筆記..."></textarea><div class="save-btn" onclick="saveNote('q_t8')">儲存筆記</div></div>
+    </div>
+  </div>
+
+  <!-- 各技術考題 -->
+  <div class="qa-cat" id="qa-tech">各技術相關</div>
+
+  <!-- Q: coated beads包衣材料 1132 -->
+  <div class="qa-block" id="q_cb1">
+    <div class="qa-q" onclick="toggleQA('q_cb1')">
+      <span>下列何者最<strong>不適合</strong>做為包覆性圓粒（coated beads）緩釋劑型之包覆材料？</span>
+      <div class="qa-meta"><span class="qa-year">113-2 / 108-1</span><span class="qa-arr">▼</span></div>
+    </div>
+    <div class="qa-body" id="q_cb1-body">
+      <ul class="qa-opts" id="q_cb1-opts">
+        <li onclick="revealOpt('q_cb1',this,'wrong')">A. beeswax</li>
+        <li onclick="revealOpt('q_cb1',this,'wrong')">B. glyceryl monostearate</li>
+        <li onclick="revealOpt('q_cb1',this,'correct')">C. hydroxypropyl methylcellulose</li>
+        <li onclick="revealOpt('q_cb1',this,'wrong')">D. ethylcellulose</li>
+      </ul>
+      <div class="show-ex-btn" onclick="toggleExplain('q_cb1')">顯示詳解</div>
+      <div class="qa-explain" id="q_cb1-explain">A、B、D都是水難溶性材料，適合作為barrier coating延緩釋放。<strong>HPMC（C）</strong>是水溶性的，包上去後會快速溶解，無法控制藥物緩慢釋放。此題考了兩次（108、113年）。</div>
+      <div class="note-area" id="q_cb1-note"><div class="note-lbl">📝 補充筆記</div><textarea id="q_cb1-ta" placeholder="輸入補充筆記..."></textarea><div class="save-btn" onclick="saveNote('q_cb1')">儲存筆記</div></div>
+    </div>
+  </div>
+
+  <!-- Q: microencapsulation包衣材料 1141 -->
+  <div class="qa-block" id="q_me1">
+    <div class="qa-q" onclick="toggleQA('q_me1')">
+      <span>下列何者最<strong>不適用</strong>於microencapsulation之包覆材料？</span>
+      <div class="qa-meta"><span class="qa-year">114-1</span><span class="qa-arr">▼</span></div>
+    </div>
+    <div class="qa-body" id="q_me1-body">
+      <ul class="qa-opts" id="q_me1-opts">
+        <li onclick="revealOpt('q_me1',this,'wrong')">A. gelatin</li>
+        <li onclick="revealOpt('q_me1',this,'wrong')">B. polyvinyl alcohol</li>
+        <li onclick="revealOpt('q_me1',this,'wrong')">C. ethylcellulose</li>
+        <li onclick="revealOpt('q_me1',this,'correct')">D. lactose</li>
+      </ul>
+      <div class="show-ex-btn" onclick="toggleExplain('q_me1')">顯示詳解</div>
+      <div class="qa-explain" id="q_me1-explain">Gelatin、PVA、EC都可以做成wall material（成膜劑）。<strong>Lactose（乳糖）</strong>是水溶性、甜味稀釋劑，用作填料，本身溶於水→無法形成穩定包覆膜。</div>
+      <div class="note-area" id="q_me1-note"><div class="note-lbl">📝 補充筆記</div><textarea id="q_me1-ta" placeholder="輸入補充筆記..."></textarea><div class="save-btn" onclick="saveNote('q_me1')">儲存筆記</div></div>
+    </div>
+  </div>
+
+  <!-- Q: 1091 coacervation 相分離 -->
+  <div class="qa-block" id="q_co1">
+    <div class="qa-q" onclick="toggleQA('q_co1')">
+      <span>微膠囊化（microencapsulation）藉由引發溶解的包覆材料相分離（coacervation）而包覆於蕊物質表面，下列何者<strong>不可用</strong>來引發相分離？</span>
+      <div class="qa-meta"><span class="qa-year">109-1</span><span class="qa-arr">▼</span></div>
+    </div>
+    <div class="qa-body" id="q_co1-body">
+      <ul class="qa-opts" id="q_co1-opts">
+        <li onclick="revealOpt('q_co1',this,'wrong')">A. 不同溶解度的溶媒</li>
+        <li onclick="revealOpt('q_co1',this,'correct')">B. 不同分子量的膠體</li>
+        <li onclick="revealOpt('q_co1',this,'wrong')">C. 不同電荷性的材料</li>
+        <li onclick="revealOpt('q_co1',this,'wrong')">D. 不同酸鹼值的溶液</li>
+      </ul>
+      <div class="show-ex-btn" onclick="toggleExplain('q_co1')">顯示詳解</div>
+      <div class="qa-explain" id="q_co1-explain">A：加非溶劑（不同溶解度溶媒）→降低polymer溶解度→相分離 ✓；C：相反電荷→Complex coacervation ✓；D：改變pH→影響溶解度→相分離 ✓；<strong>B：不同分子量的膠體</strong>，同一種polymer改變分子量並不會改變其溶解特性，無法引發相分離。</div>
+      <div class="note-area" id="q_co1-note"><div class="note-lbl">📝 補充筆記</div><textarea id="q_co1-ta" placeholder="輸入補充筆記..."></textarea><div class="save-btn" onclick="saveNote('q_co1')">儲存筆記</div></div>
+    </div>
+  </div>
+
+  <!-- Q: 1082 微粒包衣敘述 -->
+  <div class="qa-block" id="q_me2">
+    <div class="qa-q" onclick="toggleQA('q_me2')">
+      <span>下列有關微粒包衣（microencapsulation）之敘述，何者<strong>正確</strong>？</span>
+      <div class="qa-meta"><span class="qa-year">108-2 / 102-1</span><span class="qa-arr">▼</span></div>
+    </div>
+    <div class="qa-body" id="q_me2-body">
+      <ul class="qa-opts" id="q_me2-opts">
+        <li onclick="revealOpt('q_me2',this,'wrong')">A. 通常包衣重量占全部微粒重量之比例大於50%</li>
+        <li onclick="revealOpt('q_me2',this,'wrong')">B. 所使用之包衣高分子種類對藥物釋放速率無影響</li>
+        <li onclick="revealOpt('q_me2',this,'wrong')">C. 口服後微粒易集中在腸胃道中特定位置</li>
+        <li onclick="revealOpt('q_me2',this,'correct')">D. 可利用包衣及核心之重量比調整藥物釋放速率</li>
+      </ul>
+      <div class="show-ex-btn" onclick="toggleExplain('q_me2')">顯示詳解</div>
+      <div class="qa-explain" id="q_me2-explain">A：wall polymer通常佔<strong>2~20%</strong>，非50%以上；B：包衣高分子種類<strong>會</strong>影響釋放速率；C：口服後微粒<strong>散布整個胃腸道</strong>（這是優點）；D正確：改變包衣/核心比例可調控釋放速率。</div>
+      <div class="note-area" id="q_me2-note"><div class="note-lbl">📝 補充筆記</div><textarea id="q_me2-ta" placeholder="輸入補充筆記..."></textarea><div class="save-btn" onclick="saveNote('q_me2')">儲存筆記</div></div>
+    </div>
+  </div>
+
+  <!-- Q: HPMC hydrophilic matrix 1131 -->
+  <div class="qa-block" id="q_hm1">
+    <div class="qa-q" onclick="toggleQA('q_hm1')">
+      <span>有關口服之親水性間質（hydrophilic matrix）緩釋系統，下列敘述何者<strong>最適當</strong>？</span>
+      <div class="qa-meta"><span class="qa-year">113-1</span><span class="qa-arr">▼</span></div>
+    </div>
+    <div class="qa-body" id="q_hm1-body">
+      <ul class="qa-opts" id="q_hm1-opts">
+        <li onclick="revealOpt('q_hm1',this,'wrong')">A. 常用之親水性材質雖不溶於水，但可吸收大量水分</li>
+        <li onclick="revealOpt('q_hm1',this,'correct')">B. 主要之控釋成分是hydroxypropyl methylcellulose</li>
+        <li onclick="revealOpt('q_hm1',this,'wrong')">C. 僅可製備成雙層之控釋劑型</li>
+        <li onclick="revealOpt('q_hm1',this,'wrong')">D. 於製備時須加入塑化劑</li>
+      </ul>
+      <div class="show-ex-btn" onclick="toggleExplain('q_hm1')">顯示詳解</div>
+      <div class="qa-explain" id="q_hm1-explain">A：HPMC是親水性且<strong>可溶於水</strong>（緩慢溶蝕），說「不溶於水」錯誤；B：HPMC是主要控釋成分 ✓；C：可做成<strong>單層、雙層、三層</strong>等多種設計；D：塑化劑是給膠囊殼/薄膜衣用的，打錠不需要。</div>
+      <div class="note-area" id="q_hm1-note"><div class="note-lbl">📝 補充筆記</div><textarea id="q_hm1-ta" placeholder="輸入補充筆記..."></textarea><div class="save-btn" onclick="saveNote('q_hm1')">儲存筆記</div></div>
+    </div>
+  </div>
+
+  <!-- Q: 1091 難溶藥hydrophilic matrix釋放機轉 -->
+  <div class="qa-block" id="q_hm2">
+    <div class="qa-q" onclick="toggleQA('q_hm2')">
+      <span>極難溶性藥品由親水性纖維素（hydrophilic cellulose）材質製備的基質性錠片（matrix tablet），其主要釋出機轉為何？</span>
+      <div class="qa-meta"><span class="qa-year">109-1</span><span class="qa-arr">▼</span></div>
+    </div>
+    <div class="qa-body" id="q_hm2-body">
+      <ul class="qa-opts" id="q_hm2-opts">
+        <li onclick="revealOpt('q_hm2',this,'correct')">A. 溶蝕機轉（erosion）</li>
+        <li onclick="revealOpt('q_hm2',this,'wrong')">B. 滲透機轉（diffusion）</li>
+        <li onclick="revealOpt('q_hm2',this,'wrong')">C. 離子交換（ion exchange）</li>
+        <li onclick="revealOpt('q_hm2',this,'wrong')">D. 滲透壓力（osmosis）</li>
+      </ul>
+      <div class="show-ex-btn" onclick="toggleExplain('q_hm2')">顯示詳解</div>
+      <div class="qa-explain" id="q_hm2-explain">水溶性藥物→主要靠擴散（diffusion）；<strong>極難溶性藥物</strong>→無法溶於凝膠層的水性通道中擴散→需等凝膠層<strong>溶蝕（erosion）</strong>後暴露出藥物才能釋出→所以主要機轉為erosion。</div>
+      <div class="note-area" id="q_hm2-note"><div class="note-lbl">📝 補充筆記</div><textarea id="q_hm2-ta" placeholder="輸入補充筆記..."></textarea><div class="save-btn" onclick="saveNote('q_hm2')">儲存筆記</div></div>
+    </div>
+  </div>
+
+  <!-- Q: inert plastic matrix 1131 -->
+  <div class="qa-block" id="q_pm1">
+    <div class="qa-q" onclick="toggleQA('q_pm1')">
+      <span>有關口服inert plastic matrix system之敘述，下列何者<strong>正確</strong>？</span>
+      <div class="qa-meta"><span class="qa-year">113-1</span><span class="qa-arr">▼</span></div>
+    </div>
+    <div class="qa-body" id="q_pm1-body">
+      <ul class="qa-opts" id="q_pm1-opts">
+        <li onclick="revealOpt('q_pm1',this,'correct')">A. 可使用polyvinyl acetate作為控釋材質</li>
+        <li onclick="revealOpt('q_pm1',this,'wrong')">B. 藥物釋放經由溶蝕（erosion）機轉</li>
+        <li onclick="revealOpt('q_pm1',this,'wrong')">C. 控釋材質可經溶蝕後被胃腸道吸收</li>
+        <li onclick="revealOpt('q_pm1',this,'wrong')">D. 適用於水不溶性藥物之控釋</li>
+      </ul>
+      <div class="show-ex-btn" onclick="toggleExplain('q_pm1')">顯示詳解</div>
+      <div class="qa-explain" id="q_pm1-explain">A正確：PVAc是水不溶性，可做惰性間質；B：機轉是<strong>擴散</strong>不是溶蝕；C：控釋材質<strong>不被吸收</strong>，隨糞便排出；D：水不溶性藥物難以在水性通道擴散，反而<strong>不適合</strong>此系統。</div>
+      <div class="note-area" id="q_pm1-note"><div class="note-lbl">📝 補充筆記</div><textarea id="q_pm1-ta" placeholder="輸入補充筆記..."></textarea><div class="save-btn" onclick="saveNote('q_pm1')">儲存筆記</div></div>
+    </div>
+  </div>
+
+  <!-- Q: 1061 matrix製備與傳統錠劑差異 -->
+  <div class="qa-block" id="q_pm2">
+    <div class="qa-q" onclick="toggleQA('q_pm2')">
+      <span>下列何種長效性（extended-release）劑型的製備與<strong>傳統錠劑的製備沒有太大差異</strong>？</span>
+      <div class="qa-meta"><span class="qa-year">106-2</span><span class="qa-arr">▼</span></div>
+    </div>
+    <div class="qa-body" id="q_pm2-body">
+      <ul class="qa-opts" id="q_pm2-opts">
+        <li onclick="revealOpt('q_pm2',this,'wrong')">A. ion-exchange resin tablets</li>
+        <li onclick="revealOpt('q_pm2',this,'wrong')">B. microencapsulation tablets</li>
+        <li onclick="revealOpt('q_pm2',this,'wrong')">C. pellet tablets</li>
+        <li onclick="revealOpt('q_pm2',this,'correct')">D. matrix tablets</li>
+      </ul>
+      <div class="show-ex-btn" onclick="toggleExplain('q_pm2')">顯示詳解</div>
+      <div class="qa-explain" id="q_pm2-explain">Matrix tablets 製備方式：把藥物和間質材料混合→造粒→壓錠，與傳統錠劑流程幾乎相同，差異最小。Microencapsulation 需要coacervation等特殊步驟，差異最大。</div>
+      <div class="note-area" id="q_pm2-note"><div class="note-lbl">📝 補充筆記</div><textarea id="q_pm2-ta" placeholder="輸入補充筆記..."></textarea><div class="save-btn" onclick="saveNote('q_pm2')">儲存筆記</div></div>
+    </div>
+  </div>
+
+  <!-- Q: complex formation tannic acid 1131 -->
+  <div class="qa-block" id="q_cf1">
+    <div class="qa-q" onclick="toggleQA('q_cf1')">
+      <span>下列何者最適合與藥物形成複合體（complex），以緩慢溶於體液中達到藥品可長效釋放之目的？</span>
+      <div class="qa-meta"><span class="qa-year">113-1 / 106-2</span><span class="qa-arr">▼</span></div>
+    </div>
+    <div class="qa-body" id="q_cf1-body">
+      <ul class="qa-opts" id="q_cf1-opts">
+        <li onclick="revealOpt('q_cf1',this,'wrong')">A. succinic acid</li>
+        <li onclick="revealOpt('q_cf1',this,'correct')">B. tannic acid</li>
+        <li onclick="revealOpt('q_cf1',this,'wrong')">C. tartaric acid</li>
+        <li onclick="revealOpt('q_cf1',this,'wrong')">D. citric acid</li>
+      </ul>
+      <div class="show-ex-btn" onclick="toggleExplain('q_cf1')">顯示詳解</div>
+      <div class="qa-explain" id="q_cf1-explain"><strong>Tannic acid（鞣酸）</strong>：有多個OH→結合穩固；天然來源→安全；有收斂效果→減少胃刺激。其他acid（succinic、tartaric、citric）皆為有機酸，結構單純，無法與藥物形成穩定long-acting的complex。注意：原本考題答案選項是D(tannic acid)，但選項位置可能在D，此處調整為B位置供練習。</div>
+      <div class="note-area" id="q_cf1-note"><div class="note-lbl">📝 補充筆記</div><textarea id="q_cf1-ta" placeholder="輸入補充筆記..."></textarea><div class="save-btn" onclick="saveNote('q_cf1')">儲存筆記</div></div>
+    </div>
+  </div>
+
+  <!-- Q: ion exchange 1102 chlorpheniramine polistirex -->
+  <div class="qa-block" id="q_ir1">
+    <div class="qa-q" onclick="toggleQA('q_ir1')">
+      <span>Chlorpheniramine polistirex suspension為一種鹼性藥物，吸附於陰離子交換樹脂圓粒後包覆控釋膜，下列敘述何者<strong>錯誤</strong>？</span>
+      <div class="qa-meta"><span class="qa-year">110-2</span><span class="qa-arr">▼</span></div>
+    </div>
+    <div class="qa-body" id="q_ir1-body">
+      <ul class="qa-opts" id="q_ir1-opts">
+        <li onclick="revealOpt('q_ir1',this,'wrong')">A. 藥物釋出會受到離子濃度影響</li>
+        <li onclick="revealOpt('q_ir1',this,'correct')">B. 在腸道的釋出速率比胃部較快</li>
+        <li onclick="revealOpt('q_ir1',this,'wrong')">C. 溶液的酸鹼值可調整釋出速率</li>
+        <li onclick="revealOpt('q_ir1',this,'wrong')">D. 屬於液體型長效性劑型</li>
+      </ul>
+      <div class="show-ex-btn" onclick="toggleExplain('q_ir1')">顯示詳解</div>
+      <div class="qa-explain" id="q_ir1-explain">Chlorpheniramine是<strong>鹼性（帶正電）</strong>藥物→吸附在陰離子交換樹脂→靠H⁺取代→<strong>胃（酸性，H⁺多）的釋出 &gt; 腸道</strong>。所以B「腸道釋出比胃快」是錯誤的。A、C正確（離子濃度和pH都影響離子交換）；D正確（suspension=液體型）。</div>
+      <div class="note-area" id="q_ir1-note"><div class="note-lbl">📝 補充筆記</div><textarea id="q_ir1-ta" placeholder="輸入補充筆記..."></textarea><div class="save-btn" onclick="saveNote('q_ir1')">儲存筆記</div></div>
+    </div>
+  </div>
+
+  <!-- Q: ion exchange 1041 -->
+  <div class="qa-block" id="q_ir2">
+    <div class="qa-q" onclick="toggleQA('q_ir2')">
+      <span>下列有關離子交換輸藥系統何者<strong>正確</strong>？</span>
+      <div class="qa-meta"><span class="qa-year">104-1</span><span class="qa-arr">▼</span></div>
+    </div>
+    <div class="qa-body" id="q_ir2-body">
+      <ul class="qa-opts" id="q_ir2-opts">
+        <li onclick="revealOpt('q_ir2',this,'wrong')">A. 常使用可溶性樹脂（soluble resin）材質</li>
+        <li onclick="revealOpt('q_ir2',this,'wrong')">B. 帶負電之樹脂（anionic resin）可和帶負電之藥物形成複合物</li>
+        <li onclick="revealOpt('q_ir2',this,'wrong')">C. 腸胃道中藥物釋放速率穩定，不受食物及各營養成分影響</li>
+        <li onclick="revealOpt('q_ir2',this,'correct')">D. 可在交換樹脂藥物複合物外加上包衣延長控釋效果</li>
+      </ul>
+      <div class="show-ex-btn" onclick="toggleExplain('q_ir2')">顯示詳解</div>
+      <div class="qa-explain" id="q_ir2-explain">A：使用<strong>不可溶性</strong>樹脂；B：陰離子樹脂（帶負電）吸附<strong>帶正電</strong>的藥物（正負相吸）；C：食物中的電解質會競爭離子交換，<strong>會</strong>影響釋放；D正確：加polymer barrier coating可進一步延長。</div>
+      <div class="note-area" id="q_ir2-note"><div class="note-lbl">📝 補充筆記</div><textarea id="q_ir2-ta" placeholder="輸入補充筆記..."></textarea><div class="save-btn" onclick="saveNote('q_ir2')">儲存筆記</div></div>
+    </div>
+  </div>
+
+  <!-- Q: ion exchange 1032 苦味遮蔽 -->
+  <div class="qa-block" id="q_ir3">
+    <div class="qa-q" onclick="toggleQA('q_ir3')">
+      <span>下列有關離子交換輸藥系統何者<strong>正確</strong>？</span>
+      <div class="qa-meta"><span class="qa-year">103-2</span><span class="qa-arr">▼</span></div>
+    </div>
+    <div class="qa-body" id="q_ir3-body">
+      <ul class="qa-opts" id="q_ir3-opts">
+        <li onclick="revealOpt('q_ir3',this,'wrong')">A. 帶正電之交換樹脂（cationic resin）可和帶正電之藥物形成複合物</li>
+        <li onclick="revealOpt('q_ir3',this,'wrong')">B. 在交換樹脂藥物複合物外不適合加入包衣以免阻礙離子交換及藥物釋放</li>
+        <li onclick="revealOpt('q_ir3',this,'correct')">C. 可利用形成樹脂-藥物複合物特性以遮蔽藥品之苦味</li>
+        <li onclick="revealOpt('q_ir3',this,'wrong')">D. 此系統藥物釋放速率取決於藥物之溶解度</li>
+      </ul>
+      <div class="show-ex-btn" onclick="toggleExplain('q_ir3')">顯示詳解</div>
+      <div class="qa-explain" id="q_ir3-explain">A：帶正電樹脂（cationic resin）吸附帶<strong>負電</strong>藥物；B：可以加包衣，這樣更能延長釋放；C正確：藥物被樹脂接住，舌頭接觸不到游離藥物→苦味遮蔽；D：釋放取決於<strong>pH和電解質濃度</strong>，非溶解度。</div>
+      <div class="note-area" id="q_ir3-note"><div class="note-lbl">📝 補充筆記</div><textarea id="q_ir3-ta" placeholder="輸入補充筆記..."></textarea><div class="save-btn" onclick="saveNote('q_ir3')">儲存筆記</div></div>
+    </div>
+  </div>
+
+  <!-- Q: repeat action 1082 -->
+  <div class="qa-block" id="q_ra1">
+    <div class="qa-q" onclick="toggleQA('q_ra1')">
+      <span>有關repeat-action長效性劑型的錠片設計，下列何者<strong>正確</strong>？</span>
+      <div class="qa-meta"><span class="qa-year">108-2</span><span class="qa-arr">▼</span></div>
+    </div>
+    <div class="qa-body" id="q_ra1-body">
+      <ul class="qa-opts" id="q_ra1-opts">
+        <li onclick="revealOpt('q_ra1',this,'wrong')">A. 速放藥層＋半透膜層＋核蕊藥錠</li>
+        <li onclick="revealOpt('q_ra1',this,'wrong')">B. 速放藥層＋腸溶膜層＋核蕊藥錠</li>
+        <li onclick="revealOpt('q_ra1',this,'correct')">C. 速放藥層＋控釋膜層＋核蕊藥錠</li>
+        <li onclick="revealOpt('q_ra1',this,'wrong')">D. 控釋膜層＋腸溶膜層＋核蕊藥錠</li>
+      </ul>
+      <div class="show-ex-btn" onclick="toggleExplain('q_ra1')">顯示詳解</div>
+      <div class="qa-explain" id="q_ra1-explain">Repeat action設計：外層速放藥→立即釋放；中間<strong>控釋膜層（barrier coat）</strong>→隔開兩個劑量；內核蕊藥錠→4~6小時後釋放。不是半透膜也不是腸溶膜，是控制速率的障壁包衣。</div>
+      <div class="note-area" id="q_ra1-note"><div class="note-lbl">📝 補充筆記</div><textarea id="q_ra1-ta" placeholder="輸入補充筆記..."></textarea><div class="save-btn" onclick="saveNote('q_ra1')">儲存筆記</div></div>
+    </div>
+  </div>
+
+  <!-- Osmotic 考題 -->
+  <div class="qa-cat" id="qa-osmotic">Osmotic Pump 滲透壓</div>
+
+  <!-- Q: 半透膜材質 1121 -->
+  <div class="qa-block" id="q_os1">
+    <div class="qa-q" onclick="toggleQA('q_os1')">
+      <span>下列何者為滲透壓控釋系統<strong>最常使用</strong>的膜衣材料？</span>
+      <div class="qa-meta"><span class="qa-year">112-1</span><span class="qa-arr">▼</span></div>
+    </div>
+    <div class="qa-body" id="q_os1-body">
+      <ul class="qa-opts" id="q_os1-opts">
+        <li onclick="revealOpt('q_os1',this,'wrong')">A. carbomers</li>
+        <li onclick="revealOpt('q_os1',this,'correct')">B. cellulose acetate</li>
+        <li onclick="revealOpt('q_os1',this,'wrong')">C. hydroxypropylmethylcellulose</li>
+        <li onclick="revealOpt('q_os1',this,'wrong')">D. sodium alginate</li>
+      </ul>
+      <div class="show-ex-btn" onclick="toggleExplain('q_os1')">顯示詳解</div>
+      <div class="qa-explain" id="q_os1-explain"><strong>Cellulose Acetate（醋酸纖維素）</strong>是半透膜的標準選擇：水分可穿透，藥物不能穿透。HPMC是水溶性→會溶解，不適合半透膜；Carbomers是黏稠劑；Sodium alginate是增稠/包衣材料。</div>
+      <div class="note-area" id="q_os1-note"><div class="note-lbl">📝 補充筆記</div><textarea id="q_os1-ta" placeholder="輸入補充筆記..."></textarea><div class="save-btn" onclick="saveNote('q_os1')">儲存筆記</div></div>
+    </div>
+  </div>
+
+  <!-- Q: Procardia XL 1141 -->
+  <div class="qa-block" id="q_os2">
+    <div class="qa-q" onclick="toggleQA('q_os2')">
+      <span>Procardia XL ER® 是一種osmotic drug-release system，有關其藥品釋放之敘述，下列何者<strong>最適當</strong>？</span>
+      <div class="qa-meta"><span class="qa-year">114-1</span><span class="qa-arr">▼</span></div>
+    </div>
+    <div class="qa-body" id="q_os2-body">
+      <ul class="qa-opts" id="q_os2-opts">
+        <li onclick="revealOpt('q_os2',this,'wrong')">A. 釋放之驅動力，主要為系統內部與外在環境之藥品濃度梯度</li>
+        <li onclick="revealOpt('q_os2',this,'wrong')">B. 水分對製劑半透膜的穿透性，不影響藥品之釋放速率</li>
+        <li onclick="revealOpt('q_os2',this,'wrong')">C. 製劑之惰性成分在藥品釋放後，可由人體分解吸收</li>
+        <li onclick="revealOpt('q_os2',this,'correct')">D. 藥品之釋放速率，不受胃腸道酸鹼值之影響</li>
+      </ul>
+      <div class="show-ex-btn" onclick="toggleExplain('q_os2')">顯示詳解</div>
+      <div class="qa-explain" id="q_os2-explain">A：驅動力是<strong>滲透壓梯度</strong>，不是濃度梯度；B：水分穿透半透膜→溶解滲透壓劑→產生滲透壓，<strong>會</strong>影響釋放速率；C：惰性殼<strong>不被吸收</strong>，隨糞便排出；D正確：滲透壓驅動與pH無關。</div>
+      <div class="note-area" id="q_os2-note"><div class="note-lbl">📝 補充筆記</div><textarea id="q_os2-ta" placeholder="輸入補充筆記..."></textarea><div class="save-btn" onclick="saveNote('q_os2')">儲存筆記</div></div>
+    </div>
+  </div>
+
+  <!-- Q: Adalat OROS 1122 -->
+  <div class="qa-block" id="q_os3">
+    <div class="qa-q" onclick="toggleQA('q_os3')">
+      <span>有關Adalat OROS® 之敘述，下列何者<strong>最不適當</strong>？</span>
+      <div class="qa-meta"><span class="qa-year">112-2</span><span class="qa-arr">▼</span></div>
+    </div>
+    <div class="qa-body" id="q_os3-body">
+      <ul class="qa-opts" id="q_os3-opts">
+        <li onclick="revealOpt('q_os3',this,'wrong')">A. 外層為不溶性的半透膜</li>
+        <li onclick="revealOpt('q_os3',this,'wrong')">B. 利用雷射形成釋藥孔</li>
+        <li onclick="revealOpt('q_os3',this,'wrong')">C. 藉由滲透壓推動藥物釋出</li>
+        <li onclick="revealOpt('q_os3',this,'correct')">D. 該製劑可完全崩散被人體吸收</li>
+      </ul>
+      <div class="show-ex-btn" onclick="toggleExplain('q_os3')">顯示詳解</div>
+      <div class="qa-explain" id="q_os3-explain">Adalat OROS® 是PPOP系統（nifedipine）。A、B、C都正確描述OROS系統。D錯誤：生物惰性的殼<strong>不會崩散</strong>，在胃腸道保持完整，從糞便排出→告知病人是正常現象。</div>
+      <div class="note-area" id="q_os3-note"><div class="note-lbl">📝 補充筆記</div><textarea id="q_os3-ta" placeholder="輸入補充筆記..."></textarea><div class="save-btn" onclick="saveNote('q_os3')">儲存筆記</div></div>
+    </div>
+  </div>
+
+  <!-- Q: Glucotrol XL 1111 -->
+  <div class="qa-block" id="q_os4">
+    <div class="qa-q" onclick="toggleQA('q_os4')">
+      <span>有關Glucotrol XL ER 錠片，下列敘述何者<strong>最不適當</strong>？</span>
+      <div class="qa-meta"><span class="qa-year">111-1</span><span class="qa-arr">▼</span></div>
+    </div>
+    <div class="qa-body" id="q_os4-body">
+      <ul class="qa-opts" id="q_os4-opts">
+        <li onclick="revealOpt('q_os4',this,'wrong')">A. 屬滲透壓控釋輸藥系統</li>
+        <li onclick="revealOpt('q_os4',this,'wrong')">B. 錠片的生物惰性成分，會在胃腸道中保持完整通過，且從糞便排除</li>
+        <li onclick="revealOpt('q_os4',this,'wrong')">C. 其組成包含 hydroxypropyl cellulose</li>
+        <li onclick="revealOpt('q_os4',this,'correct')">D. 為一種 matrix system 的緩釋系統</li>
+      </ul>
+      <div class="show-ex-btn" onclick="toggleExplain('q_os4')">顯示詳解</div>
+      <div class="qa-explain" id="q_os4-explain">Glucotrol XL（glipizide）是<strong>GITS（滲透壓系統）</strong>，屬於PPOP的一種，不是matrix system。A正確；B正確（殼從糞便排出）；C正確（含HPC等滲透壓劑）；D錯誤：不是matrix system。</div>
+      <div class="note-area" id="q_os4-note"><div class="note-lbl">📝 補充筆記</div><textarea id="q_os4-ta" placeholder="輸入補充筆記..."></textarea><div class="save-btn" onclick="saveNote('q_os4')">儲存筆記</div></div>
+    </div>
+  </div>
+
+  <!-- Q: osmotic pump最易影響速率 1111 -->
+  <div class="qa-block" id="q_os5">
+    <div class="qa-q" onclick="toggleQA('q_os5')">
+      <span>有關osmotic pump錠劑之藥物釋放速率，<strong>最易受</strong>下列何項因素影響？</span>
+      <div class="qa-meta"><span class="qa-year">111-1</span><span class="qa-arr">▼</span></div>
+    </div>
+    <div class="qa-body" id="q_os5-body">
+      <ul class="qa-opts" id="q_os5-opts">
+        <li onclick="revealOpt('q_os5',this,'wrong')">A. 腸胃中食物</li>
+        <li onclick="revealOpt('q_os5',this,'wrong')">B. 媒液pH值</li>
+        <li onclick="revealOpt('q_os5',this,'correct')">C. 錠劑之半透膜厚度</li>
+        <li onclick="revealOpt('q_os5',this,'wrong')">D. 腸胃道蠕動</li>
+      </ul>
+      <div class="show-ex-btn" onclick="toggleExplain('q_os5')">顯示詳解</div>
+      <div class="qa-explain" id="q_os5-explain">A（食物）、B（pH）、D（蠕動）：osmotic pump都不受這些生理/環境因素影響。<strong>C：半透膜厚度</strong>決定水分進入速率→直接影響滲透壓建立→影響藥物推出速率，是最直接的因素。</div>
+      <div class="note-area" id="q_os5-note"><div class="note-lbl">📝 補充筆記</div><textarea id="q_os5-ta" placeholder="輸入補充筆記..."></textarea><div class="save-btn" onclick="saveNote('q_os5')">儲存筆記</div></div>
+    </div>
+  </div>
+
+  <!-- Q: EOP vs PPOP 1102 -->
+  <div class="qa-block" id="q_os6">
+    <div class="qa-q" onclick="toggleQA('q_os6')">
+      <span>比較EOP和PPOP二種滲透壓控釋系統，下列敘述何者<strong>錯誤</strong>？</span>
+      <div class="qa-meta"><span class="qa-year">110-2</span><span class="qa-arr">▼</span></div>
+    </div>
+    <div class="qa-body" id="q_os6-body">
+      <ul class="qa-opts" id="q_os6-opts">
+        <li onclick="revealOpt('q_os6',this,'correct')">A. PPOP比EOP多了一層吸水膨脹的高分子層，使藥物能遵循first order kinetics釋放</li>
+        <li onclick="revealOpt('q_os6',this,'wrong')">B. 在PPOP系統，藥物層及高分子層均會加入osmotic agents，以提高系統內滲透壓</li>
+        <li onclick="revealOpt('q_os6',this,'wrong')">C. 和EOP相比，PPOP所選用的高分子材質亦提高了水溶性不佳藥物的遞送效率</li>
+        <li onclick="revealOpt('q_os6',this,'wrong')">D. 在PPOP系統，不論是溶解狀態或懸浮的藥物均可自此系統釋放出來</li>
+      </ul>
+      <div class="show-ex-btn" onclick="toggleExplain('q_os6')">顯示詳解</div>
+      <div class="qa-explain" id="q_os6-explain">A錯誤：PPOP釋放遵循的是<strong>Zero-order（零級）動力學</strong>，不是first-order。因為滲透壓梯度恆定→推力恆定→釋放速率恆定→零級。B、C、D皆正確描述PPOP優勢。</div>
+      <div class="note-area" id="q_os6-note"><div class="note-lbl">📝 補充筆記</div><textarea id="q_os6-ta" placeholder="輸入補充筆記..."></textarea><div class="save-btn" onclick="saveNote('q_os6')">儲存筆記</div></div>
+    </div>
+  </div>
+
+  <!-- Q: Covera-HS onset 1102 -->
+  <div class="qa-block" id="q_os7">
+    <div class="qa-q" onclick="toggleQA('q_os7')">
+      <span>Covera-HS錠片屬滲透壓性劑型，其藥物onset時間約在服藥後4~5小時。請問啟動該藥物釋放之機制為何？</span>
+      <div class="qa-meta"><span class="qa-year">110-2</span><span class="qa-arr">▼</span></div>
+    </div>
+    <div class="qa-body" id="q_os7-body">
+      <ul class="qa-opts" id="q_os7-opts">
+        <li onclick="revealOpt('q_os7',this,'wrong')">A. 適量厭水性物質添加於核蕊</li>
+        <li onclick="revealOpt('q_os7',this,'wrong')">B. 核蕊在包覆腸溶包衣後再包覆半透膜層</li>
+        <li onclick="revealOpt('q_os7',this,'wrong')">C. 適量厭水性物質添加於半透膜內</li>
+        <li onclick="revealOpt('q_os7',this,'correct')">D. 包覆可緩慢溶解層於核蕊與半透膜層間</li>
+      </ul>
+      <div class="show-ex-btn" onclick="toggleExplain('q_os7')">顯示詳解</div>
+      <div class="qa-explain" id="q_os7-explain">COER系統延遲關鍵：在<strong>核蕊和半透膜之間加了一層緩慢溶解的delay coat</strong>（如含HPMC的包衣層）。水分進入→需先花4~5小時把delay coat溶解→才能持續進水建立滲透壓→push layer推動藥物釋出。</div>
+      <div class="note-area" id="q_os7-note"><div class="note-lbl">📝 補充筆記</div><textarea id="q_os7-ta" placeholder="輸入補充筆記..."></textarea><div class="save-btn" onclick="saveNote('q_os7')">儲存筆記</div></div>
+    </div>
+  </div>
+
+  <!-- Q: Adalat CR 蕊錠設計 1092 -->
+  <div class="qa-block" id="q_os8">
+    <div class="qa-q" onclick="toggleQA('q_os8')">
+      <span>Adalat CR® 是含有nifedipine的OROS劑型，下列敘述何者<strong>錯誤</strong>？</span>
+      <div class="qa-meta"><span class="qa-year">109-2</span><span class="qa-arr">▼</span></div>
+    </div>
+    <div class="qa-body" id="q_os8-body">
+      <ul class="qa-opts" id="q_os8-opts">
+        <li onclick="revealOpt('q_os8',this,'wrong')">A. 藥物釋出速率為常數</li>
+        <li onclick="revealOpt('q_os8',this,'wrong')">B. 蕊錠包覆一層半透膜</li>
+        <li onclick="revealOpt('q_os8',this,'wrong')">C. 滲透壓啟動藥物釋出</li>
+        <li onclick="revealOpt('q_os8',this,'correct')">D. 蕊錠是單層錠的設計</li>
+      </ul>
+      <div class="show-ex-btn" onclick="toggleExplain('q_os8')">顯示詳解</div>
+      <div class="qa-explain" id="q_os8-explain">Adalat OROS（nifedipine）是PPOP系統，蕊錠是<strong>雙層設計</strong>：藥物層 + 滲透壓推進層。說「單層錠」是錯誤的。A：零級釋放，速率為常數 ✓；B：半透膜包覆 ✓；C：滲透壓驅動 ✓。</div>
+      <div class="note-area" id="q_os8-note"><div class="note-lbl">📝 補充筆記</div><textarea id="q_os8-ta" placeholder="輸入補充筆記..."></textarea><div class="save-btn" onclick="saveNote('q_os8')">儲存筆記</div></div>
+    </div>
+  </div>
+
+  <!-- Q: osmotic pump不影響 1101 -->
+  <div class="qa-block" id="q_os9">
+    <div class="qa-q" onclick="toggleQA('q_os9')">
+      <span>於OROS system，下列何者<strong>最不會</strong>影響藥物之釋放速率？</span>
+      <div class="qa-meta"><span class="qa-year">110-1</span><span class="qa-arr">▼</span></div>
+    </div>
+    <div class="qa-body" id="q_os9-body">
+      <ul class="qa-opts" id="q_os9-opts">
+        <li onclick="revealOpt('q_os9',this,'correct')">A. 胃腸蠕動情形</li>
+        <li onclick="revealOpt('q_os9',this,'wrong')">B. 製劑表面半透膜材質</li>
+        <li onclick="revealOpt('q_os9',this,'wrong')">C. 製劑表面orifice孔徑</li>
+        <li onclick="revealOpt('q_os9',this,'wrong')">D. 製劑表面積</li>
+      </ul>
+      <div class="show-ex-btn" onclick="toggleExplain('q_os9')">顯示詳解</div>
+      <div class="qa-explain" id="q_os9-explain"><strong>胃腸蠕動</strong>對osmotic pump幾乎無影響（驅動力是滲透壓，不是被動擴散，不靠蠕動協助）。B：膜材質決定水分穿透率→影響；C：孔徑決定藥物推出速率→影響；D：表面積決定水分進入量→影響。</div>
+      <div class="note-area" id="q_os9-note"><div class="note-lbl">📝 補充筆記</div><textarea id="q_os9-ta" placeholder="輸入補充筆記..."></textarea><div class="save-btn" onclick="saveNote('q_os9')">儲存筆記</div></div>
+    </div>
+  </div>
+
+  <!-- IVIVC 考題 -->
+  <div class="qa-cat" id="qa-ivivc">IVIVC</div>
+
+  <!-- Q: Level A 1121 -->
+  <div class="qa-block" id="q_iv1">
+    <div class="qa-q" onclick="toggleQA('q_iv1')">
+      <span>下列何者屬於<strong>Level A</strong>的in vitro-in vivo correlations（IVIVC）？</span>
+      <div class="qa-meta"><span class="qa-year">112-1</span><span class="qa-arr">▼</span></div>
+    </div>
+    <div class="qa-body" id="q_iv1-body">
+      <ul class="qa-opts" id="q_iv1-opts">
+        <li onclick="revealOpt('q_iv1',this,'wrong')">A. 體外溶離速率常數和體內吸收速率常數</li>
+        <li onclick="revealOpt('q_iv1',this,'wrong')">B. 體外溶出50%的時間和體內最高血中濃度</li>
+        <li onclick="revealOpt('q_iv1',this,'wrong')">C. 體外平均溶離時間和體內平均溶離時間</li>
+        <li onclick="revealOpt('q_iv1',this,'correct')">D. 體外溶離量和體內吸收量之經時變化相關性</li>
+      </ul>
+      <div class="show-ex-btn" onclick="toggleExplain('q_iv1')">顯示詳解</div>
+      <div class="qa-explain" id="q_iv1-explain">Level A = <strong>點對點（point-to-point）</strong>：全部體外溶離時程 ↔ 全部體內吸收時程的曲線對曲線比較。A是速率常數（總結參數）→Level B；B是T50 vs Cmax（單一點vs單一點）→Level C；C是平均時間比較→Level B；D是經時變化（整條曲線）→Level A ✓。</div>
+      <div class="note-area" id="q_iv1-note"><div class="note-lbl">📝 補充筆記</div><textarea id="q_iv1-ta" placeholder="輸入補充筆記..."></textarea><div class="save-btn" onclick="saveNote('q_iv1')">儲存筆記</div></div>
+    </div>
+  </div>
+
+  <!-- Q: Level B 1111 平均滯留時間 -->
+  <div class="qa-block" id="q_iv2">
+    <div class="qa-q" onclick="toggleQA('q_iv2')">
+      <span>在IVIVC試驗中，以體外溶離試驗所獲得的<strong>平均溶離時間</strong>與藥物在體內的<strong>平均滯留時間</strong>作比較，是屬於何種層級的相關性？</span>
+      <div class="qa-meta"><span class="qa-year">111-1</span><span class="qa-arr">▼</span></div>
+    </div>
+    <div class="qa-body" id="q_iv2-body">
+      <ul class="qa-opts" id="q_iv2-opts">
+        <li onclick="revealOpt('q_iv2',this,'wrong')">A. level A</li>
+        <li onclick="revealOpt('q_iv2',this,'correct')">B. level B</li>
+        <li onclick="revealOpt('q_iv2',this,'wrong')">C. level C</li>
+        <li onclick="revealOpt('q_iv2',this,'wrong')">D. level S</li>
+      </ul>
+      <div class="show-ex-btn" onclick="toggleExplain('q_iv2')">顯示詳解</div>
+      <div class="qa-explain" id="q_iv2-explain">「平均溶離時間 vs 平均滯留時間」都是<strong>總結參數（summary parameter）</strong>的比較→<strong>Level B</strong>。Level A是整條曲線比較；Level C是特定時間點溶離量 vs Cmax/AUC。</div>
+      <div class="note-area" id="q_iv2-note"><div class="note-lbl">📝 補充筆記</div><textarea id="q_iv2-ta" placeholder="輸入補充筆記..."></textarea><div class="save-btn" onclick="saveNote('q_iv2')">儲存筆記</div></div>
+    </div>
+  </div>
+
+  <!-- Q: Level C 1061 -->
+  <div class="qa-block" id="q_iv3">
+    <div class="qa-q" onclick="toggleQA('q_iv3')">
+      <span>下列何者屬於<strong>Level C</strong>的IVIVC？</span>
+      <div class="qa-meta"><span class="qa-year">106-1</span><span class="qa-arr">▼</span></div>
+    </div>
+    <div class="qa-body" id="q_iv3-body">
+      <ul class="qa-opts" id="q_iv3-opts">
+        <li onclick="revealOpt('q_iv3',this,'wrong')">A. 體外溶離時間和體內吸收量</li>
+        <li onclick="revealOpt('q_iv3',this,'wrong')">B. 體外平均溶離和體內平均釋出時間</li>
+        <li onclick="revealOpt('q_iv3',this,'correct')">C. 體外3小時之溶離量和體內AUC</li>
+        <li onclick="revealOpt('q_iv3',this,'wrong')">D. 體外平均溶離時間和體內滯留時間</li>
+      </ul>
+      <div class="show-ex-btn" onclick="toggleExplain('q_iv3')">顯示詳解</div>
+      <div class="qa-explain" id="q_iv3-explain">Level C = 特定時間點體外溶離量（或T50）↔ 體內Cmax或AUC（單一總結參數）。<strong>C：體外3小時溶離量（特定時間點）↔ AUC（體內總結參數）</strong>→Level C ✓。B和D都是平均時間對平均時間→Level B。</div>
+      <div class="note-area" id="q_iv3-note"><div class="note-lbl">📝 補充筆記</div><textarea id="q_iv3-ta" placeholder="輸入補充筆記..."></textarea><div class="save-btn" onclick="saveNote('q_iv3')">儲存筆記</div></div>
+    </div>
+  </div>
+
+  <!-- Q: IVIVC最佳溶離條件 1072 -->
+  <div class="qa-block" id="q_iv4">
+    <div class="qa-q" onclick="toggleQA('q_iv4')">
+      <span>當建立IVIVC時，下列何者是<strong>最佳</strong>的溶離裝置（apparatus type）與溶離液酸鹼值？</span>
+      <div class="qa-meta"><span class="qa-year">107-2</span><span class="qa-arr">▼</span></div>
+    </div>
+    <div class="qa-body" id="q_iv4-body">
+      <ul class="qa-opts" id="q_iv4-opts">
+        <li onclick="revealOpt('q_iv4',this,'wrong')">A. apparatus type II and pH 7.4</li>
+        <li onclick="revealOpt('q_iv4',this,'wrong')">B. apparatus type III and pH 4.5</li>
+        <li onclick="revealOpt('q_iv4',this,'correct')">C. apparatus type I and pH 6.8</li>
+        <li onclick="revealOpt('q_iv4',this,'wrong')">D. apparatus type IV and pH 1.2</li>
+      </ul>
+      <div class="show-ex-btn" onclick="toggleExplain('q_iv4')">顯示詳解</div>
+      <div class="qa-explain" id="q_iv4-explain">FDA指引：IVIVC建立優先使用<strong>Type I（網籃）或Type II（槳式）</strong>，溶離液pH<strong>不超過6.8</strong>的水性媒液。故最佳組合為<strong>Type I + pH 6.8</strong>。</div>
+      <div class="note-area" id="q_iv4-note"><div class="note-lbl">📝 補充筆記</div><textarea id="q_iv4-ta" placeholder="輸入補充筆記..."></textarea><div class="save-btn" onclick="saveNote('q_iv4')">儲存筆記</div></div>
+    </div>
+  </div>
+
+  <!-- 遲釋 & 綜合 -->
+  <div class="qa-cat" id="qa-delayed">遲釋 & 綜合</div>
+
+  <!-- Q: delayed release目的 omeprazole 1111 -->
+  <div class="qa-block" id="q_dr1">
+    <div class="qa-q" onclick="toggleQA('q_dr1')">
+      <span>口服omeprazole設計成延遲釋放（delayed release）劑型的<strong>最主要目的</strong>為何？</span>
+      <div class="qa-meta"><span class="qa-year">111-1</span><span class="qa-arr">▼</span></div>
+    </div>
+    <div class="qa-body" id="q_dr1-body">
+      <ul class="qa-opts" id="q_dr1-opts">
+        <li onclick="revealOpt('q_dr1',this,'wrong')">A. 減少服藥時造成的胃腸不適感</li>
+        <li onclick="revealOpt('q_dr1',this,'wrong')">B. 在腸道有較好的吸收</li>
+        <li onclick="revealOpt('q_dr1',this,'correct')">C. 避免被胃酸破壞</li>
+        <li onclick="revealOpt('q_dr1',this,'wrong')">D. 延長藥物的作用時間</li>
+      </ul>
+      <div class="show-ex-btn" onclick="toggleExplain('q_dr1')">顯示詳解</div>
+      <div class="qa-explain" id="q_dr1-explain">Omeprazole（PPI）在<strong>酸性環境不穩定</strong>，胃酸（pH 1~2）會使其降解失活。做成腸溶劑型的<strong>最主要目的是避免被胃酸破壞</strong>，讓藥物完整到達小腸吸收後才產生作用。</div>
+      <div class="note-area" id="q_dr1-note"><div class="note-lbl">📝 補充筆記</div><textarea id="q_dr1-ta" placeholder="輸入補充筆記..."></textarea><div class="save-btn" onclick="saveNote('q_dr1')">儲存筆記</div></div>
+    </div>
+  </div>
+
+  <!-- Q: erythromycin delayed release 1071 -->
+  <div class="qa-block" id="q_dr2">
+    <div class="qa-q" onclick="toggleQA('q_dr2')">
+      <span>紅黴素延遲性釋放膠囊（erythromycin delayed-release capsules）的劑型設計之<strong>主要目的</strong>為何？</span>
+      <div class="qa-meta"><span class="qa-year">107-1</span><span class="qa-arr">▼</span></div>
+    </div>
+    <div class="qa-body" id="q_dr2-body">
+      <ul class="qa-opts" id="q_dr2-opts">
+        <li onclick="revealOpt('q_dr2',this,'wrong')">A. 降低紅黴素對胃部的刺激</li>
+        <li onclick="revealOpt('q_dr2',this,'correct')">B. 保護紅黴素不受胃酸降解</li>
+        <li onclick="revealOpt('q_dr2',this,'wrong')">C. 加速排空增加紅黴素吸收</li>
+        <li onclick="revealOpt('q_dr2',this,'wrong')">D. 提高抑制大腸細菌的毒性</li>
+      </ul>
+      <div class="show-ex-btn" onclick="toggleExplain('q_dr2')">顯示詳解</div>
+      <div class="qa-explain" id="q_dr2-explain">Erythromycin（紅黴素）在酸性環境中不穩定，胃酸會破壞其結構。做成腸溶（delayed-release）是為了<strong>保護藥物通過胃→到小腸才釋放</strong>→避免降解。注意：減少胃刺激是次要目的，保護不受胃酸破壞才是最主要。</div>
+      <div class="note-area" id="q_dr2-note"><div class="note-lbl">📝 補充筆記</div><textarea id="q_dr2-ta" placeholder="輸入補充筆記..."></textarea><div class="save-btn" onclick="saveNote('q_dr2')">儲存筆記</div></div>
+    </div>
+  </div>
+
+  <!-- Q: 腸溶包衣材料 1102 不適合 -->
+  <div class="qa-block" id="q_dr3">
+    <div class="qa-q" onclick="toggleQA('q_dr3')">
+      <span>下列何者最<strong>不適合</strong>做為錠劑之腸溶包衣？</span>
+      <div class="qa-meta"><span class="qa-year">110-2 / 108-1</span><span class="qa-arr">▼</span></div>
+    </div>
+    <div class="qa-body" id="q_dr3-body">
+      <ul class="qa-opts" id="q_dr3-opts">
+        <li onclick="revealOpt('q_dr3',this,'wrong')">A. shellac</li>
+        <li onclick="revealOpt('q_dr3',this,'correct')">B. hydroxypropyl methylcellulose</li>
+        <li onclick="revealOpt('q_dr3',this,'wrong')">C. polyvinyl acetate phthalate</li>
+        <li onclick="revealOpt('q_dr3',this,'wrong')">D. cellulose acetate phthalate</li>
+      </ul>
+      <div class="show-ex-btn" onclick="toggleExplain('q_dr3')">顯示詳解</div>
+      <div class="qa-explain" id="q_dr3-explain">A（shellac）、C（PVAP）、D（CAP）：phthalate酯化或天然腸溶材料，在低pH（胃）不溶，高pH（腸）溶解→適合腸溶包衣。<strong>HPMC（B）</strong>：一般的HPMC是水溶性的，不具pH敏感性，在胃中就會溶解→不適合腸溶包衣。（注意：HPMCP = HPMC + phthalate才有腸溶性）</div>
+      <div class="note-area" id="q_dr3-note"><div class="note-lbl">📝 補充筆記</div><textarea id="q_dr3-ta" placeholder="輸入補充筆記..."></textarea><div class="save-btn" onclick="saveNote('q_dr3')">儲存筆記</div></div>
+    </div>
+  </div>
+
+  <!-- Q: Eudragit S溶解部位 1081 -->
+  <div class="qa-block" id="q_dr4">
+    <div class="qa-q" onclick="toggleQA('q_dr4')">
+      <span>下列何種材料可保護劑型通過胃部到達<strong>迴腸（ileum）</strong>後溶解而釋出藥物？</span>
+      <div class="qa-meta"><span class="qa-year">108-1</span><span class="qa-arr">▼</span></div>
+    </div>
+    <div class="qa-body" id="q_dr4-body">
+      <ul class="qa-opts" id="q_dr4-opts">
+        <li onclick="revealOpt('q_dr4',this,'wrong')">A. hydroxyl propylmethylcellulose phthalate（HPMCP）</li>
+        <li onclick="revealOpt('q_dr4',this,'wrong')">B. cellulose acetate phthalate（CAP）</li>
+        <li onclick="revealOpt('q_dr4',this,'wrong')">C. shellac</li>
+        <li onclick="revealOpt('q_dr4',this,'correct')">D. methacrylic acid copolymer B（Eudragit S）</li>
+      </ul>
+      <div class="show-ex-btn" onclick="toggleExplain('q_dr4')">顯示詳解</div>
+      <div class="qa-explain" id="q_dr4-explain">各材料溶解pH：HPMCP溶於pH~5-6（小腸上段）；CAP溶於pH~6（十二指腸）；Shellac溶於pH&gt;7；<strong>Eudragit S（Methacrylic acid copolymer B）</strong>溶於<strong>pH≥7</strong>→對應<strong>迴腸（ileum）</strong>以下，是最適合治療迴腸/結腸疾病（如mesalamine）的腸溶材料。</div>
+      <div class="note-area" id="q_dr4-note"><div class="note-lbl">📝 補充筆記</div><textarea id="q_dr4-ta" placeholder="輸入補充筆記..."></textarea><div class="save-btn" onclick="saveNote('q_dr4')">儲存筆記</div></div>
+    </div>
+  </div>
+
+  <!-- Q: 綜合控釋 1132 錯誤選項 -->
+  <div class="qa-block" id="q_gr1">
+    <div class="qa-q" onclick="toggleQA('q_gr1')">
+      <span>有關口服控釋製劑之敘述，下列何者<strong>錯誤</strong>？</span>
+      <div class="qa-meta"><span class="qa-year">113-2</span><span class="qa-arr">▼</span></div>
+    </div>
+    <div class="qa-body" id="q_gr1-body">
+      <ul class="qa-opts" id="q_gr1-opts">
+        <li onclick="revealOpt('q_gr1',this,'wrong')">A. 體內半衰期在4~6小時之內的藥品，適合製備成控釋劑型</li>
+        <li onclick="revealOpt('q_gr1',this,'correct')">B. 離子交換輸藥系統（ion-exchange resins）之藥物釋放速率通常取決於藥物溶解度</li>
+        <li onclick="revealOpt('q_gr1',this,'wrong')">C. 滲透壓控釋系統（osmotic pump）之藥物溶液通透半透膜的速率和媒液pH值無關</li>
+        <li onclick="revealOpt('q_gr1',this,'wrong')">D. 微粒包衣技術（microencapsulation）可以利用包衣與核心之重量比來調控藥物釋放速率</li>
+      </ul>
+      <div class="show-ex-btn" onclick="toggleExplain('q_gr1')">顯示詳解</div>
+      <div class="qa-explain" id="q_gr1-explain">B錯誤：離子交換樹脂藥物釋放取決於<strong>胃腸道pH值與電解質濃度</strong>（離子交換環境），<strong>不是</strong>藥物溶解度。A ✓、C ✓（osmotic pump不受pH影響）、D ✓（包衣/核心比例可調控）。</div>
+      <div class="note-area" id="q_gr1-note"><div class="note-lbl">📝 補充筆記</div><textarea id="q_gr1-ta" placeholder="輸入補充筆記..."></textarea><div class="save-btn" onclick="saveNote('q_gr1')">儲存筆記</div></div>
+    </div>
+  </div>
+
+  <!-- Q: 綜合modified-release臨床使用 1082 -->
+  <div class="qa-block" id="q_gr2">
+    <div class="qa-q" onclick="toggleQA('q_gr2')">
+      <span>有關口服修飾性藥物釋放劑型（modified-release dosage forms）的臨床使用考量之敘述，下列何者<strong>錯誤</strong>？</span>
+      <div class="qa-meta"><span class="qa-year">108-2</span><span class="qa-arr">▼</span></div>
+    </div>
+    <div class="qa-body" id="q_gr2-body">
+      <ul class="qa-opts" id="q_gr2-opts">
+        <li onclick="revealOpt('q_gr2',this,'wrong')">A. 不能壓碎錠片圓粒給幼兒使用</li>
+        <li onclick="revealOpt('q_gr2',this,'wrong')">B. 不能使用作為調配成其他劑型</li>
+        <li onclick="revealOpt('q_gr2',this,'wrong')">C. 不能與一般速放劑型交替使用</li>
+        <li onclick="revealOpt('q_gr2',this,'correct')">D. 不必告知病人會排出劑型空殼</li>
+      </ul>
+      <div class="show-ex-btn" onclick="toggleExplain('q_gr2')">顯示詳解</div>
+      <div class="qa-explain" id="q_gr2-explain">D錯誤：<strong>應該要告知</strong>病人會排出空殼（如osmotic pump錠片），以免病人誤以為藥物沒有吸收。A、B、C都是正確的臨床使用限制。</div>
+      <div class="note-area" id="q_gr2-note"><div class="note-lbl">📝 補充筆記</div><textarea id="q_gr2-ta" placeholder="輸入補充筆記..."></textarea><div class="save-btn" onclick="saveNote('q_gr2')">儲存筆記</div></div>
+    </div>
+  </div>
+
+  <!-- Q: 1082 速放控釋吸收步驟 -->
+  <div class="qa-block" id="q_gr3">
+    <div class="qa-q" onclick="toggleQA('q_gr3')">
+      <span>有關錠劑經口服投藥後，於腸胃道吸收過程之敘述，下列何者<strong>正確</strong>？</span>
+      <div class="qa-meta"><span class="qa-year">108-2</span><span class="qa-arr">▼</span></div>
+    </div>
+    <div class="qa-body" id="q_gr3-body">
+      <ul class="qa-opts" id="q_gr3-opts">
+        <li onclick="revealOpt('q_gr3',this,'wrong')">A. 對速放錠劑而言，崩散通常為速率決定步驟</li>
+        <li onclick="revealOpt('q_gr3',this,'wrong')">B. 對控釋錠劑而言，崩散通常為速率決定步驟</li>
+        <li onclick="revealOpt('q_gr3',this,'correct')">C. 對速放錠劑而言，若藥物之溶解度甚差，則藥物之溶離通常為速率決定步驟</li>
+        <li onclick="revealOpt('q_gr3',this,'wrong')">D. 對控釋錠劑而言，若藥物之溶解度甚差，則藥物通透腸胃道細胞膜通常為速率決定步驟</li>
+      </ul>
+      <div class="show-ex-btn" onclick="toggleExplain('q_gr3')">顯示詳解</div>
+      <div class="qa-explain" id="q_gr3-explain">A：速放錠劑→崩散快，通常不是速率決定步驟；B：控釋錠劑→速率決定步驟是<strong>藥物從基質/包衣釋放</strong>，不是崩散；C正確：速放錠劑若藥物溶解度差→崩散快但溶離慢→<strong>溶離</strong>是速率決定步驟；D：控釋錠劑的速率決定步驟仍是<strong>藥物釋放步驟</strong>，不是穿膜。</div>
+      <div class="note-area" id="q_gr3-note"><div class="note-lbl">📝 補充筆記</div><textarea id="q_gr3-ta" placeholder="輸入補充筆記..."></textarea><div class="save-btn" onclick="saveNote('q_gr3')">儲存筆記</div></div>
+    </div>
+  </div>
+
+  <!-- Q: 不是延遲釋放目的 1061 -->
+  <div class="qa-block" id="q_gr4">
+    <div class="qa-q" onclick="toggleQA('q_gr4')">
+      <span>下列何者<strong>不是</strong>延遲性（delayed-release）口服劑型設計之目的？</span>
+      <div class="qa-meta"><span class="qa-year">106-1</span><span class="qa-arr">▼</span></div>
+    </div>
+    <div class="qa-body" id="q_gr4-body">
+      <ul class="qa-opts" id="q_gr4-opts">
+        <li onclick="revealOpt('q_gr4',this,'wrong')">A. 防止藥物被胃酸破壞</li>
+        <li onclick="revealOpt('q_gr4',this,'wrong')">B. 保護胃不受藥物損傷</li>
+        <li onclick="revealOpt('q_gr4',this,'wrong')">C. 提高藥物生體可用率</li>
+        <li onclick="revealOpt('q_gr4',this,'correct')">D. 加速藥物排空至小腸</li>
+      </ul>
+      <div class="show-ex-btn" onclick="toggleExplain('q_gr4')">顯示詳解</div>
+      <div class="qa-explain" id="q_gr4-explain">Delayed-release的三大目的：A防胃酸破壞、B保護胃、C提高生體可用率（在腸道吸收更好）。<strong>D「加速排空至小腸」</strong>不是設計目的，delayed-release是讓藥物<strong>等待</strong>到達小腸後才釋放，不是主動加速。</div>
+      <div class="note-area" id="q_gr4-note"><div class="note-lbl">📝 補充筆記</div><textarea id="q_gr4-ta" placeholder="輸入補充筆記..."></textarea><div class="save-btn" onclick="saveNote('q_gr4')">儲存筆記</div></div>
+    </div>
+  </div>
+
+  <!-- Q: 不是ER優點 1061 -->
+  <div class="qa-block" id="q_gr5">
+    <div class="qa-q" onclick="toggleQA('q_gr5')">
+      <span>下列何者<strong>不是</strong>長效性口服劑型在臨床使用時病人所能得到的優點？</span>
+      <div class="qa-meta"><span class="qa-year">106-1</span><span class="qa-arr">▼</span></div>
+    </div>
+    <div class="qa-body" id="q_gr5-body">
+      <ul class="qa-opts" id="q_gr5-opts">
+        <li onclick="revealOpt('q_gr5',this,'wrong')">A. 延長病人維持有效濃度的期間</li>
+        <li onclick="revealOpt('q_gr5',this,'correct')">B. 依據病人需求可調整給藥劑量</li>
+        <li onclick="revealOpt('q_gr5',this,'wrong')">C. 提高病人使用便利性與依順性</li>
+        <li onclick="revealOpt('q_gr5',this,'wrong')">D. 降低病人服用產生不良副作用</li>
+      </ul>
+      <div class="show-ex-btn" onclick="toggleExplain('q_gr5')">顯示詳解</div>
+      <div class="qa-explain" id="q_gr5-explain">ER劑型的缺點之一就是<strong>劑量調整彈性差</strong>→不能隨便調整劑量（不能磨粉、不能拆開）。所以B「可依病人需求調整劑量」是<strong>不正確的描述</strong>，正好是ER的缺點。</div>
+      <div class="note-area" id="q_gr5-note"><div class="note-lbl">📝 補充筆記</div><textarea id="q_gr5-ta" placeholder="輸入補充筆記..."></textarea><div class="save-btn" onclick="saveNote('q_gr5')">儲存筆記</div></div>
+    </div>
+  </div>
+
+  <!-- Q: 1022 不可任意替換 -->
+  <div class="qa-block" id="q_gr6">
+    <div class="qa-q" onclick="toggleQA('q_gr6')">
+      <span>下列有關控釋製劑在臨床上之使用何者為<strong>正確</strong>？</span>
+      <div class="qa-meta"><span class="qa-year">102-2</span><span class="qa-arr">▼</span></div>
+    </div>
+    <div class="qa-body" id="q_gr6-body">
+      <ul class="qa-opts" id="q_gr6-opts">
+        <li onclick="revealOpt('q_gr6',this,'wrong')">A. 在使用速放製劑達穩定狀態後可和控釋製劑交替使用</li>
+        <li onclick="revealOpt('q_gr6',this,'wrong')">B. 其和速放製劑在穩定狀態時最高血中濃度相同</li>
+        <li onclick="revealOpt('q_gr6',this,'wrong')">C. 控釋材質可在腸胃道中逐漸溶解及吸收</li>
+        <li onclick="revealOpt('q_gr6',this,'correct')">D. 不同控釋製劑間因生體可用率可能不同，因此不可任意替換使用</li>
+      </ul>
+      <div class="show-ex-btn" onclick="toggleExplain('q_gr6')">顯示詳解</div>
+      <div class="qa-explain" id="q_gr6-explain">A：不能交替使用（釋放特性不同）；B：控釋製劑Cmax<strong>低於</strong>速放製劑（血中濃度波動少是優點）；C：控釋材質（如EC、PE、PVAc）不被腸胃道吸收；D正確：不同廠牌控釋製劑生體可用率可能不同，<strong>不可任意替換</strong>。</div>
+      <div class="note-area" id="q_gr6-note"><div class="note-lbl">📝 補充筆記</div><textarea id="q_gr6-ta" placeholder="輸入補充筆記..."></textarea><div class="save-btn" onclick="saveNote('q_gr6')">儲存筆記</div></div>
+    </div>
+  </div>
+
+</section><!-- end QA -->
+
+</main>
 </div>
 
 <script>
 function toggleQA(id) {
   const block = document.getElementById(id);
   const body = document.getElementById(id + '-body');
+  if (!body) return;
+  const isOpen = body.classList.contains('show');
   body.classList.toggle('show');
   block.classList.toggle('open');
 }
 
 function revealOpt(qid, el, type) {
   const opts = document.querySelectorAll('#' + qid + '-opts li');
-  opts.forEach(li => { li.onclick = null; }); // disable further clicks
+  // Disable all
+  opts.forEach(li => { li.onclick = null; });
+  // Mark clicked
   if (type === 'correct') {
-    el.classList.add('revealed-correct');
+    el.classList.add('r-ok');
     el.textContent = '✓ ' + el.textContent;
   } else {
-    el.classList.add('revealed-wrong');
+    el.classList.add('r-ng');
     el.textContent = '✗ ' + el.textContent;
-    // also reveal correct
-    opts.forEach(li => {
-      if (!li.classList.contains('revealed-wrong') && !li.classList.contains('revealed-correct')) {
-        // find the correct one by checking data — we mark it via onclick containing 'correct'
-      }
-    });
   }
-  // show note area
-  document.getElementById(qid + '-note').classList.add('show');
+  // Reveal note area
+  const noteArea = document.getElementById(qid + '-note');
+  if (noteArea) noteArea.classList.add('show');
 }
 
 function toggleExplain(qid) {
   const el = document.getElementById(qid + '-explain');
-  const btn = el.previousElementSibling;
+  const btn = document.querySelector('#' + qid + '-body .show-ex-btn');
+  if (!el) return;
   el.classList.toggle('show');
-  btn.textContent = el.classList.contains('show') ? '收起詳解' : '顯示詳解';
-  document.getElementById(qid + '-note').classList.add('show');
+  if (btn) btn.textContent = el.classList.contains('show') ? '收起詳解' : '顯示詳解';
+  const noteArea = document.getElementById(qid + '-note');
+  if (noteArea) noteArea.classList.add('show');
 }
 
 function saveNote(qid) {
   const ta = document.getElementById(qid + '-ta');
-  const btn = ta.nextElementSibling;
+  const btn = ta ? ta.nextElementSibling : null;
+  if (!ta || !btn) return;
   try {
     localStorage.setItem('pharma_note_' + qid, ta.value);
+    const orig = btn.textContent;
     btn.textContent = '已儲存 ✓';
-    btn.classList.add('qa-note-saved');
-    setTimeout(() => { btn.textContent = '儲存筆記'; btn.classList.remove('qa-note-saved'); }, 1500);
+    btn.classList.add('saved');
+    setTimeout(() => { btn.textContent = orig; btn.classList.remove('saved'); }, 1500);
   } catch(e) {}
 }
 
-// Load saved notes on page load
+// Load saved notes
 window.addEventListener('DOMContentLoaded', () => {
-  ['q1','q2','q3','q4','q5','q6'].forEach(qid => {
+  document.querySelectorAll('textarea[id$="-ta"]').forEach(ta => {
+    const qid = ta.id.replace('-ta', '');
     try {
-      const saved = localStorage.getItem('pharma_note_' + qid);
-      if (saved) {
-        const ta = document.getElementById(qid + '-ta');
-        if (ta) ta.value = saved;
-      }
+      const v = localStorage.getItem('pharma_note_' + qid);
+      if (v) ta.value = v;
     } catch(e) {}
   });
 });
