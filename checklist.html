@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>藥學國考進度表 7/18</title>
 <style>
+
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#f5f5f0;padding:1.5rem;color:#1a1a1a}
 h1{font-size:18px;font-weight:500;margin-bottom:.3rem}
@@ -13,11 +14,15 @@ h1{font-size:18px;font-weight:500;margin-bottom:.3rem}
 .phase-hd{font-size:11px;font-weight:500;color:#888;letter-spacing:.06em;text-transform:uppercase;margin:1.5rem 0 .5rem;padding-bottom:4px;border-bottom:.5px solid #ddd}
 .wcard{background:#fff;border:.5px solid #e0e0e0;border-radius:12px;margin-bottom:.55rem;overflow:hidden}
 .wcard.today{border:2px solid #378ADD}
+.wcard.week-summary{background:#F8FBFF;border:.5px solid #C5D9F0;border-radius:10px;margin-bottom:.9rem;margin-top:.3rem}
 .wtop{display:flex;align-items:center;gap:9px;padding:.6rem 1rem;cursor:pointer;user-select:none}
 .wtop:hover{background:#fafafa}
+.week-summary .wtop:hover{background:#EEF5FF}
 .wbg{font-size:11px;font-weight:500;padding:2px 9px;border-radius:20px;white-space:nowrap;flex-shrink:0}
-.wdt{font-size:12px;color:#888;min-width:76px;flex-shrink:0}
+.wbg.week-badge{font-size:11px;font-weight:700;padding:3px 10px;border-radius:6px;background:#1A4A7A;color:#fff}
+.wdt{font-size:12px;color:#888;min-width:80px;flex-shrink:0}
 .wti{font-size:13px;font-weight:500;flex:1}
+.wti.week-title{font-size:13px;font-weight:700;color:#1A4A7A}
 .chev{font-size:11px;color:#bbb;transition:transform .2s;flex-shrink:0}
 .chev.open{transform:rotate(90deg)}
 .wbody{border-top:.5px solid #eee;display:none}
@@ -43,11 +48,18 @@ h1{font-size:18px;font-weight:500;margin-bottom:.3rem}
 .binfo{background:#EEF5FD;color:#185FA5;border:.5px solid #B5D4F4}
 .bsuc{background:#EEFBF4;color:#0F6E56;border:.5px solid #9FE1CB}
 .bdanger{background:#FEF0F0;color:#A32D2D;border:.5px solid #F7C1C1}
+.week-summary-inner{padding:.55rem 1rem .8rem}
+.ws-row{display:flex;align-items:baseline;gap:8px;margin-bottom:5px;flex-wrap:wrap}
+.ws-sci{font-size:10px;font-weight:700;padding:1px 7px;border-radius:4px;flex-shrink:0;min-width:52px;text-align:center}
+.ws-items{font-size:11px;color:#555;line-height:1.8;flex:1;min-width:0}
+.ws-new{color:#185FA5;font-weight:500}
+.ws-rev{color:#7A4800}
+
 </style>
 </head>
 <body>
 <h1>藥學國考進度表</h1>
-<div class="subtitle">7/18（週六）國考｜打勾自動儲存｜早上7:00中藥・藥理10:15・下午藥劑・晚上19:00藥分・21:00生藥</div>
+<div class="subtitle">7/18（週六）國考｜打勾自動儲存｜藥分已加入讀後複習（+3天/+7天）｜每週藍色卡片可展開看本週科目總覽</div>
 <div class="overall">
   <div style="display:flex;justify-content:space-between">
     <span style="font-size:12px;color:#888">整體進度</span>
@@ -56,102 +68,67 @@ h1{font-size:18px;font-weight:500;margin-bottom:.3rem}
   <div class="pb"><div class="pf" id="ov-fill" style="width:0%"></div></div>
 </div>
 <div class="banner bwarn">從 4/22（週三）開始｜課表：週三早八・週四15:00・週五12:00</div>
-<div id="app"></div>
+
+<div id="old-app"></div>
+
+<div class="phase-hd">5/8（週五）重排 — 藥理/藥劑/藥分進度校準</div>
+<div class="banner binfo">🔵 藍色首讀・🟤 第1次複習・🔴 第2次複習・🟢 第3次複習｜每週藍色卡片 = 本週進度總覽</div>
+
+<div class="wcard today"><div class="wtop" onclick="tog(this)"><span class="wbg" style="background:#FAEEDA;color:#633806">5/8</span><span class="wdt">5/8 週五 課到12:00</span><span class="wti"></span><span class="pct-label" style="font-size:11px;color:#aaa;margin-right:4px">0%</span><span class="chev open">▶</span></div><div class="wbody open"><div class="sr"><span class="slb" style="background:#EEEDFE;color:#3C3489">早 7:00 中藥</span><div><div class="item" id="row_k430397347_d0508__早_7_00_中藥__0" onclick="ck('k430397347_d0508__早_7_00_中藥__0')"><input type="checkbox" id="cb_k430397347_d0508__早_7_00_中藥__0" onclick="event.stopPropagation()"><span class="tx c-new">首讀 消食藥</span></div></div></div><div class="sr"><span class="slb" style="background:#E6F1FB;color:#0C447C">上午 藥理</span><div><div class="item" id="row_k2130818462_d0508__上午_藥理__0" onclick="ck('k2130818462_d0508__上午_藥理__0')"><input type="checkbox" id="cb_k2130818462_d0508__上午_藥理__0" onclick="event.stopPropagation()"><span class="tx c-new">首讀 心衰竭(30) 最後一天</span></div><div class="item" id="row_k2130818463_d0508__上午_藥理__1" onclick="ck('k2130818463_d0508__上午_藥理__1')"><input type="checkbox" id="cb_k2130818463_d0508__上午_藥理__1" onclick="event.stopPropagation()"><span class="tx c-ra">複習 鎮靜安眠藥物 第3次</span></div></div></div><div class="sr"><span class="slb" style="background:#FAECE7;color:#712B13">下午 12:00 藥劑</span><div><div class="item" id="row_k948461739_d0508__下午_12_00_藥劑__" onclick="ck('k948461739_d0508__下午_12_00_藥劑__')"><input type="checkbox" id="cb_k948461739_d0508__下午_12_00_藥劑__" onclick="event.stopPropagation()"><span class="tx c-new">首讀 生物藥劑 Ch3 第1天</span></div><div class="item" id="row_k948461740_d0508__下午_12_00_藥劑__" onclick="ck('k948461740_d0508__下午_12_00_藥劑__')"><input type="checkbox" id="cb_k948461740_d0508__下午_12_00_藥劑__" onclick="event.stopPropagation()"><span class="tx c-new">首讀 膠囊・栓劑 1 第1天</span></div></div></div><div class="sr"><span class="slb" style="background:#EAF3DE;color:#27500A">晚 19:00 藥分</span><div><div class="item" id="row_k2138206442_d0508__晚_19_00_藥分__0" onclick="ck('k2138206442_d0508__晚_19_00_藥分__0')"><input type="checkbox" id="cb_k2138206442_d0508__晚_19_00_藥分__0" onclick="event.stopPropagation()"><span class="tx c-new">首讀 HPLC(高效液相層析) 第1晚</span></div></div></div><div class="sr"><span class="slb" style="background:#EEEDFE;color:#26215C">晚 21:00 生藥</span><div><div class="item" id="row_k490842286_d0508__晚_21_00_生藥__0" onclick="ck('k490842286_d0508__晚_21_00_生藥__0')"><input type="checkbox" id="cb_k490842286_d0508__晚_21_00_生藥__0" onclick="event.stopPropagation()"><span class="tx c-new">配糖體 I 第3天</span></div></div></div><div style="padding:.4rem 1rem .5rem"><div class="pb"><div class="pf" style="width:0%"></div></div><div class="pl">0/7 完成</div></div></div></div>
+<div class="wcard"><div class="wtop" onclick="tog(this)"><span class="wbg" style="background:#E6F1FB;color:#0C447C">5/9</span><span class="wdt">5/9 週六</span><span class="wti"></span><span class="pct-label" style="font-size:11px;color:#aaa;margin-right:4px">0%</span><span class="chev">▶</span></div><div class="wbody"><div class="sr"><span class="slb" style="background:#EEEDFE;color:#3C3489">早 7:00 中藥</span><div><div class="item" id="row_k1937949156_d0509__早_7_00_中藥__0" onclick="ck('k1937949156_d0509__早_7_00_中藥__0')"><input type="checkbox" id="cb_k1937949156_d0509__早_7_00_中藥__0" onclick="event.stopPropagation()"><span class="tx c-new">首讀 瀉下藥</span></div></div></div><div class="sr"><span class="slb" style="background:#E6F1FB;color:#0C447C">上午 藥理</span><div><div class="item" id="row_k333867103_d0509__上午_藥理__0" onclick="ck('k333867103_d0509__上午_藥理__0')"><input type="checkbox" id="cb_k333867103_d0509__上午_藥理__0" onclick="event.stopPropagation()"><span class="tx c-new">首讀 心律不整(29)</span></div><div class="item" id="row_k333867104_d0509__上午_藥理__1" onclick="ck('k333867104_d0509__上午_藥理__1')"><input type="checkbox" id="cb_k333867104_d0509__上午_藥理__1" onclick="event.stopPropagation()"><span class="tx c-ra">複習 藥效學・藥動學・總論 第1次（補）</span></div><div class="item" id="row_k333867105_d0509__上午_藥理__2" onclick="ck('k333867105_d0509__上午_藥理__2')"><input type="checkbox" id="cb_k333867105_d0509__上午_藥理__2" onclick="event.stopPropagation()"><span class="tx c-ra">複習 交感神經用藥 第1次（補）</span></div><div class="item" id="row_k333867106_d0509__上午_藥理__3" onclick="ck('k333867106_d0509__上午_藥理__3')"><input type="checkbox" id="cb_k333867106_d0509__上午_藥理__3" onclick="event.stopPropagation()"><span class="tx c-ra">複習 高血壓 第2次</span></div></div></div><div class="sr"><span class="slb" style="background:#FAECE7;color:#712B13">下午 藥劑</span><div><div class="item" id="row_k1821517523_d0509__下午_藥劑__0" onclick="ck('k1821517523_d0509__下午_藥劑__0')"><input type="checkbox" id="cb_k1821517523_d0509__下午_藥劑__0" onclick="event.stopPropagation()"><span class="tx c-new">首讀 生物藥劑 Ch3 第2天</span></div><div class="item" id="row_k1821517524_d0509__下午_藥劑__1" onclick="ck('k1821517524_d0509__下午_藥劑__1')"><input type="checkbox" id="cb_k1821517524_d0509__下午_藥劑__1" onclick="event.stopPropagation()"><span class="tx c-new">首讀 膠囊・栓劑 1 第2天</span></div></div></div><div class="sr"><span class="slb" style="background:#EAF3DE;color:#27500A">晚 19:00 藥分</span><div><div class="item" id="row_k1627672265_d0509__晚_19_00_藥分__0" onclick="ck('k1627672265_d0509__晚_19_00_藥分__0')"><input type="checkbox" id="cb_k1627672265_d0509__晚_19_00_藥分__0" onclick="event.stopPropagation()"><span class="tx c-new">首讀 HPLC(高效液相層析) 第2晚</span></div></div></div><div class="sr"><span class="slb" style="background:#EEEDFE;color:#26215C">晚 21:00 生藥</span><div><div class="item" id="row_k2127791757_d0509__晚_21_00_生藥__0" onclick="ck('k2127791757_d0509__晚_21_00_生藥__0')"><input type="checkbox" id="cb_k2127791757_d0509__晚_21_00_生藥__0" onclick="event.stopPropagation()"><span class="tx c-new">配糖體 II 第1天</span></div></div></div><div style="padding:.4rem 1rem .5rem"><div class="pb"><div class="pf" style="width:0%"></div></div><div class="pl">0/9 完成</div></div></div></div>
+<div class="wcard"><div class="wtop" onclick="tog(this)"><span class="wbg" style="background:#E6F1FB;color:#0C447C">5/10</span><span class="wdt">5/10 週日</span><span class="wti"></span><span class="pct-label" style="font-size:11px;color:#aaa;margin-right:4px">0%</span><span class="chev">▶</span></div><div class="wbody"><div class="sr"><span class="slb" style="background:#EEEDFE;color:#3C3489">早 7:00 中藥</span><div><div class="item" id="row_k744350586_d0510__早_7_00_中藥__0" onclick="ck('k744350586_d0510__早_7_00_中藥__0')"><input type="checkbox" id="cb_k744350586_d0510__早_7_00_中藥__0" onclick="event.stopPropagation()"><span class="tx c-new">首讀 活血祛瘀藥</span></div></div></div><div class="sr"><span class="slb" style="background:#E6F1FB;color:#0C447C">上午 藥理</span><div><div class="item" id="row_k1603126517_d0510__上午_藥理__0" onclick="ck('k1603126517_d0510__上午_藥理__0')"><input type="checkbox" id="cb_k1603126517_d0510__上午_藥理__0" onclick="event.stopPropagation()"><span class="tx c-new">首讀 利尿劑(26)</span></div><div class="item" id="row_k1603126518_d0510__上午_藥理__1" onclick="ck('k1603126518_d0510__上午_藥理__1')"><input type="checkbox" id="cb_k1603126518_d0510__上午_藥理__1" onclick="event.stopPropagation()"><span class="tx c-ra">複習 副交感神經・神經節・神經肌肉阻斷劑 第1次（補）</span></div><div class="item" id="row_k1603126519_d0510__上午_藥理__2" onclick="ck('k1603126519_d0510__上午_藥理__2')"><input type="checkbox" id="cb_k1603126519_d0510__上午_藥理__2" onclick="event.stopPropagation()"><span class="tx c-ra">複習 酒精・中樞總論 第3次</span></div><div class="item" id="row_k1603126520_d0510__上午_藥理__3" onclick="ck('k1603126520_d0510__上午_藥理__3')"><input type="checkbox" id="cb_k1603126520_d0510__上午_藥理__3" onclick="event.stopPropagation()"><span class="tx c-ra">複習 心絞痛 第2次</span></div></div></div><div class="sr"><span class="slb" style="background:#FAECE7;color:#712B13">下午 藥劑</span><div><div class="item" id="row_k943293289_d0510__下午_藥劑__0" onclick="ck('k943293289_d0510__下午_藥劑__0')"><input type="checkbox" id="cb_k943293289_d0510__下午_藥劑__0" onclick="event.stopPropagation()"><span class="tx c-new">首讀 生物藥劑 Ch3 第3天</span></div><div class="item" id="row_k943293290_d0510__下午_藥劑__1" onclick="ck('k943293290_d0510__下午_藥劑__1')"><input type="checkbox" id="cb_k943293290_d0510__下午_藥劑__1" onclick="event.stopPropagation()"><span class="tx c-new">首讀 膠囊・栓劑 1 第3天</span></div></div></div><div class="sr"><span class="slb" style="background:#EAF3DE;color:#27500A">晚 19:00 藥分</span><div><div class="item" id="row_k1133338611_d0510__晚_19_00_藥分__0" onclick="ck('k1133338611_d0510__晚_19_00_藥分__0')"><input type="checkbox" id="cb_k1133338611_d0510__晚_19_00_藥分__0" onclick="event.stopPropagation()"><span class="tx c-ra">複習 TLC(薄層層析) 第1次</span></div><div class="item" id="row_k1133338612_d0510__晚_19_00_藥分__1" onclick="ck('k1133338612_d0510__晚_19_00_藥分__1')"><input type="checkbox" id="cb_k1133338612_d0510__晚_19_00_藥分__1" onclick="event.stopPropagation()"><span class="tx c-new">首讀 HPLC(高效液相層析) 第3晚</span></div></div></div><div class="sr"><span class="slb" style="background:#EEEDFE;color:#26215C">晚 21:00 生藥</span><div><div class="item" id="row_k1633458103_d0510__晚_21_00_生藥__0" onclick="ck('k1633458103_d0510__晚_21_00_生藥__0')"><input type="checkbox" id="cb_k1633458103_d0510__晚_21_00_生藥__0" onclick="event.stopPropagation()"><span class="tx c-new">配糖體 II 第2天</span></div></div></div><div style="padding:.4rem 1rem .5rem"><div class="pb"><div class="pf" style="width:0%"></div></div><div class="pl">0/10 完成</div></div></div></div>
+<div class="wcard week-summary"><div class="wtop" onclick="tog(this)"><span class="wbg week-badge">第3週</span><span class="wdt" style="color:#1A4A7A;font-weight:500">5/11（週一）–5/17（週日）</span><span class="wti week-title">本週進度總覽</span><span class="chev">▶</span></div><div class="wbody"><div class="week-summary-inner"><div class="ws-row"><span class="ws-sci" style="background:#E6F1FB;color:#0C447C">本週藥理</span><span class="ws-items"><span class="ws-new">首讀：首讀 抗凝血藥物(31)、首讀 降血脂藥物(33)、首讀 抗腫瘤藥物 1(02前半)、首讀 抗腫瘤藥物 2(02後半)、首讀 標靶藥物(03)</span><br><span class="ws-rev">複習：複習 巴金森氏症 第1次（補）、複習 血清素・興奮劑・迷幻藥 第3次、複習 心衰竭 第1次、複習 心律不整(29) 第1次、複習 抗癲癇藥物 第1次（補） …+18項</span></span></div><div class="ws-row"><span class="ws-sci" style="background:#FAECE7;color:#712B13">本週藥劑</span><span class="ws-items"><span class="ws-new">首讀：首讀 生物藥劑 Ch4、首讀 膠囊・栓劑 2、首讀 乳劑・懸浮劑 1、首讀 生物藥劑 Ch5、首讀 乳劑・懸浮劑 2、首讀 膠體、首讀 生物藥劑 Ch6</span><br><span class="ws-rev">複習：複習 膠囊・栓劑 1 第2次、複習 膠囊・栓劑 2 第2次、複習 乳劑・懸浮劑 1 第2次</span></span></div><div class="ws-row"><span class="ws-sci" style="background:#EAF3DE;color:#27500A">本週藥分</span><span class="ws-items"><span class="ws-new">首讀：首讀 SFC(超臨界流體)、首讀 GC(氣相層析)、首讀 萃取法</span><br><span class="ws-rev">複習：複習 HPLC(高效液相層析) 第1次、複習 TLC(薄層層析) 第2次、複習 SFC(超臨界流體) 第1次、複習 HPLC(高效液相層析) 第2次</span></span></div></div></div></div>
+<div class="wcard"><div class="wtop" onclick="tog(this)"><span class="wbg" style="background:#E6F1FB;color:#0C447C">5/11</span><span class="wdt">5/11 週一</span><span class="wti"></span><span class="pct-label" style="font-size:11px;color:#aaa;margin-right:4px">0%</span><span class="chev">▶</span></div><div class="wbody"><div class="sr"><span class="slb" style="background:#EEEDFE;color:#3C3489">早 7:00 中藥</span><div><div class="item" id="row_k104418747_d0511__早_7_00_中藥__0" onclick="ck('k104418747_d0511__早_7_00_中藥__0')"><input type="checkbox" id="cb_k104418747_d0511__早_7_00_中藥__0" onclick="event.stopPropagation()"><span class="tx c-new">首讀 止血藥</span></div></div></div><div class="sr"><span class="slb" style="background:#E6F1FB;color:#0C447C">上午 藥理</span><div><div class="item" id="row_k1953658806_d0511__上午_藥理__0" onclick="ck('k1953658806_d0511__上午_藥理__0')"><input type="checkbox" id="cb_k1953658806_d0511__上午_藥理__0" onclick="event.stopPropagation()"><span class="tx c-new">首讀 抗凝血藥物(31)</span></div><div class="item" id="row_k1953658807_d0511__上午_藥理__1" onclick="ck('k1953658807_d0511__上午_藥理__1')"><input type="checkbox" id="cb_k1953658807_d0511__上午_藥理__1" onclick="event.stopPropagation()"><span class="tx c-ra">複習 巴金森氏症 第1次（補）</span></div><div class="item" id="row_k1953658808_d0511__上午_藥理__2" onclick="ck('k1953658808_d0511__上午_藥理__2')"><input type="checkbox" id="cb_k1953658808_d0511__上午_藥理__2" onclick="event.stopPropagation()"><span class="tx c-ra">複習 血清素・興奮劑・迷幻藥 第3次</span></div><div class="item" id="row_k1953658809_d0511__上午_藥理__3" onclick="ck('k1953658809_d0511__上午_藥理__3')"><input type="checkbox" id="cb_k1953658809_d0511__上午_藥理__3" onclick="event.stopPropagation()"><span class="tx c-ra">複習 心衰竭 第1次</span></div></div></div><div class="sr"><span class="slb" style="background:#FAECE7;color:#712B13">下午 藥劑</span><div><div class="item" id="row_k1293825578_d0511__下午_藥劑__0" onclick="ck('k1293825578_d0511__下午_藥劑__0')"><input type="checkbox" id="cb_k1293825578_d0511__下午_藥劑__0" onclick="event.stopPropagation()"><span class="tx c-new">首讀 生物藥劑 Ch4 第1天</span></div><div class="item" id="row_k1293825579_d0511__下午_藥劑__1" onclick="ck('k1293825579_d0511__下午_藥劑__1')"><input type="checkbox" id="cb_k1293825579_d0511__下午_藥劑__1" onclick="event.stopPropagation()"><span class="tx c-new">首讀 膠囊・栓劑 2 第1天</span></div></div></div><div class="sr"><span class="slb" style="background:#EAF3DE;color:#27500A">晚 19:00 藥分</span><div><div class="item" id="row_k622804434_d0511__晚_19_00_藥分__0" onclick="ck('k622804434_d0511__晚_19_00_藥分__0')"><input type="checkbox" id="cb_k622804434_d0511__晚_19_00_藥分__0" onclick="event.stopPropagation()"><span class="tx c-new">首讀 SFC(超臨界流體) 第1晚</span></div></div></div><div class="sr"><span class="slb" style="background:#EEEDFE;color:#26215C">晚 21:00 生藥</span><div><div class="item" id="row_k1122923926_d0511__晚_21_00_生藥__0" onclick="ck('k1122923926_d0511__晚_21_00_生藥__0')"><input type="checkbox" id="cb_k1122923926_d0511__晚_21_00_生藥__0" onclick="event.stopPropagation()"><span class="tx c-new">配糖體 II 第3天</span></div></div></div><div style="padding:.4rem 1rem .5rem"><div class="pb"><div class="pf" style="width:0%"></div></div><div class="pl">0/9 完成</div></div></div></div>
+<div class="wcard"><div class="wtop" onclick="tog(this)"><span class="wbg" style="background:#E6F1FB;color:#0C447C">5/12</span><span class="wdt">5/12 週二</span><span class="wti"></span><span class="pct-label" style="font-size:11px;color:#aaa;margin-right:4px">0%</span><span class="chev">▶</span></div><div class="wbody"><div class="sr"><span class="slb" style="background:#EEEDFE;color:#3C3489">早 7:00 中藥</span><div><div class="item" id="row_k1611970556_d0512__早_7_00_中藥__0" onclick="ck('k1611970556_d0512__早_7_00_中藥__0')"><input type="checkbox" id="cb_k1611970556_d0512__早_7_00_中藥__0" onclick="event.stopPropagation()"><span class="tx c-new">首讀 清熱解毒藥</span></div></div></div><div class="sr"><span class="slb" style="background:#E6F1FB;color:#0C447C">上午 藥理</span><div><div class="item" id="row_k156707447_d0512__上午_藥理__0" onclick="ck('k156707447_d0512__上午_藥理__0')"><input type="checkbox" id="cb_k156707447_d0512__上午_藥理__0" onclick="event.stopPropagation()"><span class="tx c-new">首讀 降血脂藥物(33)</span></div><div class="item" id="row_k156707448_d0512__上午_藥理__1" onclick="ck('k156707448_d0512__上午_藥理__1')"><input type="checkbox" id="cb_k156707448_d0512__上午_藥理__1" onclick="event.stopPropagation()"><span class="tx c-ra">複習 心律不整(29) 第1次</span></div><div class="item" id="row_k156707449_d0512__上午_藥理__2" onclick="ck('k156707449_d0512__上午_藥理__2')"><input type="checkbox" id="cb_k156707449_d0512__上午_藥理__2" onclick="event.stopPropagation()"><span class="tx c-ra">複習 抗癲癇藥物 第1次（補）</span></div><div class="item" id="row_k156707450_d0512__上午_藥理__3" onclick="ck('k156707450_d0512__上午_藥理__3')"><input type="checkbox" id="cb_k156707450_d0512__上午_藥理__3" onclick="event.stopPropagation()"><span class="tx c-ra">複習 全身麻醉劑 第1次（補）</span></div></div></div><div class="sr"><span class="slb" style="background:#FAECE7;color:#712B13">下午 藥劑</span><div><div class="item" id="row_k1644357867_d0512__下午_藥劑__0" onclick="ck('k1644357867_d0512__下午_藥劑__0')"><input type="checkbox" id="cb_k1644357867_d0512__下午_藥劑__0" onclick="event.stopPropagation()"><span class="tx c-new">首讀 生物藥劑 Ch4 第2天</span></div><div class="item" id="row_k1644357868_d0512__下午_藥劑__1" onclick="ck('k1644357868_d0512__下午_藥劑__1')"><input type="checkbox" id="cb_k1644357868_d0512__下午_藥劑__1" onclick="event.stopPropagation()"><span class="tx c-new">首讀 膠囊・栓劑 2 第2天</span></div></div></div><div class="sr"><span class="slb" style="background:#EAF3DE;color:#27500A">晚 19:00 藥分</span><div><div class="item" id="row_k112270257_d0512__晚_19_00_藥分__0" onclick="ck('k112270257_d0512__晚_19_00_藥分__0')"><input type="checkbox" id="cb_k112270257_d0512__晚_19_00_藥分__0" onclick="event.stopPropagation()"><span class="tx c-new">首讀 SFC(超臨界流體) 第2晚</span></div></div></div><div class="sr"><span class="slb" style="background:#EEEDFE;color:#26215C">晚 21:00 生藥</span><div><div class="item" id="row_k612389749_d0512__晚_21_00_生藥__0" onclick="ck('k612389749_d0512__晚_21_00_生藥__0')"><input type="checkbox" id="cb_k612389749_d0512__晚_21_00_生藥__0" onclick="event.stopPropagation()"><span class="tx c-new">多醣類・樹脂 第1天</span></div></div></div><div style="padding:.4rem 1rem .5rem"><div class="pb"><div class="pf" style="width:0%"></div></div><div class="pl">0/9 完成</div></div></div></div>
+<div class="wcard"><div class="wtop" onclick="tog(this)"><span class="wbg" style="background:#FAEEDA;color:#633806">5/13</span><span class="wdt">5/13 週三 早八課</span><span class="wti"></span><span class="pct-label" style="font-size:11px;color:#aaa;margin-right:4px">0%</span><span class="chev">▶</span></div><div class="wbody"><div class="sr"><span class="slb" style="background:#EEEDFE;color:#3C3489">早 7:00 中藥</span><div><div class="item" id="row_k972038717_d0513__早_7_00_中藥__0" onclick="ck('k972038717_d0513__早_7_00_中藥__0')"><input type="checkbox" id="cb_k972038717_d0513__早_7_00_中藥__0" onclick="event.stopPropagation()"><span class="tx c-new">首讀 清熱瀉火藥</span></div></div></div><div class="sr"><span class="slb" style="background:#E6F1FB;color:#0C447C">上 10:30 藥理</span><div><div class="item" id="row_k1194853318_d0513__上_10_30_藥理__0" onclick="ck('k1194853318_d0513__上_10_30_藥理__0')"><input type="checkbox" id="cb_k1194853318_d0513__上_10_30_藥理__0" onclick="event.stopPropagation()"><span class="tx c-new">首讀 抗腫瘤藥物 1(02前半) 第1天</span></div><div class="item" id="row_k1194853319_d0513__上_10_30_藥理__1" onclick="ck('k1194853319_d0513__上_10_30_藥理__1')"><input type="checkbox" id="cb_k1194853319_d0513__上_10_30_藥理__1" onclick="event.stopPropagation()"><span class="tx c-ra">複習 利尿劑(26) 第1次</span></div><div class="item" id="row_k1194853320_d0513__上_10_30_藥理__2" onclick="ck('k1194853320_d0513__上_10_30_藥理__2')"><input type="checkbox" id="cb_k1194853320_d0513__上_10_30_藥理__2" onclick="event.stopPropagation()"><span class="tx c-ra">複習 精神分裂症・躁鬱・憂鬱 第1次（補）</span></div><div class="item" id="row_k1194853321_d0513__上_10_30_藥理__3" onclick="ck('k1194853321_d0513__上_10_30_藥理__3')"><input type="checkbox" id="cb_k1194853321_d0513__上_10_30_藥理__3" onclick="event.stopPropagation()"><span class="tx c-ra">複習 局部麻醉劑 第1次（補）</span></div></div></div><div class="sr"><span class="slb" style="background:#FAECE7;color:#712B13">下午 藥劑</span><div><div class="item" id="row_k1994890156_d0513__下午_藥劑__0" onclick="ck('k1994890156_d0513__下午_藥劑__0')"><input type="checkbox" id="cb_k1994890156_d0513__下午_藥劑__0" onclick="event.stopPropagation()"><span class="tx c-new">首讀 生物藥劑 Ch4 第3天</span></div><div class="item" id="row_k1994890157_d0513__下午_藥劑__1" onclick="ck('k1994890157_d0513__下午_藥劑__1')"><input type="checkbox" id="cb_k1994890157_d0513__下午_藥劑__1" onclick="event.stopPropagation()"><span class="tx c-rb">複習 膠囊・栓劑 1 第2次</span></div><div class="item" id="row_k1994890158_d0513__下午_藥劑__2" onclick="ck('k1994890158_d0513__下午_藥劑__2')"><input type="checkbox" id="cb_k1994890158_d0513__下午_藥劑__2" onclick="event.stopPropagation()"><span class="tx c-new">首讀 乳劑・懸浮劑 1</span></div></div></div><div class="sr"><span class="slb" style="background:#EAF3DE;color:#27500A">晚 19:00 藥分</span><div><div class="item" id="row_k1749219728_d0513__晚_19_00_藥分__0" onclick="ck('k1749219728_d0513__晚_19_00_藥分__0')"><input type="checkbox" id="cb_k1749219728_d0513__晚_19_00_藥分__0" onclick="event.stopPropagation()"><span class="tx c-ra">複習 HPLC(高效液相層析) 第1次</span></div><div class="item" id="row_k1749219729_d0513__晚_19_00_藥分__1" onclick="ck('k1749219729_d0513__晚_19_00_藥分__1')"><input type="checkbox" id="cb_k1749219729_d0513__晚_19_00_藥分__1" onclick="event.stopPropagation()"><span class="tx c-new">首讀 SFC(超臨界流體) 第3晚</span></div></div></div><div class="sr"><span class="slb" style="background:#EEEDFE;color:#26215C">晚 21:00 生藥</span><div><div class="item" id="row_k101855572_d0513__晚_21_00_生藥__0" onclick="ck('k101855572_d0513__晚_21_00_生藥__0')"><input type="checkbox" id="cb_k101855572_d0513__晚_21_00_生藥__0" onclick="event.stopPropagation()"><span class="tx c-new">多醣類・樹脂 第2天</span></div></div></div><div style="padding:.4rem 1rem .5rem"><div class="pb"><div class="pf" style="width:0%"></div></div><div class="pl">0/11 完成</div></div></div></div>
+<div class="wcard"><div class="wtop" onclick="tog(this)"><span class="wbg" style="background:#FAEEDA;color:#633806">5/14</span><span class="wdt">5/14 週四 課到15:00</span><span class="wti"></span><span class="pct-label" style="font-size:11px;color:#aaa;margin-right:4px">0%</span><span class="chev">▶</span></div><div class="wbody"><div class="sr"><span class="slb" style="background:#EEEDFE;color:#3C3489">早 7:00 中藥</span><div><div class="item" id="row_k332106878_d0514__早_7_00_中藥__0" onclick="ck('k332106878_d0514__早_7_00_中藥__0')"><input type="checkbox" id="cb_k332106878_d0514__早_7_00_中藥__0" onclick="event.stopPropagation()"><span class="tx c-new">首讀 清熱燥濕藥</span></div></div></div><div class="sr"><span class="slb" style="background:#E6F1FB;color:#0C447C">上午 藥理</span><div><div class="item" id="row_k857772025_d0514__上午_藥理__0" onclick="ck('k857772025_d0514__上午_藥理__0')"><input type="checkbox" id="cb_k857772025_d0514__上午_藥理__0" onclick="event.stopPropagation()"><span class="tx c-new">首讀 抗腫瘤藥物 1(02前半) 第2天</span></div><div class="item" id="row_k857772026_d0514__上午_藥理__1" onclick="ck('k857772026_d0514__上午_藥理__1')"><input type="checkbox" id="cb_k857772026_d0514__上午_藥理__1" onclick="event.stopPropagation()"><span class="tx c-ra">複習 抗凝血藥物(31) 第1次</span></div><div class="item" id="row_k857772027_d0514__上午_藥理__2" onclick="ck('k857772027_d0514__上午_藥理__2')"><input type="checkbox" id="cb_k857772027_d0514__上午_藥理__2" onclick="event.stopPropagation()"><span class="tx c-ra">複習 藥效學・藥動學・總論 第2次（補）</span></div><div class="item" id="row_k857772028_d0514__上午_藥理__3" onclick="ck('k857772028_d0514__上午_藥理__3')"><input type="checkbox" id="cb_k857772028_d0514__上午_藥理__3" onclick="event.stopPropagation()"><span class="tx c-ra">複習 鎮靜安眠藥物 第1次（補）</span></div><div class="item" id="row_k857772029_d0514__上午_藥理__4" onclick="ck('k857772029_d0514__上午_藥理__4')"><input type="checkbox" id="cb_k857772029_d0514__上午_藥理__4" onclick="event.stopPropagation()"><span class="tx c-ra">複習 高血壓 第3次</span></div></div></div><div class="sr"><span class="slb" style="background:#FAECE7;color:#712B13">下午 15:00 藥劑</span><div><div class="item" id="row_k391061027_d0514__下午_15_00_藥劑__" onclick="ck('k391061027_d0514__下午_15_00_藥劑__')"><input type="checkbox" id="cb_k391061027_d0514__下午_15_00_藥劑__" onclick="event.stopPropagation()"><span class="tx c-new">首讀 生物藥劑 Ch5 第1天</span></div><div class="item" id="row_k391061028_d0514__下午_15_00_藥劑__" onclick="ck('k391061028_d0514__下午_15_00_藥劑__')"><input type="checkbox" id="cb_k391061028_d0514__下午_15_00_藥劑__" onclick="event.stopPropagation()"><span class="tx c-new">首讀 乳劑・懸浮劑 2 第1天</span></div></div></div><div class="sr"><span class="slb" style="background:#EAF3DE;color:#27500A">晚 19:00 藥分</span><div><div class="item" id="row_k1238685551_d0514__晚_19_00_藥分__0" onclick="ck('k1238685551_d0514__晚_19_00_藥分__0')"><input type="checkbox" id="cb_k1238685551_d0514__晚_19_00_藥分__0" onclick="event.stopPropagation()"><span class="tx c-ra">複習 TLC(薄層層析) 第2次</span></div><div class="item" id="row_k1238685552_d0514__晚_19_00_藥分__1" onclick="ck('k1238685552_d0514__晚_19_00_藥分__1')"><input type="checkbox" id="cb_k1238685552_d0514__晚_19_00_藥分__1" onclick="event.stopPropagation()"><span class="tx c-new">首讀 GC(氣相層析) 第1晚</span></div></div></div><div class="sr"><span class="slb" style="background:#EEEDFE;color:#26215C">晚 21:00 生藥</span><div><div class="item" id="row_k1738805043_d0514__晚_21_00_生藥__0" onclick="ck('k1738805043_d0514__晚_21_00_生藥__0')"><input type="checkbox" id="cb_k1738805043_d0514__晚_21_00_生藥__0" onclick="event.stopPropagation()"><span class="tx c-new">多醣類・樹脂 第3天</span></div></div></div><div style="padding:.4rem 1rem .5rem"><div class="pb"><div class="pf" style="width:0%"></div></div><div class="pl">0/11 完成</div></div></div></div>
+<div class="wcard"><div class="wtop" onclick="tog(this)"><span class="wbg" style="background:#FAEEDA;color:#633806">5/15</span><span class="wdt">5/15 週五 課到12:00</span><span class="wti"></span><span class="pct-label" style="font-size:11px;color:#aaa;margin-right:4px">0%</span><span class="chev">▶</span></div><div class="wbody"><div class="sr"><span class="slb" style="background:#EEEDFE;color:#3C3489">早 7:00 中藥</span><div><div class="item" id="row_k1839658687_d0515__早_7_00_中藥__0" onclick="ck('k1839658687_d0515__早_7_00_中藥__0')"><input type="checkbox" id="cb_k1839658687_d0515__早_7_00_中藥__0" onclick="event.stopPropagation()"><span class="tx c-new">首讀 清熱涼血藥</span></div></div></div><div class="sr"><span class="slb" style="background:#E6F1FB;color:#0C447C">上午 藥理</span><div><div class="item" id="row_k1208304314_d0515__上午_藥理__0" onclick="ck('k1208304314_d0515__上午_藥理__0')"><input type="checkbox" id="cb_k1208304314_d0515__上午_藥理__0" onclick="event.stopPropagation()"><span class="tx c-ra">複習 降血脂藥物(33) 第1次</span></div><div class="item" id="row_k1208304315_d0515__上午_藥理__1" onclick="ck('k1208304315_d0515__上午_藥理__1')"><input type="checkbox" id="cb_k1208304315_d0515__上午_藥理__1" onclick="event.stopPropagation()"><span class="tx c-ra">複習 心絞痛 第3次</span></div><div class="item" id="row_k1208304316_d0515__上午_藥理__2" onclick="ck('k1208304316_d0515__上午_藥理__2')"><input type="checkbox" id="cb_k1208304316_d0515__上午_藥理__2" onclick="event.stopPropagation()"><span class="tx c-ra">複習 心衰竭 第2次</span></div></div></div><div class="sr"><span class="slb" style="background:#FAECE7;color:#712B13">下午 12:00 藥劑</span><div><div class="item" id="row_k186427591_d0515__下午_12_00_藥劑__" onclick="ck('k186427591_d0515__下午_12_00_藥劑__')"><input type="checkbox" id="cb_k186427591_d0515__下午_12_00_藥劑__" onclick="event.stopPropagation()"><span class="tx c-new">首讀 生物藥劑 Ch5 第2天</span></div><div class="item" id="row_k186427592_d0515__下午_12_00_藥劑__" onclick="ck('k186427592_d0515__下午_12_00_藥劑__')"><input type="checkbox" id="cb_k186427592_d0515__下午_12_00_藥劑__" onclick="event.stopPropagation()"><span class="tx c-rb">複習 膠囊・栓劑 2 第2次</span></div><div class="item" id="row_k186427593_d0515__下午_12_00_藥劑__" onclick="ck('k186427593_d0515__下午_12_00_藥劑__')"><input type="checkbox" id="cb_k186427593_d0515__下午_12_00_藥劑__" onclick="event.stopPropagation()"><span class="tx c-new">首讀 乳劑・懸浮劑 2 第2天</span></div></div></div><div class="sr"><span class="slb" style="background:#EAF3DE;color:#27500A">晚 19:00 藥分</span><div><div class="item" id="row_k728151374_d0515__晚_19_00_藥分__0" onclick="ck('k728151374_d0515__晚_19_00_藥分__0')"><input type="checkbox" id="cb_k728151374_d0515__晚_19_00_藥分__0" onclick="event.stopPropagation()"><span class="tx c-new">首讀 GC(氣相層析) 第2晚</span></div></div></div><div class="sr"><span class="slb" style="background:#EEEDFE;color:#26215C">晚 21:00 生藥</span><div><div class="item" id="row_k1228270866_d0515__晚_21_00_生藥__0" onclick="ck('k1228270866_d0515__晚_21_00_生藥__0')"><input type="checkbox" id="cb_k1228270866_d0515__晚_21_00_生藥__0" onclick="event.stopPropagation()"><span class="tx c-new">苯丙烷 第1天</span></div></div></div><div style="padding:.4rem 1rem .5rem"><div class="pb"><div class="pf" style="width:0%"></div></div><div class="pl">0/9 完成</div></div></div></div>
+<div class="wcard"><div class="wtop" onclick="tog(this)"><span class="wbg" style="background:#E6F1FB;color:#0C447C">5/16</span><span class="wdt">5/16 週六</span><span class="wti"></span><span class="pct-label" style="font-size:11px;color:#aaa;margin-right:4px">0%</span><span class="chev">▶</span></div><div class="wbody"><div class="sr"><span class="slb" style="background:#EEEDFE;color:#3C3489">早 7:00 中藥</span><div><div class="item" id="row_k1199726848_d0516__早_7_00_中藥__0" onclick="ck('k1199726848_d0516__早_7_00_中藥__0')"><input type="checkbox" id="cb_k1199726848_d0516__早_7_00_中藥__0" onclick="event.stopPropagation()"><span class="tx c-ra">複習 活血祛瘀藥・止血藥 第1次</span></div></div></div><div class="sr"><span class="slb" style="background:#E6F1FB;color:#0C447C">上午 藥理</span><div><div class="item" id="row_k1558836603_d0516__上午_藥理__0" onclick="ck('k1558836603_d0516__上午_藥理__0')"><input type="checkbox" id="cb_k1558836603_d0516__上午_藥理__0" onclick="event.stopPropagation()"><span class="tx c-new">首讀 抗腫瘤藥物 2(02後半)</span></div><div class="item" id="row_k1558836604_d0516__上午_藥理__1" onclick="ck('k1558836604_d0516__上午_藥理__1')"><input type="checkbox" id="cb_k1558836604_d0516__上午_藥理__1" onclick="event.stopPropagation()"><span class="tx c-ra">複習 心律不整(29) 第2次</span></div><div class="item" id="row_k1558836605_d0516__上午_藥理__2" onclick="ck('k1558836605_d0516__上午_藥理__2')"><input type="checkbox" id="cb_k1558836605_d0516__上午_藥理__2" onclick="event.stopPropagation()"><span class="tx c-ra">複習 交感神經用藥 第2次（補）</span></div><div class="item" id="row_k1558836606_d0516__上午_藥理__3" onclick="ck('k1558836606_d0516__上午_藥理__3')"><input type="checkbox" id="cb_k1558836606_d0516__上午_藥理__3" onclick="event.stopPropagation()"><span class="tx c-ra">複習 副交感神經・神經節・神經肌肉阻斷劑 第2次（補）</span></div></div></div><div class="sr"><span class="slb" style="background:#FAECE7;color:#712B13">下午 藥劑</span><div><div class="item" id="row_k899003375_d0516__下午_藥劑__0" onclick="ck('k899003375_d0516__下午_藥劑__0')"><input type="checkbox" id="cb_k899003375_d0516__下午_藥劑__0" onclick="event.stopPropagation()"><span class="tx c-new">首讀 生物藥劑 Ch5 第3天</span></div><div class="item" id="row_k899003376_d0516__下午_藥劑__1" onclick="ck('k899003376_d0516__下午_藥劑__1')"><input type="checkbox" id="cb_k899003376_d0516__下午_藥劑__1" onclick="event.stopPropagation()"><span class="tx c-rb">複習 乳劑・懸浮劑 1 第2次</span></div><div class="item" id="row_k899003377_d0516__下午_藥劑__2" onclick="ck('k899003377_d0516__下午_藥劑__2')"><input type="checkbox" id="cb_k899003377_d0516__下午_藥劑__2" onclick="event.stopPropagation()"><span class="tx c-new">首讀 膠體 第1天</span></div></div></div><div class="sr"><span class="slb" style="background:#EAF3DE;color:#27500A">晚 19:00 藥分</span><div><div class="item" id="row_k217617197_d0516__晚_19_00_藥分__0" onclick="ck('k217617197_d0516__晚_19_00_藥分__0')"><input type="checkbox" id="cb_k217617197_d0516__晚_19_00_藥分__0" onclick="event.stopPropagation()"><span class="tx c-ra">複習 SFC(超臨界流體) 第1次</span></div><div class="item" id="row_k217617198_d0516__晚_19_00_藥分__1" onclick="ck('k217617198_d0516__晚_19_00_藥分__1')"><input type="checkbox" id="cb_k217617198_d0516__晚_19_00_藥分__1" onclick="event.stopPropagation()"><span class="tx c-new">首讀 GC(氣相層析) 第3晚</span></div></div></div><div class="sr"><span class="slb" style="background:#EEEDFE;color:#26215C">晚 21:00 生藥</span><div><div class="item" id="row_k717736689_d0516__晚_21_00_生藥__0" onclick="ck('k717736689_d0516__晚_21_00_生藥__0')"><input type="checkbox" id="cb_k717736689_d0516__晚_21_00_生藥__0" onclick="event.stopPropagation()"><span class="tx c-new">苯丙烷 第2天</span></div></div></div><div style="padding:.4rem 1rem .5rem"><div class="pb"><div class="pf" style="width:0%"></div></div><div class="pl">0/11 完成</div></div></div></div>
+<div class="wcard"><div class="wtop" onclick="tog(this)"><span class="wbg" style="background:#E6F1FB;color:#0C447C">5/17</span><span class="wdt">5/17 週日</span><span class="wti"></span><span class="pct-label" style="font-size:11px;color:#aaa;margin-right:4px">0%</span><span class="chev">▶</span></div><div class="wbody"><div class="sr"><span class="slb" style="background:#EEEDFE;color:#3C3489">早 7:00 中藥</span><div><div class="item" id="row_k559795009_d0517__早_7_00_中藥__0" onclick="ck('k559795009_d0517__早_7_00_中藥__0')"><input type="checkbox" id="cb_k559795009_d0517__早_7_00_中藥__0" onclick="event.stopPropagation()"><span class="tx c-ra">複習 清熱解毒藥・清熱瀻火藥 第1次</span></div></div></div><div class="sr"><span class="slb" style="background:#E6F1FB;color:#0C447C">上午 藥理</span><div><div class="item" id="row_k1909368892_d0517__上午_藥理__0" onclick="ck('k1909368892_d0517__上午_藥理__0')"><input type="checkbox" id="cb_k1909368892_d0517__上午_藥理__0" onclick="event.stopPropagation()"><span class="tx c-new">首讀 標靶藥物(03)</span></div><div class="item" id="row_k1909368893_d0517__上午_藥理__1" onclick="ck('k1909368893_d0517__上午_藥理__1')"><input type="checkbox" id="cb_k1909368893_d0517__上午_藥理__1" onclick="event.stopPropagation()"><span class="tx c-ra">複習 利尿劑(26) 第2次</span></div><div class="item" id="row_k1909368894_d0517__上午_藥理__2" onclick="ck('k1909368894_d0517__上午_藥理__2')"><input type="checkbox" id="cb_k1909368894_d0517__上午_藥理__2" onclick="event.stopPropagation()"><span class="tx c-ra">複習 抗腫瘤藥物 1(02前半) 第1次</span></div><div class="item" id="row_k1909368895_d0517__上午_藥理__3" onclick="ck('k1909368895_d0517__上午_藥理__3')"><input type="checkbox" id="cb_k1909368895_d0517__上午_藥理__3" onclick="event.stopPropagation()"><span class="tx c-ra">複習 巴金森氏症 第2次（補）</span></div><div class="item" id="row_k1909368896_d0517__上午_藥理__4" onclick="ck('k1909368896_d0517__上午_藥理__4')"><input type="checkbox" id="cb_k1909368896_d0517__上午_藥理__4" onclick="event.stopPropagation()"><span class="tx c-ra">複習 抗癲癇藥物 第2次（補）</span></div></div></div><div class="sr"><span class="slb" style="background:#FAECE7;color:#712B13">下午 藥劑</span><div><div class="item" id="row_k1249535664_d0517__下午_藥劑__0" onclick="ck('k1249535664_d0517__下午_藥劑__0')"><input type="checkbox" id="cb_k1249535664_d0517__下午_藥劑__0" onclick="event.stopPropagation()"><span class="tx c-new">首讀 生物藥劑 Ch6 第1天</span></div><div class="item" id="row_k1249535665_d0517__下午_藥劑__1" onclick="ck('k1249535665_d0517__下午_藥劑__1')"><input type="checkbox" id="cb_k1249535665_d0517__下午_藥劑__1" onclick="event.stopPropagation()"><span class="tx c-new">首讀 膠體 第2天</span></div></div></div><div class="sr"><span class="slb" style="background:#EAF3DE;color:#27500A">晚 19:00 藥分</span><div><div class="item" id="row_k1854566668_d0517__晚_19_00_藥分__0" onclick="ck('k1854566668_d0517__晚_19_00_藥分__0')"><input type="checkbox" id="cb_k1854566668_d0517__晚_19_00_藥分__0" onclick="event.stopPropagation()"><span class="tx c-ra">複習 HPLC(高效液相層析) 第2次</span></div><div class="item" id="row_k1854566669_d0517__晚_19_00_藥分__1" onclick="ck('k1854566669_d0517__晚_19_00_藥分__1')"><input type="checkbox" id="cb_k1854566669_d0517__晚_19_00_藥分__1" onclick="event.stopPropagation()"><span class="tx c-new">首讀 萃取法 第1晚</span></div></div></div><div class="sr"><span class="slb" style="background:#EEEDFE;color:#26215C">晚 21:00 生藥</span><div><div class="item" id="row_k207202512_d0517__晚_21_00_生藥__0" onclick="ck('k207202512_d0517__晚_21_00_生藥__0')"><input type="checkbox" id="cb_k207202512_d0517__晚_21_00_生藥__0" onclick="event.stopPropagation()"><span class="tx c-new">苯丙烷 第3天</span></div></div></div><div style="padding:.4rem 1rem .5rem"><div class="pb"><div class="pf" style="width:0%"></div></div><div class="pl">0/11 完成</div></div></div></div>
+<div class="wcard week-summary"><div class="wtop" onclick="tog(this)"><span class="wbg week-badge">第4週</span><span class="wdt" style="color:#1A4A7A;font-weight:500">5/18（週一）–5/24（週日）</span><span class="wti week-title">本週進度總覽</span><span class="chev">▶</span></div><div class="wbody"><div class="week-summary-inner"><div class="ws-row"><span class="ws-sci" style="background:#E6F1FB;color:#0C447C">本週藥理</span><span class="ws-items"><span class="ws-new">首讀：首讀 免疫・神經肌肉藥物(04/05)、首讀 抗生素 1(06前段)、首讀 抗生素 2(06中段)、首讀 抗生素 3(06後段)、首讀 抗黴菌・抗肺結核(07/08)、首讀 荷爾蒙藥物(34)</span><br><span class="ws-rev">複習：複習 抗凝血藥物(31) 第2次、複習 全身麻醉劑 第2次（補）、複習 精神分裂症・躁鬱・憂鬱 第2次（補）、複習 酒精・中樞總論 第1次（補）、複習 降血脂藥物(33) 第2次 …+25項</span></span></div><div class="ws-row"><span class="ws-sci" style="background:#FAECE7;color:#712B13">本週藥劑</span><span class="ws-items"><span class="ws-new">首讀：首讀 生物藥劑 Ch6、首讀 溶液劑 1、首讀 溶液劑 2、首讀 生物藥劑 Ch7、首讀 流變學 1、首讀 流變學 2、首讀 散劑・微粒學、首讀 生物藥劑 Ch8、首讀 眼用製劑</span><br><span class="ws-rev">複習：複習 乳劑・懸浮劑 2 第2次、複習 膠體 第2次、複習 溶液劑 1 第2次、複習 溶液劑 2 第2次、複習 流變學 1 第2次 …+1項</span></span></div><div class="ws-row"><span class="ws-sci" style="background:#EAF3DE;color:#27500A">本週藥分</span><span class="ws-items"><span class="ws-new">首讀：首讀 萃取法、首讀 CE(毛細管電泳)、首讀 MS(質譜儀)</span><br><span class="ws-rev">複習：複習 GC(氣相層析) 第1次、複習 SFC(超臨界流體) 第2次、複習 萃取法 第1次、複習 GC(氣相層析) 第2次</span></span></div></div></div></div>
+<div class="wcard"><div class="wtop" onclick="tog(this)"><span class="wbg" style="background:#E6F1FB;color:#0C447C">5/18</span><span class="wdt">5/18 週一</span><span class="wti"></span><span class="pct-label" style="font-size:11px;color:#aaa;margin-right:4px">0%</span><span class="chev">▶</span></div><div class="wbody"><div class="sr"><span class="slb" style="background:#EEEDFE;color:#3C3489">早 7:00 中藥</span><div><div class="item" id="row_k2067346818_d0518__早_7_00_中藥__0" onclick="ck('k2067346818_d0518__早_7_00_中藥__0')"><input type="checkbox" id="cb_k2067346818_d0518__早_7_00_中藥__0" onclick="event.stopPropagation()"><span class="tx c-ra">複習 清熱燥濕藥・清熱涼血藥 第1次</span></div></div></div><div class="sr"><span class="slb" style="background:#E6F1FB;color:#0C447C">上午 藥理</span><div><div class="item" id="row_k112417533_d0518__上午_藥理__0" onclick="ck('k112417533_d0518__上午_藥理__0')"><input type="checkbox" id="cb_k112417533_d0518__上午_藥理__0" onclick="event.stopPropagation()"><span class="tx c-new">首讀 免疫・神經肌肉藥物(04/05)</span></div><div class="item" id="row_k112417534_d0518__上午_藥理__1" onclick="ck('k112417534_d0518__上午_藥理__1')"><input type="checkbox" id="cb_k112417534_d0518__上午_藥理__1" onclick="event.stopPropagation()"><span class="tx c-ra">複習 抗凝血藥物(31) 第2次</span></div><div class="item" id="row_k112417535_d0518__上午_藥理__2" onclick="ck('k112417535_d0518__上午_藥理__2')"><input type="checkbox" id="cb_k112417535_d0518__上午_藥理__2" onclick="event.stopPropagation()"><span class="tx c-ra">複習 全身麻醉劑 第2次（補）</span></div><div class="item" id="row_k112417536_d0518__上午_藥理__3" onclick="ck('k112417536_d0518__上午_藥理__3')"><input type="checkbox" id="cb_k112417536_d0518__上午_藥理__3" onclick="event.stopPropagation()"><span class="tx c-ra">複習 精神分裂症・躁鬱・憂鬱 第2次（補）</span></div><div class="item" id="row_k112417537_d0518__上午_藥理__4" onclick="ck('k112417537_d0518__上午_藥理__4')"><input type="checkbox" id="cb_k112417537_d0518__上午_藥理__4" onclick="event.stopPropagation()"><span class="tx c-ra">複習 酒精・中樞總論 第1次（補）</span></div></div></div><div class="sr"><span class="slb" style="background:#FAECE7;color:#712B13">下午 藥劑</span><div><div class="item" id="row_k1600067953_d0518__下午_藥劑__0" onclick="ck('k1600067953_d0518__下午_藥劑__0')"><input type="checkbox" id="cb_k1600067953_d0518__下午_藥劑__0" onclick="event.stopPropagation()"><span class="tx c-new">首讀 生物藥劑 Ch6 第2天</span></div><div class="item" id="row_k1600067954_d0518__下午_藥劑__1" onclick="ck('k1600067954_d0518__下午_藥劑__1')"><input type="checkbox" id="cb_k1600067954_d0518__下午_藥劑__1" onclick="event.stopPropagation()"><span class="tx c-rb">複習 乳劑・懸浮劑 2 第2次</span></div><div class="item" id="row_k1600067955_d0518__下午_藥劑__2" onclick="ck('k1600067955_d0518__下午_藥劑__2')"><input type="checkbox" id="cb_k1600067955_d0518__下午_藥劑__2" onclick="event.stopPropagation()"><span class="tx c-new">首讀 溶液劑 1</span></div></div></div><div class="sr"><span class="slb" style="background:#EAF3DE;color:#27500A">晚 19:00 藥分</span><div><div class="item" id="row_k1344032491_d0518__晚_19_00_藥分__0" onclick="ck('k1344032491_d0518__晚_19_00_藥分__0')"><input type="checkbox" id="cb_k1344032491_d0518__晚_19_00_藥分__0" onclick="event.stopPropagation()"><span class="tx c-new">首讀 萃取法 第2晚</span></div></div></div><div class="sr"><span class="slb" style="background:#EEEDFE;color:#26215C">晚 21:00 生藥</span><div><div class="item" id="row_k1844151983_d0518__晚_21_00_生藥__0" onclick="ck('k1844151983_d0518__晚_21_00_生藥__0')"><input type="checkbox" id="cb_k1844151983_d0518__晚_21_00_生藥__0" onclick="event.stopPropagation()"><span class="tx c-new">萜類 第1天</span></div></div></div><div style="padding:.4rem 1rem .5rem"><div class="pb"><div class="pf" style="width:0%"></div></div><div class="pl">0/11 完成</div></div></div></div>
+<div class="wcard"><div class="wtop" onclick="tog(this)"><span class="wbg" style="background:#E6F1FB;color:#0C447C">5/19</span><span class="wdt">5/19 週二</span><span class="wti"></span><span class="pct-label" style="font-size:11px;color:#aaa;margin-right:4px">0%</span><span class="chev">▶</span></div><div class="wbody"><div class="sr"><span class="slb" style="background:#EEEDFE;color:#3C3489">早 7:00 中藥</span><div><div class="item" id="row_k1427414979_d0519__早_7_00_中藥__0" onclick="ck('k1427414979_d0519__早_7_00_中藥__0')"><input type="checkbox" id="cb_k1427414979_d0519__早_7_00_中藥__0" onclick="event.stopPropagation()"><span class="tx c-ra">複習 清虛熱藥・外用藥驅蟲藥 第1次</span></div></div></div><div class="sr"><span class="slb" style="background:#E6F1FB;color:#0C447C">上午 藥理</span><div><div class="item" id="row_k462949822_d0519__上午_藥理__0" onclick="ck('k462949822_d0519__上午_藥理__0')"><input type="checkbox" id="cb_k462949822_d0519__上午_藥理__0" onclick="event.stopPropagation()"><span class="tx c-new">首讀 抗生素 1(06前段)</span></div><div class="item" id="row_k462949823_d0519__上午_藥理__1" onclick="ck('k462949823_d0519__上午_藥理__1')"><input type="checkbox" id="cb_k462949823_d0519__上午_藥理__1" onclick="event.stopPropagation()"><span class="tx c-ra">複習 降血脂藥物(33) 第2次</span></div><div class="item" id="row_k462949824_d0519__上午_藥理__2" onclick="ck('k462949824_d0519__上午_藥理__2')"><input type="checkbox" id="cb_k462949824_d0519__上午_藥理__2" onclick="event.stopPropagation()"><span class="tx c-ra">複習 抗腫瘤藥物 2(02後半) 第1次</span></div><div class="item" id="row_k462949825_d0519__上午_藥理__3" onclick="ck('k462949825_d0519__上午_藥理__3')"><input type="checkbox" id="cb_k462949825_d0519__上午_藥理__3" onclick="event.stopPropagation()"><span class="tx c-ra">複習 局部麻醉劑 第2次（補）</span></div><div class="item" id="row_k462949826_d0519__上午_藥理__4" onclick="ck('k462949826_d0519__上午_藥理__4')"><input type="checkbox" id="cb_k462949826_d0519__上午_藥理__4" onclick="event.stopPropagation()"><span class="tx c-ra">複習 血清素・興奮劑・迷幻藥 第1次（補）</span></div><div class="item" id="row_k462949827_d0519__上午_藥理__5" onclick="ck('k462949827_d0519__上午_藥理__5')"><input type="checkbox" id="cb_k462949827_d0519__上午_藥理__5" onclick="event.stopPropagation()"><span class="tx c-ra">複習 鎮靜安眠藥物 第2次（補）</span></div></div></div><div class="sr"><span class="slb" style="background:#FAECE7;color:#712B13">下午 藥劑</span><div><div class="item" id="row_k1950600242_d0519__下午_藥劑__0" onclick="ck('k1950600242_d0519__下午_藥劑__0')"><input type="checkbox" id="cb_k1950600242_d0519__下午_藥劑__0" onclick="event.stopPropagation()"><span class="tx c-new">首讀 生物藥劑 Ch6 第3天</span></div><div class="item" id="row_k1950600243_d0519__下午_藥劑__1" onclick="ck('k1950600243_d0519__下午_藥劑__1')"><input type="checkbox" id="cb_k1950600243_d0519__下午_藥劑__1" onclick="event.stopPropagation()"><span class="tx c-new">首讀 溶液劑 2</span></div></div></div><div class="sr"><span class="slb" style="background:#EAF3DE;color:#27500A">晚 19:00 藥分</span><div><div class="item" id="row_k833498314_d0519__晚_19_00_藥分__0" onclick="ck('k833498314_d0519__晚_19_00_藥分__0')"><input type="checkbox" id="cb_k833498314_d0519__晚_19_00_藥分__0" onclick="event.stopPropagation()"><span class="tx c-ra">複習 GC(氣相層析) 第1次</span></div><div class="item" id="row_k833498315_d0519__晚_19_00_藥分__1" onclick="ck('k833498315_d0519__晚_19_00_藥分__1')"><input type="checkbox" id="cb_k833498315_d0519__晚_19_00_藥分__1" onclick="event.stopPropagation()"><span class="tx c-new">首讀 萃取法 第3晚</span></div></div></div><div class="sr"><span class="slb" style="background:#EEEDFE;color:#26215C">晚 21:00 生藥</span><div><div class="item" id="row_k1333617806_d0519__晚_21_00_生藥__0" onclick="ck('k1333617806_d0519__晚_21_00_生藥__0')"><input type="checkbox" id="cb_k1333617806_d0519__晚_21_00_生藥__0" onclick="event.stopPropagation()"><span class="tx c-new">萜類 第2天</span></div></div></div><div style="padding:.4rem 1rem .5rem"><div class="pb"><div class="pf" style="width:0%"></div></div><div class="pl">0/12 完成</div></div></div></div>
+<div class="wcard"><div class="wtop" onclick="tog(this)"><span class="wbg" style="background:#FAEEDA;color:#633806">5/20</span><span class="wdt">5/20 週三 早八課</span><span class="wti"></span><span class="pct-label" style="font-size:11px;color:#aaa;margin-right:4px">0%</span><span class="chev">▶</span></div><div class="wbody"><div class="sr"><span class="slb" style="background:#EEEDFE;color:#3C3489">早 7:00 中藥</span><div><div class="item" id="row_k233816409_d0520__早_7_00_中藥__0" onclick="ck('k233816409_d0520__早_7_00_中藥__0')"><input type="checkbox" id="cb_k233816409_d0520__早_7_00_中藥__0" onclick="event.stopPropagation()"><span class="tx c-ra">複習 藥用部位・常考方劑・萜類・考點整理 第1次</span></div></div></div><div class="sr"><span class="slb" style="background:#E6F1FB;color:#0C447C">上 10:30 藥理</span><div><div class="item" id="row_k1932281898_d0520__上_10_30_藥理__0" onclick="ck('k1932281898_d0520__上_10_30_藥理__0')"><input type="checkbox" id="cb_k1932281898_d0520__上_10_30_藥理__0" onclick="event.stopPropagation()"><span class="tx c-new">首讀 抗生素 2(06中段)</span></div><div class="item" id="row_k1932281899_d0520__上_10_30_藥理__1" onclick="ck('k1932281899_d0520__上_10_30_藥理__1')"><input type="checkbox" id="cb_k1932281899_d0520__上_10_30_藥理__1" onclick="event.stopPropagation()"><span class="tx c-ra">複習 標靶藥物(03) 第1次</span></div><div class="item" id="row_k1932281900_d0520__上_10_30_藥理__2" onclick="ck('k1932281900_d0520__上_10_30_藥理__2')"><input type="checkbox" id="cb_k1932281900_d0520__上_10_30_藥理__2" onclick="event.stopPropagation()"><span class="tx c-ra">複習 藥效學・藥動學・總論 第3次（補）</span></div><div class="item" id="row_k1932281901_d0520__上_10_30_藥理__3" onclick="ck('k1932281901_d0520__上_10_30_藥理__3')"><input type="checkbox" id="cb_k1932281901_d0520__上_10_30_藥理__3" onclick="event.stopPropagation()"><span class="tx c-ra">複習 交感神經用藥 第3次（補）</span></div><div class="item" id="row_k1932281902_d0520__上_10_30_藥理__4" onclick="ck('k1932281902_d0520__上_10_30_藥理__4')"><input type="checkbox" id="cb_k1932281902_d0520__上_10_30_藥理__4" onclick="event.stopPropagation()"><span class="tx c-ra">複習 心衰竭 第3次</span></div></div></div><div class="sr"><span class="slb" style="background:#FAECE7;color:#712B13">下午 藥劑</span><div><div class="item" id="row_k1072376008_d0520__下午_藥劑__0" onclick="ck('k1072376008_d0520__下午_藥劑__0')"><input type="checkbox" id="cb_k1072376008_d0520__下午_藥劑__0" onclick="event.stopPropagation()"><span class="tx c-new">首讀 生物藥劑 Ch7 第1天</span></div><div class="item" id="row_k1072376009_d0520__下午_藥劑__1" onclick="ck('k1072376009_d0520__下午_藥劑__1')"><input type="checkbox" id="cb_k1072376009_d0520__下午_藥劑__1" onclick="event.stopPropagation()"><span class="tx c-rb">複習 膠體 第2次</span></div><div class="item" id="row_k1072376010_d0520__下午_藥劑__2" onclick="ck('k1072376010_d0520__下午_藥劑__2')"><input type="checkbox" id="cb_k1072376010_d0520__下午_藥劑__2" onclick="event.stopPropagation()"><span class="tx c-new">首讀 流變學 1</span></div></div></div><div class="sr"><span class="slb" style="background:#EAF3DE;color:#27500A">晚 19:00 藥分</span><div><div class="item" id="row_k339164660_d0520__晚_19_00_藥分__0" onclick="ck('k339164660_d0520__晚_19_00_藥分__0')"><input type="checkbox" id="cb_k339164660_d0520__晚_19_00_藥分__0" onclick="event.stopPropagation()"><span class="tx c-ra">複習 SFC(超臨界流體) 第2次</span></div><div class="item" id="row_k339164661_d0520__晚_19_00_藥分__1" onclick="ck('k339164661_d0520__晚_19_00_藥分__1')"><input type="checkbox" id="cb_k339164661_d0520__晚_19_00_藥分__1" onclick="event.stopPropagation()"><span class="tx c-new">首讀 CE(毛細管電泳) 第1晚</span></div></div></div><div class="sr"><span class="slb" style="background:#EEEDFE;color:#26215C">晚 21:00 生藥</span><div><div class="item" id="row_k839284152_d0520__晚_21_00_生藥__0" onclick="ck('k839284152_d0520__晚_21_00_生藥__0')"><input type="checkbox" id="cb_k839284152_d0520__晚_21_00_生藥__0" onclick="event.stopPropagation()"><span class="tx c-new">萜類 第3天</span></div></div></div><div style="padding:.4rem 1rem .5rem"><div class="pb"><div class="pf" style="width:0%"></div></div><div class="pl">0/12 完成</div></div></div></div>
+<div class="wcard"><div class="wtop" onclick="tog(this)"><span class="wbg" style="background:#FAEEDA;color:#633806">5/21</span><span class="wdt">5/21 週四 課到15:00</span><span class="wti"></span><span class="pct-label" style="font-size:11px;color:#aaa;margin-right:4px">0%</span><span class="chev">▶</span></div><div class="wbody"><div class="sr"><span class="slb" style="background:#EEEDFE;color:#3C3489">早 7:00 中藥</span><div><div class="item" id="row_k1741368218_d0521__早_7_00_中藥__0" onclick="ck('k1741368218_d0521__早_7_00_中藥__0')"><input type="checkbox" id="cb_k1741368218_d0521__早_7_00_中藥__0" onclick="event.stopPropagation()"><span class="tx c-ra">複習 補氣藥・補血藥 第2次</span></div></div></div><div class="sr"><span class="slb" style="background:#E6F1FB;color:#0C447C">上午 藥理</span><div><div class="item" id="row_k2082741525_d0521__上午_藥理__0" onclick="ck('k2082741525_d0521__上午_藥理__0')"><input type="checkbox" id="cb_k2082741525_d0521__上午_藥理__0" onclick="event.stopPropagation()"><span class="tx c-new">首讀 抗生素 3(06後段)</span></div><div class="item" id="row_k2082741526_d0521__上午_藥理__1" onclick="ck('k2082741526_d0521__上午_藥理__1')"><input type="checkbox" id="cb_k2082741526_d0521__上午_藥理__1" onclick="event.stopPropagation()"><span class="tx c-ra">複習 抗腫瘤藥物 1(02前半) 第2次</span></div><div class="item" id="row_k2082741527_d0521__上午_藥理__2" onclick="ck('k2082741527_d0521__上午_藥理__2')"><input type="checkbox" id="cb_k2082741527_d0521__上午_藥理__2" onclick="event.stopPropagation()"><span class="tx c-ra">複習 免疫・神經肌肉藥物(04/05) 第1次</span></div><div class="item" id="row_k2082741528_d0521__上午_藥理__3" onclick="ck('k2082741528_d0521__上午_藥理__3')"><input type="checkbox" id="cb_k2082741528_d0521__上午_藥理__3" onclick="event.stopPropagation()"><span class="tx c-ra">複習 副交感神經・神經節・神經肌肉阻斷劑 第3次（補）</span></div><div class="item" id="row_k2082741529_d0521__上午_藥理__4" onclick="ck('k2082741529_d0521__上午_藥理__4')"><input type="checkbox" id="cb_k2082741529_d0521__上午_藥理__4" onclick="event.stopPropagation()"><span class="tx c-ra">複習 巴金森氏症 第3次（補）</span></div><div class="item" id="row_k2082741530_d0521__上午_藥理__5" onclick="ck('k2082741530_d0521__上午_藥理__5')"><input type="checkbox" id="cb_k2082741530_d0521__上午_藥理__5" onclick="event.stopPropagation()"><span class="tx c-ra">複習 心律不整 第3次</span></div></div></div><div class="sr"><span class="slb" style="background:#FAECE7;color:#712B13">下午 15:00 藥劑</span><div><div class="item" id="row_k1776510527_d0521__下午_15_00_藥劑__" onclick="ck('k1776510527_d0521__下午_15_00_藥劑__')"><input type="checkbox" id="cb_k1776510527_d0521__下午_15_00_藥劑__" onclick="event.stopPropagation()"><span class="tx c-new">首讀 生物藥劑 Ch7 第2天</span></div><div class="item" id="row_k1776510528_d0521__下午_15_00_藥劑__" onclick="ck('k1776510528_d0521__下午_15_00_藥劑__')"><input type="checkbox" id="cb_k1776510528_d0521__下午_15_00_藥劑__" onclick="event.stopPropagation()"><span class="tx c-rb">複習 溶液劑 1 第2次</span></div><div class="item" id="row_k1776510529_d0521__下午_15_00_藥劑__" onclick="ck('k1776510529_d0521__下午_15_00_藥劑__')"><input type="checkbox" id="cb_k1776510529_d0521__下午_15_00_藥劑__" onclick="event.stopPropagation()"><span class="tx c-new">首讀 流變學 2</span></div></div></div><div class="sr"><span class="slb" style="background:#EAF3DE;color:#27500A">晚 19:00 藥分</span><div><div class="item" id="row_k1976114131_d0521__晚_19_00_藥分__0" onclick="ck('k1976114131_d0521__晚_19_00_藥分__0')"><input type="checkbox" id="cb_k1976114131_d0521__晚_19_00_藥分__0" onclick="event.stopPropagation()"><span class="tx c-new">首讀 CE(毛細管電泳) 第2晚</span></div></div></div><div class="sr"><span class="slb" style="background:#EEEDFE;color:#26215C">晚 21:00 生藥</span><div><div class="item" id="row_k328749975_d0521__晚_21_00_生藥__0" onclick="ck('k328749975_d0521__晚_21_00_生藥__0')"><input type="checkbox" id="cb_k328749975_d0521__晚_21_00_生藥__0" onclick="event.stopPropagation()"><span class="tx c-new">揮發油 第1天</span></div></div></div><div style="padding:.4rem 1rem .5rem"><div class="pb"><div class="pf" style="width:0%"></div></div><div class="pl">0/12 完成</div></div></div></div>
+<div class="wcard"><div class="wtop" onclick="tog(this)"><span class="wbg" style="background:#FAEEDA;color:#633806">5/22</span><span class="wdt">5/22 週五 課到12:00</span><span class="wti"></span><span class="pct-label" style="font-size:11px;color:#aaa;margin-right:4px">0%</span><span class="chev">▶</span></div><div class="wbody"><div class="sr"><span class="slb" style="background:#EEEDFE;color:#3C3489">早 7:00 中藥</span><div><div class="item" id="row_k1101436379_d0522__早_7_00_中藥__0" onclick="ck('k1101436379_d0522__早_7_00_中藥__0')"><input type="checkbox" id="cb_k1101436379_d0522__早_7_00_中藥__0" onclick="event.stopPropagation()"><span class="tx c-ra">複習 補陰藥・補陽藥 第2次</span></div></div></div><div class="sr"><span class="slb" style="background:#E6F1FB;color:#0C447C">上午 藥理</span><div><div class="item" id="row_k285790166_d0522__上午_藥理__0" onclick="ck('k285790166_d0522__上午_藥理__0')"><input type="checkbox" id="cb_k285790166_d0522__上午_藥理__0" onclick="event.stopPropagation()"><span class="tx c-ra">複習 抗生素 1(06前段) 第1次</span></div><div class="item" id="row_k285790167_d0522__上午_藥理__1" onclick="ck('k285790167_d0522__上午_藥理__1')"><input type="checkbox" id="cb_k285790167_d0522__上午_藥理__1" onclick="event.stopPropagation()"><span class="tx c-ra">複習 利尿劑 第3次</span></div></div></div><div class="sr"><span class="slb" style="background:#FAECE7;color:#712B13">下午 12:00 藥劑</span><div><div class="item" id="row_k1571877091_d0522__下午_12_00_藥劑__" onclick="ck('k1571877091_d0522__下午_12_00_藥劑__')"><input type="checkbox" id="cb_k1571877091_d0522__下午_12_00_藥劑__" onclick="event.stopPropagation()"><span class="tx c-new">首讀 生物藥劑 Ch7 第3天</span></div><div class="item" id="row_k1571877092_d0522__下午_12_00_藥劑__" onclick="ck('k1571877092_d0522__下午_12_00_藥劑__')"><input type="checkbox" id="cb_k1571877092_d0522__下午_12_00_藥劑__" onclick="event.stopPropagation()"><span class="tx c-rb">複習 溶液劑 2 第2次</span></div><div class="item" id="row_k1571877093_d0522__下午_12_00_藥劑__" onclick="ck('k1571877093_d0522__下午_12_00_藥劑__')"><input type="checkbox" id="cb_k1571877093_d0522__下午_12_00_藥劑__" onclick="event.stopPropagation()"><span class="tx c-new">首讀 散劑・微粒學 第1天</span></div></div></div><div class="sr"><span class="slb" style="background:#EAF3DE;color:#27500A">晚 19:00 藥分</span><div><div class="item" id="row_k1465579954_d0522__晚_19_00_藥分__0" onclick="ck('k1465579954_d0522__晚_19_00_藥分__0')"><input type="checkbox" id="cb_k1465579954_d0522__晚_19_00_藥分__0" onclick="event.stopPropagation()"><span class="tx c-ra">複習 萃取法 第1次</span></div><div class="item" id="row_k1465579955_d0522__晚_19_00_藥分__1" onclick="ck('k1465579955_d0522__晚_19_00_藥分__1')"><input type="checkbox" id="cb_k1465579955_d0522__晚_19_00_藥分__1" onclick="event.stopPropagation()"><span class="tx c-new">首讀 CE(毛細管電泳) 第3晚</span></div></div></div><div class="sr"><span class="slb" style="background:#EEEDFE;color:#26215C">晚 21:00 生藥</span><div><div class="item" id="row_k1965699446_d0522__晚_21_00_生藥__0" onclick="ck('k1965699446_d0522__晚_21_00_生藥__0')"><input type="checkbox" id="cb_k1965699446_d0522__晚_21_00_生藥__0" onclick="event.stopPropagation()"><span class="tx c-new">揮發油 第2天</span></div></div></div><div style="padding:.4rem 1rem .5rem"><div class="pb"><div class="pf" style="width:0%"></div></div><div class="pl">0/9 完成</div></div></div></div>
+<div class="wcard"><div class="wtop" onclick="tog(this)"><span class="wbg" style="background:#E6F1FB;color:#0C447C">5/23</span><span class="wdt">5/23 週六</span><span class="wti"></span><span class="pct-label" style="font-size:11px;color:#aaa;margin-right:4px">0%</span><span class="chev">▶</span></div><div class="wbody"><div class="sr"><span class="slb" style="background:#EEEDFE;color:#3C3489">早 7:00 中藥</span><div><div class="item" id="row_k461504540_d0523__早_7_00_中藥__0" onclick="ck('k461504540_d0523__早_7_00_中藥__0')"><input type="checkbox" id="cb_k461504540_d0523__早_7_00_中藥__0" onclick="event.stopPropagation()"><span class="tx c-ra">複習 溫裡藥・理氣藥 第2次</span></div></div></div><div class="sr"><span class="slb" style="background:#E6F1FB;color:#0C447C">上午 藥理</span><div><div class="item" id="row_k636322455_d0523__上午_藥理__0" onclick="ck('k636322455_d0523__上午_藥理__0')"><input type="checkbox" id="cb_k636322455_d0523__上午_藥理__0" onclick="event.stopPropagation()"><span class="tx c-new">首讀 抗黴菌・抗肺結核(07/08)</span></div><div class="item" id="row_k636322456_d0523__上午_藥理__1" onclick="ck('k636322456_d0523__上午_藥理__1')"><input type="checkbox" id="cb_k636322456_d0523__上午_藥理__1" onclick="event.stopPropagation()"><span class="tx c-ra">複習 抗腫瘤藥物 2(02後半) 第2次</span></div><div class="item" id="row_k636322457_d0523__上午_藥理__2" onclick="ck('k636322457_d0523__上午_藥理__2')"><input type="checkbox" id="cb_k636322457_d0523__上午_藥理__2" onclick="event.stopPropagation()"><span class="tx c-ra">複習 抗生素 2(06中段) 第1次</span></div><div class="item" id="row_k636322458_d0523__上午_藥理__3" onclick="ck('k636322458_d0523__上午_藥理__3')"><input type="checkbox" id="cb_k636322458_d0523__上午_藥理__3" onclick="event.stopPropagation()"><span class="tx c-ra">複習 抗癲癇藥物 第3次（補）</span></div><div class="item" id="row_k636322459_d0523__上午_藥理__4" onclick="ck('k636322459_d0523__上午_藥理__4')"><input type="checkbox" id="cb_k636322459_d0523__上午_藥理__4" onclick="event.stopPropagation()"><span class="tx c-ra">複習 酒精・中樞總論 第2次（補）</span></div><div class="item" id="row_k636322460_d0523__上午_藥理__5" onclick="ck('k636322460_d0523__上午_藥理__5')"><input type="checkbox" id="cb_k636322460_d0523__上午_藥理__5" onclick="event.stopPropagation()"><span class="tx c-ra">複習 高血壓 第1次（補）</span></div></div></div><div class="sr"><span class="slb" style="background:#FAECE7;color:#712B13">下午 藥劑</span><div><div class="item" id="row_k2123972875_d0523__下午_藥劑__0" onclick="ck('k2123972875_d0523__下午_藥劑__0')"><input type="checkbox" id="cb_k2123972875_d0523__下午_藥劑__0" onclick="event.stopPropagation()"><span class="tx c-new">首讀 生物藥劑 Ch8 第1天</span></div><div class="item" id="row_k2123972876_d0523__下午_藥劑__1" onclick="ck('k2123972876_d0523__下午_藥劑__1')"><input type="checkbox" id="cb_k2123972876_d0523__下午_藥劑__1" onclick="event.stopPropagation()"><span class="tx c-rb">複習 流變學 1 第2次</span></div><div class="item" id="row_k2123972877_d0523__下午_藥劑__2" onclick="ck('k2123972877_d0523__下午_藥劑__2')"><input type="checkbox" id="cb_k2123972877_d0523__下午_藥劑__2" onclick="event.stopPropagation()"><span class="tx c-new">首讀 散劑・微粒學 第2天</span></div></div></div><div class="sr"><span class="slb" style="background:#EAF3DE;color:#27500A">晚 19:00 藥分</span><div><div class="item" id="row_k955045777_d0523__晚_19_00_藥分__0" onclick="ck('k955045777_d0523__晚_19_00_藥分__0')"><input type="checkbox" id="cb_k955045777_d0523__晚_19_00_藥分__0" onclick="event.stopPropagation()"><span class="tx c-ra">複習 GC(氣相層析) 第2次</span></div><div class="item" id="row_k955045778_d0523__晚_19_00_藥分__1" onclick="ck('k955045778_d0523__晚_19_00_藥分__1')"><input type="checkbox" id="cb_k955045778_d0523__晚_19_00_藥分__1" onclick="event.stopPropagation()"><span class="tx c-new">首讀 MS(質譜儀) 第1晚</span></div></div></div><div class="sr"><span class="slb" style="background:#EEEDFE;color:#26215C">晚 21:00 生藥</span><div><div class="item" id="row_k1455165269_d0523__晚_21_00_生藥__0" onclick="ck('k1455165269_d0523__晚_21_00_生藥__0')"><input type="checkbox" id="cb_k1455165269_d0523__晚_21_00_生藥__0" onclick="event.stopPropagation()"><span class="tx c-new">揮發油 第3天</span></div></div></div><div style="padding:.4rem 1rem .5rem"><div class="pb"><div class="pf" style="width:0%"></div></div><div class="pl">0/13 完成</div></div></div></div>
+<div class="wcard"><div class="wtop" onclick="tog(this)"><span class="wbg" style="background:#E6F1FB;color:#0C447C">5/24</span><span class="wdt">5/24 週日</span><span class="wti"></span><span class="pct-label" style="font-size:11px;color:#aaa;margin-right:4px">0%</span><span class="chev">▶</span></div><div class="wbody"><div class="sr"><span class="slb" style="background:#EEEDFE;color:#3C3489">早 7:00 中藥</span><div><div class="item" id="row_k1969056349_d0524__早_7_00_中藥__0" onclick="ck('k1969056349_d0524__早_7_00_中藥__0')"><input type="checkbox" id="cb_k1969056349_d0524__早_7_00_中藥__0" onclick="event.stopPropagation()"><span class="tx c-ra">複習 平肝熄風藥・安神藥 第2次</span></div></div></div><div class="sr"><span class="slb" style="background:#E6F1FB;color:#0C447C">上午 藥理</span><div><div class="item" id="row_k986854744_d0524__上午_藥理__0" onclick="ck('k986854744_d0524__上午_藥理__0')"><input type="checkbox" id="cb_k986854744_d0524__上午_藥理__0" onclick="event.stopPropagation()"><span class="tx c-new">首讀 荷爾蒙藥物(34)</span></div><div class="item" id="row_k986854745_d0524__上午_藥理__1" onclick="ck('k986854745_d0524__上午_藥理__1')"><input type="checkbox" id="cb_k986854745_d0524__上午_藥理__1" onclick="event.stopPropagation()"><span class="tx c-ra">複習 標靶藥物(03) 第2次</span></div><div class="item" id="row_k986854746_d0524__上午_藥理__2" onclick="ck('k986854746_d0524__上午_藥理__2')"><input type="checkbox" id="cb_k986854746_d0524__上午_藥理__2" onclick="event.stopPropagation()"><span class="tx c-ra">複習 抗生素 3(06後段) 第1次</span></div><div class="item" id="row_k986854747_d0524__上午_藥理__3" onclick="ck('k986854747_d0524__上午_藥理__3')"><input type="checkbox" id="cb_k986854747_d0524__上午_藥理__3" onclick="event.stopPropagation()"><span class="tx c-ra">複習 全身麻醉劑 第3次（補）</span></div><div class="item" id="row_k986854748_d0524__上午_藥理__4" onclick="ck('k986854748_d0524__上午_藥理__4')"><input type="checkbox" id="cb_k986854748_d0524__上午_藥理__4" onclick="event.stopPropagation()"><span class="tx c-ra">複習 心絞痛 第1次（補）</span></div><div class="item" id="row_k986854749_d0524__上午_藥理__5" onclick="ck('k986854749_d0524__上午_藥理__5')"><input type="checkbox" id="cb_k986854749_d0524__上午_藥理__5" onclick="event.stopPropagation()"><span class="tx c-ra">複習 精神分裂症・躁鬱・憂鬱 第3次（補）</span></div></div></div><div class="sr"><span class="slb" style="background:#FAECE7;color:#712B13">下午 藥劑</span><div><div class="item" id="row_k327021516_d0524__下午_藥劑__0" onclick="ck('k327021516_d0524__下午_藥劑__0')"><input type="checkbox" id="cb_k327021516_d0524__下午_藥劑__0" onclick="event.stopPropagation()"><span class="tx c-new">首讀 生物藥劑 Ch8 第2天</span></div><div class="item" id="row_k327021517_d0524__下午_藥劑__1" onclick="ck('k327021517_d0524__下午_藥劑__1')"><input type="checkbox" id="cb_k327021517_d0524__下午_藥劑__1" onclick="event.stopPropagation()"><span class="tx c-rb">複習 流變學 2 第2次</span></div><div class="item" id="row_k327021518_d0524__下午_藥劑__2" onclick="ck('k327021518_d0524__下午_藥劑__2')"><input type="checkbox" id="cb_k327021518_d0524__下午_藥劑__2" onclick="event.stopPropagation()"><span class="tx c-new">首讀 眼用製劑</span></div></div></div><div class="sr"><span class="slb" style="background:#EAF3DE;color:#27500A">晚 19:00 藥分</span><div><div class="item" id="row_k444511600_d0524__晚_19_00_藥分__0" onclick="ck('k444511600_d0524__晚_19_00_藥分__0')"><input type="checkbox" id="cb_k444511600_d0524__晚_19_00_藥分__0" onclick="event.stopPropagation()"><span class="tx c-new">首讀 MS(質譜儀) 第2晚</span></div></div></div><div class="sr"><span class="slb" style="background:#EEEDFE;color:#26215C">晚 21:00 生藥</span><div><div class="item" id="row_k944631092_d0524__晚_21_00_生藥__0" onclick="ck('k944631092_d0524__晚_21_00_生藥__0')"><input type="checkbox" id="cb_k944631092_d0524__晚_21_00_生藥__0" onclick="event.stopPropagation()"><span class="tx c-new">脂質 第1天</span></div></div></div><div style="padding:.4rem 1rem .5rem"><div class="pb"><div class="pf" style="width:0%"></div></div><div class="pl">0/12 完成</div></div></div></div>
+<div class="wcard week-summary"><div class="wtop" onclick="tog(this)"><span class="wbg week-badge">第5週</span><span class="wdt" style="color:#1A4A7A;font-weight:500">5/25（週一）–5/31（週日）</span><span class="wti week-title">本週進度總覽</span><span class="chev">▶</span></div><div class="wbody"><div class="week-summary-inner"><div class="ws-row"><span class="ws-sci" style="background:#E6F1FB;color:#0C447C">本週藥理</span><span class="ws-items"><span class="ws-new">首讀：首讀 皮質類固醇(35)、首讀 性激素藥物(36)、首讀 骨質疏鬆・抗甲狀腺(37/38)、首讀 糖尿病藥物(39)、首讀 鴉片類藥物(40)</span><br><span class="ws-rev">複習：複習 免疫・神經肌肉藥物(04/05) 第2次、複習 血清素・興奮劑・迷幻藥 第2次（補）、複習 局部麻醉劑 第3次（補）、複習 抗生素 1(06前段) 第2次、複習 抗黴菌・抗肺結核(07/08) 第1次 …+8項</span></span></div><div class="ws-row"><span class="ws-sci" style="background:#FAECE7;color:#712B13">本週藥劑</span><span class="ws-items"><span class="ws-new">首讀：首讀 生物藥劑 Ch8、首讀 糖漿/酏/醑…生物製劑 1、首讀 生物藥劑 Ch9、首讀 糖漿/酏/醑…生物製劑 2、首讀 試驗-檢查法 1、首讀 生物藥劑 Ch10、首讀 試驗-檢查法 2、首讀 滅菌・度量衡・CYP450</span><br><span class="ws-rev">複習：複習 散劑・微粒學 第2次、複習 眼用製劑 第2次、複習 糖漿/酏/醑…生物製劑 1 第2次、複習 糖漿/酏/醑…生物製劑 2 第2次、複習 試驗-檢查法 1 第2次</span></span></div><div class="ws-row"><span class="ws-sci" style="background:#EAF3DE;color:#27500A">本週藥分</span><span class="ws-items"><span class="ws-new">首讀：首讀 MS(質譜儀)、首讀 光譜概論、首讀 UV/VIS(紫外可見光譜)</span><br><span class="ws-rev">複習：複習 CE(毛細管電泳) 第1次、複習 萃取法 第2次、複習 MS(質譜儀) 第1次、複習 CE(毛細管電泳) 第2次、複習 光譜概論 第1次</span></span></div></div></div></div>
+<div class="wcard"><div class="wtop" onclick="tog(this)"><span class="wbg" style="background:#E6F1FB;color:#0C447C">5/25</span><span class="wdt">5/25 週一</span><span class="wti"></span><span class="pct-label" style="font-size:11px;color:#aaa;margin-right:4px">0%</span><span class="chev">▶</span></div><div class="wbody"><div class="sr"><span class="slb" style="background:#EEEDFE;color:#3C3489">早 7:00 中藥</span><div><div class="item" id="row_k1329124510_d0525__早_7_00_中藥__0" onclick="ck('k1329124510_d0525__早_7_00_中藥__0')"><input type="checkbox" id="cb_k1329124510_d0525__早_7_00_中藥__0" onclick="event.stopPropagation()"><span class="tx c-ra">複習 收澀藥・辛溫解表藥 第2次</span></div></div></div><div class="sr"><span class="slb" style="background:#E6F1FB;color:#0C447C">上午 藥理</span><div><div class="item" id="row_k1337387033_d0525__上午_藥理__0" onclick="ck('k1337387033_d0525__上午_藥理__0')"><input type="checkbox" id="cb_k1337387033_d0525__上午_藥理__0" onclick="event.stopPropagation()"><span class="tx c-new">首讀 皮質類固醇(35)</span></div><div class="item" id="row_k1337387034_d0525__上午_藥理__1" onclick="ck('k1337387034_d0525__上午_藥理__1')"><input type="checkbox" id="cb_k1337387034_d0525__上午_藥理__1" onclick="event.stopPropagation()"><span class="tx c-ra">複習 免疫・神經肌肉藥物(04/05) 第2次</span></div><div class="item" id="row_k1337387035_d0525__上午_藥理__2" onclick="ck('k1337387035_d0525__上午_藥理__2')"><input type="checkbox" id="cb_k1337387035_d0525__上午_藥理__2" onclick="event.stopPropagation()"><span class="tx c-ra">複習 血清素・興奮劑・迷幻藥 第2次（補）</span></div><div class="item" id="row_k1337387036_d0525__上午_藥理__3" onclick="ck('k1337387036_d0525__上午_藥理__3')"><input type="checkbox" id="cb_k1337387036_d0525__上午_藥理__3" onclick="event.stopPropagation()"><span class="tx c-ra">複習 局部麻醉劑 第3次（補）</span></div></div></div><div class="sr"><span class="slb" style="background:#FAECE7;color:#712B13">下午 藥劑</span><div><div class="item" id="row_k677553805_d0525__下午_藥劑__0" onclick="ck('k677553805_d0525__下午_藥劑__0')"><input type="checkbox" id="cb_k677553805_d0525__下午_藥劑__0" onclick="event.stopPropagation()"><span class="tx c-new">首讀 生物藥劑 Ch8 第3天</span></div><div class="item" id="row_k677553806_d0525__下午_藥劑__1" onclick="ck('k677553806_d0525__下午_藥劑__1')"><input type="checkbox" id="cb_k677553806_d0525__下午_藥劑__1" onclick="event.stopPropagation()"><span class="tx c-new">首讀 糖漿/酏/醑…生物製劑 1</span></div></div></div><div class="sr"><span class="slb" style="background:#EAF3DE;color:#27500A">晚 19:00 藥分</span><div><div class="item" id="row_k2081461071_d0525__晚_19_00_藥分__0" onclick="ck('k2081461071_d0525__晚_19_00_藥分__0')"><input type="checkbox" id="cb_k2081461071_d0525__晚_19_00_藥分__0" onclick="event.stopPropagation()"><span class="tx c-ra">複習 CE(毛細管電泳) 第1次</span></div><div class="item" id="row_k2081461072_d0525__晚_19_00_藥分__1" onclick="ck('k2081461072_d0525__晚_19_00_藥分__1')"><input type="checkbox" id="cb_k2081461072_d0525__晚_19_00_藥分__1" onclick="event.stopPropagation()"><span class="tx c-new">首讀 MS(質譜儀) 第3晚</span></div></div></div><div class="sr"><span class="slb" style="background:#EEEDFE;color:#26215C">晚 21:00 生藥</span><div><div class="item" id="row_k434096915_d0525__晚_21_00_生藥__0" onclick="ck('k434096915_d0525__晚_21_00_生藥__0')"><input type="checkbox" id="cb_k434096915_d0525__晚_21_00_生藥__0" onclick="event.stopPropagation()"><span class="tx c-new">脂質 第2天</span></div></div></div><div style="padding:.4rem 1rem .5rem"><div class="pb"><div class="pf" style="width:0%"></div></div><div class="pl">0/10 完成</div></div></div></div>
+<div class="wcard"><div class="wtop" onclick="tog(this)"><span class="wbg" style="background:#E6F1FB;color:#0C447C">5/26</span><span class="wdt">5/26 週二</span><span class="wti"></span><span class="pct-label" style="font-size:11px;color:#aaa;margin-right:4px">0%</span><span class="chev">▶</span></div><div class="wbody"><div class="sr"><span class="slb" style="background:#EEEDFE;color:#3C3489">早 7:00 中藥</span><div><div class="item" id="row_k689192671_d0526__早_7_00_中藥__0" onclick="ck('k689192671_d0526__早_7_00_中藥__0')"><input type="checkbox" id="cb_k689192671_d0526__早_7_00_中藥__0" onclick="event.stopPropagation()"><span class="tx c-ra">複習 辛涼解表藥・化痰藥 第2次</span></div></div></div><div class="sr"><span class="slb" style="background:#E6F1FB;color:#0C447C">上午 藥理</span><div><div class="item" id="row_k1687919322_d0526__上午_藥理__0" onclick="ck('k1687919322_d0526__上午_藥理__0')"><input type="checkbox" id="cb_k1687919322_d0526__上午_藥理__0" onclick="event.stopPropagation()"><span class="tx c-new">首讀 性激素藥物(36) 第1天</span></div><div class="item" id="row_k1687919323_d0526__上午_藥理__1" onclick="ck('k1687919323_d0526__上午_藥理__1')"><input type="checkbox" id="cb_k1687919323_d0526__上午_藥理__1" onclick="event.stopPropagation()"><span class="tx c-ra">複習 抗生素 1(06前段) 第2次</span></div><div class="item" id="row_k1687919324_d0526__上午_藥理__2" onclick="ck('k1687919324_d0526__上午_藥理__2')"><input type="checkbox" id="cb_k1687919324_d0526__上午_藥理__2" onclick="event.stopPropagation()"><span class="tx c-ra">複習 抗黴菌・抗肺結核(07/08) 第1次</span></div></div></div><div class="sr"><span class="slb" style="background:#FAECE7;color:#712B13">下午 藥劑</span><div><div class="item" id="row_k1028086094_d0526__下午_藥劑__0" onclick="ck('k1028086094_d0526__下午_藥劑__0')"><input type="checkbox" id="cb_k1028086094_d0526__下午_藥劑__0" onclick="event.stopPropagation()"><span class="tx c-new">首讀 生物藥劑 Ch9 第1天</span></div><div class="item" id="row_k1028086095_d0526__下午_藥劑__1" onclick="ck('k1028086095_d0526__下午_藥劑__1')"><input type="checkbox" id="cb_k1028086095_d0526__下午_藥劑__1" onclick="event.stopPropagation()"><span class="tx c-rb">複習 散劑・微粒學 第2次</span></div><div class="item" id="row_k1028086096_d0526__下午_藥劑__2" onclick="ck('k1028086096_d0526__下午_藥劑__2')"><input type="checkbox" id="cb_k1028086096_d0526__下午_藥劑__2" onclick="event.stopPropagation()"><span class="tx c-new">首讀 糖漿/酏/醑…生物製劑 2 第1天</span></div></div></div><div class="sr"><span class="slb" style="background:#EAF3DE;color:#27500A">晚 19:00 藥分</span><div><div class="item" id="row_k1570926894_d0526__晚_19_00_藥分__0" onclick="ck('k1570926894_d0526__晚_19_00_藥分__0')"><input type="checkbox" id="cb_k1570926894_d0526__晚_19_00_藥分__0" onclick="event.stopPropagation()"><span class="tx c-ra">複習 萃取法 第2次</span></div><div class="item" id="row_k1570926895_d0526__晚_19_00_藥分__1" onclick="ck('k1570926895_d0526__晚_19_00_藥分__1')"><input type="checkbox" id="cb_k1570926895_d0526__晚_19_00_藥分__1" onclick="event.stopPropagation()"><span class="tx c-new">首讀 光譜概論 第1晚</span></div></div></div><div class="sr"><span class="slb" style="background:#EEEDFE;color:#26215C">晚 21:00 生藥</span><div><div class="item" id="row_k2071046386_d0526__晚_21_00_生藥__0" onclick="ck('k2071046386_d0526__晚_21_00_生藥__0')"><input type="checkbox" id="cb_k2071046386_d0526__晚_21_00_生藥__0" onclick="event.stopPropagation()"><span class="tx c-new">脂質 第3天</span></div></div></div><div class="sr"><span class="slb" style="background:#FFF8EC;color:#92610A">🎯 里程碑</span><div><div class="item" id="row_k765108988_d0526____里程碑__0" onclick="ck('k765108988_d0526____里程碑__0')"><input type="checkbox" id="cb_k765108988_d0526____里程碑__0" onclick="event.stopPropagation()"><span class="tx c-purple">🌱 生藥首輪完成！（共9份）</span></div></div></div><div style="padding:.4rem 1rem .5rem"><div class="pb"><div class="pf" style="width:0%"></div></div><div class="pl">0/11 完成</div></div></div></div>
+<div class="wcard"><div class="wtop" onclick="tog(this)"><span class="wbg" style="background:#FAEEDA;color:#633806">5/27</span><span class="wdt">5/27 週三 早八課</span><span class="wti"></span><span class="pct-label" style="font-size:11px;color:#aaa;margin-right:4px">0%</span><span class="chev">▶</span></div><div class="wbody"><div class="sr"><span class="slb" style="background:#EEEDFE;color:#3C3489">早 7:00 中藥</span><div><div class="item" id="row_k49260832_d0527__早_7_00_中藥__0" onclick="ck('k49260832_d0527__早_7_00_中藥__0')"><input type="checkbox" id="cb_k49260832_d0527__早_7_00_中藥__0" onclick="event.stopPropagation()"><span class="tx c-ra">複習 止咳平喘藥・利水滲濕藥 第2次</span></div></div></div><div class="sr"><span class="slb" style="background:#E6F1FB;color:#0C447C">上 10:30 藥理</span><div><div class="item" id="row_k506026307_d0527__上_10_30_藥理__0" onclick="ck('k506026307_d0527__上_10_30_藥理__0')"><input type="checkbox" id="cb_k506026307_d0527__上_10_30_藥理__0" onclick="event.stopPropagation()"><span class="tx c-new">首讀 性激素藥物(36) 第2天</span></div><div class="item" id="row_k506026308_d0527__上_10_30_藥理__1" onclick="ck('k506026308_d0527__上_10_30_藥理__1')"><input type="checkbox" id="cb_k506026308_d0527__上_10_30_藥理__1" onclick="event.stopPropagation()"><span class="tx c-ra">複習 抗生素 2(06中段) 第2次</span></div><div class="item" id="row_k506026309_d0527__上_10_30_藥理__2" onclick="ck('k506026309_d0527__上_10_30_藥理__2')"><input type="checkbox" id="cb_k506026309_d0527__上_10_30_藥理__2" onclick="event.stopPropagation()"><span class="tx c-ra">複習 荷爾蒙藥物(34) 第1次</span></div></div></div><div class="sr"><span class="slb" style="background:#FAECE7;color:#712B13">下午 藥劑</span><div><div class="item" id="row_k1378618383_d0527__下午_藥劑__0" onclick="ck('k1378618383_d0527__下午_藥劑__0')"><input type="checkbox" id="cb_k1378618383_d0527__下午_藥劑__0" onclick="event.stopPropagation()"><span class="tx c-new">首讀 生物藥劑 Ch9 第2天</span></div><div class="item" id="row_k1378618384_d0527__下午_藥劑__1" onclick="ck('k1378618384_d0527__下午_藥劑__1')"><input type="checkbox" id="cb_k1378618384_d0527__下午_藥劑__1" onclick="event.stopPropagation()"><span class="tx c-rb">複習 眼用製劑 第2次</span></div><div class="item" id="row_k1378618385_d0527__下午_藥劑__2" onclick="ck('k1378618385_d0527__下午_藥劑__2')"><input type="checkbox" id="cb_k1378618385_d0527__下午_藥劑__2" onclick="event.stopPropagation()"><span class="tx c-new">首讀 糖漿/酏/醑…生物製劑 2 第2天</span></div></div></div><div class="sr"><span class="slb" style="background:#EAF3DE;color:#27500A">晚 19:00 藥分</span><div><div class="item" id="row_k1060392717_d0527__晚_19_00_藥分__0" onclick="ck('k1060392717_d0527__晚_19_00_藥分__0')"><input type="checkbox" id="cb_k1060392717_d0527__晚_19_00_藥分__0" onclick="event.stopPropagation()"><span class="tx c-new">首讀 光譜概論 第2晚</span></div></div></div><div style="padding:.4rem 1rem .5rem"><div class="pb"><div class="pf" style="width:0%"></div></div><div class="pl">0/8 完成</div></div></div></div>
+<div class="wcard"><div class="wtop" onclick="tog(this)"><span class="wbg" style="background:#FAEEDA;color:#633806">5/28</span><span class="wdt">5/28 週四 課到15:00</span><span class="wti"></span><span class="pct-label" style="font-size:11px;color:#aaa;margin-right:4px">0%</span><span class="chev">▶</span></div><div class="wbody"><div class="sr"><span class="slb" style="background:#EEEDFE;color:#3C3489">早 7:00 中藥</span><div><div class="item" id="row_k1556812641_d0528__早_7_00_中藥__0" onclick="ck('k1556812641_d0528__早_7_00_中藥__0')"><input type="checkbox" id="cb_k1556812641_d0528__早_7_00_中藥__0" onclick="event.stopPropagation()"><span class="tx c-ra">複習 芳香化濕藥・祛風濕藥 第2次</span></div></div></div><div class="sr"><span class="slb" style="background:#E6F1FB;color:#0C447C">上午 藥理</span><div><div class="item" id="row_k241500252_d0528__上午_藥理__0" onclick="ck('k241500252_d0528__上午_藥理__0')"><input type="checkbox" id="cb_k241500252_d0528__上午_藥理__0" onclick="event.stopPropagation()"><span class="tx c-new">首讀 骨質疏鬆・抗甲狀腺(37/38)</span></div><div class="item" id="row_k241500253_d0528__上午_藥理__1" onclick="ck('k241500253_d0528__上午_藥理__1')"><input type="checkbox" id="cb_k241500253_d0528__上午_藥理__1" onclick="event.stopPropagation()"><span class="tx c-ra">複習 抗生素 3(06後段) 第2次</span></div><div class="item" id="row_k241500254_d0528__上午_藥理__2" onclick="ck('k241500254_d0528__上午_藥理__2')"><input type="checkbox" id="cb_k241500254_d0528__上午_藥理__2" onclick="event.stopPropagation()"><span class="tx c-ra">複習 皮質類固醇(35) 第1次</span></div></div></div><div class="sr"><span class="slb" style="background:#FAECE7;color:#712B13">下午 15:00 藥劑</span><div><div class="item" id="row_k512260166_d0528__下午_15_00_藥劑__" onclick="ck('k512260166_d0528__下午_15_00_藥劑__')"><input type="checkbox" id="cb_k512260166_d0528__下午_15_00_藥劑__" onclick="event.stopPropagation()"><span class="tx c-new">首讀 生物藥劑 Ch9 第3天</span></div><div class="item" id="row_k512260167_d0528__下午_15_00_藥劑__" onclick="ck('k512260167_d0528__下午_15_00_藥劑__')"><input type="checkbox" id="cb_k512260167_d0528__下午_15_00_藥劑__" onclick="event.stopPropagation()"><span class="tx c-rb">複習 糖漿/酏/醑…生物製劑 1 第2次</span></div><div class="item" id="row_k512260168_d0528__下午_15_00_藥劑__" onclick="ck('k512260168_d0528__下午_15_00_藥劑__')"><input type="checkbox" id="cb_k512260168_d0528__下午_15_00_藥劑__" onclick="event.stopPropagation()"><span class="tx c-new">首讀 試驗-檢查法 1</span></div></div></div><div class="sr"><span class="slb" style="background:#EAF3DE;color:#27500A">晚 19:00 藥分</span><div><div class="item" id="row_k549858540_d0528__晚_19_00_藥分__0" onclick="ck('k549858540_d0528__晚_19_00_藥分__0')"><input type="checkbox" id="cb_k549858540_d0528__晚_19_00_藥分__0" onclick="event.stopPropagation()"><span class="tx c-ra">複習 MS(質譜儀) 第1次</span></div><div class="item" id="row_k549858541_d0528__晚_19_00_藥分__1" onclick="ck('k549858541_d0528__晚_19_00_藥分__1')"><input type="checkbox" id="cb_k549858541_d0528__晚_19_00_藥分__1" onclick="event.stopPropagation()"><span class="tx c-new">首讀 光譜概論 第3晚</span></div></div></div><div style="padding:.4rem 1rem .5rem"><div class="pb"><div class="pf" style="width:0%"></div></div><div class="pl">0/9 完成</div></div></div></div>
+<div class="wcard"><div class="wtop" onclick="tog(this)"><span class="wbg" style="background:#FAEEDA;color:#633806">5/29</span><span class="wdt">5/29 週五 課到12:00</span><span class="wti"></span><span class="pct-label" style="font-size:11px;color:#aaa;margin-right:4px">0%</span><span class="chev">▶</span></div><div class="wbody"><div class="sr"><span class="slb" style="background:#EEEDFE;color:#3C3489">早 7:00 中藥</span><div><div class="item" id="row_k916880802_d0529__早_7_00_中藥__0" onclick="ck('k916880802_d0529__早_7_00_中藥__0')"><input type="checkbox" id="cb_k916880802_d0529__早_7_00_中藥__0" onclick="event.stopPropagation()"><span class="tx c-ra">複習 消食藥・瀻下藥 第2次</span></div></div></div><div class="sr"><span class="slb" style="background:#FAECE7;color:#712B13">下午 12:00 藥劑</span><div><div class="item" id="row_k307626730_d0529__下午_12_00_藥劑__" onclick="ck('k307626730_d0529__下午_12_00_藥劑__')"><input type="checkbox" id="cb_k307626730_d0529__下午_12_00_藥劑__" onclick="event.stopPropagation()"><span class="tx c-new">首讀 生物藥劑 Ch10 第1天</span></div><div class="item" id="row_k307626731_d0529__下午_12_00_藥劑__" onclick="ck('k307626731_d0529__下午_12_00_藥劑__')"><input type="checkbox" id="cb_k307626731_d0529__下午_12_00_藥劑__" onclick="event.stopPropagation()"><span class="tx c-new">首讀 試驗-檢查法 2 第1天</span></div></div></div><div class="sr"><span class="slb" style="background:#EAF3DE;color:#27500A">晚 19:00 藥分</span><div><div class="item" id="row_k39324363_d0529__晚_19_00_藥分__0" onclick="ck('k39324363_d0529__晚_19_00_藥分__0')"><input type="checkbox" id="cb_k39324363_d0529__晚_19_00_藥分__0" onclick="event.stopPropagation()"><span class="tx c-ra">複習 CE(毛細管電泳) 第2次</span></div><div class="item" id="row_k39324364_d0529__晚_19_00_藥分__1" onclick="ck('k39324364_d0529__晚_19_00_藥分__1')"><input type="checkbox" id="cb_k39324364_d0529__晚_19_00_藥分__1" onclick="event.stopPropagation()"><span class="tx c-new">首讀 UV/VIS(紫外可見光譜) 第1晚</span></div></div></div><div style="padding:.4rem 1rem .5rem"><div class="pb"><div class="pf" style="width:0%"></div></div><div class="pl">0/5 完成</div></div></div></div>
+<div class="wcard"><div class="wtop" onclick="tog(this)"><span class="wbg" style="background:#E6F1FB;color:#0C447C">5/30</span><span class="wdt">5/30 週六</span><span class="wti"></span><span class="pct-label" style="font-size:11px;color:#aaa;margin-right:4px">0%</span><span class="chev">▶</span></div><div class="wbody"><div class="sr"><span class="slb" style="background:#EEEDFE;color:#3C3489">早 7:00 中藥</span><div><div class="item" id="row_k1870765880_d0530__早_7_00_中藥__0" onclick="ck('k1870765880_d0530__早_7_00_中藥__0')"><input type="checkbox" id="cb_k1870765880_d0530__早_7_00_中藥__0" onclick="event.stopPropagation()"><span class="tx c-ra">複習 活血祛瘀藥・止血藥 第2次</span></div></div></div><div class="sr"><span class="slb" style="background:#E6F1FB;color:#0C447C">上午 藥理</span><div><div class="item" id="row_k1861291955_d0530__上午_藥理__0" onclick="ck('k1861291955_d0530__上午_藥理__0')"><input type="checkbox" id="cb_k1861291955_d0530__上午_藥理__0" onclick="event.stopPropagation()"><span class="tx c-new">首讀 糖尿病藥物(39)</span></div><div class="item" id="row_k1861291956_d0530__上午_藥理__1" onclick="ck('k1861291956_d0530__上午_藥理__1')"><input type="checkbox" id="cb_k1861291956_d0530__上午_藥理__1" onclick="event.stopPropagation()"><span class="tx c-ra">複習 抗黴菌・抗肺結核(07/08) 第2次</span></div><div class="item" id="row_k1861291957_d0530__上午_藥理__2" onclick="ck('k1861291957_d0530__上午_藥理__2')"><input type="checkbox" id="cb_k1861291957_d0530__上午_藥理__2" onclick="event.stopPropagation()"><span class="tx c-ra">複習 性激素藥物(36) 第1次</span></div></div></div><div class="sr"><span class="slb" style="background:#FAECE7;color:#712B13">下午 藥劑</span><div><div class="item" id="row_k1201458727_d0530__下午_藥劑__0" onclick="ck('k1201458727_d0530__下午_藥劑__0')"><input type="checkbox" id="cb_k1201458727_d0530__下午_藥劑__0" onclick="event.stopPropagation()"><span class="tx c-new">首讀 生物藥劑 Ch10 第2天</span></div><div class="item" id="row_k1201458728_d0530__下午_藥劑__1" onclick="ck('k1201458728_d0530__下午_藥劑__1')"><input type="checkbox" id="cb_k1201458728_d0530__下午_藥劑__1" onclick="event.stopPropagation()"><span class="tx c-rb">複習 糖漿/酏/醑…生物製劑 2 第2次</span></div><div class="item" id="row_k1201458729_d0530__下午_藥劑__2" onclick="ck('k1201458729_d0530__下午_藥劑__2')"><input type="checkbox" id="cb_k1201458729_d0530__下午_藥劑__2" onclick="event.stopPropagation()"><span class="tx c-new">首讀 試驗-檢查法 2 第2天</span></div></div></div><div class="sr"><span class="slb" style="background:#EAF3DE;color:#27500A">晚 19:00 藥分</span><div><div class="item" id="row_k1692474357_d0530__晚_19_00_藥分__0" onclick="ck('k1692474357_d0530__晚_19_00_藥分__0')"><input type="checkbox" id="cb_k1692474357_d0530__晚_19_00_藥分__0" onclick="event.stopPropagation()"><span class="tx c-new">首讀 UV/VIS(紫外可見光譜) 第2晚</span></div></div></div><div style="padding:.4rem 1rem .5rem"><div class="pb"><div class="pf" style="width:0%"></div></div><div class="pl">0/8 完成</div></div></div></div>
+<div class="wcard"><div class="wtop" onclick="tog(this)"><span class="wbg" style="background:#E6F1FB;color:#0C447C">5/31</span><span class="wdt">5/31 週日</span><span class="wti"></span><span class="pct-label" style="font-size:11px;color:#aaa;margin-right:4px">0%</span><span class="chev">▶</span></div><div class="wbody"><div class="sr"><span class="slb" style="background:#EEEDFE;color:#3C3489">早 7:00 中藥</span><div><div class="item" id="row_k1230834041_d0531__早_7_00_中藥__0" onclick="ck('k1230834041_d0531__早_7_00_中藥__0')"><input type="checkbox" id="cb_k1230834041_d0531__早_7_00_中藥__0" onclick="event.stopPropagation()"><span class="tx c-ra">複習 清熱解毒藥・清熱瀻火藥 第2次</span></div></div></div><div class="sr"><span class="slb" style="background:#E6F1FB;color:#0C447C">上午 藥理</span><div><div class="item" id="row_k64340596_d0531__上午_藥理__0" onclick="ck('k64340596_d0531__上午_藥理__0')"><input type="checkbox" id="cb_k64340596_d0531__上午_藥理__0" onclick="event.stopPropagation()"><span class="tx c-new">首讀 鴉片類藥物(40)</span></div><div class="item" id="row_k64340597_d0531__上午_藥理__1" onclick="ck('k64340597_d0531__上午_藥理__1')"><input type="checkbox" id="cb_k64340597_d0531__上午_藥理__1" onclick="event.stopPropagation()"><span class="tx c-ra">複習 荷爾蒙藥物(34) 第2次</span></div><div class="item" id="row_k64340598_d0531__上午_藥理__2" onclick="ck('k64340598_d0531__上午_藥理__2')"><input type="checkbox" id="cb_k64340598_d0531__上午_藥理__2" onclick="event.stopPropagation()"><span class="tx c-ra">複習 骨質疏鬆・抗甲狀腺(37/38) 第1次</span></div></div></div><div class="sr"><span class="slb" style="background:#FAECE7;color:#712B13">下午 藥劑</span><div><div class="item" id="row_k1551991016_d0531__下午_藥劑__0" onclick="ck('k1551991016_d0531__下午_藥劑__0')"><input type="checkbox" id="cb_k1551991016_d0531__下午_藥劑__0" onclick="event.stopPropagation()"><span class="tx c-new">首讀 生物藥劑 Ch10 第3天</span></div><div class="item" id="row_k1551991017_d0531__下午_藥劑__1" onclick="ck('k1551991017_d0531__下午_藥劑__1')"><input type="checkbox" id="cb_k1551991017_d0531__下午_藥劑__1" onclick="event.stopPropagation()"><span class="tx c-rb">複習 試驗-檢查法 1 第2次</span></div><div class="item" id="row_k1551991018_d0531__下午_藥劑__2" onclick="ck('k1551991018_d0531__下午_藥劑__2')"><input type="checkbox" id="cb_k1551991018_d0531__下午_藥劑__2" onclick="event.stopPropagation()"><span class="tx c-new">首讀 滅菌・度量衡・CYP450 第1天</span></div></div></div><div class="sr"><span class="slb" style="background:#EAF3DE;color:#27500A">晚 19:00 藥分</span><div><div class="item" id="row_k1181940180_d0531__晚_19_00_藥分__0" onclick="ck('k1181940180_d0531__晚_19_00_藥分__0')"><input type="checkbox" id="cb_k1181940180_d0531__晚_19_00_藥分__0" onclick="event.stopPropagation()"><span class="tx c-ra">複習 光譜概論 第1次</span></div><div class="item" id="row_k1181940181_d0531__晚_19_00_藥分__1" onclick="ck('k1181940181_d0531__晚_19_00_藥分__1')"><input type="checkbox" id="cb_k1181940181_d0531__晚_19_00_藥分__1" onclick="event.stopPropagation()"><span class="tx c-new">首讀 UV/VIS(紫外可見光譜) 第3晚</span></div></div></div><div style="padding:.4rem 1rem .5rem"><div class="pb"><div class="pf" style="width:0%"></div></div><div class="pl">0/9 完成</div></div></div></div>
+<div class="wcard week-summary"><div class="wtop" onclick="tog(this)"><span class="wbg week-badge">第6週</span><span class="wdt" style="color:#1A4A7A;font-weight:500">6/1（週一）–6/7（週日）</span><span class="wti week-title">本週進度總覽</span><span class="chev">▶</span></div><div class="wbody"><div class="week-summary-inner"><div class="ws-row"><span class="ws-sci" style="background:#E6F1FB;color:#0C447C">本週藥理</span><span class="ws-items"><span class="ws-new">首讀：首讀 NSAID・抗痛風(41/42/43)、首讀 抗組織胺・胃酸(44/45)、首讀 抗病毒藥物(01)、首讀 抗痙攣(24)、首讀 貧血治療劑・解毒劑(32/47)</span><br><span class="ws-rev">複習：複習 皮質類固醇(35) 第2次、複習 糖尿病藥物(39) 第1次、複習 性激素藥物(36) 第2次、複習 鴉片類藥物(40) 第1次、複習 骨質疏鬆・抗甲狀腺(37/38) 第2次 …+5項</span></span></div><div class="ws-row"><span class="ws-sci" style="background:#FAECE7;color:#712B13">本週藥劑</span><span class="ws-items"><span class="ws-new">首讀：首讀 生物藥劑 Ch11、首讀 滅菌・度量衡・CYP450、首讀 注射劑 1、首讀 注射劑 2、首讀 生物藥劑 Ch12、首讀 注射劑 3</span><br><span class="ws-rev">複習：複習 試驗-檢查法 2 第2次、複習 滅菌・度量衡・CYP450 第2次、複習 注射劑 1 第2次、複習 注射劑 2 第2次、複習 注射劑 3 第2次</span></span></div><div class="ws-row"><span class="ws-sci" style="background:#EAF3DE;color:#27500A">本週藥分</span><span class="ws-items"><span class="ws-new">首讀：首讀 IR(紅外光譜)、首讀 FLUOR(螢光光譜)、首讀 拉曼光譜</span><br><span class="ws-rev">複習：複習 MS(質譜儀) 第2次、複習 UV/VIS(紫外可見光譜) 第1次、複習 光譜概論 第2次、複習 IR(紅外光譜) 第1次、複習 UV/VIS(紫外可見光譜) 第2次</span></span></div></div></div></div>
+<div class="wcard"><div class="wtop" onclick="tog(this)"><span class="wbg" style="background:#E6F1FB;color:#0C447C">6/1</span><span class="wdt">6/1 週一</span><span class="wti"></span><span class="pct-label" style="font-size:11px;color:#aaa;margin-right:4px">0%</span><span class="chev">▶</span></div><div class="wbody"><div class="sr"><span class="slb" style="background:#EEEDFE;color:#3C3489">早 7:00 中藥</span><div><div class="item" id="row_k1968262621_d0601__早_7_00_中藥__0" onclick="ck('k1968262621_d0601__早_7_00_中藥__0')"><input type="checkbox" id="cb_k1968262621_d0601__早_7_00_中藥__0" onclick="event.stopPropagation()"><span class="tx c-ra">複習 清熱燥濕藥・清熱涼血藥 第2次</span></div></div></div><div class="sr"><span class="slb" style="background:#E6F1FB;color:#0C447C">上午 藥理</span><div><div class="item" id="row_k1531173080_d0601__上午_藥理__0" onclick="ck('k1531173080_d0601__上午_藥理__0')"><input type="checkbox" id="cb_k1531173080_d0601__上午_藥理__0" onclick="event.stopPropagation()"><span class="tx c-new">首讀 NSAID・抗痛風(41/42/43)</span></div><div class="item" id="row_k1531173081_d0601__上午_藥理__1" onclick="ck('k1531173081_d0601__上午_藥理__1')"><input type="checkbox" id="cb_k1531173081_d0601__上午_藥理__1" onclick="event.stopPropagation()"><span class="tx c-ra">複習 皮質類固醇(35) 第2次</span></div></div></div><div class="sr"><span class="slb" style="background:#FAECE7;color:#712B13">下午 藥劑</span><div><div class="item" id="row_k871339852_d0601__下午_藥劑__0" onclick="ck('k871339852_d0601__下午_藥劑__0')"><input type="checkbox" id="cb_k871339852_d0601__下午_藥劑__0" onclick="event.stopPropagation()"><span class="tx c-new">首讀 生物藥劑 Ch11 第1天</span></div><div class="item" id="row_k871339853_d0601__下午_藥劑__1" onclick="ck('k871339853_d0601__下午_藥劑__1')"><input type="checkbox" id="cb_k871339853_d0601__下午_藥劑__1" onclick="event.stopPropagation()"><span class="tx c-new">首讀 滅菌・度量衡・CYP450 第2天</span></div></div></div><div class="sr"><span class="slb" style="background:#EAF3DE;color:#27500A">晚 19:00 藥分</span><div><div class="item" id="row_k419906032_d0601__晚_19_00_藥分__0" onclick="ck('k419906032_d0601__晚_19_00_藥分__0')"><input type="checkbox" id="cb_k419906032_d0601__晚_19_00_藥分__0" onclick="event.stopPropagation()"><span class="tx c-ra">複習 MS(質譜儀) 第2次</span></div><div class="item" id="row_k419906033_d0601__晚_19_00_藥分__1" onclick="ck('k419906033_d0601__晚_19_00_藥分__1')"><input type="checkbox" id="cb_k419906033_d0601__晚_19_00_藥分__1" onclick="event.stopPropagation()"><span class="tx c-new">首讀 IR(紅外光譜) 第1晚</span></div></div></div><div style="padding:.4rem 1rem .5rem"><div class="pb"><div class="pf" style="width:0%"></div></div><div class="pl">0/7 完成</div></div></div></div>
+<div class="wcard"><div class="wtop" onclick="tog(this)"><span class="wbg" style="background:#E6F1FB;color:#0C447C">6/2</span><span class="wdt">6/2 週二</span><span class="wti"></span><span class="pct-label" style="font-size:11px;color:#aaa;margin-right:4px">0%</span><span class="chev">▶</span></div><div class="wbody"><div class="sr"><span class="slb" style="background:#EEEDFE;color:#3C3489">早 7:00 中藥</span><div><div class="item" id="row_k1328330782_d0602__早_7_00_中藥__0" onclick="ck('k1328330782_d0602__早_7_00_中藥__0')"><input type="checkbox" id="cb_k1328330782_d0602__早_7_00_中藥__0" onclick="event.stopPropagation()"><span class="tx c-ra">複習 清虛熱藥・外用藥驅蟲藥 第2次</span></div></div></div><div class="sr"><span class="slb" style="background:#E6F1FB;color:#0C447C">上午 藥理</span><div><div class="item" id="row_k1881705369_d0602__上午_藥理__0" onclick="ck('k1881705369_d0602__上午_藥理__0')"><input type="checkbox" id="cb_k1881705369_d0602__上午_藥理__0" onclick="event.stopPropagation()"><span class="tx c-new">首讀 抗組織胺・胃酸(44/45) 第1天</span></div><div class="item" id="row_k1881705370_d0602__上午_藥理__1" onclick="ck('k1881705370_d0602__上午_藥理__1')"><input type="checkbox" id="cb_k1881705370_d0602__上午_藥理__1" onclick="event.stopPropagation()"><span class="tx c-ra">複習 糖尿病藥物(39) 第1次</span></div></div></div><div class="sr"><span class="slb" style="background:#FAECE7;color:#712B13">下午 藥劑</span><div><div class="item" id="row_k1221872141_d0602__下午_藥劑__0" onclick="ck('k1221872141_d0602__下午_藥劑__0')"><input type="checkbox" id="cb_k1221872141_d0602__下午_藥劑__0" onclick="event.stopPropagation()"><span class="tx c-new">首讀 生物藥劑 Ch11 第2天</span></div><div class="item" id="row_k1221872142_d0602__下午_藥劑__1" onclick="ck('k1221872142_d0602__下午_藥劑__1')"><input type="checkbox" id="cb_k1221872142_d0602__下午_藥劑__1" onclick="event.stopPropagation()"><span class="tx c-rb">複習 試驗-檢查法 2 第2次</span></div><div class="item" id="row_k1221872143_d0602__下午_藥劑__2" onclick="ck('k1221872143_d0602__下午_藥劑__2')"><input type="checkbox" id="cb_k1221872143_d0602__下午_藥劑__2" onclick="event.stopPropagation()"><span class="tx c-new">首讀 注射劑 1</span></div></div></div><div class="sr"><span class="slb" style="background:#EAF3DE;color:#27500A">晚 19:00 藥分</span><div><div class="item" id="row_k2056855503_d0602__晚_19_00_藥分__0" onclick="ck('k2056855503_d0602__晚_19_00_藥分__0')"><input type="checkbox" id="cb_k2056855503_d0602__晚_19_00_藥分__0" onclick="event.stopPropagation()"><span class="tx c-new">首讀 IR(紅外光譜) 第2晚</span></div></div></div><div class="sr"><span class="slb" style="background:#FFF8EC;color:#92610A">🎯 里程碑</span><div><div class="item" id="row_k958895035_d0602____里程碑__0" onclick="ck('k958895035_d0602____里程碑__0')"><input type="checkbox" id="cb_k958895035_d0602____里程碑__0" onclick="event.stopPropagation()"><span class="tx c-purple">💊 藥理首輪完成！（全47單元）</span></div></div></div><div style="padding:.4rem 1rem .5rem"><div class="pb"><div class="pf" style="width:0%"></div></div><div class="pl">0/8 完成</div></div></div></div>
+<div class="wcard"><div class="wtop" onclick="tog(this)"><span class="wbg" style="background:#FAEEDA;color:#633806">6/3</span><span class="wdt">6/3 週三 早八課</span><span class="wti"></span><span class="pct-label" style="font-size:11px;color:#aaa;margin-right:4px">0%</span><span class="chev">▶</span></div><div class="wbody"><div class="sr"><span class="slb" style="background:#EEEDFE;color:#3C3489">早 7:00 中藥</span><div><div class="item" id="row_k688398943_d0603__早_7_00_中藥__0" onclick="ck('k688398943_d0603__早_7_00_中藥__0')"><input type="checkbox" id="cb_k688398943_d0603__早_7_00_中藥__0" onclick="event.stopPropagation()"><span class="tx c-ra">複習 藥用部位・常考方劑・萜類・考點整理 第2次</span></div></div></div><div class="sr"><span class="slb" style="background:#E6F1FB;color:#0C447C">上 10:30 藥理</span><div><div class="item" id="row_k991954916_d0603__上_10_30_藥理__0" onclick="ck('k991954916_d0603__上_10_30_藥理__0')"><input type="checkbox" id="cb_k991954916_d0603__上_10_30_藥理__0" onclick="event.stopPropagation()"><span class="tx c-new">首讀 抗組織胺・胃酸(44/45) 第2天</span></div><div class="item" id="row_k991954917_d0603__上_10_30_藥理__1" onclick="ck('k991954917_d0603__上_10_30_藥理__1')"><input type="checkbox" id="cb_k991954917_d0603__上_10_30_藥理__1" onclick="event.stopPropagation()"><span class="tx c-ra">複習 性激素藥物(36) 第2次</span></div><div class="item" id="row_k991954918_d0603__上_10_30_藥理__2" onclick="ck('k991954918_d0603__上_10_30_藥理__2')"><input type="checkbox" id="cb_k991954918_d0603__上_10_30_藥理__2" onclick="event.stopPropagation()"><span class="tx c-ra">複習 鴉片類藥物(40) 第1次</span></div></div></div><div class="sr"><span class="slb" style="background:#FAECE7;color:#712B13">下午 藥劑</span><div><div class="item" id="row_k1572404430_d0603__下午_藥劑__0" onclick="ck('k1572404430_d0603__下午_藥劑__0')"><input type="checkbox" id="cb_k1572404430_d0603__下午_藥劑__0" onclick="event.stopPropagation()"><span class="tx c-new">首讀 生物藥劑 Ch11 第3天</span></div><div class="item" id="row_k1572404431_d0603__下午_藥劑__1" onclick="ck('k1572404431_d0603__下午_藥劑__1')"><input type="checkbox" id="cb_k1572404431_d0603__下午_藥劑__1" onclick="event.stopPropagation()"><span class="tx c-new">首讀 注射劑 2</span></div></div></div><div class="sr"><span class="slb" style="background:#EAF3DE;color:#27500A">晚 19:00 藥分</span><div><div class="item" id="row_k1546321326_d0603__晚_19_00_藥分__0" onclick="ck('k1546321326_d0603__晚_19_00_藥分__0')"><input type="checkbox" id="cb_k1546321326_d0603__晚_19_00_藥分__0" onclick="event.stopPropagation()"><span class="tx c-ra">複習 UV/VIS(紫外可見光譜) 第1次</span></div><div class="item" id="row_k1546321327_d0603__晚_19_00_藥分__1" onclick="ck('k1546321327_d0603__晚_19_00_藥分__1')"><input type="checkbox" id="cb_k1546321327_d0603__晚_19_00_藥分__1" onclick="event.stopPropagation()"><span class="tx c-new">首讀 IR(紅外光譜) 第3晚</span></div></div></div><div style="padding:.4rem 1rem .5rem"><div class="pb"><div class="pf" style="width:0%"></div></div><div class="pl">0/8 完成</div></div></div></div>
+<div class="wcard"><div class="wtop" onclick="tog(this)"><span class="wbg" style="background:#FAEEDA;color:#633806">6/4</span><span class="wdt">6/4 週四 課到15:00</span><span class="wti"></span><span class="pct-label" style="font-size:11px;color:#aaa;margin-right:4px">0%</span><span class="chev">▶</span></div><div class="wbody"><div class="sr"><span class="slb" style="background:#EEEDFE;color:#3C3489">早 7:00 中藥</span><div><div class="item" id="row_k48467104_d0604__早_7_00_中藥__0" onclick="ck('k48467104_d0604__早_7_00_中藥__0')"><input type="checkbox" id="cb_k48467104_d0604__早_7_00_中藥__0" onclick="event.stopPropagation()"><span class="tx c-ra">複習 補氣藥・補血藥 第3次</span></div></div></div><div class="sr"><span class="slb" style="background:#E6F1FB;color:#0C447C">上午 藥理</span><div><div class="item" id="row_k435286299_d0604__上午_藥理__0" onclick="ck('k435286299_d0604__上午_藥理__0')"><input type="checkbox" id="cb_k435286299_d0604__上午_藥理__0" onclick="event.stopPropagation()"><span class="tx c-new">首讀 抗病毒藥物(01)</span></div><div class="item" id="row_k435286300_d0604__上午_藥理__1" onclick="ck('k435286300_d0604__上午_藥理__1')"><input type="checkbox" id="cb_k435286300_d0604__上午_藥理__1" onclick="event.stopPropagation()"><span class="tx c-ra">複習 骨質疏鬆・抗甲狀腺(37/38) 第2次</span></div><div class="item" id="row_k435286301_d0604__上午_藥理__2" onclick="ck('k435286301_d0604__上午_藥理__2')"><input type="checkbox" id="cb_k435286301_d0604__上午_藥理__2" onclick="event.stopPropagation()"><span class="tx c-ra">複習 NSAID・抗痛風(41/42/43) 第1次</span></div></div></div><div class="sr"><span class="slb" style="background:#FAECE7;color:#712B13">下午 15:00 藥劑</span><div><div class="item" id="row_k543661509_d0604__下午_15_00_藥劑__" onclick="ck('k543661509_d0604__下午_15_00_藥劑__')"><input type="checkbox" id="cb_k543661509_d0604__下午_15_00_藥劑__" onclick="event.stopPropagation()"><span class="tx c-new">首讀 生物藥劑 Ch12 第1天</span></div><div class="item" id="row_k543661510_d0604__下午_15_00_藥劑__" onclick="ck('k543661510_d0604__下午_15_00_藥劑__')"><input type="checkbox" id="cb_k543661510_d0604__下午_15_00_藥劑__" onclick="event.stopPropagation()"><span class="tx c-rb">複習 滅菌・度量衡・CYP450 第2次</span></div><div class="item" id="row_k543661511_d0604__下午_15_00_藥劑__" onclick="ck('k543661511_d0604__下午_15_00_藥劑__')"><input type="checkbox" id="cb_k543661511_d0604__下午_15_00_藥劑__" onclick="event.stopPropagation()"><span class="tx c-new">首讀 注射劑 3</span></div></div></div><div class="sr"><span class="slb" style="background:#EAF3DE;color:#27500A">晚 19:00 藥分</span><div><div class="item" id="row_k1035787149_d0604__晚_19_00_藥分__0" onclick="ck('k1035787149_d0604__晚_19_00_藥分__0')"><input type="checkbox" id="cb_k1035787149_d0604__晚_19_00_藥分__0" onclick="event.stopPropagation()"><span class="tx c-ra">複習 光譜概論 第2次</span></div><div class="item" id="row_k1035787150_d0604__晚_19_00_藥分__1" onclick="ck('k1035787150_d0604__晚_19_00_藥分__1')"><input type="checkbox" id="cb_k1035787150_d0604__晚_19_00_藥分__1" onclick="event.stopPropagation()"><span class="tx c-new">首讀 FLUOR(螢光光譜) 第1晚</span></div></div></div><div class="sr"><span class="slb" style="background:#EEEDFE;color:#26215C">晚 21:00 生藥</span><div><div class="item" id="row_k1535906641_d0604__晚_21_00_生藥__0" onclick="ck('k1535906641_d0604__晚_21_00_生藥__0')"><input type="checkbox" id="cb_k1535906641_d0604__晚_21_00_生藥__0" onclick="event.stopPropagation()"><span class="tx c-ra">複習 生物鹼 I（複習輪）</span></div></div></div><div style="padding:.4rem 1rem .5rem"><div class="pb"><div class="pf" style="width:0%"></div></div><div class="pl">0/10 完成</div></div></div></div>
+<div class="wcard"><div class="wtop" onclick="tog(this)"><span class="wbg" style="background:#FAEEDA;color:#633806">6/5</span><span class="wdt">6/5 週五 課到12:00</span><span class="wti"></span><span class="pct-label" style="font-size:11px;color:#aaa;margin-right:4px">0%</span><span class="chev">▶</span></div><div class="wbody"><div class="sr"><span class="slb" style="background:#EEEDFE;color:#3C3489">早 7:00 中藥</span><div><div class="item" id="row_k1556018913_d0605__早_7_00_中藥__0" onclick="ck('k1556018913_d0605__早_7_00_中藥__0')"><input type="checkbox" id="cb_k1556018913_d0605__早_7_00_中藥__0" onclick="event.stopPropagation()"><span class="tx c-ra">複習 補陰藥・補陽藥 第3次</span></div></div></div><div class="sr"><span class="slb" style="background:#FAECE7;color:#712B13">下午 12:00 藥劑</span><div><div class="item" id="row_k339028073_d0605__下午_12_00_藥劑__" onclick="ck('k339028073_d0605__下午_12_00_藥劑__')"><input type="checkbox" id="cb_k339028073_d0605__下午_12_00_藥劑__" onclick="event.stopPropagation()"><span class="tx c-new">首讀 生物藥劑 Ch12 第2天</span></div><div class="item" id="row_k339028074_d0605__下午_12_00_藥劑__" onclick="ck('k339028074_d0605__下午_12_00_藥劑__')"><input type="checkbox" id="cb_k339028074_d0605__下午_12_00_藥劑__" onclick="event.stopPropagation()"><span class="tx c-rb">複習 注射劑 1 第2次</span></div></div></div><div class="sr"><span class="slb" style="background:#EAF3DE;color:#27500A">晚 19:00 藥分</span><div><div class="item" id="row_k525252972_d0605__晚_19_00_藥分__0" onclick="ck('k525252972_d0605__晚_19_00_藥分__0')"><input type="checkbox" id="cb_k525252972_d0605__晚_19_00_藥分__0" onclick="event.stopPropagation()"><span class="tx c-new">首讀 FLUOR(螢光光譜) 第2晚</span></div></div></div><div class="sr"><span class="slb" style="background:#EEEDFE;color:#26215C">晚 21:00 生藥</span><div><div class="item" id="row_k1025372464_d0605__晚_21_00_生藥__0" onclick="ck('k1025372464_d0605__晚_21_00_生藥__0')"><input type="checkbox" id="cb_k1025372464_d0605__晚_21_00_生藥__0" onclick="event.stopPropagation()"><span class="tx c-ra">複習 生物鹼 II（複習輪）</span></div></div></div><div style="padding:.4rem 1rem .5rem"><div class="pb"><div class="pf" style="width:0%"></div></div><div class="pl">0/5 完成</div></div></div></div>
+<div class="wcard"><div class="wtop" onclick="tog(this)"><span class="wbg" style="background:#E6F1FB;color:#0C447C">6/6</span><span class="wdt">6/6 週六</span><span class="wti"></span><span class="pct-label" style="font-size:11px;color:#aaa;margin-right:4px">0%</span><span class="chev">▶</span></div><div class="wbody"><div class="sr"><span class="slb" style="background:#EEEDFE;color:#3C3489">早 7:00 中藥</span><div><div class="item" id="row_k916087074_d0606__早_7_00_中藥__0" onclick="ck('k916087074_d0606__早_7_00_中藥__0')"><input type="checkbox" id="cb_k916087074_d0606__早_7_00_中藥__0" onclick="event.stopPropagation()"><span class="tx c-ra">複習 溫裡藥・理氣藥 第3次</span></div></div></div><div class="sr"><span class="slb" style="background:#E6F1FB;color:#0C447C">上午 藥理</span><div><div class="item" id="row_k1136350877_d0606__上午_藥理__0" onclick="ck('k1136350877_d0606__上午_藥理__0')"><input type="checkbox" id="cb_k1136350877_d0606__上午_藥理__0" onclick="event.stopPropagation()"><span class="tx c-new">首讀 抗痙攣(24)</span></div><div class="item" id="row_k1136350878_d0606__上午_藥理__1" onclick="ck('k1136350878_d0606__上午_藥理__1')"><input type="checkbox" id="cb_k1136350878_d0606__上午_藥理__1" onclick="event.stopPropagation()"><span class="tx c-ra">複習 糖尿病藥物(39) 第2次</span></div><div class="item" id="row_k1136350879_d0606__上午_藥理__2" onclick="ck('k1136350879_d0606__上午_藥理__2')"><input type="checkbox" id="cb_k1136350879_d0606__上午_藥理__2" onclick="event.stopPropagation()"><span class="tx c-ra">複習 抗組織胺・胃酸(44/45) 第1次</span></div></div></div><div class="sr"><span class="slb" style="background:#FAECE7;color:#712B13">下午 藥劑</span><div><div class="item" id="row_k476517649_d0606__下午_藥劑__0" onclick="ck('k476517649_d0606__下午_藥劑__0')"><input type="checkbox" id="cb_k476517649_d0606__下午_藥劑__0" onclick="event.stopPropagation()"><span class="tx c-new">首讀 生物藥劑 Ch12 第3天</span></div><div class="item" id="row_k476517650_d0606__下午_藥劑__1" onclick="ck('k476517650_d0606__下午_藥劑__1')"><input type="checkbox" id="cb_k476517650_d0606__下午_藥劑__1" onclick="event.stopPropagation()"><span class="tx c-rb">複習 注射劑 2 第2次</span></div></div></div><div class="sr"><span class="slb" style="background:#EAF3DE;color:#27500A">晚 19:00 藥分</span><div><div class="item" id="row_k14718795_d0606__晚_19_00_藥分__0" onclick="ck('k14718795_d0606__晚_19_00_藥分__0')"><input type="checkbox" id="cb_k14718795_d0606__晚_19_00_藥分__0" onclick="event.stopPropagation()"><span class="tx c-ra">複習 IR(紅外光譜) 第1次</span></div><div class="item" id="row_k14718796_d0606__晚_19_00_藥分__1" onclick="ck('k14718796_d0606__晚_19_00_藥分__1')"><input type="checkbox" id="cb_k14718796_d0606__晚_19_00_藥分__1" onclick="event.stopPropagation()"><span class="tx c-new">首讀 FLUOR(螢光光譜) 第3晚</span></div></div></div><div class="sr"><span class="slb" style="background:#EEEDFE;color:#26215C">晚 21:00 生藥</span><div><div class="item" id="row_k514838287_d0606__晚_21_00_生藥__0" onclick="ck('k514838287_d0606__晚_21_00_生藥__0')"><input type="checkbox" id="cb_k514838287_d0606__晚_21_00_生藥__0" onclick="event.stopPropagation()"><span class="tx c-ra">複習 配糖體 I（複習輪）</span></div></div></div><div class="sr"><span class="slb" style="background:#FFF8EC;color:#92610A">🎯 里程碑</span><div><div class="item" id="row_k213540543_d0606____里程碑__0" onclick="ck('k213540543_d0606____里程碑__0')"><input type="checkbox" id="cb_k213540543_d0606____里程碑__0" onclick="event.stopPropagation()"><span class="tx c-purple">🧪 藥劑首輪完成！（劑型＋生物藥劑 Ch1–12）</span></div></div></div><div style="padding:.4rem 1rem .5rem"><div class="pb"><div class="pf" style="width:0%"></div></div><div class="pl">0/10 完成</div></div></div></div>
+<div class="wcard"><div class="wtop" onclick="tog(this)"><span class="wbg" style="background:#E6F1FB;color:#0C447C">6/7</span><span class="wdt">6/7 週日</span><span class="wti"></span><span class="pct-label" style="font-size:11px;color:#aaa;margin-right:4px">0%</span><span class="chev">▶</span></div><div class="wbody"><div class="sr"><span class="slb" style="background:#EEEDFE;color:#3C3489">早 7:00 中藥</span><div><div class="item" id="row_k276155235_d0607__早_7_00_中藥__0" onclick="ck('k276155235_d0607__早_7_00_中藥__0')"><input type="checkbox" id="cb_k276155235_d0607__早_7_00_中藥__0" onclick="event.stopPropagation()"><span class="tx c-ra">複習 平肝熄風藥・安神藥 第3次</span></div></div></div><div class="sr"><span class="slb" style="background:#E6F1FB;color:#0C447C">上午 藥理</span><div><div class="item" id="row_k1486883166_d0607__上午_藥理__0" onclick="ck('k1486883166_d0607__上午_藥理__0')"><input type="checkbox" id="cb_k1486883166_d0607__上午_藥理__0" onclick="event.stopPropagation()"><span class="tx c-new">首讀 貧血治療劑・解毒劑(32/47)</span></div><div class="item" id="row_k1486883167_d0607__上午_藥理__1" onclick="ck('k1486883167_d0607__上午_藥理__1')"><input type="checkbox" id="cb_k1486883167_d0607__上午_藥理__1" onclick="event.stopPropagation()"><span class="tx c-ra">複習 鴉片類藥物(40) 第2次</span></div><div class="item" id="row_k1486883168_d0607__上午_藥理__2" onclick="ck('k1486883168_d0607__上午_藥理__2')"><input type="checkbox" id="cb_k1486883168_d0607__上午_藥理__2" onclick="event.stopPropagation()"><span class="tx c-ra">複習 抗病毒藥物(01) 第1次</span></div></div></div><div class="sr"><span class="slb" style="background:#FAECE7;color:#712B13">下午 藥劑</span><div><div class="item" id="row_k827049938_d0607__下午_藥劑__0" onclick="ck('k827049938_d0607__下午_藥劑__0')"><input type="checkbox" id="cb_k827049938_d0607__下午_藥劑__0" onclick="event.stopPropagation()"><span class="tx c-rb">複習 注射劑 3 第2次</span></div></div></div><div class="sr"><span class="slb" style="background:#EAF3DE;color:#27500A">晚 19:00 藥分</span><div><div class="item" id="row_k1651668266_d0607__晚_19_00_藥分__0" onclick="ck('k1651668266_d0607__晚_19_00_藥分__0')"><input type="checkbox" id="cb_k1651668266_d0607__晚_19_00_藥分__0" onclick="event.stopPropagation()"><span class="tx c-ra">複習 UV/VIS(紫外可見光譜) 第2次</span></div><div class="item" id="row_k1651668267_d0607__晚_19_00_藥分__1" onclick="ck('k1651668267_d0607__晚_19_00_藥分__1')"><input type="checkbox" id="cb_k1651668267_d0607__晚_19_00_藥分__1" onclick="event.stopPropagation()"><span class="tx c-new">首讀 拉曼光譜 第1晚</span></div></div></div><div class="sr"><span class="slb" style="background:#EEEDFE;color:#26215C">晚 21:00 生藥</span><div><div class="item" id="row_k4304110_d0607__晚_21_00_生藥__0" onclick="ck('k4304110_d0607__晚_21_00_生藥__0')"><input type="checkbox" id="cb_k4304110_d0607__晚_21_00_生藥__0" onclick="event.stopPropagation()"><span class="tx c-ra">複習 配糖體 II（複習輪）</span></div></div></div><div style="padding:.4rem 1rem .5rem"><div class="pb"><div class="pf" style="width:0%"></div></div><div class="pl">0/8 完成</div></div></div></div>
+<div class="wcard week-summary"><div class="wtop" onclick="tog(this)"><span class="wbg week-badge">第7週</span><span class="wdt" style="color:#1A4A7A;font-weight:500">6/8（週一）–6/13（週六）</span><span class="wti week-title">本週進度總覽</span><span class="chev">▶</span></div><div class="wbody"><div class="week-summary-inner"><div class="ws-row"><span class="ws-sci" style="background:#E6F1FB;color:#0C447C">本週藥理</span><span class="ws-items"><span class="ws-rev">複習：複習 NSAID・抗痛風(41/42/43) 第2次、複習 抗痙攣(24) 第1次、複習 抗組織胺・胃酸(44/45) 第2次、複習 貧血治療劑・解毒劑(32/47) 第1次、複習 抗病毒藥物(01) 第2次 …+1項</span></span></div><div class="ws-row"><span class="ws-sci" style="background:#EAF3DE;color:#27500A">本週藥分</span><span class="ws-items"><span class="ws-new">首讀：首讀 拉曼光譜、首讀 NMR(核磁共振)、首讀 滴定分析概論</span><br><span class="ws-rev">複習：複習 FLUOR(螢光光譜) 第1次、複習 IR(紅外光譜) 第2次、複習 拉曼光譜 第1次、複習 FLUOR(螢光光譜) 第2次</span></span></div></div></div></div>
+<div class="wcard"><div class="wtop" onclick="tog(this)"><span class="wbg" style="background:#E6F1FB;color:#0C447C">6/8</span><span class="wdt">6/8 週一</span><span class="wti"></span><span class="pct-label" style="font-size:11px;color:#aaa;margin-right:4px">0%</span><span class="chev">▶</span></div><div class="wbody"><div class="sr"><span class="slb" style="background:#EEEDFE;color:#3C3489">早 7:00 中藥</span><div><div class="item" id="row_k1783707044_d0608__早_7_00_中藥__0" onclick="ck('k1783707044_d0608__早_7_00_中藥__0')"><input type="checkbox" id="cb_k1783707044_d0608__早_7_00_中藥__0" onclick="event.stopPropagation()"><span class="tx c-ra">複習 收澀藥・辛溫解表藥 第3次</span></div></div></div><div class="sr"><span class="slb" style="background:#E6F1FB;color:#0C447C">上午 藥理</span><div><div class="item" id="row_k1837415455_d0608__上午_藥理__0" onclick="ck('k1837415455_d0608__上午_藥理__0')"><input type="checkbox" id="cb_k1837415455_d0608__上午_藥理__0" onclick="event.stopPropagation()"><span class="tx c-ra">複習 NSAID・抗痛風(41/42/43) 第2次</span></div></div></div><div class="sr"><span class="slb" style="background:#EAF3DE;color:#27500A">晚 19:00 藥分</span><div><div class="item" id="row_k1141134089_d0608__晚_19_00_藥分__0" onclick="ck('k1141134089_d0608__晚_19_00_藥分__0')"><input type="checkbox" id="cb_k1141134089_d0608__晚_19_00_藥分__0" onclick="event.stopPropagation()"><span class="tx c-new">首讀 拉曼光譜 第2晚</span></div></div></div><div class="sr"><span class="slb" style="background:#EEEDFE;color:#26215C">晚 21:00 生藥</span><div><div class="item" id="row_k1641253581_d0608__晚_21_00_生藥__0" onclick="ck('k1641253581_d0608__晚_21_00_生藥__0')"><input type="checkbox" id="cb_k1641253581_d0608__晚_21_00_生藥__0" onclick="event.stopPropagation()"><span class="tx c-ra">複習 多醣類・樹脂（複習輪）</span></div></div></div><div style="padding:.4rem 1rem .5rem"><div class="pb"><div class="pf" style="width:0%"></div></div><div class="pl">0/4 完成</div></div></div></div>
+<div class="wcard"><div class="wtop" onclick="tog(this)"><span class="wbg" style="background:#E6F1FB;color:#0C447C">6/9</span><span class="wdt">6/9 週二</span><span class="wti"></span><span class="pct-label" style="font-size:11px;color:#aaa;margin-right:4px">0%</span><span class="chev">▶</span></div><div class="wbody"><div class="sr"><span class="slb" style="background:#EEEDFE;color:#3C3489">早 7:00 中藥</span><div><div class="item" id="row_k1143775205_d0609__早_7_00_中藥__0" onclick="ck('k1143775205_d0609__早_7_00_中藥__0')"><input type="checkbox" id="cb_k1143775205_d0609__早_7_00_中藥__0" onclick="event.stopPropagation()"><span class="tx c-ra">複習 辛涼解表藥・化痰藥 第3次</span></div></div></div><div class="sr"><span class="slb" style="background:#E6F1FB;color:#0C447C">上午 藥理</span><div><div class="item" id="row_k40464096_d0609__上午_藥理__0" onclick="ck('k40464096_d0609__上午_藥理__0')"><input type="checkbox" id="cb_k40464096_d0609__上午_藥理__0" onclick="event.stopPropagation()"><span class="tx c-ra">複習 抗痙攣(24) 第1次</span></div></div></div><div class="sr"><span class="slb" style="background:#EAF3DE;color:#27500A">晚 19:00 藥分</span><div><div class="item" id="row_k630599912_d0609__晚_19_00_藥分__0" onclick="ck('k630599912_d0609__晚_19_00_藥分__0')"><input type="checkbox" id="cb_k630599912_d0609__晚_19_00_藥分__0" onclick="event.stopPropagation()"><span class="tx c-ra">複習 FLUOR(螢光光譜) 第1次</span></div><div class="item" id="row_k630599913_d0609__晚_19_00_藥分__1" onclick="ck('k630599913_d0609__晚_19_00_藥分__1')"><input type="checkbox" id="cb_k630599913_d0609__晚_19_00_藥分__1" onclick="event.stopPropagation()"><span class="tx c-new">首讀 拉曼光譜 第3晚</span></div></div></div><div class="sr"><span class="slb" style="background:#EEEDFE;color:#26215C">晚 21:00 生藥</span><div><div class="item" id="row_k1130719404_d0609__晚_21_00_生藥__0" onclick="ck('k1130719404_d0609__晚_21_00_生藥__0')"><input type="checkbox" id="cb_k1130719404_d0609__晚_21_00_生藥__0" onclick="event.stopPropagation()"><span class="tx c-ra">複習 苯丙烷（複習輪）</span></div></div></div><div style="padding:.4rem 1rem .5rem"><div class="pb"><div class="pf" style="width:0%"></div></div><div class="pl">0/5 完成</div></div></div></div>
+<div class="wcard"><div class="wtop" onclick="tog(this)"><span class="wbg" style="background:#FAEEDA;color:#633806">6/10</span><span class="wdt">6/10 週三 早八課</span><span class="wti"></span><span class="pct-label" style="font-size:11px;color:#aaa;margin-right:4px">0%</span><span class="chev">▶</span></div><div class="wbody"><div class="sr"><span class="slb" style="background:#EEEDFE;color:#3C3489">早 7:00 中藥</span><div><div class="item" id="row_k2097660283_d0610__早_7_00_中藥__0" onclick="ck('k2097660283_d0610__早_7_00_中藥__0')"><input type="checkbox" id="cb_k2097660283_d0610__早_7_00_中藥__0" onclick="event.stopPropagation()"><span class="tx c-ra">複習 止咳平喘藥・利水滲濕藥 第3次</span></div></div></div><div class="sr"><span class="slb" style="background:#E6F1FB;color:#0C447C">上 10:30 藥理</span><div><div class="item" id="row_k1729383496_d0610__上_10_30_藥理__0" onclick="ck('k1729383496_d0610__上_10_30_藥理__0')"><input type="checkbox" id="cb_k1729383496_d0610__上_10_30_藥理__0" onclick="event.stopPropagation()"><span class="tx c-ra">複習 抗組織胺・胃酸(44/45) 第2次</span></div><div class="item" id="row_k1729383497_d0610__上_10_30_藥理__1" onclick="ck('k1729383497_d0610__上_10_30_藥理__1')"><input type="checkbox" id="cb_k1729383497_d0610__上_10_30_藥理__1" onclick="event.stopPropagation()"><span class="tx c-ra">複習 貧血治療劑・解毒劑(32/47) 第1次</span></div></div></div><div class="sr"><span class="slb" style="background:#EAF3DE;color:#27500A">晚 19:00 藥分</span><div><div class="item" id="row_k136266258_d0610__晚_19_00_藥分__0" onclick="ck('k136266258_d0610__晚_19_00_藥分__0')"><input type="checkbox" id="cb_k136266258_d0610__晚_19_00_藥分__0" onclick="event.stopPropagation()"><span class="tx c-ra">複習 IR(紅外光譜) 第2次</span></div><div class="item" id="row_k136266259_d0610__晚_19_00_藥分__1" onclick="ck('k136266259_d0610__晚_19_00_藥分__1')"><input type="checkbox" id="cb_k136266259_d0610__晚_19_00_藥分__1" onclick="event.stopPropagation()"><span class="tx c-new">首讀 NMR(核磁共振) 第1晚</span></div></div></div><div class="sr"><span class="slb" style="background:#EEEDFE;color:#26215C">晚 21:00 生藥</span><div><div class="item" id="row_k636385750_d0610__晚_21_00_生藥__0" onclick="ck('k636385750_d0610__晚_21_00_生藥__0')"><input type="checkbox" id="cb_k636385750_d0610__晚_21_00_生藥__0" onclick="event.stopPropagation()"><span class="tx c-ra">複習 萜類（複習輪）</span></div></div></div><div style="padding:.4rem 1rem .5rem"><div class="pb"><div class="pf" style="width:0%"></div></div><div class="pl">0/6 完成</div></div></div></div>
+<div class="wcard"><div class="wtop" onclick="tog(this)"><span class="wbg" style="background:#FAEEDA;color:#633806">6/11</span><span class="wdt">6/11 週四 課到15:00</span><span class="wti"></span><span class="pct-label" style="font-size:11px;color:#aaa;margin-right:4px">0%</span><span class="chev">▶</span></div><div class="wbody"><div class="sr"><span class="slb" style="background:#EEEDFE;color:#3C3489">早 7:00 中藥</span><div><div class="item" id="row_k1457728444_d0611__早_7_00_中藥__0" onclick="ck('k1457728444_d0611__早_7_00_中藥__0')"><input type="checkbox" id="cb_k1457728444_d0611__早_7_00_中藥__0" onclick="event.stopPropagation()"><span class="tx c-ra">複習 芳香化濕藥・祛風濕藥 第3次</span></div></div></div><div class="sr"><span class="slb" style="background:#E6F1FB;color:#0C447C">上午 藥理</span><div><div class="item" id="row_k1660255799_d0611__上午_藥理__0" onclick="ck('k1660255799_d0611__上午_藥理__0')"><input type="checkbox" id="cb_k1660255799_d0611__上午_藥理__0" onclick="event.stopPropagation()"><span class="tx c-ra">複習 抗病毒藥物(01) 第2次</span></div></div></div><div class="sr"><span class="slb" style="background:#EAF3DE;color:#27500A">晚 19:00 藥分</span><div><div class="item" id="row_k1773215729_d0611__晚_19_00_藥分__0" onclick="ck('k1773215729_d0611__晚_19_00_藥分__0')"><input type="checkbox" id="cb_k1773215729_d0611__晚_19_00_藥分__0" onclick="event.stopPropagation()"><span class="tx c-new">首讀 NMR(核磁共振) 第2晚</span></div></div></div><div class="sr"><span class="slb" style="background:#EEEDFE;color:#26215C">晚 21:00 生藥</span><div><div class="item" id="row_k125851573_d0611__晚_21_00_生藥__0" onclick="ck('k125851573_d0611__晚_21_00_生藥__0')"><input type="checkbox" id="cb_k125851573_d0611__晚_21_00_生藥__0" onclick="event.stopPropagation()"><span class="tx c-ra">複習 揮發油（複習輪）</span></div></div></div><div style="padding:.4rem 1rem .5rem"><div class="pb"><div class="pf" style="width:0%"></div></div><div class="pl">0/4 完成</div></div></div></div>
+<div class="wcard"><div class="wtop" onclick="tog(this)"><span class="wbg" style="background:#FAEEDA;color:#633806">6/12</span><span class="wdt">6/12 週五 課到12:00</span><span class="wti"></span><span class="pct-label" style="font-size:11px;color:#aaa;margin-right:4px">0%</span><span class="chev">▶</span></div><div class="wbody"><div class="sr"><span class="slb" style="background:#EEEDFE;color:#3C3489">早 7:00 中藥</span><div><div class="item" id="row_k817796605_d0612__早_7_00_中藥__0" onclick="ck('k817796605_d0612__早_7_00_中藥__0')"><input type="checkbox" id="cb_k817796605_d0612__早_7_00_中藥__0" onclick="event.stopPropagation()"><span class="tx c-ra">複習 消食藥・瀻下藥 第3次</span></div></div></div><div class="sr"><span class="slb" style="background:#EAF3DE;color:#27500A">晚 19:00 藥分</span><div><div class="item" id="row_k1262681552_d0612__晚_19_00_藥分__0" onclick="ck('k1262681552_d0612__晚_19_00_藥分__0')"><input type="checkbox" id="cb_k1262681552_d0612__晚_19_00_藥分__0" onclick="event.stopPropagation()"><span class="tx c-ra">複習 拉曼光譜 第1次</span></div><div class="item" id="row_k1262681553_d0612__晚_19_00_藥分__1" onclick="ck('k1262681553_d0612__晚_19_00_藥分__1')"><input type="checkbox" id="cb_k1262681553_d0612__晚_19_00_藥分__1" onclick="event.stopPropagation()"><span class="tx c-new">首讀 NMR(核磁共振) 第3晚</span></div></div></div><div class="sr"><span class="slb" style="background:#EEEDFE;color:#26215C">晚 21:00 生藥</span><div><div class="item" id="row_k1762801044_d0612__晚_21_00_生藥__0" onclick="ck('k1762801044_d0612__晚_21_00_生藥__0')"><input type="checkbox" id="cb_k1762801044_d0612__晚_21_00_生藥__0" onclick="event.stopPropagation()"><span class="tx c-ra">複習 脂質（複習輪）</span></div></div></div><div style="padding:.4rem 1rem .5rem"><div class="pb"><div class="pf" style="width:0%"></div></div><div class="pl">0/4 完成</div></div></div></div>
+<div class="wcard"><div class="wtop" onclick="tog(this)"><span class="wbg" style="background:#E6F1FB;color:#0C447C">6/13</span><span class="wdt">6/13 週六</span><span class="wti"></span><span class="pct-label" style="font-size:11px;color:#aaa;margin-right:4px">0%</span><span class="chev">▶</span></div><div class="wbody"><div class="sr"><span class="slb" style="background:#EEEDFE;color:#3C3489">早 7:00 中藥</span><div><div class="item" id="row_k177864766_d0613__早_7_00_中藥__0" onclick="ck('k177864766_d0613__早_7_00_中藥__0')"><input type="checkbox" id="cb_k177864766_d0613__早_7_00_中藥__0" onclick="event.stopPropagation()"><span class="tx c-ra">複習 全科中藥整合 第1次</span></div></div></div><div class="sr"><span class="slb" style="background:#E6F1FB;color:#0C447C">上午 藥理</span><div><div class="item" id="row_k213836729_d0613__上午_藥理__0" onclick="ck('k213836729_d0613__上午_藥理__0')"><input type="checkbox" id="cb_k213836729_d0613__上午_藥理__0" onclick="event.stopPropagation()"><span class="tx c-ra">複習 抗痙攣(24) 第2次</span></div></div></div><div class="sr"><span class="slb" style="background:#EAF3DE;color:#27500A">晚 19:00 藥分</span><div><div class="item" id="row_k752147375_d0613__晚_19_00_藥分__0" onclick="ck('k752147375_d0613__晚_19_00_藥分__0')"><input type="checkbox" id="cb_k752147375_d0613__晚_19_00_藥分__0" onclick="event.stopPropagation()"><span class="tx c-ra">複習 FLUOR(螢光光譜) 第2次</span></div><div class="item" id="row_k752147376_d0613__晚_19_00_藥分__1" onclick="ck('k752147376_d0613__晚_19_00_藥分__1')"><input type="checkbox" id="cb_k752147376_d0613__晚_19_00_藥分__1" onclick="event.stopPropagation()"><span class="tx c-new">首讀 滴定分析概論 第1晚</span></div></div></div><div class="sr"><span class="slb" style="background:#EEEDFE;color:#26215C">晚 21:00 生藥</span><div><div class="item" id="row_k1252266867_d0613__晚_21_00_生藥__0" onclick="ck('k1252266867_d0613__晚_21_00_生藥__0')"><input type="checkbox" id="cb_k1252266867_d0613__晚_21_00_生藥__0" onclick="event.stopPropagation()"><span class="tx c-ra">複習 生物鹼全部 第2輪</span></div></div></div><div style="padding:.4rem 1rem .5rem"><div class="pb"><div class="pf" style="width:0%"></div></div><div class="pl">0/5 完成</div></div></div></div>
+
+
+<div id="later-app"></div>
+
 <div class="banner bsuc" style="margin-top:1.5rem">7/18（週六）國考 — 加油！</div>
+
 <script>
-var SK="pharma_v11";
-function load(){try{return JSON.parse(localStorage.getItem(SK)||"{}")}catch(e){return{}}}
-function save(s){localStorage.setItem(SK,JSON.stringify(s))}
-function safe(k){var h=0;for(var i=0;i<k.length;i++){h=Math.imul(31,h)+k.charCodeAt(i)|0;}return"k"+Math.abs(h)+"_"+k.replace(/[^a-zA-Z0-9]/g,"_").slice(0,20)}
-function ck(key){
-  var s=load();s[key]=!s[key];save(s);
-  var row=document.getElementById("row_"+key);
-  var cb=document.getElementById("cb_"+key);
-  if(row){if(s[key])row.classList.add("done");else row.classList.remove("done");}
-  if(cb)cb.checked=!!s[key];
-  updateAll();
-}
-function tog(el){
-  var b=el.nextElementSibling,c=el.querySelector(".chev");
-  var o=b.classList.toggle("open");
-  if(o)c.classList.add("open");else c.classList.remove("open");
-}
-function updateAll(){
-  var s=load();
-  var all=document.querySelectorAll(".item");
-  var tot=all.length,done=0;
-  all.forEach(function(el){if(s[el.id.replace("row_","")])done++;});
-  var pct=tot?Math.round(done/tot*100):0;
-  document.getElementById("ov-fill").style.width=pct+"%";
-  document.getElementById("ov-label").textContent=done+" / "+tot+" ("+pct+"%)";
-  document.querySelectorAll(".wcard").forEach(function(card){
-    var its=card.querySelectorAll(".item");
-    if(!its.length)return;
-    var t=its.length,d=0;
-    its.forEach(function(el){if(s[el.id.replace("row_","")])d++;});
-    var p=Math.round(d/t*100);
-    var pf=card.querySelector(".pf");
-    var pl=card.querySelector(".pl");
-    if(pf)pf.style.width=p+"%";
-    if(pl)pl.textContent=d+"/"+t+" 完成";
-  });
-}
-function buildSlots(id,slots,s){
-  var html="";
-  slots.forEach(function(slot){
-    var items="";
-    slot.tasks.forEach(function(t,ti){
-      var key=safe(id+"__"+slot.label+"__"+ti);
-      var checked=!!s[key];
-      var cc=t.t==="new"?" c-new":t.t==="ra"?" c-ra":t.t==="rb"?" c-rb":t.t==="rc"?" c-rc":t.t==="purple"?" c-purple":"";
-      var div=document.createElement("div");
-      div.className="item"+(checked?" done":"");
-      div.id="row_"+key;
-      div.setAttribute("onclick","ck('"+key+"')");
-      var cb=document.createElement("input");
-      cb.type="checkbox";cb.id="cb_"+key;cb.checked=checked;
-      cb.setAttribute("onclick","event.stopPropagation()");
-      var span=document.createElement("span");
-      span.className="tx"+cc;span.textContent=t.x;
-      div.appendChild(cb);div.appendChild(span);
-      items+=div.outerHTML;
-    });
-    html+='<div class="sr"><span class="slb" style="'+slot.ls+'">'+slot.label+'</span><div>'+items+'</div></div>';
-  });
-  return html;
-}
-function buildCard(item,slots,s,isToday){
-  var tot=0,done=0;
-  slots.forEach(function(slot){
-    slot.tasks.forEach(function(t,ti){
-      var key=safe(item.id+"__"+slot.label+"__"+ti);
-      tot++;if(s[key])done++;
-    });
-  });
-  var pct=tot?Math.round(done/tot*100):0;
-  return '<div class="wcard'+(isToday?" today":"")+'">'
-    +'<div class="wtop" onclick="tog(this)">'
-    +'<span class="wbg" style="'+item.bs+'">'+item.badge+'</span>'
-    +'<span class="wdt">'+item.dates+'</span>'
-    +'<span class="wti">'+item.title+'</span>'
-    +'<span style="font-size:11px;color:#aaa;margin-right:4px">'+pct+'%</span>'
-    +'<span class="chev'+(isToday?" open":"")+'">▶</span>'
-    +'</div>'
-    +'<div class="wbody'+(isToday?" open":"")+'">'
-    +buildSlots(item.id,slots,s)
-    +'<div style="padding:.4rem 1rem .5rem">'
-    +'<div class="pb"><div class="pf" style="width:'+pct+'%"></div></div>'
-    +'<div class="pl">'+done+"/"+tot+" 完成</div>"
-    +'</div></div></div>';
-}
 
 var D=[
 {ph:"4/22 週三",type:"daily",days:[
  {id:"d0422",today:false,date:"4/22 週三",badge:"Day 1",bs:"background:#E6F1FB;color:#0C447C",slots:[
   {label:"早 7:00 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[{t:"new",x:"首讀 補氣藥"}]},
-  {label:"下午 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
-   {t:"new",x:"首讀 錠劑 1"}
-  ]},
+  {label:"下午 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[{t:"new",x:"首讀 錠劑 1"}]},
   {label:"晚 19:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[{t:"new",x:"首讀 CH1 基礎概念 第1晚"}]},
   {label:"晚 21:00 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[{t:"new",x:"生物鹼 I 第1天"}]},
  ]},
@@ -159,93 +136,54 @@ var D=[
 {ph:"4/23–4/29",type:"daily",days:[
  {id:"d0423",today:false,date:"4/23 週四",badge:"Day 2",bs:"background:#E6F1FB;color:#0C447C",slots:[
   {label:"早 7:00 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[{t:"new",x:"首讀 補血藥"}]},
-  {label:"上午 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
-   {t:"new",x:"首讀 抗癲癇藥物（22 單元）"},
-   {t:"ra",x:"複習 藥效學・藥動學・總論"}
-  ]},
-  {label:"下午 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
-   {t:"new",x:"首讀 錠劑 2"}
-  ]},
+  {label:"上午 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[{t:"new",x:"首讀 抗癲癇藥物（22 單元）"},{t:"ra",x:"複習 藥效學・藥動學・總論"}]},
+  {label:"下午 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[{t:"new",x:"首讀 錠劑 2"}]},
   {label:"晚 19:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[{t:"new",x:"首讀 藥分基礎概念 第1晚"}]},
   {label:"晚 21:00 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[{t:"new",x:"生物鹼 I 第2天"}]},
  ]},
  {id:"d0424",today:false,date:"4/24 週五",badge:"Day 3",bs:"background:#E6F1FB;color:#0C447C",slots:[
   {label:"早 7:00 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[{t:"new",x:"首讀 補陰藥"}]},
-  {label:"上午 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
-   {t:"new",x:"首讀 全身麻醉劑（19 單元）"},
-   {t:"ra",x:"複習 抗精神病藥物"}
-  ]},
-  {label:"下午 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
-   {t:"new",x:"首讀 錠劑 3"},
-   {t:"rb",x:"複習 錠劑 1 第2次"}
-  ]},
+  {label:"上午 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[{t:"new",x:"首讀 全身麻醉劑（19 單元）"},{t:"ra",x:"複習 抗精神病藥物"}]},
+  {label:"下午 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[{t:"new",x:"首讀 錠劑 3"},{t:"rb",x:"複習 錠劑 1 第2次"}]},
   {label:"晚 19:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[{t:"new",x:"首讀 藥分基礎概念 第2晚"}]},
   {label:"晚 21:00 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[{t:"new",x:"生物鹼 I 第3天"}]},
  ]},
  {id:"d0425",today:false,date:"4/25 週六",badge:"Day 4",bs:"background:#E6F1FB;color:#0C447C",slots:[
   {label:"早 7:00 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[{t:"new",x:"首讀 補陽藥"}]},
-  {label:"上午 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
-   {t:"new",x:"首讀 局部麻醉劑（20 單元）"},
-   {t:"ra",x:"複習 藥效學・藥動學・總論"},
-   {t:"ra",x:"複習 交感神經用藥"}
-  ]},
-  {label:"下午 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
-   {t:"rb",x:"複習 錠劑 2 第2次"},
-   {t:"rb",x:"複習 錠劑 3 第2次"}
-  ]},
+  {label:"上午 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[{t:"new",x:"首讀 局部麻醉劑（20 單元）"},{t:"ra",x:"複習 藥效學・藥動學・總論"},{t:"ra",x:"複習 交感神經用藥"}]},
+  {label:"下午 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[{t:"rb",x:"複習 錠劑 2 第2次"},{t:"rb",x:"複習 錠劑 3 第2次"}]},
   {label:"晚 19:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[{t:"new",x:"首讀 水溶液概論 第1晚"}]},
   {label:"晚 21:00 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[{t:"new",x:"生物鹼 II 第1天"}]},
  ]},
  {id:"d0426",today:false,date:"4/26 週日",badge:"Day 5",bs:"background:#E6F1FB;color:#0C447C",slots:[
   {label:"早 7:00 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[{t:"new",x:"首讀 溫裡藥"}]},
-  {label:"上午 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
-   {t:"new",x:"首讀 鎮靜安眠藥物（21 單元）"},
-   {t:"ra",x:"複習 抗癲癇藥物"},
-   {t:"ra",x:"複習 局部麻醉劑"}
-  ]},
-  {label:"下午 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
-   {t:"new",x:"首讀 軟膏劑 1"}
-  ]},
+  {label:"上午 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[{t:"new",x:"首讀 鎮靜安眠藥物（21 單元）"},{t:"ra",x:"複習 抗癲癇藥物"},{t:"ra",x:"複習 局部麻醉劑"}]},
+  {label:"下午 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[{t:"new",x:"首讀 軟膏劑 1"}]},
   {label:"晚 19:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[{t:"new",x:"首讀 水溶液概論 第2晚"}]},
   {label:"晚 21:00 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[{t:"new",x:"生物鹼 II 第2天"}]},
  ]},
  {id:"d0427",today:false,date:"4/27 週一",badge:"Day 6",bs:"background:#E6F1FB;color:#0C447C",slots:[
   {label:"早 7:00 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[{t:"new",x:"首讀 理氣藥"}]},
-  {label:"上午 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
-   {t:"ra",x:"複習 交感神經用藥"},
-   {t:"ra",x:"複習 副交感神經・神經節・神經肌肉阻斷劑"}
-  ]},
-  {label:"下午 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
-   {t:"new",x:"首讀 軟膏劑 2"}
-  ]},
+  {label:"上午 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[{t:"ra",x:"複習 交感神經用藥"},{t:"ra",x:"複習 副交感神經・神經節・神經肌肉阻斷劑"}]},
+  {label:"下午 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[{t:"new",x:"首讀 軟膏劑 2"}]},
   {label:"晚 19:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[{t:"new",x:"首讀 層析概論 第1晚"}]},
   {label:"晚 21:00 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[{t:"new",x:"生物鹼 II 第3天"}]},
  ]},
  {id:"d0428",today:false,date:"4/28 週二",badge:"Day 7",bs:"background:#E6F1FB;color:#0C447C",slots:[
   {label:"早 7:00 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[{t:"new",x:"首讀 平肝熄風藥"}]},
-  {label:"上午 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
-   {t:"new",x:"首讀 酒精・中樞總論（14/25 單元）"},
-   {t:"ra",x:"複習 局部麻醉劑"}
-  ]},
-  {label:"下午 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
-   {t:"rb",x:"複習 軟膏劑 1 第2次"},
-   {t:"rb",x:"複習 軟膏劑 2 第2次"}
-  ]},
+  {label:"上午 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[{t:"new",x:"首讀 酒精・中樞總論（14/25 單元）"},{t:"ra",x:"複習 局部麻醉劑"}]},
+  {label:"下午 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[{t:"rb",x:"複習 軟膏劑 1 第2次"},{t:"rb",x:"複習 軟膏劑 2 第2次"}]},
   {label:"晚 19:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[{t:"new",x:"首讀 層析概論 第2晚"}]},
   {label:"晚 21:00 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[{t:"new",x:"配糖體 I 第1天"}]},
  ]},
  {id:"d0429",today:false,date:"4/29 週三 早八課",badge:"4/29",bs:"background:#FAEEDA;color:#633806",slots:[
   {label:"早 7:00 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[{t:"new",x:"首讀 安神藥"}]},
-  {label:"上 10:30 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
-   {t:"new",x:"首讀 血清素・興奮劑・迷幻藥（15/16 單元）"},
-   {t:"ra",x:"複習 藥效學・藥動學・總論"},
-   {t:"ra",x:"複習 副交感神經・神經節・神經肌肉阻斷劑"}
-  ]},
+  {label:"上 10:30 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[{t:"new",x:"首讀 血清素・興奮劑・迷幻藥（15/16 單元）"},{t:"ra",x:"複習 藥效學・藥動學・總論"},{t:"ra",x:"複習 副交感神經・神經節・神經肌肉阻斷劑"}]},
   {label:"晚 19:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[{t:"new",x:"首讀 薄層層析法(TLC) 第1晚"}]},
   {label:"晚 21:00 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[{t:"new",x:"配糖體 I 第2天"}]},
  ]},
 ]},
-{ph:"4/30 起套課表（週三早八・週四15:00・週五12:00）",type:"daily",days:[
+{ph:"4/30 起套課表",type:"daily",days:[
  {id:"d0430",today:false,date:"4/30 週四 課到15:00",badge:"4/30",bs:"background:#FAEEDA;color:#633806",slots:[
   {label:"早 7:00 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[{t:"new",x:"首讀 收澀藥"}]},
   {label:"上午 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[{t:"ra",x:"複習 酒精・中樞總論"}]},
@@ -254,620 +192,76 @@ var D=[
  ]},
  {id:"d0501",today:false,date:"5/1 週五 課到12:00",badge:"5/1",bs:"background:#FAEEDA;color:#633806",slots:[
   {label:"早 7:00 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[{t:"new",x:"首讀 辛溫解表藥"}]},
-  {label:"晚 19:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[{t:"new",x:"首讀 高效能液相層析法(HPLC) 第1晚"}]},
+  {label:"晚 19:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[{t:"new",x:"首讀 薄層層析法(TLC) 第3晚"}]},
   {label:"晚 21:00 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[{t:"new",x:"配糖體 II 第1天"}]},
  ]},
- // ===== 5/2 今天 重排藥劑開始 =====
  {id:"d0502",today:false,date:"5/2 週六",badge:"5/2",bs:"background:#E6F1FB;color:#0C447C",slots:[
   {label:"早 7:00 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[{t:"new",x:"首讀 辛涼解表藥"}]},
-  {label:"上午 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
-   {t:"new",x:"首讀 高血壓（27 單元）"},
-   {t:"ra",x:"複習 酒精・中樞總論"},
-  ]},
-  {label:"下午 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
-   {t:"new",x:"首讀 軟膏劑 3"},
-   {t:"new",x:"首讀 生物藥劑 Ch1 第1天"},
-   {t:"rb",x:"複習 錠劑 1 第2次（補）"},
-  ]},
-  {label:"晚 19:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[{t:"new",x:"首讀 薄層層析法(TLC) 第2晚"}]},
+  {label:"上午 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[{t:"new",x:"首讀 高血壓（27 單元）"},{t:"ra",x:"複習 酒精・中樞總論"}]},
+  {label:"下午 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[{t:"new",x:"首讀 軟膏劑 3"},{t:"new",x:"首讀 生物藥劑 Ch1 第1天"},{t:"rb",x:"複習 錠劑 1 第2次（補）"}]},
+  {label:"晚 19:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[{t:"ra",x:"複習 TLC 第1次"}]},
   {label:"晚 21:00 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[{t:"new",x:"生物鹼 I 第3天"}]},
  ]},
  {id:"d0503",today:false,date:"5/3 週日",badge:"5/3",bs:"background:#E6F1FB;color:#0C447C",slots:[
   {label:"早 7:00 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[{t:"new",x:"首讀 化痰藥"}]},
-  {label:"上午 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
-   {t:"new",x:"首讀 心絞痛（28 單元）"},
-  ]},
-  {label:"下午 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
-   {t:"new",x:"首讀 軟膏劑 4"},
-   {t:"new",x:"首讀 生物藥劑 Ch1 第2天"},
-   {t:"rb",x:"複習 錠劑 2 第2次（補）"},
-  ]},
-  {label:"晚 19:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[{t:"new",x:"首讀 薄層層析法(TLC) 第2晚"}]},
+  {label:"上午 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[{t:"new",x:"首讀 心絞痛（28 單元）"}]},
+  {label:"下午 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[{t:"new",x:"首讀 軟膏劑 4"},{t:"new",x:"首讀 生物藥劑 Ch1 第2天"},{t:"rb",x:"複習 錠劑 2 第2次（補）"}]},
   {label:"晚 21:00 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[{t:"new",x:"生物鹼 II 第1天"}]},
  ]},
  {id:"d0504",today:false,date:"5/4 週一",badge:"5/4",bs:"background:#E6F1FB;color:#0C447C",slots:[
   {label:"早 7:00 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[{t:"new",x:"首讀 止咳平喘藥"}]},
-  {label:"上午 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
-   {t:"ra",x:"複習 心衰竭"}
-  ]},
-  {label:"下午 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
-   {t:"new",x:"首讀 膠囊・栓劑 1"},
-   {t:"new",x:"首讀 生物藥劑 Ch1 第3天"},
-   {t:"rb",x:"複習 錠劑 3 第2次（補）"},
-   {t:"rb",x:"複習 軟膏劑 3 第2次"},
-  ]},
-  {label:"晚 19:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[{t:"new",x:"首讀 高效能液相層析法(HPLC) 第1晚"}]},
+  {label:"上午 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[{t:"ra",x:"複習 心衰竭"}]},
+  {label:"下午 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[{t:"new",x:"首讀 膠囊・栓劑（原排）"},{t:"new",x:"首讀 生物藥劑 Ch1 第3天"},{t:"rb",x:"複習 錠劑 3 第2次（補）"},{t:"rb",x:"複習 軟膏劑 3 第2次"}]},
   {label:"晚 21:00 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[{t:"new",x:"生物鹼 II 第2天"}]},
  ]},
  {id:"d0505",today:false,date:"5/5 週二",badge:"5/5",bs:"background:#E6F1FB;color:#0C447C",slots:[
   {label:"早 7:00 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[{t:"new",x:"首讀 利水滲濕藥"}]},
-  {label:"上午 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
-    {t:"new",x:"首讀 心衰竭（30 單元）"},
-    {t:"new",x:"首讀 心律不整（29 單元）"},
-    {t:"new",x:"首讀 利尿劑（26 單元）"},
-    {t:"ra",x:"複習 鎮靜安眠藥物"},
-    {t:"ra",x:"複習 心絞痛"},
-    {t:"ra",x:"複習 巴金森氏症"},
-    {t:"ra",x:"複習 血清素・興奮劑・迷幻藥"}
-  ]},
-  {label:"下午 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
-   {t:"new",x:"首讀 膠囊・栓劑 2 第1天"},
-   {t:"new",x:"首讀 生物藥劑 Ch2 第1天"},
-   {t:"rb",x:"複習 軟膏劑 4 第2次"},
-   {t:"rb",x:"複習 膠囊・栓劑 1 第2次"},
-  ]},
-  {label:"晚 19:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[
-    {t:"new",x:"首讀 高效能液相層析法(HPLC) 第2晚"}
-  ]},
+  {label:"上午 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[{t:"new",x:"首讀 心衰竭（30 單元）"},{t:"new",x:"首讀 心律不整（29 單元）"},{t:"new",x:"首讀 利尿劑（26 單元）"},{t:"ra",x:"複習 鎮靜安眠藥物"},{t:"ra",x:"複習 心絞痛"},{t:"ra",x:"複習 巴金森氏症"},{t:"ra",x:"複習 血清素・興奮劑・迷幻藥"}]},
+  {label:"下午 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[{t:"new",x:"首讀 生物藥劑 Ch2 第1天"},{t:"rb",x:"複習 軟膏劑 4 第2次"}]},
   {label:"晚 21:00 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[{t:"new",x:"生物鹼 II 第3天"}]},
  ]},
  {id:"d0506",today:false,date:"5/6 週三 早八課",badge:"5/6",bs:"background:#FAEEDA;color:#633806",slots:[
   {label:"早 7:00 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[{t:"new",x:"首讀 芳香化濕藥"}]},
-  {label:"上 10:30 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
-   {t:"new",x:"首讀 抗凝血藥物（31 單元）"},
-   {t:"ra",x:"複習 藥效學・藥動學・總論"},
-   {t:"ra",x:"複習 高血壓"},
-   {t:"ra",x:"複習 抗憂鬱"},
-   {t:"ra",x:"複習 抗癲癇藥物"},
-  ]},
-  {label:"下午 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
-   {t:"new",x:"首讀 膠囊・栓劑 2 第2天"},
-   {t:"new",x:"首讀 生物藥劑 Ch2 第2天"},
-  ]},
-  {label:"晚 19:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[{t:"new",x:"首讀 超臨界流體層析法(SFC) 第1晚"}]},
+  {label:"上 10:30 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[{t:"new",x:"首讀 抗凝血藥物（31 單元）"},{t:"ra",x:"複習 藥效學・藥動學・總論"},{t:"ra",x:"複習 高血壓"},{t:"ra",x:"複習 抗憂鬱"},{t:"ra",x:"複習 抗癲癇藥物"}]},
+  {label:"下午 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[{t:"new",x:"首讀 生物藥劑 Ch2 第2天"}]},
   {label:"晚 21:00 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[{t:"new",x:"配糖體 I 第1天"}]},
  ]},
  {id:"d0507",today:false,date:"5/7 週四 課到15:00",badge:"5/7",bs:"background:#FAEEDA;color:#633806",slots:[
   {label:"早 7:00 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[{t:"new",x:"首讀 祛風濕藥"}]},
-  {label:"上午 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
-   {t:"new",x:"首讀 降血脂藥物（33 單元）"},
-   {t:"ra",x:"複習 精神分裂症・躁鬱症・憂鬱症"},
-   {t:"ra",x:"複習 心絞痛"}
-  ]},
-  {label:"下午 15:00 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
-   {t:"new",x:"首讀 乳劑・懸浮劑 1"},
-   {t:"new",x:"首讀 生物藥劑 Ch2 第3天"},
-   {t:"rb",x:"複習 膠囊・栓劑 2 第2次"},
-  ]},
-  {label:"晚 19:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[{t:"new",x:"首讀 超臨界流體層析法(SFC) 第2晚"}]},
+  {label:"上午 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[{t:"new",x:"首讀 降血脂藥物（33 單元）"},{t:"ra",x:"複習 精神分裂症・躁鬱症・憂鬱症"},{t:"ra",x:"複習 心絞痛"}]},
+  {label:"下午 15:00 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[{t:"new",x:"首讀 生物藥劑 Ch2 第3天"},{t:"ra",x:"複習 TLC 第2次（補）"}]},
   {label:"晚 21:00 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[{t:"new",x:"配糖體 I 第2天"}]},
  ]},
- {id:"d0508",today:true,date:"5/8 週五 課到12:00",badge:"5/8",bs:"background:#FAEEDA;color:#633806",slots:[
-  {label:"早 7:00 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[{t:"new",x:"首讀 消食藥"}]},
-  {label:"下午 12:00 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
-   {t:"new",x:"首讀 乳劑・懸浮劑 2 第1天"},
-   {t:"new",x:"首讀 生物藥劑 Ch3 第1天"},
-   {t:"rb",x:"複習 乳劑・懸浮劑 1 第2次"},
-  ]},
-  {label:"晚 19:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[{t:"new",x:"首讀 氣相層析法(GC) 第1晚"}]},
-  {label:"晚 21:00 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[{t:"new",x:"配糖體 I 第3天"}]},
- ]},
- {id:"d0509",today:false,date:"5/9 週六",badge:"5/9",bs:"background:#E6F1FB;color:#0C447C",slots:[
-  {label:"早 7:00 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[{t:"new",x:"首讀 瀉下藥"}]},
-  {label:"上午 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
-   {t:"new",x:"首讀 抗腫瘤藥物 1（02 單元前半）"},
-   {t:"ra",x:"複習 心衰竭"}
-  ]},
-  {label:"下午 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
-   {t:"new",x:"首讀 乳劑・懸浮劑 2 第2天"},
-   {t:"new",x:"首讀 生物藥劑 Ch3 第2天"},
-   {t:"rb",x:"複習 乳劑・懸浮劑 2 第2次"},
-  ]},
-  {label:"晚 19:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[{t:"new",x:"首讀 氣相層析法(GC) 第2晚"}]},
-  {label:"晚 21:00 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[{t:"new",x:"配糖體 II 第1天"}]},
- ]},
- {id:"d0510",today:false,date:"5/10 週日",badge:"5/10",bs:"background:#E6F1FB;color:#0C447C",slots:[
-  {label:"早 7:00 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[{t:"new",x:"首讀 活血祛瘀藥"}]},
-  {label:"上午 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
-   {t:"new",x:"首讀 抗腫瘤藥物 1（02 單元前半）"},
-   {t:"ra",x:"複習 心衰竭"},
-   {t:"ra",x:"複習 抗腫瘤藥物（前次）"}
-  ]},
-  {label:"下午 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
-   {t:"new",x:"首讀 膠體 第1天"},
-   {t:"new",x:"首讀 生物藥劑 Ch3 第3天"},
-   {t:"rb",x:"複習 乳劑・懸浮劑 1 第2次"},
-  ]},
-  {label:"晚 19:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[{t:"new",x:"首讀 萃取法 第1晚"}]},
-  {label:"晚 21:00 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[{t:"new",x:"配糖體 II 第2天"}]},
- ]},
- {id:"d0511",today:false,date:"5/11 週一",badge:"5/11",bs:"background:#E6F1FB;color:#0C447C",slots:[
-  {label:"早 7:00 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[{t:"new",x:"首讀 止血藥"}]},
-  {label:"上午 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
-   {t:"new",x:"首讀 抗腫瘤藥物 2（02 單元後半）"},
-   {t:"ra",x:"複習 抗腫瘤藥物 1"}
-  ]},
-  {label:"下午 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
-   {t:"new",x:"首讀 膠體 第2天"},
-   {t:"new",x:"首讀 生物藥劑 Ch4 第1天"},
-   {t:"rb",x:"複習 膠體 第2次"},
-  ]},
-  {label:"晚 19:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[{t:"new",x:"首讀 萃取法 第2晚"}]},
-  {label:"晚 21:00 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[{t:"new",x:"配糖體 II 第3天"}]},
- ]},
- {id:"d0512",today:false,date:"5/12 週二",badge:"5/12",bs:"background:#E6F1FB;color:#0C447C",slots:[
-  {label:"早 7:00 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[{t:"new",x:"首讀 清熱解毒藥"}]},
-  {label:"上午 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
-   {t:"new",x:"首讀 標靶藥物（03 單元）"},
-   {t:"ra",x:"複習 巴金森氏症"},
-   {t:"ra",x:"複習 利尿劑"}
-  ]},
-  {label:"下午 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
-   {t:"new",x:"首讀 溶液劑 1"},
-   {t:"new",x:"首讀 生物藥劑 Ch4 第2天"},
-   {t:"rb",x:"複習 溶液劑 1 第2次"},
-  ]},
-  {label:"晚 19:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[{t:"new",x:"首讀 毛細管電泳(CE) 第1晚"}]},
-  {label:"晚 21:00 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[{t:"new",x:"多醣類・樹脂 第1天"}]},
- ]},
- {id:"d0513",today:false,date:"5/13 週三 早八課",badge:"5/13",bs:"background:#FAEEDA;color:#633806",slots:[
-  {label:"早 7:00 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[{t:"new",x:"首讀 清熱瀉火藥"}]},
-  {label:"上 10:30 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
-   {t:"new",x:"首讀 免疫藥理學・神經肌肉藥物（04/05 單元）"},
-   {t:"ra",x:"複習 抗凝血藥物"},
-   {t:"ra",x:"複習 標靶藥物"}
-  ]},
-  {label:"下午 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
-   {t:"new",x:"首讀 溶液劑 2"},
-   {t:"new",x:"首讀 生物藥劑 Ch4 第3天"},
-   {t:"rb",x:"複習 溶液劑 2 第2次"},
-  ]},
-  {label:"晚 19:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[{t:"new",x:"首讀 毛細管電泳(CE) 第2晚"}]},
-  {label:"晚 21:00 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[{t:"new",x:"多醣類・樹脂 第2天"}]},
- ]},
- {id:"d0514",today:false,date:"5/14 週四 課到15:00",badge:"5/14",bs:"background:#FAEEDA;color:#633806",slots:[
-  {label:"早 7:00 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[{t:"new",x:"首讀 清熱燥濕藥"}]},
-  {label:"上午 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
-   {t:"new",x:"首讀 抗生素 1（06 單元前段）"},
-   {t:"ra",x:"複習 精神分裂症・躁鬱症・憂鬱症"},
-   {t:"ra",x:"複習 降血脂藥物"}
-  ]},
-  {label:"下午 15:00 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
-   {t:"new",x:"首讀 流變學 1"},
-   {t:"new",x:"首讀 生物藥劑 Ch5 第1天"},
-   {t:"rb",x:"複習 流變學 1 第2次"},
-  ]},
-  {label:"晚 19:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[{t:"new",x:"首讀 質譜儀分析法(MS) 第1晚"}]},
-  {label:"晚 21:00 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[{t:"new",x:"多醣類・樹脂 第3天"}]},
- ]},
- {id:"d0515",today:false,date:"5/15 週五 課到12:00",badge:"5/15",bs:"background:#FAEEDA;color:#633806",slots:[
-  {label:"早 7:00 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[{t:"new",x:"首讀 清熱涼血藥"}]},
-  {label:"下午 12:00 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
-   {t:"new",x:"首讀 流變學 2"},
-   {t:"new",x:"首讀 生物藥劑 Ch5 第2天"},
-   {t:"rb",x:"複習 流變學 2 第2次"},
-  ]},
-  {label:"晚 19:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[{t:"new",x:"首讀 質譜儀分析法(MS) 第2晚"}]},
-  {label:"晚 21:00 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[{t:"new",x:"苯丙烷 第1天"}]},
-  {label:"🎯 里程碑",ls:"background:#FFF8EC;color:#92610A",tasks:[{t:"purple",x:"🌿 中藥首輪完成！（共24章）"}]},
- ]},
- {id:"d0516",today:false,date:"5/16 週六",badge:"5/16",bs:"background:#E6F1FB;color:#0C447C",slots:[
-  {label:"早 7:00 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[{t:"ra",x:"複習 活血祛瘀藥・止血藥 第1次"}]},
-  {label:"上午 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
-   {t:"new",x:"首讀 抗生素 2（06 單元中段）"},
-   {t:"ra",x:"複習 抗生素 1 第1次"}
-  ]},
-  {label:"下午 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
-   {t:"new",x:"首讀 散劑・微粒學 第1天"},
-   {t:"new",x:"首讀 生物藥劑 Ch5 第3天"},
-  ]},
-  {label:"晚 19:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[{t:"new",x:"首讀 光譜概論 第1晚"}]},
-  {label:"晚 21:00 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[{t:"new",x:"苯丙烷 第2天"}]},
- ]},
- {id:"d0517",today:false,date:"5/17 週日",badge:"5/17",bs:"background:#E6F1FB;color:#0C447C",slots:[
-  {label:"早 7:00 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[{t:"ra",x:"複習 清熱解毒藥・清熱瀻火藥 第1次"}]},
-  {label:"上午 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
-   {t:"new",x:"首讀 抗生素 2（06 單元中段）"},
-   {t:"ra",x:"複習 抗生素 1 第1次"}
-  ]},
-  {label:"下午 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
-   {t:"new",x:"首讀 散劑・微粒學 第2天"},
-   {t:"new",x:"首讀 生物藥劑 Ch6 第1天"},
-   {t:"rb",x:"複習 散劑・微粒學 第2次"},
-  ]},
-  {label:"晚 19:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[{t:"new",x:"首讀 光譜概論 第2晚"}]},
-  {label:"晚 21:00 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[{t:"new",x:"苯丙烷 第3天"}]},
- ]},
- {id:"d0518",today:false,date:"5/18 週一",badge:"5/18",bs:"background:#E6F1FB;color:#0C447C",slots:[
-  {label:"早 7:00 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[{t:"ra",x:"複習 清熱燥濕藥・清熱涼血藥 第1次"}]},
-  {label:"上午 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
-   {t:"new",x:"首讀 抗生素 3（06 單元後段）"},
-   {t:"ra",x:"複習 抗生素 2 第1次"}
-  ]},
-  {label:"下午 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
-   {t:"new",x:"首讀 眼用製劑"},
-   {t:"new",x:"首讀 生物藥劑 Ch6 第2天"},
-   {t:"rb",x:"複習 眼用製劑 第2次"},
-  ]},
-  {label:"晚 19:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[{t:"new",x:"首讀 紫外光與可見光譜(UV/VIS) 第1晚"}]},
-  {label:"晚 21:00 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[{t:"new",x:"萜類 第1天"}]},
- ]},
- {id:"d0519",today:false,date:"5/19 週二",badge:"5/19",bs:"background:#E6F1FB;color:#0C447C",slots:[
-  {label:"早 7:00 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[{t:"ra",x:"複習 清虛熱藥・外用藥驅蟲藥 第1次"}]},
-  {label:"上午 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
-   {t:"new",x:"首讀 抗黴菌・抗肺結核藥物（07/08 單元）"},
-   {t:"ra",x:"複習 抗生素 3 第1次"},
-   {t:"ra",x:"複習 免疫藥理學・神經肌肉藥物 第1次"}
-  ]},
-  {label:"下午 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
-   {t:"new",x:"首讀 糖漿/酏/醑…生物製劑 1"},
-   {t:"new",x:"首讀 生物藥劑 Ch6 第3天"},
-   {t:"rb",x:"複習 糖漿/酏/醑…生物製劑 1 第2次"},
-  ]},
-  {label:"晚 19:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[{t:"new",x:"首讀 紫外光與可見光譜(UV/VIS) 第2晚"}]},
-  {label:"晚 21:00 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[{t:"new",x:"萜類 第2天"}]},
- ]},
- {id:"d0520",today:false,date:"5/20 週三 早八課",badge:"5/20",bs:"background:#FAEEDA;color:#633806",slots:[
-  {label:"早 7:00 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[{t:"ra",x:"複習 藥用部位・常考方劑・萜類・考點整理 第1次"}]},
-  {label:"上 10:30 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
-   {t:"new",x:"首讀 荷爾蒙藥物（34 單元）"},
-   {t:"ra",x:"複習 抗黴菌・抗肺結核藥物 第1次"},
-   {t:"ra",x:"複習 標靶藥物 第1次"}
-  ]},
-  {label:"下午 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
-   {t:"new",x:"首讀 糖漿/酏/醑…生物製劑 2 第1天"},
-   {t:"new",x:"首讀 生物藥劑 Ch7 第1天"},
-  ]},
-  {label:"晚 19:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[{t:"new",x:"首讀 紅外光譜(IR) 第1晚"}]},
-  {label:"晚 21:00 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[{t:"new",x:"萜類 第3天"}]},
- ]},
- {id:"d0521",today:false,date:"5/21 週四 課到15:00",badge:"5/21",bs:"background:#FAEEDA;color:#633806",slots:[
-  {label:"早 7:00 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[{t:"ra",x:"複習 補氣藥・補血藥 第2次"}]},
-  {label:"上午 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
-   {t:"new",x:"首讀 皮質類固醇（35 單元）"},
-   {t:"ra",x:"複習 抗生素 3 第1次"},
-   {t:"ra",x:"複習 荷爾蒙藥物 第1次"}
-  ]},
-  {label:"下午 15:00 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
-   {t:"new",x:"首讀 糖漿/酏/醑…生物製劑 2 第2天"},
-   {t:"new",x:"首讀 生物藥劑 Ch7 第2天"},
-   {t:"rb",x:"複習 糖漿/酏/醑…生物製劑 2 第2次"},
-  ]},
-  {label:"晚 19:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[{t:"new",x:"首讀 紅外光譜(IR) 第2晚"}]},
-  {label:"晚 21:00 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[{t:"new",x:"揮發油 第1天"}]},
- ]},
- {id:"d0522",today:false,date:"5/22 週五 課到12:00",badge:"5/22",bs:"background:#FAEEDA;color:#633806",slots:[
-  {label:"早 7:00 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[{t:"ra",x:"複習 補陰藥・補陽藥 第2次"}]},
-  {label:"下午 12:00 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
-   {t:"new",x:"首讀 試驗-檢查法 1"},
-   {t:"new",x:"首讀 生物藥劑 Ch7 第3天"},
-   {t:"rb",x:"複習 試驗-檢查法 1 第2次"},
-  ]},
-  {label:"晚 19:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[{t:"new",x:"首讀 螢光光譜(FLUOR) 第1晚"}]},
-  {label:"晚 21:00 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[{t:"new",x:"揮發油 第2天"}]},
- ]},
- {id:"d0523",today:false,date:"5/23 週六",badge:"5/23",bs:"background:#E6F1FB;color:#0C447C",slots:[
-  {label:"早 7:00 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[{t:"ra",x:"複習 溫裡藥・理氣藥 第2次"}]},
-  {label:"上午 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
-   {t:"new",x:"首讀 性激素藥物（36 單元）"},
-   {t:"ra",x:"複習 抗黴菌・抗肺結核藥物 第1次"},
-   {t:"ra",x:"複習 皮質類固醇 第1次"}
-  ]},
-  {label:"下午 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
-   {t:"new",x:"首讀 試驗-檢查法 2 第1天"},
-   {t:"new",x:"首讀 生物藥劑 Ch8 第1天"},
-   {t:"rb",x:"複習 試驗-檢查法 2 第2次"},
-  ]},
-  {label:"晚 19:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[{t:"new",x:"首讀 螢光光譜(FLUOR) 第2晚"}]},
-  {label:"晚 21:00 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[{t:"new",x:"揮發油 第3天"}]},
- ]},
- {id:"d0524",today:false,date:"5/24 週日",badge:"5/24",bs:"background:#E6F1FB;color:#0C447C",slots:[
-  {label:"早 7:00 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[{t:"ra",x:"複習 平肝熄風藥・安神藥 第2次"}]},
-  {label:"上午 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
-   {t:"new",x:"首讀 性激素藥物（36 單元）"},
-   {t:"ra",x:"複習 抗黴菌・抗肺結核藥物 第1次"},
-   {t:"ra",x:"複習 皮質類固醇 第1次"}
-  ]},
-  {label:"下午 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
-   {t:"new",x:"首讀 試驗-檢查法 2 第2天"},
-   {t:"new",x:"首讀 生物藥劑 Ch8 第2天"},
-  ]},
-  {label:"晚 19:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[{t:"new",x:"首讀 拉曼光譜 第1晚"}]},
-  {label:"晚 21:00 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[{t:"new",x:"脂質 第1天"}]},
- ]},
- {id:"d0525",today:false,date:"5/25 週一",badge:"5/25",bs:"background:#E6F1FB;color:#0C447C",slots:[
-  {label:"早 7:00 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[{t:"ra",x:"複習 收澀藥・辛溫解表藥 第2次"}]},
-  {label:"上午 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
-   {t:"new",x:"首讀 骨質疏鬆・抗甲狀腺（37/38 單元）"},
-   {t:"ra",x:"複習 抗生素 3 第1次"},
-   {t:"ra",x:"複習 性激素藥物 第1次"}
-  ]},
-  {label:"下午 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
-   {t:"new",x:"首讀 滅菌・度量衡・CYP450 第1天"},
-   {t:"new",x:"首讀 生物藥劑 Ch8 第3天"},
-  ]},
-  {label:"晚 19:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[{t:"new",x:"首讀 拉曼光譜 第2晚"}]},
-  {label:"晚 21:00 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[{t:"new",x:"脂質 第2天"}]},
- ]},
- {id:"d0526",today:false,date:"5/26 週二",badge:"5/26",bs:"background:#E6F1FB;color:#0C447C",slots:[
-  {label:"早 7:00 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[{t:"ra",x:"複習 辛涼解表藥・化痰藥 第2次"}]},
-  {label:"上午 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
-   {t:"new",x:"首讀 糖尿病藥物（39 單元）"},
-   {t:"ra",x:"複習 抗黴菌・抗肺結核藥物 第1次"},
-   {t:"ra",x:"複習 骨質疏鬆・抗甲狀腺 第1次"}
-  ]},
-  {label:"下午 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
-   {t:"new",x:"首讀 滅菌・度量衡・CYP450 第2天"},
-   {t:"new",x:"首讀 生物藥劑 Ch9 第1天"},
-   {t:"rb",x:"複習 滅菌・度量衡・CYP450 第2次"},
-  ]},
-  {label:"晚 19:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[{t:"new",x:"首讀 原子光譜(AES/AAS) 第1晚"}]},
-  {label:"🎯 里程碑",ls:"background:#FFF8EC;color:#92610A",tasks:[{t:"purple",x:"🌱 生藥首輪完成！（共9份）"}]},
-  {label:"晚 21:00 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[{t:"new",x:"脂質 第3天"}]},
- ]},
- {id:"d0527",today:false,date:"5/27 週三 早八課",badge:"5/27",bs:"background:#FAEEDA;color:#633806",slots:[
-  {label:"早 7:00 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[{t:"ra",x:"複習 止咳平喘藥・利水滲濕藥 第2次"}]},
-  {label:"上 10:30 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
-   {t:"new",x:"首讀 鴉片類藥物（40 單元）"},
-   {t:"ra",x:"複習 荷爾蒙藥物 第1次"},
-   {t:"ra",x:"複習 糖尿病藥物 第1次"}
-  ]},
-  {label:"下午 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
-   {t:"new",x:"首讀 注射劑 1"},
-   {t:"new",x:"首讀 生物藥劑 Ch9 第2天"},
-   {t:"rb",x:"複習 注射劑 1 第2次"},
-  ]},
-  {label:"晚 19:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[{t:"new",x:"首讀 原子光譜(AES/AAS) 第2晚"}]},
- ]},
- {id:"d0528",today:false,date:"5/28 週四 課到15:00",badge:"5/28",bs:"background:#FAEEDA;color:#633806",slots:[
-  {label:"早 7:00 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[{t:"ra",x:"複習 芳香化濕藥・祛風濕藥 第2次"}]},
-  {label:"上午 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
-   {t:"new",x:"首讀 NSAID・抗痛風藥物（41/42/43 單元）"},
-   {t:"ra",x:"複習 皮質類固醇 第1次"},
-   {t:"ra",x:"複習 骨質疏鬆・抗甲狀腺 第1次"}
-  ]},
-  {label:"下午 15:00 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
-   {t:"new",x:"首讀 注射劑 2"},
-   {t:"new",x:"首讀 生物藥劑 Ch9 第3天"},
-   {t:"rb",x:"複習 注射劑 2 第2次"},
-  ]},
-  {label:"晚 19:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[{t:"new",x:"首讀 旋光度測定法 第1晚"}]},
- ]},
- {id:"d0529",today:false,date:"5/29 週五 課到12:00",badge:"5/29",bs:"background:#FAEEDA;color:#633806",slots:[
-  {label:"早 7:00 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[{t:"ra",x:"複習 消食藥・瀻下藥 第2次"}]},
-  {label:"下午 12:00 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
-   {t:"new",x:"首讀 注射劑 3"},
-   {t:"new",x:"首讀 生物藥劑 Ch10 第1天"},
-   {t:"rb",x:"複習 注射劑 3 第2次"},
-  ]},
-  {label:"晚 19:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[{t:"new",x:"首讀 旋光度測定法 第2晚"}]},
- ]},
- {id:"d0530",today:false,date:"5/30 週六",badge:"5/30",bs:"background:#E6F1FB;color:#0C447C",slots:[
-  {label:"早 7:00 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[{t:"ra",x:"複習 活血祛瘀藥・止血藥 第2次"}]},
-  {label:"上午 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
-   {t:"new",x:"首讀 抗組織胺・胃酸相關藥物（44/45 單元）"},
-   {t:"ra",x:"複習 性激素藥物 第1次"},
-   {t:"ra",x:"複習 糖尿病藥物 第1次"}
-  ]},
-  {label:"下午 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
-   {t:"new",x:"首讀 生物藥劑 Ch10 第2天"},
-   {t:"rb",x:"複習 錠劑全系列 第3次"},
-  ]},
-  {label:"晚 19:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[{t:"new",x:"首讀 折光率測定法 第1晚"}]},
- ]},
- {id:"d0531",today:false,date:"5/31 週日",badge:"5/31",bs:"background:#E6F1FB;color:#0C447C",slots:[
-  {label:"早 7:00 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[{t:"ra",x:"複習 清熱解毒藥・清熱瀻火藥 第2次"}]},
-  {label:"上午 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
-   {t:"new",x:"首讀 抗組織胺・胃酸相關藥物（44/45 單元）"},
-   {t:"ra",x:"複習 性激素藥物 第1次"},
-   {t:"ra",x:"複習 糖尿病藥物 第1次"}
-  ]},
-  {label:"下午 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
-   {t:"new",x:"首讀 生物藥劑 Ch10 第3天"},
-   {t:"rb",x:"複習 軟膏劑全系列 第3次"},
-  ]},
-  {label:"晚 19:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[{t:"new",x:"首讀 折光率測定法 第2晚"}]},
- ]},
- {id:"d0601",today:false,date:"6/1 週一",badge:"6/1",bs:"background:#E6F1FB;color:#0C447C",slots:[
-  {label:"早 7:00 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[{t:"ra",x:"複習 清熱燥濕藥・清熱涼血藥 第2次"}]},
-  {label:"上午 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
-   {t:"new",x:"首讀 抗病毒藥物（01 單元）"},
-   {t:"ra",x:"複習 骨質疏鬆・抗甲狀腺 第1次"},
-   {t:"ra",x:"複習 抗組織胺・胃酸相關藥物 第1次"}
-  ]},
-  {label:"下午 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
-   {t:"new",x:"首讀 生物藥劑 Ch11 第1天"},
-   {t:"rb",x:"複習 膠囊・栓劑・乳劑・懸浮劑 第3次"},
-  ]},
-  {label:"晚 19:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[{t:"new",x:"首讀 核磁共振光譜測定(NMR) 第1晚"}]},
- ]},
- {id:"d0602",today:false,date:"6/2 週二",badge:"6/2",bs:"background:#E6F1FB;color:#0C447C",slots:[
-  {label:"早 7:00 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[{t:"ra",x:"複習 清虛熱藥・外用藥驅蟲藥 第2次"}]},
-  {label:"上午 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
-   {t:"new",x:"首讀 抗痙攣（24 單元）"},
-   {t:"ra",x:"複習 糖尿病藥物 第1次"},
-   {t:"ra",x:"複習 抗病毒藥物 第1次"}
-  ]},
-  {label:"下午 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
-   {t:"new",x:"首讀 生物藥劑 Ch11 第2天"},
-   {t:"rb",x:"複習 溶液劑・膠體・流變學 第3次"},
-  ]},
-  {label:"晚 19:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[{t:"new",x:"首讀 核磁共振光譜測定(NMR) 第2晚"}]},
-  {label:"🎯 里程碑",ls:"background:#FFF8EC;color:#92610A",tasks:[{t:"purple",x:"💊 藥理首輪完成！（全47單元）"}]},
- ]},
- {id:"d0603",today:false,date:"6/3 週三 早八課",badge:"6/3",bs:"background:#FAEEDA;color:#633806",slots:[
-  {label:"早 7:00 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[{t:"ra",x:"複習 藥用部位・常考方劑・萜類・考點整理 第2次"}]},
-  {label:"上 10:30 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
-   {t:"new",x:"首讀 貧血治療劑・解毒劑（32/47 單元）"},
-   {t:"ra",x:"複習 鴉片類藥物 第1次"},
-   {t:"ra",x:"複習 抗痙攣 第1次"}
-  ]},
-  {label:"下午 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
-   {t:"new",x:"首讀 生物藥劑 Ch11 第3天"},
-   {t:"rb",x:"複習 散劑・微粒學・眼用製劑 第3次"},
-  ]},
-  {label:"晚 19:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[{t:"new",x:"首讀 滴定分析概論 第1晚"}]},
- ]},
- {id:"d0604",today:false,date:"6/4 週四 課到15:00",badge:"6/4",bs:"background:#FAEEDA;color:#633806",slots:[
-  {label:"早 7:00 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[{t:"ra",x:"複習 補氣藥・補血藥 第3次"}]},
-  {label:"上午 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
-   {t:"ra",x:"複習 NSAID・抗痛風藥物 第1次"},
-   {t:"ra",x:"複習 抗病毒藥物 第1次"}
-  ]},
-  {label:"下午 15:00 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
-   {t:"new",x:"首讀 生物藥劑 Ch12 第1天"},
-   {t:"rb",x:"複習 糖漿・試驗-檢查法・滅菌 第3次"},
-  ]},
-  {label:"晚 19:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[{t:"new",x:"首讀 滴定分析概論 第2晚"}]},
-  {label:"晚 21:00 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[{t:"ra",x:"複習 生物鹼 I（複習輪）"}]},
- ]},
- {id:"d0605",today:false,date:"6/5 週五 課到12:00",badge:"6/5",bs:"background:#FAEEDA;color:#633806",slots:[
-  {label:"早 7:00 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[{t:"ra",x:"複習 補陰藥・補陽藥 第3次"}]},
-  {label:"下午 12:00 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
-   {t:"new",x:"首讀 生物藥劑 Ch12 第2天"},
-   {t:"rb",x:"複習 注射劑全系列 第3次"},
-  ]},
-  {label:"晚 19:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[{t:"new",x:"首讀 酸鹼滴定 第1晚"}]},
-  {label:"晚 21:00 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[{t:"ra",x:"複習 生物鹼 II（複習輪）"}]},
- ]},
- {id:"d0606",today:false,date:"6/6 週六",badge:"6/6",bs:"background:#E6F1FB;color:#0C447C",slots:[
-  {label:"早 7:00 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[{t:"ra",x:"複習 溫裡藥・理氣藥 第3次"}]},
-  {label:"上午 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
-   {t:"ra",x:"複習 抗病毒藥物 第2次"},
-   {t:"ra",x:"複習 貧血治療劑・解毒劑 第1次"}
-  ]},
-  {label:"下午 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
-   {t:"new",x:"首讀 生物藥劑 Ch12 第3天"},
-   {t:"rb",x:"複習 生物藥劑 Ch1–3 第2次"},
-  ]},
-  {label:"晚 19:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[{t:"new",x:"首讀 酸鹼滴定 第2晚"}]},
-  {label:"晚 21:00 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[{t:"ra",x:"複習 配糖體 I（複習輪）"}]},
-  {label:"🎯 里程碑",ls:"background:#FFF8EC;color:#92610A",tasks:[{t:"purple",x:"🧪 藥劑首輪完成！（劑型＋生物藥劑 Ch1–12）"}]},
- ]},
- {id:"d0607",today:false,date:"6/7 週日",badge:"6/7",bs:"background:#E6F1FB;color:#0C447C",slots:[
-  {label:"早 7:00 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[{t:"ra",x:"複習 平肝熄風藥・安神藥 第3次"}]},
-  {label:"上午 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
-   {t:"ra",x:"複習 抗病毒藥物 第2次"},
-   {t:"ra",x:"複習 貧血治療劑・解毒劑 第1次"}
-  ]},
-  {label:"下午 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
-   {t:"rb",x:"複習 生物藥劑 Ch4–6 第2次"},
-   {t:"rb",x:"複習 錠劑全系列 第4次"},
-  ]},
-  {label:"晚 19:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[{t:"new",x:"首讀 非水滴定 第1晚"}]},
-  {label:"晚 21:00 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[{t:"ra",x:"複習 配糖體 II（複習輪）"}]},
- ]},
- {id:"d0608",today:false,date:"6/8 週一",badge:"6/8",bs:"background:#E6F1FB;color:#0C447C",slots:[
-  {label:"早 7:00 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[{t:"ra",x:"複習 收澀藥・辛溫解表藥 第3次"}]},
-  {label:"上午 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
-   {t:"ra",x:"複習 抗痙攣 第2次"},
-   {t:"ra",x:"複習 NSAID・抗痛風藥物 第2次"}
-  ]},
-  {label:"下午 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
-   {t:"rb",x:"複習 生物藥劑 Ch7–9 第2次"},
-   {t:"rb",x:"複習 軟膏劑全系列 第4次"},
-  ]},
-  {label:"晚 19:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[{t:"new",x:"首讀 非水滴定 第2晚"}]},
-  {label:"晚 21:00 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[{t:"ra",x:"複習 多醣類・樹脂（複習輪）"}]},
- ]},
- {id:"d0609",today:false,date:"6/9 週二",badge:"6/9",bs:"background:#E6F1FB;color:#0C447C",slots:[
-  {label:"早 7:00 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[{t:"ra",x:"複習 辛涼解表藥・化痰藥 第3次"}]},
-  {label:"上午 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
-   {t:"ra",x:"複習 貧血治療劑・解毒劑 第1次"},
-   {t:"ra",x:"複習 鴉片類藥物 第2次"}
-  ]},
-  {label:"下午 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
-   {t:"rb",x:"複習 生物藥劑 Ch10–12 第2次"},
-   {t:"rb",x:"複習 膠囊・栓劑・乳劑・懸浮劑 第4次"},
-  ]},
-  {label:"晚 19:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[{t:"new",x:"首讀 沉澱/錯合/氧化還原滴定 第1晚"}]},
-  {label:"晚 21:00 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[{t:"ra",x:"複習 苯丙烷（複習輪）"}]},
- ]},
- {id:"d0610",today:false,date:"6/10 週三 早八課",badge:"6/10",bs:"background:#FAEEDA;color:#633806",slots:[
-  {label:"早 7:00 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[{t:"ra",x:"複習 止咳平喘藥・利水滲濕藥 第3次"}]},
-  {label:"上 10:30 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
-   {t:"ra",x:"複習 荷爾蒙藥物・皮質類固醇 第2次"},
-   {t:"ra",x:"複習 性激素藥物・骨質疏鬆 第2次"}
-  ]},
-  {label:"下午 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
-   {t:"rb",x:"複習 膠體・溶液劑・流變學 第4次"},
-  ]},
-  {label:"晚 19:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[{t:"new",x:"首讀 沉澱/錯合/氧化還原滴定 第2晚"}]},
-  {label:"晚 21:00 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[{t:"ra",x:"複習 萜類（複習輪）"}]},
- ]},
- {id:"d0611",today:false,date:"6/11 週四 課到15:00",badge:"6/11",bs:"background:#FAEEDA;color:#633806",slots:[
-  {label:"早 7:00 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[{t:"ra",x:"複習 芳香化濕藥・祛風濕藥 第3次"}]},
-  {label:"上午 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
-   {t:"ra",x:"複習 糖尿病藥物 第2次"},
-   {t:"ra",x:"複習 抗組織胺・胃酸相關藥物 第2次"}
-  ]},
-  {label:"下午 15:00 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
-   {t:"rb",x:"複習 散劑・微粒學・眼用製劑 第4次"},
-   {t:"rb",x:"複習 糖漿・試驗-檢查法・滅菌 第4次"},
-  ]},
-  {label:"晚 19:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[{t:"new",x:"首讀 水分/灰分測定 第1晚"}]},
-  {label:"晚 21:00 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[{t:"ra",x:"複習 揮發油（複習輪）"}]},
- ]},
- {id:"d0612",today:false,date:"6/12 週五 課到12:00",badge:"6/12",bs:"background:#FAEEDA;color:#633806",slots:[
-  {label:"早 7:00 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[{t:"ra",x:"複習 消食藥・瀻下藥 第3次"}]},
-  {label:"下午 12:00 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
-   {t:"rb",x:"複習 注射劑全系列 第4次"},
-  ]},
-  {label:"晚 19:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[{t:"new",x:"首讀 水分/灰分測定 第2晚"}]},
-  {label:"晚 21:00 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[{t:"ra",x:"複習 脂質（複習輪）"}]},
- ]},
- {id:"d0613",today:false,date:"6/13 週六",badge:"6/13",bs:"background:#E6F1FB;color:#0C447C",slots:[
-  {label:"早 7:00 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[{t:"ra",x:"複習 全科中藥整合 第1次"}]},
-  {label:"上午 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[{t:"ra",x:"複習 全科藥理 弱點複習"}]},
-  {label:"下午 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[{t:"rb",x:"複習 全科藥劑 弱點複習"}]},
-  {label:"晚 19:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[{t:"new",x:"首讀 脂肪/揮發油/生物檢測定 第1晚"}]},
-  {label:"晚 21:00 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[{t:"ra",x:"複習 生物鹼全部 第2輪"}]},
- ]},
 ]},
+];
+
+
+var D_later=[
 {ph:"6/14–6/21 期末考前衝刺",type:"daily",days:[
  {id:"d0614",today:false,date:"6/14 週日",badge:"6/14",bs:"background:#E6F1FB;color:#0C447C",slots:[
   {label:"早 7:00 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[{t:"ra",x:"複習 清熱解毒藥・清熱瀻火藥 第3次"}]},
   {label:"上午 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[{t:"ra",x:"複習 全科藥理 弱點複習"}]},
   {label:"下午 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[{t:"rb",x:"複習 全科藥劑 弱點複習"}]},
-  {label:"晚 19:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[{t:"new",x:"首讀 脂肪/揮發油/生物檢測定 第2晚"}]},
-  {label:"晚 21:00 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[{t:"ra",x:"複習 生物鹼 I 第2輪"}]},
+  {label:"晚 19:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[{t:"rc",x:"複習 層析全系列 整合"}]},
+  {label:"晚 21:00 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[{t:"ra",x:"複習 生物鹼全部 第2輪"}]},
  ]},
  {id:"d0615",today:false,date:"6/15 週一",badge:"6/15",bs:"background:#E6F1FB;color:#0C447C",slots:[
   {label:"早 7:00 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[{t:"ra",x:"複習 清熱燥濕藥・清熱涼血藥・清虛熱藥 第3次"}]},
-  {label:"上午 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
-   {t:"ra",x:"複習 藥效學・藥動學・交感神經・副交感神經 第3次"},
-   {t:"ra",x:"複習 巴金森氏症・精神分裂症・憂鬱症 第3次"}
-  ]},
+  {label:"上午 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[{t:"ra",x:"複習 藥效學・藥動學・交感神經・副交感神經 第3次"},{t:"ra",x:"複習 巴金森氏症・精神分裂症・憂鬱症 第3次"}]},
   {label:"下午 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[{t:"rb",x:"複習 生物藥劑全系列 第3次"}]},
   {label:"晚 19:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[{t:"rc",x:"複習 光譜全系列 第3次"}]},
   {label:"晚 21:00 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[{t:"ra",x:"複習 生物鹼 II 第2輪"}]},
  ]},
  {id:"d0616",today:false,date:"6/16 週二",badge:"6/16",bs:"background:#E6F1FB;color:#0C447C",slots:[
   {label:"早 7:00 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[{t:"ra",x:"複習 外用藥・驅蟲藥・藥用部位・常考方劑 第3次"}]},
-  {label:"上午 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
-   {t:"ra",x:"複習 抗癲癇・麻醉・鎮靜安眠・中樞 第3次"},
-   {t:"ra",x:"複習 高血壓・心絞痛・心律不整・心衰竭・利尿劑 第3次"}
-  ]},
+  {label:"上午 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[{t:"ra",x:"複習 抗癲癇・麻醉・鎮靜安眠・中樞 第3次"},{t:"ra",x:"複習 高血壓・心絞痛・心律不整・心衰竭・利尿劑 第3次"}]},
   {label:"下午 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[{t:"rb",x:"複習 全科藥劑 弱點整理"}]},
   {label:"晚 19:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[{t:"rc",x:"複習 滴定分析全系列 第3次"}]},
   {label:"晚 21:00 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[{t:"ra",x:"複習 配糖體 I・II 第2輪"}]},
  ]},
  {id:"d0617",today:false,date:"6/17 週三 早八課",badge:"6/17",bs:"background:#FAEEDA;color:#633806",slots:[
   {label:"早 7:00 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[{t:"ra",x:"複習 全科中藥整合 第2次"}]},
-  {label:"上 10:30 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
-   {t:"ra",x:"複習 抗凝血・降血脂・抗腫瘤・標靶 第3次"},
-   {t:"ra",x:"複習 免疫・抗生素全部 第3次"}
-  ]},
+  {label:"上 10:30 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[{t:"ra",x:"複習 抗凝血・降血脂・抗腫瘤・標靶 第3次"},{t:"ra",x:"複習 免疫・抗生素全部 第3次"}]},
   {label:"下午 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[{t:"rb",x:"複習 全科藥劑 錯題本整理"}]},
   {label:"晚 19:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[{t:"rc",x:"複習 傳統分析全系列 第3次"}]},
   {label:"晚 21:00 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[{t:"ra",x:"複習 多醣類・苯丙烷 第2輪"}]},
@@ -875,23 +269,25 @@ var D=[
  {id:"d0618",today:false,date:"6/18 週四 課到15:00",badge:"6/18",bs:"background:#FAEEDA;color:#633806",slots:[
   {label:"早 7:00 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[{t:"ra",x:"複習 補氣・補血・補陰・補陽 第4次"}]},
   {label:"上午 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[{t:"ra",x:"複習 抗組織胺・胃酸・抗病毒・抗痙攣・解毒劑 第3次"}]},
-  {label:"下午 15:00 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[{t:"rb",x:"複習 全科藥劑 錯題本整理"}]},
+  {label:"下午 15:00 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[{t:"rb",x:"複習 全科藥劑 弱點整理"}]},
+  {label:"晚 19:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[{t:"rc",x:"複習 全科藥分 弱點整理"}]},
   {label:"晚 21:00 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[{t:"ra",x:"複習 萜類・揮發油 第2輪"}]},
  ]},
  {id:"d0619",today:false,date:"6/19 週五 課到12:00",badge:"6/19",bs:"background:#FAEEDA;color:#633806",slots:[
   {label:"早 7:00 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[{t:"ra",x:"複習 溫裡・理氣・平肝熄風・安神 第4次"}]},
   {label:"下午 12:00 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[{t:"rb",x:"複習 全科藥劑 弱點整理"}]},
+  {label:"晚 19:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[{t:"rc",x:"複習 全科藥分 弱點整理"}]},
   {label:"晚 21:00 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[{t:"ra",x:"複習 脂質 第2輪"}]},
  ]},
  {id:"d0620",today:false,date:"6/20 週六",badge:"6/20",bs:"background:#E6F1FB;color:#0C447C",slots:[
   {label:"早 7:00 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[{t:"ra",x:"複習 收澀・辛溫・辛涼・化痰・止咳 第4次"}]},
-  {label:"上午 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[{t:"ra",x:"複習 抗組織胺・胃酸・抗病毒・抗痙攣・解毒劑 第3次"}]},
+  {label:"上午 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[{t:"ra",x:"複習 荷爾蒙全系列・糖尿病・抗腫瘤 第4次"}]},
   {label:"下午 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[{t:"rb",x:"複習 全科藥劑 弱點整理"}]},
   {label:"晚 19:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[{t:"rc",x:"複習 全科藥分 錯題本整理"}]},
  ]},
  {id:"d0621",today:false,date:"6/21 週日",badge:"6/21",bs:"background:#E6F1FB;color:#0C447C",slots:[
   {label:"早 7:00 中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[{t:"ra",x:"複習 利水・芳香・祛風・消食・瀻下 第4次"}]},
-  {label:"上午 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[{t:"ra",x:"複習 抗組織胺・胃酸・抗病毒・抗痙攣・解毒劑 第3次"}]},
+  {label:"上午 藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[{t:"ra",x:"複習 全科藥理 弱點整理"}]},
   {label:"下午 藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[{t:"rb",x:"複習 全科藥劑 錯題本整理"}]},
   {label:"晚 19:00 藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[{t:"rc",x:"複習 全科藥分 錯題本整理"}]},
   {label:"晚 21:00 生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[{t:"ra",x:"複習 全科生藥 重點整理"}]},
@@ -928,53 +324,18 @@ var D=[
 ]},
 {ph:"刷題衝刺 — 6/29 到 7/11",type:"weekly",weeks:[
  {id:"w629",badge:"刷題1",bs:"background:#E1F5EE;color:#085041",dates:"6/29（週一）–7/4（週六）",title:"第一份國考題｜神經・心血管複習",subjects:[
-  {label:"藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
-   {t:"ra",x:"複習 藥效學・藥動學"},
-   {t:"ra",x:"複習 交感・副交感・神經節"},
-   {t:"ra",x:"複習 巴金森・精神分裂・憂鬱"},
-   {t:"ra",x:"複習 麻醉・鎮靜安眠・中樞・血清素"},
-   {t:"ra",x:"複習 高血壓・心絞痛・心律不整・心衰竭・利尿劑"},
-  ]},
-  {label:"藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
-   {t:"rb",x:"複習 注射劑・錠劑・軟膏劑"},
-   {t:"rb",x:"複習 膠囊・栓劑・乳劑・懸浮劑"},
-   {t:"rb",x:"複習 生物藥劑 Ch1–6"},
-  ]},
-  {label:"藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[
-   {t:"rc",x:"複習 層析全系列"},
-   {t:"rc",x:"複習 光譜全系列"},
-  ]},
-  {label:"生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[
-   {t:"ra",x:"複習 生物鹼全部 第3輪"},
-   {t:"ra",x:"複習 配糖體全部 第3輪"},
-  ]},
-  {label:"中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[
-   {t:"ra",x:"複習 補益藥・溫裡・理氣 第5次"},
-   {t:"ra",x:"複習 解表・化痰・清熱全系列 第5次"},
-  ]},
+  {label:"藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[{t:"ra",x:"複習 藥效學・藥動學"},{t:"ra",x:"複習 交感・副交感・神經節"},{t:"ra",x:"複習 巴金森・精神分裂・憂鬱"},{t:"ra",x:"複習 麻醉・鎮靜安眠・中樞・血清素"},{t:"ra",x:"複習 高血壓・心絞痛・心律不整・心衰竭・利尿劑"}]},
+  {label:"藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[{t:"rb",x:"複習 注射劑・錠劑・軟膏劑"},{t:"rb",x:"複習 膠囊・栓劑・乳劑・懸浮劑"},{t:"rb",x:"複習 生物藥劑 Ch1–6"}]},
+  {label:"藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[{t:"rc",x:"複習 層析全系列"},{t:"rc",x:"複習 光譜全系列"}]},
+  {label:"生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[{t:"ra",x:"複習 生物鹼全部 第3輪"},{t:"ra",x:"複習 配糖體全部 第3輪"}]},
+  {label:"中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[{t:"ra",x:"複習 補益藥・溫裡・理氣 第5次"},{t:"ra",x:"複習 解表・化痰・清熱全系列 第5次"}]},
  ]},
  {id:"w705",badge:"刷題2",bs:"background:#E1F5EE;color:#085041",dates:"7/5（週日）–7/11（週六）",title:"第二份國考題｜抗腫瘤・抗生素・荷爾蒙複習",subjects:[
-  {label:"藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[
-   {t:"ra",x:"複習 抗凝血・降血脂・抗腫瘤・標靶"},
-   {t:"ra",x:"複習 免疫・抗生素全・抗黴菌・抗肺結核"},
-   {t:"ra",x:"複習 荷爾蒙・皮質類固醇・性激素・骨質疏鬆・甲狀腺"},
-   {t:"ra",x:"複習 糖尿病・鴉片類・NSAID・抗痛風・抗組織胺・胃酸・抗病毒・解毒劑"},
-  ]},
-  {label:"藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[
-   {t:"rb",x:"複習 膠體・溶液劑・流變學・散劑・眼用製劑"},
-   {t:"rb",x:"複習 糖漿・試驗檢查・滅菌"},
-   {t:"rb",x:"複習 生物藥劑 Ch7–12"},
-  ]},
-  {label:"藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[
-   {t:"rc",x:"複習 滴定分析全系列"},
-   {t:"rc",x:"複習 傳統分析全系列"},
-  ]},
-  {label:"生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[
-   {t:"ra",x:"複習 多醣類・苯丙烷・萜類・揮發油・脂質 第3輪"},
-  ]},
-  {label:"中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[
-   {t:"ra",x:"複習 全科中藥 國考題 第5次"},
-  ]},
+  {label:"藥理",ls:"background:#E6F1FB;color:#0C447C",tasks:[{t:"ra",x:"複習 抗凝血・降血脂・抗腫瘤・標靶"},{t:"ra",x:"複習 免疫・抗生素全・抗黴菌・抗肺結核"},{t:"ra",x:"複習 荷爾蒙・皮質類固醇・性激素・骨質疏鬆・甲狀腺"},{t:"ra",x:"複習 糖尿病・鴉片類・NSAID・抗痛風・抗組織胺・胃酸・抗病毒・解毒劑"}]},
+  {label:"藥劑",ls:"background:#FAECE7;color:#712B13",tasks:[{t:"rb",x:"複習 膠體・溶液劑・流變學・散劑・眼用製劑"},{t:"rb",x:"複習 糖漿・試驗檢查・滅菌"},{t:"rb",x:"複習 生物藥劑 Ch7–12"}]},
+  {label:"藥分",ls:"background:#EAF3DE;color:#27500A",tasks:[{t:"rc",x:"複習 滴定分析全系列"},{t:"rc",x:"複習 傳統分析全系列"}]},
+  {label:"生藥",ls:"background:#EEEDFE;color:#26215C",tasks:[{t:"ra",x:"複習 多醣類・苯丙烷・萜類・揮發油・脂質 第3輪"}]},
+  {label:"中藥",ls:"background:#EEEDFE;color:#3C3489",tasks:[{t:"ra",x:"複習 全科中藥 國考題 第5次"}]},
  ]},
 ]},
 {ph:"考前最終週",type:"weekly",weeks:[
@@ -988,12 +349,100 @@ var D=[
 ]},
 ];
 
+
+var SK="pharma_v12";
+function load(){try{return JSON.parse(localStorage.getItem(SK)||"{}")}catch(e){return{}}}
+function save(s){localStorage.setItem(SK,JSON.stringify(s))}
+function safe(k){var h=0;for(var i=0;i<k.length;i++){h=Math.imul(31,h)+k.charCodeAt(i)|0;}return"k"+Math.abs(h)+"_"+k.replace(/[^a-zA-Z0-9]/g,"_").slice(0,20)}
+function ck(key){
+  var s=load();s[key]=!s[key];save(s);
+  var row=document.getElementById("row_"+key);
+  var cb=document.getElementById("cb_"+key);
+  if(row){if(s[key])row.classList.add("done");else row.classList.remove("done");}
+  if(cb)cb.checked=!!s[key];
+  updateAll();
+}
+function tog(el){
+  var b=el.nextElementSibling,c=el.querySelector(".chev");
+  if(!b)return;
+  var o=b.classList.toggle("open");
+  if(o)c.classList.add("open");else c.classList.remove("open");
+}
+function updateAll(){
+  var s=load();
+  var all=document.querySelectorAll(".item");
+  var tot=all.length,done=0;
+  all.forEach(function(el){if(s[el.id.replace("row_","")])done++;});
+  var pct=tot?Math.round(done/tot*100):0;
+  document.getElementById("ov-fill").style.width=pct+"%";
+  document.getElementById("ov-label").textContent=done+" / "+tot+" ("+pct+"%)";
+  document.querySelectorAll(".wcard:not(.week-summary)").forEach(function(card){
+    var its=card.querySelectorAll(".item");
+    if(!its.length)return;
+    var t=its.length,d2=0;
+    its.forEach(function(el){if(s[el.id.replace("row_","")])d2++;});
+    var p=Math.round(d2/t*100);
+    var pf=card.querySelector(".pf");
+    var pl=card.querySelector(".pl");
+    var pctEl=card.querySelector(".pct-label");
+    if(pf)pf.style.width=p+"%";
+    if(pl)pl.textContent=d2+"/"+t+" 完成";
+    if(pctEl)pctEl.textContent=p+"%";
+  });
+}
+function buildSlots(id,slots,s){
+  var html="";
+  slots.forEach(function(slot){
+    var items="";
+    slot.tasks.forEach(function(t,ti){
+      var key=safe(id+"__"+slot.label+"__"+ti);
+      var checked=!!s[key];
+      var cc=t.t==="new"?" c-new":t.t==="ra"?" c-ra":t.t==="rb"?" c-rb":t.t==="rc"?" c-rc":t.t==="purple"?" c-purple":"";
+      var div=document.createElement("div");
+      div.className="item"+(checked?" done":"");
+      div.id="row_"+key;
+      div.setAttribute("onclick","ck('"+key+"')");
+      var cb=document.createElement("input");
+      cb.type="checkbox";cb.id="cb_"+key;cb.checked=checked;
+      cb.setAttribute("onclick","event.stopPropagation()");
+      var span=document.createElement("span");
+      span.className="tx"+cc;span.textContent=t.x;
+      div.appendChild(cb);div.appendChild(span);
+      items+=div.outerHTML;
+    });
+    html+='<div class="sr"><span class="slb" style="'+slot.ls+'">'+slot.label+'</span><div>'+items+'</div></div>';
+  });
+  return html;
+}
+function buildCard(item,slots,s,isToday){
+  var tot=0,done2=0;
+  slots.forEach(function(slot){
+    slot.tasks.forEach(function(t,ti){
+      var key=safe(item.id+"__"+slot.label+"__"+ti);
+      tot++;if(s[key])done2++;
+    });
+  });
+  var pct=tot?Math.round(done2/tot*100):0;
+  return '<div class="wcard'+(isToday?" today":"")+'">'
+    +'<div class="wtop" onclick="tog(this)">'
+    +'<span class="wbg" style="'+item.bs+'">'+item.badge+'</span>'
+    +'<span class="wdt">'+item.dates+'</span>'
+    +'<span class="wti">'+item.title+'</span>'
+    +'<span class="pct-label" style="font-size:11px;color:#aaa;margin-right:4px">'+pct+'%</span>'
+    +'<span class="chev'+(isToday?" open":"")+'">▶</span>'
+    +'</div>'
+    +'<div class="wbody'+(isToday?" open":"")+'">'
+    +buildSlots(item.id,slots,s)
+    +'<div style="padding:.4rem 1rem .5rem">'
+    +'<div class="pb"><div class="pf" style="width:'+pct+'%"></div></div>'
+    +'<div class="pl">'+done2+"/"+tot+" 完成</div>"
+    +'</div></div></div>';
+}
 function render(){
   var s=load();
   var html="";
   D.forEach(function(p){
     html+='<div class="phase-hd">'+p.ph+"</div>";
-    if(p.ph.indexOf("刷題")>=0)html+='<div class="banner binfo">一天寫完一回，分 3 天訂正。錯題當天記入錯誤本。</div>';
     var items=p.type==="daily"?p.days:p.weeks;
     items.forEach(function(item){
       var slots=p.type==="daily"?item.slots:item.subjects;
@@ -1002,10 +451,27 @@ function render(){
       html+=buildCard({id:item.id,badge:item.badge,bs:item.bs,dates:dates,title:title},slots,s,!!item.today);
     });
   });
-  document.getElementById("app").innerHTML=html;
+  document.getElementById("old-app").innerHTML=html;
+  
+  // Later sections
+  var html2="";
+  D_later.forEach(function(p){
+    html2+='<div class="phase-hd">'+p.ph+"</div>";
+    if(p.ph.indexOf("刷題")>=0)html2+='<div class="banner binfo">一天寫完一回，分 3 天訂正。錯題當天記入錯誤本。</div>';
+    var items=p.type==="daily"?p.days:p.weeks;
+    items.forEach(function(item){
+      var slots=p.type==="daily"?item.slots:item.subjects;
+      var dates=item.dates||item.date||"";
+      var title=item.title||item.date||"";
+      html2+=buildCard({id:item.id,badge:item.badge,bs:item.bs,dates:dates,title:title},slots,s,!!item.today);
+    });
+  });
+  document.getElementById("later-app").innerHTML=html2;
+  
   updateAll();
 }
 render();
+
 </script>
 </body>
 </html>
