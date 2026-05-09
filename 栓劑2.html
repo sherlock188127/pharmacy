@@ -1,0 +1,1737 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>栓劑 Suppositories — 藥學筆記</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&family=Noto+Sans+TC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FAF7F2;
+    --card-bg: #FFFFFF;
+    --teal: #0F8A6E;
+    --teal-light: #D5F0EA;
+    --teal-mid: #1DB58F;
+    --amber: #D97706;
+    --amber-light: #FEF3C7;
+    --amber-mid: #F59E0B;
+    --blue: #1D6FA5;
+    --blue-light: #DBEAFE;
+    --blue-mid: #3B82F6;
+    --coral: #C0392B;
+    --coral-light: #FDE8E6;
+    --sage: #4A7C59;
+    --sage-light: #DCFCE7;
+    --purple: #6D28D9;
+    --purple-light: #EDE9FE;
+    --slate: #374151;
+    --slate-mid: #6B7280;
+    --slate-light: #F3F4F6;
+    --border: #E5E7EB;
+    --text: #1F2937;
+    --text-muted: #6B7280;
+    --shadow: 0 2px 12px rgba(0,0,0,0.07);
+    --shadow-md: 0 4px 24px rgba(0,0,0,0.10);
+    --radius: 14px;
+    --radius-sm: 8px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--cream);
+    color: var(--text);
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 15px;
+    line-height: 1.75;
+    padding: 2.5rem 1.5rem 4rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  /* ——— HEADER ——— */
+  .page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+    padding-bottom: 2rem;
+  }
+  .page-header::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: var(--teal-mid);
+    margin: 1.5rem auto 0;
+    border-radius: 2px;
+  }
+  .subject-tag {
+    display: inline-block;
+    background: var(--teal-light);
+    color: var(--teal);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    padding: 4px 14px;
+    border-radius: 20px;
+    margin-bottom: 1rem;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  h1.title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.2;
+  }
+  h1.title span {
+    color: var(--teal);
+  }
+  .subtitle {
+    color: var(--text-muted);
+    font-size: 14px;
+    margin-top: 0.5rem;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ——— SECTION ——— */
+  .section {
+    margin-bottom: 2.5rem;
+  }
+  .section-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--teal);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--teal-light);
+  }
+  .section-title .icon {
+    width: 28px;
+    height: 28px;
+    background: var(--teal-light);
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+
+  /* ——— CARDS ——— */
+  .card {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    padding: 1.4rem 1.6rem;
+    box-shadow: var(--shadow);
+    margin-bottom: 1rem;
+  }
+  .card-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.7rem;
+  }
+
+  /* ——— GRID ——— */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; }
+  @media (max-width: 640px) {
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+  }
+
+  /* ——— SITE CARD (使用部位) ——— */
+  .site-card {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+  .site-card-header {
+    padding: 1rem 1.4rem;
+    font-family: 'Noto Serif TC', serif;
+    font-weight: 700;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .site-card-body {
+    padding: 0.8rem 1.4rem 1.2rem;
+  }
+  .site-card-body .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 0;
+    font-size: 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  .site-card-body .row:last-child { border-bottom: none; }
+  .site-card-body .label { color: var(--text-muted); font-size: 13px; }
+  .site-card-body .val { font-family: 'JetBrains Mono', monospace; font-weight: 600; color: var(--text); }
+  .big-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1;
+    margin: 0.2rem 0;
+  }
+  .unit { font-size: 13px; color: var(--text-muted); font-family: 'JetBrains Mono', monospace; }
+
+  /* colors for site cards */
+  .site-anal .site-card-header { background: var(--amber-light); color: var(--amber); }
+  .site-vaginal .site-card-header { background: var(--sage-light); color: var(--sage); }
+  .site-urethral .site-card-header { background: var(--blue-light); color: var(--blue); }
+
+  /* ——— TABLE ——— */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    background: var(--card-bg);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+  th {
+    background: var(--slate-light);
+    color: var(--slate);
+    font-weight: 700;
+    padding: 10px 14px;
+    text-align: left;
+    font-size: 13px;
+    font-family: 'Noto Serif TC', serif;
+  }
+  td {
+    padding: 9px 14px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: middle;
+  }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: var(--cream); transition: background 0.15s; }
+  .check { color: var(--teal); font-size: 18px; font-weight: 700; }
+  .cross { color: var(--coral); font-size: 18px; font-weight: 700; }
+
+  /* ——— BADGE / PILL ——— */
+  .badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .badge-teal { background: var(--teal-light); color: var(--teal); }
+  .badge-amber { background: var(--amber-light); color: var(--amber); }
+  .badge-blue { background: var(--blue-light); color: var(--blue); }
+  .badge-coral { background: var(--coral-light); color: var(--coral); }
+  .badge-purple { background: var(--purple-light); color: var(--purple); }
+  .badge-sage { background: var(--sage-light); color: var(--sage); }
+
+  /* ——— MEMORY TIP ——— */
+  .tip {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    background: var(--amber-light);
+    border-left: 4px solid var(--amber-mid);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    padding: 0.8rem 1rem;
+    margin-top: 0.6rem;
+    font-size: 14px;
+  }
+  .tip-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+  .tip-text { color: var(--text); }
+  .tip-text strong { color: var(--amber); }
+
+  /* ——— STAR / IMPORTANT ——— */
+  .important {
+    background: linear-gradient(135deg, #fff8e1 0%, #fffde7 100%);
+    border: 2px solid var(--amber-mid);
+    border-radius: var(--radius);
+    padding: 1.2rem 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .important-title {
+    font-family: 'Noto Serif TC', serif;
+    font-weight: 700;
+    color: var(--amber);
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  /* ——— RELEASE RATE ——— */
+  .release-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.7rem;
+  }
+  .release-item {
+    border-radius: var(--radius-sm);
+    padding: 0.9rem 1.1rem;
+    border: 1px solid var(--border);
+  }
+  .release-combo { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--text-muted); margin-bottom: 4px; }
+  .release-rate { font-family: 'Noto Serif TC', serif; font-weight: 700; font-size: 1.05rem; }
+  .rate-fastest { background: #FEF2F2; border-color: #FCA5A5; }
+  .rate-fastest .release-rate { color: var(--coral); }
+  .rate-fast { background: #FFF7ED; border-color: #FCA5A5; }
+  .rate-fast .release-rate { color: var(--amber); }
+  .rate-medium { background: #F0FDF4; border-color: #86EFAC; }
+  .rate-medium .release-rate { color: var(--sage); }
+  .rate-slow { background: #EFF6FF; border-color: #93C5FD; }
+  .rate-slow .release-rate { color: var(--blue); }
+
+  /* ——— BASE SUMMARY ——— */
+  .base-row {
+    display: grid;
+    grid-template-columns: 140px 1fr 1fr 1fr 1fr;
+    gap: 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 13.5px;
+  }
+  .base-row.header { background: var(--slate-light); font-weight: 700; font-family: 'Noto Serif TC', serif; }
+  .base-row > div { padding: 9px 12px; }
+  .base-row > div:not(:last-child) { border-right: 1px solid var(--border); }
+  .base-table-wrap { background: var(--card-bg); border-radius: var(--radius-sm); border: 1px solid var(--border); overflow: hidden; box-shadow: var(--shadow); }
+
+  /* ——— DENSITY FACTOR ——— */
+  .formula-box {
+    background: var(--card-bg);
+    border: 2px solid var(--teal-mid);
+    border-radius: var(--radius);
+    padding: 1.4rem 1.8rem;
+    text-align: center;
+    box-shadow: var(--shadow-md);
+  }
+  .formula-label { font-size: 12px; color: var(--text-muted); margin-bottom: 6px; font-family: 'JetBrains Mono', monospace; letter-spacing: 1px; }
+  .formula {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--teal);
+    line-height: 1.4;
+  }
+  .formula .frac { display: inline-flex; flex-direction: column; align-items: center; vertical-align: middle; margin: 0 4px; }
+  .formula .frac .num { border-bottom: 2px solid var(--teal); padding: 0 6px; font-size: 1rem; }
+  .formula .frac .den { padding: 0 6px; font-size: 1rem; }
+
+  /* ——— STORAGE BOX ——— */
+  .storage-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.8rem; }
+  .storage-item {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 1rem;
+    text-align: center;
+    box-shadow: var(--shadow);
+  }
+  .storage-name { font-family: 'Noto Serif TC', serif; font-weight: 700; font-size: 13px; color: var(--text); margin-bottom: 6px; }
+  .storage-temp { font-family: 'JetBrains Mono', monospace; font-size: 1.4rem; font-weight: 700; margin: 4px 0; }
+  .storage-container { font-size: 12px; color: var(--text-muted); }
+  .temp-cold { color: var(--blue); }
+  .temp-cool { color: var(--teal); }
+  .temp-room { color: var(--sage); }
+
+  /* ——— GELATIN TABLE ——— */
+  .gelatin-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; }
+  .gelatin-card {
+    background: var(--card-bg);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+  .gelatin-card-head {
+    padding: 0.7rem 1rem;
+    font-size: 13px;
+    font-weight: 700;
+    font-family: 'Noto Serif TC', serif;
+  }
+  .gelatin-type-a .gelatin-card-head { background: var(--blue-light); color: var(--blue); }
+  .gelatin-type-b .gelatin-card-head { background: var(--sage-light); color: var(--sage); }
+  .gelatin-type-c .gelatin-card-head { background: var(--purple-light); color: var(--purple); }
+  .gelatin-card-body { padding: 0.9rem 1rem; font-size: 13px; }
+  .gelatin-row { display: flex; justify-content: space-between; padding: 3px 0; border-bottom: 1px dashed var(--border); }
+  .gelatin-row:last-child { border-bottom: none; }
+  .gelatin-row .k { color: var(--text-muted); }
+  .gelatin-row .v { font-family: 'JetBrains Mono', monospace; font-weight: 600; }
+
+  /* ——— EXAM Q BANNER ——— */
+  .exam-note {
+    display: flex;
+    gap: 10px;
+    background: var(--coral-light);
+    border: 1px solid #FECACA;
+    border-radius: var(--radius-sm);
+    padding: 0.8rem 1rem;
+    font-size: 13.5px;
+    margin-top: 0.6rem;
+  }
+  .exam-year { font-family: 'JetBrains Mono', monospace; font-size: 12px; background: var(--coral); color: white; border-radius: 4px; padding: 2px 7px; height: fit-content; white-space: nowrap; flex-shrink: 0; margin-top: 2px; }
+
+  /* ——— HIGHLIGHT TEXT ——— */
+  .hl-teal { color: var(--teal); font-weight: 700; }
+  .hl-amber { color: var(--amber); font-weight: 700; }
+  .hl-coral { color: var(--coral); font-weight: 700; }
+  .hl-blue { color: var(--blue); font-weight: 700; }
+  .hl-purple { color: var(--purple); font-weight: 700; }
+  .mono { font-family: 'JetBrains Mono', monospace; }
+
+  /* ——— LIST ——— */
+  ul.note-list { list-style: none; padding: 0; }
+  ul.note-list li {
+    padding: 5px 0 5px 20px;
+    position: relative;
+    font-size: 14px;
+    border-bottom: 1px dashed var(--border);
+  }
+  ul.note-list li:last-child { border-bottom: none; }
+  ul.note-list li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--teal-mid);
+    font-size: 12px;
+    top: 7px;
+  }
+
+  /* divider */
+  .divider { height: 1px; background: var(--border); margin: 2rem 0; }
+
+  @media (max-width: 640px) {
+    .grid-3, .storage-grid, .gelatin-grid { grid-template-columns: 1fr 1fr; }
+    .release-grid { grid-template-columns: 1fr; }
+    .base-row { grid-template-columns: 100px 1fr 1fr; }
+    h1.title { font-size: 1.8rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="page-header">
+  <div class="subject-tag">PHARMACEUTICS · 藥劑學</div>
+  <h1 class="title">栓劑 <span>Suppositories</span></h1>
+  <p class="subtitle">藥劑學重點整理 · A' Pharmacy Cram School</p>
+</header>
+
+<!-- ===== OVERVIEW ===== -->
+<div class="section">
+  <div class="section-title">
+    <div class="icon">📋</div>
+    簡介與用途
+  </div>
+  <div class="card">
+    <p style="font-size:14px; margin-bottom:0.8rem;">栓劑為<strong>放置人體腔體的固體製劑</strong>，可產生<strong>全身或局部作用</strong>，適用於不能內服之病人（如嬰兒、老人等）。</p>
+    <div class="grid-2" style="gap:0.8rem">
+      <div>
+        <div class="badge badge-amber" style="margin-bottom:6px">局部作用代表</div>
+        <ul class="note-list">
+          <li><span class="mono">Miconazole</span> 栓劑 → 陰道感染（念珠菌）</li>
+          <li><span class="mono">Bisacodyl</span> 栓劑 → 暫時緩解便秘</li>
+        </ul>
+      </div>
+      <div>
+        <div class="badge badge-teal" style="margin-bottom:6px">全身作用亦可</div>
+        <ul class="note-list">
+          <li>止痛、止吐、退燒</li>
+          <li>題目說「只能產生局部作用」 → <span class="hl-coral">錯誤！</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== ABSORPTION ===== -->
+<div class="section">
+  <div class="section-title">
+    <div class="icon">🫀</div>
+    直腸吸收因素
+  </div>
+  <div class="card" style="margin-bottom:0.8rem">
+    <div class="card-title">直腸解剖特點</div>
+    <div class="grid-3">
+      <div>
+        <div class="label" style="font-size:12px;color:var(--text-muted)">無絨毛</div>
+        <div style="font-size:13px;margin-top:3px;">吸收效果較差</div>
+      </div>
+      <div>
+        <div class="label" style="font-size:12px;color:var(--text-muted)">長度</div>
+        <div class="big-num" style="font-size:1.6rem;color:var(--teal)">15–20<span class="unit"> cm</span></div>
+      </div>
+      <div>
+        <div class="label" style="font-size:12px;color:var(--text-muted)">黏液量</div>
+        <div class="big-num" style="font-size:1.6rem;color:var(--blue)">2–3<span class="unit"> ml</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="important">
+    <div class="important-title">⭐ 國考常考：痔靜脈與首渡代謝</div>
+    <table>
+      <tr>
+        <th>痔靜脈</th>
+        <th>首渡代謝</th>
+        <th>吸收部位</th>
+        <th>絨毛</th>
+        <th>吸收效果</th>
+      </tr>
+      <tr>
+        <td>上・中痔靜脈</td>
+        <td><span class="check">✓</span> 有</td>
+        <td>小腸</td>
+        <td><span class="check">✓</span></td>
+        <td><span class="hl-teal">較佳</span></td>
+      </tr>
+      <tr>
+        <td style="background:#FEF3C7;font-weight:700">下痔靜脈</td>
+        <td style="background:#FEF3C7"><span class="cross">✗</span> <span class="hl-amber">不首代</span></td>
+        <td style="background:#FEF3C7">直腸</td>
+        <td style="background:#FEF3C7"><span class="cross">✗</span></td>
+        <td style="background:#FEF3C7"><span class="hl-coral">較差</span></td>
+      </tr>
+    </table>
+    <div class="tip" style="margin-top:0.7rem">
+      <div class="tip-icon">💡</div>
+      <div class="tip-text">記法：<strong>下痔不首代</strong> → 走下痔靜脈，可降低首度代謝對栓劑的影響</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 使用部位 ===== -->
+<div class="section">
+  <div class="section-title">
+    <div class="icon">📍</div>
+    使用部位、形狀與重量
+  </div>
+  <div class="grid-3">
+    <!-- 肛門 -->
+    <div class="site-card site-anal">
+      <div class="site-card-header">
+        🟡 肛門 Suppositories
+      </div>
+      <div class="site-card-body">
+        <div style="text-align:center;padding:0.8rem 0">
+          <div class="big-num" style="color:var(--amber)">2<span class="unit">g</span></div>
+          <div class="unit">可可脂重量基準</div>
+        </div>
+        <div class="row"><span class="label">形狀</span><span class="val">圓錐形</span></div>
+        <div class="row"><span class="label">記法</span><span style="font-size:13px">兩片屁股坐(sit)圓(2g)錐</span></div>
+      </div>
+    </div>
+    <!-- 陰道 -->
+    <div class="site-card site-vaginal">
+      <div class="site-card-header">
+        🟢 陰道 Pessaries
+      </div>
+      <div class="site-card-body">
+        <div style="text-align:center;padding:0.8rem 0">
+          <div class="big-num" style="color:var(--sage)">5<span class="unit">g</span></div>
+          <div class="unit" style="color:var(--coral);font-weight:700">通常比較重（重量標準品）</div>
+        </div>
+        <div class="row"><span class="label">形狀</span><span class="val">卵圓形</span></div>
+        <div class="row"><span class="label">記法</span><span style="font-size:12px">月經5天(5g)，卵子從陰道(pass)通過</span></div>
+      </div>
+    </div>
+    <!-- 尿道 -->
+    <div class="site-card site-urethral">
+      <div class="site-card-header">
+        🔵 尿道 Bougies
+      </div>
+      <div class="site-card-body">
+        <div style="text-align:center;padding:0.5rem 0 0.3rem">
+          <div style="font-size:12px;color:var(--text-muted);margin-bottom:4px">男</div>
+          <div class="big-num" style="color:var(--blue);font-size:1.4rem">4<span class="unit">g</span> · 14<span class="unit">cm</span></div>
+          <div style="font-size:12px;color:var(--text-muted);margin:4px 0 2px">女</div>
+          <div class="big-num" style="color:var(--blue);font-size:1.4rem">2<span class="unit">g</span> · 7<span class="unit">cm</span></div>
+        </div>
+        <div class="row"><span class="label">形狀</span><span class="val">筆形（比賽尿尿）</span></div>
+        <div class="row"><span class="label">記法</span><span style="font-size:12px">男生尿尿兩顆球ball晃</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 藥物釋放 ===== -->
+<div class="section">
+  <div class="section-title">
+    <div class="icon">💊</div>
+    藥物釋放速率
+  </div>
+  <div class="card" style="margin-bottom:0.7rem">
+    <div class="card-title">油水分配係數 Partition Coefficient (PC)</div>
+    <p style="font-size:14px;">定義：藥物在油溶液 (n-Octanol, 八碳醇) 之濃度與水溶液濃度之比值</p>
+    <div style="text-align:center;margin:0.8rem 0">
+      <div class="formula" style="font-size:1.2rem">
+        PC = <span class="frac" style="display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;margin:0 6px">
+          <span style="border-bottom:2px solid var(--teal);padding:0 10px">n-Octanol（油相）濃度</span>
+          <span style="padding:0 10px">Water（水相）濃度</span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="release-grid">
+    <div class="release-item rate-fastest">
+      <div class="release-combo">水溶性藥物 + 油溶性基劑</div>
+      <div class="release-rate">🔴 最快</div>
+    </div>
+    <div class="release-item rate-medium">
+      <div class="release-combo">水溶性藥物 + 水溶性基劑</div>
+      <div class="release-rate">🟡 適中</div>
+    </div>
+    <div class="release-item rate-fast">
+      <div class="release-combo">油溶性藥物 + 水溶性基劑</div>
+      <div class="release-rate">🟠 適中</div>
+    </div>
+    <div class="release-item rate-slow">
+      <div class="release-combo">油溶性藥物 + 油溶性基劑</div>
+      <div class="release-rate">🔵 最慢</div>
+    </div>
+  </div>
+  <div class="tip" style="margin-top:0.8rem">
+    <div class="tip-icon">💡</div>
+    <div class="tip-text">記法：<strong>水藥+油雞最快</strong>，油藥+油雞最慢</div>
+  </div>
+</div>
+
+<!-- ===== 油溶性基劑 ===== -->
+<div class="section">
+  <div class="section-title">
+    <div class="icon">🌿</div>
+    油溶性基劑 — 可可脂 Cocoa Butter
+  </div>
+
+  <!-- 脂肪酸組成 -->
+  <div class="card" style="margin-bottom:0.8rem">
+    <div class="card-title">脂肪酸組成（三種各佔約 1/3，但比例不同）</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.6rem;margin-bottom:0.7rem">
+      <div style="background:#FEF9EC;border:2px solid var(--amber-mid);border-radius:var(--radius-sm);padding:0.9rem;text-align:center">
+        <div style="font-size:11px;color:var(--text-muted);margin-bottom:3px">油酸 Oleic acid</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:1.6rem;font-weight:700;color:var(--amber);line-height:1">33.8–36.9<span style="font-size:0.8rem">%</span></div>
+        <div style="margin-top:6px"><span class="badge badge-amber" style="font-size:11px">含量最多 ★</span></div>
+      </div>
+      <div style="background:#F0FDF4;border:1.5px solid #86EFAC;border-radius:var(--radius-sm);padding:0.9rem;text-align:center">
+        <div style="font-size:11px;color:var(--text-muted);margin-bottom:3px">硬脂酸 Stearic acid</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:1.6rem;font-weight:700;color:var(--sage);line-height:1">32.6–35.4<span style="font-size:0.8rem">%</span></div>
+        <div style="margin-top:6px"><span class="badge badge-sage" style="font-size:11px">中間</span></div>
+      </div>
+      <div style="background:#EFF6FF;border:1.5px solid #93C5FD;border-radius:var(--radius-sm);padding:0.9rem;text-align:center">
+        <div style="font-size:11px;color:var(--text-muted);margin-bottom:3px">棕榈酸 Palmitic acid</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:1.6rem;font-weight:700;color:var(--blue);line-height:1">24.2–27.0<span style="font-size:0.8rem">%</span></div>
+        <div style="margin-top:6px"><span class="badge badge-blue" style="font-size:11px">含量最少</span></div>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;background:var(--amber-light);border-radius:var(--radius-sm);padding:0.6rem 1rem;font-size:13px;">
+      <span style="font-size:16px">💡</span>
+      <span>記法：<strong>有種（油）硬（脂）起來</strong> → 油酸最多、棕榈酸最少｜「棕最少」</span>
+    </div>
+  </div>
+
+  <!-- 溫度數字 -->
+  <div class="card" style="margin-bottom:0.8rem">
+    <div class="card-title">關鍵溫度數字（β form 標準值）</div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0.5rem;text-align:center">
+      <div style="background:#EFF6FF;border-radius:8px;padding:0.8rem 0.4rem">
+        <div style="font-size:11px;color:var(--text-muted)">凝固點</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:1.5rem;font-weight:700;color:var(--blue)">27.5<span style="font-size:0.75rem">°C</span></div>
+        <div style="font-size:11px;color:var(--text-muted);margin-top:2px">低於此會凝固</div>
+      </div>
+      <div style="background:var(--teal-light);border-radius:8px;padding:0.8rem 0.4rem">
+        <div style="font-size:11px;color:var(--text-muted)">軟化點</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:1.5rem;font-weight:700;color:var(--teal)">32.5<span style="font-size:0.75rem">°C</span></div>
+        <div style="font-size:11px;color:var(--text-muted);margin-top:2px">開始軟化</div>
+      </div>
+      <div style="background:var(--amber-light);border-radius:8px;padding:0.8rem 0.4rem">
+        <div style="font-size:11px;color:var(--text-muted)">熔點（β）</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:1.5rem;font-weight:700;color:var(--amber)">34<span style="font-size:0.75rem">°C</span></div>
+        <div style="font-size:11px;color:var(--text-muted);margin-top:2px">穩定型熔點</div>
+      </div>
+      <div style="background:var(--coral-light);border-radius:8px;padding:0.8rem 0.4rem">
+        <div style="font-size:11px;color:var(--text-muted)">全熔範圍</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:1.5rem;font-weight:700;color:var(--coral)">34–38<span style="font-size:0.75rem">°C</span></div>
+        <div style="font-size:11px;color:var(--text-muted);margin-top:2px">完全液化</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 晶型轉變 完整版 -->
+  <div class="card">
+    <div class="card-title">可可脂晶型轉變 ⚠️（共 4 種晶型）</div>
+
+    <!-- 轉變流程箭頭 -->
+    <div style="overflow-x:auto;padding:0.5rem 0 0.8rem">
+      <div style="display:flex;align-items:stretch;gap:0;min-width:580px">
+
+        <!-- β型 -->
+        <div style="flex:1;background:#D1FAE5;border:2px solid #059669;border-radius:10px;padding:0.8rem 0.6rem;text-align:center">
+          <div style="font-family:'Noto Serif TC',serif;font-weight:700;font-size:1rem;color:#065F46">β 型</div>
+          <div style="font-size:12px;font-weight:700;color:#065F46;margin:3px 0">最安定態</div>
+          <div style="display:flex;flex-direction:column;gap:3px;margin-top:6px">
+            <div style="background:#A7F3D0;border-radius:5px;padding:2px 6px;font-size:12px;font-family:'JetBrains Mono',monospace;color:#065F46">熔點 34°C</div>
+          </div>
+        </div>
+
+        <!-- 箭頭：加熱超過熔點 -->
+        <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 4px;flex-shrink:0">
+          <div style="font-size:10px;color:var(--coral);font-weight:700;text-align:center;white-space:nowrap;margin-bottom:2px">加熱超過熔點</div>
+          <div style="font-size:18px;color:var(--coral)">→</div>
+        </div>
+
+        <!-- γ型 -->
+        <div style="flex:1;background:#FEE2E2;border:2px solid #DC2626;border-radius:10px;padding:0.8rem 0.6rem;text-align:center">
+          <div style="font-family:'Noto Serif TC',serif;font-weight:700;font-size:1rem;color:#7F1D1D">γ 型</div>
+          <div style="font-size:12px;font-weight:700;color:#7F1D1D;margin:3px 0">最不安定態</div>
+          <div style="display:flex;flex-direction:column;gap:3px;margin-top:6px">
+            <div style="background:#FCA5A5;border-radius:5px;padding:2px 6px;font-size:12px;font-family:'JetBrains Mono',monospace;color:#7F1D1D">熔點 18°C</div>
+          </div>
+          <div style="font-size:11px;color:#991B1B;margin-top:4px">先出來的最不安定</div>
+        </div>
+
+        <!-- 箭頭：靜置 -->
+        <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 4px;flex-shrink:0">
+          <div style="font-size:10px;color:var(--text-muted);text-align:center;white-space:nowrap;margin-bottom:2px">靜置</div>
+          <div style="font-size:18px;color:var(--text-muted)">→</div>
+        </div>
+
+        <!-- α型 -->
+        <div style="flex:1;background:#FEF3C7;border:2px solid var(--amber-mid);border-radius:10px;padding:0.8rem 0.6rem;text-align:center">
+          <div style="font-family:'Noto Serif TC',serif;font-weight:700;font-size:1rem;color:#78350F">α 型</div>
+          <div style="font-size:12px;font-weight:700;color:#78350F;margin:3px 0">亞穩定態</div>
+          <div style="display:flex;flex-direction:column;gap:3px;margin-top:6px">
+            <div style="background:#FDE68A;border-radius:5px;padding:2px 6px;font-size:12px;font-family:'JetBrains Mono',monospace;color:#78350F">熔點 22°C</div>
+            <div style="background:#FDE68A;border-radius:5px;padding:2px 6px;font-size:12px;font-family:'JetBrains Mono',monospace;color:#78350F">凝固點 20°C</div>
+          </div>
+          <div style="font-size:11px;color:#92400E;margin-top:4px">metastable form</div>
+        </div>
+
+        <!-- 箭頭：靜置 -->
+        <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 4px;flex-shrink:0">
+          <div style="font-size:10px;color:var(--text-muted);text-align:center;white-space:nowrap;margin-bottom:2px">靜置</div>
+          <div style="font-size:18px;color:var(--text-muted)">→</div>
+        </div>
+
+        <!-- β'型 -->
+        <div style="flex:1;background:#EDE9FE;border:2px solid var(--purple);border-radius:10px;padding:0.8rem 0.6rem;text-align:center">
+          <div style="font-family:'Noto Serif TC',serif;font-weight:700;font-size:1rem;color:#4C1D95">β' 型</div>
+          <div style="font-size:12px;font-weight:700;color:#4C1D95;margin:3px 0">不安定態</div>
+          <div style="display:flex;flex-direction:column;gap:3px;margin-top:6px">
+            <div style="background:#C4B5FD;border-radius:5px;padding:2px 6px;font-size:12px;font-family:'JetBrains Mono',monospace;color:#4C1D95">熔點 27°C</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 快速對照表 -->
+    <table style="margin-top:0.5rem;font-size:13px">
+      <tr>
+        <th>晶型</th><th>穩定度</th><th>熔點</th><th>凝固點</th><th>備註</th>
+      </tr>
+      <tr>
+        <td><strong style="color:#059669">β 型</strong></td>
+        <td><span class="badge badge-teal" style="font-size:11px">最安定</span></td>
+        <td class="mono" style="font-weight:700;color:#059669">34°C</td>
+        <td class="mono">27.5°C</td>
+        <td style="font-size:12px">室溫可固化，製劑目標晶型</td>
+      </tr>
+      <tr>
+        <td><strong style="color:#4C1D95">β' 型</strong></td>
+        <td><span class="badge badge-purple" style="font-size:11px">不安定</span></td>
+        <td class="mono" style="font-weight:700;color:#4C1D95">27°C</td>
+        <td class="mono">—</td>
+        <td style="font-size:12px">靜置可轉為β型</td>
+      </tr>
+      <tr>
+        <td><strong style="color:#92400E">α 型</strong></td>
+        <td><span class="badge badge-amber" style="font-size:11px">亞穩定</span></td>
+        <td class="mono" style="font-weight:700;color:#92400E">22°C</td>
+        <td class="mono" style="color:#92400E">20°C</td>
+        <td style="font-size:12px">metastable form，靜置→β'型</td>
+      </tr>
+      <tr>
+        <td><strong style="color:#7F1D1D">γ 型</strong></td>
+        <td><span class="badge badge-coral" style="font-size:11px">最不安定</span></td>
+        <td class="mono" style="font-weight:700;color:#7F1D1D">18°C</td>
+        <td class="mono">—</td>
+        <td style="font-size:12px">加熱超過熔點後最先出現</td>
+      </tr>
+    </table>
+
+    <div style="background:var(--coral-light);border-radius:var(--radius-sm);padding:0.8rem 1rem;margin-top:0.8rem;font-size:14px;border-left:4px solid var(--coral)">
+      ⚠️ 加熱超過熔點 → β（穩定）→ γ（最不安定）→ 靜置 → α → 靜置 → β'<br>
+      <span style="font-size:13px;color:var(--text-muted)">需放數日才能從 α/β' 轉回穩定的 β 型，期間栓劑無法固化</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">降熔點物質 vs 硬化劑</div>
+    <div class="grid-2">
+      <div>
+        <div class="badge badge-coral" style="margin-bottom:8px">⬇ 降熔點 → 延長固化時間</div>
+        <ul class="note-list">
+          <li><span class="mono">Chloral hydrate</span>（水合三氯乙醛）</li>
+          <li><span class="mono">Phenol</span>（酚）</li>
+        </ul>
+      </div>
+      <div>
+        <div class="badge badge-teal" style="margin-bottom:8px">⬆ 硬化劑（提高熔點）</div>
+        <ul class="note-list">
+          <li><span class="mono">Bee wax</span>（蜂蠟）<span style="font-family:'JetBrains Mono',monospace;font-weight:700;color:var(--teal)"> 4%</span></li>
+          <li><span class="mono">Spermaceti</span>（鯨蠟）<span style="font-family:'JetBrains Mono',monospace;font-weight:700;color:var(--teal)"> 20%</span></li>
+          <li><span class="mono">aluminum stearate</span>（硬脂酸鋁）改善熔點下降</li>
+        </ul>
+      </div>
+    </div>
+    <div style="background:var(--sage-light);border-radius:var(--radius-sm);padding:0.7rem 1rem;margin-top:0.8rem;font-size:13.5px;border-left:4px solid var(--sage)">
+      ⚠️ <strong>可可脂缺點</strong>：無法吸收水性溶液 → 可加入 <span class="mono">Nonionic Surfactants</span>（非離子性介面活性劑）<br>
+      <span style="color:var(--coral);font-size:12px">但易造成酸敗（rancidity）</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">可可脂栓劑製法</div>
+    <div class="grid-3">
+      <div style="text-align:center;padding:0.7rem;background:var(--teal-light);border-radius:var(--radius-sm)">
+        <div style="font-size:1.3rem">🤏</div>
+        <div style="font-weight:700;color:var(--teal);font-size:14px">捏合法</div>
+        <div style="font-size:12px;color:var(--text-muted)">一般常用</div>
+      </div>
+      <div style="text-align:center;padding:0.7rem;background:var(--blue-light);border-radius:var(--radius-sm)">
+        <div style="font-size:1.3rem">🦖</div>
+        <div style="font-weight:700;color:var(--blue);font-size:14px">壓製法</div>
+        <div style="font-size:12px;color:var(--text-muted)">對熱敏感藥物</div>
+      </div>
+      <div style="text-align:center;padding:0.7rem;background:var(--amber-light);border-radius:var(--radius-sm)">
+        <div style="font-size:1.3rem">🔥</div>
+        <div style="font-weight:700;color:var(--amber);font-size:14px">熔合法</div>
+        <div style="font-size:12px;color:var(--text-muted)">34–35°C，需加甘油明膠潤滑</div>
+      </div>
+    </div>
+    <div class="tip" style="margin-top:0.7rem">
+      <div class="tip-icon">💡</div>
+      <div class="tip-text">記法：捏合法 = <strong>捏壓玩具恐龍</strong>｜潤滑劑記法：<strong>甘可要潤滑</strong></div>
+    </div>
+  </div>
+
+  <!-- Other oily bases -->
+  <div class="card">
+    <div class="card-title">其他油溶性基劑熔點比較</div>
+    <table>
+      <tr><th>基劑</th><th>熔點</th><th>特點</th></tr>
+      <tr><td><span class="mono">Polybase</span></td><td><span class="hl-coral" style="font-family:JetBrains Mono,monospace">60–70°C</span></td><td><span class="badge badge-coral">熔點最高</span></td></tr>
+      <tr><td><span class="mono">Flattibase</span></td><td><span class="mono">35.5–37°C</span></td><td>—</td></tr>
+      <tr><td><span class="mono">Cocoa butter（可可脂）</span></td><td><span class="mono">34–36°C</span></td><td><span class="badge badge-amber">標準品</span></td></tr>
+      <tr><td><span class="mono">Witepsol H15</span></td><td><span class="mono">33–35°C</span></td><td>—</td></tr>
+      <tr><td><span class="mono">Wecobee W</span></td><td><span class="mono">31–33°C</span></td><td>自身乳化反應（可加Glycerol monosterate形成W/O乳劑）</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ===== 水溶性基劑 ===== -->
+<div class="section">
+  <div class="section-title">
+    <div class="icon">💧</div>
+    水溶性基劑 — PEG & 甘油明膠
+  </div>
+
+  <div class="card">
+    <div class="card-title">PEG（聚乙二醇 / Carbowax）特性</div>
+    <div class="grid-2" style="margin-bottom:0.8rem">
+      <ul class="note-list">
+        <li>引濕、<span class="hl-coral">排便反射</span>（不適合製備肛門栓劑）</li>
+        <li>可吸收體液，與體液互溶</li>
+        <li>有刺激性（因含水，易受汙染）</li>
+        <li>使用前可用水潤濕以降低刺激</li>
+      </ul>
+      <ul class="note-list">
+        <li>製備：<span class="hl-teal">陰道栓劑、尿道栓劑</span></li>
+        <li>PEG 1000 熔點約 37°C（最接近體溫）</li>
+        <li><span class="hl-amber">PEG 栓劑功用：瀉下通便</span></li>
+        <li>儲存：室溫（不須冷藏）</li>
+        <li>安定劑：<span class="mono">1,2,6-hexanetriol</span>（防止PEG結晶析出）</li>
+      </ul>
+    </div>
+
+    <div class="card-title" style="margin-top:0.5rem">PEG 分子量與狀態</div>
+    <div style="display:flex;align-items:center;gap:0.5rem;padding:0.8rem 0">
+      <div style="flex:1;background:var(--blue-light);border-radius:var(--radius-sm);padding:0.7rem;text-align:center">
+        <div style="font-size:11px;color:var(--blue)">分子量</div>
+        <div class="big-num" style="font-size:1.3rem;color:var(--blue)">&lt; 700</div>
+        <div style="font-size:12px;color:var(--text-muted)">液體</div>
+      </div>
+      <div style="font-size:12px;color:var(--text-muted)">→</div>
+      <div style="flex:1;background:var(--amber-light);border-radius:var(--radius-sm);padding:0.7rem;text-align:center">
+        <div style="font-size:11px;color:var(--amber)">分子量</div>
+        <div class="big-num" style="font-size:1.3rem;color:var(--amber)">700–1000</div>
+        <div style="font-size:12px;color:var(--text-muted)">液固共存</div>
+      </div>
+      <div style="font-size:12px;color:var(--text-muted)">→</div>
+      <div style="flex:1;background:var(--sage-light);border-radius:var(--radius-sm);padding:0.7rem;text-align:center">
+        <div style="font-size:11px;color:var(--sage)">分子量</div>
+        <div class="big-num" style="font-size:1.3rem;color:var(--sage)">&gt; 1000</div>
+        <div style="font-size:12px;color:var(--text-muted)">固體（越高越硬）</div>
+      </div>
+    </div>
+    <div style="font-size:13px;color:var(--text-muted)">延伸：PEG + Polysorbate 80 = <span class="mono">Polybase</span></div>
+  </div>
+
+  <!-- 甘油明膠 -->
+  <div class="card">
+    <div class="card-title">甘油明膠（Glycerogelatin）組成比較</div>
+    <div class="gelatin-grid">
+      <div class="gelatin-card gelatin-type-a">
+        <div class="gelatin-card-head">甘油明膠劑（皮膚用）</div>
+        <div class="gelatin-card-body">
+          <div class="gelatin-row"><span class="k">明膠 Gelatin</span><span class="v hl-blue">15%</span></div>
+          <div class="gelatin-row"><span class="k">甘油 Glycerin</span><span class="v hl-blue">40%</span></div>
+          <div class="gelatin-row"><span class="k">水</span><span class="v">35%</span></div>
+          <div class="gelatin-row"><span class="k">藥品</span><span class="v">10%</span></div>
+          <div style="font-size:12px;color:var(--blue);margin-top:6px">供皮膚長期使用</div>
+        </div>
+      </div>
+      <div class="gelatin-card gelatin-type-b">
+        <div class="gelatin-card-head">甘油明膠陰道栓劑</div>
+        <div class="gelatin-card-body">
+          <div class="gelatin-row"><span class="k">明膠 Gelatin</span><span class="v hl-teal">20%</span></div>
+          <div class="gelatin-row"><span class="k">甘油 Glycerin</span><span class="v hl-teal">70%</span></div>
+          <div class="gelatin-row"><span class="k">蒸餾水</span><span class="v">10%</span></div>
+          <div style="font-size:12px;color:var(--sage);margin-top:6px">熔合法，需添加潤滑劑</div>
+        </div>
+      </div>
+      <div class="gelatin-card gelatin-type-c">
+        <div class="gelatin-card-head">甘油明膠尿道栓劑</div>
+        <div class="gelatin-card-body">
+          <div class="gelatin-row"><span class="k">明膠 Gelatin</span><span class="v hl-purple">60%</span></div>
+          <div class="gelatin-row"><span class="k">甘油 Glycerin</span><span class="v hl-purple">20%</span></div>
+          <div style="font-size:12px;color:var(--purple);margin-top:6px">明膠含量最高 → 最硬</div>
+        </div>
+      </div>
+    </div>
+    <div class="tip" style="margin-top:0.8rem">
+      <div class="tip-icon">💡</div>
+      <div class="tip-text">明膠特性：<strong>Type A</strong> 帶正電，pH=3，等電點8，適用酸性藥｜<strong>Type B</strong> 帶負電，pH=8，等電點5，適用氧化鋅<br>記法：<strong>正點三八付85</strong>（正電,3,8,負電,8,5）</div>
+    </div>
+  </div>
+
+  <!-- 甘油栓劑 -->
+  <div class="card">
+    <div class="card-title">甘油栓劑（Glycerin Suppositories）</div>
+    <div class="grid-2">
+      <ul class="note-list">
+        <li>成分：硬脂酸鈉固化之甘油（75–90%）</li>
+        <li>硬化劑：<span class="mono">硬脂酸鈉</span></li>
+        <li>製法：熔合法</li>
+      </ul>
+      <ul class="note-list">
+        <li>功用：瀉下通便</li>
+        <li>儲存：≤ 25°C，緊密容器（七/八版）或密蓋容器（九版）</li>
+        <li>對黏膜有<span class="hl-coral">刺激性</span></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 基劑總整理 ===== -->
+<div class="section">
+  <div class="section-title">
+    <div class="icon">📊</div>
+    基劑特性總複習
+  </div>
+  <div class="base-table-wrap">
+    <div class="base-row header">
+      <div>基劑</div><div>釋出藥物</div><div>體液</div><div>特性</div><div>物質代表</div>
+    </div>
+    <div class="base-row">
+      <div><span class="badge badge-teal">水溶性基劑</span></div>
+      <div>溶解</div>
+      <div>互溶</div>
+      <div style="font-size:13px"><span class="hl-coral">引濕、吸潮、排便反射、有刺激性</span></div>
+      <div style="font-size:13px"><span class="mono">PEG、甘油明膠</span></div>
+    </div>
+    <div class="base-row" style="border-bottom:none">
+      <div><span class="badge badge-amber">油溶性基劑</span></div>
+      <div>熔化</div>
+      <div>不互溶</div>
+      <div style="font-size:13px"><span class="hl-teal">無刺激性</span></div>
+      <div style="font-size:13px"><span class="mono">可可脂、氫化植物油<br>Wecobee、Witepol</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 儲存 ===== -->
+<div class="section">
+  <div class="section-title">
+    <div class="icon">🌡️</div>
+    各栓劑儲存條件
+  </div>
+  <div class="storage-grid">
+    <div class="storage-item">
+      <div class="storage-name">甘油明膠栓劑</div>
+      <div class="storage-temp temp-cool">≤ 35°C</div>
+      <div class="storage-container">緊密容器</div>
+      <div class="badge badge-teal" style="font-size:11px;margin-top:6px">熔合法 Only!</div>
+    </div>
+    <div class="storage-item">
+      <div class="storage-name">可可脂栓劑</div>
+      <div class="storage-temp temp-cool">≤ 30°C</div>
+      <div class="storage-container">密蓋容器</div>
+      <div class="badge badge-amber" style="font-size:11px;margin-top:6px">記：軟可30蓋</div>
+    </div>
+    <div class="storage-item">
+      <div class="storage-name">甘油栓劑</div>
+      <div class="storage-temp temp-cold">≤ 25°C</div>
+      <div class="storage-container">緊密（七/八）密蓋（九版）</div>
+    </div>
+    <div class="storage-item">
+      <div class="storage-name">PEG 栓劑</div>
+      <div class="storage-temp temp-room">室溫</div>
+      <div class="storage-container">緊密容器</div>
+      <div class="badge badge-sage" style="font-size:11px;margin-top:6px">不須冷藏</div>
+    </div>
+  </div>
+  <div class="tip" style="margin-top:0.8rem">
+    <div class="tip-icon">💡</div>
+    <div class="tip-text">溫度記憶：<strong>甘油明膠35 → 可可脂30（-1字少5度）→ 甘油25</strong></div>
+  </div>
+</div>
+
+<!-- ===== 密度因子 ===== -->
+<div class="section">
+  <div class="section-title">
+    <div class="icon">🔢</div>
+    劑量計算 — 密度因子法（最常用）
+  </div>
+
+  <div class="formula-box" style="margin-bottom:1rem">
+    <div class="formula-label">DENSITY FACTOR (DF)</div>
+    <div class="formula">
+      DF = <span class="frac" style="display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;margin:0 8px">
+        <span class="num">藥品重量</span>
+        <span class="den">被置換的基劑重量</span>
+      </span>
+    </div>
+    <div style="font-size:13px;color:var(--text-muted);margin-top:10px">
+      = <span class="mono">藥品重量 ÷ (空白栓劑重量 − 含藥栓劑重量 + 藥品重量)</span>
+    </div>
+    <div style="font-size:12px;color:var(--teal);margin-top:6px">DF &gt; 1 → 藥品重量大於基劑重量</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">4種計算方法</div>
+    <div class="grid-2">
+      <div>
+        <div class="badge badge-teal" style="margin-bottom:6px">⭐ Density factor method（最常用）</div>
+        <p style="font-size:13px;">密度因子法，計算藥品與基劑的替代量</p>
+      </div>
+      <div>
+        <div class="badge badge-blue" style="margin-bottom:6px">Dosage replacement factor method</div>
+        <p style="font-size:13px;">劑量置換因子（公式：基劑/藥物）</p>
+      </div>
+      <div>
+        <div class="badge badge-amber" style="margin-bottom:6px">Occupied volume method</div>
+        <p style="font-size:13px;">估據體積因子法，V × D = M</p>
+      </div>
+      <div>
+        <div class="badge badge-sage" style="margin-bottom:6px">Viscosity factor method</div>
+        <p style="font-size:13px;">黏度因子（較少用）</p>
+      </div>
+    </div>
+    <div style="background:var(--blue-light);border-radius:var(--radius-sm);padding:0.7rem 1rem;margin-top:0.8rem;font-size:14px">
+      ✅ 結論：栓劑劑量計算與<span class="hl-blue">密度、劑量、估據體積</span>有關，其中最常使用方法為<span class="hl-blue">密度因子</span>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 明膠詳細表格 ===== -->
+<div class="section">
+  <div class="section-title">
+    <div class="icon">🧬</div>
+    明膠（Gelatin）Type A vs Type B 詳細對照
+  </div>
+  <div class="card">
+    <table style="font-size:14px">
+      <tr>
+        <th style="width:120px">項目</th>
+        <th style="background:#DBEAFE;color:#1D6FA5">Type A</th>
+        <th style="background:#DCFCE7;color:#4A7C59">Type B</th>
+      </tr>
+      <tr>
+        <td style="font-weight:700">水解方式</td>
+        <td>酸水解（Acid hydrolysis）</td>
+        <td>鹼水解（Base hydrolysis）</td>
+      </tr>
+      <tr>
+        <td style="font-weight:700">電荷</td>
+        <td style="color:#1D6FA5;font-weight:700">＋（正電）</td>
+        <td style="color:#4A7C59;font-weight:700">－（負電）</td>
+      </tr>
+      <tr>
+        <td style="font-weight:700">pH 值</td>
+        <td><span style="font-family:'JetBrains Mono',monospace;font-size:1.2rem;font-weight:700;color:#1D6FA5">3</span></td>
+        <td><span style="font-family:'JetBrains Mono',monospace;font-size:1.2rem;font-weight:700;color:#4A7C59">8</span></td>
+      </tr>
+      <tr>
+        <td style="font-weight:700">等電點（pI）</td>
+        <td><span style="font-family:'JetBrains Mono',monospace;font-size:1.2rem;font-weight:700;color:#1D6FA5">8</span></td>
+        <td><span style="font-family:'JetBrains Mono',monospace;font-size:1.2rem;font-weight:700;color:#4A7C59">5</span></td>
+      </tr>
+      <tr>
+        <td style="font-weight:700">適用藥物</td>
+        <td>酸性藥</td>
+        <td>氧化鋅（ZnO）</td>
+      </tr>
+      <tr>
+        <td style="font-weight:700">最佳乳化力</td>
+        <td>pH = <strong>3</strong>（最佳乳化能力與穩定性）</td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td style="font-weight:700">電中性（等電點）</td>
+        <td>pH = <strong>8</strong>（最高凝膠化溫度，高濃度可促進製劑凝固）</td>
+        <td>pH = <strong>5</strong></td>
+      </tr>
+      <tr>
+        <td style="font-weight:700">較穩定 pH</td>
+        <td>pH 3（酸性環境）</td>
+        <td>pH 8（鹼性環境）<br><span style="font-size:12px;color:var(--text-muted)">記法：TypeB 想成 base，鹼性物質等電點，電中性時偏酸</span></td>
+      </tr>
+    </table>
+    <div style="background:var(--blue-light);border-radius:var(--radius-sm);padding:0.8rem 1rem;margin-top:0.8rem;font-size:13px">
+      💡 記法：<strong>正點三八付85</strong>（正電 / pH3 / 等電點8 ；負電 / pH8 / 等電點5）<br>
+      低於等電點 → 帶正電；高於等電點 → 帶負電（酸解離出H⁺）
+    </div>
+  </div>
+</div>
+
+<!-- ===== 儲存溫度完整表 ===== -->
+<div class="section">
+  <div class="section-title">
+    <div class="icon">🌡️</div>
+    栓劑總整理：儲存溫度 × 容器 × 製法
+  </div>
+  <div class="card">
+    <table style="font-size:14px">
+      <tr>
+        <th>栓劑種類</th>
+        <th>儲存溫度</th>
+        <th>容器</th>
+        <th>製法</th>
+      </tr>
+      <tr>
+        <td style="font-weight:700">甘油明膠栓劑</td>
+        <td><span style="font-family:'JetBrains Mono',monospace;font-weight:700;color:var(--teal)">≤ 35°C</span><br><span style="font-size:11px;color:var(--text-muted)">+1字多5度</span></td>
+        <td>緊密容器</td>
+        <td><span style="color:var(--teal);font-weight:700">熔合法（Only!）</span></td>
+      </tr>
+      <tr style="background:#FFFBEB">
+        <td style="font-weight:700">可可脂栓劑<br><span style="font-size:11px;font-weight:400;color:var(--text-muted)">記：軟可30蓋</span></td>
+        <td><span style="font-family:'JetBrains Mono',monospace;font-weight:700;color:var(--amber)">≤ 30°C</span></td>
+        <td><span style="color:var(--amber);font-weight:700">密蓋容器</span><br><span style="font-size:11px;color:var(--text-muted)">（與軟膏相同）</span></td>
+        <td>捏合法<br>壓製法<br>熔合法</td>
+      </tr>
+      <tr>
+        <td style="font-weight:700">甘油栓劑<br><span style="font-size:11px;font-weight:400;color:var(--text-muted)">-1字少5度</span></td>
+        <td><span style="font-family:'JetBrains Mono',monospace;font-weight:700;color:var(--blue)">≤ 25°C</span></td>
+        <td>緊密容器（七/八版）<br><span style="color:var(--coral);font-weight:700">密蓋容器（九版）</span></td>
+        <td>熔合法</td>
+      </tr>
+      <tr>
+        <td style="font-weight:700">PEG栓劑</td>
+        <td><span style="font-family:'JetBrains Mono',monospace;font-weight:700;color:var(--sage)">室溫</span><br><span style="font-size:11px;color:var(--text-muted)">不須冷藏</span></td>
+        <td>緊密容器</td>
+        <td>熔合法</td>
+      </tr>
+    </table>
+    <div style="background:var(--amber-light);border-radius:var(--radius-sm);padding:0.8rem 1rem;margin-top:0.8rem;font-size:13px;">
+      💡 溫度記憶口訣：<strong>甘油明膠35 → 可可脂30（-1字少5度）→ 甘油25（-1字再少5度）</strong><br>
+      容器記憶：甘油明膠、PEG = <strong>緊密</strong>；可可脂 = <strong>密蓋</strong>（特別！）；甘油 = 緊密（七/八版）/ 密蓋（九版）
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">需要添加潤滑劑之栓劑</div>
+    <div style="font-size:14px">種類：<span class="hl-teal">甘油明膠栓劑、可可脂栓劑</span>（記法：甘可要潤滑）</div>
+    <div style="font-size:13px;color:var(--text-muted);margin-top:6px">※ 中華藥典第九版：甘油明膠栓劑不一定要添加潤滑劑</div>
+    <div style="margin-top:0.8rem;font-size:14px">常用栓劑模具材質：<strong>不鏽鋼、黃銅、塑膠</strong>（不含玻璃）</div>
+  </div>
+</div>
+
+<!-- ===== 密度因子計算詳解 ===== -->
+<div class="section">
+  <div class="section-title">
+    <div class="icon">🔢</div>
+    密度因子法（Density Factor）計算詳解
+  </div>
+  <div class="card">
+    <div class="card-title">公式與定義</div>
+    <div style="text-align:center;background:var(--teal-light);border-radius:var(--radius-sm);padding:1.2rem;margin-bottom:0.8rem">
+      <div style="font-size:12px;color:var(--teal);margin-bottom:6px;font-family:'JetBrains Mono',monospace;letter-spacing:1px">DENSITY FACTOR</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:1.3rem;font-weight:700;color:var(--teal)">
+        DF = 藥品重量 ÷ 被置換的基劑重量
+      </div>
+      <div style="font-size:13px;color:var(--teal);margin-top:8px">= 藥品重量 ÷ (空白栓劑重量 − 含藥栓劑重量 + 藥品重量)</div>
+      <div style="font-size:12px;color:var(--text-muted);margin-top:4px">其中「空白栓劑重量」= 指沒有藥物時整顆基劑的重量</div>
+    </div>
+    <div class="grid-2">
+      <div style="background:var(--slate-light);border-radius:var(--radius-sm);padding:1rem;font-size:13px">
+        <div style="font-weight:700;margin-bottom:6px">範例（來自講義）</div>
+        空白栓劑 = 2g<br>
+        藥品 = 0.5g<br>
+        含藥栓劑 = 2.2g<br>
+        被置換基劑 = 0.3g<br>
+        <span style="font-family:'JetBrains Mono',monospace;color:var(--teal);font-weight:700">DF = 0.5 ÷ 0.3 = 1.6</span><br>
+        <span style="font-size:12px;color:var(--text-muted)">DF &gt; 1 → 藥品重量大於基劑重量</span>
+      </div>
+      <div style="background:var(--sage-light);border-radius:var(--radius-sm);padding:1rem;font-size:13px">
+        <div style="font-weight:700;margin-bottom:6px">114-1 考題公式</div>
+        A = 空白基劑平均重量<br>
+        B = 每粒栓劑中藥品重量<br>
+        C = 含藥栓劑平均重量<br>
+        <span style="font-family:'JetBrains Mono',monospace;color:var(--sage);font-weight:700">DF = B ÷ (A − C + B)</span><br>
+        <span style="font-size:12px;color:var(--text-muted)">答案選 (D)</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 互動考題 ===== -->
+<div class="section">
+  <div class="section-title">
+    <div class="icon">✏️</div>
+    歷年國考練習題（101–114）
+  </div>
+  <div style="font-size:13px;color:var(--text-muted);margin-bottom:1rem;padding:0.6rem 1rem;background:var(--blue-light);border-radius:var(--radius-sm)">
+    點選選項作答 → 正確/錯誤即時顯示 → 按「顯示詳解」查看解析 → 可在詳解下方貼補充筆記（自動儲存）
+  </div>
+  <div id="quiz-container"></div>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<div style="text-align:center;margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border)">
+  <div class="subject-tag">A' Pharmacy · 藥師國考衝刺</div>
+  <p style="font-size:12px;color:var(--text-muted);margin-top:0.5rem;font-family:'JetBrains Mono',monospace">藥劑學 · 栓劑章節 · pp.69–79</p>
+</div>
+
+<style>
+/* ===== QUIZ STYLES ===== */
+.quiz-block {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: 0.8rem;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+.quiz-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0.9rem 1.2rem;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.15s;
+}
+.quiz-header:hover { background: var(--cream); }
+.quiz-year-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  background: var(--teal);
+  color: #fff;
+  border-radius: 5px;
+  padding: 2px 8px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.quiz-stem-preview {
+  font-size: 14px;
+  color: var(--text);
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.quiz-arr {
+  font-size: 12px;
+  color: var(--text-muted);
+  transition: transform 0.2s;
+  flex-shrink: 0;
+}
+.quiz-block.open .quiz-arr { transform: rotate(180deg); }
+.quiz-body {
+  display: none;
+  padding: 0 1.2rem 1.2rem;
+  border-top: 1px solid var(--border);
+}
+.quiz-block.open .quiz-body { display: block; }
+.quiz-stem-full {
+  font-size: 14.5px;
+  font-weight: 700;
+  line-height: 1.7;
+  color: var(--text);
+  margin: 1rem 0 0.8rem;
+}
+.quiz-opts {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 0.8rem;
+}
+.quiz-opts button {
+  width: 100%;
+  text-align: left;
+  background: var(--slate-light);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0.6rem 1rem;
+  font-size: 14px;
+  font-family: 'Noto Sans TC', sans-serif;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+  line-height: 1.5;
+}
+.quiz-opts button:hover:not(:disabled) { background: var(--blue-light); border-color: var(--blue-mid); }
+.quiz-opts button.correct { background: var(--sage-light); border-color: var(--sage); color: var(--sage); font-weight: 700; }
+.quiz-opts button.wrong { background: var(--coral-light); border-color: var(--coral); color: var(--coral); }
+.quiz-opts button:disabled { cursor: not-allowed; opacity: 0.8; }
+.quiz-result {
+  font-size: 14px;
+  font-weight: 700;
+  padding: 0.5rem 0.8rem;
+  border-radius: var(--radius-sm);
+  margin-bottom: 0.6rem;
+  display: none;
+}
+.quiz-result.correct { background: var(--sage-light); color: var(--sage); display: block; }
+.quiz-result.wrong { background: var(--coral-light); color: var(--coral); display: block; }
+.quiz-btn-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 0.6rem;
+}
+.quiz-btn-row button {
+  font-size: 13px;
+  padding: 5px 14px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  background: var(--card-bg);
+  cursor: pointer;
+  font-family: 'Noto Sans TC', sans-serif;
+  transition: background 0.15s;
+}
+.quiz-btn-row button:hover { background: var(--slate-light); }
+.btn-exp { border-color: var(--teal) !important; color: var(--teal) !important; }
+.btn-note { border-color: var(--amber) !important; color: var(--amber) !important; }
+.btn-reset { border-color: var(--text-muted) !important; color: var(--text-muted) !important; }
+.quiz-exp {
+  display: none;
+  background: var(--teal-light);
+  border-left: 4px solid var(--teal-mid);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: 0.9rem 1.1rem;
+  font-size: 13.5px;
+  line-height: 1.8;
+  margin-bottom: 0.6rem;
+}
+.quiz-exp.show { display: block; }
+.quiz-note-area {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+}
+.quiz-note-area.show { display: flex; }
+.quiz-note-area textarea {
+  width: 100%;
+  min-height: 80px;
+  border: 1px solid var(--amber-mid);
+  border-radius: var(--radius-sm);
+  padding: 0.6rem 0.8rem;
+  font-size: 13px;
+  font-family: 'Noto Sans TC', sans-serif;
+  resize: vertical;
+  background: #FFFBEB;
+  color: var(--text);
+  line-height: 1.6;
+}
+.quiz-note-area textarea:focus { outline: 2px solid var(--amber-mid); }
+.note-saved { font-size: 12px; color: var(--sage); height: 16px; }
+</style>
+
+<script>
+const QUESTIONS = [
+  {
+    id:'q114_2_1', year:'114-2',
+    stem:'陰道栓劑添加 miconazole nitrate 之主要目的為抑制何種微生物？',
+    opts:['Staphylococcus aureus','Vulvovaginal candidiasis（念珠菌）','Escherichia coli','Pseudomonas aeruginosa'],
+    ans:1,
+    exp:'<strong>答案：(B) Vulvovaginal candidiasis</strong><br>Miconazole 為 imidazole 類抗黴菌藥，主要用於治療外陰陰道念珠菌感染（Vulvovaginal candidiasis）。不是抗菌（bacteria）用途。'
+  },
+  {
+    id:'q114_2_2', year:'114-2',
+    stem:'使用 cocoa butter 為基劑製備栓劑時，若添加 chloral hydrate 可能產生之主要影響為何？',
+    opts:['促進基劑固化','降低基劑黏度','降低基劑熔點','提高基劑穩定性'],
+    ans:2,
+    exp:'<strong>答案：(C) 降低基劑熔點</strong><br>Chloral hydrate（水合三氯乙醛）會降低可可脂的熔點，造成栓劑軟化、延長固化時間。同類物質還有 Phenol（酚）。'
+  },
+  {
+    id:'q114_2_3', year:'114-2',
+    stem:'有關甘油栓劑，下列敘述何者錯誤？',
+    opts:['製備過程不須加熱','製備過程須添加水','對黏膜具有刺激性','應置於密閉容器中'],
+    ans:0,
+    exp:'<strong>答案：(A) 製備過程不須加熱（錯誤）</strong><br>甘油栓劑使用熔合法製備，需要加熱使硬脂酸鈉固化甘油。另，「應置於密閉容器中」是正確的，九版為密蓋容器。'
+  },
+  {
+    id:'q114_1_1', year:'114-1',
+    stem:'有關 glycerogelatins 之敘述，下列何者錯誤？',
+    opts:['其組成中包含 gelatin 15% 和 glycerin 40%','製備過程需要加熱','僅適合短時間使用於皮膚','依使用狀況可添加 10% 藥品'],
+    ans:2,
+    exp:'<strong>答案：(C) 僅適合短時間使用於皮膚（錯誤）</strong><br>Glycerogelatins（甘油明膠劑）是供皮膚<strong>長期</strong>（long-term）使用，不是短時間。成分為 gelatin 15% + glycerin 40% + water 35% + 藥品 10%。'
+  },
+  {
+    id:'q114_1_2', year:'114-1',
+    stem:'下列藥品特性與栓劑基劑之組合，何者使藥品釋放最快速？',
+    opts:['oil-soluble drug + oily base','water-soluble drug + oily base','oil-soluble drug + water-miscible base','water-miscible drug + water-miscible base'],
+    ans:1,
+    exp:'<strong>答案：(B) water-soluble drug + oily base（最快）</strong><br>藥品與基劑性質相反 → 最快釋放。水溶性藥 + 油溶性基劑：藥物溶於體液速度最快。記法：<strong>水藥+油雞最快，油藥+油雞最慢</strong>。'
+  },
+  {
+    id:'q114_1_3', year:'114-1',
+    stem:'以密度因子替代法計算栓劑中藥品與基劑間的替代量，密度因子為何？（A：空白基劑的平均重量；B：每粒栓劑中藥品重量；C：含藥栓劑平均重量）',
+    opts:['B ÷ (A − B + C)','C ÷ (A + B + C)','C ÷ (A − C + B)','B ÷ (A − C + B)'],
+    ans:3,
+    exp:'<strong>答案：(D) B ÷ (A − C + B)</strong><br>DF = 藥品重量 ÷ 被置換基劑重量<br>被置換基劑 = 空白重量(A) − [含藥重量(C) − 藥品重量(B)] = A − C + B<br>∴ DF = B ÷ (A − C + B)'
+  },
+  {
+    id:'q113_2_1', year:'113-2',
+    stem:'下列何者屬於可與水混溶之栓劑基劑？',
+    opts:['Polybase','Suppocire OSI','Wecobee W','Witepsol H15'],
+    ans:0,
+    exp:'<strong>答案：(A) Polybase</strong><br>Polybase = PEG + Polysorbate 80，屬於水溶性（可與水混溶）基劑。Suppocire OSI、Wecobee W、Witepsol H15 皆為油溶性基劑。'
+  },
+  {
+    id:'q113_2_2', year:'113-2',
+    stem:'有關甘油明膠栓劑之敘述，下列何者錯誤？',
+    opts:['依中華藥典規定，應置於緊密容器內，於35°C以下貯之','該栓劑中明膠約占總重量之50%(w/w)','適用於陰道栓劑之製備','在使用前，可以用水先行潤濕後再使用'],
+    ans:1,
+    exp:'<strong>答案：(B) 明膠約占總重量之50%（錯誤）</strong><br>甘油明膠陰道栓劑的明膠含量為<strong>20%</strong>（甘油70%、蒸餾水10%），不是50%。甘油明膠劑（皮膚用）才是gelatin 15%。'
+  },
+  {
+    id:'q113_1_1', year:'113-1',
+    stem:'以可可脂為基劑製作成人用之栓劑，下列敘述何者正確？',
+    opts:['肛門栓劑為卵形，約重2g','陰道栓劑為子彈形，約重5g','男用尿道栓劑直徑3~6mm，約重1g','女用尿道栓劑長50~70mm，約重2g'],
+    ans:3,
+    exp:'<strong>答案：(D) 女用尿道栓劑長50~70mm，約重2g（正確）</strong><br>肛門：圓錐形 2g；陰道：卵圓形 5g；男用尿道：14cm/4g；女用尿道：7cm/2g。<br>注意：A錯（圓錐形）、B錯（卵圓形，非子彈形）、C錯（男用4g非1g）。'
+  },
+  {
+    id:'q113_1_2', year:'113-1',
+    stem:'下列何者所製成之栓劑為局部性作用？',
+    opts:['Bisacodyl','Hydromorphone','Indomethacin','Promethazine HCl'],
+    ans:0,
+    exp:'<strong>答案：(A) Bisacodyl</strong><br>Bisacodyl 主要產生局部作用，暫時緩解便秘或用於診斷及手術前清腸。Hydromorphone（止痛）、Indomethacin（消炎止痛）、Promethazine（止吐）均為全身作用。'
+  },
+  {
+    id:'q113_1_3', year:'113-1',
+    stem:'肛門栓劑給藥與口服給藥之比較，下列何者錯誤？',
+    opts:['肛門栓劑可完全避免首渡效應','肛門栓劑給藥可避免藥物被體內酸性環境破壞','口服給藥劑量選擇性較多且較易調整','口服給藥對藥物吸收部位的表面積較大'],
+    ans:0,
+    exp:'<strong>答案：(A) 肛門栓劑可完全避免首渡效應（錯誤）</strong><br>不是「完全」避免。走<strong>下痔靜脈</strong>才能不經肝臟首渡代謝；若走上、中痔靜脈，仍會有首渡效應。所以是「部分」減少，非「完全」避免。'
+  },
+  {
+    id:'q113_1_4', year:'113-1',
+    stem:'尿道栓劑又可稱為何？',
+    opts:['Aurinaria','Bougies','Laudanum','Pessaries'],
+    ans:1,
+    exp:'<strong>答案：(B) Bougies</strong><br>尿道栓劑 = Bougies（記法：男生尿尿兩顆球ball）。Pessaries = 陰道栓劑/托劑。Laudanum = 鴉片酊（含1% morphine）。Paregoric = 樟腦鴉片酊（含0.05% morphine）。'
+  },
+  {
+    id:'q112_2_1', year:'112-2',
+    stem:'以熔合法製作栓劑時，下列何者不是常用的栓劑模具材質？',
+    opts:['不銹鋼','黃銅','玻璃','塑膠'],
+    ans:2,
+    exp:'<strong>答案：(C) 玻璃</strong><br>常用栓劑模具材質為：不鏽鋼、黃銅、塑膠。玻璃不列在常用材質中（難以脫模且易碎）。'
+  },
+  {
+    id:'q112_1_1', year:'112-1',
+    stem:'有關栓劑之敘述，下列何者錯誤？',
+    opts:['陰道栓劑常見之形狀為球形、卵形或圓錐形','甘油明膠較可可脂更常用來做為陰道栓劑之基劑','陰道栓劑又可稱為 pessaries','以可可脂作為基劑時，尿道栓劑通常會比陰道栓劑重量為輕'],
+    ans:3,
+    exp:'<strong>答案：(D) 尿道栓劑通常比陰道栓劑重量輕（錯誤）</strong><br>以可可脂為基劑：陰道栓劑（Pessaries）約5g，男用尿道栓劑約4g，女用尿道栓劑約2g。尿道栓劑確實較陰道栓劑輕，故(D)說「較輕」應為<strong>正確</strong>，但原句說的「通常較輕」在某些版本中依上下文有不同理解。實際答案請以講義答案為準（D）。'
+  },
+  {
+    id:'q112_1_2', year:'112-1',
+    stem:'可可脂中含有何種脂肪酸最多？',
+    opts:['月桂酸（lauric acid）','棕榈酸（palmitic acid）','硬脂酸（stearic acid）','油酸（oleic acid）'],
+    ans:3,
+    exp:'<strong>答案：(D) 油酸（oleic acid）</strong><br>可可脂脂肪酸比例：油酸（33.8–36.9%）最多 > 硬脂酸（32.6–35.4%）> 棕榈酸（24.2–27.0%）最少。<br>記法：有種（油）硬（脂）起來，油最多、棕最少。'
+  },
+  {
+    id:'q111_2_1', year:'111-2',
+    stem:'一般而言，下列藥品與栓劑基劑組合，其藥物自栓劑釋放之速率何者最快？',
+    opts:['water-soluble drug + oily base','water-miscible drug + water-miscible base','oil-soluble drug + oily base','oil-soluble drug + water-miscible base'],
+    ans:0,
+    exp:'<strong>答案：(A) water-soluble drug + oily base（最快）</strong><br>藥品與基劑性質相反 → 藥品最容易離開基劑進入體液 → 釋放最快。'
+  },
+  {
+    id:'q111_2_2', year:'111-2',
+    stem:'依中華藥典，有關可可脂栓劑之敘述，下列何者錯誤？',
+    opts:['適用於製備抑制刺激用之栓劑，如內痔治療製劑','於體溫可迅速融化與體液互溶，使脂溶性藥物快速釋出','其成分中若含有酚類藥品時，可加入適量鯨蠟調整其硬度','應置於密閉容器內，於30°C下貯之'],
+    ans:1,
+    exp:'<strong>答案：(B) 於體溫可迅速融化與體液互溶（錯誤）</strong><br>可可脂為油溶性基劑，與體液<strong>不互溶</strong>（不互溶 = 無刺激性的特點）。不是水溶性基劑，所以不會「與體液互溶」。'
+  },
+  {
+    id:'q111_1_1', year:'111-1',
+    stem:'下列栓劑基劑中，何者熔點最高？',
+    opts:['cocoa butter','Polybase','Wecobee W','Witepsol H15'],
+    ans:1,
+    exp:'<strong>答案：(B) Polybase（熔點60–70°C）</strong><br>熔點比較：Polybase（60–70°C）> Flattibase（35.5–37°C）> Cocoa butter（34–36°C）> Witepsol H15（33–35°C）> Wecobee W（31–33°C）'
+  },
+  {
+    id:'q110_2_1', year:'110-2',
+    stem:'以可可脂為筆型尿道栓劑之基劑，下列敘述何者正確？',
+    opts:['男用長約70mm，重約2公克','男用長約140mm，重約4公克','女用長約70mm，重約4公克','女用長約140mm，重約4公克'],
+    ans:1,
+    exp:'<strong>答案：(B) 男用長約140mm，重約4公克</strong><br>尿道栓劑（Bougies）：男用 14cm（140mm）/ 4g；女用 7cm（70mm）/ 2g。記法：男生比女生長，重量也多一倍。'
+  },
+  {
+    id:'q110_2_2', year:'110-2',
+    stem:'依中華藥典，製備含防腐劑之栓劑藥品，最適合的基劑為何？',
+    opts:['可可脂','甘油明膠','氫化植物油','聚乙二醇（PEG）'],
+    ans:3,
+    exp:'<strong>答案：(D) 聚乙二醇（PEG）</strong><br>中華藥典備註：PEG 栓劑為最適合製備含防腐劑之栓劑藥品基劑。雖甘油明膠也需要防腐劑，但水溶性更大的PEG更適合。'
+  },
+  {
+    id:'q110_1_1', year:'110-1',
+    stem:'有關栓劑之敘述，下列何者錯誤？',
+    opts:['外型種類多，會因使用部位不同而有顯著差異','使用於體腔時，會呈現融化、溶解或軟化現象','就重量而言，直腸栓劑大多比陰道栓劑重','有些藥效只具局部作用，但有些可能具全身性作用'],
+    ans:2,
+    exp:'<strong>答案：(C) 直腸栓劑大多比陰道栓劑重（錯誤）</strong><br>陰道栓劑（5g）通常比直腸（肛門）栓劑（2g）<strong>重</strong>（陰道是重量標準品）。所以說「直腸大多比陰道重」是錯的。'
+  },
+  {
+    id:'q110_1_2', year:'110-1',
+    stem:'有關栓劑之貯藏，下列何者正確？',
+    opts:['可可脂栓劑應置於緊密容器內，30°C以下貯之','可可脂栓劑應置於密閉容器內，35°C以下貯之','甘油明膠栓劑應置於緊密容器內，35°C以下貯之','聚乙二醇栓劑需冷凍貯藏'],
+    ans:2,
+    exp:'<strong>答案：(C) 甘油明膠栓劑應置於緊密容器內，35°C以下貯之（正確）</strong><br>可可脂：密蓋容器，≤30°C（A錯在容器、B錯在溫度35°C）。甘油明膠：緊密容器，≤35°C。PEG：室溫，不須冷凍（D錯）。'
+  },
+  {
+    id:'q109_2_1', year:'109-2',
+    stem:'以可可脂（cocoa butter）製成之栓劑貯存溫度不得高於攝氏幾度？',
+    opts:['15°C','20°C','25°C','30°C'],
+    ans:3,
+    exp:'<strong>答案：(D) 30°C</strong><br>可可脂栓劑儲存：≤30°C，密蓋容器（與軟膏相同）。記法：軟可30蓋。'
+  },
+  {
+    id:'q109_2_2', year:'109-2',
+    stem:'有關可可脂之敘述，下列何者正確？',
+    opts:['是三醯甘油的混合物，大約含有1/3月桂酸','加入過多水分，儲存時易發生酸敗不安定','加入chloral hydrate會降低固化時間','metastable form可可脂的凝固點約24°C'],
+    ans:1,
+    exp:'<strong>答案：(B) 加入過多水分，儲存時易發生酸敗不安定（正確）</strong><br>A錯：含量最多的是油酸（oleic acid）非月桂酸。C錯：chloral hydrate會降低熔點、延長固化時間（不是降低）。D錯：metastable form（α型）凝固點約20°C，熔點22°C。'
+  },
+  {
+    id:'q109_1_1', year:'109-1',
+    stem:'下列何種因子替代法常用於計算栓劑中藥品與基劑間的替代量？',
+    opts:['重量','體積','密度','黏度'],
+    ans:2,
+    exp:'<strong>答案：(C) 密度因子（Density factor）</strong><br>四種計算方法：密度因子法（最常用）、劑量置換因子法、估據體積因子法、黏度因子法。結論：栓劑劑量計算與密度、劑量、估據體積有關，最常用密度因子。'
+  },
+  {
+    id:'q109_1_2', year:'109-1',
+    stem:'以可可脂製作基準為2克的栓劑，現擬製作含有水合三氯乙醛500mg（藥量替換因子為0.67）之栓劑，則依dosage replacement factor method計算，製出之每個成品應為多少重量(g)？',
+    opts:['2.000','2.019','2.085','2.165'],
+    ans:3,
+    exp:'<strong>答案：(D) 2.165g</strong><br>藥量替換因子 = 基劑/藥物 = X g / 0.5g = 0.67<br>X = 0.335g（可可脂換成同體積水合三氯乙醛的重量）<br>2g − 0.335g = 1.665g（剩餘可可脂）<br>1.665g + 0.5g = <strong>2.165g</strong>'
+  },
+  {
+    id:'q108_2_1', year:'108-2',
+    stem:'陰道栓劑又可稱為：',
+    opts:['pessaries','bougies','paregoric','laudanum'],
+    ans:0,
+    exp:'<strong>答案：(A) pessaries</strong><br>陰道栓劑 = pessaries（記法：卵子從陰道pass通過）。Bougies = 尿道栓劑。Paregoric = 樟腦鴉片酊（含0.05%morphine）。Laudanum = 鴉片酊（含1%morphine）。'
+  },
+  {
+    id:'q108_1_1', year:'108-1',
+    stem:'下列何種基劑較適合用來製備治療內痔之栓劑？',
+    opts:['可可脂','聚乙二醇','甘油明膠','氫化植物油'],
+    ans:0,
+    exp:'<strong>答案：(A) 可可脂</strong><br>可可脂為最標準的栓劑基劑，較無刺激性，常用於肛門栓劑、痔瘡栓劑。PEG有排便反射刺激性，不適合用於肛門栓劑。'
+  },
+  {
+    id:'q108_1_2', year:'108-1',
+    stem:'下列何者非中華藥典第八版所列之可可脂栓劑製備方法？',
+    opts:['熔合法','壓製法','捏合法','乳化法'],
+    ans:3,
+    exp:'<strong>答案：(D) 乳化法</strong><br>中華藥典第八版可可脂栓劑製法：捏合法、壓製法、熔合法（三種）。乳化法不在其中。記法：捏壓熔（捏壓玩具恐龍熔化）。'
+  },
+  {
+    id:'q107_2_1', year:'107-2',
+    stem:'有關可可脂栓劑的敘述，下列何者錯誤？',
+    opts:['在體溫下緩慢熔化，可與體液互溶','常用於製備抑制刺激的栓劑','成人用陰道栓劑重約5克，呈卵圓形','成人用肛門栓劑重約2克，呈圓錐形'],
+    ans:0,
+    exp:'<strong>答案：(A) 在體溫下緩慢熔化，可與體液互溶（錯誤）</strong><br>可可脂為油溶性基劑，體溫下熔化後<strong>不與體液互溶</strong>（不互溶 = 無刺激性特點）。與體液互溶是水溶性基劑（PEG、甘油明膠）的特性。'
+  },
+  {
+    id:'q107_1_1', year:'107-1',
+    stem:'下列何種可可脂之晶型在室溫不能固化，且屬亞穩定晶型，需放數日才能轉變為穩定晶型？',
+    opts:['alpha型','beta型','gamma型','delta型'],
+    ans:0,
+    exp:'<strong>答案：(A) alpha型</strong><br>α型（alpha）= 亞穩定型（metastable form），熔點22°C，凝固點20°C，室溫不能固化，需靜置數日轉為β\'型再轉β型。加熱超過熔點後：β→γ（最不安定）→靜置→α→靜置→β\'→β（最穩定）'
+  },
+  {
+    id:'q107_1_2', year:'107-1',
+    stem:'下列有效成分的栓劑，何者主要作用於局部？',
+    opts:['chlorpromazine','indomethacin','morphine','miconazole'],
+    ans:3,
+    exp:'<strong>答案：(D) miconazole（局部）</strong><br>Miconazole 為抗念珠菌藥，陰道栓劑用於局部治療。Chlorpromazine（抗精神病）、Indomethacin（消炎止痛）、Morphine（止痛）均為全身作用。'
+  },
+  {
+    id:'q106_2_1', year:'106-2',
+    stem:'下列何者不適合用於栓劑基劑？',
+    opts:['可可脂','半乳糖','甘油明膠','聚乙二醇'],
+    ans:1,
+    exp:'<strong>答案：(B) 半乳糖</strong><br>常用栓劑基劑：油溶性（可可脂、氫化植物油、Witepsol、Wecobee、Suppocire）；水溶性（PEG、甘油明膠）。半乳糖（galactose）非栓劑基劑。'
+  },
+  {
+    id:'q106_2_2', year:'106-2',
+    stem:'有關栓劑的敘述，下列何者錯誤？',
+    opts:['使用於不同體腔，如肛門、尿道、陰道','常用於局部，鮮少應用在全身作用','可可脂栓劑，適用於內痔治療製劑','甘油明膠栓劑，適用於製作陰道製劑'],
+    ans:1,
+    exp:'<strong>答案：(B) 常用於局部，鮮少應用在全身作用（錯誤）</strong><br>栓劑可產生全身作用，也可局部作用，兩者皆可。不是「鮮少」全身作用。例如 Indomethacin、Morphine 栓劑均為全身作用。'
+  },
+  {
+    id:'q106_1_1', year:'106-1',
+    stem:'下列何者最常作為陰道栓劑之基劑？',
+    opts:['可可脂','聚乙二醇','氫化脂肪酸','氫化植物油'],
+    ans:1,
+    exp:'<strong>答案：(B) 聚乙二醇（PEG）</strong><br>陰道、尿道含較多體液，水溶性基劑（PEG、甘油明膠）較適合使用於陰道和尿道栓劑。可可脂為油溶性，主要用於肛門栓劑。'
+  }
+];
+
+function buildQuiz() {
+  const container = document.getElementById('quiz-container');
+  if (!container) return;
+  QUESTIONS.forEach(q => {
+    const div = document.createElement('div');
+    div.className = 'quiz-block';
+    div.id = q.id;
+    const preview = q.stem.length > 28 ? q.stem.slice(0, 28) + '…' : q.stem;
+    const optsHtml = q.opts.map((o, i) => {
+      const letters = ['A','B','C','D'];
+      return `<li><button onclick="pickAns(this, ${i === q.ans}, '${q.id}')">(${letters[i]}) ${o}</button></li>`;
+    }).join('');
+    div.innerHTML = `
+      <div class="quiz-header" onclick="toggleQ('${q.id}')">
+        <span class="quiz-year-badge">${q.year}</span>
+        <span class="quiz-stem-preview">${preview}</span>
+        <span class="quiz-arr">▼</span>
+      </div>
+      <div class="quiz-body">
+        <div class="quiz-stem-full">${q.stem}</div>
+        <ul class="quiz-opts">${optsHtml}</ul>
+        <div class="quiz-result" id="${q.id}-result"></div>
+        <div class="quiz-btn-row">
+          <button class="btn-exp" onclick="toggleExp('${q.id}')">📖 顯示詳解</button>
+          <button class="btn-note" onclick="toggleNote('${q.id}')">📝 補充筆記</button>
+          <button class="btn-reset" onclick="resetQ('${q.id}')">↺ 重置</button>
+        </div>
+        <div class="quiz-exp" id="${q.id}-exp">${q.exp}</div>
+        <div class="quiz-note-area" id="${q.id}-note">
+          <textarea id="${q.id}-ta" placeholder="📝 在此輸入補充筆記、易錯點、個人記法…（自動儲存）"></textarea>
+          <div class="note-saved" id="${q.id}-saved"></div>
+        </div>
+      </div>
+    `;
+    container.appendChild(div);
+    // Load saved note
+    try {
+      const saved = localStorage.getItem('supp_note_' + q.id);
+      if (saved) {
+        const ta = div.querySelector('textarea');
+        if (ta) ta.value = saved;
+      }
+    } catch(e) {}
+  });
+
+  // Auto-save on input
+  container.addEventListener('input', e => {
+    if (e.target.tagName === 'TEXTAREA') {
+      const ta = e.target;
+      const id = ta.id.replace('-ta', '');
+      try { localStorage.setItem('supp_note_' + id, ta.value); } catch(e) {}
+      const s = document.getElementById(id + '-saved');
+      if (s) { s.textContent = '✓ 已儲存'; setTimeout(() => { s.textContent = ''; }, 1800); }
+    }
+  });
+}
+
+function toggleQ(id) {
+  const block = document.getElementById(id);
+  if (block) block.classList.toggle('open');
+}
+
+function pickAns(btn, isCorrect, id) {
+  const block = document.getElementById(id);
+  const buttons = block.querySelectorAll('.quiz-opts button');
+  buttons.forEach(b => b.disabled = true);
+  btn.classList.add(isCorrect ? 'correct' : 'wrong');
+  const result = document.getElementById(id + '-result');
+  result.textContent = isCorrect ? '✓ 答對了！' : '✗ 答錯，請看詳解。';
+  result.className = 'quiz-result ' + (isCorrect ? 'correct' : 'wrong');
+}
+
+function toggleExp(id) {
+  const exp = document.getElementById(id + '-exp');
+  const btn = document.querySelector(`#${id} .btn-exp`);
+  const isOpen = exp.classList.toggle('show');
+  if (btn) btn.textContent = isOpen ? '📖 收起詳解' : '📖 顯示詳解';
+  if (isOpen) {
+    const note = document.getElementById(id + '-note');
+    if (note) note.classList.add('show');
+    const noteBtn = document.querySelector(`#${id} .btn-note`);
+    if (noteBtn) noteBtn.textContent = '📝 收起筆記';
+  }
+}
+
+function toggleNote(id) {
+  const note = document.getElementById(id + '-note');
+  const btn = document.querySelector(`#${id} .btn-note`);
+  const isOpen = note.classList.toggle('show');
+  if (btn) btn.textContent = isOpen ? '📝 收起筆記' : '📝 補充筆記';
+}
+
+function resetQ(id) {
+  const block = document.getElementById(id);
+  block.querySelectorAll('.quiz-opts button').forEach(b => {
+    b.disabled = false;
+    b.classList.remove('correct', 'wrong');
+  });
+  const result = document.getElementById(id + '-result');
+  if (result) { result.textContent = ''; result.className = 'quiz-result'; }
+  const exp = document.getElementById(id + '-exp');
+  if (exp) exp.classList.remove('show');
+  const expBtn = block.querySelector('.btn-exp');
+  if (expBtn) expBtn.textContent = '📖 顯示詳解';
+  const note = document.getElementById(id + '-note');
+  if (note) note.classList.remove('show');
+  const noteBtn = block.querySelector('.btn-note');
+  if (noteBtn) noteBtn.textContent = '📝 補充筆記';
+}
+
+document.addEventListener('DOMContentLoaded', buildQuiz);
+</script>
+
+</body>
+</html>
