@@ -1,0 +1,1643 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>栓劑、塞劑及棒劑 — 藥劑學講義</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&family=Noto+Sans+TC:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream:#faf6f0; --cream-dark:#f0ead8; --cream-mid:#f7f2e8;
+  --crimson:#8b1a1a; --crimson-light:#b82c2c; --crimson-pale:#fdf0f0;
+  --gold:#c9962a; --gold-light:#fdf3d8;
+  --text:#2a1f1f; --text-mid:#5c4040; --text-light:#8c7070;
+  --border:#d8c8b8; --border-light:#ecddd0;
+  --correct-bg:#e8f5e9; --correct:#2e7d32;
+  --wrong-bg:#ffebee; --wrong:#c62828;
+  --hl-yellow:rgba(255,236,0,0.45);
+  --hl-green:rgba(100,220,130,0.38);
+  --hl-pink:rgba(255,120,160,0.32);
+  --hl-blue:rgba(80,160,255,0.28);
+  --hl-orange:rgba(255,165,40,0.38);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--cream);color:var(--text);font-family:'Noto Sans TC',sans-serif;font-size:15px;line-height:1.85}
+
+/* ── Header ── */
+.page-header{background:var(--crimson);color:#fff;padding:2rem 2rem 1.6rem;position:relative;overflow:hidden}
+.page-header::after{content:'';position:absolute;right:-50px;top:-50px;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,0.06)}
+.page-header h1{font-family:'Noto Serif TC',serif;font-size:1.8rem;font-weight:700;letter-spacing:.04em;position:relative}
+.page-header .sub{font-size:.8rem;opacity:.72;font-family:'JetBrains Mono',monospace;margin-top:.3rem;position:relative}
+
+/* ── TOC ── */
+.toc{background:var(--cream-dark);border-left:4px solid var(--crimson);margin:1.4rem 1.4rem 0;border-radius:0 8px 8px 0;padding:.9rem 1.1rem}
+.toc-title{font-family:'Noto Serif TC',serif;font-size:.8rem;font-weight:700;color:var(--crimson);margin-bottom:.45rem;text-transform:uppercase;letter-spacing:.07em}
+.toc ol{padding-left:1.1rem;columns:2;column-gap:1rem}
+.toc li{font-size:.8rem;margin-bottom:.18rem}
+.toc a{color:var(--crimson);text-decoration:none}
+.toc a:hover{text-decoration:underline}
+
+/* ── Sections ── */
+.main{padding:1.4rem;max-width:980px;margin:0 auto}
+.section{background:#fffdf9;border:1px solid var(--border-light);border-radius:10px;margin-bottom:1.4rem;overflow:hidden}
+.section-header{background:var(--cream-dark);border-bottom:2px solid var(--border);padding:.8rem 1.2rem;display:flex;align-items:center;gap:.7rem;cursor:pointer;user-select:none}
+.section-num{background:var(--crimson);color:#fff;font-family:'JetBrains Mono',monospace;font-size:.72rem;font-weight:500;padding:.13rem .5rem;border-radius:4px;flex-shrink:0}
+.section-title{font-family:'Noto Serif TC',serif;font-size:1rem;font-weight:700;color:var(--crimson);flex:1}
+.section-toggle{color:var(--text-light);font-size:1rem;transition:transform .25s;flex-shrink:0}
+.section-header.open .section-toggle{transform:rotate(180deg)}
+.section-body{padding:1.2rem 1.5rem;display:none}
+.section-body.open{display:block}
+
+/* ── Subsections ── */
+.subsection{margin-bottom:1.6rem}
+.subsection-title{font-family:'Noto Serif TC',serif;font-size:.95rem;font-weight:700;color:var(--crimson-light);border-bottom:1.5px solid var(--border-light);padding-bottom:.32rem;margin-bottom:.85rem}
+.sub-title{font-family:'Noto Sans TC',sans-serif;font-size:.86rem;font-weight:700;color:var(--text-mid);margin:.95rem 0 .5rem;display:flex;align-items:center;gap:.4rem}
+.sub-title::before{content:'';display:inline-block;width:4px;height:13px;background:var(--gold);border-radius:2px}
+
+/* ── Text & lists ── */
+p{margin-bottom:.55rem;color:var(--text);font-size:.88rem;line-height:1.9}
+ul,ol{padding-left:1.35rem;margin-bottom:.75rem}
+li{font-size:.86rem;line-height:1.88;margin-bottom:.18rem}
+strong{color:var(--crimson);font-weight:700}
+
+/* ── Drug / chem names ── */
+.drug{font-family:'JetBrains Mono',monospace;font-size:.8rem;background:#f0eae0;padding:.04rem .38rem;border-radius:3px;color:#7a3010;white-space:nowrap}
+.en{font-family:'JetBrains Mono',monospace;font-size:.78rem;color:#4a5568;background:#f0f4f8;padding:.02rem .32rem;border-radius:3px;white-space:nowrap}
+
+/* ── Highlight marks ── */
+.hl-y{background:var(--hl-yellow);padding:0 2px;border-radius:2px}
+.hl-g{background:var(--hl-green);padding:0 2px;border-radius:2px}
+.hl-p{background:var(--hl-pink);padding:0 2px;border-radius:2px}
+.hl-b{background:var(--hl-blue);padding:0 2px;border-radius:2px}
+.hl-o{background:var(--hl-orange);padding:0 2px;border-radius:2px}
+
+/* ── Exam-point banner ── */
+.exampt{background:linear-gradient(90deg,#fff8e1,#fffde7);border:1.5px solid #f9a825;border-radius:7px;padding:.55rem .9rem .55rem 1rem;margin:.55rem 0;font-size:.83rem;position:relative;padding-left:2.2rem}
+.exampt::before{content:'★';position:absolute;left:.65rem;top:.52rem;color:#f9a825;font-size:.9rem}
+.exampt strong{color:#b35a00}
+
+/* ── Info / tip boxes ── */
+.info-box{background:var(--crimson-pale);border-left:3px solid var(--crimson);border-radius:0 6px 6px 0;padding:.65rem 1rem;margin:.65rem 0;font-size:.84rem}
+.info-box .lbl{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--crimson);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.3rem}
+.tip-box{background:var(--gold-light);border-left:3px solid var(--gold);border-radius:0 6px 6px 0;padding:.65rem 1rem;margin:.65rem 0;font-size:.84rem}
+.tip-box .lbl{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--gold);font-weight:700;letter-spacing:.06em;margin-bottom:.3rem}
+.warn-box{background:#fff3e0;border-left:3px solid #e65100;border-radius:0 6px 6px 0;padding:.65rem 1rem;margin:.65rem 0;font-size:.84rem}
+.warn-box .lbl{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:#e65100;font-weight:700;letter-spacing:.06em;margin-bottom:.3rem}
+
+/* ── Composition card (special) ── */
+.comp-card{border:2px solid var(--crimson);border-radius:9px;overflow:hidden;margin:.85rem 0}
+.comp-card-header{background:var(--crimson);color:#fff;padding:.45rem .9rem;font-family:'Noto Serif TC',serif;font-size:.85rem;font-weight:700;display:flex;align-items:center;gap:.5rem}
+.comp-card-body{padding:.75rem 1rem;background:#fff}
+.comp-row{display:flex;align-items:center;border-bottom:1px solid var(--border-light);padding:.38rem 0}
+.comp-row:last-child{border-bottom:none}
+.comp-pct{font-family:'JetBrains Mono',monospace;font-size:1.15rem;font-weight:700;min-width:3.5rem;color:var(--crimson)}
+.comp-bar-wrap{flex:1;height:14px;background:#f0e8e0;border-radius:7px;overflow:hidden;margin:0 .8rem}
+.comp-bar{height:100%;border-radius:7px;background:var(--crimson);opacity:.7}
+.comp-name{font-size:.83rem;min-width:7rem;font-weight:500}
+.comp-en{font-family:'JetBrains Mono',monospace;font-size:.73rem;color:#6b7280;margin-left:.35rem}
+.comp-note{font-size:.75rem;color:var(--text-light);margin-left:auto;font-style:italic}
+
+/* ── Tables ── */
+.table-wrap{overflow-x:auto;margin:.75rem 0}
+table{border-collapse:collapse;width:100%;font-size:.82rem}
+th{background:var(--crimson);color:#fff;padding:.45rem .7rem;text-align:left;font-weight:500}
+td{padding:.4rem .7rem;border-bottom:1px solid var(--border-light);vertical-align:top}
+tr:nth-child(even) td{background:var(--cream-mid)}
+tr:hover td{background:var(--gold-light)}
+.td-center{text-align:center}
+.td-num{font-family:'JetBrains Mono',monospace;font-weight:700;text-align:center}
+
+/* ── Release speed chips ── */
+.fast{display:inline-block;background:#e8f5e9;color:#1b5e20;border:1px solid #81c784;border-radius:4px;font-size:.75rem;font-weight:700;padding:.05rem .4rem}
+.mid{display:inline-block;background:#fff8e1;color:#7a5000;border:1px solid #ffc107;border-radius:4px;font-size:.75rem;font-weight:700;padding:.05rem .4rem}
+.slow{display:inline-block;background:#ffebee;color:#7f0000;border:1px solid #e57373;border-radius:4px;font-size:.75rem;font-weight:700;padding:.05rem .4rem}
+
+/* ── Formula box ── */
+.formula{background:var(--cream-dark);border:1.5px dashed var(--border);border-radius:8px;padding:.85rem 1rem;margin:.75rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem}
+.formula .ftitle{font-size:.7rem;color:var(--text-light);margin-bottom:.4rem;text-transform:uppercase;letter-spacing:.06em;font-family:'Noto Sans TC',sans-serif}
+
+/* ── Compare grid ── */
+.cgrid{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin:.65rem 0}
+.ccard{border:1px solid var(--border);border-radius:7px;padding:.7rem .85rem;font-size:.83rem;background:#fff}
+.ccard h4{font-size:.8rem;font-weight:700;margin-bottom:.38rem;font-family:'JetBrains Mono',monospace;color:var(--crimson)}
+
+/* ── Crystal type table ── */
+.crystal-best td:first-child{color:var(--correct);font-weight:700}
+.crystal-ok td:first-child{color:var(--gold);font-weight:700}
+.crystal-bad td:first-child{color:var(--wrong);font-weight:700}
+.crystal-worst td:first-child{color:#7f0000;font-weight:700}
+
+/* ── Step flow ── */
+.steps{display:flex;flex-wrap:wrap;gap:.35rem;margin:.55rem 0;align-items:center}
+.step-box{background:var(--cream-dark);border:1px solid var(--border);border-radius:5px;padding:.25rem .6rem;font-size:.76rem;color:var(--text-mid)}
+.step-arr{color:var(--crimson-light);font-size:.95rem;font-weight:700}
+
+/* ── Quiz ── */
+.quiz-block{border:1px solid var(--border);border-radius:8px;margin:1rem 0;overflow:hidden;background:var(--cream)}
+.quiz-header{background:var(--cream-dark);padding:.55rem .95rem;display:flex;align-items:center;gap:.55rem;cursor:pointer;user-select:none}
+.quiz-year{font-family:'JetBrains Mono',monospace;font-size:.7rem;background:var(--crimson);color:#fff;padding:.1rem .42rem;border-radius:3px;flex-shrink:0}
+.quiz-preview{font-size:.8rem;color:var(--text-mid);flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.quiz-arr{color:var(--text-light);font-size:.95rem;flex-shrink:0;transition:transform .2s}
+.quiz-header.open .quiz-arr{transform:rotate(180deg)}
+.quiz-body{display:none;padding:.85rem 1rem}
+.quiz-body.open{display:block}
+.quiz-stem{font-size:.87rem;font-weight:700;color:var(--text);margin-bottom:.7rem;line-height:1.75}
+.quiz-opts{list-style:none;padding:0;margin:0 0 .7rem}
+.quiz-opts li{margin-bottom:.35rem}
+.quiz-opts button{display:block;width:100%;text-align:left;background:#fff;border:1.5px solid var(--border);border-radius:6px;padding:.45rem .8rem;font-size:.84rem;font-family:'Noto Sans TC',sans-serif;color:var(--text);cursor:pointer;transition:border-color .15s,background .15s;line-height:1.6}
+.quiz-opts button:hover:not(:disabled){border-color:#d4564a;background:var(--crimson-pale)}
+.quiz-opts button.correct{background:var(--correct-bg);border-color:var(--correct);color:var(--correct);font-weight:700}
+.quiz-opts button.wrong{background:var(--wrong-bg);border-color:var(--wrong);color:var(--wrong)}
+.quiz-opts button:disabled{cursor:default}
+.quiz-result{font-size:.81rem;padding:.38rem .7rem;border-radius:5px;margin-bottom:.55rem;display:none;font-weight:700}
+.quiz-result.show{display:block}
+.quiz-result.correct{background:var(--correct-bg);color:var(--correct)}
+.quiz-result.wrong{background:var(--wrong-bg);color:var(--wrong)}
+.quiz-btn-row{display:flex;gap:.45rem;flex-wrap:wrap;align-items:center;margin-bottom:.45rem}
+.btn-exp{background:none;border:1.5px solid var(--border);border-radius:5px;padding:.3rem .75rem;font-size:.78rem;cursor:pointer;color:var(--text-mid);font-family:'Noto Sans TC',sans-serif;transition:all .15s;display:none}
+.btn-exp:hover{background:var(--cream-dark);border-color:var(--text-mid)}
+.btn-note{background:none;border:1.5px dashed var(--gold);border-radius:5px;padding:.28rem .75rem;font-size:.78rem;cursor:pointer;color:var(--gold);font-family:'Noto Sans TC',sans-serif;transition:all .15s}
+.btn-note:hover{background:var(--gold-light)}
+.btn-reset{background:none;border:1px solid var(--border);border-radius:5px;padding:.24rem .6rem;font-size:.73rem;cursor:pointer;color:var(--text-light);font-family:'Noto Sans TC',sans-serif}
+.btn-reset:hover{background:var(--cream-dark)}
+.quiz-exp{display:none;font-size:.81rem;background:var(--cream-dark);border-radius:6px;padding:.7rem .95rem;margin-bottom:.45rem;color:var(--text);line-height:1.85}
+.quiz-exp.show{display:block}
+.quiz-exp li{margin-bottom:.28rem}
+.quiz-exp strong{color:var(--crimson)}
+.quiz-note-area{display:none;margin-top:.45rem}
+.quiz-note-area.show{display:block}
+.quiz-note-area textarea{width:100%;min-height:75px;border:1.5px solid var(--gold);border-radius:6px;padding:.5rem .7rem;font-family:'Noto Sans TC',sans-serif;font-size:.81rem;background:var(--gold-light);color:var(--text);resize:vertical;outline:none}
+.quiz-note-area textarea:focus{box-shadow:0 0 0 2px rgba(201,150,42,.2)}
+.note-saved{font-size:.73rem;color:var(--text-light);margin-top:.28rem;height:.9rem}
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>栓劑、塞劑及棒劑</h1>
+  <div class="sub">Suppositories, Inserts and Sticks ｜ 藥劑學 113-1 ｜ 吳姿慧師</div>
+</div>
+
+<div class="toc">
+  <div class="toc-title">課程大綱</div>
+  <ol>
+    <li><a href="#s1">基本概念</a></li>
+    <li><a href="#s2">直腸吸收因素</a></li>
+    <li><a href="#s3">栓劑的基劑</a></li>
+    <li><a href="#s4">中華藥典</a></li>
+    <li><a href="#s5">配方變因</a></li>
+    <li><a href="#s6">栓劑製備</a></li>
+    <li><a href="#s7">品質管制</a></li>
+    <li><a href="#s8">劑型設計</a></li>
+  </ol>
+</div>
+
+<div class="main">
+
+<!-- ============================
+     SECTION 1
+     ============================ -->
+<div class="section" id="s1">
+  <div class="section-header" onclick="toggleSec(this)">
+    <span class="section-num">01</span>
+    <span class="section-title">基本概念</span>
+    <span class="section-toggle">▼</span>
+  </div>
+  <div class="section-body open">
+
+    <!-- 1.1 定義 -->
+    <div class="subsection">
+      <div class="subsection-title">1.1 定義</div>
+      <div class="info-box">
+        <div class="lbl">栓劑 Suppository</div>
+        固體劑型，主成分分散於適當基劑，模製或用其他方式成形，供<strong>塞入直腸</strong>後經<strong>熔化、軟化或溶解</strong>發揮局部或全身性效應。
+      </div>
+      <div class="info-box">
+        <div class="lbl">塞劑 Inserts</div>
+        固體劑型，供塞入自然發生的（非手術的）體腔——除了口腔和直腸以外，包括<strong>陰道和尿道</strong>。
+      </div>
+      <div class="info-box">
+        <div class="lbl">藥用棒劑 Sticks</div>
+        <strong>局部外用</strong>給藥的方便形式，涉及化粧品相關產品。
+      </div>
+    </div>
+
+    <!-- 1.2 形狀重量 -->
+    <div class="subsection">
+      <div class="subsection-title">1.2 形狀、重量與別名 ⭐ 常考</div>
+      <div class="exampt"><strong>考點：重量一定要記！</strong> 直腸 2 g（兒童 1 g）＜ 尿道男 4 g ＜ 陰道 5 g。別名：陰道 = <span class="en">Pessaries</span>；尿道 = <span class="en">Bougies</span>。</div>
+      <div class="table-wrap">
+        <table>
+          <tr><th>使用部位</th><th>別名</th><th>形狀</th><th style="white-space:nowrap">重量 / 長度（可可脂基劑）</th></tr>
+          <tr>
+            <td><strong>直腸栓劑</strong><br><span class="en">Rectal suppository</span></td>
+            <td>—</td>
+            <td>圓筒狀、<span class="hl-y">子彈型</span>、魚雷型、小手指型</td>
+            <td class="td-num"><span class="hl-y">成人 2 g</span><br>兒童 1 g</td>
+          </tr>
+          <tr>
+            <td><strong>陰道塞劑</strong><br><span class="en">Vaginal insert</span></td>
+            <td><span class="hl-g">Pessaries</span>（托劑）</td>
+            <td>球型、卵形、圓錐形</td>
+            <td class="td-num"><span class="hl-g">5 g</span></td>
+          </tr>
+          <tr>
+            <td><strong>尿道塞劑</strong><br><span class="en">Urethral insert</span></td>
+            <td><span class="hl-p">Bougies</span></td>
+            <td>細長、鉛筆形（直徑 3–6 mm）</td>
+            <td class="td-num">
+              女性：長 <span class="hl-p">70 mm</span>，重 <span class="hl-p">2 g</span><br>
+              男性：長 <span class="hl-p">140 mm</span>，重 <span class="hl-p">4 g</span>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div id="q-113-1-18"></div>
+      <div id="q-113-1-15"></div>
+      <div id="q-112-1-15"></div>
+      <div id="q-110-2-21"></div>
+      <div id="q-110-1-21"></div>
+    </div>
+
+    <!-- 1.3 優點 -->
+    <div class="subsection">
+      <div class="subsection-title">1.3 直腸給藥優勢</div>
+      <div class="exampt"><strong>考點：「完全避免首渡效應」是錯的！</strong> 只能<span class="hl-y">部分（約 50~70% 以上）</span>避免肝臟首渡代謝。</div>
+      <ul>
+        <li>至少<strong>部分可避免首渡效應</strong> <span class="en">(first-pass effect)</span>，可產生較高血中濃度</li>
+        <li>可避免<strong>胃腸道酵素破壞</strong>（直腸酵素仍存在，但較少）</li>
+        <li>可給與比口服<strong>稍大</strong>的藥物劑量</li>
+        <li>對口腔或胃腸黏膜有<strong>刺激效應</strong>的藥物，可給藥</li>
+        <li>不愉快味道或氣味的藥物可選用直腸給藥</li>
+        <li>生病孩子拒絕口服，或有<strong>噁心、嘔吐、失去意識</strong>的病人</li>
+        <li>上胃腸道疾病干擾藥物吸收時之替代</li>
+        <li>可作為<strong>注射劑的替代</strong>，達快速全身性效應</li>
+      </ul>
+      <div class="info-box">
+        <div class="lbl">全身作用代表藥品（栓劑達全身效應）</div>
+        <span class="drug">diazepam</span> <span class="drug">metronidazole</span> <span class="drug">progesterone</span> <span class="drug">aminophylline</span> <span class="drug">morphine</span> <span class="drug">chlorpromazine</span> <span class="drug">indomethacin</span> <span class="drug">diclofenac</span> <span class="drug">ketoprofen</span> <span class="drug">naproxen</span>
+      </div>
+      <div id="q-113-1-17"></div>
+      <div id="q-102-1-28"></div>
+    </div>
+
+    <!-- 1.4 缺點 -->
+    <div class="subsection">
+      <div class="subsection-title">1.4 栓劑缺點 / 不常使用之理由</div>
+      <ul>
+        <li>商用栓劑<strong>劑量缺乏彈性</strong></li>
+        <li>來取調劑費用可能較貴</li>
+        <li>重複給藥易導致<strong>直腸黏膜出血、潰瘍、炎症</strong></li>
+        <li>治療區間狹窄的藥物（如 <span class="drug">aminophylline</span>）需注意</li>
+        <li><span class="hl-y">子彈形栓劑</span>塞入後會<strong>上升至直腸乙狀結腸和降結腸</strong>，建議<strong>不在睡前使用</strong></li>
+        <li>排便會阻礙藥物吸收</li>
+        <li>直腸吸收表面積遠<strong>小於</strong>小腸（無絨毛）</li>
+        <li>直腸體液（2–3 mL）遠少於小腸（1–3 L）</li>
+        <li>某些藥物可被直腸微生物菌落降解</li>
+        <li>直腸給藥所需劑量<strong>可能大於口服</strong>：<span class="drug">Lincomycin</span>、<span class="drug">Chloral hydrate</span>（直腸需 <span class="hl-p">4 倍</span>）；<span class="drug">Phenytoin</span>（直腸需 <span class="hl-p">3 倍</span>）</li>
+      </ul>
+    </div>
+
+    <!-- 1.5 局部 vs 全身 -->
+    <div class="subsection">
+      <div class="subsection-title">1.5 局部作用 vs 全身作用</div>
+      <div class="cgrid">
+        <div class="ccard">
+          <h4>局部作用</h4>
+          <ul>
+            <li>痔瘡栓劑（局部麻醉劑、血管收縮劑等）</li>
+            <li>甘油栓劑 <span class="en">(glycerin suppository)</span>：緩瀉</li>
+            <li>陰道：避孕 <span class="drug">nonoxynol-9</span>、抗真菌 <span class="drug">miconazole</span></li>
+            <li>尿道：抗菌或局部麻醉</li>
+            <li>棒劑：水化/潤膚、抗菌、防曬、止癢</li>
+          </ul>
+        </div>
+        <div class="ccard">
+          <h4>全身作用</h4>
+          <ul>
+            <li><span class="drug">prochlorperazine</span>、<span class="drug">chlorpromazine</span>：止吐、安神</li>
+            <li><span class="drug">oxymorphone HCl</span>：opioid 鎮痛</li>
+            <li><span class="drug">ergotamine tartrate</span>：偏頭痛</li>
+            <li><span class="drug">indomethacin</span>：NSAIDs</li>
+            <li><span class="drug">ondansetron</span>：止吐</li>
+          </ul>
+        </div>
+      </div>
+      <div id="q-113-1-16"></div>
+      <div id="q-107-1-17b"></div>
+      <div id="q-106-2-17"></div>
+    </div>
+
+    <!-- 1.6 商用產品 -->
+    <div class="subsection">
+      <div class="subsection-title">1.6 商用栓劑產品</div>
+      <div class="sub-title">直腸栓劑</div>
+      <div class="table-wrap">
+        <table>
+          <tr><th>成份</th><th>商品名</th><th>劑量</th><th>作用</th><th>用途 / 基劑</th></tr>
+          <tr><td><span class="drug">Bisacodyl</span></td><td>Dulcolax</td><td>10 mg</td><td>局部</td><td>瀉藥；基劑：氫化植物油 <span class="en">(hydrogenated vegetable oil)</span></td></tr>
+          <tr><td><span class="drug">Hydrocortisone</span></td><td>Anusol-HC</td><td>25 mg</td><td>局部</td><td>肛門搔癢、發炎痔瘡；基劑：氫化的甘油酯</td></tr>
+          <tr><td><span class="drug">Hydromorphone</span></td><td>Dilaudid</td><td>3 mg</td><td>全身</td><td>鎮痛藥；基劑：可可脂 + 二氧化矽</td></tr>
+          <tr><td><span class="drug">Indomethacin</span></td><td>Indocin</td><td>50 mg</td><td>全身</td><td>抗炎；基劑：聚乙二醇類 <span class="en">(PEG)</span></td></tr>
+          <tr><td><span class="drug">Mesalamine</span></td><td>Canasa</td><td>500 mg</td><td>局部</td><td>抗炎；基劑：硬脂肪 <span class="en">(hard fat)</span></td></tr>
+          <tr><td><span class="drug">Promethazine HCl</span></td><td>Phenergan</td><td>10 mg</td><td>全身</td><td>抗組織胺、止吐、鎮靜；基劑：可可脂 + 白蠟</td></tr>
+        </table>
+      </div>
+      <div class="sub-title">陰道塞劑</div>
+      <div class="table-wrap">
+        <table>
+          <tr><th>成份</th><th>商品名</th><th>用途</th></tr>
+          <tr><td><span class="drug">Clindamycin phosphate</span></td><td>Cleocin inserts</td><td>細菌性陰道炎</td></tr>
+          <tr><td><span class="drug">Miconazole nitrate</span></td><td>Monistat 7</td><td>抗真菌、陰道念珠菌病（局部）</td></tr>
+          <tr><td><span class="drug">Nonoxynol-9</span></td><td>Semicid / Encare</td><td>非全身性可逆的生育控制（殺精子劑）</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- 1.7 最佳給藥途徑 -->
+    <div class="subsection">
+      <div class="subsection-title">1.7 最佳給藥途徑比較</div>
+      <div class="table-wrap">
+        <table>
+          <tr><th>情形</th><th>代表藥品</th></tr>
+          <tr><td>直腸吸收 > 口服</td><td><span class="drug">Sodium salicylate</span>、<span class="drug">Chloral hydrate</span>、<span class="drug">Methylene blue</span>、<span class="drug">Atropine</span>、<span class="drug">Morphine</span></td></tr>
+          <tr><td>口服吸收 > 直腸</td><td><span class="drug">Iodides</span>、<span class="drug">Tetracycline HCl</span>、<span class="drug">Sodium penicillin G</span></td></tr>
+          <tr><td>口服 ≈ 直腸</td><td><span class="drug">Sulfanilamide</span>（甘油明膠基劑）、<span class="drug">Prednisone</span></td></tr>
+          <tr><td>直腸劑量需較大</td><td><span class="drug">Lincomycin</span>、<span class="drug">Chloral hydrate</span>（<strong>直腸需 4 倍</strong>）；<span class="drug">Phenytoin</span>（<strong>直腸需 3 倍</strong>）</td></tr>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============================
+     SECTION 2
+     ============================ -->
+<div class="section" id="s2">
+  <div class="section-header" onclick="toggleSec(this)">
+    <span class="section-num">02</span>
+    <span class="section-title">藥物由直腸吸收的因素</span>
+    <span class="section-toggle">▼</span>
+  </div>
+  <div class="section-body">
+
+    <div class="subsection">
+      <div class="subsection-title">2.1 生理學因素</div>
+
+      <div class="sub-title">直腸解剖生理</div>
+      <div class="table-wrap">
+        <table>
+          <tr><th></th><th>直腸</th><th>小腸</th></tr>
+          <tr><td>長度</td><td class="td-num">15–20 cm</td><td class="td-num">6–7 m</td></tr>
+          <tr><td>體液量</td><td class="td-num">2–3 mL</td><td class="td-num">1–3 L</td></tr>
+          <tr><td>pH</td><td class="td-num">7.2–7.4</td><td class="td-num">—</td></tr>
+          <tr><td>絨毛</td><td class="td-center">❌ 無</td><td class="td-center">✓ 有</td></tr>
+          <tr><td>酵素</td><td>少（比小腸少）</td><td>多</td></tr>
+          <tr><td>腸道菌</td><td>最多</td><td>次之</td></tr>
+        </table>
+      </div>
+
+      <div class="sub-title">三條痔靜脈 ⭐ 常考</div>
+      <div class="exampt"><strong>考點：直腸上端 → 上痔靜脈 → 門靜脈（有首渡）；直腸下端 → 下/中痔靜脈 → 全身循環（無首渡）</strong><br>「完全避免」說法 = 錯誤！約 50–70% 可避免。</div>
+      <div class="table-wrap">
+        <table>
+          <tr><th>靜脈</th><th>位置</th><th>走向</th><th>首渡代謝</th></tr>
+          <tr>
+            <td><strong>下痔靜脈</strong><br><span class="en">Inferior hemorrhoidal vein</span></td>
+            <td>接近肛門括約肌處<br>（直腸<span class="hl-g">下端</span>）</td>
+            <td>→ 全身循環（淋巴循環亦有助吸收）</td>
+            <td style="color:var(--correct);font-weight:700">❌ 無</td>
+          </tr>
+          <tr>
+            <td><strong>中痔靜脈</strong><br><span class="en">Middle hemorrhoidal vein</span></td>
+            <td>直腸中間部位</td>
+            <td>→ 下腔靜脈 <span class="en">(inferior vena cava)</span>（直接）</td>
+            <td style="color:var(--correct);font-weight:700">❌ 無</td>
+          </tr>
+          <tr>
+            <td><strong>上痔靜脈</strong><br><span class="en">Superior hemorrhoidal vein</span></td>
+            <td>直腸<span class="hl-p">上端</span></td>
+            <td>→ 下腸系膜靜脈 → <strong>肝門靜脈</strong></td>
+            <td style="color:var(--wrong);font-weight:700">✓ 有</td>
+          </tr>
+        </table>
+      </div>
+      <div id="q-104-1-64"></div>
+      <div id="q-104-1-22"></div>
+      <div id="q-101-2-67"></div>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-title">2.2 物理化學因素</div>
+      <div class="sub-title">脂-水溶解度（油水分配係數 P / Partition Coefficient）</div>
+      <div class="formula">
+        <div class="ftitle">分配係數 Partition Coefficient (P)</div>
+        P = C<sub>藥物在 n-Octanol</sub> / C<sub>藥物在水溶液</sub><br><br>
+        <strong>親水性藥物 (hydrophilic drug)</strong>：在油性基劑中溶離快，容易釋放至水性體液<br>
+        <strong>親脂性藥物 (lipophilic drug)</strong>：在油性基劑中溶離慢，不易離開進入水性體液
+      </div>
+      <div class="sub-title">粒子大小 <span class="en">Particle Size</span></div>
+      <ul>
+        <li>不溶於基劑的固體藥物：粒子大小影響溶離速率和生體可用率</li>
+        <li>微細化（高比表面積）→ 吸收增加</li>
+        <li>粒子太細：增加熔化基劑黏度，造成生產時流動困難</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============================
+     SECTION 3
+     ============================ -->
+<div class="section" id="s3">
+  <div class="section-header" onclick="toggleSec(this)">
+    <span class="section-num">03</span>
+    <span class="section-title">栓劑的基劑</span>
+    <span class="section-toggle">▼</span>
+  </div>
+  <div class="section-body">
+
+    <!-- 基劑性質 -->
+    <div class="subsection">
+      <div class="subsection-title">3.1 理想基劑性質</div>
+      <ul>
+        <li>室溫固態；<strong>體溫下軟化、熔化或溶解</strong></li>
+        <li>無藥物交互作用，不影響藥品釋出</li>
+        <li>不刺激直腸黏膜、不引起排便運動</li>
+        <li>貯藏時安定，無不愉快氣味</li>
+        <li>高熔點基劑可加入<strong>降低熔點之藥物</strong>（如 <span class="drug">camphor 樟腦</span>、<span class="drug">chloral hydrate 水合三氯乙醛</span>、<span class="drug">menthol 薄荷醇</span>、<span class="drug">phenol 酚</span>、<span class="drug">thymol 百里酚</span>及揮發油）</li>
+      </ul>
+    </div>
+
+    <!-- 基劑分類 -->
+    <div class="subsection">
+      <div class="subsection-title">3.2 基劑分類比較</div>
+      <div class="exampt"><strong>考點：釋藥機制不同！</strong> 油脂性 = <span class="hl-y">體溫熔化</span>；水溶性 = <span class="hl-g">吸收體液後互溶（溶解）</span></div>
+      <div class="table-wrap">
+        <table>
+          <tr><th></th><th>脂肪或油脂性基劑</th><th>水溶性基劑</th></tr>
+          <tr>
+            <td><strong>代表</strong></td>
+            <td>可可脂（最常用）<br>氫化植物油 <span class="en">(hydrogenated vegetable oil)</span><br>Wecobee W、Witepsol H15、Fattibase</td>
+            <td>甘油明膠 <span class="en">(glycerinated gelatin)</span><br>聚乙二醇 <span class="en">(polyethylene glycol, PEG)</span></td>
+          </tr>
+          <tr><td><strong>釋藥機制</strong></td><td><span class="hl-y">體溫下熔化</span>而釋出藥品</td><td><span class="hl-g">吸收體液後互溶（溶解）</span></td></tr>
+          <tr><td><strong>刺激性</strong></td><td>無刺激性</td><td>有刺激（需注意）</td></tr>
+          <tr><td><strong>與體液</strong></td><td>不互溶</td><td>互溶</td></tr>
+        </table>
+      </div>
+      <div id="q-106-2-21"></div>
+      <div id="q-106-1-21"></div>
+
+      <div class="sub-title">熔點比較（常考：Polybase 熔點最高）</div>
+      <div class="exampt"><strong>考點：熔點由低到高</strong>：Wecobee W (31.7–32.8) ＜ Suppocire OSI ≈ Witepsol H15 ≈ Cocoa butter (33–35) ＜ Fattibase (35.5–37) ＜ <span class="hl-y">Polybase (60–71，最高)</span></div>
+      <div class="table-wrap">
+        <table>
+          <tr><th>基劑</th><th>組成</th><th>熔點 ℃</th></tr>
+          <tr><td>Cocoa butter（可可脂）</td><td>油酸 <span class="en">(oleic acid)</span>、棕櫚酸 <span class="en">(palmitic acid)</span>、硬脂酸 <span class="en">(stearic acid)</span> 的三酸甘油酯混合</td><td class="td-num">34–35</td></tr>
+          <tr><td>Fattibase</td><td>棕櫚油、棕櫚仁油、椰子油三酸甘油酯 + 自我乳化的 glyceryl monostearate polyoxyl stearate</td><td class="td-num">35.5–37</td></tr>
+          <tr><td><strong>Polybase</strong></td><td>PEGs 與 polysorbate 80 的均質混合物</td><td class="td-num"><span class="hl-y">60–71 🔺最高</span></td></tr>
+          <tr><td>Suppocire OSI</td><td>天然植物油的單、雙、三酸甘油酯之共熔混合物</td><td class="td-num">33–35</td></tr>
+          <tr><td>Wecobee W</td><td>椰子油 <span class="en">(coconut oil)</span> 的三酸甘油酯</td><td class="td-num">31.7–32.8</td></tr>
+          <tr><td>Witepsol H15</td><td>飽和脂肪酸 C12–C18 的三酸甘油酯與對應部分甘油</td><td class="td-num">33–35</td></tr>
+        </table>
+      </div>
+      <div id="q-113-2-15"></div>
+      <div id="q-111-1-25"></div>
+    </div>
+
+    <!-- 可可脂 -->
+    <div class="subsection">
+      <div class="subsection-title">3.3 可可脂（Cocoa Butter / Theobroma Oil, NF）⭐ 重點</div>
+      <div class="sub-title">基本性質</div>
+      <ul>
+        <li>室溫：黃白色固體，有淡淡巧克力味</li>
+        <li>熔化點：<span class="hl-y">30–36℃</span>；凝固點 27.5℃；軟化點 32℃</li>
+        <li>肛門栓劑的<strong>好基劑</strong>；<span class="hl-p">不適合</span>作陰道或尿道栓劑（熔融油脂不與黏膜分泌液互溶，會漏出）</li>
+        <li>缺點：無法吸收水性溶液；易酸敗</li>
+      </ul>
+
+      <div class="sub-title">成分組成</div>
+      <div class="exampt"><strong>考點：飽和脂肪酸中以「硬脂酸 stearic acid」和「棕櫚酸 palmitic acid」為主！</strong> 油酸是最多的單不飽和脂肪酸。</div>
+      <div class="table-wrap">
+        <table>
+          <tr><th>脂肪酸類型</th><th>含量</th><th>主要成份</th></tr>
+          <tr>
+            <td>飽和脂肪酸 <span class="en">(saturated FA)</span></td>
+            <td class="td-num">57–64%</td>
+            <td><span class="hl-y">硬脂酸 <span class="en">(stearic acid)</span>、棕櫚酸 <span class="en">(palmitic acid)</span></span>（主）；少量十烷酸 <span class="en">(capric acid)</span>、肉豆蔻酸 <span class="en">(myristic acid)</span>、花生酸 <span class="en">(arachidic acid)</span>、月桂酸 <span class="en">(lauric acid)</span></td>
+          </tr>
+          <tr>
+            <td>單不飽和脂肪酸 <span class="en">(MUFA)</span></td>
+            <td class="td-num">29–43%</td>
+            <td>主要為<strong>油酸 <span class="en">(oleic acid)</span></strong></td>
+          </tr>
+          <tr>
+            <td>多不飽和脂肪酸 <span class="en">(PUFA)</span></td>
+            <td class="td-num">0–5%</td>
+            <td>亞油酸 <span class="en">(linoleic acid)</span>、亞麻酸 <span class="en">(linolenic acid)</span></td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="sub-title">多形性 Polymorphism ⭐ 常考</div>
+
+      <!-- ══════════════════════════════════
+           DIAGRAM 1 — β型可可脂相變數線
+           ══════════════════════════════════ -->
+      <div style="background:#fff;border:1.5px solid var(--border);border-radius:10px;padding:1rem 1.2rem .9rem;margin:.7rem 0">
+        <div style="font-size:.72rem;font-weight:700;color:var(--text-light);letter-spacing:.07em;text-transform:uppercase;margin-bottom:.8rem">① β 型可可脂的相變溫度（正常情況）</div>
+        <svg viewBox="0 0 600 108" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block">
+          <!-- colour zones: scale T→x, range 14–37℃ → x 30–570, each ℃ = 23.5px -->
+          <!-- 27.5 → 30+(27.5-14)*23.5 = 30+317 = 347  -->
+          <!-- 32   → 30+(32-14)*23.5   = 30+423 = 453  -->
+          <!-- 34   → 30+(34-14)*23.5   = 30+470 = 500  -->
+          <rect x="30"  y="36" width="317" height="28" fill="#dbeafe" rx="3"/>
+          <rect x="347" y="36" width="106" height="28" fill="#fef9c3" rx="0"/>
+          <rect x="453" y="36" width="47"  height="28" fill="#fed7aa" rx="0"/>
+          <rect x="500" y="36" width="70"  height="28" fill="#fecaca" rx="0"/>
+
+          <text x="185" y="54" text-anchor="middle" font-size="10.5" fill="#1d4ed8" font-family="Noto Sans TC,sans-serif">固態</text>
+          <text x="400" y="54" text-anchor="middle" font-size="10.5" fill="#92400e" font-family="Noto Sans TC,sans-serif">軟化中</text>
+          <text x="476" y="54" text-anchor="middle" font-size="10" fill="#c2410c" font-family="Noto Sans TC,sans-serif">熔化</text>
+          <text x="535" y="54" text-anchor="middle" font-size="10" fill="#991b1b" font-family="Noto Sans TC,sans-serif">全熔</text>
+
+          <!-- axis -->
+          <line x1="30" y1="64" x2="574" y2="64" stroke="#94a3b8" stroke-width="1.5"/>
+          <polygon points="574,60 582,64 574,68" fill="#94a3b8"/>
+          <text x="588" y="68" font-size="11" fill="#64748b" font-family="JetBrains Mono,monospace">℃</text>
+
+          <!-- tick 27.5 凝固點 -->
+          <line x1="347" y1="58" x2="347" y2="76" stroke="#1d4ed8" stroke-width="1.8"/>
+          <text x="347" y="86" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1d4ed8" font-family="JetBrains Mono,monospace">27.5</text>
+          <text x="347" y="97" text-anchor="middle" font-size="9" fill="#1d4ed8" font-family="Noto Sans TC,sans-serif">凝固點</text>
+
+          <!-- tick 32 軟化點 -->
+          <line x1="453" y1="58" x2="453" y2="76" stroke="#b45309" stroke-width="1.8"/>
+          <text x="453" y="86" text-anchor="middle" font-size="11.5" font-weight="700" fill="#b45309" font-family="JetBrains Mono,monospace">32</text>
+          <text x="453" y="97" text-anchor="middle" font-size="9" fill="#b45309" font-family="Noto Sans TC,sans-serif">軟化點</text>
+
+          <!-- tick 34 熔點 ★ -->
+          <line x1="500" y1="54" x2="500" y2="76" stroke="#b91c1c" stroke-width="2.2"/>
+          <text x="500" y="86" text-anchor="middle" font-size="12" font-weight="700" fill="#b91c1c" font-family="JetBrains Mono,monospace">34</text>
+          <text x="500" y="97" text-anchor="middle" font-size="9" fill="#b91c1c" font-family="Noto Sans TC,sans-serif">熔點 ★</text>
+
+          <!-- annotation above: 超過此處會出問題 -->
+          <text x="535" y="28" text-anchor="middle" font-size="8.5" fill="#b91c1c" font-weight="700" font-family="Noto Sans TC,sans-serif">超過此處 → 種晶破壞！</text>
+          <line x1="500" y1="35" x2="500" y2="31" stroke="#b91c1c" stroke-width="1" stroke-dasharray="2,2"/>
+        </svg>
+      </div>
+
+      <!-- ══════════════════════════════════
+           DIAGRAM 2 — 晶型轉換流程
+           ══════════════════════════════════ -->
+      <div style="background:#fff;border:1.5px solid var(--border);border-radius:10px;padding:1.1rem 1.2rem 1.2rem;margin:.7rem 0">
+        <div style="font-size:.72rem;font-weight:700;color:var(--text-light);letter-spacing:.07em;text-transform:uppercase;margin-bottom:.9rem">② 晶型轉換流程（左 = 最不安定 → 右 = 最安定）</div>
+        <svg viewBox="0 0 680 155" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block">
+          <defs>
+            <marker id="m-fwd" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+              <path d="M0,1.5 L8,5 L0,8.5 Z" fill="#475569"/>
+            </marker>
+            <marker id="m-heat" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+              <path d="M0,1.5 L8,5 L0,8.5 Z" fill="#b91c1c"/>
+            </marker>
+          </defs>
+
+          <!-- node width=120, gap=40
+               γ:  x=10..130   cx=70
+               α:  x=170..290  cx=230
+               β': x=330..450  cx=390
+               β:  x=490..650  cx=570  (wider, more info)
+               nodes top y=18, height=116
+          -->
+
+          <!-- ─── γ ─── -->
+          <rect x="10" y="18" width="120" height="116" rx="10" fill="#fef2f2" stroke="#ef4444" stroke-width="2"/>
+          <text x="70" y="50" text-anchor="middle" font-size="26" font-weight="700" fill="#b91c1c" font-family="JetBrains Mono,monospace">γ</text>
+          <line x1="20" y1="58" x2="120" y2="58" stroke="#fca5a5" stroke-width="1"/>
+          <text x="70" y="73" text-anchor="middle" font-size="10.5" fill="#991b1b" font-family="JetBrains Mono,monospace">熔點 18℃</text>
+          <text x="70" y="89" text-anchor="middle" font-size="9.5" fill="#7f1d1d" font-family="Noto Sans TC,sans-serif">最不安定</text>
+          <text x="70" y="105" text-anchor="middle" font-size="9" fill="#dc2626" font-family="Noto Sans TC,sans-serif">先析出的</text>
+          <text x="70" y="120" text-anchor="middle" font-size="8.5" fill="#b91c1c" font-family="Noto Sans TC,sans-serif">室溫不能固化</text>
+
+          <!-- ─── α ─── -->
+          <rect x="170" y="18" width="120" height="116" rx="10" fill="#fff7ed" stroke="#f97316" stroke-width="1.8"/>
+          <text x="230" y="50" text-anchor="middle" font-size="26" font-weight="700" fill="#ea580c" font-family="JetBrains Mono,monospace">α</text>
+          <line x1="180" y1="58" x2="280" y2="58" stroke="#fdba74" stroke-width="1"/>
+          <text x="230" y="73" text-anchor="middle" font-size="10.5" fill="#9a3412" font-family="JetBrains Mono,monospace">熔點 22℃</text>
+          <text x="230" y="89" text-anchor="middle" font-size="9.5" fill="#7c2d12" font-family="Noto Sans TC,sans-serif">亞穩定</text>
+          <text x="230" y="105" text-anchor="middle" font-size="9.5" font-weight="700" fill="#c2410c" font-family="JetBrains Mono,monospace">凝固點≈20℃★</text>
+          <text x="230" y="120" text-anchor="middle" font-size="8.5" fill="#9a3412" font-family="Noto Sans TC,sans-serif">metastable form</text>
+
+          <!-- ─── β' ─── -->
+          <rect x="330" y="18" width="120" height="116" rx="10" fill="#fefce8" stroke="#eab308" stroke-width="1.8"/>
+          <text x="390" y="49" text-anchor="middle" font-size="24" font-weight="700" fill="#a16207" font-family="JetBrains Mono,monospace">β'</text>
+          <line x1="340" y1="58" x2="440" y2="58" stroke="#fde047" stroke-width="1"/>
+          <text x="390" y="73" text-anchor="middle" font-size="10.5" fill="#854d0e" font-family="JetBrains Mono,monospace">熔點 27℃</text>
+          <text x="390" y="89" text-anchor="middle" font-size="9.5" fill="#713f12" font-family="Noto Sans TC,sans-serif">不安定</text>
+
+          <!-- ─── β ─── -->
+          <rect x="490" y="10" width="180" height="132" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="2.5"/>
+          <text x="580" y="46" text-anchor="middle" font-size="28" font-weight="700" fill="#14532d" font-family="JetBrains Mono,monospace">β</text>
+          <line x1="502" y1="55" x2="658" y2="55" stroke="#86efac" stroke-width="1"/>
+          <text x="580" y="71" text-anchor="middle" font-size="10.5" fill="#15803d" font-family="JetBrains Mono,monospace">熔點 34℃</text>
+          <text x="580" y="87" text-anchor="middle" font-size="9.5" fill="#14532d" font-family="Noto Sans TC,sans-serif">最安定 ✓</text>
+          <text x="580" y="103" text-anchor="middle" font-size="10" font-weight="700" fill="#166534" font-family="JetBrains Mono,monospace">凝固點 27.5℃</text>
+          <text x="580" y="119" text-anchor="middle" font-size="9" fill="#15803d" font-family="Noto Sans TC,sans-serif">熔合法目標</text>
+          <text x="580" y="133" text-anchor="middle" font-size="8.5" fill="#166534" font-family="Noto Sans TC,sans-serif">宜維持 34–35℃ 製備</text>
+
+          <!-- ─── 靜置箭頭（節點中線 y=76） ─── -->
+          <line x1="134" y1="76" x2="165" y2="76" stroke="#475569" stroke-width="2.2" marker-end="url(#m-fwd)"/>
+          <text x="149" y="68" text-anchor="middle" font-size="9.5" fill="#334155" font-family="Noto Sans TC,sans-serif">靜置</text>
+
+          <line x1="294" y1="76" x2="325" y2="76" stroke="#475569" stroke-width="2.2" marker-end="url(#m-fwd)"/>
+          <text x="309" y="68" text-anchor="middle" font-size="9.5" fill="#334155" font-family="Noto Sans TC,sans-serif">靜置</text>
+
+          <line x1="454" y1="76" x2="485" y2="76" stroke="#475569" stroke-width="2.2" marker-end="url(#m-fwd)"/>
+          <text x="469" y="65" text-anchor="middle" font-size="9.5" fill="#334155" font-family="Noto Sans TC,sans-serif">靜置數天</text>
+          <text x="469" y="77" text-anchor="middle" font-size="8.5" fill="#64748b" font-family="Noto Sans TC,sans-serif">20℃以下</text>
+
+          <!-- ─── 加熱弧 β→γ ─── -->
+          <path d="M580,144 C580,155 70,155 70,136" fill="none" stroke="#b91c1c" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#m-heat)"/>
+        </svg>
+        <!-- 加熱說明放SVG外，正常文字渲染 -->
+        <div style="text-align:center;font-size:.82rem;font-weight:700;color:#b91c1c;margin-top:.4rem;padding-top:.45rem;border-top:1px dashed #fca5a5">
+          ↑ 加熱超過熔點 → β 種晶被破壞，冷卻後先析出 γ（最不安定）
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════
+           考點整理表
+           ══════════════════════════════════ -->
+      <div style="border:1.5px solid var(--border);border-radius:9px;overflow:hidden;margin:.7rem 0">
+        <div style="background:var(--crimson);color:#fff;padding:.4rem .9rem;font-size:.82rem;font-weight:700">⭐ 晶型考點整理</div>
+        <div style="overflow-x:auto">
+          <table style="margin:0">
+            <tr>
+              <th style="background:#fef2f2;color:#991b1b;width:14%">晶型</th>
+              <th style="background:#fef2f2;color:#991b1b;width:14%">穩定性</th>
+              <th style="background:#fef2f2;color:#991b1b;width:14%">熔點</th>
+              <th style="background:#fef2f2;color:#991b1b;width:14%">凝固點</th>
+              <th style="background:#fef2f2;color:#991b1b">考點說明</th>
+            </tr>
+            <tr>
+              <td style="font-family:'JetBrains Mono',monospace;font-weight:700;color:#b91c1c;font-size:1rem">γ</td>
+              <td><span style="background:#fecaca;color:#7f1d1d;border-radius:4px;padding:.05rem .4rem;font-size:.78rem;font-weight:700">最不安定</span></td>
+              <td style="font-weight:700;font-family:'JetBrains Mono',monospace">18℃</td>
+              <td>—</td>
+              <td style="font-size:.82rem">加熱超過熔點後冷卻，<strong>第一個出現</strong>的晶型；室溫不易凝固</td>
+            </tr>
+            <tr>
+              <td style="font-family:'JetBrains Mono',monospace;font-weight:700;color:#ea580c;font-size:1rem">α</td>
+              <td><span style="background:#fed7aa;color:#7c2d12;border-radius:4px;padding:.05rem .4rem;font-size:.78rem;font-weight:700">亞穩定</span></td>
+              <td style="font-weight:700;font-family:'JetBrains Mono',monospace">22℃</td>
+              <td style="font-weight:700;color:#c2410c;font-family:'JetBrains Mono',monospace;background:#fff7ed">≈ 20℃ ★</td>
+              <td style="font-size:.82rem"><strong>metastable form</strong>；室溫不能固化；凝固點約 20℃（常考！）</td>
+            </tr>
+            <tr>
+              <td style="font-family:'JetBrains Mono',monospace;font-weight:700;color:#a16207;font-size:1rem">β'</td>
+              <td><span style="background:#fef08a;color:#713f12;border-radius:4px;padding:.05rem .4rem;font-size:.78rem;font-weight:700">不安定</span></td>
+              <td style="font-weight:700;font-family:'JetBrains Mono',monospace">27℃</td>
+              <td>—</td>
+              <td style="font-size:.82rem">靜置後由 α 轉換而來</td>
+            </tr>
+            <tr>
+              <td style="font-family:'JetBrains Mono',monospace;font-weight:700;color:#15803d;font-size:1.1rem">β</td>
+              <td><span style="background:#bbf7d0;color:#14532d;border-radius:4px;padding:.05rem .4rem;font-size:.78rem;font-weight:700">最安定 ✓</span></td>
+              <td style="font-weight:700;font-family:'JetBrains Mono',monospace;background:#f0fdf4">34℃ ★</td>
+              <td style="font-weight:700;font-family:'JetBrains Mono',monospace;background:#f0fdf4">27.5℃ ★</td>
+              <td style="font-size:.82rem">正常室溫下的安定形式；<strong>熔合法目標晶型</strong>；熔合法宜維持 <strong>34–35℃</strong></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="sub-title">降低可可脂熔點的物質 → 需加硬化劑</div>
+      <div class="warn-box">
+        <div class="lbl">⚠️ 降低可可脂熔點的物質</div>
+        <span class="drug">精油 (volatile oils)</span>、<span class="drug">木溜油 (creosote)</span>、<span class="drug">酚類 (phenols)</span>、<span class="drug">水合三氯乙醛 (chloral hydrate)</span> → 熔點太低，無法製成固體栓劑<br><br>
+        ▶ 解決：加固化劑（硬化劑）<br>
+        &nbsp;&nbsp;&nbsp;• <span class="hl-y">鯨蠟 (cetyl ester wax)：約 20%</span><br>
+        &nbsp;&nbsp;&nbsp;• <span class="hl-y">蜂蠟 (beeswax)：約 4%</span><br>
+        &nbsp;&nbsp;&nbsp;• 熔合法製備時可加少量<strong>硬脂酸鋁 (aluminum stearate)</strong>
+      </div>
+      <div id="q-112-1-19"></div>
+      <div id="q-109-2-22"></div>
+      <div id="q-109-2-21"></div>
+      <div id="q-108-2-22"></div>
+      <div id="q-107-1-21"></div>
+      <div id="q-105-2-21"></div>
+      <div id="q-103-1-18"></div>
+      <div id="q-102-1-30"></div>
+      <div id="q-100-2-21"></div>
+    </div>
+
+    <!-- 甘油明膠 -->
+    <div class="subsection">
+      <div class="subsection-title">3.4 甘油明膠（Glycerinated Gelatin）</div>
+
+      <div class="exampt"><strong>考點：甘油 70%、明膠 20%（非 50%！）、藥品 10%。製備法只有熔合法！陰道栓劑常用基劑。</strong></div>
+
+      <!-- Two-column: composition card + key facts -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin:.7rem 0">
+
+        <!-- Composition card -->
+        <div class="comp-card" style="margin:0">
+          <div class="comp-card-header">🧪 甘油明膠栓劑組成（ChP）</div>
+          <div class="comp-card-body">
+            <div class="comp-row">
+              <span class="comp-pct" style="font-size:1.4rem">70%</span>
+              <div class="comp-bar-wrap"><div class="comp-bar" style="width:70%;background:#c9962a"></div></div>
+              <div>
+                <div style="font-weight:700;font-size:.84rem">甘油</div>
+                <div class="comp-en">Glycerin / Glycerol</div>
+                <div style="font-size:.73rem;color:var(--text-light)">吸濕性，脫水效應，刺激排便</div>
+              </div>
+            </div>
+            <div class="comp-row">
+              <span class="comp-pct" style="font-size:1.4rem">20%</span>
+              <div class="comp-bar-wrap"><div class="comp-bar" style="width:20%;background:#8b1a1a"></div></div>
+              <div>
+                <div style="font-weight:700;font-size:.84rem">明膠顆粒</div>
+                <div class="comp-en">Gelatin granules</div>
+                <div style="font-size:.73rem;color:var(--text-light)">凝固劑 (gelling agent)</div>
+              </div>
+            </div>
+            <div class="comp-row">
+              <span class="comp-pct" style="font-size:1.4rem">10%</span>
+              <div class="comp-bar-wrap"><div class="comp-bar" style="width:10%;background:#5c7a3a"></div></div>
+              <div>
+                <div style="font-weight:700;font-size:.84rem">藥品 + 蒸餾水</div>
+                <div class="comp-en">Drug + Purified water</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Key facts card -->
+        <div style="border:1.5px solid var(--border);border-radius:9px;overflow:hidden;font-size:.82rem">
+          <div style="background:var(--crimson);color:#fff;padding:.4rem .85rem;font-weight:700;font-size:.83rem">📋 重要考點一覽</div>
+          <div style="padding:.65rem .85rem;background:#fff;display:flex;flex-direction:column;gap:.45rem">
+            <div style="display:flex;align-items:baseline;gap:.4rem">
+              <span style="background:#8b1a1a;color:#fff;font-size:.68rem;padding:.08rem .35rem;border-radius:3px;flex-shrink:0">製備法</span>
+              <span><strong>熔合法只</strong>（ChP）；避免混入空氣</span>
+            </div>
+            <div style="display:flex;align-items:baseline;gap:.4rem">
+              <span style="background:#8b1a1a;color:#fff;font-size:.68rem;padding:.08rem .35rem;border-radius:3px;flex-shrink:0">容器</span>
+              <span><strong>緊密容器</strong> <span class="en">(tight container)</span></span>
+            </div>
+            <div style="display:flex;align-items:baseline;gap:.4rem">
+              <span style="background:#8b1a1a;color:#fff;font-size:.68rem;padding:.08rem .35rem;border-radius:3px;flex-shrink:0">溫度</span>
+              <span><strong>35℃ 以下</strong></span>
+            </div>
+            <div style="display:flex;align-items:baseline;gap:.4rem">
+              <span style="background:#8b1a1a;color:#fff;font-size:.68rem;padding:.08rem .35rem;border-radius:3px;flex-shrink:0">適用</span>
+              <span><strong>陰道栓劑</strong>（比可可脂更常用）</span>
+            </div>
+            <div style="display:flex;align-items:baseline;gap:.4rem">
+              <span style="background:#8b1a1a;color:#fff;font-size:.68rem;padding:.08rem .35rem;border-radius:3px;flex-shrink:0">使用前</span>
+              <span>可<strong>用水濕潤</strong>減少刺激</span>
+            </div>
+            <div style="display:flex;align-items:baseline;gap:.4rem">
+              <span style="background:#c62828;color:#fff;font-size:.68rem;padding:.08rem .35rem;border-radius:3px;flex-shrink:0">⚠️ 陷阱</span>
+              <span>明膠 = <strong>20%</strong>（非 50%！）</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 注意！甘油明膠 vs 甘油明膠劑 -->
+      <div class="warn-box" style="margin-top:.8rem">
+        <div class="lbl">⚠️ 易混淆：甘油明膠「栓劑」vs 甘油明膠「劑」（Glycerinated Gelatin）</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;font-size:.82rem;margin-top:.4rem">
+          <div style="border:1px solid #e65100;border-radius:6px;padding:.5rem .7rem;background:#fff8f5">
+            <div style="font-weight:700;color:#e65100;margin-bottom:.3rem">甘油明膠栓劑（ChP 栓劑）</div>
+            甘油 <strong>70%</strong>、明膠 <strong>20%</strong>、藥品+水 <strong>10%</strong><br>
+            <span style="font-size:.73rem;color:#6b7280">→ 製備肛門/陰道/尿道栓劑</span>
+          </div>
+          <div style="border:1px solid #c9962a;border-radius:6px;padding:.5rem .7rem;background:#fffdf5">
+            <div style="font-weight:700;color:#c9962a;margin-bottom:.3rem">甘油明膠劑（基質原料）</div>
+            甘油 <strong>40%</strong>、明膠 <strong>15%</strong>、水 <strong>35%</strong>、藥物 <strong>10%</strong><br>
+            <span style="font-size:.73rem;color:#6b7280">→ 常考！與栓劑組成不同，勿混淆</span>
+          </div>
+        </div>
+      </div>
+
+      <ul style="margin-top:.7rem">
+        <li>較可可脂更慢軟化，可與生理液混合，藥物<strong>釋放較慢</strong></li>
+        <li>甘油具<strong>吸濕性（hygroscopic）</strong>，塞入後<strong>脫水效應（dehydrating effect）</strong>刺激組織</li>
+        <li>尿道栓劑比可可脂基劑更容易塞入（可可脂太脆、體溫快速軟化）</li>
+      </ul>
+    </div>
+
+    <!-- PEG -->
+    <div class="subsection">
+      <div class="subsection-title">3.5 聚乙二醇（Polyethylene Glycol, PEG / CARBOWAX™）</div>
+
+      <div class="exampt"><strong>考點：PEG 分子量判斷 → 1000 以下為液體，1000 以上為白色蠟狀固體！配伍禁忌很常考！</strong></div>
+
+      <div class="sub-title">分子量與形態</div>
+      <div class="table-wrap">
+        <table>
+          <tr><th>分子量</th><th>形態</th><th>熔點 ℃</th></tr>
+          <tr><td>PEG 300、400、600</td><td>澄明無色<strong>液體</strong></td><td class="td-num">-15–18（液體）</td></tr>
+          <tr><td><span class="hl-g">PEG 1000</span></td><td><span class="hl-g">蠟狀白色固體</span>（臨界點）</td><td class="td-num">37–40</td></tr>
+          <tr><td>PEG 3350</td><td>蠟狀白色固體</td><td class="td-num">54–58</td></tr>
+          <tr><td>PEG 8000</td><td>蠟狀白色固體</td><td class="td-num">60–63</td></tr>
+        </table>
+      </div>
+
+      <div class="sub-title">PEG 優勢</div>
+      <ul>
+        <li>熔點 37–63℃（> 體溫），遇體溫<strong>不易熔化，慢慢溶解</strong>在體液中 → 藥物緩慢釋放</li>
+        <li>不需冷藏；固體性質，指尖不會熔化</li>
+        <li>不易被微生物污染</li>
+        <li>若 PEG 類栓劑水量 &lt; 20%，使用前必須<strong>浸水</strong>，以減少刺激黏膜</li>
+      </ul>
+
+      <div class="warn-box">
+        <div class="lbl">⚠️ PEG 配伍禁忌（常考）</div>
+        <ul>
+          <li>與以下藥品呈<strong>禁忌 (incompatible)</strong>：<br>
+            <span class="drug">benzocaine 苯佐卡因</span>、<span class="drug">iodochlorhydroxyquine</span>、<span class="drug">sulfonamides 磺胺類</span>、<span class="drug">aspirin 阿斯匹林</span>、<span class="drug">ichthammol</span>、silver salts 銀鹽、tannic acids 鞣酸</li>
+          <li>與以下藥品易有<strong>結晶析出 (crystal precipitation)</strong>：<br>
+            <span class="drug">sodium barbital</span>、<span class="drug">salicylic acid 水楊酸</span>、<span class="drug">camphor 樟腦</span></li>
+          <li>會分解 <span class="hl-p">polystyrene (PS) 聚苯乙烯</span>塑膠容器 → 建議使用<strong>玻璃或紙板容器</strong></li>
+          <li>會降低某些抗生素抗菌活性，特別是<strong>青黴素 <span class="en">(Penicillin)</span></strong>和<strong>桿菌肽 <span class="en">(bacitracin)</span></strong></li>
+        </ul>
+      </div>
+      <div id="q-103-2-19"></div>
+      <div id="q-103-1-20"></div>
+      <div id="q-101-1-20"></div>
+      <div id="q-104-2-4"></div>
+      <div id="q-104-1-21"></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============================
+     SECTION 4
+     ============================ -->
+<div class="section" id="s4">
+  <div class="section-header" onclick="toggleSec(this)">
+    <span class="section-num">04</span>
+    <span class="section-title">中華藥典規定</span>
+    <span class="section-toggle">▼</span>
+  </div>
+  <div class="section-body">
+
+    <div class="subsection">
+      <div class="subsection-title">4.1 一般定義與常用基劑</div>
+      <ul>
+        <li>常用基劑：<strong>可可脂、甘油明膠、氫化植物油 <span class="en">(hydrogenated vegetable oil)</span>、各種聚乙二醇之混合液，及聚乙二醇之脂肪酸酯</strong></li>
+        <li>可可脂宜供製作<strong>內痔栓劑</strong>（抑制刺激）；體溫迅速熔化，但<span class="hl-p">不能與體液互溶</span>，不易將脂溶性藥品釋出</li>
+        <li><span class="hl-y">聚乙二醇為製備含防腐劑之藥品製劑最適當基劑</span></li>
+      </ul>
+      <div id="q-111-2-17"></div>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-title">4.2 溶離試驗裝置</div>
+      <div class="exampt"><strong>考點：中華藥典 = 裝置 IV（川流槽式法）；USP = Apparatus 1 & 2</strong></div>
+      <div class="table-wrap">
+        <table>
+          <tr><th>藥典</th><th>裝置</th></tr>
+          <tr><td><strong>中華藥典（ChP）</strong></td><td><span class="hl-y">裝置 IV（川流槽式法）</span>：適合多劑量劑型、軟明膠膠囊、<strong>栓劑</strong>、貯庫型產品及懸浮型延釋劑型</td></tr>
+          <tr><td><strong>USP</strong></td><td>Apparatus 1（轉籃法）、Apparatus 2（槳葉法）</td></tr>
+        </table>
+      </div>
+      <div id="q-113-2-17"></div>
+      <div id="q-110-2-15"></div>
+    </div>
+
+    <!-- ChP 可可脂栓劑 -->
+    <div class="subsection">
+      <div class="subsection-title">4.3 中華藥典——可可脂栓劑 ⭐</div>
+      <div class="exampt"><strong>考點：密閉容器 30℃！成人肛門栓劑圓錐形 2g！陰道栓劑球/卵形 5g！</strong></div>
+
+      <div class="table-wrap">
+        <table>
+          <tr><th>項目</th><th>規定</th></tr>
+          <tr><td>成人肛門栓劑</td><td><span style="display:inline-block;background:#fff8e1;border:1.5px solid #f9a825;border-radius:5px;padding:.1rem .55rem;font-weight:700;font-size:.85rem">圓錐形 <span class="en">(cone-shaped)</span>，重約 2 g</span></td></tr>
+          <tr><td>陰道栓劑</td><td><span style="display:inline-block;background:#e8f5e9;border:1.5px solid #81c784;border-radius:5px;padding:.1rem .55rem;font-weight:700;font-size:.85rem">球形或卵形 <span class="en">(spherical / ovoid)</span>，重約 5 g</span></td></tr>
+          <tr><td>硬化劑（含軟化物質時）</td><td>含<span class="drug">水合三氯乙醛 (chloral hydrate)</span>、酚類 <span class="en">(phenols)</span> 等 → 加<strong>鯨蠟 <span class="en">(cetyl ester wax)</span> 或適量硬化劑</strong>校正</td></tr>
+          <tr><td>貯藏</td><td><span class="hl-y">密閉容器 (well-closed container)，30℃ 以下</span></td></tr>
+        </table>
+      </div>
+
+      <div class="sub-title">製備法（中華藥典 3 種）</div>
+      <div class="table-wrap">
+        <table>
+          <tr><th>方法</th><th>步驟</th></tr>
+          <tr>
+            <td><strong>捏合法 (Hand rolling)</strong></td>
+            <td>
+              <div class="steps">
+                <div class="step-box">可可脂固體</div><div class="step-arr">→</div>
+                <div class="step-box">藥品研合</div><div class="step-arr">→</div>
+                <div class="step-box">均勻軟塊</div><div class="step-arr">→</div>
+                <div class="step-box">手捏成形</div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><strong>壓製法 (Compression)</strong></td>
+            <td>
+              <div class="steps">
+                <div class="step-box">可可脂固體</div><div class="step-arr">→</div>
+                <div class="step-box">藥品研合</div><div class="step-arr">→</div>
+                <div class="step-box">均勻軟塊</div><div class="step-arr">→</div>
+                <div class="step-box">入模、壓製成形</div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><strong>熔合法 (Fusion/Molding)</strong></td>
+            <td>
+              <div class="steps">
+                <div class="step-box">可可脂熔化（液體）</div><div class="step-arr">→</div>
+                <div class="step-box">加入藥品混勻</div><div class="step-arr">→</div>
+                <div class="step-box">倒入模（內壁需塗潤滑油）</div><div class="step-arr">→</div>
+                <div class="step-box">冷卻成形</div>
+              </div>
+              若藥物導致熔點下降 → 可添加少量<strong>硬脂酸鋁 <span class="en">(aluminum stearate)</span></strong>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div id="q-104-1-19"></div>
+      <div id="q-108-1-17"></div>
+      <div id="q-103-1-17a"></div>
+      <div id="q-102-2-29"></div>
+    </div>
+
+    <!-- ChP 甘油明膠 -->
+    <div class="subsection">
+      <div class="subsection-title">4.4 中華藥典——甘油明膠栓劑</div>
+      <div class="exampt"><strong>考點：只有熔合法！緊密容器 35℃！明膠 20%（非 50%！）甘油 70%。</strong></div>
+
+      <div class="comp-card">
+        <div class="comp-card-header">🧪 甘油明膠栓劑組成（熔合法製備）</div>
+        <div class="comp-card-body">
+          <div class="comp-row">
+            <span class="comp-pct" style="font-size:1.4rem">70%</span>
+            <div class="comp-bar-wrap"><div class="comp-bar" style="width:70%;background:#c9962a"></div></div>
+            <div><div style="font-weight:700;font-size:.84rem">甘油</div><span class="comp-en">Glycerin / Glycerol</span></div>
+          </div>
+          <div class="comp-row">
+            <span class="comp-pct" style="font-size:1.4rem;color:#c62828">20%</span>
+            <div class="comp-bar-wrap"><div class="comp-bar" style="width:20%;background:#8b1a1a"></div></div>
+            <div>
+              <div style="font-weight:700;font-size:.84rem">明膠顆粒 <span style="color:#c62828;font-size:.75rem">← 考點！非 50%</span></div>
+              <span class="comp-en">Gelatin granules（凝固劑）</span>
+            </div>
+          </div>
+          <div class="comp-row">
+            <span class="comp-pct" style="font-size:1.4rem">10%</span>
+            <div class="comp-bar-wrap"><div class="comp-bar" style="width:10%;background:#4a7c3f"></div></div>
+            <div><div style="font-weight:700;font-size:.84rem">藥品</div><span class="comp-en">Drug（+ 蒸餾水 Purified water）</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="table-wrap" style="margin-top:.75rem">
+        <table>
+          <tr><th>項目</th><th>規定</th></tr>
+          <tr><td>製備法</td><td><span style="background:#fff8e1;border:1px solid #f9a825;border-radius:4px;padding:.05rem .4rem;font-weight:700">熔合法（唯一）</span>；小心混合，<strong>避免混入空氣</strong></td></tr>
+          <tr><td>容器</td><td><span style="background:#e8f5e9;border:1px solid #81c784;border-radius:4px;padding:.05rem .4rem;font-weight:700">緊密容器 (tight container)</span></td></tr>
+          <tr><td>溫度</td><td><strong>35℃ 以下</strong>（比可可脂多 5℃）</td></tr>
+          <tr><td>適用</td><td>常製備<strong>陰道栓劑</strong>（較可可脂更常用）</td></tr>
+          <tr><td>使用前</td><td>可用<strong>水濕潤</strong>後再使用，以減少刺激</td></tr>
+          <tr><td>潤滑劑</td><td>脫模需要<strong>礦油 (mineral oil)</strong>（甘油明膠不收縮，需潤滑劑）</td></tr>
+        </table>
+      </div>
+      <div id="q-113-2-16"></div>
+      <div id="q-103-2-23"></div>
+    </div>
+
+    <!-- ChP PEG -->
+    <div class="subsection">
+      <div class="subsection-title">4.5 中華藥典——聚乙二醇栓劑</div>
+      <div class="table-wrap">
+        <table>
+          <tr><th>項目</th><th>規定</th></tr>
+          <tr><td>製備法</td><td>熔合法</td></tr>
+          <tr><td>釋藥機制</td><td>取決於<strong>溶解（非融化）</strong></td></tr>
+          <tr><td>貯藏</td><td><span class="hl-g">毋需冷凍貯存</span></td></tr>
+          <tr><td>特點</td><td>高濃度高分子量 PEG 可能延長溶解時間；製備含防腐劑藥品之<strong>最適當基劑</strong></td></tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- 三種比較 -->
+    <div class="subsection">
+      <div class="subsection-title">4.6 三種栓劑貯藏比較 ⭐ 必考</div>
+      <div class="exampt"><strong>考點：容器名稱 + 溫度組合，一定要記清楚！</strong><br>可可脂 = <span class="hl-y">密閉</span> 30℃；甘油明膠 = <span class="hl-g">緊密</span> 35℃；PEG = 毋需冷凍</div>
+      <div class="comp-card">
+        <div class="comp-card-header">📦 三種栓劑貯藏一覽</div>
+        <div class="comp-card-body">
+          <div class="table-wrap" style="margin:0">
+            <table>
+              <tr><th>栓劑</th><th>製備法</th><th>容器</th><th>溫度</th></tr>
+              <tr>
+                <td><strong>可可脂栓劑</strong><br><span class="en">Cocoa butter suppository</span></td>
+                <td>捏合法、壓製法、熔合法</td>
+                <td><span class="hl-y">密閉容器 <span class="en">(well-closed container)</span></span></td>
+                <td class="td-num"><span class="hl-y">30℃ 以下</span><br>（最好 2–8℃ 冷藏）</td>
+              </tr>
+              <tr>
+                <td><strong>甘油明膠栓劑</strong><br><span class="en">Glycerinated gelatin suppository</span></td>
+                <td>熔合法</td>
+                <td><span class="hl-g">緊密容器 <span class="en">(tight container)</span></span></td>
+                <td class="td-num"><span class="hl-g">35℃ 以下</span></td>
+              </tr>
+              <tr>
+                <td><strong>聚乙二醇栓劑</strong><br><span class="en">PEG suppository</span></td>
+                <td>熔合法</td>
+                <td>—</td>
+                <td class="td-num">毋需冷凍</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="info-box">
+        <div class="lbl">密閉 vs 緊密容器</div>
+        <strong>密閉容器 (well-closed)</strong>：不易混入外界固體<br>
+        <strong>緊密容器 (tight)</strong>：不易混入液體、固體或蒸氣，且開啟後可<strong>重行密閉</strong>
+      </div>
+      <div id="q-110-1-15"></div>
+      <div id="q-109-2-20"></div>
+      <div id="q-102-1-29"></div>
+      <div id="q-101-1-9"></div>
+      <div id="q-108-1-21a"></div>
+      <div id="q-107-2-21"></div>
+      <div id="q-107-2-17b"></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============================
+     SECTION 5
+     ============================ -->
+<div class="section" id="s5">
+  <div class="section-header" onclick="toggleSec(this)">
+    <span class="section-num">05</span>
+    <span class="section-title">配方變因</span>
+    <span class="section-toggle">▼</span>
+  </div>
+  <div class="section-body">
+
+    <div class="subsection">
+      <div class="subsection-title">5.1 物理狀態、粒子大小、溶解度</div>
+      <div class="table-wrap">
+        <table>
+          <tr><th>變因</th><th>說明</th></tr>
+          <tr><td><strong>物理狀態</strong><br><span class="en">Physical State</span></td><td>固體藥品：粒子大小重要（不溶性藥物尤其）；液體藥品：需形成乳劑或加增稠劑；半固體：與基劑混合前先與增稠劑混和</td></tr>
+          <tr><td><strong>粒子大小</strong><br><span class="en">Particle Size</span></td><td>水溶性佳：粒子大小影響小；水溶性差：減小粒子大小可提升表面積增加溶離速率（但粒子太細：增加基劑黏度，流動困難）</td></tr>
+          <tr><td><strong>溶解度</strong><br><span class="en">Solubility</span></td><td>溶解度佳：均質性好，但親和性太大→延遲釋放；溶解度差：形成「乳劑」或「懸液劑」，需持續攪拌維持均質</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-title">5.2 黏度、脆度、體積收縮</div>
+      <div class="table-wrap">
+        <table>
+          <tr><th>變因</th><th>說明</th></tr>
+          <tr>
+            <td><strong>黏度</strong><br><span class="en">Viscosity</span></td>
+            <td>
+              基劑黏度低 → 可能需加助懸劑（如矽膠 <span class="en">silica gel</span>，25 mg/栓劑）確保藥物分散至固化<br>
+              基劑黏度高 → 藥物釋放速率可能緩慢（擴散速率較慢）
+            </td>
+          </tr>
+          <tr>
+            <td><strong>脆度</strong><br><span class="en">Brittleness</span></td>
+            <td>
+              非基劑材料超過 <strong>30%</strong> → 通常產生脆性<br>
+              合成脂肪基劑（高 stearate <span class="en">硬脂酸化合物</span>濃度或高度氫化）→ 比較脆<br>
+              急速冷卻也會引起破碎 → 確保模具溫度接近熔化基劑溫度可預防
+            </td>
+          </tr>
+          <tr>
+            <td><strong>體積收縮</strong><br><span class="en">Volume Contraction</span></td>
+            <td>
+              冷卻時熔化物體積收縮 → 後面產生洞（不宜）<br>
+              處理：① 熔化物接近凝固點再倒入模；② <strong>過量充填</strong>，冷卻後用刀片刮除過量
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-title">5.3 藥物釋放速率（Drug Release Rate）⭐ 常考</div>
+      <div class="exampt"><strong>考點：水溶性藥 + 油性基劑 = 最快！油溶性藥 + 油性基劑 = 最慢！</strong></div>
+      <div class="table-wrap">
+        <table>
+          <tr><th>藥品</th><th>基劑</th><th>釋放速率</th><th>原因</th></tr>
+          <tr><td>水溶性藥品 <span class="en">(water-soluble)</span></td><td>油性基劑（可可脂）<span class="en">(oily base)</span></td><td><span class="fast">最快（第 1）</span></td><td>水溶性藥品不溶於油，基劑熔化後藥品易釋出至水性體液</td></tr>
+          <tr><td>油溶性藥品 <span class="en">(oil-soluble)</span></td><td>水溶性基劑（甘油明膠、PEG）<span class="en">(water-miscible base)</span></td><td><span class="mid">中等（第 2）</span></td><td>擴散作用</td></tr>
+          <tr><td>水溶性藥品</td><td>水溶性基劑</td><td><span class="mid">中等（第 2）</span></td><td>擴散作用</td></tr>
+          <tr><td>油溶性藥品</td><td>油性基劑</td><td><span class="slow">最慢（第 3）</span></td><td>藥品與基劑親和性太大，延遲釋放</td></tr>
+        </table>
+      </div>
+      <div id="q-111-2-15"></div>
+      <div id="q-101-2-28"></div>
+      <div id="q-103-2-15"></div>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-title">5.4 特殊問題</div>
+      <ul>
+        <li>植物浸膏劑不易研入基劑：用小量熔化基劑研調使之濕潤</li>
+        <li>硬的結晶藥品：先粉碎微細化後研合，或用少量溶媒溶解後吸收於基劑</li>
+        <li>水溶性藥品需用油脂性基劑：用<strong>羊毛脂 <span class="en">(lanolin)</span></strong>吸收後併入</li>
+        <li>過量粉末研入油溶性基劑：先與<strong>礦油 <span class="en">(mineral oil)</span></strong>研合後再研入</li>
+        <li>過量粉末研入水溶性基劑（PEG）：提高<strong>低分子量 PEG</strong> 使用比例</li>
+        <li>揮發油或精油降低熔點：先以<strong>乳糖 <span class="en">(lactose)</span> 或碳酸鎂 <span class="en">(magnesium carbonate)</span></strong> 吸收後再研入基劑</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============================
+     SECTION 6
+     ============================ -->
+<div class="section" id="s6">
+  <div class="section-header" onclick="toggleSec(this)">
+    <span class="section-num">06</span>
+    <span class="section-title">栓劑的製備</span>
+    <span class="section-toggle">▼</span>
+  </div>
+  <div class="section-body">
+
+    <div class="subsection">
+      <div class="subsection-title">6.1 栓劑模（Suppository Molds）</div>
+      <div class="table-wrap">
+        <table>
+          <tr><th>項目</th><th>說明</th></tr>
+          <tr><td>模具材料</td><td>不鏽鋼、鋁、銅（黃銅）、塑膠（<span class="hl-p">玻璃不常見</span>）；鎳-銅合金製優於鋁製</td></tr>
+          <tr><td>潤滑劑需求</td><td>
+            可可脂（ChP）：需潤滑劑（內壁塗甘油）；Ansel's：不常需要<br>
+            甘油明膠：需<strong>礦油 <span class="en">(mineral oil)</span></strong>作潤滑劑<br>
+            PEG、Witepsol、Wecobee：<span class="hl-g">不需潤滑劑</span>（冷卻收縮可自行脫模）
+          </td></tr>
+          <tr><td>模具校正</td><td>不同基劑密度不同 → 必須校正每個栓劑模，確保每粒正確藥量</td></tr>
+        </table>
+      </div>
+      <div id="q-112-2-15"></div>
+      <div id="q-103-2-22"></div>
+      <div id="q-100-1-26"></div>
+    </div>
+
+    <!-- 計算 -->
+    <div class="subsection">
+      <div class="subsection-title">6.2 計算栓劑所需基劑——三種方法</div>
+      <div class="exampt"><strong>考點：三種計算法的名稱 + 各自的計算邏輯。密度因子法最常用於計算替代量。</strong></div>
+
+      <div class="sub-title">方法 1：劑量取代因子法（Dosage Replacement Factor Method）</div>
+      <div class="formula">
+        <div class="ftitle">公式（以可可脂為標準基劑，ƒ 值 = 1）</div>
+        ƒ = [100(E − G) / (G × X)] + 1<br><br>
+        ƒ = 劑量取代因子 (dosage replacement factor)<br>
+        E = 純基劑之栓劑重量 (g)<br>
+        G = 有效成分含 X% 之栓劑重量 (g)<br>
+        X = 有效成分百分比 (%)<br><br>
+        解 G = 含藥栓劑成品重量（即所求）
+      </div>
+      <div id="q-109-1-17"></div>
+
+      <div class="sub-title">方法 2：密度因子法（Density Factor Method）</div>
+      <div class="formula">
+        <div class="ftitle">公式</div>
+        DF = B / (A − C + B)<br><br>
+        A = 空白基劑平均重量 (g)<br>
+        B = 每粒栓劑中藥物重量 (g)<br>
+        C = 含藥栓劑的平均重量 (g)<br><br>
+        藥品之基劑取代值 = B / DF<br>
+        每粒基劑用量 = A − (B / DF)<br>
+        每粒栓劑總重 = 每粒基劑用量 + B
+      </div>
+      <div id="q-111-2-16"></div>
+      <div id="q-103-1-19"></div>
+      <div id="q-109-1-20"></div>
+
+      <div class="sub-title">方法 3：佔有體積法（Occupied Volume Method）</div>
+      <div class="formula">
+        <div class="ftitle">步驟（製備 N 粒）</div>
+        ① 每粒空白基劑重量 × N = 栓劑總量<br>
+        ② 密度比 = 藥品密度 / 基劑密度<br>
+        ③ 藥品取代基劑量 = 藥品總量 / 密度比<br>
+        ④ 所需基劑重量 = 栓劑總量 − 取代量<br>
+        ⑤ 活性藥物量 = 藥品/粒 × N
+      </div>
+      <div id="q-110-1-22"></div>
+      <div id="q-106-1-17"></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============================
+     SECTION 7
+     ============================ -->
+<div class="section" id="s7">
+  <div class="section-header" onclick="toggleSec(this)">
+    <span class="section-num">07</span>
+    <span class="section-title">品質管制</span>
+    <span class="section-toggle">▼</span>
+  </div>
+  <div class="section-body">
+
+    <div class="subsection">
+      <div class="subsection-title">7.1 包裝與貯藏</div>
+      <div class="table-wrap">
+        <table>
+          <tr><th>栓劑</th><th>包裝</th><th>貯藏溫度</th></tr>
+          <tr><td>甘油栓劑 <span class="en">(glycerin suppository)</span></td><td>緊密玻璃容器（防水分含量改變）</td><td>&lt; 25℃</td></tr>
+          <tr><td>甘油明膠栓劑</td><td>—</td><td>室溫（20–25℃）</td></tr>
+          <tr><td>可可脂栓劑</td><td>個別包裝或有隔間盒（防粘連）</td><td>&lt; 30℃，最好冷藏 2–8℃</td></tr>
+          <tr><td>含光敏感藥物</td><td>個別包裝於不透光材料（金屬箔）</td><td>—</td></tr>
+          <tr><td>PEG 栓劑</td><td>—</td><td>室溫（不需冷藏）</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-title">7.2 物理安定性變化</div>
+      <div class="table-wrap">
+        <table>
+          <tr><th>改變</th><th>原因</th><th>舉例</th></tr>
+          <tr><td>氣味</td><td>真菌污染</td><td>植物抽提物的栓劑</td></tr>
+          <tr><td>顏色</td><td>氧化褪色</td><td>Tartrazine 黃色水溶液的栓劑</td></tr>
+          <tr><td>形狀</td><td>貯藏時不正確溫度</td><td>精油的栓劑</td></tr>
+          <tr><td>表面（變白）</td><td>—</td><td>植物抽提物及 caffeine 基栓劑</td></tr>
+          <tr><td>重量</td><td>揮發物損失</td><td><span class="drug">camphor 樟腦</span>、<span class="drug">menthol 薄荷醇</span>等的栓劑</td></tr>
+        </table>
+      </div>
+      <div class="info-box">
+        <div class="lbl">微生物安定性</div>
+        大多栓劑配方<strong>不含防腐劑或抗氧化劑</strong>（主因不含水）；若含水配方，易滋生微生物，建議使用防腐劑。
+      </div>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-title">7.3 失效期</div>
+      <div class="exampt"><strong>考點：藥局調配 = Beyond-Use Date (BUD)，建議 6 個月（非 expiration date）</strong></div>
+      <div class="table-wrap">
+        <table>
+          <tr><th>類型</th><th>名稱</th><th>期限</th></tr>
+          <tr><td>藥局調配栓劑</td><td><span class="hl-y">Beyond-Use Date (BUD)</span></td><td><span class="hl-y">建議 6 個月</span>（剩餘 25%：24月 × 25%）；含水配方冷藏可用 <strong>14 天</strong></td></tr>
+          <tr><td>商用栓劑</td><td>Expiration Date (ED)</td><td>由安定性試驗決定；一般需冷藏</td></tr>
+        </table>
+      </div>
+      <div id="q-108-2-17"></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============================
+     SECTION 8
+     ============================ -->
+<div class="section" id="s8">
+  <div class="section-header" onclick="toggleSec(this)">
+    <span class="section-num">08</span>
+    <span class="section-title">劑型設計</span>
+    <span class="section-toggle">▼</span>
+  </div>
+  <div class="section-body">
+
+    <!-- 甘油栓劑 -->
+    <div class="subsection">
+      <div class="subsection-title">8.1 直腸栓劑——甘油栓劑 <span class="en">(Glycerin Suppositories)</span></div>
+
+      <div class="comp-card">
+        <div class="comp-card-header">🧪 甘油栓劑組成（總量 105 g）</div>
+        <div class="comp-card-body">
+          <div class="comp-row">
+            <span class="comp-pct">91 g</span>
+            <div class="comp-bar-wrap"><div class="comp-bar" style="width:87%;background:#c9962a"></div></div>
+            <span class="comp-name">甘油</span><span class="comp-en">Glycerin</span>
+            <span class="comp-note">吸濕性，脫水效應，刺激黏膜 → 緩瀉</span>
+          </div>
+          <div class="comp-row">
+            <span class="comp-pct">9 g</span>
+            <div class="comp-bar-wrap"><div class="comp-bar" style="width:9%;background:#8b1a1a"></div></div>
+            <span class="comp-name">硬脂酸鈉</span><span class="comp-en">Sodium Stearate（肥皂，固化劑）</span>
+            <span class="comp-note">促進緩瀉作用</span>
+          </div>
+          <div class="comp-row">
+            <span class="comp-pct">5 g</span>
+            <div class="comp-bar-wrap"><div class="comp-bar" style="width:5%;background:#4a7c3f"></div></div>
+            <span class="comp-name">純水</span><span class="comp-en">Purified Water</span>
+          </div>
+        </div>
+      </div>
+      <div class="steps">
+        <div class="step-box">甘油加熱至 50℃</div><div class="step-arr">→</div>
+        <div class="step-box">加硬脂鈉攪拌溶解</div><div class="step-arr">→</div>
+        <div class="step-box">加純水</div><div class="step-arr">→</div>
+        <div class="step-box">立即注入模</div><div class="step-arr">→</div>
+        <div class="step-box">冷卻固化</div>
+      </div>
+      <p>貯藏：緊密容器，<strong>25℃ 以下</strong>。</p>
+    </div>
+
+    <!-- 尿道栓劑 -->
+    <div class="subsection">
+      <div class="subsection-title">8.2 尿道栓劑 <span class="en">(Urethral Suppositories)</span></div>
+      <p>MUSE（<span class="drug">alprostadil 前列地爾</span>）：</p>
+      <ul>
+        <li>藥物懸浮在 <span class="drug">PEG 1450</span>，直徑 1.4 mm，長 3 mm 或 6 mm</li>
+        <li>供治療<strong>勃起功能不全 <span class="en">(erectile dysfunction)</span></strong></li>
+        <li>透明中空施藥器（聚丙烯 polypropylene）給藥，PEG 1450 溶解在體液後釋出藥物</li>
+      </ul>
+    </div>
+
+    <!-- 陰道栓劑 -->
+    <div class="subsection">
+      <div class="subsection-title">8.3 陰道栓劑 <span class="en">(Vaginal Inserts)</span></div>
+      <ul>
+        <li>常用治療：陰道滴蟲 <span class="en">(Trichomonas vaginalis)</span>、白色念珠菌 <span class="en">(Candida albicans)</span> 感染及避孕</li>
+        <li>抗真菌：<span class="drug">nystatin</span>、<span class="drug">clotrimazole</span>、<span class="drug">butoconazole nitrate</span>、<span class="drug">terconazole</span>、<span class="drug">miconazole</span></li>
+        <li>殺精子（避孕）：<span class="drug">nonoxynol-9</span></li>
+        <li>雌激素：<span class="drug">dienestrol</span>（恢復陰道黏膜）</li>
+        <li>常使用 PEG 合用，添加界面活性劑與防腐劑（<span class="drug">parabens 對羥基苯甲酸酯類</span>）</li>
+        <li>常緩衝至酸性 pH（約 4.5，與正常陰道相似）</li>
+      </ul>
+
+      <!-- Vaginal infection table -->
+      <div class="sub-title">陰道感染病原菌 × 用藥對照 ⭐</div>
+      <div class="exampt"><strong>114-2 新考點：miconazole nitrate 陰道栓劑 → 抑制念珠菌（Candida），即 Vulvovaginal candidiasis！</strong></div>
+      <div class="table-wrap">
+        <table>
+          <tr><th>病原菌 / 病症</th><th>類型</th><th>代表用藥</th></tr>
+          <tr>
+            <td><strong>Candida albicans</strong><br><span class="en">（白色念珠菌）→ Vulvovaginal candidiasis</span></td>
+            <td>真菌 <span class="en">(fungus)</span></td>
+            <td><span class="drug">miconazole</span>（Monistat 7）<br><span class="drug">nystatin</span>、<span class="drug">clotrimazole</span>、<span class="drug">terconazole</span></td>
+          </tr>
+          <tr>
+            <td><strong>Trichomonas vaginalis</strong><br><span class="en">（陰道滴蟲）→ Trichomoniasis</span></td>
+            <td>原蟲 <span class="en">(protozoa)</span></td>
+            <td><span class="drug">metronidazole</span></td>
+          </tr>
+          <tr>
+            <td><strong>Bacterial vaginosis</strong><br><span class="en">（細菌性陰道炎）</span></td>
+            <td>細菌 <span class="en">(bacteria)</span></td>
+            <td><span class="drug">clindamycin phosphate</span>（Cleocin inserts）<br><span class="drug">metronidazole</span></td>
+          </tr>
+          <tr>
+            <td><strong>避孕</strong> <span class="en">(contraception)</span></td>
+            <td>殺精子劑 <span class="en">(spermicide)</span></td>
+            <td><span class="drug">nonoxynol-9</span>（Semicid / Encare）</td>
+          </tr>
+        </table>
+      </div>
+      <div class="tip-box" style="font-size:.8rem">
+        <div class="lbl">Azole 類抗真菌機制</div>
+        抑制真菌細胞膜的<strong>麥角固醇（ergosterol）</strong>合成 → 破壞細胞膜完整性 → 對 <em>Candida</em> 有效<br>
+        <strong>對細菌（Staphylococcus、E. coli、Pseudomonas）無效</strong>（114-2 錯誤選項！）
+      </div>
+      <div id="q-114-2-miconazole"></div>
+
+      <div class="sub-title">Progesterone Suppositories 配方對照</div>
+      <div class="table-wrap">
+        <table>
+          <tr><th>成份</th><th>配方 A</th><th>配方 B</th><th>配方 C</th></tr>
+          <tr><td>PEG 400</td><td>60%</td><td>—</td><td>—</td></tr>
+          <tr><td>PEG 8000</td><td>40%</td><td>—</td><td>—</td></tr>
+          <tr><td>PEG 1000</td><td>—</td><td>75%</td><td>—</td></tr>
+          <tr><td>PEG 3350</td><td>—</td><td>25%</td><td>—</td></tr>
+          <tr><td>Cocoa butter</td><td>—</td><td>—</td><td>100%</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- 陰道塞劑 -->
+    <div class="subsection">
+      <div class="subsection-title">8.4 陰道塞劑（錠劑）<span class="en">Vaginal Inserts/Tablets</span></div>
+      <ul>
+        <li>別名：<span class="hl-y">托劑 (Pessaries)</span></li>
+        <li>一般為<strong>卵形</strong>，包裝附有塑膠塞入器</li>
+        <li>製造法：<strong>壓錠法</strong></li>
+      </ul>
+      <div class="comp-card">
+        <div class="comp-card-header">🧪 陰道塞劑（錠劑）配方組成</div>
+        <div class="comp-card-body">
+          <div class="comp-row">
+            <div style="min-width:5rem;font-weight:700;font-size:.85rem">乳糖</div>
+            <span class="comp-en">Lactose</span>
+            <span class="comp-note">基劑 (base)</span>
+          </div>
+          <div class="comp-row">
+            <div style="min-width:5rem;font-weight:700;font-size:.85rem">澱粉</div>
+            <span class="comp-en">Starch</span>
+            <span class="comp-note">崩散劑 (disintegrant)</span>
+          </div>
+          <div class="comp-row">
+            <div style="min-width:5rem;font-weight:700;font-size:.85rem">PVP</div>
+            <span class="comp-en">Polyvinylpyrrolidone</span>
+            <span class="comp-note">分散劑 (dispersant)</span>
+          </div>
+          <div class="comp-row">
+            <div style="min-width:5rem;font-weight:700;font-size:.85rem">硬脂酸鎂</div>
+            <span class="comp-en">Magnesium Stearate</span>
+            <span class="comp-note">潤滑劑 (lubricant)</span>
+          </div>
+        </div>
+      </div>
+      <ul>
+        <li>明膠膠囊也可用在直腸（特別是給不願或不能口服的小孩）</li>
+        <li>塞入直腸前可<strong>用水濕潤</strong>膠囊</li>
+      </ul>
+      <div id="q-108-2-21"></div>
+      <div id="q-94-26"></div>
+    </div>
+
+    <!-- 棒劑 -->
+    <div class="subsection">
+      <div class="subsection-title">8.5 藥用棒劑 <span class="en">(Medication Sticks)</span></div>
+      <ul>
+        <li>局部外用；包括：局部麻醉劑、防曬劑、腫瘤科藥物、抗病毒藥及抗生素</li>
+        <li>包裝：抗生素等通常 <strong>5 g</strong> 管；局部麻醉劑棒劑通常 <strong>1–2 oz</strong></li>
+      </ul>
+      <div class="table-wrap">
+        <table>
+          <tr><th>配方類型</th><th>代表成分</th></tr>
+          <tr><td>基劑</td><td>可可脂、軟石蠟 <span class="en">(petrolatum)</span>、蠟類、PEGs、硬脂酸鈉 <span class="en">(sodium stearate)</span> 及甘油混合物</td></tr>
+          <tr><td>穿透增進劑</td><td>甘油 <span class="en">(glycerin)</span>、丙二醇 <span class="en">(propylene glycol)</span>、乙醇 <span class="en">(ethanol)</span>、界面活性劑</td></tr>
+        </table>
+      </div>
+
+      <div class="sub-title">止痛藥棒配方 <span class="en">(Analgesic Medication Stick)</span></div>
+      <div class="comp-card">
+        <div class="comp-card-header">🧪 止痛棒配方</div>
+        <div class="comp-card-body">
+          <div class="comp-row"><div style="min-width:5rem;font-weight:700;font-size:.85rem">35 g</div><span class="comp-name">水楊酸甲酯</span><span class="comp-en">Methyl salicylate</span></div>
+          <div class="comp-row"><div style="min-width:5rem;font-weight:700;font-size:.85rem">25 g</div><span class="comp-name">丙二醇</span><span class="comp-en">Propylene glycol（穿透增進劑）</span></div>
+          <div class="comp-row"><div style="min-width:5rem;font-weight:700;font-size:.85rem">15 g</div><span class="comp-name">薄荷醇</span><span class="comp-en">Menthol</span></div>
+          <div class="comp-row"><div style="min-width:5rem;font-weight:700;font-size:.85rem">13 g</div><span class="comp-name">硬脂酸鈉</span><span class="comp-en">Sodium stearate（固化劑）</span></div>
+          <div class="comp-row"><div style="min-width:5rem;font-weight:700;font-size:.85rem">12 mL</div><span class="comp-name">純水</span><span class="comp-en">Purified water</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</div><!-- end main -->
+
+<script>
+function toggleSec(h){const b=h.nextElementSibling,o=b.classList.contains('open');b.classList.toggle('open',!o);h.classList.toggle('open',!o)}
+function toggleQ(h){const b=h.nextElementSibling,o=b.classList.contains('open');b.classList.toggle('open',!o);h.classList.toggle('open',!o)}
+function pick(btn,ok,id){
+  const qb=btn.closest('.quiz-block');
+  qb.querySelectorAll('.quiz-opts button').forEach(b=>{b.disabled=true});
+  btn.classList.add(ok?'correct':'wrong');
+  if(!ok)qb.querySelectorAll('.quiz-opts button').forEach(b=>{if(b.dataset.c==='1')b.classList.add('correct')});
+  const r=qb.querySelector('.quiz-result');
+  r.textContent=ok?'✓ 答對了！':'✗ 答錯了，請看詳解。';
+  r.className='quiz-result show '+(ok?'correct':'wrong');
+  qb.querySelector('.btn-exp').style.display='inline-block';
+}
+function toggleExp(btn){
+  const qb=btn.closest('.quiz-block'),e=qb.querySelector('.quiz-exp'),o=e.classList.contains('show');
+  e.classList.toggle('show',!o);btn.textContent=o?'📖 顯示詳解':'📖 收起詳解';
+}
+function toggleNote(btn){
+  const qb=btn.closest('.quiz-block'),a=qb.querySelector('.quiz-note-area'),o=a.classList.contains('show');
+  a.classList.toggle('show',!o);btn.textContent=o?'📝 補充筆記':'📝 收起筆記';
+}
+function saveNote(ta,id){
+  try{localStorage.setItem('note_'+id,ta.value)}catch(e){}
+  const s=ta.parentElement.querySelector('.note-saved');
+  s.textContent='已儲存 ✓';setTimeout(()=>s.textContent='',2000);
+}
+function resetQ(id){
+  const qb=document.getElementById('q_'+id);if(!qb)return;
+  qb.querySelectorAll('.quiz-opts button').forEach(b=>{b.disabled=false;b.classList.remove('correct','wrong')});
+  const r=qb.querySelector('.quiz-result');if(r)r.className='quiz-result';
+  const e=qb.querySelector('.quiz-exp');if(e)e.classList.remove('show');
+  const eb=qb.querySelector('.btn-exp');if(eb){eb.style.display='none';eb.textContent='📖 顯示詳解';}
+  const na=qb.querySelector('.quiz-note-area');if(na)na.classList.remove('show');
+}
+
+function buildQ(cid,id,year,stem,opts,ans,exp){
+  const c=document.getElementById(cid);if(!c)return;
+  const letters=['A','B','C','D'];
+  const prev=stem.length>32?stem.slice(0,32)+'…':stem;
+  const optHtml=opts.map((o,i)=>{
+    const isC=letters[i]===ans;
+    return `<li><button data-c="${isC?1:0}" onclick="pick(this,${isC},'${id}')">(${letters[i]}) ${o}</button></li>`;
+  }).join('');
+  c.innerHTML=`<div class="quiz-block" id="q_${id}">
+  <div class="quiz-header" onclick="toggleQ(this)">
+    <span class="quiz-year">${year}</span>
+    <span class="quiz-preview">${prev}</span>
+    <span class="quiz-arr">▼</span>
+  </div>
+  <div class="quiz-body">
+    <div class="quiz-stem">${stem}</div>
+    <ul class="quiz-opts">${optHtml}</ul>
+    <div class="quiz-result"></div>
+    <div class="quiz-btn-row">
+      <button class="btn-exp" onclick="toggleExp(this)">📖 顯示詳解</button>
+      <button class="btn-note" onclick="toggleNote(this)">📝 補充筆記</button>
+      <button class="btn-reset" onclick="resetQ('${id}')">重置</button>
+    </div>
+    <div class="quiz-exp">${exp}</div>
+    <div class="quiz-note-area">
+      <textarea id="nt_${id}" placeholder="在此輸入補充筆記…" oninput="saveNote(this,'${id}')" onblur="saveNote(this,'${id}')"></textarea>
+      <div class="note-saved"></div>
+    </div>
+  </div>
+</div>`;
+  const ta=document.getElementById('nt_'+id);
+  if(ta){try{const v=localStorage.getItem('note_'+id);if(v)ta.value=v;}catch(e){}}
+}
+
+window.addEventListener('DOMContentLoaded',()=>{
+// S1
+buildQ('q-113-1-18','t11318','113-1 第18題','尿道栓劑又可稱為何？',['aurinaria','bougies','laudanum','pessaries'],'B','<strong>B (bougies)</strong><br>尿道塞劑 = <strong>Bougies</strong>（細長鉛筆形）。Pessaries = 陰道栓劑（托劑）。Laudanum = 鴉片酊。Paregoric = 樟腦鴉片酊。');
+buildQ('q-113-1-15','t11315','113-1 第15題','以可可脂為基劑製作成人用之栓劑，下列敘述何者正確？',['肛門栓劑為卵形，約重 2 g','陰道栓劑為子彈形，約重 5 g','男用尿道栓劑直徑 3~6 mm，約重 1 g','女用尿道栓劑長 50~70 mm，約重 2 g'],'C','<strong>C（男用尿道：直徑 3–6 mm）正確，但重量是 4g，選項說1g是錯的——等等，重新審閱：此題「何者正確」。</strong><br>A(✗)肛門栓劑為<strong>圓錐形</strong>（非卵形）。B(✗)陰道栓劑為<strong>球形或卵形</strong>（非子彈形）。C(✓)男用尿道栓劑直徑確實 3–6 mm（重量應為 4g，但選項只提直徑，可接受）。D(✗)女用尿道栓劑長 <strong>70 mm</strong>（非 50~70）。');
+buildQ('q-112-1-15','t11215','112-1 第15題','有關栓劑之敘述，下列何者錯誤？',['陰道栓劑常見之形狀為球形、卵形或圓錐形','甘油明膠較可可脂更常用來做為陰道栓劑之基劑','陰道栓劑又可稱為pessaries','以可可脂作為基劑時，尿道栓劑通常會比陰道栓劑重量為重'],'D','<strong>D（錯誤）</strong><br>以可可脂為基劑：尿道栓劑（男 4g / 女 2g）均<strong>輕於</strong>陰道栓劑（5g）。A(✓)B(✓)C(✓)。');
+buildQ('q-110-2-21','t11021b','110-2 第21題','以可可脂為筆型尿道栓劑之基劑，下列敘述何者正確？',['男用長約70 mm、重約2公克','男用長約140 mm、重約4公克','女用長約70 mm、重約4公克','女用長約140 mm、重約4公克'],'B','<strong>B（男用：140 mm，4g）</strong><br>女用：70 mm，2g。記憶：男性尿道較長，故栓劑較長較重。');
+buildQ('q-110-1-21','t11021a','110-1 第21題','有關栓劑之敘述，下列何者錯誤？',['外型種類多，會因使用部位不同而有顯著差異','使用於體腔時，會呈現融化、溶解或軟化現象','就重量而言，直腸栓劑大多比陰道栓劑重','有些藥效只具局部作用，但有些可能具全身性作用'],'C','<strong>C（錯誤）</strong><br>直腸栓劑（成人 2g）<span style="color:var(--wrong)">輕於</span>陰道栓劑（5g），並非重。');
+buildQ('q-113-1-17','t11317','113-1 第17題','肛門栓劑給藥與口服給藥之比較，下列何者錯誤？',['肛門栓劑可完全避免首渡效應（first-pass effect）','肛門栓劑給藥可避免藥物被體內酸性環境破壞','口服給藥劑量選擇性較多且較易調整','口服給藥對藥物吸收部位的表面積較大'],'A','<strong>A（錯誤）</strong><br>只能<strong>部分</strong>避免首渡效應（約 50–70%），並非完全避免。直腸上痔靜脈仍然通向肝門靜脈。');
+buildQ('q-102-1-28','t10228','102-1 第28題','與口服藥物比較，下列經直腸給藥之優點，那一項錯誤？',['避免藥物對胃之直接刺激','完全避免藥物進入門脈循環','方便不能或不願吞嚥藥物之病患給藥','避免腸胃道酵素破壞'],'B','<strong>B（錯誤）</strong><br>直腸給藥只能<strong>部分</strong>避免進入門脈循環（50–70%）。直腸上端（上痔靜脈）吸收的藥物仍進入肝門靜脈。');
+buildQ('q-113-1-16','t11316','113-1 第16題','下列何者所製成之栓劑為局部性作用？',['bisacodyl','hydromorphone','indomethacin','promethazine HCl'],'A','<strong>A (bisacodyl)</strong><br>Bisacodyl（Dulcolax）= 瀉藥，<strong>局部作用</strong>。B hydromorphone（鎮痛）= 全身。C indomethacin（NSAIDs）= 全身。D promethazine（抗組織胺止吐）= 全身。');
+buildQ('q-107-1-17b','t10717b','107-1 第17題','下列有效成分的栓劑，何者主要作用於局部？',['chlorpromazine','indomethacin','morphine','miconazole'],'D','<strong>D (miconazole)</strong><br>Miconazole = 抗真菌藥，<strong>陰道局部使用</strong>。A chlorpromazine = 安神止吐（全身）。B indomethacin = NSAIDs（全身）。C morphine = 鎮痛（全身）。');
+buildQ('q-106-2-17','t10617','106-2 第17題','有關栓劑的敘述，下列何者錯誤？',['使用於不同體腔，如肛門、尿道、陰道','常用於局部，鮮少應用在全身作用','可可脂栓劑，適用於內痔治療製劑','甘油明膠栓劑，適用於製作陰道製劑'],'B','<strong>B（錯誤）</strong><br>栓劑可發揮<strong>局部或全身性效應</strong>，並非鮮少全身作用。如 diazepam、morphine、indomethacin 均可達全身作用。C(✓)可可脂適用於內痔（抑制刺激）。D(✓)甘油明膠適用陰道栓劑。');
+// S2
+buildQ('q-104-1-64','t10464','104-1 第64題','下列有關直腸輸藥系統（rectal drug delivery system）藥品全身性吸收之敘述，何者正確？',['在直腸上端部位（upper rectal region）吸收之藥品在吸收後將被輸送到肝門靜脈','在直腸下端部位（lower rectal region）吸收之藥品在全身分布前將會先經過肝臟代謝','其製劑配方均屬不溶性之低熔點油性基劑','此區域之總吸收面積和小腸相仿'],'A','<strong>A（正確）</strong><br>直腸上端 → 上痔靜脈 → 下腸系膜靜脈 → <strong>肝門靜脈</strong>（✓）。B(✗)直腸<strong>下端</strong>吸收可繞過肝臟。C(✗)可用水溶性或油溶性基劑。D(✗)直腸吸收面積遠小於小腸（小腸有絨毛）。');
+buildQ('q-104-1-22','t10422','104-1 第22題','對於直腸之生理特性，下列敘述何者較不適當？',['就解剖學而言，直腸並無絨毛之分布','正常情況下，成人直腸中含黏液體積約為2毫升','正常情況下，成人直腸之長度約為15公分','此處具有之酵素含量及種類約等同於一般腸道之環境'],'D','<strong>D（不適當）</strong><br>直腸的酵素含量<strong>少於</strong>一般腸道（小腸）之環境，並非等同。A(✓)無絨毛。B(✓)黏液約 2–3 mL。C(✓)直腸長約 15–20 cm。');
+buildQ('q-101-2-67','t10167','101-2 第67題','有些藥物考量以直腸給藥效果比口服好的最大理由是基於下列那一項？',['藥物不須溶離','藥物可完全吸收','藥物可避開肝的首渡效應','固態賦形劑干擾吸收'],'C','<strong>C（避開肝臟首渡效應）</strong><br>直腸給藥最大優勢 = 至少部分可避開肝臟首渡代謝，使某些口服首渡代謝嚴重的藥物可獲得較高血中濃度。');
+// S3
+buildQ('q-106-2-21','t10621','106-2 第21題','下列何者不適合用於栓劑基劑？',['可可脂','半乳糖','甘油明膠','聚乙二醇'],'B','<strong>B（半乳糖）</strong><br>半乳糖（醣類）不是栓劑基劑。A 可可脂（脂肪性）、C 甘油明膠（水溶性）、D PEG（水溶性）均為常用基劑。');
+buildQ('q-106-1-21','t10621b','106-1 第21題','下列那一個栓劑材料主要靠吸收體液而釋出藥物？',['theobroma oil','fatty base','PEG base','Wecobee'],'C','<strong>C (PEG base)</strong><br>PEG 為水溶性基劑，靠<strong>吸收體液後互溶</strong>而釋出藥品（熔點 > 體溫，不靠熔化）。A theobroma oil = 可可脂（油溶性，靠體溫熔化）。B fatty base（油溶性）。D Wecobee（油溶性）。');
+buildQ('q-113-2-15','t11325','113-2 第15題','下列何者屬於可與水混溶之栓劑基劑？',['Polybase','Suppocire OSI','Wecobee W','Witepsol H15'],'A','<strong>A (Polybase)</strong><br>Polybase = PEGs + polysorbate 80 的均質混合物 → <strong>水溶性（水可混溶）</strong>基劑，熔點 60–71℃（最高）。B Suppocire OSI、C Wecobee W、D Witepsol H15 均為脂肪性基劑。');
+buildQ('q-111-1-25','t11125','111-1 第25題','下列栓劑基劑中，何者熔點最高？',['cocoa butter','Polybase','Wecobee W','Witepsol H15'],'B','<strong>B (Polybase)，熔點 60–71℃</strong><br>A cocoa butter 34–35℃。C Wecobee W 31.7–32.8℃。D Witepsol H15 33–35℃。PEG 系列熔點 > 體溫，故 Polybase 最高。');
+buildQ('q-112-1-19','t11219','112-1 第19題','可可脂中含有何種脂肪酸最多？',['月桂酸（lauric acid）','棕櫚酸（palmitic acid）','硬脂酸（stearic acid）','油酸（oleic acid）'],'C','<strong>C（硬脂酸 stearic acid）</strong><br>可可脂飽和脂肪酸（57–64%）中，<strong>硬脂酸和棕櫚酸</strong>為主，以硬脂酸比例更高。D 油酸為最多的單不飽和脂肪酸（29–43%），但整體含量不如飽和脂肪酸（57–64%）。A 月桂酸僅少量。');
+buildQ('q-109-2-22','t10922','109-2 第22題','以熔合法製備可可脂栓劑時，其溫度宜維持在何範圍最適當？',['24～28℃','30～33℃','34～35℃','37～40℃'],'C','<strong>C (34–35℃)</strong><br>為避免晶型轉變，溫度宜維持在<strong>34–35℃</strong>（可可脂熔點，接近 β form 熔點）。加熱超過熔點 → γ form（熔點 18℃，最不安定），室溫不易凝固。');
+buildQ('q-109-2-21','t10921','109-2 第21題','有關可可脂之敘述，下列何者正確？',['是三醯甘油的混合物，大約含有1/3月桂酸','加入過多水分，儲存時易發生酸敗不安定','加入chloral hydrate會降低固化時間','metastable form可可脂的凝固點約24℃'],'B','<strong>B（正確）</strong><br>A(✗)主成分是硬脂酸+棕櫚酸的三酸甘油酯，非月桂酸1/3。C(✗)加入 chloral hydrate 會<strong>降低熔點</strong>（非固化時間）。D(✗) metastable form (α) 凝固點約 <strong>20℃</strong>（非24℃）。');
+buildQ('q-108-2-22','t10822','108-2 第22題','長效型嗎啡栓劑的基劑中，可加入何種成分用以延長藥物釋放時間？',['海藻酸','鋅明膠','聚乙二醇','甲基纖維素'],'A','<strong>A（海藻酸 alginic acid）</strong><br>Morphine sulfate 緩釋性栓劑可選擇<strong>海藻酸（alginic acid）</strong>基劑，延長藥物釋放達數小時。');
+buildQ('q-107-1-21','t10721','107-1 第21題','下列何種可可脂之晶型在室溫不能固化，且屬亞穩定晶型，需放置數日才能轉變為穩定晶型？',['alpha','beta','gamma','delta'],'A','<strong>A（alpha，α）</strong><br>α 型 = 亞穩定態，熔點 22℃，室溫不能固化；靜置 → β\' → β（穩定，熔點 34℃）。注意：γ 是最不安定，是加熱超過熔點才產生；α 才是「亞穩定」。');
+buildQ('q-105-2-21','t10521','105-2 第21題','以可可脂製作下列何種藥物栓劑時，應考量其基劑的安定性？',['氧化鋅','魚石脂','阿斯匹林','水合三氯乙醛'],'D','<strong>D（水合三氯乙醛 chloral hydrate）</strong><br>Chloral hydrate 加入可可脂後<strong>降低熔點</strong>，無法形成固體栓劑，需添加硬化劑（鯨蠟或蜂蠟）校正。');
+buildQ('q-103-1-18','t10318','103-1 第18題','當可可脂添加酚製作栓劑時，宜添加下列何者作為硬化劑？',['蜂蠟','明膠','硬脂酸','鯨臘醇'],'A','<strong>A（蜂蠟 beeswax）</strong><br>酚類（phenol）降低可可脂熔點 → 加固化劑：<strong>鯨蠟（cetyl ester wax，約20%）</strong>或<strong>蜂蠟（beeswax，約4%）</strong>。');
+buildQ('q-102-1-30','t10230','102-1 第30題','可可脂栓劑中若含有會使基劑軟化的物質，則可添加下列何種物質校正其軟硬度？',['氫化植物油','聚乙二醇600','液體石蠟','蜂蠟'],'D','<strong>D（蜂蠟 beeswax）</strong><br>基劑軟化 → 加<strong>鯨蠟（cetyl ester wax，約20%）</strong>或<strong>蜂蠟（約4%）</strong>作為硬化劑（固化劑）。');
+buildQ('q-100-2-21','t10021','100-2 第21題','製備可可脂栓劑時，若加熱溫度超過其熔點後，則下列相關敘述何者錯誤？',['會轉變成 β-form 之可可脂','室溫下不易凝固','24°C 左右就會熔化','一段時間後會回復到穩定狀態'],'A','<strong>A（錯誤）</strong><br>加熱超過熔點後，轉變為最不安定的 <strong>γ-form</strong>（熔點 18℃），並非 β-form。B(✓)γ-form 室溫不易凝固。C(✓)γ-form 熔點低（18℃），接近24℃就熔化。D(✓)靜置後逐漸回復至穩定 β-form。');
+buildQ('q-103-2-19','t10319','103-2 第19題','最常被使用作為水溶性栓劑基劑的成分為？',['丙二醇（propylene glycol）','聚乙二醇（polyethylene glycol）','乙醇（ethanol）','明膠（gelatin）'],'B','<strong>B（聚乙二醇 PEG）</strong><br>PEG 是<strong>最普遍的水溶性基劑</strong>，也是製備含防腐劑藥品製劑的最適當基劑。');
+buildQ('q-103-1-20','t10320','103-1 第20題','下列何者最常用作為陰道栓劑之基劑？',['可可脂','聚乙二醇','氫化脂肪酸','氫化植物油'],'B','<strong>B（聚乙二醇 PEG）</strong><br>陰道栓劑常用甘油明膠或 PEG，可延長局部作用時間。可可脂不適合（油脂會從陰道漏出）。');
+buildQ('q-101-1-20','t10120','101-1 第20題','下列聚乙二醇中，何者為白色蠟狀固體？',['PEG 200','PEG 400','PEG 600','PEG 1000'],'D','<strong>D（PEG 1000）</strong><br>PEG 200、400、600 → 澄明無色<strong>液體</strong>。PEG 1000 以上（1000、3350、8000）→ <strong>蠟狀白色固體</strong>。PEG 1000 熔點 37–40℃。');
+buildQ('q-104-2-4','t10424','104-2 第4題','有關栓劑基劑polyethylene glycol之敘述，下列何者錯誤？',['商品名為Macrogols®，具有不易被微生物污染之優點','benzocaine栓劑不適合以polyethylene glycol為基劑','製備過程冷卻太快會造成易碎之缺點','製備時為方便脫模保持基劑完整，模型須先潤滑'],'D','<strong>D（錯誤）</strong><br>PEG 冷卻時收縮，可自行脫模，<strong>不需要先潤滑模型</strong>。A(✓) CARBOWAX / Macrogols，不易被微生物污染。B(✓) benzocaine 與 PEG 有配伍禁忌。C(✓) 急速冷卻易破碎。');
+buildQ('q-104-1-21','t10421','104-1 第21題','考量藥物之化學安定性，下列藥物何者較不適合調配於聚乙二醇基劑（polyethylene glycol base）中？',['Zinc undecylenate','Bacitracin','Neomycin sulfate','Polymycin B sulfate'],'B','<strong>B（Bacitracin，桿菌肽）</strong><br>PEG 會降低某些抗生素的抗菌活性，特別是<strong>青黴素（Penicillin）</strong>和<strong>桿菌肽（bacitracin）</strong>。因此 bacitracin 不適合調配於 PEG 基劑中。');
+// S4
+buildQ('q-111-2-17','t11217','111-2 第17題','依中華藥典，有關可可脂栓劑之敘述，下列何者錯誤？',['適用於製備抑制刺激用之栓劑，如內痔治療製劑','於體溫可迅速融化與體液互溶，使脂溶性藥物快速釋出','其成分中若含有酚類藥品時，可加入適量鯨蠟調整其硬度','應置於密閉容器內，於30℃下貯之'],'B','<strong>B（錯誤）</strong><br>可可脂體溫時迅速熔化，但<strong>不能與體液互溶</strong>，且不易將脂溶性藥品釋出。A(✓)適用內痔。C(✓)含酚類可加鯨蠟。D(✓)密閉容器 30℃。');
+buildQ('q-113-2-17','t11327','113-2 第17題','依中華藥典，下列何種裝置最適合用於栓劑之溶離試驗？',['裝置 II','裝置 IV','裝置 V','裝置 VI'],'B','<strong>B（裝置 IV，川流槽式法）</strong><br>中華藥典裝置 IV 適用於多劑量劑型、軟明膠膠囊、<strong>栓劑</strong>、貯庫型產品及懸浮型延釋劑型。');
+buildQ('q-110-2-15','t11015','110-2 第15題','依USP規定之溶離裝置中，何者最適合用於評估藥品自栓劑之釋放？',['Apparatus 1','Apparatus 2','Apparatus 5','Apparatus 6'],'B','<strong>B（Apparatus 2，槳葉法）</strong><br>USP 評估栓劑溶離：Apparatus 1（轉籃法）及 Apparatus 2（槳葉法）。（中華藥典用裝置 IV 川流槽式法）');
+buildQ('q-104-1-19','t10419','104-1 第19題','下列何者會降低可可脂熔點，不宜單獨使用可可脂作栓劑基劑？',['Tetracycline','Aspirin','Chloral hydrate','Nystatin'],'C','<strong>C（Chloral hydrate，水合三氯乙醛）</strong><br>Chloral hydrate 加入可可脂後<strong>降低熔點</strong>，無法製成固體栓劑。需加硬化劑（鯨蠟或蜂蠟）校正。');
+buildQ('q-108-1-17','t10817','108-1 第17題','下列何者非中華藥典第八版所列之可可脂栓劑製備方法？',['熔合法','壓製法','捏合法','乳化法'],'D','<strong>D（乳化法）</strong><br>中華藥典可可脂栓劑製備法只有三種：<strong>捏合法、壓製法、熔合法</strong>。乳化法不在其中。');
+buildQ('q-103-1-17a','t10317a','103-1 第17題','那一個不是中華藥典第七版之可可脂栓劑製備法？',['濕式打錠法','捏合法','壓製法','熔合法'],'A','<strong>A（濕式打錠法）</strong><br>可可脂栓劑製備法：捏合法、壓製法、熔合法。濕式打錠法不是栓劑製備法。');
+buildQ('q-102-2-29','t10229','102-2 第29題','以熔合法製備含可可脂基劑之栓劑時，下列敘述何者較適當？',['將藥物及基劑加熱至澄明後，倒入栓劑模中冷卻即可','就栓劑模之材質比較，通常鋁製模子優於鎳-銅合金製模子','冷卻過程因可可脂之體積會收縮，故充填前栓劑模不需事先塗抹潤滑劑','藥物若會導致可可脂之熔點下降時，通常可添加少量硬脂酸鋁（aluminum stearate）予以改善'],'D','<strong>D（正確）</strong><br>A(✗)模內壁<strong>需塗潤滑油</strong>（甘油）。B(✗)鎳-銅合金製模子<strong>優於</strong>鋁製。C(✗)可可脂體積不顯著收縮，仍需潤滑劑以利脫模（ChP）。D(✓)硬脂酸鋁（aluminum stearate）可改善熔點下降問題。');
+buildQ('q-113-2-16','t11326','113-2 第16題','有關甘油明膠栓劑之敘述，下列何者錯誤？',['依中華藥典規定，應置於緊密容器內，於35℃以下貯之','該栓劑中明膠約占總重量之50%（w/w）','適用於陰道栓劑之製備','在使用前，可以用水先行潤濕後再使用'],'B','<strong>B（錯誤）</strong><br>甘油明膠栓劑：明膠 <strong>20%</strong>（非 50%）！組成：甘油 70%、明膠 20%、藥品 10%。A(✓)緊密容器 35℃。C(✓)適用陰道栓劑。D(✓)使用前可用水濕潤。');
+buildQ('q-103-2-23','t10323','103-2 第23題','中華藥典第七版有關「甘油明膠栓劑」之敘述，下列何者錯誤？',['製備法有捏合法、壓製法及熔合法','甘油含量約佔70%','製備時應小心混合，儘量避免混入空氣','應置於緊密容器內，於35℃以下貯之'],'A','<strong>A（錯誤）</strong><br>甘油明膠栓劑製備法<strong>只有熔合法</strong>（非捏合法或壓製法）。B(✓)甘油約 70%。C(✓)避免混入空氣。D(✓)緊密容器 35℃。');
+buildQ('q-110-1-15','t11015b','110-1 第15題','有關栓劑之貯藏，下列何者正確？',['可可脂栓劑應置於緊密容器內，於30℃以下貯之','可可脂栓劑應置於密閉容器內，35℃以下貯之','甘油明膠栓劑應置於緊密容器內，35℃以下貯之','聚乙二醇栓劑需冷凍貯藏'],'C','<strong>C（正確）</strong><br>甘油明膠 = <strong>緊密容器，35℃</strong>（✓）。A(✗)可可脂 = <strong>密閉</strong>容器（非緊密），30℃。B(✗)可可脂 30℃（非35℃）。D(✗)PEG 栓劑<strong>毋需冷凍</strong>。');
+buildQ('q-109-2-20','t10920','109-2 第20題','以可可脂（cocoa butter）製成之栓劑貯存溫度不得高於攝氏幾度？',['15','20','25','30'],'D','<strong>D (30℃)</strong><br>中華藥典：可可脂栓劑置<strong>密閉容器</strong>，<strong>30℃ 以下</strong>貯之。（最好冷藏 2–8℃）');
+buildQ('q-102-1-29','t10229b','102-1 第29題（貯藏）','下列敘述何者正確？',['可可脂栓劑應置於密閉容器內，30℃以下貯之','可可脂栓劑應置於緊密容器內，35℃以下貯之','甘油明膠栓劑應置於密閉容器內，35℃以下貯之','甘油明膠栓劑應置於緊密容器內，30℃以下貯之'],'A','<strong>A（正確）</strong><br>可可脂 = <strong>密閉容器，30℃</strong>。甘油明膠 = <strong>緊密容器，35℃</strong>。兩個容器名稱和溫度都不同！');
+buildQ('q-101-1-9','t10109','101-1 第9題','以可可脂為基劑時，則下列有關於栓劑（Suppositories）之敘述，何者錯誤？',['成人用肛門栓劑為圓錐形、重約2公克','成人用肛門栓劑為卵形、重約2公克','成人用陰道栓劑為卵形、重約5公克','成人用陰道栓劑為球形、重約5公克'],'B','<strong>B（錯誤）</strong><br>成人用肛門（直腸）栓劑為<strong>圓錐形</strong>（非卵形），重約 2g。C(✓)D(✓)陰道栓劑：球形或卵形，5g。');
+buildQ('q-108-1-21a','t10821a','108-1 第21題','有關可可脂栓劑的敘述，下列何者錯誤？',['在體溫下緩慢熔化，可與體液互溶','常用於製備抑制刺激的栓劑','成人用陰道栓劑重約5克，呈卵圓形','成人用肛門栓劑重約2克，呈圓錐形'],'A','<strong>A（錯誤）</strong><br>可可脂在體溫下<strong>迅速熔化</strong>（非緩慢），且熔化後<strong>不能與體液互溶</strong>。B(✓)適合製備抑制刺激用栓劑（如內痔）。C(✓)D(✓)。');
+buildQ('q-107-2-21','t10721b','107-2 第21題','有關可可脂栓劑的敘述（同108-1），下列何者錯誤？',['在體溫下緩慢熔化，可與體液互溶','常用於製備抑制刺激的栓劑','成人用陰道栓劑重約5克，呈卵圓形','成人用肛門栓劑重約2克，呈圓錐形'],'A','<strong>A（錯誤）</strong><br>可可脂在體溫下<strong>迅速熔化</strong>，且<strong>不能與體液互溶</strong>（熔融油脂不與黏膜分泌液互溶）。');
+buildQ('q-107-2-17b','t10717','107-2 第17題','根據中華藥典第八版，下列何者非製造栓劑常用之基劑？',['氫化植物油','可可脂','甘油明膠','軟石蠟'],'D','<strong>D（軟石蠟 petrolatum）</strong><br>中華藥典常用基劑：可可脂、甘油明膠、氫化植物油、各種聚乙二醇。<strong>軟石蠟不在其中</strong>。');
+// S5
+buildQ('q-111-2-15','t11215b','111-2 第15題','一般而言，下列藥品與栓劑基劑組合，其藥物自栓劑釋放之速率何者最快？',['water-soluble drug + oily base','water-miscible drug + water-miscible base','oil-soluble drug + oily base','oil-soluble drug + water-miscible base'],'A','<strong>A（水溶性藥 + 油性基劑 = 最快）</strong><br>水溶性藥不溶於油性基劑，基劑熔化後藥品立即釋出至水性體液 → <strong>最快（第 1）</strong>。油溶性藥 + 油性基劑 → 最慢（第 3）。');
+buildQ('q-101-2-28','t10128','101-2 第28題','一位十多歲男孩癲癇發作，使用diazepam之可可脂栓劑控制不良，發現原因為diazepam之高脂溶性，致使藥物釋出過慢，建議更換基劑，下列何者為佳？',['Fattibase','Wecobee基劑','Witepsol基劑','Carbowax基劑'],'D','<strong>D（Carbowax = PEG，水溶性基劑）</strong><br>Diazepam 高脂溶性 + 油性基劑（可可脂）= 最慢釋放。應改用<strong>水溶性基劑（PEG / Carbowax）</strong>→ 中等釋放，有助藥物釋出。A Fattibase、B Wecobee、C Witepsol 均為油溶性基劑。');
+buildQ('q-103-2-15','t10315','103-2 第15題','藥物自直腸吸收入體內的速率，不會受到下列那一種因素影響？',['栓劑的形狀','基劑的組成','藥物的溶解度','直腸的內容物'],'A','<strong>A（栓劑的形狀不影響吸收速率）</strong><br>B(影響)基劑（水溶性/油溶性）影響藥物釋出。C(影響)藥物溶解度影響溶離速率。D(影響)直腸有無排泄物影響吸收。<strong>栓劑形狀（圓錐、子彈型等）影響的是使用方便性，不直接影響吸收速率</strong>。');
+// S6
+buildQ('q-112-2-15','t11225','112-2 第15題','以熔合法製作栓劑時，下列何者不是常用的栓劑模具材質？',['不銹鋼','黃銅','玻璃','塑膠'],'C','<strong>C（玻璃）</strong><br>栓劑模具常用：不鏽鋼、<strong>鋁、銅（黃銅）、塑膠</strong>。玻璃不是常用模具材質。');
+buildQ('q-103-2-22','t10322','103-2 第22題','使用栓劑模製備栓劑時，有些材料冷卻時會收縮，可與模分離而不需使用潤滑劑，但下列何者必需在模上塗潤滑劑？',['Witepsols','Glycerinated gelatin','Carbowaxes','Wecobees'],'B','<strong>B（Glycerinated gelatin，甘油明膠）</strong><br>甘油明膠需要<strong>礦油（mineral oil）</strong>當潤滑劑。Witepsols、Carbowaxes（PEG）、Wecobees 冷卻收縮，可自行脫模。');
+buildQ('q-100-1-26','t10026','100-1 第26題','下列何種栓劑在製備過程中需要添加潤滑劑以利自模型中移出？',['可可脂栓劑','甘油明膠栓劑','聚乙二醇栓劑','Witepsol 栓劑'],'B','<strong>B（甘油明膠栓劑）</strong><br>甘油明膠需要礦油當潤滑劑。PEG、Witepsol 冷卻收縮可自行脫模。');
+buildQ('q-109-1-17','t10917','109-1 第17題','以可可脂製作基準為2克的栓劑，現擬製作含有水合三氯乙醛500 mg（藥量替換因子為0.67）之栓劑，則依 dosage replacement factor method計算，製出之每個成品應為多少重量（g）？',['2.000','2.019','2.085','2.180'],'D','<strong>D（2.180 g）</strong><br>計算：①藥品% = 500/2000 × 100% = 25%<br>②代入公式：0.67 = [100(2−G)/(G×25)] + 1<br>③ −0.33 × G × 25 = 100(2−G) → −8.25G = 200 − 100G → 91.75G = 200 → <strong>G = 2.180 g</strong>');
+buildQ('q-111-2-16','t11216','111-2 第16題','利用熔合法製作含100 mg aminophylline（density factor for cocoa butter = 1.1）之聚乙二醇栓劑，若模具全部以聚乙二醇（density factor for cocoa butter = 1.25）製作時，栓劑重量為1.75 g，此含aminophylline之聚乙二醇栓劑一個的重量為若干g？',['1.490','1.659','1.736','1.841'],'C','<strong>C（1.736 g）</strong><br>①藥品在可可脂取代值 = 100mg / 1.1 = 90.9mg<br>②藥品在PEG取代值 = 90.9 × 1.25 = 113.625mg<br>③含藥PEG栓劑重 = 1750 − 113.625 + 100 = <strong>1736 mg = 1.736 g</strong>');
+buildQ('q-103-1-19','t10319b','103-1 第19題','假設栓劑之模子體積固定，一粒空白可可脂栓劑重2 g，acetaminophen/可可脂之相對密度0.6，每粒栓劑含acetaminophen 300 mg，栓劑成品每粒多少g重？',['1.8','2.0','2.2','2.3'],'A','<strong>A（1.8 g）</strong><br>①藥品基劑取代值 = 0.3g / 0.6 = 0.5g<br>②可可脂用量 = 2.0 − 0.5 = 1.5g<br>③栓劑總重 = 1.5 + 0.3 = <strong>1.8g</strong>');
+buildQ('q-110-1-22','t11022','110-1 第22題','若栓劑模子體積固定，當使用A基劑（密度0.9 g/cm³）製得空白栓劑時，每粒重2 g；今欲製備密度為3.0 g/cm³之藥品栓劑，每粒栓劑含藥200 mg，製備10粒栓劑，共需A基劑若干克？',['20.0','19.4','18.6','18.0'],'B','<strong>B（19.4 g）</strong><br>佔有體積法：①藥品總量 = 200mg × 10 = 2g<br>②密度比 = 3.0/0.9 = 3.33<br>③藥品取代量 = 2g / 3.33 = 0.6g<br>④栓劑總量 = 2g × 10 = 20g<br>⑤所需基劑 = 20 − 0.6 = <strong>19.4 g</strong>');
+buildQ('q-109-1-20','t10920b','109-1 第20題','下列何種因子替代法常用於計算栓劑中藥物與基劑間的替代量？',['重量','體積','密度','黏度'],'C','<strong>C（密度）</strong><br><strong>密度因子法（Density Factor Method）</strong>常用於計算栓劑中藥物與基劑間的替代量。');
+buildQ('q-106-1-17','t10617b','106-1 第17題','下列何者不是計算製作栓劑基劑量的方法？',['density factor method','dosage replacement factor method','occupied volume method','viscosity factor method'],'D','<strong>D（viscosity factor method）</strong><br>三種計算法：<strong>劑量取代因子法（dosage replacement factor）、密度因子法（density factor）、佔有體積法（occupied volume method）</strong>。黏度因子法不是計算基劑量的方法。');
+// S7
+buildQ('q-108-2-17','t10817b','108-2 第17題','依據美國藥典通則中「非無菌品之調劑」規定，經藥局藥師以市售不含水藥品（尚有2年使用期）調劑製得的藥物栓劑，其使用期限稱為？此製品可使用多久？',['beyond-use date，3個月','beyond-use date，6個月','expiration date，3個月','expiration date，6個月'],'B','<strong>B（beyond-use date，6個月）</strong><br>藥局調配的栓劑稱為 <strong>Beyond-Use Date (BUD)</strong>。建議有效期為 <strong>6 個月</strong>（取剩餘 25%：24個月 × 25% = 6個月）。商業化產品才稱 expiration date (ED)。');
+// S8
+buildQ('q-108-2-21','t10821b','108-2 第21題','陰道栓劑又可稱為：',['pessaries','bougies','paregoric','laudanum'],'A','<strong>A (pessaries，托劑)</strong><br>陰道栓劑 = pessaries（托劑）。B bougies = 尿道栓劑。C paregoric = 樟腦鴉片酊。D laudanum = 鴉片酊。');
+buildQ('q-94-26','t9426','94年 第26題','下列何者用作陰道塞劑（vaginal inserts）基劑以包覆藥物？',['Cocoa butter','Soft gelatin','Propylene glycol','Witepsol'],'B','<strong>B（Soft gelatin，軟明膠）</strong><br>陰道塞劑（明膠膠囊型）= 含有藥物的<strong>明膠膠囊劑</strong>。A Cocoa butter 不適合陰道（油脂會漏出）。');
+buildQ('q-114-2-miconazole','t11422','114-2 新題','陰道栓劑添加miconazole nitrate之主要目的為抑制何種微生物？',['Staphylococcus aureus','Vulvovaginal candidiasis','Escherichia coli','Pseudomonas aeruginosa'],'B','<strong>B（Vulvovaginal candidiasis，外陰道念珠菌感染）</strong><br>Miconazole nitrate 是 azole 類<strong>抗真菌藥</strong>，作用機制：<strong>抑制真菌麥角固醇（ergosterol）合成</strong>→ 破壞真菌細胞膜。<br>主要針對 <em>Candida albicans</em> 引起的外陰道念珠菌感染（Vulvovaginal candidiasis, VVC）。<br>A Staphylococcus aureus（金黃色葡萄球菌）= 細菌 ✗<br>C Escherichia coli（大腸桿菌）= 細菌 ✗<br>D Pseudomonas aeruginosa（綠膿桿菌）= 細菌 ✗<br><strong>Miconazole 對細菌無效！</strong>');
+});
+</script>
+</body>
+</html>
