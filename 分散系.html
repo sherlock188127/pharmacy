@@ -1,0 +1,2667 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>粗分散系 Coarse Dispersions</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #fdf8f2;
+  --card: #fff9f3;
+  --card2: #f5f0e8;
+  --border: #d4c9b8;
+  --border-light: #e8dece;
+  --text: #2a1f14;
+  --text-sub: #5a4a38;
+  --text-muted: #8a7a68;
+  --accent1: #1a5c8a; /* teal-blue */
+  --accent2: #2e7a4e; /* green */
+  --accent3: #7b3f00; /* amber-brown */
+  --highlight: #e8f4e8;
+  --highlight2: #e3eff8;
+  --highlight3: #fff3e0;
+  --highlight4: #fce4ec;
+  --exam: #1a5c8a;
+  --exam-bg: #e3eff8;
+  --warn: #7b3f00;
+  --warn-bg: #fff3e0;
+  --correct: #2e7a4e;
+  --correct-bg: #e8f4e8;
+  --wrong: #b71c1c;
+  --wrong-bg: #fce4ec;
+  --key: #4a148c;
+  --key-bg: #f3e5f5;
+  --serif: 'Noto Serif TC', serif;
+  --sans: 'Noto Sans TC', sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.7;
+  padding: 0;
+}
+
+.page-header {
+  background: linear-gradient(135deg, #1a3a5c 0%, #1a5c8a 50%, #2e7a4e 100%);
+  color: #fff;
+  padding: 2.5rem 3rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+.page-header::before {
+  content: '';
+  position: absolute;
+  top: -40px; right: -40px;
+  width: 200px; height: 200px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.06);
+}
+.page-header::after {
+  content: '';
+  position: absolute;
+  bottom: -30px; left: 200px;
+  width: 140px; height: 140px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.04);
+}
+.page-header h1 {
+  font-family: var(--serif);
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  position: relative;
+  z-index: 1;
+}
+.page-header .sub {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  margin-top: 0.4rem;
+  font-family: var(--mono);
+  position: relative;
+  z-index: 1;
+}
+.page-header .tags {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+.tag {
+  background: rgba(255,255,255,0.18);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 20px;
+  padding: 2px 12px;
+  font-size: 11px;
+  font-family: var(--mono);
+  letter-spacing: 0.05em;
+}
+
+.toc {
+  background: var(--card2);
+  border-bottom: 2px solid var(--border);
+  padding: 1rem 3rem;
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.toc-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.toc a {
+  color: var(--accent1);
+  text-decoration: none;
+  font-size: 12px;
+  font-family: var(--sans);
+  padding: 2px 8px;
+  border-radius: 4px;
+  border: 1px solid var(--border-light);
+  background: var(--card);
+  transition: background 0.15s;
+}
+.toc a:hover { background: var(--highlight2); }
+
+.content { max-width: 960px; margin: 0 auto; padding: 2rem 2rem 4rem; }
+
+/* Section headers */
+.section {
+  margin-bottom: 3rem;
+}
+.section-title {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text);
+  border-left: 5px solid var(--accent1);
+  padding-left: 1rem;
+  margin-bottom: 1.5rem;
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+}
+.subsection-title {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--accent1);
+  margin-top: 1.8rem;
+  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.subsection-title::before {
+  content: '';
+  display: inline-block;
+  width: 8px; height: 8px;
+  background: var(--accent2);
+  border-radius: 50%;
+}
+.subsection2-title {
+  font-family: var(--sans);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--accent3);
+  margin-top: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Cards */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border-light);
+  border-radius: 10px;
+  padding: 1.2rem 1.4rem;
+  margin-bottom: 1rem;
+}
+.card-grid {
+  display: grid;
+  gap: 1rem;
+}
+.card-grid-2 { grid-template-columns: 1fr 1fr; }
+.card-grid-3 { grid-template-columns: 1fr 1fr 1fr; }
+
+/* Special boxes */
+.box-key {
+  background: var(--key-bg);
+  border: 1.5px solid #ce93d8;
+  border-radius: 8px;
+  padding: 1rem 1.2rem;
+  margin: 1rem 0;
+}
+.box-key .box-title {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--key);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+.box-exam {
+  background: var(--exam-bg);
+  border: 1.5px solid #90caf9;
+  border-radius: 8px;
+  padding: 1rem 1.2rem;
+  margin: 1rem 0;
+}
+.box-exam .box-title {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--exam);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+.box-warn {
+  background: var(--warn-bg);
+  border: 1.5px solid #ffb74d;
+  border-radius: 8px;
+  padding: 1rem 1.2rem;
+  margin: 1rem 0;
+}
+.box-warn .box-title {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--warn);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+.box-note {
+  background: var(--card2);
+  border-left: 4px solid var(--border);
+  border-radius: 0 8px 8px 0;
+  padding: 0.8rem 1.2rem;
+  margin: 0.8rem 0;
+  font-size: 12.5px;
+  color: var(--text-sub);
+}
+
+/* Big number highlight */
+.big-num {
+  font-family: var(--mono);
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--accent1);
+  display: inline-block;
+}
+.big-num-sm {
+  font-family: var(--mono);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--accent3);
+}
+
+/* Tables */
+table.notes-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  margin: 1rem 0;
+}
+table.notes-table th {
+  background: var(--accent1);
+  color: #fff;
+  padding: 8px 12px;
+  text-align: left;
+  font-family: var(--sans);
+  font-weight: 500;
+}
+table.notes-table td {
+  padding: 7px 12px;
+  border-bottom: 1px solid var(--border-light);
+  vertical-align: top;
+}
+table.notes-table tr:nth-child(even) td {
+  background: var(--card2);
+}
+table.notes-table .mono { font-family: var(--mono); font-size: 12px; }
+
+/* Formula box */
+.formula-box {
+  background: #1a3a5c;
+  color: #e8f4ff;
+  border-radius: 10px;
+  padding: 1.2rem 1.5rem;
+  margin: 1rem 0;
+  font-family: var(--mono);
+  font-size: 1.1rem;
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+.formula-box .formula-desc {
+  font-size: 11px;
+  color: #90caf9;
+  margin-top: 0.8rem;
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-family: var(--sans);
+}
+
+/* Tags/badges */
+.badge {
+  display: inline-block;
+  padding: 1px 8px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-family: var(--mono);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+.badge-blue { background: var(--exam-bg); color: var(--exam); }
+.badge-green { background: var(--correct-bg); color: var(--correct); }
+.badge-amber { background: var(--warn-bg); color: var(--warn); }
+.badge-purple { background: var(--key-bg); color: var(--key); }
+
+/* Comparison table style */
+.compare-row {
+  display: grid;
+  gap: 1rem;
+  margin: 0.5rem 0;
+}
+.compare-row-2 { grid-template-columns: 1fr 1fr; }
+
+/* Inline code */
+code {
+  font-family: var(--mono);
+  font-size: 12px;
+  background: var(--card2);
+  padding: 1px 5px;
+  border-radius: 3px;
+  color: var(--accent3);
+}
+
+/* Lists */
+ul.notes-list, ol.notes-list {
+  padding-left: 1.5rem;
+  margin: 0.5rem 0;
+}
+ul.notes-list li, ol.notes-list li {
+  margin-bottom: 0.3rem;
+  font-size: 13.5px;
+  line-height: 1.65;
+}
+ul.notes-list li::marker { color: var(--accent2); }
+
+/* Divider */
+.section-divider {
+  border: none;
+  border-top: 2px solid var(--border-light);
+  margin: 2.5rem 0;
+}
+
+/* Highlight text */
+.hl { background: #fff9c4; padding: 0 2px; border-radius: 2px; }
+.hl-blue { background: #e3f2fd; padding: 0 2px; border-radius: 2px; }
+.hl-green { background: #e8f5e9; padding: 0 2px; border-radius: 2px; }
+
+/* Small text */
+.sm { font-size: 12px; color: var(--text-sub); }
+.xs { font-size: 11px; color: var(--text-muted); }
+
+/* ===== QUESTION SYSTEM ===== */
+.q-block {
+  background: var(--card);
+  border: 1.5px solid var(--border-light);
+  border-radius: 10px;
+  margin: 1rem 0;
+  overflow: hidden;
+}
+.q-header {
+  background: var(--card2);
+  padding: 0.7rem 1.1rem;
+  display: flex;
+  gap: 0.7rem;
+  align-items: center;
+  border-bottom: 1px solid var(--border-light);
+}
+.q-year {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--accent1);
+  background: var(--exam-bg);
+  border: 1px solid #90caf9;
+  border-radius: 12px;
+  padding: 1px 8px;
+}
+.q-stem {
+  padding: 0.9rem 1.1rem;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.6;
+}
+.q-options {
+  padding: 0 1.1rem 0.5rem;
+}
+.q-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding: 0.4rem 0.7rem;
+  margin: 0.25rem 0;
+  border-radius: 6px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: background 0.12s, border 0.12s;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.q-option:hover { background: var(--card2); border-color: var(--border-light); }
+.q-option.correct { background: var(--correct-bg); border-color: #a5d6a7; }
+.q-option.wrong { background: var(--wrong-bg); border-color: #ef9a9a; }
+.q-option.hidden-answer { background: var(--card); }
+.q-label {
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 600;
+  min-width: 18px;
+  color: var(--text-sub);
+}
+.q-option.correct .q-label { color: var(--correct); }
+.q-option.wrong .q-label { color: var(--wrong); }
+.q-explain-btn {
+  display: inline-block;
+  margin: 0.5rem 0 0.5rem 1.1rem;
+  padding: 5px 14px;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 12px;
+  font-family: var(--sans);
+  color: var(--text-sub);
+  cursor: pointer;
+}
+.q-explain-btn:hover { background: var(--card2); }
+.q-reset-btn {
+  display: none;
+  margin: 0.5rem 0.4rem 0.5rem 0;
+  padding: 5px 12px;
+  background: none;
+  border: 1px solid #ef9a9a;
+  border-radius: 6px;
+  font-size: 12px;
+  font-family: var(--sans);
+  color: var(--wrong);
+  cursor: pointer;
+}
+.q-reset-btn:hover { background: var(--wrong-bg); }
+.q-explain {
+  display: none;
+  margin: 0 1.1rem 1rem;
+  background: var(--highlight2);
+  border: 1px solid #90caf9;
+  border-radius: 7px;
+  padding: 0.8rem 1rem;
+  font-size: 12.5px;
+  line-height: 1.65;
+  color: var(--text-sub);
+}
+.q-explain.show { display: block; }
+.q-note-area {
+  display: none;
+  margin: 0 1.1rem 1rem;
+}
+.q-note-area.show { display: block; }
+.q-note-area textarea {
+  width: 100%;
+  border: 1px solid var(--border-light);
+  border-radius: 6px;
+  padding: 0.6rem 0.8rem;
+  font-size: 12px;
+  font-family: var(--sans);
+  background: var(--card);
+  color: var(--text);
+  resize: vertical;
+  min-height: 60px;
+}
+
+/* Two-col layout for longer content */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+  margin: 1rem 0;
+}
+
+/* Anchor offset */
+.anchor { scroll-margin-top: 20px; }
+
+/* Ratio display */
+.ratio-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  font-family: var(--mono);
+  font-size: 1.4rem;
+  font-weight: 600;
+  padding: 0.8rem;
+  background: #1a3a5c;
+  color: #e8f4ff;
+  border-radius: 8px;
+  margin: 0.5rem 0;
+}
+.ratio-num {
+  font-size: 1.8rem;
+  color: #ffd54f;
+}
+.ratio-sep {
+  color: #90caf9;
+  font-size: 1.2rem;
+}
+
+/* All-questions section */
+.all-q-section {
+  background: var(--card2);
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-top: 3rem;
+}
+.all-q-section .section-title {
+  border-left-color: var(--accent3);
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 700px) {
+  .page-header { padding: 1.5rem 1.2rem; }
+  .content { padding: 1.2rem 1rem 3rem; }
+  .toc { padding: 0.8rem 1.2rem; }
+  .card-grid-2, .card-grid-3, .two-col, .compare-row-2 { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>粗分散系 Coarse Dispersions</h1>
+  <div class="sub">Pharmaceutics 藥劑學 ｜ 113學年度考點整理</div>
+  <div class="tags">
+    <span class="tag">懸液劑 Suspension</span>
+    <span class="tag">乳劑 Emulsion</span>
+    <span class="tag">Stokes' Law</span>
+    <span class="tag">凝絮 Flocculation</span>
+    <span class="tag">HLB</span>
+    <span class="tag">乳化劑</span>
+  </div>
+</div>
+
+<div class="toc">
+  <span class="toc-label">目錄</span>
+  <a href="#classify">分類系統</a>
+  <a href="#susp-intro">懸液劑概論</a>
+  <a href="#stokes">Stokes' Law</a>
+  <a href="#floc">凝絮化</a>
+  <a href="#sed-vol">沉降體積</a>
+  <a href="#susp-ingr">懸液劑成分</a>
+  <a href="#susp-prep">懸液劑製備</a>
+  <a href="#sustained">緩釋懸液劑</a>
+  <a href="#emul-intro">乳劑概論</a>
+  <a href="#emul-theory">乳化理論</a>
+  <a href="#emul-agent">乳化劑</a>
+  <a href="#hlb">HLB系統</a>
+  <a href="#emul-prep">乳劑製備</a>
+  <a href="#emul-stab">乳劑安定性</a>
+  <a href="#all-q">全部題目</a>
+</div>
+
+<div class="content">
+
+<!-- ======== 分類系統 ======== -->
+<div id="classify" class="section anchor">
+  <div class="section-title">一、分散系分類 Disperse System</div>
+
+  <table class="notes-table">
+    <tr>
+      <th>分類</th>
+      <th>粒子大小</th>
+      <th>外觀</th>
+      <th>例</th>
+    </tr>
+    <tr>
+      <td><b>真溶液</b>（分子分散系）</td>
+      <td class="mono">&lt; 1 nm</td>
+      <td>澄清透明</td>
+      <td>生理食鹽水</td>
+    </tr>
+    <tr>
+      <td><b>膠體分散系</b></td>
+      <td class="mono">1 nm ~ 0.5 μm</td>
+      <td>視種類而定</td>
+      <td>阿拉伯膠水溶液</td>
+    </tr>
+    <tr>
+      <td><b>粗分散系</b>（本章重點）</td>
+      <td class="mono">&gt; 0.5 μm</td>
+      <td>不澄清透明</td>
+      <td>Suspension, Emulsion</td>
+    </tr>
+  </table>
+
+  <div class="box-note">
+    粗分散系可再細分：<br>
+    ・<b>細分散系</b> 0.5～10 μm → 膠漿 (gel)、乳漿 (magma)，如氫氧化鋁膠漿、氫氧化鎂乳漿<br>
+    ・<b>粗分散系</b> 10～50 μm → <b>Suspension</b>、<b>Emulsion</b>（本章核心）
+  </div>
+
+  <div class="subsection-title">依分散相與分散媒型態分類</div>
+  <table class="notes-table">
+    <tr><th>分散相→分散媒</th><th>劑型</th><th>例</th></tr>
+    <tr><td>固體→液體</td><td><b>Suspension</b></td><td>氫氧化鋁口服懸液劑</td></tr>
+    <tr><td>液體→液體</td><td><b>Emulsion</b></td><td>礦油乳劑</td></tr>
+    <tr><td>氣體→液體</td><td>泡沫（Foam）</td><td>生髮泡沫</td></tr>
+    <tr><td>固體→固體</td><td>Solid suspension（軟膏）</td><td>凡士林基劑軟膏</td></tr>
+    <tr><td>液體→固體</td><td>Solid emulsion（乳霜）</td><td>含水乳霜</td></tr>
+    <tr><td>固體→氣體</td><td>Aerosol（乾粉）</td><td>乾粉吸入劑</td></tr>
+    <tr><td>液體→氣體</td><td>Aerosol（噴霧）</td><td>氣霧吸入劑</td></tr>
+    <tr><td>氣體→氣體</td><td>None</td><td>無法形成界面</td></tr>
+  </table>
+</div>
+
+<hr class="section-divider">
+
+<!-- ======== 懸液劑 ======== -->
+<div id="susp-intro" class="section anchor">
+  <div class="section-title">二、懸液劑 Suspensions</div>
+
+  <div class="box-key">
+    <div class="box-title">⚡ 定義</div>
+    <b>不溶性固體顆粒</b>分散在液體之中。外觀不澄清透明，靜置後沉降，主要安定性目標為：<span class="hl">避免結塊（caking）</span>，不是防止沉降。
+  </div>
+
+  <div class="subsection-title">為何製成懸液劑</div>
+  <ul class="notes-list">
+    <li>藥品溶解度不好，直接懸浮比加助溶劑方便</li>
+    <li>安定性考量：溶解狀態接觸面積大、易水解；懸液接觸面積小，較安定（如抗生素懸液劑）</li>
+    <li><b>掩蓋苦味</b>：未溶解狀態下，味蕾感受到的苦味較少</li>
+    <li>液體劑型比固體劑型容易吞嚥，<b>兒童劑型首選</b></li>
+    <li>劑量調整方便（如 5 mL / 10 mL）</li>
+  </ul>
+
+  <div class="subsection-title">理想懸液劑的特性</div>
+  <div class="two-col">
+    <div class="card">
+      <div class="subsection2-title">外觀特性</div>
+      <ul class="notes-list">
+        <li>固體顆粒粒徑分佈較窄</li>
+        <li>分散相緩慢沉降（外觀較佳）</li>
+        <li>外觀優雅（可加著色）</li>
+        <li>容易傾倒</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="subsection2-title">安定性特性</div>
+      <ul class="notes-list">
+        <li>沉澱時<b>不會結塊</b>（最重要！）</li>
+        <li>搖動後易於<b>再分散</b></li>
+        <li>抵抗微生物生長</li>
+        <li>化學穩定性佳</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="subsection-title">給藥途徑</div>
+  <div class="box-exam">
+    <div class="box-title">📝 考點</div>
+    <table class="notes-table" style="margin:0">
+      <tr><th>英文</th><th>中文</th><th>特點</th></tr>
+      <tr><td>Oral suspension</td><td>口服懸液劑</td><td>最常見，如退燒藥</td></tr>
+      <tr><td><b>For oral suspension</b></td><td>供口服用乾粉</td><td>看到"for"→乾粉再調製</td></tr>
+      <tr><td>Injectable suspension</td><td>注射懸液劑</td><td>可打針，但<b>不可靜脈注射</b>；肌肉可以</td></tr>
+      <tr><td>For injectable suspension</td><td>供注射用乾粉</td><td></td></tr>
+      <tr><td>Ophthalmic / Nasal / Topical</td><td>眼用/鼻用/外用</td><td></td></tr>
+    </table>
+    <div class="sm" style="margin-top:0.5rem">注射懸液劑需控制顆粒大小（注射 ≤0.5N/25μm→眼用 10mm）；顆粒不能太大</div>
+  </div>
+
+  <!-- 1081 題目 -->
+  <div id="q1081a" class="q-block">
+    <div class="q-header">
+      <span class="q-year">108-1</span>
+      <span class="sm">懸液劑題型</span>
+    </div>
+    <div class="q-stem">關於 amoxicillin for oral suspension 的敘述，下列何者錯誤？</div>
+    <div class="q-options">
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">A</span>屬眼用懸液劑
+      </div>
+      <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)">
+        <span class="q-label">B</span>不是完全溶的藥水，需加冷開水調製成懸液劑
+      </div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">C</span>藥品不溶性顆粒需加水溶解後使用
+      </div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">D</span>藥品不溶性顆粒可直接由體內吸收
+      </div>
+    </div>
+    <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+    <div class="q-explain">
+      <b>答案：B</b><br>
+      "for oral suspension" 中 "for" 表示乾粉劑型，需加冷開水調製。藥粉本身是不溶的，取上清液只喝到冷開水而已。A錯——for oral是口服，非眼用。
+    </div>
+    <div class="q-note-area">
+      <textarea placeholder="📝 補充筆記..."></textarea>
+    </div>
+  </div>
+</div>
+
+<!-- ======== Stokes' Law ======== -->
+<div id="stokes" class="section anchor">
+  <div class="section-title">三、沉降速率 Stokes' Law</div>
+
+  <div class="formula-box">
+    v = 2r²(ρ − ρ₀)g / 9η
+    <br><span style="font-size:0.85rem;color:#b3cce8">或 v = d²(ρ − ρ₀)g / 18η</span>
+    <div class="formula-desc">
+      <span>r / d：半徑/直徑</span>
+      <span>ρ：粒子密度</span>
+      <span>ρ₀：液體密度</span>
+      <span>g：重力加速度</span>
+      <span>η：液體黏滯係數</span>
+    </div>
+  </div>
+
+  <div class="card-grid card-grid-3" style="margin-top:1rem">
+    <div class="card" style="background:var(--highlight2)">
+      <div class="badge badge-blue" style="margin-bottom:0.5rem">成正比 ↑↑</div>
+      <ul class="notes-list">
+        <li><b>r²（粒子大小）</b>：越大顆沉越快</li>
+        <li><b>(ρ−ρ₀)（密度差）</b>：密度差越大沉越快</li>
+      </ul>
+    </div>
+    <div class="card" style="background:var(--highlight)">
+      <div class="badge badge-green" style="margin-bottom:0.5rem">成反比 ↓↓</div>
+      <ul class="notes-list">
+        <li><b>η（黏稠度）</b>：加增稠劑→降低沉降速率</li>
+      </ul>
+    </div>
+    <div class="card" style="background:var(--highlight3)">
+      <div class="badge badge-amber" style="margin-bottom:0.5rem">考試注意</div>
+      <ul class="notes-list">
+        <li>密度差3倍→速度3倍（一次方）</li>
+        <li>半徑變2倍→速度4倍（平方）</li>
+        <li>單位：Poise = g/cm·s</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="box-warn">
+    <div class="box-title">⚠ Stokes' Law 的前提（理想狀態）</div>
+    <ul class="notes-list">
+      <li>粒子為<b>球型</b></li>
+      <li>環境很稀（粒子不互相干擾）</li>
+      <li>不產生亂流</li>
+      <li>粒子間無交互作用</li>
+    </ul>
+    <div class="sm" style="margin-top:0.5rem">大部分懸液劑都不符合這個標準，但Stokes' Law仍是很好的調整參考依據</div>
+  </div>
+
+  <div class="subsection-title">考題類型</div>
+  <div class="card">
+    <b>型1</b>：直接計算沉降速率，帶入公式（注意單位換算，統一用克和公分）<br>
+    <b>型2</b>：比較在不同溶媒中哪個沉降快 → 不需用公式，越大顆、越稀的溶媒沉降越快<br>
+    <b>型3</b>：問變成原來幾倍，如粒子半徑變2倍→速度4倍；密度差3倍→速度3倍
+  </div>
+
+  <div class="box-note">針狀顆粒（面對面接觸）比圓球型（點對點）更容易壓緊，更易結塊</div>
+</div>
+
+<!-- ======== 凝絮化 ======== -->
+<div id="floc" class="section anchor">
+  <div class="section-title">四、凝絮化 Flocculation</div>
+
+  <div class="box-key">
+    <div class="box-title">⚡ 核心概念</div>
+    本章宗旨：讓不溶性顆粒形成<b>凝絮狀（floccules）</b>，避免結硬塊。
+    凝絮是顆粒以<b>弱的凡德瓦力</b>鬆鬆靠在一起，形成中空架構；降下來後不會上層壓下層壓緊，搖一搖就能分散。
+  </div>
+
+  <div class="two-col">
+    <div class="card" style="background:var(--correct-bg); border-color:#a5d6a7">
+      <div class="subsection2-title" style="color:var(--correct)">✓ 凝絮態（Flocculated）</div>
+      <ul class="notes-list">
+        <li>顆粒較<b>大</b>（聚在一起），沉降<b>快</b></li>
+        <li>沉降後有中空架構，<b>不結塊</b></li>
+        <li>沉降體積 F 值<b>大</b>（較高）</li>
+        <li>外觀分層明顯（不佳）</li>
+        <li>搖晃後容易再分散 ✓</li>
+      </ul>
+    </div>
+    <div class="card" style="background:var(--wrong-bg); border-color:#ef9a9a">
+      <div class="subsection2-title" style="color:var(--wrong)">✗ 去凝絮態（Deflocculated）</div>
+      <ul class="notes-list">
+        <li>顆粒細小分散，沉降<b>慢</b></li>
+        <li>沉降後壓緊，<b>容易結塊</b></li>
+        <li>沉降體積 F 值<b>小</b></li>
+        <li>外觀均勻（較佳）</li>
+        <li>結塊後搖不開 ✗</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="subsection-title">為何不讓懸液劑帶電荷</div>
+  <div class="card">
+    <ul class="notes-list">
+      <li>若帶電荷→顆粒互相排斥→各自分散為細粉</li>
+      <li>細粉雖沉降慢，但最終沉到底部後上層壓下層→<b>結硬塊</b></li>
+      <li>解法：將電荷中和，讓顆粒靠近形成凝絮（凡德瓦力 &gt; 排斥力即可）</li>
+      <li>膠體分散系帶電荷（防止析出），懸液劑<b>不</b>要帶電荷（防止結塊）→方向相反</li>
+    </ul>
+  </div>
+
+  <div class="subsection-title">凝絮劑（Flocculating Agents）— 五種方式</div>
+
+  <table class="notes-table">
+    <tr><th>類別</th><th>代表</th><th>機轉</th><th>備注</th></tr>
+    <tr>
+      <td>① 皂土乳漿</td>
+      <td>Bentonite magma（矽酸鋁鈉鹽）</td>
+      <td>板塊結構形成中空架構，藥品附著其上形成凝絮</td>
+      <td>口服用；注射不適用（粒子大小限制）</td>
+    </tr>
+    <tr>
+      <td>② 調整 pH 值</td>
+      <td>Buffer調整至最小溶解度</td>
+      <td>降低電荷、讓彼此不互斥而靠近</td>
+      <td>適用注射懸液劑</td>
+    </tr>
+    <tr>
+      <td>③ 電解質</td>
+      <td>KH₂PO₄、NaCl、KCl、AlCl₃</td>
+      <td><b>最常用</b>：加反電荷電解質中和zeta potential</td>
+      <td>多價離子效果更好</td>
+    </tr>
+    <tr>
+      <td>④ 界面活性劑</td>
+      <td>離子型：反電荷；非離子型：高分子聚合物方式</td>
+      <td>離子性→電荷中和；非離子性→類似高分子聚合物</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>⑤ 高分子聚合物</td>
+      <td>Xanthan gum + sulfaguanidine, bismuth subcarbonate</td>
+      <td>長鏈分子纏繞，形成架構，藥品靠在旁邊</td>
+      <td></td>
+    </tr>
+  </table>
+
+  <div class="box-exam">
+    <div class="box-title">📝 Bismuth Subnitrate 經典例題（p.42圖）</div>
+    Bismuth subnitrate（次硝酸鉍）<b>帶正電</b>，加入 KH₂PO₄（帶負電）後：<br>
+    · Zeta potential 從大正→0（電中和）→小負（過量）<br>
+    · 不結塊區：zeta potential 在小正到小負之間（引力 &gt; 斥力即可凝絮）<br>
+    · F值：凝絮態 &gt; 去凝絮態；加太多KH₂PO₄又再度排斥變去凝絮態（F值再降）
+  </div>
+
+  <!-- 1121 電解質題 -->
+  <div id="q1121floc" class="q-block">
+    <div class="q-header">
+      <span class="q-year">112-1</span>
+      <span class="sm">凝絮劑</span>
+    </div>
+    <div class="q-stem">調配懸液劑時，何者藉由降低電性障礙（electrical barrier）而達成flocculation？</div>
+    <div class="q-options">
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">A</span>皂土
+      </div>
+      <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)">
+        <span class="q-label">B</span>電解質
+      </div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">C</span>甲基纖維素
+      </div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">D</span>界面活性劑
+      </div>
+    </div>
+    <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+    <div class="q-explain">
+      <b>答案：B（電解質）</b><br>
+      電解質是最常用的凝絮劑，藉由加入與藥品相反電荷的電解質，中和zeta potential（降低電性障礙），使凡德瓦力大於排斥力而凝絮。皂土→架構；甲基纖維素→增稠劑；界面活性劑→可作凝絮，但機轉偏電荷中和或架構。
+    </div>
+    <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+  </div>
+
+  <!-- 1122 Tween 題 -->
+  <div id="q1122tween" class="q-block">
+    <div class="q-header">
+      <span class="q-year">112-2</span>
+      <span class="sm">凝絮劑 / 助懸劑</span>
+    </div>
+    <div class="q-stem">帶正電的藥品顆粒與 Tween 80 加入懸液劑後，下列何者正確？</div>
+    <div class="q-options">
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">A</span>甲基纖維素是凝絮劑
+      </div>
+      <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)">
+        <span class="q-label">B</span>Tween 80 是非離子型界面活性劑（凝絮化劑）
+      </div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">C</span>藥品顆粒不帶電
+      </div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">D</span>藥品顆粒使 zeta potential 降低
+      </div>
+    </div>
+    <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+    <div class="q-explain">
+      <b>答案：B</b><br>
+      Tween 80 = 非離子型界面活性劑，藉高分子聚合物方式（網架型）幫助凝絮。甲基纖維素泡起來黏黏的 → 增稠劑（助懸劑），非凝絮劑。
+    </div>
+    <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+  </div>
+
+  <!-- 凝膠型題 -->
+  <div id="q-gelatin" class="q-block">
+    <div class="q-header">
+      <span class="q-year">考點</span>
+      <span class="sm">明膠 Type A/B</span>
+    </div>
+    <div class="q-stem">gelatin A型加入sodium sulfathiazole懸液劑，哪個pH可用作凝絮劑？</div>
+    <div class="q-options">
+      <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)">
+        <span class="q-label">A</span>Gelatin A，pH = 3.2（帶正電）✓
+      </div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">B</span>Gelatin A，pH = 8（帶負電）
+      </div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">C</span>Gelatin B，pH = 5（帶正電→也帶正電，但Gelatin B等電點4.7–5，接近等電點，偏弱）
+      </div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">D</span>Gelatin B，pH = 8（帶負電）
+      </div>
+    </div>
+    <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+    <div class="q-explain">
+      <b>答案：A</b><br>
+      Sodium sulfathiazole = 帶負電（Na+ 被解離，藥品帶負電）→ 需要帶正電的凝絮劑。<br>
+      Gelatin A（豬皮/酸處理）等電點 pH 7–9；pH 3.2 &lt; 等電點 → 帶<b>正電</b> ✓<br>
+      Gelatin B（獸骨/鹼處理）等電點 pH 4.7–5；pH 8 &gt; 等電點 → 帶負電（同藥品→排斥，不行）<br>
+      <b>口訣</b>：低於等電點帶正電，高於等電點帶負電
+    </div>
+    <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+  </div>
+
+  <!-- 1061 Bismuth -->
+  <div id="q1061bi" class="q-block">
+    <div class="q-header">
+      <span class="q-year">106-1</span>
+      <span class="sm">Zeta potential</span>
+    </div>
+    <div class="q-stem">Bismuth subnitrate懸液劑加入monobasic potassium phosphate（KH₂PO₄），下列何者正確？</div>
+    <div class="q-options">
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">A</span>加入KH₂PO₄使懸液劑沉降速率大幅降低
+      </div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">B</span>bismuth subnitrate顆粒的apparent zeta potential為正，使其沉降較快
+      </div>
+      <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)">
+        <span class="q-label">C</span>bismuth subnitrate顆粒的apparent zeta potential為負，使其沉降後較不易結塊
+      </div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">D</span>bismuth subnitrate顆粒的apparent zeta potential為零，使其沉降後難以再分散
+      </div>
+    </div>
+    <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+    <div class="q-explain">
+      <b>答案：C</b><br>
+      KH₂PO₄帶負電，加入後中和Bismuth的正電→zeta potential下降→小負時→凝絮狀態（不結塊，搖得開）。<b>不結塊區在小正到小負之間</b>。
+    </div>
+    <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+  </div>
+</div>
+
+<!-- ======== 沉降體積 ======== -->
+<div id="sed-vol" class="section anchor">
+  <div class="section-title">五、沉降體積 Sedimentation Volume</div>
+
+  <div class="formula-box">
+    F = Vu / Vo
+    <div class="formula-desc">
+      <span>Vu：沉降後（ultimate）沉降部分體積</span>
+      <span>Vo：原始懸液劑體積</span>
+    </div>
+  </div>
+
+  <div class="card-grid card-grid-3" style="margin-top:1rem">
+    <div class="card" style="text-align:center; background:var(--correct-bg)">
+      <div class="big-num">F = 1</div>
+      <div class="sm" style="margin-top:0.3rem">完美狀態，凝絮態疊上去高度等於原來高度<br>（出現在不規則形顆粒卡住有縫隙時）</div>
+    </div>
+    <div class="card" style="text-align:center; background:var(--highlight2)">
+      <div class="big-num">F &lt; 1</div>
+      <div class="sm" style="margin-top:0.3rem">大部分正常情況，沉降後比原體積小</div>
+    </div>
+    <div class="card" style="text-align:center; background:var(--highlight3)">
+      <div class="big-num" style="color:var(--accent3)">F &gt; 1</div>
+      <div class="sm" style="margin-top:0.3rem">凝絮態過多（中空架構），<br>沉降高度&gt;原始高度（罕見）</div>
+    </div>
+  </div>
+
+  <div class="subsection-title">凝絮程度 Degree of Flocculation (β)</div>
+  <div class="formula-box">
+    β = F / F∞ = (Vu/Vo) / (V∞/Vo) = Vu / V∞
+    <div class="formula-desc">
+      <span>F：凝絮態沉降體積</span>
+      <span>F∞：去凝絮態沉降體積（F∞≤1）</span>
+      <span>β≥1（凝絮一定比去凝絮大）</span>
+    </div>
+  </div>
+
+  <!-- 1091 F值題 -->
+  <div id="q1091f" class="q-block">
+    <div class="q-header">
+      <span class="q-year">109-1</span>
+      <span class="sm">沉降體積</span>
+    </div>
+    <div class="q-stem">某懸液劑沉降體積 F 比值為 0.1，此敘述正確的是？</div>
+    <div class="q-options">
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">A</span>有凝絮（flocculation）
+      </div>
+      <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)">
+        <span class="q-label">B</span>無凝絮（no flocculation），F值遠小於1
+      </div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">C</span>F值應小於1
+      </div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">D</span>F值應大於1
+      </div>
+    </div>
+    <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+    <div class="q-explain">
+      <b>答案：B</b><br>
+      F=0.1 非常小（&lt;&lt;1），表示去凝絮態，細粉沉降壓得很緊，沉降體積很小。凝絮態的F值較大（接近1）。
+    </div>
+    <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+  </div>
+
+  <!-- 1081 β值計算 -->
+  <div id="q1081beta" class="q-block">
+    <div class="q-header">
+      <span class="q-year">108-1</span>
+      <span class="sm">計算β值</span>
+    </div>
+    <div class="q-stem">80 mL懸液劑，凝絮態沉降體積0.625（Vu/Vo=0.625），5倍去凝絮態沉降體積為Vu/Vo多少？（β=5）</div>
+    <div class="q-options">
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">A</span>50
+      </div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">B</span>5
+      </div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">C</span>1.25
+      </div>
+      <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)">
+        <span class="q-label">D</span>0.125
+      </div>
+    </div>
+    <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+    <div class="q-explain">
+      <b>答案：D（0.125）</b><br>
+      β = F / F∞ → F∞ = F / β = 0.625 / 5 = 0.125<br>
+      β=5表示凝絮態的沉降體積是去凝絮態的5倍，所以去凝絮態沉降比例很小。
+    </div>
+    <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+  </div>
+</div>
+
+<!-- ======== 懸液劑成分 ======== -->
+<div id="susp-ingr" class="section anchor">
+  <div class="section-title">六、懸液劑功能性輔型劑</div>
+
+  <table class="notes-table">
+    <tr><th>輔型劑</th><th>功能</th><th>代表成分</th><th>考點</th></tr>
+    <tr>
+      <td><b>濕潤劑</b><br>Wetting agent</td>
+      <td>降低固體顆粒與液體的界面張力，幫助分散</td>
+      <td>界面活性劑（HLB 7~9）；甘油；酒精；丙二醇</td>
+      <td>HLB 7–9 for suspension</td>
+    </tr>
+    <tr>
+      <td><b>凝絮劑</b><br>Flocculating agent</td>
+      <td>使顆粒形成凝絮，避免結塊</td>
+      <td>電解質（NaCl、KCl）；皂土；pH調整；界面活性劑；高分子聚合物</td>
+      <td>最常用：電解質</td>
+    </tr>
+    <tr>
+      <td><b>增稠劑/助懸劑</b><br>Viscosity increasing agent / Suspending agent</td>
+      <td>增加連續相黏稠度，降低沉降速率</td>
+      <td>天然膠：Acacia, Tragacanth, Xanthan gum<br>纖維素：CMC-Na（水溶）、HPMC（水溶）、MCC（親水不溶）<br>其他：Alginate、PVP、Bentonite、Carbopol</td>
+      <td>甘油≠助懸劑（不成架構）</td>
+    </tr>
+    <tr>
+      <td><b>pH調整劑/緩衝劑</b></td>
+      <td>固定pH（凝絮目的或化學安定）</td>
+      <td>Buffers</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><b>防腐劑</b><br>Preservatives</td>
+      <td>防止微生物生長</td>
+      <td>Methylparaben（fungal）、Propylparaben；苯甲醇（嬰兒慎用）；Benzalkonium chloride</td>
+      <td>Benzyl alcohol: 早產兒→呼吸窘迫；Propylene glycol→早產兒癲癇</td>
+    </tr>
+    <tr>
+      <td><b>矯味劑/著色劑</b></td>
+      <td>掩蓋外觀、改善口感</td>
+      <td>Vanillin、Sorbitol、Syrup</td>
+      <td></td>
+    </tr>
+  </table>
+
+  <div class="box-exam">
+    <div class="box-title">📝 考點：甘油≠助懸劑</div>
+    甘油（glycerin）不是大分子，不能產生架構，<b>不能作助懸劑</b>。常作：保濕劑、甜味劑（高濃度才當防腐劑）。
+  </div>
+
+  <!-- 1122 助懸劑 -->
+  <div id="q1122glyc" class="q-block">
+    <div class="q-header">
+      <span class="q-year">112-2</span>
+      <span class="sm">助懸劑</span>
+    </div>
+    <div class="q-stem">下列何者不適合作為懸液劑的助懸劑（suspending agent）？</div>
+    <div class="q-options">
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">A</span>Dextrin
+      </div>
+      <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)">
+        <span class="q-label">B</span>Glycerin
+      </div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">C</span>Carbomer
+      </div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">D</span>Guar gum
+      </div>
+    </div>
+    <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+    <div class="q-explain">
+      <b>答案：B（Glycerin）</b><br>
+      甘油是小分子，不能形成網架結構，不能當助懸劑。Dextrin（澱粉不完全水解，黏）、Carbomer（聚丙烯酸，凝膠化）、Guar gum（天然膠）都可以增稠。
+    </div>
+    <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+  </div>
+
+  <!-- 1121 antifungal -->
+  <div id="q1121anti" class="q-block">
+    <div class="q-header">
+      <span class="q-year">112-1</span>
+      <span class="sm">防腐劑</span>
+    </div>
+    <div class="q-stem">何者為抗真菌防腐劑（antifungal preservative）？</div>
+    <div class="q-options">
+      <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)">
+        <span class="q-label">A</span>Butylparaben
+      </div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">B</span>Monothioglycerol（抗氧化劑）
+      </div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">C</span>Butylated hydroxyanisole（BHA，抗氧化劑）
+      </div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">D</span>Sodium formaldehyde
+      </div>
+    </div>
+    <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+    <div class="q-explain">
+      <b>答案：A（Butylparaben）</b><br>
+      Paraben類（methylparaben, propylparaben, butylparaben）為抗真菌防腐劑。BHA/BHT為油溶性抗氧化劑；monothioglycerol為抗氧化劑。
+    </div>
+    <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+  </div>
+
+  <!-- 流變學 -->
+  <div class="subsection-title">流變學 Rheology</div>
+  <table class="notes-table">
+    <tr><th>類型</th><th>特性</th><th>例</th><th>應用</th></tr>
+    <tr>
+      <td><b>牛頓性流體</b></td>
+      <td>黏稠度不因切應力改變，過原點直線</td>
+      <td>水、礦油</td>
+      <td>無特殊助懸效果</td>
+    </tr>
+    <tr>
+      <td><b>塑膠性流體</b></td>
+      <td>有啟動值（yield value），需超過才流動</td>
+      <td>凝膠（Gel）</td>
+      <td>靜置不流動</td>
+    </tr>
+    <tr>
+      <td><b>假塑膠性流體</b></td>
+      <td>越剪切越稀（shear thinning），無啟動值</td>
+      <td>阿拉伯膠溶液、增稠劑</td>
+      <td>使用前振搖→變稀→好倒出；靜置回復黏稠→減緩沉降</td>
+    </tr>
+    <tr>
+      <td><b>擴張性流體</b></td>
+      <td>越剪切越黏（dilatant），大量粉類</td>
+      <td>高濃度澱粉</td>
+      <td>越搖越黏（少見）</td>
+    </tr>
+  </table>
+  <div class="box-note">懸液劑使用前振搖是普遍原則（假塑膠性流體搖後變稀，劑量才準確）</div>
+</div>
+
+<!-- ======== 懸液劑製備 ======== -->
+<div id="susp-prep" class="section anchor">
+  <div class="section-title">七、懸液劑製備</div>
+
+  <div class="subsection-title">流程概覽</div>
+  <div class="card">
+    <b>磨細（粒子大小均一）→ 加濕潤劑 → 加輔型劑（著色、矯味、防腐）→ 均勻分散</b><br>
+    <div class="sm" style="margin-top:0.5rem">可選擇：① 單純去凝絮（加增稠劑）② 凝絮化 ③ 凝絮+助懸（最佳，外觀與安定性兼顧）</div>
+  </div>
+
+  <div class="subsection-title">氫氧化鋁口服懸液劑（配方必考）</div>
+  <table class="notes-table">
+    <tr><th>成分</th><th>量</th><th>功能</th></tr>
+    <tr><td>Aluminum hydroxide compressed gel</td><td>326.8 g</td><td>主成分（制酸劑）</td></tr>
+    <tr><td>Sorbitol solution</td><td>282 mL</td><td>甜味劑（替代糖漿）</td></tr>
+    <tr><td>Syrup</td><td>93 mL</td><td>甜味劑</td></tr>
+    <tr><td>Glycerin</td><td>25 mL</td><td>甜味劑、濕潤劑</td></tr>
+    <tr><td>Methylparaben</td><td>0.9 g</td><td>防腐劑（paraben→看到就知道防腐）</td></tr>
+    <tr><td>Propylparaben</td><td>0.3 g</td><td>防腐劑</td></tr>
+    <tr><td>Flavor, Purified water to 1000 mL</td><td>q.s.</td><td>矯味、稀釋</td></tr>
+  </table>
+  <div class="box-note">製備：Paraben水溶性不佳 → 先將Sorbitol、Glycerin、Syrup加部分水<b>加熱</b>溶解Paraben，冷卻後再加入氫氧化鋁，加水到1000 mL，均質。</div>
+
+  <!-- 1101 Al(OH)3 -->
+  <div id="q1101aloh" class="q-block">
+    <div class="q-header">
+      <span class="q-year">110-1</span>
+      <span class="sm">氫氧化鋁懸液劑配方</span>
+    </div>
+    <div class="q-stem">Aluminum hydroxide懸液劑配方中，何者作為防腐劑？</div>
+    <div class="q-options">
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">A</span>Sorbitol solution
+      </div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">B</span>Syrup
+      </div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">C</span>Glycerin
+      </div>
+      <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)">
+        <span class="q-label">D</span>Methylparaben
+      </div>
+    </div>
+    <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+    <div class="q-explain">
+      <b>答案：D（Methylparaben）</b><br>
+      看到Paraben就知道是防腐劑。Sorbitol/Syrup→甜味劑；Glycerin→25ml量太少（防腐需很高濃度），此處為濕潤劑/甜味劑。
+    </div>
+    <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+  </div>
+
+  <div class="subsection-title">緩釋懸液劑設計原理</div>
+  <div id="sustained" class="anchor"></div>
+
+  <div class="card-grid card-grid-2" style="margin-top:0.5rem">
+    <div class="card" style="border-left: 4px solid var(--accent1)">
+      <div class="subsection2-title">① 離子交換樹脂法</div>
+      <div class="sm">例：Hydrocodone polistirex（Tussionex）</div>
+      <ul class="notes-list" style="margin-top:0.5rem">
+        <li>藥品與<b>離子交換樹脂</b>結合→形成複合物</li>
+        <li>在胃中H⁺將藥品從樹脂置換出→緩慢游離</li>
+        <li>用<b>Ethylcellulose（乙基纖維素）</b>包衣控速</li>
+        <li>注意：乙基纖維素 = <b>水不溶性纖維素</b></li>
+        <li>HPMC、HPC = 水溶性纖維素</li>
+      </ul>
+    </div>
+    <div class="card" style="border-left: 4px solid var(--accent2)">
+      <div class="subsection2-title">② SAIB/SABER系統</div>
+      <div class="sm">Sucrose acetate isobutyrate</div>
+      <ul class="notes-list" style="margin-top:0.5rem">
+        <li>SAIB：非聚合物、水不溶、<b>極高黏度液體</b>(&gt;5000 cps)</li>
+        <li>與溶媒混合降低黏度→注射或黏膜給藥</li>
+        <li>在體內形成<b>黏附性depot</b>→藥品慢慢釋放</li>
+        <li>SAIB本身具<b>生物可分解性</b></li>
+        <li>可注射或口服，釋放1–3天</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<hr class="section-divider">
+
+<!-- ======== 乳劑 ======== -->
+<div id="emul-intro" class="section anchor">
+  <div class="section-title">八、乳劑 Emulsions</div>
+
+  <div class="box-key">
+    <div class="box-title">⚡ 定義</div>
+    油+水+乳化劑（emulsifying agent）組成的系統。其中一相以<b>小液滴</b>形式分散在另一相中。外觀通常乳白色或乳黃色。
+  </div>
+
+  <div class="subsection-title">內相與外相</div>
+  <div class="two-col">
+    <div class="card">
+      <b>油包水（W/O）</b>：水為內相，油為外相<br>
+      <div class="sm" style="margin-top:0.3rem">→ 外用：滋潤皮膚；外相油→不可靜脈注射、不好入口</div>
+    </div>
+    <div class="card">
+      <b>水包油（O/W）</b>：油為內相，水為外相<br>
+      <div class="sm" style="margin-top:0.3rem">→ 口服必選、靜脈注射必選；清爽、好入口</div>
+    </div>
+  </div>
+
+  <div class="box-exam">
+    <div class="box-title">📝 鑑別未知乳劑的外相</div>
+    <table class="notes-table" style="margin:0">
+      <tr><th>方法</th><th>O/W（外相水）</th><th>W/O（外相油）</th></tr>
+      <tr><td>水溶性染料（Methylene blue）</td><td>均勻分布 ✓</td><td>不分布</td></tr>
+      <tr><td>加水稀釋</td><td>可稀釋 ✓</td><td>不可稀釋</td></tr>
+      <tr><td>導電性</td><td>可導電 ✓</td><td>不導電</td></tr>
+    </table>
+  </div>
+
+  <!-- 1122 Methylene blue -->
+  <div id="q1122mb" class="q-block">
+    <div class="q-header">
+      <span class="q-year">112-2</span>
+      <span class="sm">乳劑鑑別</span>
+    </div>
+    <div class="q-stem">Methylene blue（水溶性染料）加到W/O乳劑中，會出現在哪一相？</div>
+    <div class="q-options">
+      <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)">
+        <span class="q-label">A</span>水相（內相）
+      </div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">B</span>油相（外相）
+      </div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">C</span>水相和油相都有
+      </div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">D</span>不會分布
+      </div>
+    </div>
+    <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+    <div class="q-explain">
+      <b>答案：A（水相 = 內相）</b><br>
+      W/O乳劑外相是油，內相是水。Methylene blue是水溶性染料，會分布到水相（此時為內相）→看起來乳劑顏色不均勻（只有中間小液滴是藍色）。
+    </div>
+    <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+  </div>
+
+  <!-- 1102 O/W 題 -->
+  <div id="q1102ow" class="q-block">
+    <div class="q-header">
+      <span class="q-year">110-2</span>
+      <span class="sm">O/W乳劑</span>
+    </div>
+    <div class="q-stem">關於O/W型乳劑的敘述，下列何者正確？</div>
+    <div class="q-options">
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">A</span>外相是油相
+      </div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">B</span>加油性染料可分布均勻
+      </div>
+      <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)">
+        <span class="q-label">C</span>油是內相（分散相）
+      </div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">D</span>油與水相對密度差不大時沉澱
+      </div>
+    </div>
+    <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+    <div class="q-explain">
+      <b>答案：C</b><br>
+      O/W = Oil in Water → 油為內相，水為外相。外相是水所以可加水稀釋、導電、水溶性染料分布均勻。
+    </div>
+    <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+  </div>
+
+  <!-- 1091 W/O -->
+  <div id="q1091wo" class="q-block">
+    <div class="q-header">
+      <span class="q-year">109-1</span>
+      <span class="sm">W/O乳劑</span>
+    </div>
+    <div class="q-stem">下列何者可鑑別W/O型乳劑的外相（油相）？</div>
+    <div class="q-options">
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">A</span>加油相可稀釋
+      </div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">B</span>加水相可稀釋
+      </div>
+      <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)">
+        <span class="q-label">C</span>加油相可稀釋（外相是油） ✓
+      </div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">D</span>加乳劑本身就很易用界面活性劑稀釋
+      </div>
+    </div>
+    <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+    <div class="q-explain">
+      <b>答案：C</b><br>
+      W/O外相是油，所以加油可以稀釋（同外相）。加水不能稀釋。
+    </div>
+    <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+  </div>
+
+  <!-- 1071 W/O 染料 -->
+  <div id="q1071dye" class="q-block">
+    <div class="q-header">
+      <span class="q-year">107-1</span>
+      <span class="sm">W/O乳劑染料</span>
+    </div>
+    <div class="q-stem">若要用染料鑑別W/O乳劑的外相（油相），應選擇哪種染料？</div>
+    <div class="q-options">
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">A</span>Congo Red（水溶性）
+      </div>
+      <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)">
+        <span class="q-label">B</span>Fluorescein isothiocyanate（微溶至極微溶，油溶性較強）
+      </div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">C</span>Methylene blue（水溶性）
+      </div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">D</span>Orange II（易溶水）
+      </div>
+    </div>
+    <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+    <div class="q-explain">
+      <b>答案：B</b><br>
+      要鑑別外相（油相）→需要油溶性染料，加到W/O後會均勻分布在外相（油）中。Congo Red、Methylene blue、Orange II都是水溶性→分布到內相（水相），不能鑑別外相。
+    </div>
+    <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+  </div>
+</div>
+
+<!-- ======== 乳化理論 ======== -->
+<div id="emul-theory" class="section anchor">
+  <div class="section-title">九、乳化理論 Emulsification Theories</div>
+
+  <div class="card-grid card-grid-3">
+    <div class="card" style="border-top:3px solid var(--accent1)">
+      <div class="subsection2-title">① 表面張力理論</div>
+      <div class="sm">Surface Tension Theory</div>
+      <ul class="notes-list" style="margin-top:0.5rem">
+        <li>加乳化劑→降低表面張力</li>
+        <li>表面積增加時能量較低</li>
+        <li>W = γ × ΔA</li>
+        <li>乳化劑降低γ→可分散成小液滴</li>
+      </ul>
+    </div>
+    <div class="card" style="border-top:3px solid var(--accent2)">
+      <div class="subsection2-title">② 定向楔理論</div>
+      <div class="sm">Oriented-Wedge Theory</div>
+      <ul class="notes-list" style="margin-top:0.5rem">
+        <li>乳化劑排列方向決定O/W或W/O</li>
+        <li>親水端朝外→O/W（如Sodium oleate，一價）</li>
+        <li>親油端朝外→W/O（如Calcium oleate，二價）</li>
+        <li>一價肥皂→親水→O/W</li>
+        <li>二價肥皂→親油→W/O</li>
+      </ul>
+    </div>
+    <div class="card" style="border-top:3px solid var(--accent3)">
+      <div class="subsection2-title">③ 塑性/界面膜理論</div>
+      <div class="sm">Plastic / Interfacial Film Theory</div>
+      <ul class="notes-list" style="margin-top:0.5rem">
+        <li>乳化劑在液滴表面形成<b>強韌的膜</b></li>
+        <li>膜強→液滴不融合</li>
+        <li>膜越堅韌，乳劑越安定</li>
+        <li>三個理論互相配合，缺一不可</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="box-note">
+    ΔW = γ × ΔA：表面積增加時需做功。增加表面積且安定→需降低γ（加乳化劑）<br>
+    面積增加多少倍→表面張力需降低多少倍（等比例）
+  </div>
+
+  <!-- 1112 △W題 -->
+  <div id="q1112dw" class="q-block">
+    <div class="q-header">
+      <span class="q-year">111-2</span>
+      <span class="sm">ΔW = γ × ΔA</span>
+    </div>
+    <div class="q-stem">Gibbs定律：100 cm²油做成O/W乳劑，每個油滴表面張力降至1×10⁻¹⁰ cm²，共4×10¹²個，需使界面張力降低多少倍？</div>
+    <div class="q-options">
+      <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)">
+        <span class="q-label">A</span>4
+      </div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">B</span>40
+      </div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">C</span>400
+      </div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">D</span>4,000
+      </div>
+    </div>
+    <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+    <div class="q-explain">
+      <b>答案：A（4倍）</b><br>
+      新表面積 = 4×10¹² × 1×10⁻¹⁰ = 4×10² = 400 cm²<br>
+      面積增加 = 400 / 100 = 4倍<br>
+      → 界面張力需降低4倍。（表面積增加多少倍，γ需降低多少倍）
+    </div>
+    <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+  </div>
+</div>
+
+<!-- ======== 乳化劑 ======== -->
+<div id="emul-agent" class="section anchor">
+  <div class="section-title">十、乳化劑種類</div>
+
+  <table class="notes-table">
+    <tr><th>類別</th><th>代表</th><th>乳化機轉</th><th>外相（O/W或W/O）</th><th>考點</th></tr>
+    <tr>
+      <td>① 碳水化合物<br><span class="xs">天然膠</span></td>
+      <td>Acacia（阿拉伯膠）<br>Tragacanth<br>Agar, Pectin, Chondrus</td>
+      <td>多分子膜（親水膠體）包覆油滴，能力弱，不能有效降低表面張力</td>
+      <td><b>O/W</b>（親水）</td>
+      <td>口服乳劑首選Acacia（安全、口感佳）；其他膠→增稠劑</td>
+    </tr>
+    <tr>
+      <td>② 蛋白質類</td>
+      <td>Gelatin（明膠）<br>Egg yolk（卵磷脂）<br>Casein</td>
+      <td>多分子膜包覆，黏稠度支撐</td>
+      <td><b>O/W</b>（親水）</td>
+      <td>明膠不常當乳化劑（黏度不夠），常考明膠TypeA/B</td>
+    </tr>
+    <tr>
+      <td>③ 高分子量醇類</td>
+      <td>Stearyl alcohol<br>Cetyl alcohol<br>Glyceryl monostearate<br>Cholesterol</td>
+      <td>界面活性，形成單分子膜</td>
+      <td>前三→<b>O/W助乳化/增稠</b>（硬化劑）<br>Cholesterol→<b>W/O</b></td>
+      <td>Stearyl/Cetyl = 硬化劑（室溫固態，軟膏用）</td>
+    </tr>
+    <tr>
+      <td>④ 界面活性劑</td>
+      <td>Span（親油）<br>Tween（親水）<br>SLS（陰離子）<br>BAC（陽離子）</td>
+      <td>單分子膜（最強）；親水端在水、親油端在油</td>
+      <td>依<b>HLB</b>決定</td>
+      <td>Span+Tween常配對；SLS→陰離子→pH≥8；陽離子→pH 3–7；非離子→pH 3–10</td>
+    </tr>
+    <tr>
+      <td>⑤ 微細固體</td>
+      <td>Bentonite（皂土）<br>Mg(OH)₂, Al(OH)₃<br>Veegum</td>
+      <td>固體粒子吸附在界面形成膜（能力弱，效果不穩定）</td>
+      <td>先碰到水→O/W；先碰到油→W/O（不確定性高）</td>
+      <td>少用；矽酸鎂鋁（親水→O/W），碳黑（親油→W/O）</td>
+    </tr>
+  </table>
+
+  <div class="box-exam">
+    <div class="box-title">📝 乳化機轉三種吸附方式</div>
+    <div class="card-grid card-grid-3" style="margin-top:0.5rem">
+      <div class="card" style="background:var(--exam-bg)">
+        <b>單分子吸附</b><br>
+        <span class="sm">界面活性劑；強，形成單層膜；可決定O/W或W/O（依HLB）</span>
+      </div>
+      <div class="card" style="background:var(--exam-bg)">
+        <b>多分子吸附</b><br>
+        <span class="sm">親水性膠體（Acacia等）；在油滴表面包覆多層；能力弱；無法有效降低表面張力</span>
+      </div>
+      <div class="card" style="background:var(--exam-bg)">
+        <b>固體粒子吸附</b><br>
+        <span class="sm">微細固體；效果差，先碰誰決定外相</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 1132 乳化劑 -->
+  <div id="q1132emuls" class="q-block">
+    <div class="q-header">
+      <span class="q-year">113-2</span>
+      <span class="sm">乳化劑分類</span>
+    </div>
+    <div class="q-stem">何者為合成乳化劑（非天然）？</div>
+    <div class="q-options">
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">A</span>Acacia（天然）
+      </div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">B</span>Tragacanth（天然）
+      </div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">C</span>Chondrus（天然藻類）
+      </div>
+      <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)">
+        <span class="q-label">D</span>Sorbitan monopalmitate（Span 40，合成）
+      </div>
+    </div>
+    <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+    <div class="q-explain">
+      <b>答案：D</b><br>
+      Span類（sorbitan ester）是合成的非離子型界面活性劑。ABC都是天然膠（碳水化合物類）。
+    </div>
+    <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+  </div>
+
+  <!-- 1112 W/O乳化劑 -->
+  <div id="q1112span" class="q-block">
+    <div class="q-header">
+      <span class="q-year">111-2</span>
+      <span class="sm">W/O乳化劑選擇</span>
+    </div>
+    <div class="q-stem">帶正電的藥品，製備W/O型乳劑，選擇哪種乳化劑最適合？</div>
+    <div class="q-options">
+      <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)">
+        <span class="q-label">A</span>Span 60（非離子，親油）
+      </div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">B</span>Tween 60（非離子，親水）
+      </div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">C</span>Sodium lauryl sulfate（陰離子）
+      </div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">D</span>Benzalkonium chloride（陽離子）
+      </div>
+    </div>
+    <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+    <div class="q-explain">
+      <b>答案：A（Span 60）</b><br>
+      W/O = 外相油 → 需親油性乳化劑（HLB小）→ Span系列親油 ✓<br>
+      藥品帶正電，若選帶負電的SLS（陰離子）→配伍禁忌；Tween親水→做O/W；BAC陽離子→帶正電，和藥品同電→排斥，且親水→做O/W。
+    </div>
+    <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+  </div>
+
+  <!-- 明膠題 -->
+  <div id="q1132gel" class="q-block">
+    <div class="q-header">
+      <span class="q-year">113-2</span>
+      <span class="sm">明膠乳化劑</span>
+    </div>
+    <div class="q-stem">關於明膠作為乳化劑，下列何者正確？</div>
+    <div class="q-options">
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">A</span>屬於單分子膜型（monomolecular type）
+      </div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">B</span>形成W/O型乳劑
+      </div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">C</span>可有效降低表面張力
+      </div>
+      <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)">
+        <span class="q-label">D</span>形成的膜強度不足（不是剛性膜 rigid film）
+      </div>
+    </div>
+    <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+    <div class="q-explain">
+      <b>答案：D</b><br>
+      明膠=蛋白質/親水性膠體→多分子膜（非單分子）→形成O/W（親水）→不能有效降低表面張力（無界面活性）→膜不夠剛性（rigid），放久會液化。<b>所有乳化劑都能形成膜</b>，但形式不同。
+    </div>
+    <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+  </div>
+
+  <!-- 1022 Gelatin -->
+  <div id="q1022gelatin" class="q-block">
+    <div class="q-header">
+      <span class="q-year">102-2</span>
+      <span class="sm">明膠乳化機轉</span>
+    </div>
+    <div class="q-stem">明膠（gelatin）作為乳化劑的敘述，何者正確？</div>
+    <div class="q-options">
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">A</span>屬於單分子膜（monomolecular type）
+      </div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">B</span>形成W/O型乳劑
+      </div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">C</span>可有效降低表面張力
+      </div>
+      <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)">
+        <span class="q-label">D</span>無法在油水界面形成剛性膜（rigid film）
+      </div>
+    </div>
+    <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+    <div class="q-explain">
+      <b>答案：D</b><br>
+      同上題，明膠親水性膠體，多分子膜，不能有效降低表面張力，不能形成剛性膜。但所有乳化劑都能形成「某種形式的膜」—差別在於膜的強度。
+    </div>
+    <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+  </div>
+
+  <!-- 1132 Gelatin -->
+  <div id="q1132gel2" class="q-block">
+    <div class="q-header">
+      <span class="q-year">113-2</span>
+      <span class="sm">明膠特性</span>
+    </div>
+    <div class="q-stem">關於明膠作為乳化劑，下列何者正確？</div>
+    <div class="q-options">
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">A</span>形成O/W乳劑的內相/外相
+      </div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">B</span>是蛋白質類，無法形成任何乳化
+      </div>
+      <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)">
+        <span class="q-label">C</span>HLB值越高的乳化劑越適合做O/W（正確概念，HLB系統重要）
+      </div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">D</span>形成的乳劑黏稠度很高
+      </div>
+    </div>
+    <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+    <div class="q-explain">
+      <b>答案：C</b><br>
+      HLB越高→越親水→越適合O/W型乳劑；HLB越低→越親油→W/O。明膠雖能形成乳劑，但黏稠度不足，乳化能力弱，不常用。
+    </div>
+    <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+  </div>
+</div>
+
+<!-- ======== HLB ======== -->
+<div id="hlb" class="section anchor">
+  <div class="section-title">十一、HLB 系統</div>
+
+  <div class="box-key">
+    <div class="box-title">⚡ HLB = Hydrophilic-Lipophilic Balance</div>
+    由Griffin提出。HLB越大→越親水；HLB越小→越親油。Ansel's：HLB理論範圍1–40，實際常見1–20。
+  </div>
+
+  <table class="notes-table">
+    <tr><th>HLB範圍</th><th>用途</th></tr>
+    <tr><td class="mono">1–3</td><td>消泡劑</td></tr>
+    <tr><td class="mono">3–6</td><td>W/O 乳化劑</td></tr>
+    <tr><td class="mono"><b>7–9</b></td><td><b>濕潤劑（Suspension用）</b></td></tr>
+    <tr><td class="mono">8–18</td><td>O/W 乳化劑</td></tr>
+    <tr><td class="mono">13–15</td><td>清潔劑（Detergent）</td></tr>
+    <tr><td class="mono">15–18</td><td>增溶劑（Solubilizer）</td></tr>
+  </table>
+
+  <div class="subsection-title">界面活性劑 pH 適用範圍</div>
+  <table class="notes-table">
+    <tr><th>類型</th><th>pH適用範圍</th><th>原因</th></tr>
+    <tr><td>陽離子型（Cationic）</td><td>pH <b>3–7</b></td><td>酸性環境效果較好</td></tr>
+    <tr><td>陰離子型（Anionic）</td><td>pH <b>&gt; 8</b></td><td>鹼性環境穩定存在</td></tr>
+    <tr><td>非離子型（Nonionic）</td><td>pH <b>3–10</b></td><td>不帶電，不受pH影響，應用最廣</td></tr>
+  </table>
+
+  <!-- 1112 SLS pH -->
+  <div id="q1112sls" class="q-block">
+    <div class="q-header">
+      <span class="q-year">111-2</span>
+      <span class="sm">SLS pH適用範圍</span>
+    </div>
+    <div class="q-stem">Sodium lauryl sulfate（SLS）在何pH範圍具有最佳界面活性效果？</div>
+    <div class="q-options">
+      <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)">
+        <span class="q-label">A</span>pH ≥ 8
+      </div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">B</span>pH 6–7.9
+      </div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">C</span>pH 3–5.9
+      </div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">D</span>pH &lt; 2.9
+      </div>
+    </div>
+    <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+    <div class="q-explain">
+      <b>答案：A（pH ≥ 8）</b><br>
+      SLS = Sodium lauryl sulfate = 陰離子型界面活性劑 → 在鹼性（pH&gt;8）環境效果最佳。這是新版本新增的考點，要牢記。
+    </div>
+    <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+  </div>
+
+  <div class="subsection-title">RHLB 與乳化劑選擇</div>
+  <div class="card">
+    <b>RHLB（Required HLB）</b>：依油相查表得到所需HLB值。不同油相有不同RHLB。<br>
+    若無剛好的單一乳化劑 → 選兩種混合（一個HLB &gt; RHLB，一個 &lt; RHLB，依比例調配）<br>
+    <div class="box-exam" style="margin:0.8rem 0 0">
+      <div class="box-title">📝 混合HLB計算</div>
+      <b>HLB_mix = HLB₁ × X₁ + HLB₂ × (1-X₁)</b><br>
+      <span class="sm">例：HLB₁=8, HLB₂=12，混合比例3:1 → (8×3 + 12×1)/4 = 9</span><br>
+      <span class="sm">若RHLB=9，HLB₁=8，HLB₂=12：解 X₁ → (8x + 12(1-x) = 9) → x = 3/4（比例3:1）</span>
+    </div>
+  </div>
+
+  <div class="box-note">Span（親油）+ Tween（親水）是最佳搭配：相同的Sorbitan骨架，Tween的三條CCO鏈可嵌入兩個Span之間，形成最緊密的膜</div>
+
+  <!-- 1072 HLB計算 -->
+  <div id="q1072hlb" class="q-block">
+    <div class="q-header">
+      <span class="q-year">107-2</span>
+      <span class="sm">HLB混合計算</span>
+    </div>
+    <div class="q-stem">兩種界面活性劑HLB值分別為6和12，以3:1比例混合，製備的乳劑最可能為？</div>
+    <div class="q-options">
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">A</span>O/W型乳化劑
+      </div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">B</span>W/O型乳化劑
+      </div>
+      <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)">
+        <span class="q-label">C</span>濕潤劑
+      </div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">D</span>消泡劑
+      </div>
+    </div>
+    <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+    <div class="q-explain">
+      <b>答案：C（濕潤劑）</b><br>
+      HLB_mix = (6×3 + 12×1) / 4 = (18+12)/4 = 7.5<br>
+      HLB 7–9 → 濕潤劑（Wetting agent），用於Suspension<br>
+      O/W乳化劑需HLB 8–18（中高）；W/O需3–6（低）；消泡劑1–3
+    </div>
+    <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+  </div>
+</div>
+
+<!-- ======== 乳劑製備 ======== -->
+<div id="emul-prep" class="section anchor">
+  <div class="section-title">十二、乳劑製備方法</div>
+
+  <div class="subsection-title">一般製備原則（Griffin法）</div>
+  <div class="card">
+    <ol class="notes-list">
+      <li>分別準備油相（含乳化劑、油溶性成分）和水相（含水溶性成分）</li>
+      <li>油相通常需加熱至70–80°C（使固態成分熔融）</li>
+      <li>水相也需加熱至略高於油相（防止混合時油相降溫凝固）</li>
+      <li>將水相加入油相（或油相加入水相）</li>
+      <li>冷卻過程攪拌</li>
+      <li>最後加入可能影響乳化的成分（酸、鹽、醇）</li>
+    </ol>
+  </div>
+
+  <div class="subsection-title">小量製備（Acacia乳化劑專用）</div>
+
+  <div class="box-key">
+    <div class="box-title">⚡ 初乳劑比例（必背）</div>
+    <div class="card-grid card-grid-2" style="margin-top:0.5rem">
+      <div>
+        <div class="ratio-display">
+          <span style="font-size:12px; color:#90caf9">固定油</span>
+          <span class="ratio-num">4</span>
+          <span class="ratio-sep">:</span>
+          <span class="ratio-num">2</span>
+          <span class="ratio-sep">:</span>
+          <span class="ratio-num">1</span>
+        </div>
+        <div class="sm" style="text-align:center">油：水：Acacia（固定油）<br>如鱈魚肝油、橄欖油</div>
+      </div>
+      <div>
+        <div class="ratio-display">
+          <span style="font-size:12px; color:#90caf9">礦油</span>
+          <span class="ratio-num">2</span>
+          <span class="ratio-sep">:</span>
+          <span class="ratio-num">2</span>
+          <span class="ratio-sep">:</span>
+          <span class="ratio-num">1</span>
+        </div>
+        <div class="sm" style="text-align:center">油：水：Acacia（礦油/液體石蠟）<br>國考110-2最新答案以此為準</div>
+      </div>
+    </div>
+    <div class="sm" style="margin-top:0.5rem; color: var(--warn)">⚠ 西黃耆膠（Tragacanth）替代Acacia：固定油40:20:1；礦油20:20:1（量少因黏度高）</div>
+  </div>
+
+  <div class="two-col" style="margin-top:1rem">
+    <div class="card" style="border-top: 3px solid var(--accent1)">
+      <div class="subsection2-title">乾膠法（Continental/Dry Gum）</div>
+      <div class="xs" style="margin-bottom:0.5rem">口訣：大陸內地乾燥＝乾膠法</div>
+      <ol class="notes-list">
+        <li>研缽中加入Acacia，磨細</li>
+        <li>加入全部的油（Acacia分散在油中，不溶）</li>
+        <li>一次加入水（2份），用力研磨</li>
+        <li>形成初乳劑（此時為W/O，乳黃色）</li>
+        <li>加入剩餘的水→轉相→O/W</li>
+        <li>加入其他成分（酒精需最後加）</li>
+      </ol>
+      <div class="sm" style="margin-top:0.5rem">外相加入內相法（先W/O→加水→轉O/W）</div>
+    </div>
+    <div class="card" style="border-top: 3px solid var(--accent2)">
+      <div class="subsection2-title">濕膠法（English/Wet Gum）</div>
+      <div class="xs" style="margin-bottom:0.5rem">口訣：英國下雨＝濕膠法</div>
+      <ol class="notes-list">
+        <li>Acacia加水研磨→膠漿狀（耐心磨5分鐘以上）</li>
+        <li>分次加入油（分次！因水只有2份包4份油很困難）</li>
+        <li>研磨至形成初乳劑（本來就是O/W，乳白色）</li>
+        <li>加入剩餘的水及其他成分</li>
+      </ol>
+      <div class="sm" style="margin-top:0.5rem">內相加入外相法（直接成O/W，不需轉相）</div>
+    </div>
+  </div>
+
+  <div class="box-warn">
+    <div class="box-title">⚠ 酒精的加入時機</div>
+    口服乳劑可能加酒精防腐，但<b>Acacia不溶於酒精</b>→酒精必須在初乳劑完成後才加（否則失敗）。<br>
+    其他成分（防腐劑、緩衝劑、著色劑等）→在水中溶解後加到外相（水相）。
+  </div>
+
+  <div class="subsection-title">其他製備方法</div>
+  <div class="two-col">
+    <div class="card">
+      <div class="subsection2-title">③ 搖瓶法（Forbes Bottle Method）</div>
+      <ul class="notes-list">
+        <li>適用於揮發油或低黏度油脂</li>
+        <li>Acacia粉→乾瓶→加油→蓋瓶振搖→加等體積水→振搖→初乳</li>
+        <li>乾膠法的變化形式</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="subsection2-title">④ 新生皂法（In Situ / Nascent Soap）</div>
+      <ul class="notes-list">
+        <li>乳化劑由油中脂肪酸與鈣/鉀離子<b>現場反應</b>生成</li>
+        <li>例：Ca(OH)₂溶液 + 橄欖油（含油酸）→ Calcium oleate（鈣肥皂）</li>
+        <li>鈣肥皂（二價）→親油→ <b>W/O型</b></li>
+        <li>代表：卡拉明擦劑（Calamine liniment）</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 1132 Oil比例題 -->
+  <div id="q1132ratio" class="q-block">
+    <div class="q-header">
+      <span class="q-year">113-2</span>
+      <span class="sm">初乳劑比例</span>
+    </div>
+    <div class="q-stem">利用oil:H₂O:acacia調配乳劑初乳時，其比例為？</div>
+    <div class="q-options">
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">A</span>1:2:4
+      </div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">B</span>2:4:1
+      </div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">C</span>4:1:2
+      </div>
+      <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)">
+        <span class="q-label">D</span>4:2:1
+      </div>
+    </div>
+    <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+    <div class="q-explain">
+      <b>答案：D（4:2:1）</b><br>
+      固定油（如魚肝油）：油:水:Acacia = 4:2:1。題目未特別說明礦油，故選4:2:1。
+    </div>
+    <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+  </div>
+
+  <!-- 1112 礦油題 -->
+  <div id="q1112mineral" class="q-block">
+    <div class="q-header">
+      <span class="q-year">111-2</span>
+      <span class="sm">礦油初乳劑比例</span>
+    </div>
+    <div class="q-stem">利用liquid petrolatum:H₂O:acacia調配乳劑初乳時，其比例為？</div>
+    <div class="q-options">
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">A</span>40:20:1
+      </div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">B</span>20:20:1
+      </div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">C</span>4:2:1
+      </div>
+      <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)">
+        <span class="q-label">D</span>2:2:1
+      </div>
+    </div>
+    <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+    <div class="q-explain">
+      <b>答案：D（2:2:1）</b><br>
+      礦油（liquid petrolatum）→按課本內文：油:水:膠 = 2:2:1（111-2國考答案依此）。
+    </div>
+    <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+  </div>
+
+  <!-- 1031 wet gum -->
+  <div id="q1031wetgum" class="q-block">
+    <div class="q-header">
+      <span class="q-year">103-1</span>
+      <span class="sm">濕膠法</span>
+    </div>
+    <div class="q-stem">有關acacia添加製備乳劑濕膠法（wet gum method）之描述，下列何者正確？</div>
+    <div class="q-options">
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">A</span>Acacia以二等分比例添加
+      </div>
+      <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)">
+        <span class="q-label">B</span>內相慢慢加入外相（油分次加入水相）
+      </div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">C</span>Acacia需與油相先混和
+      </div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">D</span>此法亦稱大陸法
+      </div>
+    </div>
+    <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+    <div class="q-explain">
+      <b>答案：B</b><br>
+      濕膠法（英國法）：Acacia先溶於水→膠漿→分次加入油（內相加入外相法）→直接成O/W初乳劑。C是乾膠法（Acacia先碰油）。D是乾膠法（大陸法）。
+    </div>
+    <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+  </div>
+
+  <!-- 1121 乳劑製備錯誤 -->
+  <div id="q1121emulprep" class="q-block">
+    <div class="q-header">
+      <span class="q-year">112-1</span>
+      <span class="sm">乳劑製備方法</span>
+    </div>
+    <div class="q-stem">有關乳劑的製備方法，下列何者錯誤？</div>
+    <div class="q-options">
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">A</span>乾膠法宜用Wedgwood（陶瓷）研缽
+      </div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">B</span>以濕膠法製備時，acacia先分散於內相，再慢慢加入外相（題意不清，見解釋）
+      </div>
+      <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)">
+        <span class="q-label">C</span>原生皂法中，鈣肥皂是屬於O/W乳劑（錯！鈣肥皂→W/O）
+      </div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">D</span>乾膠法又稱大陸法，濕膠法又稱英國法
+      </div>
+    </div>
+    <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+    <div class="q-explain">
+      <b>答案：C（答案未修正）</b><br>
+      鈣肥皂（Calcium oleate）= 二價肥皂 → 親油 → <b>W/O型乳劑</b>，非O/W。<br>
+      B選項也有爭議：濕膠法Acacia先溶於水（外相），再分次加油（內相），不是Acacia先分散於內相。答案公布C。
+    </div>
+    <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+  </div>
+</div>
+
+<!-- ======== 乳劑安定性 ======== -->
+<div id="emul-stab" class="section anchor">
+  <div class="section-title">十三、乳劑安定性</div>
+
+  <div class="subsection-title">不安定現象</div>
+  <table class="notes-table">
+    <tr><th>現象</th><th>英文</th><th>可逆？</th><th>說明</th></tr>
+    <tr>
+      <td><b>乳析</b></td>
+      <td>Creaming</td>
+      <td><span class="badge badge-green">可逆 ✓</span></td>
+      <td>O/W中油滴（較輕）浮到頂部；W/O中水滴沉到底部；振搖後可重新分散</td>
+    </tr>
+    <tr>
+      <td><b>凝集</b></td>
+      <td>Aggregation / Flocculation</td>
+      <td><span class="badge badge-green">可逆 ✓</span></td>
+      <td>液滴暫時靠近，輕攪可分散；增加合併風險</td>
+    </tr>
+    <tr>
+      <td><b>合併/破裂</b></td>
+      <td>Coalescence / Breaking</td>
+      <td><span class="badge badge-purple">不可逆 ✗</span></td>
+      <td>油歸油水歸水，徹底相分離；振搖無法恢復（需重新乳化）</td>
+    </tr>
+    <tr>
+      <td><b>Ostwald Ripening</b></td>
+      <td>奧斯華特熟成</td>
+      <td><span class="badge badge-purple">不可逆 ✗</span></td>
+      <td>小液滴溶解，再沉積到大液滴上，液滴越來越大；溫度變化加速</td>
+    </tr>
+    <tr>
+      <td><b>轉相</b></td>
+      <td>Phase Inversion</td>
+      <td>視情況</td>
+      <td>內外相互換，如加入大量反電荷電解質或改變乳化劑</td>
+    </tr>
+  </table>
+
+  <div class="subsection-title">降低乳析速率</div>
+  <div class="card">
+    依Stokes' Law：<br>
+    ・<b>縮小內相粒子大小</b>（最有效）<br>
+    ・<b>降低內外相密度差</b><br>
+    ・<b>增加外相黏度</b>（加增稠劑：methylcellulose、tragacanth、sodium alginate、MCC）
+  </div>
+
+  <div class="subsection-title">轉相（Phase Inversion）</div>
+  <div class="card">
+    ・內相體積超過<b>75%</b>→發生轉相<br>
+    ・以硬脂酸鈉（鈉肥皂/O/W）為乳化劑→加入CaCl₂→鈣肥皂（W/O）→轉相<br>
+    ・乾膠法中：初乳劑（W/O）→加入大量水→轉相→O/W（自然發生）
+  </div>
+
+  <div class="subsection-title">乳劑安定性試驗條件</div>
+  <div class="card">
+    <ul class="notes-list">
+      <li>5°C、40°C、50°C進行試驗</li>
+      <li><b>5°C 與 40°C / 3個月</b>：最低要求</li>
+      <li>50°C短期暴露：替代試驗</li>
+    </ul>
+  </div>
+
+  <div class="subsection-title">黏度影響因素</div>
+  <table class="notes-table">
+    <tr><th>因素</th><th>影響</th></tr>
+    <tr><td>內相體積比↑</td><td>黏度↑</td></tr>
+    <tr><td>粒子大小↓（越小）</td><td>黏度↑</td></tr>
+    <tr><td>粒子大小分佈廣</td><td>黏度↓（大顆間穿插小顆，流動性高）</td></tr>
+    <tr><td>外相黏度↑</td><td>整體黏度↑</td></tr>
+    <tr><td>乳化劑濃度↑</td><td>黏度↑</td></tr>
+  </table>
+
+  <!-- 1112 coalescence vs flocculation -->
+  <div id="q1112coal" class="q-block">
+    <div class="q-header">
+      <span class="q-year">111-2</span>
+      <span class="sm">coalescence vs flocculation</span>
+    </div>
+    <div class="q-stem">coalescence（A）與flocculation（B）最主要差別？</div>
+    <div class="q-options">
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">A</span>A為可逆
+      </div>
+      <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)">
+        <span class="q-label">B</span>B為可逆
+      </div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">C</span>A不會沉澱
+      </div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">D</span>B不會沉澱
+      </div>
+    </div>
+    <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+    <div class="q-explain">
+      <b>答案：B</b><br>
+      Coalescence（合併/破裂）= 不可逆；Flocculation（凝集）= 可逆（輕攪可分散）。關鍵區別就是可逆性。
+    </div>
+    <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+  </div>
+
+  <!-- 1112 安定試驗溫度 -->
+  <div id="q1112temp" class="q-block">
+    <div class="q-header">
+      <span class="q-year">111-2</span>
+      <span class="sm">安定性試驗溫度</span>
+    </div>
+    <div class="q-stem">乳劑安定性測試時，最常用的低溫條件為若干°C？</div>
+    <div class="q-options">
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">A</span>-20°C
+      </div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">B</span>0°C
+      </div>
+      <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)">
+        <span class="q-label">C</span>5°C
+      </div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">D</span>25°C
+      </div>
+    </div>
+    <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+    <div class="q-explain">
+      <b>答案：C（5°C）</b><br>
+      乳劑安定性試驗：5°C（低溫）、40°C、50°C。5°C + 40°C / 3個月為最低要求。
+    </div>
+    <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+  </div>
+
+  <!-- 1082 粒子大小黏度 -->
+  <div id="q1082visc" class="q-block">
+    <div class="q-header">
+      <span class="q-year">108-2</span>
+      <span class="sm">乳劑黏度</span>
+    </div>
+    <div class="q-stem">一般有關乳劑顆粒大小越小時，黏度如何？</div>
+    <div class="q-options">
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">A</span>越小
+      </div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">B</span>不變
+      </div>
+      <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)">
+        <span class="q-label">C</span>越大
+      </div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">D</span>無法判斷
+      </div>
+    </div>
+    <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+    <div class="q-explain">
+      <b>答案：C（越大）</b><br>
+      粒子越小→大小差不多→容易互相卡住→流動性下降→黏度越大。粒子大小分佈廣時（有大有小）→大顆間穿插小顆→流動性高→黏度較低。
+    </div>
+    <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+  </div>
+
+  <!-- 1051 抗氧化劑 -->
+  <div id="q1051antioxi" class="q-block">
+    <div class="q-header">
+      <span class="q-year">105-1</span>
+      <span class="sm">抗氧化劑選擇</span>
+    </div>
+    <div class="q-stem">製備魚肝油O/W型乳劑，加入何種性質的抗氧化劑效果最佳？</div>
+    <div class="q-options">
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">A</span>親水性
+      </div>
+      <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)">
+        <span class="q-label">B</span>親油性
+      </div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">C</span>兩性
+      </div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">D</span>半極性
+      </div>
+    </div>
+    <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+    <div class="q-explain">
+      <b>答案：B（親油性）</b><br>
+      要抗氧化的對象是魚肝油（油性）→ 需親油性抗氧化劑（如BHA、BHT、Vitamin E）才能到達油相中保護油脂。<br>
+      若抗氧化的對象在水相，則選親水性（如維生素C）。
+    </div>
+    <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+  </div>
+
+  <!-- 1111 simethicone -->
+  <div id="q1111simeth" class="q-block">
+    <div class="q-header">
+      <span class="q-year">111-1</span>
+      <span class="sm">口服乳劑用途</span>
+    </div>
+    <div class="q-stem">口服simethicone乳劑之主要用途為何？</div>
+    <div class="q-options">
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">A</span>瀉劑
+      </div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">B</span>殺菌劑
+      </div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
+        <span class="q-label">C</span>胃黏膜保護劑
+      </div>
+      <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)">
+        <span class="q-label">D</span>抗起泡劑（消泡劑）
+      </div>
+    </div>
+    <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+    <div class="q-explain">
+      <b>答案：D（消泡劑）</b><br>
+      Simethicone = 界面活性劑，改變氣泡表面張力→消泡→減輕胃腸道過量氣體引起的疼痛。商品：Mylicon drops®。礦油乳劑→瀉劑；蓖麻油乳劑→瀉劑。
+    </div>
+    <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+  </div>
+</div>
+
+<!-- ======== 統整題目 ======== -->
+<div id="all-q" class="all-q-section">
+  <div class="section-title">★ 統整練習題（全章）</div>
+  <div class="sm" style="margin-bottom:1rem; color: var(--text-sub)">依序包含懸液劑→乳劑所有章節考題，點選答案後可查看詳解。</div>
+
+  <div style="display:grid; gap:0.8rem">
+
+    <div class="q-block">
+      <div class="q-header"><span class="q-year">108-1</span><span class="sm">懸液劑基本</span></div>
+      <div class="q-stem">Amoxicillin for oral suspension的敘述，何者錯誤？</div>
+      <div class="q-options">
+        <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">A</span>屬眼用懸液劑</div>
+        <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)"><span class="q-label">B</span>不是完全溶的藥水，需加冷開水調製</div>
+        <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">C</span>藥品不溶性顆粒需加水溶解</div>
+        <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">D</span>顆粒可直接由體內吸收</div>
+      </div>
+      <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+      <div class="q-explain"><b>B</b> — "for"表乾粉，加冷開水調製成懸液劑使用。</div>
+      <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-header"><span class="q-year">112-1</span><span class="sm">凝絮劑</span></div>
+      <div class="q-stem">何者藉由降低電性障礙而達成flocculation？</div>
+      <div class="q-options">
+        <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">A</span>皂土</div>
+        <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)"><span class="q-label">B</span>電解質</div>
+        <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">C</span>甲基纖維素</div>
+        <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">D</span>界面活性劑</div>
+      </div>
+      <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+      <div class="q-explain"><b>B</b> — 電解質中和zeta potential（電荷），降低電性障礙，使凡德瓦力&gt;排斥力→凝絮。</div>
+      <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-header"><span class="q-year">106-1</span><span class="sm">Zeta potential</span></div>
+      <div class="q-stem">Bismuth subnitrate懸液劑加入KH₂PO₄，何者正確？</div>
+      <div class="q-options">
+        <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">A</span>大幅降低沉降速率</div>
+        <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">B</span>zeta potential為正，沉降較快</div>
+        <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)"><span class="q-label">C</span>zeta potential為負，沉降後較不易結塊</div>
+        <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">D</span>zeta potential為零，難以再分散</div>
+      </div>
+      <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+      <div class="q-explain"><b>C</b> — KH₂PO₄帶負電，中和bismuth正電後→小負→凝絮狀態→不結塊。</div>
+      <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-header"><span class="q-year">109-1</span><span class="sm">沉降體積F值</span></div>
+      <div class="q-stem">某懸液劑沉降體積F=0.1，此敘述正確？</div>
+      <div class="q-options">
+        <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">A</span>有凝絮</div>
+        <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)"><span class="q-label">B</span>無凝絮，F值遠小於1</div>
+        <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">C</span>F值應小於1</div>
+        <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">D</span>F值應大於1</div>
+      </div>
+      <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+      <div class="q-explain"><b>B</b> — F=0.1非常小，表去凝絮態（細粉壓緊，沉降體積小）。凝絮態F值較大接近1。</div>
+      <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-header"><span class="q-year">108-1</span><span class="sm">β值計算</span></div>
+      <div class="q-stem">80 mL懸液劑，凝絮態沉降體積比0.625（F），β=5，去凝絮態F∞為？</div>
+      <div class="q-options">
+        <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">A</span>50</div>
+        <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">B</span>5</div>
+        <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">C</span>1.25</div>
+        <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)"><span class="q-label">D</span>0.125</div>
+      </div>
+      <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+      <div class="q-explain"><b>D</b> — β = F/F∞ → F∞ = F/β = 0.625/5 = 0.125</div>
+      <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-header"><span class="q-year">112-2</span><span class="sm">助懸劑</span></div>
+      <div class="q-stem">何者不適合作為懸液劑的助懸劑？</div>
+      <div class="q-options">
+        <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">A</span>Dextrin</div>
+        <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)"><span class="q-label">B</span>Glycerin</div>
+        <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">C</span>Carbomer</div>
+        <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">D</span>Guar gum</div>
+      </div>
+      <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+      <div class="q-explain"><b>B</b> — Glycerin小分子，不能形成網架結構，不能作助懸劑。</div>
+      <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-header"><span class="q-year">110-1</span><span class="sm">配方辨識</span></div>
+      <div class="q-stem">Aluminum hydroxide懸液劑中，何者作防腐劑？</div>
+      <div class="q-options">
+        <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">A</span>Sorbitol solution</div>
+        <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">B</span>Syrup</div>
+        <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">C</span>Glycerin</div>
+        <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)"><span class="q-label">D</span>Methylparaben</div>
+      </div>
+      <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+      <div class="q-explain"><b>D</b> — 看到Paraben → 防腐劑。</div>
+      <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-header"><span class="q-year">112-2</span><span class="sm">乳劑鑑別</span></div>
+      <div class="q-stem">Methylene blue加到W/O乳劑，出現在哪一相？</div>
+      <div class="q-options">
+        <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)"><span class="q-label">A</span>水相（內相）</div>
+        <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">B</span>油相（外相）</div>
+        <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">C</span>兩相都有</div>
+        <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">D</span>不分布</div>
+      </div>
+      <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+      <div class="q-explain"><b>A</b> — W/O中水為內相；Methylene blue水溶性→到水相（內相）。</div>
+      <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-header"><span class="q-year">111-2</span><span class="sm">界面張力計算</span></div>
+      <div class="q-stem">100 cm²油做O/W乳劑，每油滴1×10⁻¹⁰ cm²，共4×10¹²個，界面張力需降低幾倍？</div>
+      <div class="q-options">
+        <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)"><span class="q-label">A</span>4</div>
+        <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">B</span>40</div>
+        <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">C</span>400</div>
+        <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">D</span>4,000</div>
+      </div>
+      <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+      <div class="q-explain"><b>A</b> — 新面積 = 4×10¹² × 10⁻¹⁰ = 400 cm²；增加倍數 = 400/100 = 4倍→γ需降低4倍。</div>
+      <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-header"><span class="q-year">111-2</span><span class="sm">SLS pH</span></div>
+      <div class="q-stem">Sodium lauryl sulfate最佳pH範圍？</div>
+      <div class="q-options">
+        <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)"><span class="q-label">A</span>pH ≥ 8</div>
+        <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">B</span>pH 6–7.9</div>
+        <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">C</span>pH 3–5.9</div>
+        <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">D</span>pH &lt; 2.9</div>
+      </div>
+      <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+      <div class="q-explain"><b>A</b> — SLS = 陰離子型 → pH&gt;8最佳。新版本考點。</div>
+      <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-header"><span class="q-year">107-2</span><span class="sm">HLB計算</span></div>
+      <div class="q-stem">HLB=6和12的界面活性劑以3:1混合，功能為？</div>
+      <div class="q-options">
+        <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">A</span>O/W乳化劑</div>
+        <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">B</span>W/O乳化劑</div>
+        <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)"><span class="q-label">C</span>濕潤劑</div>
+        <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">D</span>消泡劑</div>
+      </div>
+      <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+      <div class="q-explain"><b>C</b> — HLB_mix = (6×3+12×1)/4 = 7.5 → HLB 7–9 = 濕潤劑。</div>
+      <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-header"><span class="q-year">113-2</span><span class="sm">乳化劑選擇</span></div>
+      <div class="q-stem">何者為合成乳化劑？</div>
+      <div class="q-options">
+        <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">A</span>Acacia</div>
+        <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">B</span>Tragacanth</div>
+        <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">C</span>Chondrus</div>
+        <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)"><span class="q-label">D</span>Sorbitan monopalmitate（Span 40）</div>
+      </div>
+      <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+      <div class="q-explain"><b>D</b> — Span系列是合成非離子型界面活性劑；ABC都是天然膠。</div>
+      <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-header"><span class="q-year">111-2</span><span class="sm">W/O乳化劑</span></div>
+      <div class="q-stem">帶正電藥品，製備W/O乳劑，選哪種乳化劑？</div>
+      <div class="q-options">
+        <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)"><span class="q-label">A</span>Span 60（非離子，親油）</div>
+        <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">B</span>Tween 60（親水）</div>
+        <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">C</span>Sodium lauryl sulfate（陰離子）</div>
+        <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">D</span>Benzalkonium chloride（陽離子）</div>
+      </div>
+      <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+      <div class="q-explain"><b>A</b> — W/O需親油性（低HLB）→Span✓；SLS帶負電與藥品正電→配伍禁忌。</div>
+      <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-header"><span class="q-year">113-2</span><span class="sm">初乳劑比例</span></div>
+      <div class="q-stem">oil:H₂O:acacia調配初乳比例？</div>
+      <div class="q-options">
+        <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">A</span>1:2:4</div>
+        <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">B</span>2:4:1</div>
+        <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">C</span>4:1:2</div>
+        <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)"><span class="q-label">D</span>4:2:1</div>
+      </div>
+      <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+      <div class="q-explain"><b>D</b> — 固定油：油:水:膠 = 4:2:1。</div>
+      <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-header"><span class="q-year">111-2</span><span class="sm">礦油比例</span></div>
+      <div class="q-stem">liquid petrolatum:H₂O:acacia調配初乳比例？</div>
+      <div class="q-options">
+        <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">A</span>40:20:1</div>
+        <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">B</span>20:20:1</div>
+        <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">C</span>4:2:1</div>
+        <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)"><span class="q-label">D</span>2:2:1</div>
+      </div>
+      <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+      <div class="q-explain"><b>D</b> — 礦油依課本內文：2:2:1（111-2國考答案）。</div>
+      <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-header"><span class="q-year">103-1</span><span class="sm">濕膠法</span></div>
+      <div class="q-stem">Acacia製備乳劑濕膠法，何者正確？</div>
+      <div class="q-options">
+        <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">A</span>Acacia以二等分比例添加</div>
+        <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)"><span class="q-label">B</span>內相慢慢加入外相（油分次加水）</div>
+        <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">C</span>Acacia需與油相先混和（乾膠法）</div>
+        <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">D</span>此法亦稱大陸法（乾膠法）</div>
+      </div>
+      <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+      <div class="q-explain"><b>B</b> — 濕膠法：Acacia先溶水→分次加油（內相加外相）→直接O/W。</div>
+      <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-header"><span class="q-year">112-1</span><span class="sm">乳劑製備錯誤</span></div>
+      <div class="q-stem">乳劑製備方法，何者錯誤？</div>
+      <div class="q-options">
+        <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">A</span>乾膠法宜用Wedgwood研缽</div>
+        <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">B</span>濕膠法：acacia先分散於內相（有爭議）</div>
+        <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)"><span class="q-label">C</span>原生皂法中，鈣肥皂屬O/W乳劑（錯！鈣肥皂→W/O）</div>
+        <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">D</span>乾膠法=大陸法，濕膠法=英國法</div>
+      </div>
+      <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+      <div class="q-explain"><b>C</b> — 鈣肥皂（二價）→親油→W/O型，非O/W。</div>
+      <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-header"><span class="q-year">111-2</span><span class="sm">乳劑安定性</span></div>
+      <div class="q-stem">coalescence（A）與flocculation（B）最主要差別？</div>
+      <div class="q-options">
+        <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">A</span>A為可逆</div>
+        <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)"><span class="q-label">B</span>B為可逆</div>
+        <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">C</span>A不會沉澱</div>
+        <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">D</span>B不會沉澱</div>
+      </div>
+      <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+      <div class="q-explain"><b>B</b> — Flocculation（凝集）可逆；Coalescence（合併）不可逆。</div>
+      <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-header"><span class="q-year">111-2</span><span class="sm">安定試驗溫度</span></div>
+      <div class="q-stem">乳劑安定性測試，最常用低溫條件？</div>
+      <div class="q-options">
+        <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">A</span>-20°C</div>
+        <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">B</span>0°C</div>
+        <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)"><span class="q-label">C</span>5°C</div>
+        <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">D</span>25°C</div>
+      </div>
+      <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+      <div class="q-explain"><b>C</b> — 乳劑安定試驗：5°C / 40°C / 50°C；最低要求5°C + 40°C / 3個月。</div>
+      <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-header"><span class="q-year">108-2</span><span class="sm">乳劑黏度</span></div>
+      <div class="q-stem">乳劑顆粒越小，黏度？</div>
+      <div class="q-options">
+        <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">A</span>越小</div>
+        <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">B</span>不變</div>
+        <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)"><span class="q-label">C</span>越大</div>
+        <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">D</span>無法判斷</div>
+      </div>
+      <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+      <div class="q-explain"><b>C</b> — 顆粒越小→越容易互相卡住→黏度越大。</div>
+      <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-header"><span class="q-year">105-1</span><span class="sm">抗氧化劑</span></div>
+      <div class="q-stem">製備魚肝油O/W乳劑，抗氧化劑應為何種性質？</div>
+      <div class="q-options">
+        <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">A</span>親水性</div>
+        <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)"><span class="q-label">B</span>親油性</div>
+        <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">C</span>兩性</div>
+        <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">D</span>半極性</div>
+      </div>
+      <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+      <div class="q-explain"><b>B</b> — 要保護油（魚肝油）→需親油性抗氧化劑到達油相（BHA、BHT、Vit E）。</div>
+      <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-header"><span class="q-year">111-1</span><span class="sm">simethicone</span></div>
+      <div class="q-stem">口服simethicone乳劑主要用途？</div>
+      <div class="q-options">
+        <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">A</span>瀉劑</div>
+        <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">B</span>殺菌劑</div>
+        <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">C</span>胃黏膜保護劑</div>
+        <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)"><span class="q-label">D</span>抗起泡劑（消泡劑）</div>
+      </div>
+      <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+      <div class="q-explain"><b>D</b> — Simethicone改變氣泡表面張力，消泡，治胃腸道脹氣。</div>
+      <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+    </div>
+
+  </div><!-- end all-q grid -->
+</div>
+
+</div><!-- end content -->
+
+<script>
+function selectOption(el) {
+  const block = el.closest('.q-block');
+  const opts = block.querySelectorAll('.q-option');
+  const isRevealed = [...opts].some(o => o.classList.contains('correct') || o.classList.contains('wrong'));
+  if (isRevealed) return;
+  const correct = el.dataset.correct === 'true';
+  opts.forEach(o => {
+    if (o.dataset.correct === 'true') {
+      o.classList.remove('hidden-answer');
+      o.classList.add('correct');
+    }
+  });
+  if (!correct) {
+    el.classList.remove('hidden-answer');
+    el.classList.add('wrong');
+  }
+  const noteArea = block.querySelector('.q-note-area');
+  if (noteArea) noteArea.classList.add('show');
+  const resetBtn = block.querySelector('.q-reset-btn');
+  if (resetBtn) resetBtn.style.display = 'inline-block';
+}
+
+function resetQuestion(btn) {
+  const block = btn.closest('.q-block');
+  const opts = block.querySelectorAll('.q-option');
+  opts.forEach(o => {
+    o.classList.remove('correct', 'wrong');
+    o.classList.add('hidden-answer');
+  });
+  const explain = block.querySelector('.q-explain');
+  const explainBtn = block.querySelector('.q-explain-btn');
+  if (explain) explain.classList.remove('show');
+  if (explainBtn) explainBtn.textContent = '📖 顯示詳解';
+  btn.style.display = 'none';
+}
+
+function toggleExplain(btn) {
+  const explain = btn.nextElementSibling;
+  const noteArea = explain.nextElementSibling;
+  if (explain.classList.contains('show')) {
+    explain.classList.remove('show');
+    btn.textContent = '📖 顯示詳解';
+  } else {
+    explain.classList.add('show');
+    if (noteArea) noteArea.classList.add('show');
+    btn.textContent = '📖 收起詳解';
+  }
+}
+
+// localStorage for notes
+document.querySelectorAll('.q-note-area textarea').forEach((ta, i) => {
+  const key = 'coarse_disp_note_' + i;
+  try { ta.value = localStorage.getItem(key) || ''; } catch(e){}
+  ta.addEventListener('input', () => {
+    try { localStorage.setItem(key, ta.value); } catch(e){}
+  });
+});
+</script>
+</body>
+</html>
