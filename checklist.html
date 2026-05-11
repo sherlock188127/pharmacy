@@ -351,7 +351,20 @@ var D_later=[
 
 
 var SK="pharma_v12";
-function load(){try{return JSON.parse(localStorage.getItem(SK)||"{}")}catch(e){return{}}}
+function load(){
+  try{
+    var d=JSON.parse(localStorage.getItem(SK)||"{}");
+    // 若新版是空的，從舊版 v11 遷移
+    if(Object.keys(d).length===0){
+      var old=JSON.parse(localStorage.getItem("pharma_v11")||"{}");
+      if(Object.keys(old).length>0){
+        localStorage.setItem(SK,JSON.stringify(old));
+        return old;
+      }
+    }
+    return d;
+  }catch(e){return{}}
+}
 function save(s){localStorage.setItem(SK,JSON.stringify(s))}
 function safe(k){var h=0;for(var i=0;i<k.length;i++){h=Math.imul(31,h)+k.charCodeAt(i)|0;}return"k"+Math.abs(h)+"_"+k.replace(/[^a-zA-Z0-9]/g,"_").slice(0,20)}
 function ck(key){
