@@ -382,10 +382,18 @@ function save(s){localStorage.setItem(SK,JSON.stringify(s))}
 function safe(k){var h=0;for(var i=0;i<k.length;i++){h=Math.imul(31,h)+k.charCodeAt(i)|0;}return"k"+Math.abs(h)+"_"+k.replace(/[^a-zA-Z0-9]/g,"_").slice(0,20)}
 function ck(key){
   var s=load();s[key]=!s[key];save(s);
+  // 更新原始 row
   var row=document.getElementById("row_"+key);
   var cb=document.getElementById("cb_"+key);
   if(row){if(s[key])row.classList.add("done");else row.classList.remove("done");}
   if(cb)cb.checked=!!s[key];
+  // 同時更新 moved clone（如果存在）
+  var movedRow=document.getElementById("moved_"+key);
+  if(movedRow){
+    if(s[key])movedRow.classList.add("done");else movedRow.classList.remove("done");
+    var movedCb=movedRow.querySelector("input[type=checkbox]");
+    if(movedCb)movedCb.checked=!!s[key];
+  }
   updateAll();
 }
 function tog(el){
@@ -397,16 +405,39 @@ function tog(el){
 function updateAll(){
   var s=load();
   var all=document.querySelectorAll(".item");
-  var tot=all.length,done=0;
-  all.forEach(function(el){if(s[el.id.replace("row_","")])done++;});
+  var tot=0,done=0;
+  var seenKeys={};
+  all.forEach(function(el){
+    // 跳過已移走的原始 item（opacity < 1）
+    if(el.style.opacity==="0.4") return;
+    // 取得 key
+    var rawId=el.id||"";
+    var key=rawId.replace("moved_","").replace("row_","");
+    if(!key) return;
+    // 同一個 key 只算一次
+    if(seenKeys[key]) return;
+    seenKeys[key]=true;
+    tot++;
+    if(s[key])done++;
+  });
   var pct=tot?Math.round(done/tot*100):0;
   document.getElementById("ov-fill").style.width=pct+"%";
   document.getElementById("ov-label").textContent=done+" / "+tot+" ("+pct+"%)";
   document.querySelectorAll(".wcard:not(.week-summary)").forEach(function(card){
     var its=card.querySelectorAll(".item");
     if(!its.length)return;
-    var t=its.length,d2=0;
-    its.forEach(function(el){if(s[el.id.replace("row_","")])d2++;});
+    var t=0,d2=0;
+    var seenK={};
+    its.forEach(function(el){
+      if(el.style.opacity==="0.4") return;
+      var rawId=el.id||"";
+      var key=rawId.replace("moved_","").replace("row_","");
+      if(!key||seenK[key]) return;
+      seenK[key]=true;
+      t++;
+      if(s[key])d2++;
+    });
+    if(!t)return;
     var p=Math.round(d2/t*100);
     var pf=card.querySelector(".pf");
     var pl=card.querySelector(".pl");
@@ -627,9 +658,18 @@ function applyMoves(){
         clone.id="moved_"+key;
         clone.style.opacity="1";
         clone.title="";
-        // 移除 clone 裡的 moved-badge
+        // 移除 moved-badge
         var mb=clone.querySelector(".moved-badge");
         if(mb) mb.remove();
+        // 重新設定 checkbox，使用新 id 讓 updateAll 能計算
+        var cloneCb=clone.querySelector("input[type=checkbox]");
+        var s2=load();
+        if(cloneCb){
+          cloneCb.checked=!!s2[key];
+          cloneCb.setAttribute("onclick","ck('"+key+"');event.stopPropagation()");
+        }
+        // 重新設定 row onclick
+        clone.setAttribute("onclick","ck('"+key+"')");
         // 加「取消移動」按鈕
         var cancelBtn=document.createElement("button");
         cancelBtn.className="move-btn";
