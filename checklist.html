@@ -463,7 +463,40 @@ function render(){
   
   updateAll();
 }
+function autoToday(){
+  var now=new Date();
+  var mm=String(now.getMonth()+1);
+  var dd=String(now.getDate());
+  var target=mm+"/"+dd;
+  document.querySelectorAll(".wcard.today").forEach(function(c){c.classList.remove("today");});
+  document.querySelectorAll(".wcard:not(.week-summary)").forEach(function(card){
+    var dtEl=card.querySelector(".wdt");
+    if(!dtEl)return;
+    var txt=dtEl.textContent.trim();
+    if(txt.indexOf(target)===0){
+      card.classList.add("today");
+      var body=card.querySelector(".wbody");
+      var chev=card.querySelector(".chev");
+      if(body)body.classList.add("open");
+      if(chev)chev.classList.add("open");
+      setTimeout(function(){card.scrollIntoView({behavior:"smooth",block:"start"});},300);
+    }
+  });
+}
+
+var SK_OLD="pharma_v11";
+(function migrate(){
+  try{
+    var cur=JSON.parse(localStorage.getItem("pharma_v12")||"{}");
+    if(Object.keys(cur).length===0){
+      var old=JSON.parse(localStorage.getItem(SK_OLD)||"{}");
+      if(Object.keys(old).length>0){localStorage.setItem("pharma_v12",JSON.stringify(old));}
+    }
+  }catch(e){}
+})();
+
 render();
+autoToday();
 
 </script>
 </body>
