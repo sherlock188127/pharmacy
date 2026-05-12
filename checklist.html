@@ -593,8 +593,21 @@ function confirmMove(){
   if(!_moveKey) return;
   var targetDate=document.getElementById("modal-date").value;
   if(!targetDate){alert("請選擇日期"); return;}
+  // 找原始 item 所在卡片的日期
+  var fromDate="";
+  var origRow=document.getElementById("row_"+_moveKey);
+  if(origRow){
+    var card=origRow.closest(".wcard");
+    if(card){
+      var dtEl=card.querySelector(".wdt");
+      if(dtEl){
+        // 取 "5/12 週二..." 的前半，拿到 "5/12"
+        fromDate=dtEl.textContent.trim().split(" ")[0];
+      }
+    }
+  }
   var moves=loadMoves();
-  moves[_moveKey]=targetDate;
+  moves[_moveKey]={to:targetDate, from:fromDate};
   saveMoves(moves);
   closeModal();
   applyMoves();
@@ -604,7 +617,10 @@ function applyMoves(){
   var moves=loadMoves();
   // 對每個已移動的 key，在原位置加 badge，並在目標日期卡片加入任務
   Object.keys(moves).forEach(function(key){
-    var targetDate=moves[key];
+    var moveInfo=moves[key];
+    // 相容舊格式（純字串）和新格式（物件）
+    var targetDate=typeof moveInfo==="object"?moveInfo.to:moveInfo;
+    var fromDate=typeof moveInfo==="object"?moveInfo.from:"";
     var row=document.getElementById("row_"+key);
     if(!row) return;
     // 移除舊的 moved-badge
@@ -644,7 +660,8 @@ function applyMoves(){
       if(!movedSlot){
         movedSlot=document.createElement("div");
         movedSlot.className="sr moved-slot";
-        movedSlot.innerHTML='<span class="slb" style="background:#FFF8EC;color:#92610A">📅 移入</span><div class="moved-items"></div>';
+        var fromLabel=fromDate?"📅 從"+fromDate:"📅 移入";
+        movedSlot.innerHTML='<span class="slb" style="background:#FFF8EC;color:#92610A">'+fromLabel+'</span><div class="moved-items"></div>';
         // 插在進度條之前
         var pb=body.querySelector("[style*='padding:.4rem']");
         if(pb) body.insertBefore(movedSlot,pb);
@@ -708,9 +725,27 @@ function cancelMove(key){
   updateAll();
 }
 
+
+function initStaticItems(){
+  var s=load();
+  document.querySelectorAll(".item").forEach(function(el){
+    var rawId=el.id||"";
+    var key=rawId.replace("moved_","").replace("row_","");
+    if(!key) return;
+    var cb=el.querySelector("input[type=checkbox]");
+    if(s[key]){
+      el.classList.add("done");
+      if(cb) cb.checked=true;
+    } else {
+      el.classList.remove("done");
+      if(cb) cb.checked=false;
+    }
+  });
+}
 render();
 autoToday();
 applyMoves();
+initStaticItems();
 
 </script>
 </body>
