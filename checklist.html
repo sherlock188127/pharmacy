@@ -655,46 +655,50 @@ function applyMoves(){
     if(targetCard){
       var body=targetCard.querySelector(".wbody");
       if(!body) return;
-      // 找或建立「已移入」slot
-      var movedSlot=body.querySelector(".moved-slot");
-      if(!movedSlot){
-        movedSlot=document.createElement("div");
-        movedSlot.className="sr moved-slot";
-        var fromLabel=fromDate?"📅 從"+fromDate:"📅 移入";
-        movedSlot.innerHTML='<span class="slb" style="background:#FFF8EC;color:#92610A">'+fromLabel+'</span><div class="moved-items"></div>';
-        // 插在進度條之前
+      // 找或建立「已移入」容器
+      var movedContainer=body.querySelector(".moved-container");
+      if(!movedContainer){
+        movedContainer=document.createElement("div");
+        movedContainer.className="moved-container";
         var pb=body.querySelector("[style*='padding:.4rem']");
-        if(pb) body.insertBefore(movedSlot,pb);
-        else body.appendChild(movedSlot);
+        if(pb) body.insertBefore(movedContainer,pb);
+        else body.appendChild(movedContainer);
       }
-      var itemsDiv=movedSlot.querySelector(".moved-items");
-      // 複製原始 item
+      // 每個移入任務獨立一行，各自帶來源標籤
       var origRow=document.getElementById("row_"+key);
       if(origRow){
+        var row=document.createElement("div");
+        row.className="sr moved-slot";
+        row.id="moved_slot_"+key;
+        var fromLabel=fromDate?"📅 從"+fromDate:"📅 移入";
+        var labelSpan=document.createElement("span");
+        labelSpan.className="slb";
+        labelSpan.style.cssText="background:#FFF8EC;color:#92610A";
+        labelSpan.textContent=fromLabel;
         var clone=origRow.cloneNode(true);
         clone.id="moved_"+key;
         clone.style.opacity="1";
         clone.title="";
-        // 移除 moved-badge
         var mb=clone.querySelector(".moved-badge");
         if(mb) mb.remove();
-        // 重新設定 checkbox，使用新 id 讓 updateAll 能計算
         var cloneCb=clone.querySelector("input[type=checkbox]");
         var s2=load();
         if(cloneCb){
           cloneCb.checked=!!s2[key];
           cloneCb.setAttribute("onclick","ck('"+key+"');event.stopPropagation()");
         }
-        // 重新設定 row onclick
         clone.setAttribute("onclick","ck('"+key+"')");
-        // 加「取消移動」按鈕
         var cancelBtn=document.createElement("button");
         cancelBtn.className="move-btn";
         cancelBtn.textContent="✕";
         cancelBtn.title="取消移動";
         cancelBtn.setAttribute("onclick","cancelMove('"+key+"');event.stopPropagation()");
         clone.appendChild(cancelBtn);
-        itemsDiv.appendChild(clone);
+        var itemDiv=document.createElement("div");
+        itemDiv.appendChild(clone);
+        row.appendChild(labelSpan);
+        row.appendChild(itemDiv);
+        movedContainer.appendChild(row);
       }
       // 更新進度
       updateAll();
@@ -714,14 +718,10 @@ function cancelMove(key){
     var badge=row.querySelector(".moved-badge");
     if(badge) badge.remove();
   }
+  var movedSlot=document.getElementById("moved_slot_"+key);
+  if(movedSlot) movedSlot.remove();
   var moved=document.getElementById("moved_"+key);
-  if(moved){
-    var slot=moved.closest(".moved-slot");
-    moved.remove();
-    if(slot && !slot.querySelector(".moved-items").hasChildNodes()){
-      slot.remove();
-    }
-  }
+  if(moved) moved.remove();
   updateAll();
 }
 
