@@ -616,8 +616,20 @@ function confirmMove(){
       }
     }
   }
+  // 同時存任務文字，不依賴 cloneNode
+  var taskText="";
+  var taskType="";
+  if(origRow){
+    var txEl=origRow.querySelector(".tx");
+    if(txEl) taskText=txEl.textContent.replace(/→.*$/,"").trim();
+    var classes=origRow.querySelector(".tx").className;
+    if(classes.indexOf("c-new")>=0) taskType="new";
+    else if(classes.indexOf("c-ra")>=0) taskType="ra";
+    else if(classes.indexOf("c-rb")>=0) taskType="rb";
+    else if(classes.indexOf("c-rc")>=0) taskType="rc";
+  }
   var moves=loadMoves();
-  moves[_moveKey]={to:targetDate, from:fromDate};
+  moves[_moveKey]={to:targetDate, from:fromDate, text:taskText, type:taskType};
   saveMoves(moves);
   closeModal();
   applyMoves();
@@ -691,40 +703,44 @@ function applyMoves(){
         if(pb) body.insertBefore(movedContainer,pb);
         else body.appendChild(movedContainer);
       }
-      if(origRow){
-        var row=document.createElement("div");
-        row.className="sr moved-slot";
-        row.id="moved_slot_"+key;
-        var fromLabel=fromDate?"📅 從"+fromDate:"📅 移入";
-        var labelSpan=document.createElement("span");
-        labelSpan.className="slb";
-        labelSpan.style.cssText="background:#FFF8EC;color:#92610A";
-        labelSpan.textContent=fromLabel;
-        var clone=origRow.cloneNode(true);
-        clone.id="moved_"+key;
-        clone.style.opacity="1";
-        clone.title="";
-        var mb=clone.querySelector(".moved-badge");
-        if(mb) mb.remove();
-        var cloneCb=clone.querySelector("input[type=checkbox]");
-        var s2=load();
-        if(cloneCb){
-          cloneCb.checked=!!s2[key];
-          cloneCb.setAttribute("onclick","ck('"+key+"');event.stopPropagation()");
-        }
-        clone.setAttribute("onclick","ck('"+key+"')");
-        var cancelBtn=document.createElement("button");
-        cancelBtn.className="move-btn";
-        cancelBtn.textContent="✕";
-        cancelBtn.title="取消移動";
-        cancelBtn.setAttribute("onclick","cancelMove('"+key+"');event.stopPropagation()");
-        clone.appendChild(cancelBtn);
-        var itemDiv=document.createElement("div");
-        itemDiv.appendChild(clone);
-        row.appendChild(labelSpan);
-        row.appendChild(itemDiv);
-        movedContainer.appendChild(row);
+      // 用存的文字重建 item（不依賴 cloneNode，確保文字正確）
+      var displayText=moveInfo.text||"";
+      if(!displayText && origRow){
+        var txEl=origRow.querySelector(".tx");
+        if(txEl) displayText=txEl.textContent.replace(/→.*$/,"").trim();
       }
+      if(!displayText) return; // 真的沒有文字就跳過
+      var taskType=moveInfo.type||"new";
+      var tcMap={"new":"c-new","ra":"c-ra","rb":"c-rb","rc":"c-rc"};
+      var tc=tcMap[taskType]||"c-new";
+      var s2=load();
+      var isChecked=!!s2[key];
+      var slotRow=document.createElement("div");
+      slotRow.className="sr moved-slot";
+      slotRow.id="moved_slot_"+key;
+      var fromLabel=fromDate?"📅 從"+fromDate:"📅 移入";
+      var labelSpan=document.createElement("span");
+      labelSpan.className="slb";
+      labelSpan.style.cssText="background:#FFF8EC;color:#92610A";
+      labelSpan.textContent=fromLabel;
+      var itemWrap=document.createElement("div");
+      var itemEl=document.createElement("div");
+      itemEl.className="item"+(isChecked?" done":"");
+      itemEl.id="moved_"+key;
+      itemEl.setAttribute("onclick","ck('"+key+"')");
+      var cb=document.createElement("input");
+      cb.type="checkbox"; cb.checked=isChecked;
+      cb.setAttribute("onclick","event.stopPropagation()");
+      var tx=document.createElement("span");
+      tx.className="tx "+tc; tx.textContent=displayText;
+      var cancelBtn=document.createElement("button");
+      cancelBtn.className="move-btn"; cancelBtn.textContent="✕";
+      cancelBtn.title="取消移動";
+      cancelBtn.setAttribute("onclick","cancelMove('"+key+"');event.stopPropagation()");
+      itemEl.appendChild(cb); itemEl.appendChild(tx); itemEl.appendChild(cancelBtn);
+      itemWrap.appendChild(itemEl);
+      slotRow.appendChild(labelSpan); slotRow.appendChild(itemWrap);
+      movedContainer.appendChild(slotRow);
       // 更新進度
       updateAll();
     }
