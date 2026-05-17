@@ -569,11 +569,14 @@ function confirmMove(){
 function applyMoves(){
   var moves=loadMoves();
   // 對每個已移動的 key，在原位置加 badge，並在目標日期卡片加入任務
+  var staleKeys=[];
   Object.keys(moves).forEach(function(key){
     var moveInfo=moves[key];
     // 相容舊格式（純字串）和新格式（物件）
     var targetDate=typeof moveInfo==="object"?moveInfo.to:moveInfo;
     var fromDate=typeof moveInfo==="object"?moveInfo.from:"";
+    // 如果原始 item 不存在，清掉這筆記錄
+    if(!document.getElementById("row_"+key)){staleKeys.push(key);return;}
     var row=document.getElementById("row_"+key);
     if(!row) return;
     // 移除舊的 moved-badge
@@ -657,6 +660,10 @@ function applyMoves(){
       updateAll();
     }
   });
+  if(staleKeys.length>0){
+    staleKeys.forEach(function(k){delete moves[k];});
+    saveMoves(moves);
+  }
 }
 
 function cancelMove(key){
