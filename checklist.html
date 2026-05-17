@@ -773,11 +773,27 @@ function cancelMove(key){
 
 function initStaticItems(){
   var s=load();
+  var cdone=loadCdone();
   document.querySelectorAll(".item").forEach(function(el){
     var rawId=el.id||"";
+    var cb=el.querySelector("input[type=checkbox]");
+    // 自訂任務：用 CDONE_SK
+    if(rawId.indexOf("crow_")===0){
+      var uid=rawId.replace("crow_","");
+      // 從 onclick 取 cardId
+      var onclick=el.getAttribute("onclick")||"";
+      var cm=onclick.match(/ckCustom\('([^']+)'/);
+      if(cm){
+        var cid=cm[1];
+        var isDone=!!(cdone[cid]&&cdone[cid][uid]);
+        if(isDone){el.classList.add("done");if(cb)cb.checked=true;}
+        else{el.classList.remove("done");if(cb)cb.checked=false;}
+      }
+      return;
+    }
+    // 一般任務
     var key=rawId.replace("moved_","").replace("row_","");
     if(!key) return;
-    var cb=el.querySelector("input[type=checkbox]");
     if(s[key]){
       el.classList.add("done");
       if(cb) cb.checked=true;
