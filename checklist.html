@@ -636,6 +636,16 @@ function confirmMove(){
 }
 
 function applyMoves(){
+  // 每次執行前先清掉所有移入 DOM，全量重建，避免殘留空標籤
+  document.querySelectorAll(".moved-container").forEach(function(c){c.remove();});
+  document.querySelectorAll(".moved-slot").forEach(function(s){s.remove();});
+  document.querySelectorAll(".moved-badge").forEach(function(b){b.remove();});
+  // 還原所有被淡化的原始 item
+  document.querySelectorAll(".item[style*='opacity']").forEach(function(el){
+    el.style.opacity="";
+    el.title="";
+  });
+
   var moves=loadMoves();
   var staleKeys=[];
 
@@ -682,10 +692,6 @@ function applyMoves(){
     if(origTx) origTx.appendChild(badge);
     origRow.style.opacity="0.4";
     origRow.title="已移到 "+targetDate;
-
-    // 若目標卡已有這個 moved_slot，跳過（避免重複）
-    var existing=document.getElementById("moved_slot_"+key);
-    if(existing) return;
 
     // 找目標卡
     var m2=String(d.getMonth()+1);
