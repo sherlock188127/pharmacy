@@ -637,118 +637,125 @@ function confirmMove(){
 
 function applyMoves(){
   var moves=loadMoves();
-  // 對每個已移動的 key，在原位置加 badge，並在目標日期卡片加入任務
   var staleKeys=[];
+
   Object.keys(moves).forEach(function(key){
     var moveInfo=moves[key];
-    // 相容舊格式（純字串）和新格式（物件）
     var targetDate=typeof moveInfo==="object"?moveInfo.to:moveInfo;
-    var fromDate=typeof moveInfo==="object"?moveInfo.from:"";
-    // 如果原始 item 不存在，清掉這筆記錄並移除任何殘留的 DOM
-    if(!document.getElementById("row_"+key)){
+    var fromDate=typeof moveInfo==="object"?(moveInfo.from||""):"";
+
+    // 找原始 item
+    var origRow=document.getElementById("row_"+key);
+
+    // 原始 item 不存在 -> stale，清掉並移除任何殘留 DOM
+    if(!origRow){
       staleKeys.push(key);
-      // 立即移除殘留的 moved DOM
-      var staleSlot=document.getElementById("moved_slot_"+key);
-      if(staleSlot) staleSlot.remove();
-      var staleMoved=document.getElementById("moved_"+key);
-      if(staleMoved) staleMoved.remove();
+      var s1=document.getElementById("moved_slot_"+key);
+      if(s1) s1.remove();
+      var s2=document.getElementById("moved_"+key);
+      if(s2) s2.remove();
       return;
     }
-    var row=document.getElementById("row_"+key);
-    if(!row) return;
-    // 移除舊的 moved-badge
-    var old=row.querySelector(".moved-badge");
-    if(old) old.remove();
-    // 加上移動標記
+
+    // 取任務文字（優先用儲存的，否則從 DOM 取）
+    var displayText="";
+    if(moveInfo.text) displayText=moveInfo.text;
+    if(!displayText){
+      var txEl=origRow.querySelector(".tx");
+      if(txEl) displayText=txEl.childNodes[0]?txEl.childNodes[0].textContent.trim():txEl.textContent.trim();
+    }
+
+    // 沒有文字就清掉並跳過
+    if(!displayText){
+      staleKeys.push(key);
+      return;
+    }
+
+    // 淡化原始 item
+    var oldBadge=origRow.querySelector(".moved-badge");
+    if(oldBadge) oldBadge.remove();
     var badge=document.createElement("span");
     badge.className="moved-badge";
     var d=new Date(targetDate+"T00:00:00");
     badge.textContent="→"+(d.getMonth()+1)+"/"+(d.getDate());
-    var tx=row.querySelector(".tx");
-    if(tx) tx.appendChild(badge);
-    // 把原始 item 視覺上變淡（已移走）
-    row.style.opacity="0.4";
-    row.title="已移到 "+targetDate;
-    
-    // 在目標日期卡片找到對應的 wdt，插入任務
-    var inserted=document.getElementById("moved_"+key);
-    if(inserted) inserted.remove(); // 先移除舊的
-    
-    // 找目標日卡
+    var origTx=origRow.querySelector(".tx");
+    if(origTx) origTx.appendChild(badge);
+    origRow.style.opacity="0.4";
+    origRow.title="已移到 "+targetDate;
+
+    // 若目標卡已有這個 moved_slot，跳過（避免重複）
+    var existing=document.getElementById("moved_slot_"+key);
+    if(existing) return;
+
+    // 找目標卡
+    var m2=String(d.getMonth()+1);
+    var d2=String(d.getDate());
     var targetCard=null;
     document.querySelectorAll(".wcard:not(.week-summary)").forEach(function(card){
       var dtEl=card.querySelector(".wdt");
       if(!dtEl) return;
-      var txt=dtEl.textContent.trim();
-      var m2=String(d.getMonth()+1);
-      var d2=String(d.getDate());
-      if(txt.indexOf(m2+"/"+d2)===0) targetCard=card;
+      if(dtEl.textContent.trim().indexOf(m2+"/"+d2)===0) targetCard=card;
     });
-    
-    if(targetCard){
-      var body=targetCard.querySelector(".wbody");
-      if(!body) return;
-      // 先確認 origRow 存在，再建立容器
-      var origRow=document.getElementById("row_"+key);
-      if(!origRow){
-        staleKeys.push(key);
-        return;
-      }
-      // 找或建立「已移入」容器
-      var movedContainer=body.querySelector(".moved-container");
-      if(!movedContainer){
-        movedContainer=document.createElement("div");
-        movedContainer.className="moved-container";
-        var pb=body.querySelector("[style*='padding:.4rem']");
-        if(pb) body.insertBefore(movedContainer,pb);
-        else body.appendChild(movedContainer);
-      }
-      // 用存的文字重建 item（不依賴 cloneNode，確保文字正確）
-      var displayText=moveInfo.text||"";
-      if(!displayText && origRow){
-        var txEl=origRow.querySelector(".tx");
-        if(txEl) displayText=txEl.textContent.replace(/→.*$/,"").trim();
-      }
-      if(!displayText) return; // 真的沒有文字就跳過
-      var taskType=moveInfo.type||"new";
-      var tcMap={"new":"c-new","ra":"c-ra","rb":"c-rb","rc":"c-rc"};
-      var tc=tcMap[taskType]||"c-new";
-      var s2=load();
-      var isChecked=!!s2[key];
-      var slotRow=document.createElement("div");
-      slotRow.className="sr moved-slot";
-      slotRow.id="moved_slot_"+key;
-      var fromLabel=fromDate?"📅 從"+fromDate:"📅 移入";
-      var labelSpan=document.createElement("span");
-      labelSpan.className="slb";
-      labelSpan.style.cssText="background:#FFF8EC;color:#92610A";
-      labelSpan.textContent=fromLabel;
-      var itemWrap=document.createElement("div");
-      var itemEl=document.createElement("div");
-      itemEl.className="item"+(isChecked?" done":"");
-      itemEl.id="moved_"+key;
-      itemEl.setAttribute("onclick","ck('"+key+"')");
-      var cb=document.createElement("input");
-      cb.type="checkbox"; cb.checked=isChecked;
-      cb.setAttribute("onclick","event.stopPropagation()");
-      var tx=document.createElement("span");
-      tx.className="tx "+tc; tx.textContent=displayText;
-      var cancelBtn=document.createElement("button");
-      cancelBtn.className="move-btn"; cancelBtn.textContent="✕";
-      cancelBtn.title="取消移動";
-      cancelBtn.setAttribute("onclick","cancelMove('"+key+"');event.stopPropagation()");
-      itemEl.appendChild(cb); itemEl.appendChild(tx); itemEl.appendChild(cancelBtn);
-      itemWrap.appendChild(itemEl);
-      slotRow.appendChild(labelSpan); slotRow.appendChild(itemWrap);
-      movedContainer.appendChild(slotRow);
-      // 更新進度
-      updateAll();
+    if(!targetCard) return;
+
+    var body=targetCard.querySelector(".wbody");
+    if(!body) return;
+
+    // 找或建立移入容器
+    var container=body.querySelector(".moved-container");
+    if(!container){
+      container=document.createElement("div");
+      container.className="moved-container";
+      var pb=body.querySelector("[style*='padding:.4rem']");
+      if(pb) body.insertBefore(container,pb);
+      else body.appendChild(container);
     }
+
+    // 建立移入列
+    var taskType=moveInfo.type||"new";
+    var tcMap={"new":"c-new","ra":"c-ra","rb":"c-rb","rc":"c-rc"};
+    var tc=tcMap[taskType]||"c-new";
+    var isChecked=!!load()[key];
+
+    var slotRow=document.createElement("div");
+    slotRow.className="sr moved-slot";
+    slotRow.id="moved_slot_"+key;
+
+    var labelSpan=document.createElement("span");
+    labelSpan.className="slb";
+    labelSpan.style.cssText="background:#FFF8EC;color:#92610A";
+    labelSpan.textContent=fromDate?"📅 從"+fromDate:"📅 移入";
+
+    var itemWrap=document.createElement("div");
+    var itemEl=document.createElement("div");
+    itemEl.className="item"+(isChecked?" done":"");
+    itemEl.id="moved_"+key;
+    itemEl.setAttribute("onclick","ck('"+key+"')");
+
+    var cb=document.createElement("input");
+    cb.type="checkbox"; cb.checked=isChecked;
+    cb.setAttribute("onclick","event.stopPropagation()");
+
+    var tx=document.createElement("span");
+    tx.className="tx "+tc; tx.textContent=displayText;
+
+    var cancelBtn=document.createElement("button");
+    cancelBtn.className="move-btn"; cancelBtn.textContent="✕";
+    cancelBtn.title="取消移動";
+    cancelBtn.setAttribute("onclick","cancelMove('"+key+"');event.stopPropagation()");
+
+    itemEl.appendChild(cb); itemEl.appendChild(tx); itemEl.appendChild(cancelBtn);
+    itemWrap.appendChild(itemEl);
+    slotRow.appendChild(labelSpan); slotRow.appendChild(itemWrap);
+    container.appendChild(slotRow);
   });
+
+  // 清掉 stale 記錄
   if(staleKeys.length>0){
     staleKeys.forEach(function(k){delete moves[k];});
     saveMoves(moves);
   }
+  updateAll();
 }
 
 function cancelMove(key){
