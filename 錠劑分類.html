@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>錠劑分類 — 依 0312 講義</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f2eeea; --sur: #faf8f6; --sur2: #ede8e2; --bdr: #d8d0c8;
+  --sage: #4e6458; --sage-l: #e8efe9;
+  --clay: #6e3e2e; --clay-l: #f2e8e4;
+  --dusk: #484a62; --dusk-l: #e8e8f2;
+  --sand: #6e5c38; --sand-l: #f5f0e6;
+  --slate: #3a4e5a; --slate-l: #e4ecf0;
+  --rose: #5e4050; --rose-l: #f2eaee;
+  --tx: #2c2620; --tx2: #5a5048; --tx3: #9a9088;
+  --serif: 'Noto Serif TC', serif;
+  --sans: 'Noto Sans TC', sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--tx); font-family: var(--sans); font-size: 14px; line-height: 1.8; -webkit-font-smoothing: antialiased; }
+
+/* ── HEADER ── */
+header { background: linear-gradient(135deg, #1e2e24 0%, #2e4838 55%, #1e2e24 100%); padding: 36px 0 24px; text-align: center; }
+header h1 { font-family: var(--serif); font-size: clamp(1.4rem, 3.5vw, 2.2rem); font-weight: 700; color: #deecd8; letter-spacing: 0.07em; }
+header p { font-family: var(--mono); font-size: 0.68rem; color: #88a888; letter-spacing: 0.16em; margin-top: 6px; text-transform: uppercase; }
+
+/* ── NAV ── */
+nav { background: var(--sur); border-bottom: 2px solid var(--bdr); position: sticky; top: 0; z-index: 100; }
+nav ul { display: flex; flex-wrap: wrap; list-style: none; max-width: 1080px; margin: 0 auto; padding: 0 12px; }
+nav a { display: block; padding: 9px 11px; font-size: 0.73rem; font-weight: 600; color: var(--tx2); text-decoration: none; border-bottom: 2px solid transparent; transition: all .18s; white-space: nowrap; }
+nav a:hover { color: var(--sage); border-bottom-color: var(--sage); }
+
+/* ── LAYOUT ── */
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+section { padding: 36px 0 28px; border-bottom: 1px solid var(--bdr); }
+.sec-hd { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+.sec-hd .num { font-family: var(--mono); font-size: 0.6rem; color: var(--tx3); min-width: 22px; }
+.sec-hd h2 { font-family: var(--serif); font-size: 1.25rem; font-weight: 700; color: var(--tx); }
+.sec-hd h2 small { font-family: var(--mono); font-size: 0.72rem; color: var(--tx3); font-weight: 400; margin-left: 8px; }
+.sec-hd .line { flex: 1; height: 1px; background: linear-gradient(to right, var(--bdr), transparent); }
+
+/* ── GRID ── */
+.g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.g3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+@media (max-width: 800px) { .g2, .g3 { grid-template-columns: 1fr; } }
+@media (min-width: 801px) and (max-width: 980px) { .g3 { grid-template-columns: 1fr 1fr; } }
+
+/* ── CARD ── */
+.card { background: var(--sur); border: 1px solid var(--bdr); border-radius: 6px; padding: 15px 18px; box-shadow: 0 1px 3px rgba(0,0,0,.04); }
+.card + .card { margin-top: 12px; }
+.card h3 { font-family: var(--serif); font-size: 0.95rem; font-weight: 700; color: var(--sage); border-bottom: 1.5px solid var(--sage-l); padding-bottom: 6px; margin-bottom: 10px; }
+.card h4 { font-size: 0.78rem; font-weight: 700; color: var(--sand); margin: 10px 0 4px; }
+.card p, .card li { font-size: 0.84rem; color: var(--tx); line-height: 1.78; }
+ul.li { padding-left: 16px; }
+ul.li li { margin-bottom: 3px; }
+
+/* ── BOXES ── */
+.box { border-left: 4px solid; padding: 9px 13px; margin: 8px 0; border-radius: 0 5px 5px 0; font-size: 0.83rem; line-height: 1.75; }
+.box.sage  { border-color: #7c9080; background: var(--sage-l); color: var(--sage); }
+.box.clay  { border-color: #a07060; background: var(--clay-l); color: var(--clay); }
+.box.dusk  { border-color: #7a7c9a; background: var(--dusk-l); color: var(--dusk); }
+.box.sand  { border-color: #b09870; background: var(--sand-l); color: var(--sand); }
+.box.slate { border-color: #6e8090; background: var(--slate-l); color: var(--slate); }
+.box b { font-weight: 700; }
+
+/* ── MARK ── */
+mark      { background: #f5e890; color: #3a2800; padding: 1px 3px; border-radius: 3px; font-weight: 700; }
+mark.g    { background: #c8e0c8; color: var(--sage); }
+mark.r    { background: #f0c8b8; color: var(--clay); }
+mark.b    { background: #c8c8e8; color: var(--dusk); }
+
+/* ── STAR KEY POINT ── */
+.kp { background: #faf5e8; border: 1.5px solid #d8c890; border-radius: 5px; padding: 8px 12px; font-size: 0.83rem; margin: 8px 0; color: var(--sand); line-height: 1.75; }
+.kp::before { content: '★ '; color: #b09040; }
+
+/* ── TABLE ── */
+.tw { overflow-x: auto; margin: 10px 0; }
+table { width: 100%; border-collapse: collapse; font-size: 0.81rem; }
+th { background: var(--sage); color: #f5ede0; padding: 7px 11px; text-align: left; font-size: 0.73rem; font-weight: 700; border: 1px solid #3a4e40; letter-spacing: .03em; }
+td { padding: 7px 11px; border: 1px solid var(--bdr); vertical-align: top; background: var(--sur); }
+tr:nth-child(even) td { background: #f8f4f0; }
+tr:hover td { background: var(--sage-l); }
+.td-h { font-weight: 700; font-size: 0.79rem; color: var(--sand); }
+
+/* ── BADGE ── */
+.tag { display: inline-block; padding: 2px 8px; border-radius: 20px; font-size: 0.67rem; font-weight: 700; margin: 1px 2px; border: 1px solid; }
+.tag.g { background: var(--sage-l); color: var(--sage); border-color: #b0c8b8; }
+.tag.r { background: var(--clay-l); color: var(--clay); border-color: #d0a890; }
+.tag.b { background: var(--dusk-l); color: var(--dusk); border-color: #b0b0d0; }
+.tag.y { background: var(--sand-l); color: var(--sand); border-color: #c8b898; }
+
+/* ── COMPARE ── */
+.cmp { border: 1px solid var(--bdr); border-radius: 6px; overflow: hidden; margin: 10px 0; }
+.cmp-row { display: grid; border-bottom: 1px solid var(--bdr); font-size: 0.81rem; }
+.cmp-row:last-child { border: none; }
+.cmp-row > * { padding: 7px 10px; }
+.cmp-row .lbl { background: var(--sur2); font-weight: 700; font-size: 0.73rem; color: var(--tx3); border-right: 1px solid var(--bdr); }
+.cmp-row .aa { border-right: 1px solid var(--bdr); }
+
+/* ── EXAM Q ── */
+.qs { margin-top: 16px; }
+.q { background: var(--sur); border: 1px solid var(--bdr); border-radius: 6px; overflow: hidden; margin-bottom: 9px; }
+.q-yr { font-family: var(--mono); font-size: 0.61rem; color: #fff; background: var(--sage); padding: 2px 9px; display: inline-block; }
+.q-t  { padding: 9px 14px; font-size: 0.82rem; color: var(--tx); cursor: pointer; display: flex; gap: 8px; align-items: flex-start; transition: background .15s; }
+.q-t:hover { background: var(--sage-l); }
+.q-t::before { content: 'Q'; font-family: var(--mono); font-size: 0.61rem; color: #fff; background: var(--sage); padding: 2px 5px; border-radius: 3px; flex-shrink: 0; margin-top: 2px; font-weight: 700; }
+.q-opts { padding: 4px 14px 5px; font-size: 0.79rem; color: var(--tx2); }
+.q-opts div { padding: 2px 0; }
+.q-ans { display: none; padding: 8px 14px; background: #eef5ee; border-top: 2px solid #7c9080; font-family: var(--mono); font-size: 0.77rem; color: var(--sage); font-weight: 700; }
+.q.open .q-ans { display: block; }
+.q.open { border-color: #7c9080; }
+.qhint { font-family: var(--mono); font-size: 0.64rem; color: var(--tx3); margin-bottom: 8px; }
+
+footer { text-align: center; padding: 22px; font-size: 0.66rem; color: var(--tx3); font-family: var(--mono); border-top: 1px solid var(--bdr); background: var(--sur2); letter-spacing: .05em; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>錠劑分類 Tablet Classification</h1>
+  <p>依 0312 講義完整整理 — 口服錠 · 口腔內用錠 · 其他途徑 · 模製錠</p>
+</header>
+
+<nav>
+  <ul>
+    <li><a href="#overview">總覽表</a></li>
+    <li><a href="#ct">壓製錠</a></li>
+    <li><a href="#multi">多重壓製錠</a></li>
+    <li><a href="#sugar-film">糖衣 / 膜衣錠</a></li>
+    <li><a href="#gelcap">明膠衣錠</a></li>
+    <li><a href="#enteric">腸衣錠</a></li>
+    <li><a href="#release">延釋 / 遲釋 / 重覆</a></li>
+    <li><a href="#effervescent">發泡錠</a></li>
+    <li><a href="#chewable">咀嚼錠</a></li>
+    <li><a href="#rdt">速崩錠</a></li>
+    <li><a href="#oralcavity">口腔內用錠</a></li>
+    <li><a href="#other">其他途徑</a></li>
+    <li><a href="#molded">模製錠</a></li>
+    <li><a href="#qa">考題練習</a></li>
+  </ul>
+</nav>
+
+<div class="wrap">
+
+<!-- ═══ 00 總覽 ═══ -->
+<section id="overview">
+  <div class="sec-hd"><span class="num">00</span><h2>完整分類總覽表 <small>依講義架構</small></h2><div class="line"></div></div>
+  <div class="box dusk" style="margin-bottom:14px"><b>各分類可能重疊</b>（講義原文）</div>
+  <div class="tw"><table>
+    <thead><tr><th style="min-width:120px">大類</th><th>英文</th><th>中文</th><th>使用方式 / 關鍵特性</th></tr></thead>
+    <tbody>
+      <tr>
+        <td rowspan="15" class="td-h" style="background:#edf2ec;vertical-align:middle">
+          口服錠劑<br>
+          <span style="font-size:0.72rem;font-weight:400;color:var(--tx3)">Oral tablets<br>for ingestion<br>多為全身作用</span>
+        </td>
+        <td>Compressed tablets (CT)</td><td>壓製錠</td><td>未包衣；高壓將粉末或顆粒壓製成錠</td>
+      </tr>
+      <tr><td>Multiple compressed tablets</td><td>多重壓製錠</td><td>壓兩次以上；隔開不相容成分；分段釋放</td></tr>
+      <tr><td style="padding-left:22px">↳ Layered tablets</td><td>層錠</td><td>多層疊壓</td></tr>
+      <tr><td style="padding-left:22px">↳ Compressed coated tablets</td><td>壓製包衣錠</td><td>以壓製法包覆外層（內外核心錠）</td></tr>
+      <tr><td>Enteric coated tablets</td><td>腸衣錠</td><td>胃中不溶；屬 Delayed-release</td></tr>
+      <tr><td>Repeat action tablets</td><td>重覆作用錠</td><td>結合多種釋放藥物脈衝的機制</td></tr>
+      <tr><td>Extended release tablets</td><td>延釋錠（持釋錠）</td><td>藥品以緩慢延長的速率釋放；= Controlled-release</td></tr>
+      <tr><td>Delayed release tablets</td><td>遲釋錠</td><td>延遲開始釋放的時間點</td></tr>
+      <tr><td>Sugar coated tablets</td><td>糖衣錠</td><td>掩蓋氣味、增加安定；重量增加 ≥50%</td></tr>
+      <tr><td>Film coated tablets (FCT)</td><td>膜衣錠</td><td>掩蓋氣味、增加安定；重量增加 2–6%</td></tr>
+      <tr><td>Gelatin coated tablets (Gelcap)</td><td>明膠衣錠</td><td>外形似膠囊；體積比膠囊小 1/3；防摻假佳</td></tr>
+      <tr><td>Effervescent tablets ★</td><td>發泡錠</td><td>溶於水後喝下；不可直接吞服</td></tr>
+      <tr><td>Chewable tablets ★</td><td>咀嚼錠</td><td>口中咀嚼後吞服；通常不含崩散劑</td></tr>
+      <tr><td>Chewable dispersible tablets</td><td>咀嚼分散錠</td><td>可整粒吞、咀嚼、或分散於水/果汁後喝下</td></tr>
+      <tr><td>Rapidly disintegrating/dissolving tablets (RDTs) ★</td><td>速崩錠</td><td>放在舌上，口中溶解後嚥下；≤1 分鐘</td></tr>
+      <tr>
+        <td rowspan="4" class="td-h" style="background:#edf2ec;vertical-align:middle">
+          口腔內用錠<br>
+          <span style="font-size:0.72rem;font-weight:400;color:var(--tx3)">Tablets used<br>in oral cavity<br>放於口內不吞下</span>
+        </td>
+        <td>Buccal tablets ★</td><td>口頰錠</td><td>貼於口腔內壁或牙齦；<b>緩慢溶蝕</b></td>
+      </tr>
+      <tr><td>Sublingual tablets ★</td><td>舌下錠</td><td>含於舌下；<b>快速崩散</b>吸收</td></tr>
+      <tr><td>Lozenges ★（= Troches 喉片）</td><td>糖錠 / 口含錠</td><td>含於口中；≥30 分鐘緩慢溶解；局部作用</td></tr>
+      <tr><td>Dental cones ★</td><td>牙用錠</td><td>牙科拔牙後置於齒槽空洞中</td></tr>
+      <tr>
+        <td rowspan="2" class="td-h" style="background:#edf2ec;vertical-align:middle">
+          其他途徑<br>
+          <span style="font-size:0.72rem;font-weight:400;color:var(--tx3)">Other routes</span>
+        </td>
+        <td>Implantation tablets ★</td><td>植入錠</td><td>植入皮下；無菌；長效</td>
+      </tr>
+      <tr><td>Vaginal tablets ★（= inserts）</td><td>陰道錠</td><td>壓製法；卵形或橢圓形</td></tr>
+      <tr>
+        <td rowspan="3" class="td-h" style="background:#f5ece8;vertical-align:middle">
+          模製錠<br>
+          <span style="font-size:0.72rem;font-weight:400;color:var(--tx3)">Molded tablets<br>（含供製備溶液用）</span>
+        </td>
+        <td>Tablet triturates</td><td>研製錠</td><td><mark class="r">模製法</mark>；完全溶於水；也可做舌下錠</td>
+      </tr>
+      <tr><td>Hypodermic tablets ★</td><td>皮下錠</td><td><mark class="r">模製法</mark>；無菌；供臨時調配注射溶液；也可做舌下錠</td></tr>
+      <tr><td>Dispensing tablets ★</td><td>調劑錠</td><td><mark class="r">模製法</mark>；加水成溶液使用；有潛在危險</td></tr>
+    </tbody>
+  </table></div>
+  <div class="box clay">★ = 非直接吞下完整錠片（講義原文標示）</div>
+</section>
+
+<!-- ═══ 01 壓製錠 ═══ -->
+<section id="ct">
+  <div class="sec-hd"><span class="num">01</span><h2>壓製錠 <small>Compressed Tablets (CT)</small></h2><div class="line"></div></div>
+  <div class="card">
+    <h3>製備 &amp; 成分</h3>
+    <ul class="li">
+      <li>壓錠機給予<b>大壓力</b>將粉末或顆粒壓製成錠</li>
+      <li>成分：API + 稀釋劑/填料 + 黏合劑 + 崩散劑 + 助滑劑/抗黏劑/潤滑劑 + 其他</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ═══ 02 多重壓製錠 ═══ -->
+<section id="multi">
+  <div class="sec-hd"><span class="num">02</span><h2>多重壓製錠 <small>Multiple Compressed Tablets</small></h2><div class="line"></div></div>
+  <div class="g2">
+    <div class="card">
+      <h3>特性</h3>
+      <ul class="li">
+        <li>壓兩次以上（不只壓一次）</li>
+        <li><b>層錠（Layered tablets）</b>：先壓一層，再倒第二次料再壓；可做兩層、三層</li>
+        <li><b>壓製包衣錠（Compressed coated tablets）</b>：有核心錠，外面再壓一層</li>
+      </ul>
+      <h4>目的（三個）</h4>
+      <ul class="li">
+        <li><mark class="r">隔開有配伍問題的成分</mark>（化學或物理不相容）→ 主要目的</li>
+        <li>分段釋放（外層先，內層後接力）</li>
+        <li>獨特外觀</li>
+      </ul>
+      <div class="box clay" style="margin-top:8px">製備複雜；定位困難；成本高 → 大部分都有特殊目的才採用</div>
+    </div>
+    <div class="qs">
+      <div class="q">
+        <div class="q-yr">105-1</div>
+        <div class="q-t">多重壓製錠（multiply compressed tablets）的主要設計目的為何？</div>
+        <div class="q-opts"><div>A. 可分開剝層方便病人</div><div>B. 可隔開有配伍問題成分</div><div>C. 可區分日用與夜用</div><div>D. 可分次調整劑量</div></div>
+        <div class="q-ans">✓ 答案：B</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 03 糖衣 / 膜衣錠 ═══ -->
+<section id="sugar-film">
+  <div class="sec-hd"><span class="num">03</span><h2>糖衣錠 &amp; 膜衣錠 <small>Sugar / Film Coated Tablets</small></h2><div class="line"></div></div>
+  <div class="g2">
+    <div class="card">
+      <h3>糖衣錠 Sugar Coated</h3>
+      <ul class="li">
+        <li>在壓製錠外裹很多層不同的糖漿 → 圓滾滾、高光澤</li>
+        <li>目的：掩蓋氣味、增加安定性、美觀、價值感</li>
+        <li>重量增加 <mark>≥ 50%</mark></li>
+        <li>每層噴上都要等乾才能噴下一層 → 耗時費工、需專門技術</li>
+        <li>批次間<b>重量差異最大</b>（同批次差異比膜衣錠大）</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>膜衣錠 Film Coated (FCT)</h3>
+      <ul class="li">
+        <li>噴上薄薄一層高分子聚合物薄膜</li>
+        <li>目的：掩蓋氣味、增加安定性</li>
+        <li>重量增加 <mark>2–6%</mark>；外型幾乎不變；<b>刻痕壓痕仍清晰可見</b></li>
+        <li>製程快、技術需求較低；批次均一性佳</li>
+      </ul>
+    </div>
+  </div>
+  <div class="cmp" style="margin-top:4px">
+    <div class="cmp-row" style="grid-template-columns:130px 1fr 1fr;background:var(--sur2);font-weight:700;font-size:0.73rem">
+      <div class="lbl">項目</div><div class="aa">糖衣錠</div><div>膜衣錠 (FCT)</div>
+    </div>
+    <div class="cmp-row" style="grid-template-columns:130px 1fr 1fr">
+      <div class="lbl">重量增加</div><div class="aa"><b>≥ 50%</b></div><div>2–6%</div>
+    </div>
+    <div class="cmp-row" style="grid-template-columns:130px 1fr 1fr">
+      <div class="lbl">外觀</div><div class="aa">圓滾；浮雕消失</div><div>幾乎不變；保留壓痕</div>
+    </div>
+    <div class="cmp-row" style="grid-template-columns:130px 1fr 1fr">
+      <div class="lbl">製程</div><div class="aa">數天；需專門技術</div><div>數小時；操作簡單</div>
+    </div>
+    <div class="cmp-row" style="grid-template-columns:130px 1fr 1fr">
+      <div class="lbl">批次均一性</div><div class="aa">重量差異<b>最大</b></div><div>較均一</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 04 明膠衣錠 ═══ -->
+<section id="gelcap">
+  <div class="sec-hd"><span class="num">04</span><h2>明膠衣錠 <small>Gelatin-coated Tablets (Gelcap)</small></h2><div class="line"></div></div>
+  <div class="g2">
+    <div class="card">
+      <h3>製備 &amp; 特性</h3>
+      <ul class="li">
+        <li>又稱 <b>Gelcap</b>：外形如膠囊，內部是<b>壓製錠劑</b>（非充填粉末）</li>
+        <li>先壓成膠囊形狀的錠劑，外面再包一層明膠包衣</li>
+        <li>代表：<mark>Tylenol Cold Multi-Symptom Daytime</mark></li>
+      </ul>
+      <h4>優點</h4>
+      <ul class="li">
+        <li>體積比明膠膠囊小約 <mark>1/3</mark>（壓製後密度更大）→ <b>更易吞嚥</b></li>
+        <li>防摻假（tamper evident）更好：明膠衣<b>無法拆開</b>，膠囊殼可被打開</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>與明膠膠囊比較</h3>
+      <div class="tw"><table>
+        <thead><tr><th>項目</th><th>明膠衣錠 Gelcap</th><th>明膠膠囊</th></tr></thead>
+        <tbody>
+          <tr><td>內部</td><td>壓製固體核心</td><td>粉末 / 顆粒充填</td></tr>
+          <tr><td>體積</td><td><mark class="g">較小（約縮小 1/3）</mark></td><td>較大</td></tr>
+          <tr><td>吞嚥</td><td><mark class="g">更易吞嚥</mark></td><td>較難</td></tr>
+          <tr><td>防摻假</td><td><mark class="g">更好（無法打開）</mark></td><td>較差（可打開）</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </div>
+  <div class="qs">
+    <div class="q">
+      <div class="q-yr">105-1</div>
+      <div class="q-t">明膠衣錠（gelatin-coated tablets）與膠囊劑型相比，具有何優點？</div>
+      <div class="q-opts"><div>A. 包衣緊密更穩定</div><div>B. 包衣更緻密提高安定性</div><div>C. 明膠成分更黏貼不易變質</div><div>D. 體積更小且更易吞服</div></div>
+      <div class="q-ans">✓ 答案：D</div>
+    </div>
+    <div class="q">
+      <div class="q-yr">101-1</div>
+      <div class="q-t">下列那一製品是明膠衣錠？</div>
+      <div class="q-opts"><div>A. Valium</div><div>B. Gelcap</div><div>C. Nitrostat</div><div>D. Coumadin</div></div>
+      <div class="q-ans">✓ 答案：B</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 05 腸衣錠 ═══ -->
+<section id="enteric">
+  <div class="sec-hd"><span class="num">05</span><h2>腸衣錠 <small>Enteric-coated Tablets (ECT)</small></h2><div class="line"></div></div>
+  <div class="card">
+    <h3>特性</h3>
+    <ul class="li">
+      <li>屬於 <mark class="b">Delayed-release（遲釋）</mark>的劑型</li>
+      <li>胃中：<mark class="r">不溶</mark>（酸性 pH 下包衣未解離）</li>
+      <li>腸道：pH 升高後包衣溶解 → 開始釋放藥品</li>
+      <li>代表：<mark>Ecotrin tablets (aspirin)</mark></li>
+    </ul>
+    <h4>適應症（為何做成腸溶）</h4>
+    <ul class="li">
+      <li>避免胃酸破壞藥品（如 Pancreatin、Erythromycin）</li>
+      <li>避免藥品刺激胃黏膜（如 Aspirin、steroids）</li>
+      <li>藥品需在腸道才吸收；治療腸道疾病</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ═══ 06 延釋 / 遲釋 / 重覆作用 ═══ -->
+<section id="release">
+  <div class="sec-hd"><span class="num">06</span><h2>釋放設計錠 <small>Modified Release</small></h2><div class="line"></div></div>
+  <div class="g3">
+    <div class="card">
+      <h3>Extended-release tablets<br><small style="font-family:var(--sans);font-size:0.75rem;color:var(--tx3)">延釋錠 / 持釋錠</small></h3>
+      <ul class="li">
+        <li>藥品以<b>緩慢延長</b>的速率釋放</li>
+        <li>又稱：<mark>Controlled-release tablets（控釋錠）</mark></li>
+        <li>目的：減少給藥次數、維持穩定血中濃度</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Delayed-release tablets<br><small style="font-family:var(--sans);font-size:0.75rem;color:var(--tx3)">遲釋錠</small></h3>
+      <ul class="li">
+        <li>延遲藥品<b>開始釋放的時間點</b></li>
+        <li>典型代表：<mark>腸衣錠（ECT）</mark></li>
+      </ul>
+      <div class="box dusk" style="margin-top:8px;font-size:0.81rem">
+        第九版中華藥典命名：<br>
+        Extended-release → <b>持釋錠</b>（延長釋放時間）<br>
+        Delayed-release → <b>遲釋錠</b>（延遲開始時間）
+      </div>
+    </div>
+    <div class="card">
+      <h3>Repeat action tablets<br><small style="font-family:var(--sans);font-size:0.75rem;color:var(--tx3)">重覆作用錠</small></h3>
+      <ul class="li">
+        <li>結合<b>多種釋放藥物脈衝機制</b></li>
+        <li>外層：立即釋放（第一次脈衝）</li>
+        <li>內層：延遲釋放（第二次脈衝）</li>
+        <li>屬多重壓製錠的應用設計</li>
+      </ul>
+    </div>
+  </div>
+  <div class="kp" style="margin-top:8px">
+    Immediate-release（立即釋放）→ 未經特殊釋放設計的錠劑；本章節大部分都是此類
+  </div>
+  <div class="qs">
+    <div class="q">
+      <div class="q-yr">102-1</div>
+      <div class="q-t">下列何種錠片劑型具有在一較長期間內以預設模式釋放藥物的特質？</div>
+      <div class="q-opts"><div>A. Enteric-coated tablets</div><div>B. Gelatin-coated tablets</div><div>C. Multiply compression tablets</div><div>D. Extended-release tablets</div></div>
+      <div class="q-ans">✓ 答案：D</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 07 發泡錠 ═══ -->
+<section id="effervescent">
+  <div class="sec-hd"><span class="num">07</span><h2>發泡錠 <small>Effervescent Tablets</small></h2><div class="line"></div></div>
+  <div class="card">
+    <h3>特性</h3>
+    <ul class="li">
+      <li>由發泡顆粒壓製成錠；代表：Alka-Seltzer Original、Zantac EFFERdose</li>
+      <li>遇水 → 產生 CO₂ → 錠劑崩散 → 溶液後喝下</li>
+      <li><mark class="r">不可直接吞服整粒</mark></li>
+    </ul>
+    <h4>發泡系統比例（常考）</h4>
+    <div class="box sage">
+      Citric acid（19%）: Tartaric acid（28%）: NaHCO₃（53%）→ 比例 <mark>2 : 3 : 5</mark>
+    </div>
+  </div>
+  <div class="qs">
+    <div class="q">
+      <div class="q-yr">107-2</div>
+      <div class="q-t">下列何者不是發泡錠常添加的賦形劑？</div>
+      <div class="q-opts"><div>A. citric acid</div><div>B. sodium bicarbonate</div><div>C. sodium sulfate</div><div>D. tartaric acid</div></div>
+      <div class="q-ans">✓ 答案：C（發泡錠含 citric acid、tartaric acid、NaHCO₃；不含 sodium sulfate）</div>
+    </div>
+    <div class="q">
+      <div class="q-yr">109-2</div>
+      <div class="q-t">下列何者會產生 bubble action 而幫助錠劑崩散促進溶離？</div>
+      <div class="q-opts"><div>A. chewable tablet</div><div>B. dispensing tablet</div><div>C. effervescent tablet</div><div>D. rapidly disintegrating tablet</div></div>
+      <div class="q-ans">✓ 答案：C</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 08 咀嚼錠 ═══ -->
+<section id="chewable">
+  <div class="sec-hd"><span class="num">08</span><h2>咀嚼錠 &amp; 咀嚼分散錠 <small>Chewable / Chewable Dispersible Tablets</small></h2><div class="line"></div></div>
+  <div class="g2">
+    <div class="card">
+      <h3>咀嚼錠 Chewable Tablets</h3>
+      <ul class="li">
+        <li>口中咀嚼後吞服（非直接吞下）</li>
+        <li>大部分以濕粒法製備；壓力<b>不能太大</b>（咬不碎）</li>
+        <li>適合：大劑量藥品（如制酸劑）</li>
+        <li><mark class="r">通常不含崩散劑</mark>（咀嚼本身即崩散；非設計在胃中吸水崩開）</li>
+      </ul>
+      <h4>主要稀釋劑（清涼感為特色）</h4>
+      <ul class="li">
+        <li><b>Mannitol（甘露醇）</b>：<mark class="g">最常用</mark>；有清涼感；甜度約蔗糖 70%；咀嚼錠中佔 <mark>≥50%</mark></li>
+        <li><b>Xylitol（木糖醇）</b>：甜度高（≥蔗糖）；清涼感強；遇水<mark class="r">放熱</mark>（negative heat of solution 最大）</li>
+        <li>其他：Sorbitol、Glucose、Crystalline maltose、Lactose</li>
+      </ul>
+      <div class="kp">甜度大小：Xylitol、Sucrose ＞ Mannitol、Sorbitol、Glucose ＞ Maltose、Lactose<br>
+      清涼感（Negative heat of solution）：Mannitol、Sorbitol、Xylitol 三者均有</div>
+      <h4 style="margin-top:12px">常見品項</h4>
+      <ul class="li">
+        <li>制酸劑：Pepcid AC®（famotidine）、Rolaids®</li>
+        <li>抗生素：erythromycin；止痛：acetaminophen；維生素類</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>咀嚼分散錠 Chewable Dispersible Tablets</h3>
+      <ul class="li">
+        <li>三用設計：<b>整粒直接吞服</b> ／ <b>咀嚼後吞服</b> ／ <b>分散於水或果汁後喝下</b></li>
+        <li>不做太大顆（方便整粒吞）</li>
+        <li>代表：<mark>Lamictal® chewable dispersible tablet（lamotrigine）</mark></li>
+      </ul>
+      <h4>Lamictal® 配方中的特殊賦形劑</h4>
+      <ul class="li">
+        <li><b>Magnesium aluminum silicate（Veegum®）</b>：黏土類；遇水膨脹黏稠 → <span class="tag g">黏合劑</span><span class="tag g">崩散劑</span></li>
+        <li><b>LSHPC</b>（Low-substituted HPC，低取代羥丙纖維素）：促崩散與黏合</li>
+        <li>Calcium carbonate、Povidone、Sodium starch glycolate（SSG）</li>
+      </ul>
+    </div>
+  </div>
+  <div class="qs">
+    <div class="q"><div class="q-yr">111-1</div><div class="q-t">大多數咀嚼錠都含有何種成分作為主要填充劑？</div><div class="q-opts"><div>A. sorbitol</div><div>B. sucrose</div><div>C. mannitol</div><div>D. glucose</div></div><div class="q-ans">✓ 答案：C</div></div>
+    <div class="q"><div class="q-yr">108-1</div><div class="q-t">下列何者最具甜味，且遇水為放熱反應，咀嚼時有清涼感？</div><div class="q-opts"><div>A. Avicel</div><div>B. mannitol</div><div>C. sucrose</div><div>D. xylitol</div></div><div class="q-ans">✓ 答案：D</div></div>
+    <div class="q"><div class="q-yr">106-2</div><div class="q-t">通常咀嚼錠（chewable tablets）不含下列何項賦形劑？</div><div class="q-opts"><div>A. 稀釋劑</div><div>B. 黏合劑</div><div>C. 崩散劑</div><div>D. 潤滑劑</div></div><div class="q-ans">✓ 答案：C</div></div>
+  </div>
+</section>
+
+<!-- ═══ 09 速崩錠 ═══ -->
+<section id="rdt">
+  <div class="sec-hd"><span class="num">09</span><h2>速崩錠 <small>Rapidly Disintegrating/Dissolving Tablets (RDTs / ODTs)</small></h2><div class="line"></div></div>
+  <div class="card">
+    <h3>特性</h3>
+    <ul class="li">
+      <li>放在<b>舌頭上</b>（非舌下），碰到口水快速化掉，再吞嚥</li>
+      <li>一般預期 <mark>1 分鐘內</mark>崩散或溶解</li>
+      <li>適合：吞嚥困難的老人/兒童；精神病患；無水環境</li>
+    </ul>
+    <h4>製備五大挑戰</h4>
+    <ul class="li">
+      <li>① <b>載藥量</b>：大劑量難做薄</li>
+      <li>② <b>掩味</b>：需微囊包覆；包覆後顆粒需<mark class="r">小到無顆粒感</mark></li>
+      <li>③ <b>脆性</b>：<mark class="r">降低脆度 → 溶離時間增加</mark>（兩者需平衡）</li>
+      <li>④ <b>製造成本</b>：冷凍乾燥法成本高</li>
+      <li>⑤ <b>安定性</b>：容易吸濕；需防潮包裝</li>
+    </ul>
+  </div>
+  <div class="g2" style="margin-top:12px">
+    <div class="card">
+      <h3>① 冷凍乾燥法 Lyophilized foam</h3>
+      <h4>製程原理</h4>
+      <ul class="li">
+        <li>先在 <mark>−20 ~ −40°C</mark> 冷凍 → 水變成冰（體積膨脹）→ 抽真空 → 冰昇華成水蒸氣跑掉 → 留下大量孔洞 → <b>泡棉狀（蜂巢狀）多孔結構</b></li>
+        <li>做好的成品非常鬆軟，容易碎 → 通常<b>直接在最終包裝（泡殼）中冷凍乾燥</b>，不再移出；外形因此像一個碗狀</li>
+        <li><mark class="g">崩散最快</mark>（舌上數秒溶解）</li>
+      </ul>
+      <h4>配方成分</h4>
+      <ul class="li">
+        <li><b>明膠（Gelatin）</b>：提供凝結力，使成品能形成固定形狀（否則乾後變成一堆粉）</li>
+        <li><b>蔗糖（Sucrose）</b>：增加甜味</li>
+        <li>主成分需先<b>微粉化（micronized）</b></li>
+        <li>必要成分 ①：<b>Pregelatinized starch</b>（預凝膠化澱粉）→ 崩散劑，吸水膨脹</li>
+        <li>必要成分 ②：<b>Sodium starch glycolate（SSG）</b>→ 交聯型超級崩散劑</li>
+        <li>加速崩散：<b>Citric acid + NaHCO₃（發泡劑）</b>→ 遇水產生 CO₂，提供衝力快速崩開</li>
+      </ul>
+      <h4>特性（國考考點）</h4>
+      <ul class="li">
+        <li>冷凍乾燥過程中藥物常呈<b>無晶型（amorphous）</b>→ 溶解度較好</li>
+        <li>成品<b>非常容易吸濕</b>（鬆鬆多孔，接觸水氣就化掉）→ 需密封防潮包裝</li>
+        <li>冷凍過程中蛋白質/胜肽<b>容易變性</b>→ 常加<b>抗凍劑（如葡萄糖）</b>調整滲透壓保護</li>
+        <li>耗時、<b>耗能較高</b>（須先冷凍再抽真空，可能抽一天）→ 成本高</li>
+      </ul>
+      <h4>代表（冷凍乾燥法）</h4>
+      <ul class="li">
+        <li><mark>Zydis®</mark>（最早 ODT 品牌，1986 年）</li>
+        <li>Claritin Reditabs®（loratadine）</li>
+        <li>Clarinex Reditabs®（desloratadine）</li>
+        <li>Maxalt-MLT®（rizatriptan）</li>
+        <li>Zofran ODT®（ondansetron）</li>
+        <li>Zyprexa Zydis®（olanzapine）</li>
+        <li>Tylenol Meltaways®（acetaminophen）</li>
+      </ul>
+      <div class="box clay" style="margin-top:8px;font-size:0.81rem"><b>Quicksolv</b>：課本歸於「其他方法」，<b>不是冷凍乾燥法</b>代表（正確上 Quicksolv 也是冷凍乾燥，但考試以課本為準）</div>
+    </div>
+    <div class="card">
+      <h3>② 軟式直接壓錠法 Soft Direct Compression</h3>
+      <ul class="li">
+        <li>加 <mark>超級崩散劑（superdisintegrants）</mark></li>
+        <li>+ <mark>發泡材料（effervescent material）</mark></li>
+        <li>以較小壓力壓製成較薄的錠；約 30–45 秒崩散</li>
+      </ul>
+      <h4>代表</h4>
+      <ul class="li">
+        <li>DuraSolv®、OraSolv®</li>
+        <li>Flashtab®、Wowtab®</li>
+        <li>Dimetapp ND orally disintegrating tablet（loratadine）</li>
+      </ul>
+    </div>
+  </div>
+  <div class="qs">
+    <div class="q"><div class="q-yr">110-2</div><div class="q-t">速溶錠（rapidly dissolving tablets）之敘述，下列何者最適當？</div><div class="q-opts"><div>A. 給藥後3分鐘內口腔溶離達80%</div><div>B. 起始作用時間短於15分鐘</div><div>C. 在口腔中能於1分鐘內崩散或溶解</div><div>D. 在胃酸下至少能維持1小時</div></div><div class="q-ans">✓ 答案：C</div></div>
+    <div class="q"><div class="q-yr">104-1</div><div class="q-t">脆度（friability）是速溶錠（RDTs）的先天問題，降低其脆度通常相對最會影響速溶錠的何種物性？</div><div class="q-opts"><div>A. 崩散時間</div><div>B. 溶離時間</div><div>C. 有效時間</div><div>D. 降解時間</div></div><div class="q-ans">✓ 答案：B（溶離時間）</div></div>
+    <div class="q"><div class="q-yr">109-1</div><div class="q-t">以壓製法製備速溶錠時，除添加超級崩散劑外，尚須添加何種材質增強速溶效果？</div><div class="q-opts"><div>A. 界面活性劑（surfactants）</div><div>B. 潤滑劑（lubricants）</div><div>C. 發泡劑（effervescents）</div><div>D. 抗黏劑（antiadherents）</div></div><div class="q-ans">✓ 答案：C</div></div>
+    <div class="q"><div class="q-yr">100-2</div><div class="q-t">下列各種快速釋放錠中，何者不是使用冷凍乾燥法 Zydis 技術製成的？</div><div class="q-opts"><div>A. Claritin Reditabs</div><div>B. Quicksolv</div><div>C. Zofran ODT</div><div>D. Maxalt-MLT</div></div><div class="q-ans">✓ 答案：B</div></div>
+  </div>
+</section>
+
+<!-- ═══ 10 口腔內用錠 ═══ -->
+<section id="oralcavity">
+  <div class="sec-hd"><span class="num">10</span><h2>口腔內用錠 <small>Tablets Used in Oral Cavity</small></h2><div class="line"></div></div>
+  <div class="box clay" style="margin-bottom:14px">放於口內<b>不吞下</b>（但也可產生全身作用）</div>
+
+  <div class="g2">
+    <!-- 舌下錠 -->
+    <div class="card">
+      <h3>舌下錠 Sublingual Tablets (ST)</h3>
+      <ul class="li">
+        <li>含於<b>舌下</b></li>
+        <li>設計重點：<mark class="g">需快速崩散</mark> → 舌下黏膜微血管豐富 → 快速吸收</li>
+        <li>代表：<mark>NTG（Nitroglycerin）</mark>，約 2 分鐘</li>
+      </ul>
+      <h4>適用</h4>
+      <ul class="li">
+        <li>需快速起效（如心絞痛）</li>
+        <li>有首渡效應的藥物（避免肝臟代謝）</li>
+        <li>胃酸會降解 / 口服後對胃刺激的藥物</li>
+      </ul>
+    </div>
+
+    <!-- 口頰錠 -->
+    <div class="card">
+      <h3>口頰錠 Buccal Tablets (BT)</h3>
+      <ul class="li">
+        <li>貼於<b>口腔內壁（臉頰側）或牙齦</b></li>
+        <li>設計重點：<mark class="g">緩慢溶蝕</mark>（加入黏附成分，黏在黏膜上持續釋放）</li>
+        <li>代表：<mark>Methyltestosterone、testosterone propionate、estradiol</mark></li>
+      </ul>
+      <h4>適用（與舌下錠相同）</h4>
+      <ul class="li">
+        <li>有首渡效應（ex: steroids、hormones）</li>
+        <li>胃酸會降解 / 口服後對胃刺激的藥物</li>
+        <li>激素：testosterone；口腔黏膜吸收</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 舌下 vs 口頰 比較 ★★★ -->
+  <div class="card" style="margin-top:14px;border-color:var(--dusk);border-width:2px">
+    <h3 style="color:var(--dusk);border-color:var(--dusk-l)">★ 舌下錠 vs 口頰錠 — 國考最常考比較</h3>
+    <div class="cmp">
+      <div class="cmp-row" style="grid-template-columns:160px 1fr 1fr;background:var(--sur2);font-weight:700;font-size:0.73rem">
+        <div class="lbl">項目</div><div class="aa">舌下錠 Sublingual</div><div>口頰錠 Buccal</div>
+      </div>
+      <div class="cmp-row" style="grid-template-columns:160px 1fr 1fr">
+        <div class="lbl">位置</div><div class="aa">舌下</div><div>口腔內壁（臉頰）或牙齦</div>
+      </div>
+      <div class="cmp-row" style="grid-template-columns:160px 1fr 1fr">
+        <div class="lbl">釋放方式</div>
+        <div class="aa"><mark class="r">快速崩散</mark>（迅速吸收）</div>
+        <div><mark class="g">緩慢溶蝕</mark>（持續吸收）</div>
+      </div>
+      <div class="cmp-row" style="grid-template-columns:160px 1fr 1fr">
+        <div class="lbl">可黏膜吸收</div><div class="aa">✓ 均可</div><div>✓ 均可</div>
+      </div>
+      <div class="cmp-row" style="grid-template-columns:160px 1fr 1fr">
+        <div class="lbl">適合胃酸降解藥物</div><div class="aa">✓ 均適合</div><div>✓ 均適合</div>
+      </div>
+      <div class="cmp-row" style="grid-template-columns:160px 1fr 1fr">
+        <div class="lbl">可全身或局部作用</div><div class="aa">✓ 均可</div><div>✓ 均可</div>
+      </div>
+    </div>
+    <div class="box clay" style="margin-top:10px;font-size:0.83rem">
+      <b>國考題：「均為緩慢釋放速率模式」→ 這句話是錯的（答案 C）</b><br>
+      口頰錠是緩慢溶蝕 ✓；但<mark class="r">舌下錠是快速崩散，不是緩慢釋放</mark><br>
+      → 「兩者均為緩慢釋放」錯誤，選 C
+    </div>
+    <div class="kp" style="margin-top:8px">
+      舌下錠的主要特性 = <b>需要快速崩散而迅速達到療效</b>（答案 A）
+    </div>
+  </div>
+
+  <div class="qs">
+    <div class="q"><div class="q-yr">112-1</div><div class="q-t">舌下錠（sublingual tablets）具備何種主要特性？</div><div class="q-opts"><div>A. 需要快速崩散而迅速達到療效</div><div>B. 需要包覆腸溶衣</div><div>C. 需要矯味以掩蓋不良味道</div><div>D. 需要高硬度以耐受舌頭嚼力</div></div><div class="q-ans">✓ 答案：A</div></div>
+    <div class="q"><div class="q-yr">111-1</div><div class="q-t">有關舌下錠與口含錠（buccal tablets）之敘述，下列何者錯誤？</div><div class="q-opts"><div>A. 均可由黏膜進行吸收</div><div>B. 均可適用於易受胃酸降解藥物</div><div>C. 均為緩慢釋放速率模式</div><div>D. 均可全身作用或局部作用</div></div><div class="q-ans">✓ 答案：C（舌下錠是快速崩散，不是緩慢釋放）</div></div>
+    <div class="q"><div class="q-yr">108-1</div><div class="q-t">有關舌下錠之敘述，下列何者錯誤？</div><div class="q-opts"><div>A. 較不會被胃酸破壞</div><div>B. 作用比吞服的劑型快</div><div>C. 易受肝臟酵素代謝</div><div>D. 錠劑在口腔並不崩散而是溶解</div></div><div class="q-ans">✓ 答案：C（舌下錠避免首渡效應，不易受肝臟代謝）</div></div>
+  </div>
+
+  <!-- 口含錠 & 牙用錠 -->
+  <div class="g2" style="margin-top:14px">
+    <div class="card">
+      <h3>口含錠 Lozenges（= Troches 喉片）</h3>
+      <ul class="li">
+        <li>含於口中，<mark class="g">≥ 30 分鐘緩慢溶解</mark></li>
+        <li>主要為<b>局部作用</b>（口腔、咽喉）；少數可全身作用</li>
+        <li>以<b>硬糖果為基底</b>；<b>高壓力壓製</b>→ 才能緩慢溶解</li>
+        <li>常見：局部麻醉劑、防腐殺菌劑、鎮咳劑、抗生素</li>
+        <li>含糖：Sucrose、Glucose；無糖：Sorbitol、Mannitol</li>
+        <li>可加 PEG / HPMC 減緩溶離速率</li>
+      </ul>
+      <div class="qs" style="margin-top:8px">
+        <div class="q"><div class="q-yr">107-2</div><div class="q-t">欲產生局部作用，下列何種劑型最適合？</div><div class="q-opts"><div>A. 舌下錠（sublingual）</div><div>B. 口腔錠（buccal tablets）</div><div>C. 皮下植入錠（implants）</div><div>D. 口含錠（lozenges）</div></div><div class="q-ans">✓ 答案：D</div></div>
+        <div class="q"><div class="q-yr">112-1</div><div class="q-t">下列何種錠片在高程度壓錠下製備，使其可以緩慢溶解釋出活性成分？</div><div class="q-opts"><div>A. 腸溶顆粒錠</div><div>B. 咀嚼錠</div><div>C. 口含錠（lozenge）</div><div>D. 舌下錠</div></div><div class="q-ans">✓ 答案：C</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <h3>牙用錠 Dental Cones</h3>
+      <ul class="li">
+        <li>牙科拔牙後，置於<b>齒槽空洞</b>中</li>
+        <li>局部緩慢溶解 → 止痛、抗菌、促癒合</li>
+        <li><b>非口服、非吞嚥</b></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 11 其他途徑 ═══ -->
+<section id="other">
+  <div class="sec-hd"><span class="num">11</span><h2>其他途徑錠劑 <small>Other Routes</small></h2><div class="line"></div></div>
+  <div class="g2">
+    <div class="card">
+      <h3>植入錠 Implantation Tablets（Pellets）</h3>
+      <ul class="li">
+        <li>植入<b>皮下</b>；無菌操作</li>
+        <li>長效：維持 <mark>3–6 個月</mark></li>
+        <li>代表：<mark>Estradiol、Testosterone</mark></li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>陰道錠 Vaginal Tablets（= inserts）</h3>
+      <ul class="li">
+        <li>壓製法；形狀：<b>卵形或橢圓形</b>（前端較圓）</li>
+        <li>設計目的：取代陰道栓劑（栓劑體溫下溶化後可能流出）</li>
+        <li>使用<b>塑膠插入器（plastic inserter）</b>輔助投與</li>
+        <li>含局部用藥（治療陰道感染）或全身用藥</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 12 模製錠 ═══ -->
+<section id="molded">
+  <div class="sec-hd"><span class="num">12</span><h2>模製錠 <small>Molded Tablets</small></h2><div class="line"></div></div>
+  <div class="box slate" style="margin-bottom:14px">
+    <b>模製錠包含三種：研製錠、皮下錠、調劑錠 — 三者皆以模製法製備</b><br>
+    皮下錠與調劑錠目前已很少在使用
+  </div>
+  <div class="card" style="margin-bottom:14px">
+    <h3>模製錠 共同特性</h3>
+    <ul class="li">
+      <li>以<b>模型製備</b>（非壓錠機大壓力壓製）；僅施予最小壓力</li>
+      <li>設計成<b>較軟、快速溶離</b>（舌下或溶於水中使用）</li>
+      <li><b>不含崩散劑、潤滑劑或包衣</b></li>
+      <li>雖然和壓製錠一樣用了模（die / punch），但壓力極小，不算壓製錠</li>
+    </ul>
+  </div>
+
+  <div class="g3">
+    <!-- 研製錠 -->
+    <div class="card">
+      <h3>研製錠 Tablet Triturates</h3>
+      <ul class="li">
+        <li><span class="tag r">模製法</span>；以小模型注入製備</li>
+        <li>必須<b>完全溶於水</b></li>
+        <li>使用：<b>舌下錠</b>（如 NTG）；也可裝入膠囊；也可溶於液體</li>
+      </ul>
+      <h4>稀釋劑</h4>
+      <ul class="li">
+        <li><mark>乳糖細粉</mark>（最常用）</li>
+        <li>可含 5–20% 蔗糖粉末（使錠片較不易碎）</li>
+        <li>黏合劑：acacia 溶液</li>
+      </ul>
+      <h4>潤濕液</h4>
+      <ul class="li">
+        <li><mark>50% 水醇溶液</mark>（水 + 乙醇）</li>
+        <li>水 → 溶劑；乙醇 → 加快乾燥</li>
+      </ul>
+    </div>
+
+    <!-- 皮下錠 -->
+    <div class="card">
+      <h3>皮下錠 Hypodermic Tablets</h3>
+      <ul class="li">
+        <li><span class="tag r">模製法</span>；<b>無菌操作</b></li>
+        <li>必須<b>完全溶於水</b></li>
+        <li>供臨時調配<b>注射溶液</b>用</li>
+        <li>也可做<b>舌下錠</b></li>
+        <li>目前已很少在使用（無菌狀態難以維持）</li>
+      </ul>
+    </div>
+
+    <!-- 調劑錠 -->
+    <div class="card">
+      <h3>調劑錠 Dispensing Tablets</h3>
+      <ul class="li">
+        <li><span class="tag r">模製法</span>；又稱 compounding tablets</li>
+        <li>含<b>大量高強效藥物</b></li>
+        <li>加水成適當濃度溶液使用</li>
+        <li><mark class="r">有潛在危險，不可輕率發給病人</mark></li>
+        <li>目前已很少在使用</li>
+      </ul>
+    </div>
+  </div>
+  <div class="kp" style="margin-top:12px">
+    研製錠 = 可做舌下錠（如 NTG）；皮下錠 = 也可做舌下錠；兩者都可做舌下錠用途
+  </div>
+</section>
+
+<!-- ═══ 13 考題練習 ═══ -->
+<section id="qa">
+  <div class="sec-hd"><span class="num">★</span><h2>考題練習 <small>更多分類相關國考題</small></h2><div class="line"></div></div>
+  <p class="qhint">► 點擊題目展開答案</p>
+  <div id="qaContainer"></div>
+</section>
+
+</div><!-- .wrap -->
+
+<footer>錠劑分類 — 依 0312 講義完整整理 | 模製錠三種均標示 | 舌下錠 vs 口頰錠釋放方式已修正</footer>
+
+<script>
+const qs = [
+  {q:"下列何種錠劑比較適合幼兒吞嚥服用？",opts:["A. buccal tablet","B. dissolving tablet","C. film coating tablet","D. sugar coating tablet"],ans:"B",yr:"108-2"},
+  {q:"為了掩蓋不良味道進行微囊包化後的顆粒，製備成速溶錠時尚須特別注意何種物理特性？",opts:["A. 粒度需小到無顆粒感","B. 微囊包顆粒的結合度","C. 顆粒密度需越大越好","D. 仍須混合適量甜味劑"],ans:"A",yr:"102-1"},
+  {q:"下列何者在服用後，其崩散速度最快？",opts:["A. buccal tablets","B. chewable tablets","C. enteric-coated tablets","D. lozenges"],ans:"B",yr:"113-1"},
+  {q:"一般而言，下列錠劑何者之崩散及溶離最快？",opts:["A. buccal tablets","B. immediate-release tablets","C. molded tablets","D. rapidly dissolving tablets"],ans:"D",yr:"110-1"},
+  {q:"立即釋放錠（instant-release tablets）設計的主要目的為何？",opts:["A. 給唾液分泌過量者","B. 給胃腸蠕動不良者","C. 給黏膜吸收良好者","D. 給吞嚥動作困難者"],ans:"D",yr:"102-1"},
+  {q:"下列那一製品是明膠衣錠？",opts:["A. Valium","B. Gelcap","C. Nitrostat","D. Coumadin"],ans:"B",yr:"101-1"},
+  {q:"糖衣包覆（sugar coating）與膜衣包覆（film coating）在兩者錠片性質方面尚有何最大差異？",opts:["A. 藥物含量較不均一","B. 錠片重量較不一致","C. 整體外觀較不順眼","D. 長期儲存較不安定"],ans:"B",yr:"103-2"},
+  {q:"睪丸素（testosterone）製備成速溶錠（RDTs）的主要優點為何？",opts:["A. 口腔酸鹼值有利於溶解","B. 口腔吸收降低首渡效應","C. 崩解成細顆粒有利溶解","D. 口腔酵素水解有利吸收"],ans:"B",yr:"102-2"},
+  {q:"下列何者不是壓製成型錠片（compressed tablets）的基本製法？",opts:["A. 濕式造粒法","B. 模具成型法（molded method）","C. 乾式造粒法","D. 直接壓製法"],ans:"B",yr:"104-1"},
+  {q:"下列何者比較適合用來當作製備固醇類錠劑時的稀釋劑？",opts:["A. calcium sulfate","B. lactose","C. sorbitol","D. starch"],ans:"A",yr:"107-1"},
+];
+const c = document.getElementById('qaContainer');
+qs.forEach(q => {
+  const d = document.createElement('div');
+  d.className = 'q';
+  d.innerHTML = `<div class="q-yr">${q.yr}</div><div class="q-t">${q.q}</div><div class="q-opts">${q.opts.map(o=>`<div>${o}</div>`).join('')}</div><div class="q-ans">✓ 答案：${q.ans}</div>`;
+  d.querySelector('.q-t').addEventListener('click', () => d.classList.toggle('open'));
+  c.appendChild(d);
+});
+
+// Make all embedded exam-q in sections clickable too
+document.querySelectorAll('.q-t').forEach(t => {
+  t.addEventListener('click', () => t.closest('.q').classList.toggle('open'));
+});
+</script>
+</body>
+</html>
