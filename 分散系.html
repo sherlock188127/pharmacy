@@ -1099,7 +1099,7 @@ ul.notes-list li::marker { color: var(--accent2); }
     <tr>
       <td><b>濕潤劑</b><br>Wetting agent</td>
       <td>降低固體顆粒與液體的界面張力，幫助分散</td>
-      <td>界面活性劑（HLB 7~9）；甘油；酒精；丙二醇</td>
+      <td>界面活性劑（HLB 7~9）；甘油（glycerin）；酒精（alcohol）；丙二醇（propylene glycol）</td>
       <td>HLB 7–9 for suspension</td>
     </tr>
     <tr>
@@ -1237,6 +1237,60 @@ ul.notes-list li::marker { color: var(--accent2); }
   <div class="card">
     <b>磨細（粒子大小均一）→ 加濕潤劑 → 加輔型劑（著色、矯味、防腐）→ 均勻分散</b><br>
     <div class="sm" style="margin-top:0.5rem">可選擇：① 單純去凝絮（加增稠劑）② 凝絮化 ③ 凝絮+助懸（最佳，外觀與安定性兼顧）</div>
+  </div>
+
+  <div class="subsection-title">添加順序與電荷處理</div>
+
+  <div class="box-key">
+    <div class="box-title">⚡ 三種輔型劑定義</div>
+    <table class="notes-table" style="margin:0">
+      <tr><th>輔型劑</th><th>英文</th><th>功能</th></tr>
+      <tr>
+        <td><b>吸附劑</b></td>
+        <td>Adsorbent</td>
+        <td>將分子吸附到其表面，使藥品顆粒帶上特定電荷</td>
+      </tr>
+      <tr>
+        <td><b>凝絮劑</b></td>
+        <td>Flocculant</td>
+        <td>使懸浮液中的厭溶媒粒子聚集、減少粒子結塊，讓系統趨向穩定</td>
+      </tr>
+      <tr>
+        <td><b>助懸劑</b></td>
+        <td>Suspending agent</td>
+        <td>使媒液黏度增加，厭溶媒粒子的沉降速率下降</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="box-exam">
+    <div class="box-title">📝 添加順序（重要）</div>
+    <div style="text-align:center; font-family:var(--mono); font-size:1.05rem; padding:0.5rem 0; letter-spacing:0.03em">
+      Cationic adsorbent → Anionic flocculant → Suspending agent
+    </div>
+  </div>
+
+  <div class="card" style="border-left: 4px solid var(--accent3)">
+    <div class="subsection2-title">為何統一先讓藥品帶正電？</div>
+    <ul class="notes-list">
+      <li>許多常用助懸劑（果膠、阿拉伯膠、藻膠酸等）天生帶<b>負電</b>（結構含大量 –COOH → –COO⁻）</li>
+      <li>若藥品帶<b>負電</b>：
+        <ul class="notes-list" style="margin-top:0.3rem">
+          <li>加凝絮劑需用<b>正電</b>中和</li>
+          <li>接著加助懸劑（帶負電）→ 與帶正電的凝絮劑產生<b>配伍禁忌</b>，凝絮效果被破壞</li>
+        </ul>
+      </li>
+      <li>若藥品帶<b>正電</b>：
+        <ul class="notes-list" style="margin-top:0.3rem">
+          <li>加凝絮劑需用<b>負電</b>中和</li>
+          <li>接著加帶負電的助懸劑 → 負＋負不產生配伍禁忌 ✓</li>
+        </ul>
+      </li>
+      <li>因此，<b>不管原來藥品帶什麼電荷，一律先讓它帶正電</b>，再依序加陰離子凝絮劑 → 助懸劑，避免後續困擾</li>
+    </ul>
+    <div class="box-note" style="margin-top:0.8rem; margin-bottom:0">
+      如何讓藥品帶正電？加入 <b>Gelatin A型</b>（帶正電，附著在藥品表面）或其他<b>脂肪酸胺類（cationic adsorbent）</b>
+    </div>
   </div>
 
   <div class="subsection-title">氫氧化鋁口服懸液劑（配方必考）</div>
@@ -1728,7 +1782,7 @@ ul.notes-list li::marker { color: var(--accent2); }
         <span class="q-label">B</span>是蛋白質類，無法形成任何乳化
       </div>
       <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)">
-        <span class="q-label">C</span>HLB值越高的乳化劑越適合做O/W（正確概念，HLB系統重要）
+        <span class="q-label">C</span>HLB值越高的乳化劑越適合做O/W
       </div>
       <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)">
         <span class="q-label">D</span>形成的乳劑黏稠度很高
@@ -2642,8 +2696,10 @@ function resetQuestion(btn) {
 }
 
 function toggleExplain(btn) {
-  const explain = btn.nextElementSibling;
-  const noteArea = explain.nextElementSibling;
+  // explain is the next sibling after reset button
+  const block = btn.closest('.q-block');
+  const explain = block.querySelector('.q-explain');
+  const noteArea = block.querySelector('.q-note-area');
   if (explain.classList.contains('show')) {
     explain.classList.remove('show');
     btn.textContent = '📖 顯示詳解';
