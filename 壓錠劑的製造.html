@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>壓製錠的製造 Compressed Tablet Manufacture</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#f2eeea; --surface:#faf8f6; --surface2:#ede8e2; --border:#d8d0c8;
+    --sage:#7c9080; --sage-l:#e8efe9; --sage-d:#4e6458;
+    --clay:#a07060; --clay-l:#f2e8e4; --clay-d:#6e3e2e;
+    --dusk:#7a7c9a; --dusk-l:#e8e8f2; --dusk-d:#484a62;
+    --sand:#b09870; --sand-l:#f5f0e6; --sand-d:#6e5c38;
+    --rose:#a08090; --rose-l:#f2eaee; --rose-d:#5e4050;
+    --slate:#6e8090; --slate-l:#e4ecf0; --slate-d:#3a4e5a;
+    --text:#2c2620; --text-dim:#5a5048; --text-muted:#9a9088;
+    --serif:'Noto Serif TC',serif; --sans:'Noto Sans TC',sans-serif; --mono:'JetBrains Mono',monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:14px;line-height:1.75;-webkit-font-smoothing:antialiased;}
+
+  header{background:linear-gradient(135deg,#2a3028 0%,#4a5840 60%,#2a3028 100%);padding:44px 0 32px;text-align:center;position:relative;overflow:hidden;}
+  header::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 70% at 50% 0%,rgba(140,180,120,0.10) 0%,transparent 70%);}
+  header h1{font-family:var(--serif);font-size:clamp(1.5rem,4vw,2.4rem);font-weight:700;color:#f0ede0;letter-spacing:0.06em;position:relative;}
+  header .sub{font-family:var(--mono);font-size:0.72rem;color:#b8c8a0;letter-spacing:0.18em;text-transform:uppercase;margin-top:8px;position:relative;}
+  header .badges{margin-top:18px;display:flex;flex-wrap:wrap;gap:8px;justify-content:center;position:relative;}
+  .badge{padding:3px 12px;border-radius:2px;font-size:0.68rem;font-family:var(--mono);letter-spacing:0.07em;border:1px solid rgba(180,210,140,0.35);background:rgba(180,210,140,0.10);color:#c8d8a8;}
+
+  nav{background:var(--surface);border-bottom:2px solid var(--border);position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,0.05);}
+  nav ul{display:flex;flex-wrap:wrap;list-style:none;max-width:1200px;margin:0 auto;padding:0 16px;}
+  nav li a{display:block;padding:11px 11px;font-size:0.77rem;font-weight:600;color:var(--text-dim);text-decoration:none;font-family:var(--sans);border-bottom:2px solid transparent;transition:color 0.2s,border-color 0.2s;white-space:nowrap;}
+  nav li a:hover{color:var(--sage-d);border-bottom-color:var(--sage);}
+
+  .container{max-width:1200px;margin:0 auto;padding:0 20px;}
+  .section{padding:44px 0;border-bottom:1px solid var(--border);}
+  .section-header{display:flex;align-items:center;gap:14px;margin-bottom:26px;}
+  .sec-num{font-family:var(--mono);font-size:0.65rem;color:var(--text-muted);letter-spacing:0.1em;min-width:28px;}
+  .sec-title{font-family:var(--serif);font-size:1.38rem;font-weight:700;color:var(--text);}
+  .sec-title span{color:var(--sage-d);}
+  .sec-divider{flex:1;height:1px;background:linear-gradient(to right,var(--border),transparent);}
+
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:18px 22px;margin-bottom:16px;box-shadow:0 1px 3px rgba(0,0,0,0.04);}
+  .card h3{font-family:var(--serif);font-size:1rem;font-weight:700;color:var(--sage-d);border-bottom:1.5px solid var(--sage-l);padding-bottom:7px;margin-bottom:12px;}
+  .card h4{font-size:0.82rem;font-weight:700;color:var(--sand-d);margin:12px 0 5px;font-family:var(--sans);}
+  .card p,.card li{font-size:0.87rem;color:var(--text);line-height:1.8;}
+  .card ul{padding-left:18px;}
+  .card li{margin-bottom:3px;}
+
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;}
+  .grid-4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:12px;}
+  @media(max-width:900px){.grid-2,.grid-3,.grid-4{grid-template-columns:1fr;}}
+  @media(min-width:901px) and (max-width:1100px){.grid-3{grid-template-columns:1fr 1fr;}.grid-4{grid-template-columns:1fr 1fr;}}
+
+  .table-wrap{overflow-x:auto;margin:12px 0;}
+  table{width:100%;border-collapse:collapse;font-size:0.83rem;}
+  th{background:#4e6458;color:#f5ede0;font-family:var(--sans);font-size:0.76rem;font-weight:700;padding:8px 12px;text-align:left;border:1px solid #3a4e40;letter-spacing:0.03em;}
+  td{padding:7px 12px;border:1px solid var(--border);color:var(--text);vertical-align:top;background:var(--surface);}
+  tr:nth-child(even) td{background:#f8f4f0;}
+  tr:hover td{background:var(--sage-l);}
+
+  .info-box{border-left:4px solid;padding:10px 14px;margin:10px 0;border-radius:0 5px 5px 0;font-size:0.85rem;line-height:1.75;}
+  .info-box.sage{border-color:var(--sage);background:var(--sage-l);color:var(--sage-d);}
+  .info-box.clay{border-color:var(--clay);background:var(--clay-l);color:var(--clay-d);}
+  .info-box.dusk{border-color:var(--dusk);background:var(--dusk-l);color:var(--dusk-d);}
+  .info-box.sand{border-color:var(--sand);background:var(--sand-l);color:var(--sand-d);}
+  .info-box.rose{border-color:var(--rose);background:var(--rose-l);color:var(--rose-d);}
+  .info-box.slate{border-color:var(--slate);background:var(--slate-l);color:var(--slate-d);}
+  .info-box strong{font-weight:700;}
+
+  .key-point{background:#faf5e8;border:1.5px solid #d8c890;border-radius:5px;padding:9px 13px;font-size:0.85rem;margin:8px 0;color:var(--sand-d);line-height:1.75;}
+  .key-point::before{content:'★ ';color:#b09040;}
+
+  .flow{display:flex;flex-wrap:wrap;align-items:center;gap:4px;padding:10px 0 4px;}
+  .flow-step{background:var(--surface2);border:1px solid var(--border);border-radius:4px;padding:5px 10px;font-size:0.78rem;white-space:nowrap;}
+  .flow-step.hi{background:var(--sage-l);border-color:#a0c0a8;color:var(--sage-d);font-weight:700;}
+  .flow-arrow{color:var(--text-muted);font-size:13px;}
+
+  .flow-chart{background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:16px 20px;margin:12px 0;}
+  .fc-row{display:flex;align-items:flex-start;gap:8px;margin:6px 0;flex-wrap:wrap;}
+  .fc-box{border:1.5px solid;border-radius:4px;padding:5px 10px;font-size:0.78rem;line-height:1.5;flex-shrink:0;}
+  .fc-box.start{border-color:var(--sage-d);background:var(--sage-l);color:var(--sage-d);font-weight:700;}
+  .fc-box.pass{border-color:#6a9060;background:#d8f0d0;color:#2a5020;font-weight:700;}
+  .fc-box.fail{border-color:var(--clay-d);background:var(--clay-l);color:var(--clay-d);font-weight:700;}
+  .fc-box.cond{border-color:var(--sand-d);background:var(--sand-l);color:var(--sand-d);}
+  .fc-box.next{border-color:var(--dusk-d);background:var(--dusk-l);color:var(--dusk-d);font-weight:700;}
+  .fc-arrow{font-size:18px;color:var(--text-muted);margin-top:4px;}
+
+  .tag{display:inline-block;padding:2px 8px;border-radius:20px;font-size:0.68rem;font-family:var(--sans);font-weight:700;margin:1px 2px;}
+  .tag-sage{background:var(--sage-l);color:var(--sage-d);border:1px solid #b0c8b8;}
+  .tag-clay{background:var(--clay-l);color:var(--clay-d);border:1px solid #d0a890;}
+  .tag-dusk{background:var(--dusk-l);color:var(--dusk-d);border:1px solid #b0b0d0;}
+  .tag-sand{background:var(--sand-l);color:var(--sand-d);border:1px solid #c8b898;}
+  .tag-rose{background:var(--rose-l);color:var(--rose-d);border:1px solid #c8a8b8;}
+  .tag-slate{background:var(--slate-l);color:var(--slate-d);border:1px solid #a0b8c8;}
+
+  mark{background:#f5e890;color:#3a2800;padding:1px 4px;border-radius:3px;font-weight:700;}
+  mark.sage{background:#c8e0c8;color:var(--sage-d);}
+  mark.clay{background:#f0c8b8;color:var(--clay-d);}
+  mark.dusk{background:#c8c8e8;color:var(--dusk-d);}
+  mark.sand{background:#e8d8b0;color:var(--sand-d);}
+
+  .exam-flag{display:inline-block;background:#f0d8a0;color:#6e4800;border:1px solid #d8b860;border-radius:3px;padding:1px 6px;font-size:0.67rem;font-family:var(--mono);margin-left:4px;vertical-align:middle;}
+
+  .pct-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:14px 0;}
+  .pct-card{background:var(--surface2);border-radius:6px;padding:12px 14px;border:1px solid var(--border);}
+  .pct-card .val{font-family:var(--serif);font-size:1.5rem;font-weight:700;color:var(--sage-d);}
+  .pct-card .label{font-size:0.74rem;color:var(--text-muted);margin-top:3px;}
+
+  .compare-row{display:grid;border-bottom:1px solid var(--border);font-size:0.82rem;}
+  .compare-row:last-child{border-bottom:none;}
+  .compare-row>*{padding:8px 11px;}
+  .compare-label{background:var(--surface2);font-weight:700;font-size:0.75rem;color:var(--text-muted);border-right:1px solid var(--border);}
+
+  /* 大步驟卡 */
+  .step-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:14px;}
+  .step-header{display:flex;align-items:center;gap:12px;padding:13px 18px;background:linear-gradient(90deg,var(--sage-l),transparent);border-bottom:1px solid var(--border);}
+  .step-num{font-family:var(--mono);font-size:1.1rem;font-weight:700;color:var(--sage-d);min-width:28px;}
+  .step-title{font-family:var(--serif);font-size:1rem;font-weight:700;color:var(--text);}
+  .step-en{font-family:var(--mono);font-size:0.7rem;color:var(--text-muted);margin-left:6px;}
+  .step-body{padding:14px 18px;}
+
+  /* 機器比較 */
+  .machine-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1.5px solid var(--border);border-radius:6px;overflow:hidden;margin:12px 0;}
+  .machine-col{padding:14px 16px;}
+  .machine-col:first-child{border-right:1px solid var(--border);background:var(--surface);}
+  .machine-col:last-child{background:var(--sage-l);}
+  .machine-col h4{font-size:0.82rem;font-weight:700;color:var(--sage-d);margin-bottom:10px;font-family:var(--serif);}
+
+  /* 缺陷表 */
+  .defect-row{display:grid;grid-template-columns:90px 1fr 1fr;gap:0;border-bottom:1px solid var(--border);font-size:0.82rem;}
+  .defect-row:first-child{background:var(--sage-d);}
+  .defect-row:first-child > *{color:#f5ede0;font-weight:700;font-size:0.75rem;padding:8px 12px;border-right:1px solid rgba(255,255,255,0.2);}
+  .defect-row:not(:first-child) > *{padding:8px 12px;border-right:1px solid var(--border);}
+  .defect-row:last-child{border-bottom:none;}
+  .defect-row:nth-child(even) > *{background:#f8f4f0;}
+  .defect-name{font-weight:700;color:var(--clay-d);}
+
+  /* 造粒方法四格 */
+  .method-tag{display:inline-block;padding:2px 9px;border-radius:2px;font-size:0.7rem;font-family:var(--mono);font-weight:700;margin-bottom:8px;}
+
+  /* qa 互動 */
+  .qa-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(430px,1fr));gap:12px;margin-top:16px;}
+  .qa-item{background:var(--surface);border:1px solid var(--border);border-radius:6px;overflow:hidden;}
+  .qa-year{font-family:var(--mono);font-size:0.65rem;color:#fff;padding:3px 10px;background:var(--sage-d);}
+  .qa-q{padding:11px 14px;font-size:0.84rem;color:var(--text);line-height:1.65;cursor:pointer;display:flex;gap:9px;align-items:flex-start;transition:background 0.15s;}
+  .qa-q:hover{background:var(--sage-l);}
+  .qa-q::before{content:'Q';font-family:var(--mono);font-size:0.65rem;color:#fff;background:var(--sage-d);padding:2px 5px;border-radius:3px;flex-shrink:0;margin-top:3px;font-weight:700;}
+  .qa-opts{padding:6px 14px 3px;font-size:0.81rem;color:var(--text-dim);}
+  .qa-opts div{padding:2px 0;}
+  .qa-ans{display:none;padding:9px 14px;background:#eef5ee;border-top:2px solid var(--sage);}
+  .qa-ans-text{font-family:var(--mono);font-size:0.79rem;color:var(--sage-d);font-weight:700;}
+  .qa-item.open .qa-ans{display:block;}
+  .qa-item.open{border-color:var(--sage);}
+  .toggle-hint{font-family:var(--mono);font-size:0.68rem;color:var(--text-muted);margin-bottom:12px;}
+
+  .compact-list{padding-left:16px;}
+  .compact-list li{font-size:0.85rem;margin-bottom:4px;line-height:1.75;}
+
+  #toc{background:var(--surface);border:1.5px solid var(--border);border-radius:6px;padding:20px 24px;margin:24px 0;}
+  #toc h2{font-family:var(--serif);font-size:0.95rem;font-weight:700;color:var(--sage-d);margin-bottom:12px;}
+  #toc ol{padding-left:18px;}
+  #toc li{margin:5px 0;}
+  #toc a{color:var(--sage-d);text-decoration:none;font-size:0.85rem;}
+  #toc a:hover{text-decoration:underline;}
+
+  footer{text-align:center;padding:28px;font-size:0.7rem;color:var(--text-muted);font-family:var(--mono);letter-spacing:0.06em;border-top:1px solid var(--border);background:var(--surface2);}
+
+  .accent-sage .sec-title span{color:var(--sage-d);}
+  .accent-clay .sec-title span{color:var(--clay-d);}
+  .accent-dusk .sec-title span{color:var(--dusk-d);}
+  .accent-sand .sec-title span{color:var(--sand-d);}
+  .accent-rose .sec-title span{color:var(--rose-d);}
+  .accent-slate .sec-title span{color:var(--slate-d);}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1>壓製錠的製造</h1>
+    <div class="sub">Compressed Tablet Manufacture — 濕粒法 · 乾粒法 · 直接壓錠 · 賦形劑 · 打錠機 · 缺陷</div>
+    <div class="badges">
+      <span class="badge">濕粒法 Wet Granulation</span>
+      <span class="badge">乾粒法 Dry Granulation</span>
+      <span class="badge">直接壓錠 Direct Compression</span>
+      <span class="badge">流動床 Fluid Bed</span>
+      <span class="badge">賦形劑 Excipients</span>
+      <span class="badge">打錠機 Tablet Machine</span>
+      <span class="badge">層裂 / 頂裂</span>
+    </div>
+  </div>
+</header>
+
+<nav>
+  <ul>
+    <li><a href="#sec0">概論</a></li>
+    <li><a href="#sec1">賦形劑總覽</a></li>
+    <li><a href="#sec2">稀釋劑</a></li>
+    <li><a href="#sec3">崩散劑</a></li>
+    <li><a href="#sec4">黏合劑</a></li>
+    <li><a href="#sec5">潤滑劑</a></li>
+    <li><a href="#sec6">濕粒法</a></li>
+    <li><a href="#sec7">乾粒法</a></li>
+    <li><a href="#sec8">直接壓錠</a></li>
+    <li><a href="#sec9">打錠機</a></li>
+    <li><a href="#sec10">層裂/頂裂</a></li>
+    <li><a href="#sec11">四法比較</a></li>
+    <li><a href="#qa">題庫</a></li>
+  </ul>
+</nav>
+
+<div class="container">
+
+<div id="toc">
+  <h2>📋 目錄</h2>
+  <ol>
+    <li><a href="#sec0">製法概論與造粒目的</a></li>
+    <li><a href="#sec1">功能性賦形劑總覽</a></li>
+    <li><a href="#sec2">稀釋劑 / 填充劑（含直打專用）</a></li>
+    <li><a href="#sec3">崩散劑（超級崩散劑機轉）</a></li>
+    <li><a href="#sec4">黏合劑（水性 / 非水性 / 乾粉）</a></li>
+    <li><a href="#sec5">潤滑劑 / 助滑劑 / 抗黏著劑</a></li>
+    <li><a href="#sec6">濕粒法 A→G 完整步驟、著色劑問題、黏合劑配製</a></li>
+    <li><a href="#sec7">乾粒法（Slugging / Roller compaction）</a></li>
+    <li><a href="#sec8">直接壓錠法（DC fillers、層裂原因）</a></li>
+    <li><a href="#sec9">打錠機（單銃式 vs 迴轉式）、重量/硬度調整</a></li>
+    <li><a href="#sec10">層裂 Lamination / 頂裂 Capping — 原因與改善</a></li>
+    <li><a href="#sec11">四種製法完整比較表</a></li>
+    <li><a href="#qa">歷屆國考題互動練習</a></li>
+  </ol>
+</div>
+
+<!-- ═══ SEC 0 ═══ -->
+<section class="section accent-sage" id="sec0">
+  <div class="section-header"><span class="sec-num">00</span><h2 class="sec-title">製法概論 <span>Overview</span></h2><div class="sec-divider"></div></div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>四種製造方法</h3>
+      <div class="table-wrap"><table>
+        <thead><tr><th>#</th><th>方法</th><th>特點</th></tr></thead>
+        <tbody>
+          <tr><td><strong>1</strong></td><td>濕粒法 Wet Granulation</td><td>最廣泛使用；有液體黏合劑參與；適合大多數藥品</td></tr>
+          <tr><td><strong>2</strong></td><td>合於一體造粒法 All-in-one</td><td>流動床或噴霧乾燥；混合＋造粒＋乾燥一次完成</td></tr>
+          <tr><td><strong>3</strong></td><td>乾粒法 Dry Granulation</td><td>無液體參與；適合怕水／怕熱藥品（如 Aspirin）</td></tr>
+          <tr><td><strong>4</strong></td><td>直接壓錠法 Direct Compression</td><td>無造粒步驟；最簡單；最佳生體可用率</td></tr>
+        </tbody>
+      </table></div>
+      <div class="info-box sage">方法 2/3/4 的<strong>壓錠步驟</strong>均與方法 1（濕粒法）<strong>相同</strong>，差別只在於造粒過程。</div>
+    </div>
+    <div class="card">
+      <h3>為何需要造粒？</h3>
+      <div class="info-box clay" style="margin-bottom:10px">直接將粉末壓錠失敗的原因：<br>
+        ① 壓製時<strong>空氣介入</strong>＋粒子間黏合力太小 → 錠片太軟<br>
+        ② 粉末<strong>流動性不佳</strong> → 錠片重量差異性太大
+      </div>
+      <h4>造粒目的（三大項）</h4>
+      <ul class="compact-list">
+        <li>① 提供混合物由給料漏斗進入模內之<strong>流動性</strong>（減少重量差異）</li>
+        <li>② 增加材料密度，改善在錠劑形成時之<strong>可壓性（Compressibility）</strong></li>
+        <li>③ 增強藥物組合的<strong>黏合性</strong>而提高硬度</li>
+      </ul>
+      <div class="info-box sand" style="margin-top:10px;font-size:0.83rem">注意：造粒目的<strong>不包含</strong>「使粒徑均一、無細粉」——過篩後仍有細粉，細粉是必要的（約 10–20%）</div>
+    </div>
+  </div>
+
+  <div class="pct-grid" style="margin-top:8px">
+    <div class="pct-card"><div class="val">10–20%</div><div class="label">壓錠最佳細顆粒比例</div></div>
+    <div class="pct-card"><div class="val">4 kg</div><div class="label">錠片最低硬度需求</div></div>
+    <div class="pct-card"><div class="val">&lt;1%</div><div class="label">最大可接受脆度</div></div>
+    <div class="pct-card"><div class="val">±5%</div><div class="label">錠片厚度允許誤差</div></div>
+    <div class="pct-card"><div class="val">0.1–5%</div><div class="label">潤滑劑用量範圍</div></div>
+    <div class="pct-card"><div class="val">20–25%</div><div class="label">直打法主成分上限</div></div>
+  </div>
+</section>
+
+<!-- ═══ SEC 1 ═══ -->
+<section class="section accent-clay" id="sec1">
+  <div class="section-header"><span class="sec-num">01</span><h2 class="sec-title">功能性賦形劑總覽 <span>Functional Excipients</span></h2><div class="sec-divider"></div></div>
+
+  <div class="card">
+    <h3>壓製錠的基本成分</h3>
+    <div class="table-wrap"><table>
+      <thead><tr><th>成分類別</th><th>功能</th><th>是否必要</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Active Pharmaceutical Ingredient（API）</strong></td><td>主成分；產生療效</td><td><span class="tag tag-clay">必要</span></td></tr>
+        <tr><td><strong>Diluent / Filler 稀釋劑</strong></td><td>使錠片具有必要體積</td><td><span class="tag tag-clay">必要</span></td></tr>
+        <tr><td><strong>Binder / Adhesive 黏合劑</strong></td><td>促進粒子黏性使製成顆粒；保持錠片完整性</td><td><span class="tag tag-sand">視情況</span></td></tr>
+        <tr><td><strong>Disintegrant 崩散劑</strong></td><td>幫助錠片服用後破碎成較小粒子</td><td><span class="tag tag-sand">視情況</span></td></tr>
+        <tr><td><strong>Lubricant 潤滑劑</strong></td><td>增進材料流動；預防材料黏在銃與模；使錠片有光澤</td><td><span class="tag tag-sand">視情況</span></td></tr>
+        <tr><td><strong>Glidant 助滑劑</strong></td><td>改善粒子本身的滑動、流動性</td><td><span class="tag tag-sand">視情況</span></td></tr>
+        <tr><td><strong>矯味劑、甜味劑、著色劑、吸附劑</strong></td><td>改善外觀、口感、病患接受度</td><td><span class="tag tag-slate">非必要</span></td></tr>
+      </tbody>
+    </table></div>
+    <div class="info-box sage" style="margin-top:8px">具有療效之錠片<strong>必會含有</strong>的成分：<strong>活性成分（API）</strong>——黏合劑、崩散劑、潤滑劑皆屬「視情況」</div>
+  </div>
+
+  <div class="card">
+    <h3>多功能賦形劑速查</h3>
+    <div class="table-wrap"><table>
+      <thead><tr><th>材料</th><th>稀釋</th><th>黏合</th><th>崩散</th><th>助滑</th><th>備注</th></tr></thead>
+      <tbody>
+        <tr><td><strong>MCC（Avicel）</strong></td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td><mark class="sage">★ 最多功能；直打首選；較貴</mark></td></tr>
+        <tr><td><strong>Starch（澱粉）</strong></td><td>✓</td><td>✓（糊）</td><td>✓</td><td>✓（少量）</td><td>澱粉糊才能當黏合劑；乾澱粉主要當崩散/稀釋</td></tr>
+        <tr><td><strong>Lactose（乳糖）</strong></td><td>✓</td><td>—</td><td>—</td><td>—</td><td>最廣用稀釋劑；溶解度 &amp; 壓製性佳</td></tr>
+        <tr><td><strong>PVP（Povidone）</strong></td><td>—</td><td>✓</td><td>✓（少）</td><td>✓（少）</td><td>可溶於水 &amp; 酒精</td></tr>
+        <tr><td><strong>Talc（滑石粉）</strong></td><td>—</td><td>—</td><td>—</td><td>✓</td><td>兼：潤滑劑、抗黏著劑；吸附色素</td></tr>
+        <tr><td><strong>Gelatin（明膠）</strong></td><td>—</td><td>✓</td><td>—</td><td>—</td><td>也用於膠囊殼、凝膠</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</section>
+
+<!-- ═══ SEC 2 ═══ -->
+<section class="section accent-sage" id="sec2">
+  <div class="section-header"><span class="sec-num">02</span><h2 class="sec-title">稀釋劑 / 填充劑 <span>Diluents &amp; Fillers</span></h2><div class="sec-divider"></div></div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>一般用稀釋劑（濕粒法 / 乾粒法）</h3>
+      <h4>★ Lactose 乳糖</h4>
+      <ul class="compact-list">
+        <li>最受喜愛；選擇理由 → <mark class="sage">溶解度（solubility）＋配伍性（compatibility）</mark></li>
+        <li>香甜、溶於水 → 不影響崩散</li>
+        <li>⚠ 乳糖 ↔ <strong>Amine 類</strong>：在鹼性潤滑劑（Metal stearate）存在下 → <mark class="clay">Maillard reaction，錠片隨時間褪色</mark></li>
+      </ul>
+      <h4>★ MCC（Microcrystalline Cellulose）</h4>
+      <ul class="compact-list">
+        <li>一人多功能：稀釋 ＋ 黏合 ＋ 崩散 ＋ 助滑</li>
+        <li>流動性極佳；不須另加黏合劑；崩散快速；物化生理惰性；配伍性高；水分含量低</li>
+        <li>缺點：較貴，常添加 <strong>5–10% MCC</strong> 搭配其他稀釋劑</li>
+      </ul>
+      <h4>其他一般稀釋劑</h4>
+      <ul class="compact-list">
+        <li><strong>Starch（澱粉）</strong>：便宜；吸水膨脹；乾澱粉可當崩散劑</li>
+        <li><strong>Powdered sucrose（糖粉）</strong>：常用於咀嚼錠</li>
+        <li><strong>DCP / Dicalcium phosphate</strong>：不溶；適固醇類、維生素錠</li>
+        <li><strong>Calcium phosphate</strong>：⚠ 不可與 <strong>Tetracycline</strong> 合用（Ca²⁺螯合）</li>
+        <li><strong>Calcium sulfate dihydrate</strong>：適合固醇類 &amp; 對水敏感藥品</li>
+      </ul>
+      <div class="info-box clay" style="margin-top:10px">配伍禁忌重點：<br>
+        ・Tetracycline + <strong>Ca²⁺ 含量稀釋劑</strong>（DCP, Ca-phosphate, Ca-sulfate）→ 螯合 → 不可<br>
+        ・Lactose + Amine類 + 鹼性潤滑劑 → Maillard reaction → 變色</div>
+    </div>
+    <div class="card">
+      <h3>直接壓錠專用稀釋劑 DC Fillers <span class="exam-flag">★必考</span></h3>
+      <div class="info-box dusk" style="margin-bottom:10px">直打稀釋劑需具備 <strong>Cohesive（凝聚性）</strong> ＋ 良好流動性；<strong>原始</strong>澱粉和乳糖<strong>不能</strong>直接使用</div>
+
+      <div class="table-wrap"><table>
+        <thead><tr><th>DC 稀釋劑</th><th>說明</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Spray-dried lactose（噴霧乾燥乳糖）</strong></td><td><mark class="sage">最常用</mark>；改善流動性 &amp; Cohesive；原始乳糖不行</td></tr>
+          <tr><td><strong>MCC（Avicel）</strong></td><td><mark class="sage">★ 首選</mark>；多功能；不須加黏合劑</td></tr>
+          <tr><td><strong>α-Monohydrate lactose 微晶</strong></td><td>結晶性 → 可 DC</td></tr>
+          <tr><td><strong>Anhydrous lactose（無水乳糖）</strong></td><td>結晶性 → 可 DC</td></tr>
+          <tr><td><strong>Pregelatinized starch（預凝膠化澱粉）</strong></td><td>處理過的澱粉才可；原始澱粉不行</td></tr>
+          <tr><td><strong>DCP dihydrate / Di-Tab</strong></td><td>常用；⚠Tetracycline 禁用</td></tr>
+          <tr><td><strong>Crystalline maltose（結晶麥芽糖）</strong></td><td>結晶性 → 可 DC</td></tr>
+          <tr><td><strong>Granule mannitol</strong></td><td>咀嚼錠首選；流動性佳</td></tr>
+          <tr><td><strong>Crystalline sorbitol</strong></td><td>結晶性 → 可 DC</td></tr>
+          <tr><td><strong>Sucrose-invert sugar-corn starch mixture</strong></td><td>蔗糖-轉化糖-澱粉混合物</td></tr>
+        </tbody>
+      </table></div>
+      <div class="info-box clay" style="margin-top:8px">⚠ <strong>Maize starch（一般玉米澱粉）</strong>≠ DC 填充劑（國考陷阱！）<br>→ 預凝膠化的澱粉才可以</div>
+      <div class="info-box sage" style="margin-top:6px;font-size:0.82rem">直打法主成分含量通常<strong>不超過總重 20–25%</strong>；超過則賦形劑無法足夠支撐 → 不易成型</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SEC 3 ═══ -->
+<section class="section accent-dusk" id="sec3">
+  <div class="section-header"><span class="sec-num">03</span><h2 class="sec-title">崩散劑 <span>Disintegrants</span></h2><div class="sec-divider"></div></div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>超級崩散劑 Superdisintegrants <span class="exam-flag">★</span></h3>
+      <div class="table-wrap"><table>
+        <thead><tr><th>名稱</th><th>商品名</th><th>用量</th><th>機轉</th><th>特點</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Croscarmellose</strong><br><span style="font-size:0.75rem;color:var(--text-muted)">Cross-linked CMC</span></td><td>Ac-Di-Sol®<br>Explocel®</td><td><mark>2%</mark></td><td><strong>吸水膨脹</strong></td><td><mark class="sage">最受喜愛</mark>；高吸水性膨脹與快速作用；崩散較不受疏水性潤滑劑影響</td></tr>
+          <tr><td><strong>Sodium Starch Glycolate（SSG）</strong><br><span style="font-size:0.75rem;color:var(--text-muted)">Primojel®; Explotab®</span></td><td>Primojel®<br>Explotab®</td><td><mark>5%</mark></td><td><strong>吸水膨脹</strong>（體積膨脹至原本 300% 以上）</td><td>最受喜愛；崩散較不受疏水性潤滑劑影響</td></tr>
+          <tr><td><strong>Crospovidone</strong><br><span style="font-size:0.75rem;color:var(--text-muted)">Cross-linked PVP</span></td><td>Kollidon CL®</td><td><mark>2–5%</mark></td><td><strong>毛細管作用</strong>（水不溶，但親水）</td><td>交聯後不溶於水；水分沿縫隙滲入 → 崩散；較不受疏水性潤滑劑影響</td></tr>
+        </tbody>
+      </table></div>
+      <div class="key-point">三種超級崩散劑均<strong>較不受疏水性潤滑劑（如硬脂酸鎂）的影響</strong></div>
+    </div>
+    <div class="card">
+      <h3>一般崩散劑 &amp; 添加方式</h3>
+      <h4>一般崩散劑</h4>
+      <ul class="compact-list">
+        <li><strong>Starch（澱粉）</strong>：用 5–10%，可高達 20%；吸水膨脹</li>
+        <li><strong>CMC-Na（Sodium CMC）</strong></li>
+        <li><strong>PVP（Povidone）</strong></li>
+        <li><strong>Cation exchange resins</strong></li>
+        <li><strong>Alginic acid（藻酸）</strong></li>
+      </ul>
+      <h4>★ 添加方式：雙重崩散（Double disintegration）</h4>
+      <div class="flow">
+        <span class="flow-step hi">一半在造粒時加入</span>
+        <span class="flow-arrow">+</span>
+        <span class="flow-step hi">一半在整粒後壓錠前加入</span>
+      </div>
+      <div class="info-box sage" style="margin-top:8px">
+        ・造粒時加入 → 崩散劑<strong>在顆粒內部</strong> → 幫助顆粒崩散<br>
+        ・壓錠前加入 → 崩散劑<strong>在顆粒間</strong> → 幫助錠片整體崩散<br>
+        → 兩者配合，產生<strong>雙重崩散效果最佳</strong>
+      </div>
+      <div class="info-box clay" style="margin-top:8px;font-size:0.83rem">⚠ CAP（Cellulose acetate phthalate）→ <strong>腸溶材質</strong>，<strong>不是</strong>崩散劑；看到 phthalate 字根 → 腸溶</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SEC 4 ═══ -->
+<section class="section accent-sand" id="sec4">
+  <div class="section-header"><span class="sec-num">04</span><h2 class="sec-title">黏合劑 <span>Binders / Adhesives</span></h2><div class="sec-divider"></div></div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>水性黏合劑（Aqueous Binders）</h3>
+      <div class="table-wrap"><table>
+        <thead><tr><th>黏合劑</th><th>濃度</th><th>配製方式</th><th>備注</th></tr></thead>
+        <tbody>
+          <tr><td><strong>PVP（Povidone）</strong></td><td>5–10%</td><td>直接溶於水攪拌</td><td><mark class="sage">最廣用</mark>；可溶於水 &amp; 酒精；吸濕性高</td></tr>
+          <tr><td><strong>Starch paste 澱粉糊</strong></td><td>10–20%</td><td>加入冷水（5–10%濃度）→ 成混濁suspension → <strong>隔水加熱</strong>並持續攪拌 → 半透明醬糊狀</td><td>有澱粉崩解性 + 糖的黏結作用；不阻礙崩散</td></tr>
+          <tr><td><strong>Gelatin solution</strong></td><td>10–20%</td><td>冷水軟化 → <strong>隔水加熱</strong>並攪拌</td><td>操作方式同澱粉糊</td></tr>
+          <tr><td><strong>Glucose solution</strong></td><td>25–50%</td><td>直接溶於水</td><td></td></tr>
+          <tr><td><strong>Molasses（糖蜜）</strong></td><td>—</td><td>黏稠液體直接使用</td><td>黏黏的</td></tr>
+          <tr><td><strong>MC（Methylcellulose）</strong></td><td>3%</td><td><mark class="sage">先加熱水分散</mark>（熱水不溶），再加冷水/冰塊 → 溶解</td><td><mark class="sage">冷水比熱水好溶</mark></td></tr>
+          <tr><td><strong>CMC-Na（Sodium CMC）</strong></td><td>—</td><td>加水攪拌</td><td></td></tr>
+          <tr><td><strong>MCC</strong></td><td>—</td><td>泡在水中黏黏的（不溶但可用）</td><td>乾粉狀也有黏性</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+    <div class="card">
+      <h3>非水性黏合劑（對水敏感藥品）</h3>
+      <div class="table-wrap"><table>
+        <thead><tr><th>黏合劑</th><th>溶媒</th><th>備注</th></tr></thead>
+        <tbody>
+          <tr><td><strong>HPMC</strong></td><td>酒精（分散）</td><td>先加<strong>熱水</strong>攪拌（熱水分散性高，不黏），冷卻後才形成黏稠液；<mark class="sage">冷水比熱水好溶</mark></td></tr>
+          <tr><td><strong>PVP</strong></td><td>水 or 酒精 <strong>兩者均可</strong></td><td>最泛用；<mark class="sage">唯一可用非水溶液進行濕式造粒</mark></td></tr>
+          <tr><td><strong>HPC</strong></td><td>水 or 酒精</td><td>冷熱水都好溶</td></tr>
+          <tr><td><strong>EC（Ethylcellulose）</strong></td><td>酒精</td><td><mark class="clay">水不溶</mark>；溶於酒精；用於怕水藥品</td></tr>
+        </tbody>
+      </table></div>
+      <div class="info-box dusk" style="margin-top:10px">纖維素類（HPMC、MC）溶解技巧：<br>
+        ① <strong>先加熱水</strong>→ 在熱水中分散（不會結塊）<br>
+        ② 再加冰塊或冷水 → 開始溶解<br>
+        ③ 放置數小時（需要時間水合）<br>
+        這樣比直接加冷水快很多（不然會結成一坨黏塊）
+      </div>
+      <h4>乾粉黏合劑（Dry Binders，用於直打錠）</h4>
+      <div style="display:flex;flex-wrap:wrap;gap:5px;margin-top:6px">
+        <span class="tag tag-sage">MCC ★</span><span class="tag tag-sage">Acacia powder</span><span class="tag tag-sage">PVP</span><span class="tag tag-sage">HPMC</span><span class="tag tag-sage">MC</span><span class="tag tag-sage">Colloidal clays</span><span class="tag tag-sage">Amylose</span>
+      </div>
+      <div class="info-box sage" style="margin-top:8px;font-size:0.82rem">液體黏合劑效果 &gt; 乾粉黏合劑（液體分散更均勻）</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SEC 5 ═══ -->
+<section class="section accent-rose" id="sec5">
+  <div class="section-header"><span class="sec-num">05</span><h2 class="sec-title">潤滑劑 / 助滑劑 / 抗黏著劑 <span>Lubricants · Glidants · Antiadherents</span></h2><div class="sec-divider"></div></div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>三種功能區分</h3>
+      <div class="table-wrap"><table>
+        <thead><tr><th>類別</th><th>功能</th><th>代表</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Lubricant 潤滑劑</strong></td><td>減少壓錠與彈出時<strong>錠面與模壁之摩擦</strong>；使錠片有光澤；減少黏模</td><td><mark class="sage">Magnesium stearate（最常用）</mark><br>Calcium stearate, Stearic acid, Talc, Sodium stearyl fumarate</td></tr>
+          <tr><td><strong>Antiadherent 抗黏著劑</strong></td><td>減少壓錠時銃壁與模子之<strong>黏附</strong></td><td>Talc, Corn starch, Fumed SiO₂, Magnesium stearate</td></tr>
+          <tr><td><strong>Glidant 助滑劑</strong></td><td>改善顆粒<strong>本身</strong>的流動性（與模型無關）</td><td><mark class="sage">Fumed silicon dioxide（最常用）</mark><br>= Colloidal SiO₂ = Aerosil® = Cab-o-sil®<br>用量：<strong>1% 以下</strong><br>Talc, Corn starch</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+    <div class="card">
+      <h3>疏水性 vs 親水性潤滑劑</h3>
+      <div class="info-box clay" style="margin-bottom:10px">
+        <strong>疏水性潤滑劑（最常用）</strong>：0.1–5%<br>
+        代表：<strong>Mg stearate（最常用，約 1%）</strong>、Ca stearate、Stearic acid、Talc（加 5%）、Sodium stearyl fumarate<br>
+        ⚠ 用量過高 or <strong>混合時間過長</strong> → <mark class="clay">Raincoat effect → 延遲崩散與溶離</mark>
+      </div>
+      <div class="info-box sage">
+        <strong>親水性潤滑劑（水溶性）</strong>：效果較差；用於需做澄清溶液的錠劑（如皮下錠、調劑錠）<br>
+        代表：<strong>PEG 4000 / Carbowax 4000</strong>（蠟質特性 + 水溶性）<br>
+        Sodium benzoate, Sodium benzoate + Sodium acetate, Sodium chloride, Leucine
+      </div>
+      <h4>潤滑劑使用注意</h4>
+      <ul class="compact-list">
+        <li>需先用<strong>細篩網（60–100 號）</strong>篩過後撒在顆粒上 → 覆蓋效果才均勻</li>
+        <li>使用 Twin shell 輕柔混合 → 避免產生太多細粉</li>
+        <li>硬脂酸鎂偏疏水性；若要做發泡錠、澄清溶液錠 → 改用親水性潤滑劑</li>
+      </ul>
+      <div class="info-box sand" style="font-size:0.82rem;margin-top:8px">崩散劑 + 潤滑劑混合粉末稱為 <strong>Running powder</strong>（跑料粉）→ 可增進顆粒間緩衝，減少凝聚，促進崩散</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SEC 6 ═══ -->
+<section class="section accent-sage" id="sec6">
+  <div class="section-header"><span class="sec-num">06</span><h2 class="sec-title">濕粒法 <span>Wet Granulation — 步驟 A → G</span></h2><div class="sec-divider"></div></div>
+
+  <div class="info-box sage" style="margin-bottom:16px">廣泛使用之方法；適合大多數藥品；有液體黏合劑（通常是水性）參與；造粒後需<strong>烘乾</strong>。<br>
+    優點：適合劑量之劇藥；均勻著色（將染料溶在造粒液中）<br>
+    缺點：步驟多、費時、不易自動化、批次間再現性差；不耐水/熱藥品不適用
+  </div>
+
+  <!-- A -->
+  <div class="step-card">
+    <div class="step-header">
+      <span class="step-num">A</span>
+      <span class="step-title">稱重與混合</span>
+      <span class="step-en">Weighing &amp; Blending</span>
+    </div>
+    <div class="step-body">
+      <div class="grid-2">
+        <div>
+          <p class="compact-list" style="list-style:none;padding:0">主成分、稀釋劑、崩散劑先<strong>稱重 → 磨粉 → 過篩 → 混合均勻</strong></p>
+          <h4>稀釋劑選擇</h4>
+          <ul class="compact-list">
+            <li>最受喜愛：<strong>Lactose</strong>（溶解度 &amp; 配伍性）<br>
+              <span class="tag tag-sage">Spray-dried lactose</span> 比普通乳糖流動性更佳
+            </li>
+            <li>MCC 加入 5–15% 有助造粒/乾燥，減少錠面硬化或斑點</li>
+          </ul>
+        </div>
+        <div>
+          <h4>崩散劑添加時機</h4>
+          <ul class="compact-list">
+            <li>在此步驟先加<strong>一半</strong>崩散劑 → 進到顆粒內部</li>
+            <li>另一半保留至步驟 F（整粒後壓錠前）再加 → 顆粒間的位置</li>
+            <li>→ <mark class="sage">雙重崩散效果最佳</mark></li>
+          </ul>
+          <div class="info-box clay" style="font-size:0.82rem;margin-top:6px">⚠ Calcium salts ↔ Tetracycline（螯合）；Lactose ↔ Amine 類（Maillard）</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- B -->
+  <div class="step-card">
+    <div class="step-header">
+      <span class="step-num">B</span>
+      <span class="step-title">製備濕團塊</span>
+      <span class="step-en">Preparing the Damp Mass</span>
+    </div>
+    <div class="step-body">
+      <div class="grid-2">
+        <div>
+          <p style="font-size:0.85rem">將液體黏合劑加到粉末混合物，以促進粉末粒子凝結，形成<strong>似麵團的濕塊</strong></p>
+          <h4>濕團塊的判斷</h4>
+          <ul class="compact-list">
+            <li>捏起來可以成團，丟下去後<strong>散成大塊</strong> → 剛好</li>
+            <li>捏起來一團，丟下去<strong>QQ彈彈</strong> → 加太多黏合劑</li>
+            <li>捏起來手打開<strong>變一堆粉</strong> → 加太少黏合劑</li>
+          </ul>
+        </div>
+        <div>
+          <h4>著色劑加入時機 <span class="exam-flag">考點</span></h4>
+          <ul class="compact-list">
+            <li>最佳方式：<strong>將染料溶在黏合劑溶液中</strong>，造粒時加入 → 分散最均勻</li>
+            <li>也可：水溶性染料吸附在澱粉或硫酸鈣上；不溶性染料與乾燥成分混合</li>
+          </ul>
+          <div class="info-box clay" style="font-size:0.82rem;margin-top:6px">
+            <strong>斑點（Mottling）原因：</strong>乾燥過程中色素隨水分遷移<br>
+            改善：① 低溫慢速乾燥<br>
+            ② 加 <strong>Tragacanth 1%, Acacia 3%, Attapulgite 5%, Talc 7%</strong>（色素遷移抑制劑）<br>
+            ③ 加 MCC 也有幫助（課本未提但老師補充）
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- C -->
+  <div class="step-card">
+    <div class="step-header">
+      <span class="step-num">C</span>
+      <span class="step-title">濕團塊過篩成顆粒</span>
+      <span class="step-en">Screening the Damp Mass into Granules</span>
+    </div>
+    <div class="step-body">
+      <div class="grid-2">
+        <div>
+          <ul class="compact-list">
+            <li>濕團塊由<strong>篩網擠壓</strong>以製備顆粒，或用造粒機</li>
+            <li>大粒子：<strong>#6–#8 號篩</strong></li>
+            <li>小粒子：#40–#80 號篩</li>
+          </ul>
+        </div>
+        <div>
+          <div class="info-box sage">球形化（Spheronization）：<br>
+            Extruder → Spheronizer → 圓球形顆粒<br>
+            MCC 是有效的稀釋劑 &amp; 黏合劑（用於此製程）
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- D -->
+  <div class="step-card">
+    <div class="step-header">
+      <span class="step-num">D</span>
+      <span class="step-title">顆粒乾燥</span>
+      <span class="step-en">Drying the Granulation</span>
+    </div>
+    <div class="step-body">
+      <div class="grid-2">
+        <div>
+          <ul class="compact-list">
+            <li>顆粒鋪於淺盤，<strong>溫控烘箱</strong>乾燥至一致重量或恆定水分含量</li>
+            <li>溫度約 50–60°C（低溫慢速，避免色素遷移 &amp; 影響藥品安定性）</li>
+            <li>一般需 <mark>12 小時以上</mark></li>
+            <li><strong>Fluid bed drier（流動床乾燥器）</strong>：可在 <mark>1 小時內</mark>完成</li>
+          </ul>
+        </div>
+        <div>
+          <div class="info-box sand">乾燥步驟所控制的主要顆粒物性：<br><strong>總含水量（水分含量）</strong><br>
+            顆粒最佳水分含量：<strong>0.5–1%</strong><br>太乾 → 可能脆度不佳；太濕 → 黏模、頂裂
+          </div>
+          <div class="info-box dusk" style="font-size:0.82rem;margin-top:6px">All-in-one 法（流動床造粒）：造粒 + 乾燥<strong>同時進行</strong>，一次完成（混合 → 噴黏合劑造粒 → 熱風乾燥）</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- E -->
+  <div class="step-card">
+    <div class="step-header">
+      <span class="step-num">E</span>
+      <span class="step-title">乾燥過篩整粒</span>
+      <span class="step-en">Sizing the Granulation by Dry Screening</span>
+    </div>
+    <div class="step-body">
+      <div class="grid-2">
+        <div>
+          <ul class="compact-list">
+            <li>乾燥後之顆粒通過<strong>比製粒略小網目之篩</strong>來整粒</li>
+            <li>整粒篩號 > 造粒篩號（篩號數字越大，洞越小）</li>
+            <li>通常為 <mark>#12–#20 號篩</mark></li>
+          </ul>
+          <div class="info-box sage" style="margin-top:8px">
+            例：造粒用 8 號篩 → 整粒用 12 號篩<br>
+            （乾燥後顆粒收縮，比造粒時小，所以用較小的洞篩）<br>
+            考題：造粒用 <strong>20 號</strong> → 整粒用 <mark>16 號</mark>
+          </div>
+        </div>
+        <div>
+          <h4>整粒目的</h4>
+          <ul class="compact-list">
+            <li>篩出<strong>期望大小的顆粒</strong>（均一化）</li>
+            <li>可使模洞（die cavity）<strong>快速被流動自如的顆粒充填</strong></li>
+            <li>避免太大顆粒留下空隙 → 產生不均勻錠片</li>
+          </ul>
+          <div class="info-box clay" style="font-size:0.82rem;margin-top:6px">整粒後有細粉是正常的（必要的），但<strong>細粉量不超過 10–20%</strong>。細粉可填充顆粒間縫隙，壓得更緊密。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- F -->
+  <div class="step-card">
+    <div class="step-header">
+      <span class="step-num">F</span>
+      <span class="step-title">添加潤滑劑（與崩散劑）並混合</span>
+      <span class="step-en">Adding Lubricant &amp; Blending</span>
+    </div>
+    <div class="step-body">
+      <ul class="compact-list">
+        <li>乾燥的潤滑劑先以<strong>細篩網（60–100 號）篩過</strong>後撒在顆粒上 → 覆蓋更均勻</li>
+        <li>用 Twin shell 輕柔混合，避免太多細粉</li>
+        <li>此步驟也可加入<strong>剩餘的崩散劑</strong>（另一半）</li>
+      </ul>
+      <div class="key-point">崩散劑 + 潤滑劑混合 = <strong>Running powder（跑料粉）</strong>：可增進顆粒間緩衝，減少粒子凝聚性，促進錠片崩散</div>
+      <div class="info-box clay" style="margin-top:8px;font-size:0.82rem">硬脂酸鎂混合時間<strong>越長</strong> → Raincoat effect 越嚴重 → 溶離速率下降。<br>改善：混合時間不要過長；加少量界面活性劑</div>
+    </div>
+  </div>
+
+  <!-- G -->
+  <div class="step-card">
+    <div class="step-header">
+      <span class="step-num">G</span>
+      <span class="step-title">顆粒壓製成錠劑</span>
+      <span class="step-en">Tableting of Granulation</span>
+    </div>
+    <div class="step-body">
+      <p style="font-size:0.85rem">詳見打錠機章節（第 09 節）。<br>方法 2/3/4 的壓錠步驟均與此相同。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SEC 7 ═══ -->
+<section class="section accent-clay" id="sec7">
+  <div class="section-header"><span class="sec-num">07</span><h2 class="sec-title">乾粒法 <span>Dry Granulation</span></h2><div class="sec-divider"></div></div>
+
+  <div class="info-box clay" style="margin-bottom:14px">
+    <strong>適用條件：</strong>有效成分或稀釋劑必須有<strong>凝聚性（Cohesive）</strong>；或添加乾粉黏合劑<br>
+    <strong>應用：</strong>適合遇<strong>水分（如 Aspirin）</strong>或<strong>高溫</strong>會降解之成分<br>
+    <strong>無液體黏合劑參與</strong>
+  </div>
+
+  <div class="flow" style="margin-bottom:16px">
+    <span class="flow-step hi">混合粉末</span>
+    <span class="flow-arrow">→</span>
+    <span class="flow-step">壓成大片/塊</span>
+    <span class="flow-arrow">→</span>
+    <span class="flow-step">粉碎 / 整粒</span>
+    <span class="flow-arrow">→</span>
+    <span class="flow-step">加潤滑劑混合</span>
+    <span class="flow-arrow">→</span>
+    <span class="flow-step hi">壓錠</span>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>① Slugging 重壓法（Double Compression）</h3>
+      <ul class="compact-list">
+        <li>粉末稱重混合後，<strong>壓成大的平錠片（slugs）</strong>，或直徑 1 英吋之圓粒</li>
+        <li>手工或輾磨機粉碎 → 通過合意的篩網整粒</li>
+        <li>添加潤滑劑 → 製成錠劑</li>
+        <li>因為 Slug 形成速度不快，若產生過多粉末需篩出再粗壓及研磨</li>
+      </ul>
+      <div class="info-box clay">
+        缺點：<br>
+        ・通常第一次壓錠也需加潤滑劑 → <strong>二次添加潤滑劑</strong><br>
+        ・經二次壓錠 → <strong>成品較硬、溶離受影響</strong><br>
+        ・比滾壓法效率低
+      </div>
+    </div>
+    <div class="card">
+      <h3>② Roller Compaction 滾壓法</h3>
+      <ul class="compact-list">
+        <li>粉末稱重混合後，以粉末壓緊器（Roller compactor）</li>
+        <li>粉末在<strong>滾輪間以 1–6 噸之壓力</strong>增加密度 → 形成薄片（ribbon）</li>
+        <li>再打碎、整粒、添加潤滑劑製成錠劑</li>
+        <li><mark class="sage">通常優於重壓法</mark></li>
+        <li>用於滾壓配方之黏合劑：<strong>MC 或 HPMC（6–12%）</strong>可產生良好硬度與脆度</li>
+      </ul>
+      <div class="info-box sage">滾壓法 vs 重壓法：<br>
+        ・兩者均為乾粒法（無液體）<br>
+        ・滾壓法效率較好，且比較常用
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SEC 8 ═══ -->
+<section class="section accent-dusk" id="sec8">
+  <div class="section-header"><span class="sec-num">08</span><h2 class="sec-title">直接壓錠法 <span>Direct Compression (DC)</span></h2><div class="sec-divider"></div></div>
+
+  <div class="info-box sage" style="margin-bottom:14px">
+    <strong>最簡單；最不影響生體可用率；無需造粒；無液體黏合劑參與</strong><br>
+    優點：製程少；形成之錠劑有最佳藥品利用率（無黏合劑影響溶離；無二次壓錠）
+  </div>
+
+  <div class="flow" style="margin-bottom:16px">
+    <span class="flow-step hi">主成分 + 稀釋劑 + 崩散劑 + 潤滑劑 → 混合均勻</span>
+    <span class="flow-arrow">→</span>
+    <span class="flow-step hi">直接壓錠</span>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>直接壓錠的條件與限制</h3>
+      <h4>可直接壓錠的藥品（本身有 Cohesive）</h4>
+      <div style="display:flex;flex-wrap:wrap;gap:5px;margin:6px 0">
+        <span class="tag tag-sage">NaCl</span><span class="tag tag-sage">KCl</span><span class="tag tag-sage">Aspirin</span><span class="tag tag-sage">Methenamine</span><span class="tag tag-sage">Ammonium chloride</span>
+      </div>
+      <h4>沒有 Cohesive 的藥品 → 依賴賦形劑</h4>
+      <ul class="compact-list">
+        <li>主成分含量通常<strong>不超過總重 20–25%</strong></li>
+        <li>超過 → 賦形劑不夠力 → 不易壓製成型</li>
+      </ul>
+      <div class="info-box dusk" style="margin-top:8px">
+        賦形劑若預先造粒，需考慮與粉末藥物之<strong>混合均勻</strong>與<strong>Segregation（分離層化）</strong>問題
+      </div>
+    </div>
+    <div class="card">
+      <h3>直接壓錠的缺陷與改善</h3>
+      <h4>層裂與破裂</h4>
+      <ul class="compact-list">
+        <li>原因：<strong>空氣陷入</strong> → 壓力釋出時膨脹 → 破裂或層裂</li>
+        <li>改善：加壓式或引導式給料器（<strong>forced or induced feeders</strong>）→ 減少空氣陷入，使充填粉末更緻密</li>
+      </ul>
+      <h4>頂裂（Capping）</h4>
+      <ul class="compact-list">
+        <li>空氣陷入</li>
+        <li>含太多細粉（<strong>細粉佔顆粒重量 10–20%</strong> 以下是允許的，過多則導致頂裂）</li>
+        <li>銃未清潔乾淨；銃不完全光滑</li>
+        <li>老化或貯存不當</li>
+        <li>改善：<mark class="sage">減低入料速度</mark>（最常考）</li>
+      </ul>
+      <div class="key-point">直打法細粉含量最適：<strong>10–20%</strong>（細粉過少→空隙大；過多→頂裂）</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SEC 9 ═══ -->
+<section class="section accent-sand" id="sec9">
+  <div class="section-header"><span class="sec-num">09</span><h2 class="sec-title">打錠機 <span>Tablet Machines</span></h2><div class="sec-divider"></div></div>
+
+  <div class="machine-grid">
+    <div class="machine-col">
+      <h4>① 單銃式壓錠機（Single Punch）</h4>
+      <p style="font-size:0.82rem;color:var(--text-dim);margin-bottom:8px">一組銃與模；速度較慢；適合小量打錠或預處方</p>
+      <div class="flow" style="flex-direction:column;gap:4px;">
+        <div class="flow-step">①下銃<strong>下降</strong>至固定位置</div>
+        <div class="flow-arrow" style="transform:rotate(90deg);margin-left:8px;">↓</div>
+        <div class="flow-step">②顆粒充填進模洞</div>
+        <div class="flow-arrow" style="transform:rotate(90deg);margin-left:8px;">↓</div>
+        <div class="flow-step">③刮去過量顆粒使其平</div>
+        <div class="flow-arrow" style="transform:rotate(90deg);margin-left:8px;">↓</div>
+        <div class="flow-step hi">④<strong>上銃壓下</strong>（只有上銃動）→ 形成錠片</div>
+        <div class="flow-arrow" style="transform:rotate(90deg);margin-left:8px;">↓</div>
+        <div class="flow-step">⑤上銃往上撤回；下銃<strong>上升</strong>推錠片至平台</div>
+        <div class="flow-arrow" style="transform:rotate(90deg);margin-left:8px;">↓</div>
+        <div class="flow-step">⑥掃除錠片至收集容器</div>
+      </div>
+    </div>
+    <div class="machine-col">
+      <h4>② 迴轉式壓錠機（Rotary Tablet Machine）</h4>
+      <p style="font-size:0.82rem;color:var(--dusk-d);margin-bottom:8px">多組銃與模；生產速度快；高速機可達每分鐘 10,000 錠以上</p>
+      <div class="flow" style="flex-direction:column;gap:4px;">
+        <div class="flow-step">①多組銃和模<strong>連續旋轉</strong></div>
+        <div class="flow-arrow" style="transform:rotate(90deg);margin-left:8px;">↓</div>
+        <div class="flow-step">②顆粒充填進模洞</div>
+        <div class="flow-arrow" style="transform:rotate(90deg);margin-left:8px;">↓</div>
+        <div class="flow-step hi">③下銃<strong>上升</strong>至固定位置（校正充填量）</div>
+        <div class="flow-arrow" style="transform:rotate(90deg);margin-left:8px;">↓</div>
+        <div class="flow-step hi">④<strong>上下銃同時壓縮</strong>（與單銃不同！）→ 形成錠片</div>
+        <div class="flow-arrow" style="transform:rotate(90deg);margin-left:8px;">↓</div>
+        <div class="flow-step">⑤上銃撤回；下銃上升推出錠片</div>
+      </div>
+      <div class="info-box dusk" style="margin-top:10px;font-size:0.82rem">
+        <strong>壓點（Press point）：</strong><br>
+        ・前壓點（小滾輪）→ 輕輕壓，讓<strong>空氣排出</strong><br>
+        ・主壓點（大滾輪）→ 正式壓縮<br>
+        可安裝<strong>雙壓點</strong> → 速度加倍
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-2" style="margin-top:16px">
+    <div class="card">
+      <h3>★ 重量 vs 硬度 調整 <span class="exam-flag">最常考</span></h3>
+      <div class="table-wrap"><table>
+        <thead><tr><th>欲調整</th><th>調整部位</th><th>說明</th></tr></thead>
+        <tbody>
+          <tr><td><strong>硬度 Hardness</strong></td><td><mark class="sage">上銃（Upper punch）</mark></td><td>上銃壓得越深 → 壓力越大 → 錠片越硬</td></tr>
+          <tr><td><strong>重量 Weight</strong></td><td><mark class="sage">下銃（Lower punch）</mark></td><td>下銃降得越低 → 充填量越多 → 重量越重</td></tr>
+        </tbody>
+      </table></div>
+      <div class="info-box clay" style="margin-top:8px;font-size:0.83rem">
+        ⚠ <strong>調整重量時，壓力也必須同時改變！</strong><br>
+        填充量增加 → 下銃更遠 → 原壓力不夠 → <strong>上銃也要加大壓力</strong><br>
+        填充量減少 → 壓力需降低<br>
+        → 實驗課老師帶你一起調重量和硬度，調好後再連續打錠
+      </div>
+      <div class="info-box sand" style="font-size:0.82rem;margin-top:6px">
+        <strong>重量差異原因：</strong><br>
+        ・下銃下降幅度不一 → 重量差異大（主因）<br>
+        ・上銃下降幅度不一 → <mark class="sand">較不影響重量差異</mark><br>
+        ・顆粒流動性不良；顆粒大小差異大
+      </div>
+    </div>
+    <div class="card">
+      <h3>壓力的作用 — 顆粒變形過程</h3>
+      <div class="table-wrap"><table>
+        <thead><tr><th>階段</th><th>說明</th></tr></thead>
+        <tbody>
+          <tr><td><strong>1. 固結（Consolidation）</strong></td><td>粉末顆粒重新排列，採更有效率的填充順序</td></tr>
+          <tr><td><strong>2. 彈性/可逆變形</strong></td><td>去除力後粉末完全恢復；多數藥物粉末此階段持續時間很短</td></tr>
+          <tr><td><strong>3. 塑性/不可逆變形 ★</strong></td><td>片劑形成<strong>最關鍵</strong>的階段；施力過大 → 脆性斷裂；施力太快 → 斷裂脫粘</td></tr>
+        </tbody>
+      </table></div>
+      <div class="info-box dusk" style="margin-top:8px;font-size:0.83rem">
+        <strong>Dwell time（停留時間）：</strong>維持最大壓縮點的時間<br>
+        dwell time 越長 → 塑性流動（plastic flow）越充分 → 錠片強度增加<br>
+        高速打錠 → dwell time 不足 → 層裂/頂裂 → 解決：<strong>降低壓錠速率</strong>
+      </div>
+      <div class="key-point" style="margin-top:8px">打錠壓力大小最重要影響的錠片物性：<strong>硬度（Hardness）</strong></div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:14px">
+    <h3>重量與硬度的調整流程</h3>
+    <div class="flow">
+      <span class="flow-step">料斗加入少量顆粒</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-step hi">手轉機器，調節壓力至形成錠片</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-step">調整錠片重量（調下銃）</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-step hi">同時調整壓力（調上銃）</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-step">達到所需重量 &amp; 硬度</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-step hi">填充料斗 → 連續壓錠</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-step">每 15–30 分鐘定期檢查硬度和重量</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SEC 10 ═══ -->
+<section class="section accent-clay" id="sec10">
+  <div class="section-header"><span class="sec-num">10</span><h2 class="sec-title">層裂 / 頂裂 <span>Lamination &amp; Capping</span></h2><div class="sec-divider"></div></div>
+
+  <div class="grid-2" style="margin-bottom:16px">
+    <div class="card" style="border-color:var(--clay)">
+      <h3 style="color:var(--clay-d)">Lamination 層裂</h3>
+      <p style="font-size:0.85rem">錠片產生<strong>兩個或更多之水平條紋層</strong>（像剝洋蔥）</p>
+    </div>
+    <div class="card" style="border-color:var(--rose)">
+      <h3 style="color:var(--rose-d)">Capping 頂裂</h3>
+      <p style="font-size:0.85rem">錠片<strong>頂部從錠體分離</strong>（只脫落一層帽子）</p>
+    </div>
+  </div>
+
+  <!-- 缺陷表 -->
+  <div class="card">
+    <h3>原因 &amp; 改善方式</h3>
+    <div style="border:1.5px solid var(--border);border-radius:6px;overflow:hidden;margin-top:8px">
+      <div class="defect-row" style="grid-template-columns:130px 1fr 1fr">
+        <div>情境</div><div>常見原因</div><div>改善方式</div>
+      </div>
+      <div class="defect-row" style="grid-template-columns:130px 1fr 1fr">
+        <div class="defect-name">高速壓錠<br>（Dwell time 不足）</div>
+        <div>Dwell time 太短 → 充填材料在壓錠後無足夠時間黏結 → 彈性回復力過強</div>
+        <div><mark class="sage">降低壓錠速率</mark>（增加 dwell time）</div>
+      </div>
+      <div class="defect-row" style="grid-template-columns:130px 1fr 1fr">
+        <div class="defect-name">一般壓錠<br>（非高速）</div>
+        <div>① <strong>過多細粉</strong> → 太多空氣陷入<br>② 顆粒太濕或太軟<br>③ 壓力太大<br>④ 處方不合適</div>
+        <div>降低細粉比例；調整水分含量；調整處方</div>
+      </div>
+      <div class="defect-row" style="grid-template-columns:130px 1fr 1fr">
+        <div class="defect-name">機器問題</div>
+        <div>Punch 太深的標記；Punch/Die 老舊有缺陷；Punch 不一致或沒有對齊；<strong>Punch 未清潔乾淨</strong> → 頂裂</div>
+        <div>更換或清潔 Punch/Die</div>
+      </div>
+      <div class="defect-row" style="grid-template-columns:130px 1fr 1fr">
+        <div class="defect-name">直接壓錠<br>（DC 特有）</div>
+        <div>空氣陷入（主因）；細粉過多 (&gt;10–20%）；Punch 不潔</div>
+        <div><mark class="sage">減低入料速度</mark>；加壓式給料器；清潔 Punch</div>
+      </div>
+    </div>
+    <div class="key-point" style="margin-top:12px">考試口訣：<br>
+      題目說<strong>高速生產</strong> → 答案幾乎是「<strong>降低壓錠速率</strong>」<br>
+      題目<strong>沒說高速</strong> → 先考慮「<strong>空氣 / 細粉太多</strong>」或「<strong>減低入料速度</strong>」
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SEC 11 ═══ -->
+<section class="section accent-slate" id="sec11">
+  <div class="section-header"><span class="sec-num">11</span><h2 class="sec-title">四種製法完整比較 <span>Comparison of All Four Methods</span></h2><div class="sec-divider"></div></div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th style="min-width:100px">賦形劑</th>
+          <th style="background:#4a5840;border-color:#3a4830">濕粒法</th>
+          <th style="background:#484a62;border-color:#383a50">流動床造粒</th>
+          <th style="background:#6e3e2e;border-color:#5a2e1e">乾粒法</th>
+          <th style="background:#3a4e5a;border-color:#2a3e4a">直接壓錠法</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>主成分</strong></td>
+          <td>✓（任何）</td>
+          <td>✓（任何）</td>
+          <td>✓（需 <strong>Cohesive</strong>）</td>
+          <td>✓（需 <strong>Cohesive</strong>）</td>
+        </tr>
+        <tr>
+          <td><strong>稀釋劑</strong></td>
+          <td>Lactose、MCC、Starch、DCP、Ca phosphate 等</td>
+          <td>同濕粒法</td>
+          <td>需 Cohesive 或加乾粉黏合劑</td>
+          <td><mark class="sage">特殊 DC fillers：Spray-dried lactose、MCC、DCP、Pregelatinized starch、Crystalline maltose、Granule mannitol 等</mark></td>
+        </tr>
+        <tr>
+          <td><strong>黏合劑</strong></td>
+          <td><strong>水性液體：</strong>PVP、Corn starch、Glucose、Molasses、Gelatin、MCC、MC、CMC-Na<br><strong>非水性液體：</strong>HPMC、EC、PVP、HPC之酒精/有機溶液</td>
+          <td>液體黏合劑（Acacia、HPC、PVP等水性溶液）噴灑</td>
+          <td><strong>乾粉黏合劑：</strong>MC、HPMC、MCC、Acacia 等</td>
+          <td>無（或乾粉黏合劑）</td>
+        </tr>
+        <tr>
+          <td><strong>崩散劑</strong></td>
+          <td>Croscarmellose (2%)、SSG (5%)、Crospovidone (2–5%)、Corn/Potato starch、CMC-Na、PVP、Cation exchange resins、Alginic acid<br><em style="font-size:0.78rem;color:var(--text-muted)">可加濕潤劑/界面活性劑如 SLS 增進溶解</em></td>
+          <td>同左</td>
+          <td>同左</td>
+          <td>Croscarmellose、SSG、Crospovidone、Direct compression starch、Fibers</td>
+        </tr>
+        <tr>
+          <td><strong>潤滑劑</strong></td>
+          <td>疏水性(0.1–5%)：Mg stearate、Ca stearate、Stearic acid、Talc、Sodium stearyl fumarate<br>親水性：PEG</td>
+          <td>同左</td>
+          <td>同左</td>
+          <td>Mg stearate、Talc</td>
+        </tr>
+        <tr>
+          <td><strong>助滑劑</strong></td>
+          <td>Fumed SiO₂、Corn starch、Talc</td>
+          <td>同左</td>
+          <td>同左</td>
+          <td>Fumed SiO₂</td>
+        </tr>
+        <tr>
+          <td><strong>優點</strong></td>
+          <td>廣泛適用；均勻著色；適合劑量之劇藥</td>
+          <td>混合+造粒+乾燥一次完成（All-in-one）；省時</td>
+          <td>適合怕水/熱藥品；無需乾燥</td>
+          <td><mark class="sage">最少製程；最佳 BA；無黏合劑影響溶離</mark></td>
+        </tr>
+        <tr>
+          <td><strong>缺點</strong></td>
+          <td>步驟多；不易自動化；批次再現性差；不適怕水/熱藥品</td>
+          <td>設備昂貴；需精密控制</td>
+          <td>需兩次加潤滑劑；成品較硬；溶離受影響</td>
+          <td>主成分≤20–25%；需特殊 DC 賦形劑；可能 Segregation</td>
+        </tr>
+        <tr>
+          <td><strong>代表應用</strong></td>
+          <td>大多數藥品</td>
+          <td>熱敏感藥品；顆粒外觀佳</td>
+          <td>Aspirin（怕水）；維生素</td>
+          <td>NaCl, KCl, Aspirin 等；高活性藥物</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="grid-2" style="margin-top:16px">
+    <div class="card">
+      <h3>造粒方法對生體可用率的影響（由好至差）</h3>
+      <div class="flow">
+        <span class="flow-step hi">直接壓錠（最佳 BA）</span>
+        <span class="flow-arrow">→</span>
+        <span class="flow-step">流動床造粒</span>
+        <span class="flow-arrow">→</span>
+        <span class="flow-step">濕粒法</span>
+        <span class="flow-arrow">→</span>
+        <span class="flow-step">乾粒法（Slugging）</span>
+      </div>
+      <div class="info-box sage" style="margin-top:8px;font-size:0.82rem">凡是有「造粒」就一定有加黏合劑 → 黏合劑會影響溶離 → BA 受影響<br>直接壓錠沒有造粒 → 沒有黏合劑 → BA 最佳</div>
+    </div>
+    <div class="card">
+      <h3>篩號對照速查</h3>
+      <div class="table-wrap"><table>
+        <thead><tr><th>用途</th><th>篩號（常見）</th><th>規則</th></tr></thead>
+        <tbody>
+          <tr><td>造粒（大粒子）</td><td>#6–#8</td><td rowspan="2">整粒用比造粒<strong>更小</strong>的洞（數字更大）</td></tr>
+          <tr><td>整粒</td><td>#12–#20</td></tr>
+          <tr><td>潤滑劑過篩</td><td>#60–#100</td><td>越細覆蓋效果越好</td></tr>
+          <tr><td>崩散試驗篩網</td><td>#10</td><td>試驗裝置底層篩</td></tr>
+        </tbody>
+      </table></div>
+      <div class="key-point">考題：造粒用 20 號篩 → 整粒用 <strong>16 號篩</strong>（數字大但洞更小）</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ QA ═══ -->
+<section class="section" id="qa">
+  <div class="section-header"><span class="sec-num">★</span><h2 class="sec-title">歷屆國考題 <span>Interactive Q&A</span></h2><div class="sec-divider"></div></div>
+  <p class="toggle-hint">► 點擊題目展開答案</p>
+  <div class="qa-grid" id="qaContainer"></div>
+</section>
+
+</div><!-- container -->
+
+<footer>壓製錠的製造 Compressed Tablet Manufacture — 濕粒法 A–G · 乾粒法 · 直壓法 · 打錠機 · 賦形劑 · 缺陷與改善</footer>
+
+<script>
+const questions = [
+  // 造粒目的
+  { year:"107-2", q:"於製備固體製劑時，有時會先將原料及副料粉末混勻後預製成顆粒劑，而製粒之主要目的通常不包括下列何者？", opts:["A.增加粉體流動性，影響劑型之內容物均一度","B.使粒徑均一，無細粉","C.減少粉粒分離（segregation），縱使會分離亦不易導致含量不均","D.減少粉塵之飛揚"], ans:"B" },
+  { year:"106-1", q:"下列何者不是將藥物組合進行造粒（granulation）之主要目的？", opts:["A.使藥物組合形成能自由流動的顆粒","B.提高藥物組合的密度而提供壓縮性","C.使藥物組合疏鬆的結合而易於崩散","D.增強藥物組合的黏合性而提高硬度"], ans:"C" },
+  // 稀釋劑
+  { year:"102-1", q:"錠片稀釋劑的選擇最重要考量是不能與藥物產生配伍禁忌，下列何者違反此考量？", opts:["A.四環素與乳糖（lactose）","B.四環素與磷酸二鈣（dicalcium phosphate）","C.四環素與微晶纖維素（microcrystalline cellulose）","D.四環素與澱粉（starch）"], ans:"B" },
+  { year:"103-1", q:"下列何者不是常用的直壓用（direct compression）的填充劑（filler）？", opts:["A.Spray-dried lactose","B.Microcrystalline cellulose","C.Maize starch","D.Crystalline maltose"], ans:"C" },
+  { year:"107-1", q:"下列何者比較適合用來當作製備固醇類錠劑時的稀釋劑？", opts:["A.calcium sulfate","B.lactose","C.sorbitol","D.starch"], ans:"A" },
+  { year:"107-1", q:"下列何種賦形劑最適用於直接壓錠？", opts:["A.lactose","B.microcrystalline cellulose","C.hydroxyl propylmethylcellulose（HPMC）","D.starch"], ans:"B" },
+  { year:"104-1", q:"一般選用乳糖作為稀釋劑的最主要原因為何？", opts:["A.溶解度與壓製性（compressibility）","B.良好顆粒結合性（easy compaction）","C.極佳顆粒流動性（flowability）","D.供應品質一致性（consistent uniformity）"], ans:"A" },
+  { year:"107-2", q:"將粉末狀藥品和稀釋劑混合後直接壓錠，通常藥品含量最好不要超過多少百分比（%），否則較不易壓製成型？", opts:["A.20～25","B.25～30","C.30～35","D.35～40"], ans:"A" },
+  // 崩散劑
+  { year:"110-1", q:"下列何者最不適合用於提高錠劑之崩散效率？", opts:["A.mannitol","B.starch","C.microcrystalline celluose","D.cellulose acetate phthalate"], ans:"D" },
+  { year:"101-2", q:"下列崩散劑何者因高吸水性和快速作用而最喜歡被使用？", opts:["A.Sodium carboxymethylcellulose","B.Croscarmellose","C.Polyvinylpyrrolidone","D.Crospovidone"], ans:"B" },
+  // 黏合劑
+  { year:"109-2", q:"下列黏合劑何者最不溶於水？", opts:["A.alginate","B.ethylcellulose","C.methylcellulose","D.sodium carboxymethylcellulose"], ans:"B" },
+  { year:"103-2", q:"下列何種黏合劑（binders）可以非水溶液（non-aqueous solution）來進行濕式造粒？", opts:["A.Gelatin","B.Starch","C.Povidone","D.Glucose"], ans:"C" },
+  { year:"108-2", q:"有關纖維素之衍生物的水溶解度敘述，下列何者正確？", opts:["A.甲基纖維素溶於熱水","B.甲基纖維素溶於冷水","C.乙基纖維素溶於冷水","D.乙基纖維素溶於熱水"], ans:"B" },
+  // 潤滑劑
+  { year:"107-2", q:"下列何者最能降低錠劑與錠模之黏合力，最有助於錠劑自錠模中彈出？", opts:["A.magnesium stearate","B.Span 60","C.talc","D.Tween 80"], ans:"A" },
+  { year:"107-2", q:"有關硬脂酸鎂（magnesium stearate）作為賦形劑之敘述，下列何者正確？", opts:["A.其使用量太高會降低溶離速率","B.常於製劑作為稀釋劑使用","C.常於製劑作為崩散劑使用","D.其和藥物顆粒混合時間增加可加快溶離速率"], ans:"A" },
+  { year:"102-1", q:"助滑劑（glidants）是用來幫助打錠顆粒的流動，目前最常用於直打錠顆粒的助滑劑為何？", opts:["A.Talc","B.Fumed silicon dioxide","C.Starch","D.Magnesium stearate"], ans:"B" },
+  { year:"102-1", q:"下列何者不是錠片（tablets）處方成分中的潤滑劑類的主要功能？", opts:["A.促使顆粒流入錠模","B.降低模具組的磨損","C.加速錠片崩散分解","D.提高錠片表面亮度"], ans:"C" },
+  { year:"101-2", q:"潤滑劑（lubricants）的最適用量通常是相當於顆粒總重量的多少百分比？", opts:["A.0.1～5.0","B.6.0～10.0","C.11.0～15.0","D.16.0～20.0"], ans:"A" },
+  // 整粒
+  { year:"106-1", q:"若使用20號篩製粒，選粒時最好使用幾號篩？", opts:["A.10","B.16","C.20","D.30"], ans:"B" },
+  // 乾粒法
+  { year:"111-1", q:"Aspirin 適於利用乾式造粒法來製備錠片之主要原因為何？", opts:["A.對水氣敏感易降解","B.顆粒的流動性不佳","C.乾燥過程晶型轉換","D.粉末易凝集不分散"], ans:"A" },
+  { year:"104-2", q:"能進行乾式造粒方式的主成分藥物粉末或賦型劑粉末，需具有下列何種物性？", opts:["A.Moisturizing properties","B.Flowing properties","C.Adhesive properties","D.Cohesive properties"], ans:"D" },
+  // 直接壓錠
+  { year:"106-1", q:"下列何種製錠過程，最不會影響藥物的生體可用率？", opts:["A.以濕式造粒法後壓錠","B.以slugging造粒後壓錠","C.以冷凍乾燥法造粒後壓錠","D.以藥品和賦形劑混合後壓錠"], ans:"D" },
+  { year:"102-2", q:"下列何種造粒製程可以一次完成混合、造粒、乾燥的製備可用於打錠的顆粒？", opts:["A.行星式造粒機（planetary mixer）","B.快速造粒機（super mixer）","C.流動床造粒機（fluid bed granulator）","D.振盪擠壓造粒機（oscillating granulator）"], ans:"C" },
+  // 打錠機
+  { year:"113-2", q:"打錠時，若要調整錠劑硬度，最應調整下列何項裝置？", opts:["A.upper punch","B.lower punch","C.die","D.feed shoe"], ans:"A" },
+  { year:"108-2", q:"打錠機那一部位是控制錠劑之重量的最主要部位？", opts:["A.上沖模（upper punches）的位置","B.下沖模（lower punches）的位置","C.中模（die）的位置","D.加料漏斗出口的大小"], ans:"B" },
+  { year:"109-1", q:"下列何者比較不會造成壓錠時重量差異過大的問題？", opts:["A.顆粒流動性不良","B.顆粒大小差異大","C.下沖模下降幅度不一","D.上沖模下降幅度不一"], ans:"D" },
+  { year:"109-1", q:"親水性纖維素基質錠片的製備常採用直接打錠方式。當高速旋轉式打錠機的轉速越快，則對此類錠片打錠最常見之影響為何？", opts:["A.重量偏差度可能越大","B.錠片的硬度可能增大","C.含量均勻度可能越佳","D.錠片的脆度可能越高"], ans:"A" },
+  { year:"102-2", q:"打錠壓力大小所影響的錠片物性中何者最為重要？", opts:["A.厚度（thickness）","B.脆度（friability）","C.硬度（hardness）","D.徑度（diameter）"], ans:"C" },
+  // 層裂/頂裂
+  { year:"104-2", q:"高速壓錠的過程易造成錠片的層裂（lamination）或頂裂（capping）現象，下列何種處理方式可較佳解決此問題？", opts:["A.提高顆粒圓度","B.放慢壓錠速率","C.降低細粉比例","D.增加澱粉含量"], ans:"B" },
+  { year:"114-1", q:"打錠時，若punches沒有清潔乾淨，易造成下列何種狀況？", opts:["A.capping","B.splitting","C.laminating","D.softness"], ans:"A" },
+  { year:"113-2", q:"打錠發生頂裂（capping）時，可經由下列何種方式改善最適當？", opts:["A.添加細粉","B.添加崩散劑","C.減低入料速度","D.加快打錠速度"], ans:"C" },
+  { year:"113-2", q:"以「直接加壓打錠法」打錠時，其細粉之含量以下列何者最適當？", opts:["A.5～10%","B.10～20%","C.20～30%","D.30～40%"], ans:"B" },
+  { year:"107-1", q:"壓錠時需要部分細粉充填在顆粒間，以減少顆粒間之空隙，通常細粉量約占多少量較為理想？", opts:["A.＜5%","B.5～8%","C.10～20%","D.25～30%"], ans:"C" },
+  { year:"102-2", q:"直接壓錠時會發生錠片的頂裂（capping）、分裂（splitting）或層裂（lamination）現象，其主要原因為何？", opts:["A.顆粒結晶水低","B.整體水量不足","C.顆粒流動不佳","D.空氣被包埋住"], ans:"D" },
+  // 品管
+  { year:"102-2", q:"硬度表示壓碎錠片所需使用的力量，一般理想錠片的最低硬度要求為多少公斤？", opts:["A.1","B.2","C.3","D.4"], ans:"D" },
+  { year:"103-2", q:"脆度表示錠片耐受操作包裝和運送過程所遭受磨損的能力，一般錠片可接受的最大脆度為多少%？", opts:["A.1","B.2","C.3","D.4"], ans:"A" },
+  { year:"109-1", q:"通常錠劑厚度的誤差度應控制在下列何範圍內？", opts:["A.±5%","B.±7%","C.±10%","D.±12%"], ans:"A" },
+  { year:"101-2", q:"下列何種包覆方法是在一種無水狀態下操作，適合含有水氣敏感性藥物之錠片的包覆製程？", opts:["A.Compression coating","B.Tangential-spray coating","C.Top-spray coating","D.Bottom-spray coating"], ans:"A" },
+  // 其他
+  { year:"108-1", q:"將粉體藥物製備成錠片時，通常不一定需要添加的賦形劑為下列何者？", opts:["A.稀釋劑（diluents）","B.安定劑（stabilizers）","C.黏合劑（binders）","D.潤滑劑（lubricants）"], ans:"B" },
+  { year:"104-2", q:"藥廠研發以下的錠片處方，試問使用澱粉（Starch）的主要功能為何？（配方含有：乾澱粉 / 可直接壓錠的乳糖 / 硬脂酸鎂 / 滑石粉）", opts:["A.黏合以提高硬度（黏合劑→澱粉糊）","B.填塞以增加均勻（稀釋劑）","C.崩散以增強溶離（崩散劑）","D.助滑以加速流動（滑動劑）"], ans:"C" },
+  { year:"102-2", q:"下列何者不是壓製成型錠片（compressed tablets）的基本製法？", opts:["A.濕式造粒法（wet granulation）","B.模具成型法（molded method）","C.乾式造粒法（dry granulation）","D.直接壓製法（direct compression）"], ans:"B" },
+  { year:"101-2", q:"溼式造粒過程的顆粒乾燥步驟，所調控的乾燥溫度及乾燥時間，主要管制下列何種顆粒物性？", opts:["A.粒度分布","B.含量均一","C.平均粒徑","D.總含水量"], ans:"D" },
+  { year:"101-2", q:"整粒之目的是將顆粒過篩得到適當粒度以配合錠片大小，下列何種篩網最適用做整粒之用？", opts:["A.12～20 mesh","B.22～30 mesh","C.32～40 mesh","D.42～50 mesh"], ans:"A" },
+];
+
+const container = document.getElementById('qaContainer');
+questions.forEach(q => {
+  const div = document.createElement('div');
+  div.className = 'qa-item';
+  div.innerHTML = `<div class="qa-year">${q.year}</div><div class="qa-q">${q.q}</div><div class="qa-opts">${q.opts.map(o=>`<div>${o}</div>`).join('')}</div><div class="qa-ans"><span class="qa-ans-text">✓ 答案：${q.ans}</span></div>`;
+  div.querySelector('.qa-q').addEventListener('click', () => div.classList.toggle('open'));
+  container.appendChild(div);
+});
+</script>
+</body>
+</html>
