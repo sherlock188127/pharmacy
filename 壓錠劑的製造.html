@@ -1664,12 +1664,28 @@ document.querySelectorAll('.q-note-area textarea').forEach((ta, i) => {
   try { ta.value = localStorage.getItem(key) || ''; } catch(e){}
   ta.addEventListener('input', () => { try { localStorage.setItem(key, ta.value); } catch(e){} });
 });
-questions.forEach(q => {
-  const div = document.createElement('div');
-  div.className = 'qa-item';
-  div.innerHTML = `<div class="qa-year">${q.year}</div><div class="qa-q">${q.q}</div><div class="qa-opts">${q.opts.map(o=>`<div>${o}</div>`).join('')}</div><div class="qa-ans"><span class="qa-ans-text">✓ 答案：${q.ans}</span></div>`;
-  div.querySelector('.qa-q').addEventListener('click', () => div.classList.toggle('open'));
-  document.getElementById('qaContainer').appendChild(div);
+questions.forEach((q, qi) => {
+  const block = document.createElement('div');
+  block.className = 'q-block';
+  const optsHtml = q.opts.map(o => {
+    const letter = o[0];
+    const text = o.slice(o[1] === '.' ? 2 : 1);
+    const correct = letter === q.ans ? 'true' : 'false';
+    return `<div class="q-option hidden-answer" data-correct="${correct}" onclick="selectOption(this)"><span class="q-label">${letter}</span>${text}</div>`;
+  }).join('');
+  block.innerHTML = `
+    <div class="q-header"><span class="q-year">${q.year}</span></div>
+    <div class="q-stem">${q.q}</div>
+    <div class="q-options">${optsHtml}</div>
+    <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+    <div class="q-explain"><b>答案：${q.ans}</b></div>
+    <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+  `;
+  const ta = block.querySelector('textarea');
+  const key = 'tablet_mfg_qa_note_' + qi;
+  try { ta.value = localStorage.getItem(key) || ''; } catch(e){}
+  ta.addEventListener('input', () => { try { localStorage.setItem(key, ta.value); } catch(e){} });
+  document.getElementById('qaContainer').appendChild(block);
 });
 </script>
 </body>
