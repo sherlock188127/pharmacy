@@ -155,6 +155,30 @@
   .qa-item.open{border-color:var(--sage);}
   .toggle-hint{font-family:var(--mono);font-size:0.68rem;color:var(--text-muted);margin-bottom:12px;}
 
+  /* ===== QUESTION SYSTEM ===== */
+  .q-block{background:var(--surface);border:1.5px solid var(--border-light, var(--border));border-radius:10px;margin:1rem 0;overflow:hidden;}
+  .q-header{background:var(--surface2);padding:0.6rem 1.1rem;display:flex;gap:0.7rem;align-items:center;border-bottom:1px solid var(--border);}
+  .q-year{font-family:var(--mono);font-size:11px;font-weight:600;color:#fff;background:var(--sage-d);border-radius:12px;padding:2px 10px;}
+  .q-stem{padding:0.9rem 1.1rem;font-size:13.5px;font-weight:700;color:var(--text);line-height:1.6;}
+  .q-options{padding:0 1.1rem 0.5rem;}
+  .q-option{display:flex;align-items:flex-start;gap:0.5rem;padding:0.4rem 0.7rem;margin:0.25rem 0;border-radius:6px;cursor:pointer;border:1px solid transparent;transition:background 0.12s,border 0.12s;font-size:13px;line-height:1.5;}
+  .q-option:hover{background:var(--surface2);border-color:var(--border);}
+  .q-option.correct{background:#e8f4e8;border-color:#a5d6a7;}
+  .q-option.wrong{background:#fce4ec;border-color:#ef9a9a;}
+  .q-option.hidden-answer{background:var(--surface);}
+  .q-label{font-family:var(--mono);font-size:12px;font-weight:600;min-width:18px;color:var(--text-muted);}
+  .q-option.correct .q-label{color:#2e7a4e;}
+  .q-option.wrong .q-label{color:#b71c1c;}
+  .q-explain-btn{display:inline-block;margin:0.5rem 0 0.5rem 1.1rem;padding:5px 14px;background:none;border:1px solid var(--border);border-radius:6px;font-size:12px;font-family:var(--sans);color:var(--text-muted);cursor:pointer;}
+  .q-explain-btn:hover{background:var(--surface2);}
+  .q-reset-btn{display:none;margin:0.5rem 0.4rem 0.5rem 0;padding:5px 12px;background:none;border:1px solid #ef9a9a;border-radius:6px;font-size:12px;font-family:var(--sans);color:#b71c1c;cursor:pointer;}
+  .q-reset-btn:hover{background:#fce4ec;}
+  .q-explain{display:none;margin:0 1.1rem 1rem;background:#e3eff8;border:1px solid #90caf9;border-radius:7px;padding:0.8rem 1rem;font-size:12.5px;line-height:1.65;color:var(--text-muted);}
+  .q-explain.show{display:block;}
+  .q-note-area{display:none;margin:0 1.1rem 1rem;}
+  .q-note-area.show{display:block;}
+  .q-note-area textarea{width:100%;border:1px solid var(--border);border-radius:6px;padding:0.6rem 0.8rem;font-size:12px;font-family:var(--sans);background:var(--surface);color:var(--text);resize:vertical;min-height:60px;}
+
   .compact-list{padding-left:16px;}
   .compact-list li{font-size:0.85rem;margin-bottom:4px;line-height:1.75;}
 
@@ -273,6 +297,33 @@
     <div class="pct-card"><div class="val">±5%</div><div class="label">錠片厚度允許誤差</div></div>
     <div class="pct-card"><div class="val">0.1–5%</div><div class="label">潤滑劑用量範圍</div></div>
     <div class="pct-card"><div class="val">20–25%</div><div class="label">直打法主成分上限</div></div>
+
+  <div class="q-block">
+    <div class="q-header"><span class="q-year">107-2</span></div>
+    <div class="q-stem">於製備固體製劑時，有時會先將原料及副料粉末混勻後預製成顆粒劑，而製粒之主要目的通常<strong>不包括</strong>下列何者？</div>
+    <div class="q-options">
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">A</span>增加粉體流動性，當在自動生產時，其會影響劑型之內容物均一度</div>
+      <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)"><span class="q-label">B</span>使粒徑均一，無細粉</div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">C</span>減少粉粒分離（segregation），縱使會分離亦不易導致含量不均之問題</div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">D</span>減少粉塵之飛揚</div>
+    </div>
+    <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+    <div class="q-explain"><b>答案：B</b><br>過篩之後還是有細粉，不是說完全都是一顆顆顆粒，所以「使粒徑均一、無細粉」不是造粒目的。細粉的存在是必要的（可填充縫隙），只是不能太多。</div>
+    <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+  </div>
+  <div class="q-block">
+    <div class="q-header"><span class="q-year">106-1</span></div>
+    <div class="q-stem">下列何者<strong>不是</strong>將藥物組合進行造粒（granulation）之主要目的？</div>
+    <div class="q-options">
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">A</span>使藥物組合形成能自由流動的顆粒</div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">B</span>提高藥物組合的密度而提供壓縮性</div>
+      <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)"><span class="q-label">C</span>使藥物組合疏鬆的結合而易於崩散</div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">D</span>增強藥物組合的黏合性而提高硬度</div>
+    </div>
+    <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+    <div class="q-explain"><b>答案：C</b><br>因為通常會加黏合劑，所以壓起來的硬度會比較夠，不是疏鬆。把它擠壓過去之後它會有壓縮，打錠的時候黏合性就比較強，所以C是錯的。</div>
+    <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+  </div>
   </div>
 </section>
 
@@ -340,6 +391,20 @@
         <li><strong>Calcium phosphate</strong>：⚠ 不可與 <strong>Tetracycline</strong> 合用（Ca²⁺螯合）</li>
         <li><strong>Calcium sulfate dihydrate</strong>：適合固醇類 &amp; 對水敏感藥品</li>
       </ul>
+
+  <div class="q-block">
+    <div class="q-header"><span class="q-year">102-1</span></div>
+    <div class="q-stem">錠片稀釋劑的選擇最重要考量是不能與藥物產生配伍禁忌，試問下列何者違反此考量？</div>
+    <div class="q-options">
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">A</span>四環素與乳糖（lactose）</div>
+      <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)"><span class="q-label">B</span>四環素與磷酸二鈣（dicalcium phosphate）</div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">C</span>四環素與微晶纖維素（microcrystalline cellulose）</div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">D</span>四環素與澱粉（starch）</div>
+    </div>
+    <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+    <div class="q-explain"><b>答案：B</b><br>Ca²⁺ 會與 tetracycline 螯合，造成配伍禁忌。含鈣稀釋劑（DCP、calcium phosphate、calcium sulfate）均不可與 tetracycline 合用。</div>
+    <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+  </div>
       <div class="info-box clay" style="margin-top:10px">配伍禁忌重點：<br>
         ・Tetracycline + <strong>Ca²⁺ 含量稀釋劑</strong>（DCP, Ca-phosphate, Ca-sulfate）→ 螯合 → 不可<br>
         ・Lactose + Amine類 + 鹼性潤滑劑 → Maillard reaction → 變色</div>
@@ -394,6 +459,19 @@
       </div>
     </div>
   </div>
+  <div class="q-block">
+    <div class="q-header"><span class="q-year">103-1</span></div>
+    <div class="q-stem">下列何者<strong>不是</strong>常用的直壓用（direct compression）的填充劑（filler）？</div>
+    <div class="q-options">
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">A</span>Spray-dried lactose</div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">B</span>Microcrystalline cellulose</div>
+      <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)"><span class="q-label">C</span>Maize starch</div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">D</span>Crystalline maltose</div>
+    </div>
+    <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+    <div class="q-explain"><b>答案：C</b><br>Maize starch（一般玉米澱粉）不是 DC 填充劑，處理過的（預凝膠化澱粉）才可以。原始澱粉跟乳糖都不行，處理過的就可以。</div>
+    <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+  </div>
 </section>
 
 <!-- ═══ SEC 3 ═══ -->
@@ -436,6 +514,19 @@
       </div>
       <div class="info-box clay" style="margin-top:8px;font-size:0.83rem">⚠ CAP（Cellulose acetate phthalate）→ <strong>腸溶材質</strong>，<strong>不是</strong>崩散劑；看到 phthalate 字根 → 腸溶</div>
     </div>
+  </div>
+  <div class="q-block">
+    <div class="q-header"><span class="q-year">110-1</span></div>
+    <div class="q-stem">下列何者最不適合用於提高錠劑之崩散效率？</div>
+    <div class="q-options">
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">A</span>mannitol</div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">B</span>starch</div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">C</span>microcrystalline cellulose</div>
+      <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)"><span class="q-label">D</span>cellulose acetate phthalate</div>
+    </div>
+    <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+    <div class="q-explain"><b>答案：D</b><br>有 phthalate 字根就要想到腸溶材質，腸溶在胃裡不溶，當然不會促進崩散。Mannitol 水溶性；starch 吸水膨脹；MCC 崩散快速，三者都可以。</div>
+    <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
   </div>
 </section>
 
@@ -484,6 +575,32 @@
       <div class="info-box sage" style="margin-top:8px;font-size:0.82rem">液體黏合劑效果 &gt; 乾粉黏合劑（液體分散更均勻）</div>
     </div>
   </div>
+  <div class="q-block">
+    <div class="q-header"><span class="q-year">109-2</span></div>
+    <div class="q-stem">下列黏合劑何者最不溶於水？</div>
+    <div class="q-options">
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">A</span>alginate</div>
+      <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)"><span class="q-label">B</span>ethylcellulose</div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">C</span>methylcellulose</div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">D</span>sodium carboxymethylcellulose</div>
+    </div>
+    <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+    <div class="q-explain"><b>答案：B</b><br>Ethylcellulose（乙基纖維素）是水不溶性纖維素，溶於酒精。其他三者均可溶於水。</div>
+    <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+  </div>
+  <div class="q-block">
+    <div class="q-header"><span class="q-year">103-2</span></div>
+    <div class="q-stem">下列何種黏合劑（binders）可以非水溶液（non-aqueous solution）來進行濕式造粒？</div>
+    <div class="q-options">
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">A</span>Gelatin</div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">B</span>Starch</div>
+      <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)"><span class="q-label">C</span>Povidone</div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">D</span>Glucose</div>
+    </div>
+    <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+    <div class="q-explain"><b>答案：C</b><br>Povidone（PVP）可溶於水也可溶於酒精，可用非水溶液進行濕式造粒。Gelatin、Starch、Glucose 均只溶於水。</div>
+    <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+  </div>
 </section>
 
 <!-- ═══ SEC 5 ═══ -->
@@ -522,6 +639,71 @@
       </ul>
       <div class="info-box sand" style="font-size:0.82rem;margin-top:8px">崩散劑 + 潤滑劑混合粉末稱為 <strong>Running powder</strong>（跑料粉）→ 可增進顆粒間緩衝，減少凝聚，促進崩散</div>
     </div>
+  </div>
+  <div class="q-block">
+    <div class="q-header"><span class="q-year">107-2</span></div>
+    <div class="q-stem">下列何者最能降低錠劑與錠模之黏合力，最有助於錠劑自錠模中彈出？</div>
+    <div class="q-options">
+      <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)"><span class="q-label">A</span>magnesium stearate</div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">B</span>Span 60</div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">C</span>talc</div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">D</span>Tween 80</div>
+    </div>
+    <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+    <div class="q-explain"><b>答案：A</b><br>Magnesium stearate（硬脂酸鎂）是最常用的潤滑劑，疏水性強，最能降低與模壁之黏合力，幫助錠片彈出。</div>
+    <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+  </div>
+  <div class="q-block">
+    <div class="q-header"><span class="q-year">107-2</span></div>
+    <div class="q-stem">有關硬脂酸鎂（magnesium stearate）作為賦形劑之敘述，下列何者正確？</div>
+    <div class="q-options">
+      <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)"><span class="q-label">A</span>其使用量太高會降低溶離速率</div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">B</span>常於製劑作為稀釋劑使用</div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">C</span>常於製劑作為崩散劑使用</div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">D</span>其和藥物顆粒混合時間增加可加快溶離速率</div>
+    </div>
+    <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+    <div class="q-explain"><b>答案：A</b><br>硬脂酸鎂為疏水性，用量過高或混合時間增加→ Raincoat effect → 延遲崩散與溶離。</div>
+    <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+  </div>
+  <div class="q-block">
+    <div class="q-header"><span class="q-year">102-1</span></div>
+    <div class="q-stem">助滑劑（glidants）是用來幫助打錠顆粒的流動，試問目前最常用於直打錠顆粒的助滑劑為何？</div>
+    <div class="q-options">
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">A</span>Talc</div>
+      <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)"><span class="q-label">B</span>Fumed silicon dioxide</div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">C</span>Starch</div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">D</span>Magnesium stearate</div>
+    </div>
+    <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+    <div class="q-explain"><b>答案：B</b><br>Fumed silicon dioxide（= Colloidal SiO₂ = Aerosil® = Cab-o-sil®）是最常用的助滑劑，用量在1%以下。</div>
+    <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+  </div>
+  <div class="q-block">
+    <div class="q-header"><span class="q-year">102-1</span></div>
+    <div class="q-stem">下列何者不是錠片（tablets）處方成分中的潤滑劑類（antiadherents, glidants, lubricants）的主要功能？</div>
+    <div class="q-options">
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">A</span>促使顆粒流入錠模</div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">B</span>降低模具組的磨損</div>
+      <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)"><span class="q-label">C</span>加速錠片崩散分解</div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">D</span>提高錠片表面亮度</div>
+    </div>
+    <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+    <div class="q-explain"><b>答案：C</b><br>潤滑劑的功能是流動、防黏、減少磨損、使錠片有光澤，與崩散無關。崩散是崩散劑的功能。</div>
+    <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+  </div>
+  <div class="q-block">
+    <div class="q-header"><span class="q-year">101-2</span></div>
+    <div class="q-stem">潤滑劑（lubricants）的最適用量通常是相當於顆粒總重量的多少百分比？</div>
+    <div class="q-options">
+      <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)"><span class="q-label">A</span>0.1～5.0</div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">B</span>6.0～10.0</div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">C</span>11.0～15.0</div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">D</span>16.0～20.0</div>
+    </div>
+    <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+    <div class="q-explain"><b>答案：A</b><br>潤滑劑用量一般 0.1–5%，大部分不超過 1%；Talc 可加到 5%。用量過高會產生 Raincoat effect，延遲溶離。</div>
+    <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
   </div>
 </section>
 
@@ -706,6 +888,21 @@
     </div>
   </div>
 
+  
+  <div class="q-block">
+    <div class="q-header"><span class="q-year">106-1</span></div>
+    <div class="q-stem">若使用20號篩製粒，選粒時最好使用幾號篩？</div>
+    <div class="q-options">
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">A</span>10</div>
+      <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)"><span class="q-label">B</span>16</div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">C</span>20</div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">D</span>30</div>
+    </div>
+    <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+    <div class="q-explain"><b>答案：B</b><br>整粒用比造粒略小網目之篩。篩號數字越大，洞越小。20號篩造粒後乾燥會收縮，所以整粒用16號（洞比20號大，但比8號小）。</div>
+    <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+  </div>
+
   <!-- G -->
   <div class="step-card">
     <div class="step-header">
@@ -772,6 +969,32 @@
       </div>
     </div>
   </div>
+  <div class="q-block">
+    <div class="q-header"><span class="q-year">111-1</span></div>
+    <div class="q-stem">Aspirin 適於利用乾式造粒法來製備錠片之主要原因為何？</div>
+    <div class="q-options">
+      <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)"><span class="q-label">A</span>對水氣敏感易降解</div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">B</span>顆粒的流動性不佳</div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">C</span>乾燥過程晶型轉換</div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">D</span>粉末易凝集不分散</div>
+    </div>
+    <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+    <div class="q-explain"><b>答案：A</b><br>Aspirin 遇水分會不安定（水解），所以不適合濕粒法，選用乾粒法（無液體參與）。</div>
+    <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+  </div>
+  <div class="q-block">
+    <div class="q-header"><span class="q-year">104-2</span></div>
+    <div class="q-stem">能進行乾式造粒方式的主成分藥物粉末或賦型劑粉末，需具有下列何種物性？</div>
+    <div class="q-options">
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">A</span>Moisturizing properties</div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">B</span>Flowing properties</div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">C</span>Adhesive properties</div>
+      <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)"><span class="q-label">D</span>Cohesive properties</div>
+    </div>
+    <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+    <div class="q-explain"><b>答案：D</b><br>乾粒法沒有液體黏合劑，所以有效成分或稀釋劑必須本身具有凝聚性（Cohesive properties），才能經滾輪壓縮後形成薄片再打碎造粒。</div>
+    <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+  </div>
 </section>
 
 <!-- ═══ SEC 8 ═══ -->
@@ -822,6 +1045,71 @@
       </ul>
       <div class="key-point">直打法細粉含量最適：<strong>10–20%</strong>（細粉過少→空隙大；過多→頂裂）</div>
     </div>
+  </div>
+  <div class="q-block">
+    <div class="q-header"><span class="q-year">114-1</span></div>
+    <div class="q-stem">打錠時，若punches沒有清潔乾淨，易造成下列何種狀況？</div>
+    <div class="q-options">
+      <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)"><span class="q-label">A</span>capping</div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">B</span>splitting</div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">C</span>laminating</div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">D</span>softness</div>
+    </div>
+    <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+    <div class="q-explain"><b>答案：A</b><br>銃未清潔乾淨或不完全光滑 → 頂裂（capping）。</div>
+    <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+  </div>
+  <div class="q-block">
+    <div class="q-header"><span class="q-year">113-2</span></div>
+    <div class="q-stem">打錠發生頂裂（capping）時，可經由下列何種方式改善最適當？</div>
+    <div class="q-options">
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">A</span>添加細粉</div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">B</span>添加崩散劑</div>
+      <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)"><span class="q-label">C</span>減低入料速度</div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">D</span>加快打錠速度</div>
+    </div>
+    <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+    <div class="q-explain"><b>答案：C</b><br>頂裂主因是空氣陷入，減低入料速度可以讓充填更緻密，減少空氣進入，改善頂裂。</div>
+    <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+  </div>
+  <div class="q-block">
+    <div class="q-header"><span class="q-year">113-2</span></div>
+    <div class="q-stem">以「直接加壓打錠法」打錠時，其細粉之含量以下列何者最適當？</div>
+    <div class="q-options">
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">A</span>5～10%</div>
+      <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)"><span class="q-label">B</span>10～20%</div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">C</span>20～30%</div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">D</span>30～40%</div>
+    </div>
+    <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+    <div class="q-explain"><b>答案：B</b><br>細粉 10–20% 是最適當的範圍。過少→充填不均；過多→空氣陷入→頂裂。</div>
+    <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+  </div>
+  <div class="q-block">
+    <div class="q-header"><span class="q-year">107-1</span></div>
+    <div class="q-stem">壓錠時需要部分細粉充填在顆粒間，以減少顆粒間之空隙，通常細粉量約占多少量較為理想？</div>
+    <div class="q-options">
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">A</span>＜5%</div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">B</span>5～8%</div>
+      <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)"><span class="q-label">C</span>10～20%</div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">D</span>25～30%</div>
+    </div>
+    <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+    <div class="q-explain"><b>答案：C</b><br>細粉 10–20% 最為理想，可填充顆粒間縫隙使壓得更緊密，但不能過多，否則空氣帶入過多，錠片太軟或頂裂。</div>
+    <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+  </div>
+  <div class="q-block">
+    <div class="q-header"><span class="q-year">102-2</span></div>
+    <div class="q-stem">直接壓錠時會發生錠片的頂裂（capping）、分裂（splitting）或層裂（lamination）現象，其主要原因為何？</div>
+    <div class="q-options">
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">A</span>顆粒結晶水低</div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">B</span>整體水量不足</div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">C</span>顆粒流動不佳</div>
+      <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)"><span class="q-label">D</span>空氣被包埋住</div>
+    </div>
+    <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+    <div class="q-explain"><b>答案：D</b><br>直接壓錠時主要原因是空氣陷入，壓力釋出時錠片因陷入的空氣造成膨脹，導致破裂或層裂。</div>
+    <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
   </div>
 </section>
 
@@ -929,6 +1217,71 @@
       <span class="flow-arrow">→</span>
       <span class="flow-step">每 15–30 分鐘定期檢查硬度和重量</span>
     </div>
+  </div>
+  <div class="q-block">
+    <div class="q-header"><span class="q-year">113-2</span></div>
+    <div class="q-stem">打錠時，若要調整錠劑硬度，最應調整下列何項裝置？</div>
+    <div class="q-options">
+      <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)"><span class="q-label">A</span>upper punch</div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">B</span>lower punch</div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">C</span>die</div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">D</span>feed shoe</div>
+    </div>
+    <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+    <div class="q-explain"><b>答案：A</b><br>上銃（upper punch）壓得越深→壓力越大→錠片越硬。下銃調的是充填量（重量）。</div>
+    <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+  </div>
+  <div class="q-block">
+    <div class="q-header"><span class="q-year">109-1</span></div>
+    <div class="q-stem">下列何者比較<strong>不會</strong>造成壓錠時重量差異過大的問題？</div>
+    <div class="q-options">
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">A</span>顆粒流動性不良</div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">B</span>顆粒大小差異大</div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">C</span>下沖模下降幅度不一</div>
+      <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)"><span class="q-label">D</span>上沖模下降幅度不一</div>
+    </div>
+    <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+    <div class="q-explain"><b>答案：D</b><br>重量由下銃（lower punch）控制，下銃下降幅度不一才是重量差異的主因。上銃調的是壓力（硬度），不直接影響重量。</div>
+    <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+  </div>
+  <div class="q-block">
+    <div class="q-header"><span class="q-year">109-1</span></div>
+    <div class="q-stem">親水性纖維素基質錠片（matrix tablets）的製備常採用直接打錠方式。當高速旋轉式打錠機（rotary tabletting machine）的轉速越快，則對此類錠片打錠最常見之影響為何？</div>
+    <div class="q-options">
+      <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)"><span class="q-label">A</span>重量偏差度可能越大</div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">B</span>錠片的硬度可能增大</div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">C</span>含量均勻度可能越佳</div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">D</span>錠片的脆度可能越高</div>
+    </div>
+    <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+    <div class="q-explain"><b>答案：A</b><br>轉速很快，轉過去就快速地充填跟擠壓，可能沖填來不及，每一顆打起來的量不一樣多，重量偏差度越大。</div>
+    <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+  </div>
+  <div class="q-block">
+    <div class="q-header"><span class="q-year">108-2</span></div>
+    <div class="q-stem">打錠機那一部位是控制錠劑之重量的最主要部位？</div>
+    <div class="q-options">
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">A</span>上沖模（upper punches）的位置</div>
+      <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)"><span class="q-label">B</span>下沖模（lower punches）的位置</div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">C</span>中模（die）的位置</div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">D</span>加料漏斗出口的大小</div>
+    </div>
+    <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+    <div class="q-explain"><b>答案：B</b><br>下銃（lower punch）下降的位置決定充填量，也就是控制重量的最主要部位。</div>
+    <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+  </div>
+  <div class="q-block">
+    <div class="q-header"><span class="q-year">104-2</span></div>
+    <div class="q-stem">高速壓錠的過程易造成錠片的層裂（lamination）或頂裂（capping）現象，下列何種處理方式可較佳解決此問題？</div>
+    <div class="q-options">
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">A</span>提高顆粒圓度</div>
+      <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)"><span class="q-label">B</span>放慢壓錠速率</div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">C</span>降低細粉比例</div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">D</span>增加澱粉含量</div>
+    </div>
+    <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+    <div class="q-explain"><b>答案：B</b><br>高速生產下 dwell time 不夠久，充填材料在壓錠後無足夠時間黏結，解決方式是降低壓錠速率以增加 dwell time。</div>
+    <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
   </div>
 </section>
 
@@ -1093,6 +1446,84 @@
       <div class="key-point">考題：造粒用 20 號篩 → 整粒用 <strong>16 號篩</strong>（數字大但洞更小）</div>
     </div>
   </div>
+  <div class="q-block">
+    <div class="q-header"><span class="q-year">108-1</span></div>
+    <div class="q-stem">將粉體藥物製備成錠片時，通常<strong>不一定需要</strong>添加的賦形劑為下列何者？</div>
+    <div class="q-options">
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">A</span>稀釋劑（diluents）</div>
+      <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)"><span class="q-label">B</span>安定劑（stabilizers）</div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">C</span>黏合劑（binders）</div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">D</span>潤滑劑（lubricants）</div>
+    </div>
+    <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+    <div class="q-explain"><b>答案：B</b><br>安定劑（stabilizers）不是壓製錠的基本必要成分，視藥品性質而定。稀釋劑幾乎都需要；黏合劑和潤滑劑視情況而定，但比安定劑更常用。</div>
+    <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+  </div>
+  <div class="q-block">
+    <div class="q-header"><span class="q-year">107-2</span></div>
+    <div class="q-stem">將粉末狀藥品和稀釋劑混合後直接壓錠，通常藥品含量最好不要超過多少百分比（%），否則較不易壓製成型？</div>
+    <div class="q-options">
+      <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)"><span class="q-label">A</span>20～25</div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">B</span>25～30</div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">C</span>30～35</div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">D</span>35～40</div>
+    </div>
+    <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+    <div class="q-explain"><b>答案：A</b><br>直接壓錠法主成分含量通常不超過總重 20–25%，超過則賦形劑不夠力，不易壓製成型。</div>
+    <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+  </div>
+  <div class="q-block">
+    <div class="q-header"><span class="q-year">107-1</span></div>
+    <div class="q-stem">下列何種賦形劑最適用於直接壓錠？</div>
+    <div class="q-options">
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">A</span>lactose</div>
+      <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)"><span class="q-label">B</span>microcrystalline cellulose</div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">C</span>hydroxyl propylmethylcellulose（HPMC）</div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">D</span>starch</div>
+    </div>
+    <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+    <div class="q-explain"><b>答案：B</b><br>MCC（微晶纖維素）多功能、流動性極佳、不須加黏合劑、崩散快速，是直接壓錠最適合的賦形劑。原始 lactose 和 starch 流動性差，HPMC 是黏合劑/包衣劑。</div>
+    <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+  </div>
+  <div class="q-block">
+    <div class="q-header"><span class="q-year">106-1</span></div>
+    <div class="q-stem">下列何種製錠過程，最不會影響藥物的生體可用率？</div>
+    <div class="q-options">
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">A</span>以濕式造粒法後壓錠</div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">B</span>以slugging造粒後壓錠</div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">C</span>以冷凍乾燥法造粒後壓錠</div>
+      <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)"><span class="q-label">D</span>以藥品和賦形劑混合後壓錠</div>
+    </div>
+    <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+    <div class="q-explain"><b>答案：D</b><br>直接壓錠（藥品和賦形劑混合後壓錠）不加黏合劑、不經二次壓錠，對 BA 影響最小。其他三種都有造粒過程，加了黏合劑就會影響溶離。</div>
+    <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+  </div>
+  <div class="q-block">
+    <div class="q-header"><span class="q-year">104-2</span></div>
+    <div class="q-stem">藥廠研發以下的錠片處方，試問使用澱粉（Starch）的主要功能為何？（配方含有：乾澱粉、可直接壓錠的乳糖、硬脂酸鎂、滑石粉）</div>
+    <div class="q-options">
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">A</span>黏合以提高硬度</div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">B</span>填塞以增加均勻</div>
+      <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)"><span class="q-label">C</span>崩散以增強溶離</div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">D</span>助滑以加速流動</div>
+    </div>
+    <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+    <div class="q-explain"><b>答案：C</b><br>配方中已有可直接壓錠的乳糖（稀釋劑）、硬脂酸鎂（潤滑劑）、滑石粉（助滑劑），乾澱粉在此配方中的功能是崩散劑（吸水膨脹促進崩散）。澱粉糊才是黏合劑。</div>
+    <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+  </div>
+  <div class="q-block">
+    <div class="q-header"><span class="q-year">102-2</span></div>
+    <div class="q-stem">下列何種造粒製程可以一次完成混合、造粒、乾燥的製備可用於打錠的顆粒？</div>
+    <div class="q-options">
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">A</span>行星式造粒機（planetary mixer）</div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">B</span>快速造粒機（super mixer）</div>
+      <div class="q-option hidden-answer" data-correct="true" onclick="selectOption(this)"><span class="q-label">C</span>流動床造粒機（fluid bed granulator）</div>
+      <div class="q-option hidden-answer" data-correct="false" onclick="selectOption(this)"><span class="q-label">D</span>振盪擠壓造粒機（oscillating granulator）</div>
+    </div>
+    <button class="q-explain-btn" onclick="toggleExplain(this)">📖 顯示詳解</button><button class="q-reset-btn" onclick="resetQuestion(this)">↺ 重置</button>
+    <div class="q-explain"><b>答案：C</b><br>流動床造粒（All-in-one）可一次完成混合、造粒、乾燥，是合於一體造粒法的代表機器。</div>
+    <div class="q-note-area"><textarea placeholder="📝 補充筆記..."></textarea></div>
+  </div>
 </section>
 
 <!-- ═══ QA ═══ -->
@@ -1165,13 +1596,54 @@ const questions = [
   { year:"101-2", q:"整粒之目的是將顆粒過篩得到適當粒度以配合錠片大小，下列何種篩網最適用做整粒之用？", opts:["A.12～20 mesh","B.22～30 mesh","C.32～40 mesh","D.42～50 mesh"], ans:"A" },
 ];
 
-const container = document.getElementById('qaContainer');
+function selectOption(el) {
+  const block = el.closest('.q-block');
+  const opts = block.querySelectorAll('.q-option');
+  const isRevealed = [...opts].some(o => o.classList.contains('correct') || o.classList.contains('wrong'));
+  if (isRevealed) return;
+  const correct = el.dataset.correct === 'true';
+  opts.forEach(o => {
+    if (o.dataset.correct === 'true') { o.classList.remove('hidden-answer'); o.classList.add('correct'); }
+  });
+  if (!correct) { el.classList.remove('hidden-answer'); el.classList.add('wrong'); }
+  const noteArea = block.querySelector('.q-note-area');
+  if (noteArea) noteArea.classList.add('show');
+  const resetBtn = block.querySelector('.q-reset-btn');
+  if (resetBtn) resetBtn.style.display = 'inline-block';
+}
+function toggleExplain(btn) {
+  const block = btn.closest('.q-block');
+  const explain = block.querySelector('.q-explain');
+  const noteArea = block.querySelector('.q-note-area');
+  if (explain.classList.contains('show')) {
+    explain.classList.remove('show');
+    btn.textContent = '📖 顯示詳解';
+  } else {
+    explain.classList.add('show');
+    if (noteArea) noteArea.classList.add('show');
+    btn.textContent = '📖 收起詳解';
+  }
+}
+function resetQuestion(btn) {
+  const block = btn.closest('.q-block');
+  block.querySelectorAll('.q-option').forEach(o => { o.classList.remove('correct','wrong'); o.classList.add('hidden-answer'); });
+  const explain = block.querySelector('.q-explain');
+  const explainBtn = block.querySelector('.q-explain-btn');
+  if (explain) explain.classList.remove('show');
+  if (explainBtn) explainBtn.textContent = '📖 顯示詳解';
+  btn.style.display = 'none';
+}
+document.querySelectorAll('.q-note-area textarea').forEach((ta, i) => {
+  const key = 'tablet_mfg_note_' + i;
+  try { ta.value = localStorage.getItem(key) || ''; } catch(e){}
+  ta.addEventListener('input', () => { try { localStorage.setItem(key, ta.value); } catch(e){} });
+});
 questions.forEach(q => {
   const div = document.createElement('div');
   div.className = 'qa-item';
   div.innerHTML = `<div class="qa-year">${q.year}</div><div class="qa-q">${q.q}</div><div class="qa-opts">${q.opts.map(o=>`<div>${o}</div>`).join('')}</div><div class="qa-ans"><span class="qa-ans-text">✓ 答案：${q.ans}</span></div>`;
   div.querySelector('.qa-q').addEventListener('click', () => div.classList.toggle('open'));
-  container.appendChild(div);
+  document.getElementById('qaContainer').appendChild(div);
 });
 </script>
 </body>
