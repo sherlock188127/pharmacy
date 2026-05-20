@@ -794,9 +794,10 @@ qs.forEach(q => {
   c.appendChild(d);
 });
 
-// Make embedded exam-q in sections clickable (only non-dynamically-generated ones)
-document.querySelectorAll('section .q .q-t').forEach(t => {
-  t.addEventListener('click', () => t.closest('.q').classList.toggle('open'));
+// Bind all static .q elements (everything except those inside #qaContainer which are already bound)
+document.querySelectorAll('.q').forEach(el => {
+  if (el.closest('#qaContainer')) return; // skip dynamically generated ones
+  el.querySelector('.q-t').addEventListener('click', () => el.classList.toggle('open'));
 });
 </script>
 </body>
