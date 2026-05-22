@@ -30,7 +30,7 @@ h1{font-size:18px;font-weight:500;margin-bottom:.3rem}
 .sr{display:grid;grid-template-columns:110px 1fr;gap:6px;padding:.45rem 1rem;border-bottom:.5px solid #f0f0f0;align-items:start}
 .sr:last-child{border-bottom:none}
 .slb{font-size:10px;font-weight:500;padding:2px 5px;border-radius:4px;text-align:center;line-height:1.6}
-.item{display:flex;align-items:flex-start;gap:7px;padding:3px 4px;border-radius:4px;cursor:pointer;margin:1px 0}
+.item{position:relative;display:flex;align-items:flex-start;gap:7px;padding:3px 4px;border-radius:4px;cursor:pointer;margin:1px 0}
 .item:hover{background:#f5f5f5}
 .item input{margin-top:2px;flex-shrink:0;width:14px;height:14px;accent-color:#378ADD;cursor:pointer}
 .item .tx{font-size:12px;line-height:1.6;color:#555}
@@ -109,7 +109,14 @@ h1{font-size:18px;font-weight:500;margin-bottom:.3rem}
   <div class="modal-box">
     <div class="modal-title">📅 移動任務到其他日期</div>
     <div class="modal-task" id="modal-task-text"></div>
-    <input type="date" id="modal-date" min="2026-04-22" max="2026-07-18">
+    <div style="display:flex;gap:.4rem;margin-bottom:.7rem;flex-wrap:wrap">
+      <button onclick="setMoveDate(1)" style="flex:1;padding:.35rem;border:1px solid #ddd;border-radius:6px;background:#f8f8f8;font-size:11px;cursor:pointer">明天</button>
+      <button onclick="setMoveDate(2)" style="flex:1;padding:.35rem;border:1px solid #ddd;border-radius:6px;background:#f8f8f8;font-size:11px;cursor:pointer">後天</button>
+      <button onclick="setMoveDate(3)" style="flex:1;padding:.35rem;border:1px solid #ddd;border-radius:6px;background:#f8f8f8;font-size:11px;cursor:pointer">+3天</button>
+      <button onclick="setMoveDate(7)" style="flex:1;padding:.35rem;border:1px solid #ddd;border-radius:6px;background:#f8f8f8;font-size:11px;cursor:pointer">+7天</button>
+    </div>
+    <input type="date" id="modal-date" min="2026-04-22" max="2026-07-18" style="width:100%;border:.5px solid #ddd;border-radius:8px;padding:.45rem .7rem;font-size:13px;margin-bottom:.7rem;outline:none;box-sizing:border-box">
+    <div style="font-size:10px;color:#aaa;margin-bottom:.6rem;text-align:center">或直接選日期 ↑</div>
     <div class="modal-btns">
       <button class="modal-cancel" onclick="closeModal()">取消</button>
       <button class="modal-confirm" onclick="confirmMove()">移動</button>
@@ -379,7 +386,12 @@ function buildSlots(id,slots,s){
       cb.setAttribute("onclick","event.stopPropagation()");
       var span=document.createElement("span");
       span.className="tx"+cc;span.textContent=t.x;
-      div.appendChild(cb);div.appendChild(span);
+      var moveBtn=document.createElement("button");
+      moveBtn.className="move-btn";
+      moveBtn.textContent="📅";
+      moveBtn.title="移動到其他日期";
+      (function(k,x){moveBtn.setAttribute("onclick","openMoveModal('"+k+"','"+x.replace(/'/g,"\\'")+"',event)");})(key,t.x);
+      div.appendChild(cb);div.appendChild(span);div.appendChild(moveBtn);
       items+=div.outerHTML;
     });
     html+='<div class="sr"><span class="slb" style="'+slot.ls+'">'+slot.label+'</span><div>'+items+'</div></div>';
@@ -447,11 +459,17 @@ var MOVE_SK="pharma_moves_v1";
 function loadMoves(){try{return JSON.parse(localStorage.getItem(MOVE_SK)||"{}")}catch(e){return{}}}
 function saveMoves(m){localStorage.setItem(MOVE_SK,JSON.stringify(m))}
 var _moveKey=null,_moveText=null;
+function setMoveDate(days){
+  var now=new Date();
+  now.setDate(now.getDate()+days);
+  var y=now.getFullYear(),m=String(now.getMonth()+1).padStart(2,'0'),d=String(now.getDate()).padStart(2,'0');
+  document.getElementById("modal-date").value=y+"-"+m+"-"+d;
+}
 function openMoveModal(key,text,event){
   event.stopPropagation();_moveKey=key;_moveText=text;
   document.getElementById("modal-task-text").textContent=text;
-  var now=new Date();
-  var y=now.getFullYear(),m=String(now.getMonth()+1).padStart(2,'0'),d=String(now.getDate()+1).padStart(2,'0');
+  var defDate=new Date();defDate.setDate(defDate.getDate()+1);
+  var y=defDate.getFullYear(),m=String(defDate.getMonth()+1).padStart(2,'0'),d=String(defDate.getDate()).padStart(2,'0');
   document.getElementById("modal-date").value=y+"-"+m+"-"+d;
   document.getElementById("move-modal").classList.add("show");
 }
