@@ -339,6 +339,13 @@ function ck(key){
   var cb=document.getElementById("cb_"+key);
   if(row){if(s[key])row.classList.add("done");else row.classList.remove("done");}
   if(cb)cb.checked=!!s[key];
+  // 同步 moved_ clone
+  var movedRow=document.getElementById("moved_"+key);
+  if(movedRow){
+    if(s[key])movedRow.classList.add("done");else movedRow.classList.remove("done");
+    var movedCb=movedRow.querySelector("input[type=checkbox]");
+    if(movedCb)movedCb.checked=!!s[key];
+  }
   updateAll();
 }
 function tog(el){
