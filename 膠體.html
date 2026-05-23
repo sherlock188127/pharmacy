@@ -6,981 +6,253 @@
 <title>膠體 Colloids｜完整筆記</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@300;400;500&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#f4f0e6;--card:#faf8f3;--sec-bg:#eae4d6;--accent:#1a5276;--accent2:#1e6b3a;--accent3:#7d4a00;--text:#1c1810;--muted:#6a5f4a;--border:#cfc5aa;--correct-bg:#eaf6ea;--correct-bd:#3a9c3a;--wrong-bg:#fdecea;--wrong-bd:#d32f2f;--note-bg:#fff9ed;--note-bd:#e0a030;--formula-bg:#edf3f9;--formula-bd:#1a5276;--shadow:0 2px 14px rgba(30,20,5,.07);}
+:root{--bg:#f5f0e8;--card:#faf7f2;--sec-bg:#eee8dc;--acc:#2c5f8a;--acc2:#5a8a5f;--acc3:#8a5a2c;--text:#1e1a14;--muted:#6b6050;--border:#d4c9b0;--ok-bg:#e8f5e4;--ok-bd:#4caf50;--ng-bg:#fdecea;--ng-bd:#e53935;--nb:#fff9ed;--nb-bd:#e0a030;--fm-bg:#edf3f9;--fm-bd:#2c5f8a;--sh:0 2px 12px rgba(44,30,10,.08);}
 *{box-sizing:border-box;margin:0;padding:0;}
 body{background:var(--bg);color:var(--text);font-family:'Noto Sans TC',sans-serif;font-size:15px;line-height:1.85;}
-header{background:var(--accent);color:#fff;padding:2.2rem 2rem 1.8rem;position:relative;overflow:hidden;}
+header{background:var(--acc);color:#fff;padding:2.2rem 2rem 1.8rem;position:relative;overflow:hidden;}
 header::before{content:'';position:absolute;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.06);top:-80px;right:-60px;}
-header h1{font-family:'Noto Serif TC',serif;font-size:1.9rem;font-weight:700;letter-spacing:.06em;}
-header .sub{margin-top:.3rem;font-size:.82rem;opacity:.7;font-family:'JetBrains Mono',monospace;}
-#toc{background:var(--sec-bg);border-bottom:1px solid var(--border);padding:.65rem 1.5rem;display:flex;gap:.5rem;flex-wrap:wrap;position:sticky;top:0;z-index:100;}
-.toc-btn{font-family:'JetBrains Mono',monospace;font-size:.72rem;border:1px solid var(--border);background:var(--card);border-radius:5px;padding:.2rem .6rem;cursor:pointer;color:var(--muted);transition:all .15s;text-decoration:none;}
-.toc-btn:hover{background:var(--accent);color:#fff;border-color:var(--accent);}
-#prog-bar-wrap{background:var(--sec-bg);padding:.7rem 1.5rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:1rem;}
-#prog-text{font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--muted);white-space:nowrap;}
-#prog-bar{flex:1;height:6px;background:var(--border);border-radius:3px;overflow:hidden;}
-#prog-fill{height:100%;width:0%;background:var(--accent2);border-radius:3px;transition:width .4s;}
-main{max-width:900px;margin:0 auto;padding:2rem 1.5rem 5rem;display:flex;flex-direction:column;gap:2.4rem;}
-.sec{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;box-shadow:var(--shadow);}
-.sec-title{background:var(--accent);color:#fff;padding:1rem 1.5rem;font-family:'Noto Serif TC',serif;font-size:1.1rem;font-weight:700;display:flex;align-items:center;gap:.7rem;cursor:pointer;user-select:none;}
-.sec-title .chev{margin-left:auto;font-size:.8rem;transition:transform .3s;}
-.sec-title.open .chev{transform:rotate(90deg);}
-.sec-body{padding:1.4rem 1.5rem;display:none;flex-direction:column;gap:1.3rem;}
-.sec-body.open{display:flex;}
-.sub-sec{border-left:3px solid var(--accent);padding-left:1rem;}
-.sub-title{font-family:'Noto Serif TC',serif;font-size:.98rem;font-weight:700;color:var(--accent);margin-bottom:.5rem;}
-.note-p{font-size:.9rem;line-height:1.9;}
-ul.note-list{padding-left:1.2rem;font-size:.9rem;line-height:1.9;}
-ul.note-list li{margin-bottom:.2rem;}
-ul.note-list li::marker{color:var(--accent);}
-.formula{background:var(--formula-bg);border:1px solid var(--formula-bd);border-radius:8px;padding:.75rem 1rem;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.9;color:#0d3554;white-space:pre-wrap;}
-.kw{display:inline-block;background:#1a527618;color:var(--accent);border-radius:4px;padding:0 .35rem;font-weight:500;font-size:.88em;}
-.kw2{display:inline-block;background:#7d4a0018;color:var(--accent3);border-radius:4px;padding:0 .35rem;font-weight:500;font-size:.88em;}
-.callout{background:var(--note-bg);border-left:3px solid var(--note-bd);border-radius:0 8px 8px 0;padding:.7rem 1rem;font-size:.87rem;line-height:1.8;}
-.callout strong{color:var(--accent3);}
-.tbl-wrap{overflow-x:auto;}
-table{border-collapse:collapse;width:100%;font-size:.85rem;}
-th{background:var(--accent);color:#fff;padding:.5rem .8rem;text-align:left;font-weight:500;}
+header h1{font-family:'Noto Serif TC',serif;font-size:2rem;font-weight:700;letter-spacing:.05em;}
+header .sub{margin-top:.4rem;font-size:.82rem;opacity:.7;font-family:'JetBrains Mono',monospace;}
+#pw{background:var(--sec-bg);padding:.7rem 1.5rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:1rem;position:sticky;top:0;z-index:100;}
+#pt{font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--muted);white-space:nowrap;}
+#pb{flex:1;height:6px;background:var(--border);border-radius:3px;overflow:hidden;}
+#pf{height:100%;width:0%;background:var(--acc2);border-radius:3px;transition:width .4s;}
+#toc{background:var(--sec-bg);border-bottom:1px solid var(--border);padding:.6rem 1.5rem;display:flex;gap:.45rem;flex-wrap:wrap;}
+.tb{font-family:'JetBrains Mono',monospace;font-size:.72rem;border:1px solid var(--border);background:var(--card);border-radius:5px;padding:.2rem .6rem;cursor:pointer;color:var(--muted);transition:all .15s;text-decoration:none;}
+.tb:hover{background:var(--acc);color:#fff;border-color:var(--acc);}
+main{max-width:920px;margin:0 auto;padding:2rem 1.5rem 5rem;display:flex;flex-direction:column;gap:2.4rem;}
+.sec{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;box-shadow:var(--sh);}
+.st{background:var(--acc);color:#fff;padding:1rem 1.5rem;font-family:'Noto Serif TC',serif;font-size:1.05rem;font-weight:700;display:flex;align-items:center;gap:.7rem;cursor:pointer;user-select:none;}
+.st.g2{background:var(--acc2);}
+.st.g3{background:var(--acc3);}
+.chev{margin-left:auto;font-size:.8rem;transition:transform .3s;}
+.st.open .chev{transform:rotate(90deg);}
+.sb{padding:1.4rem 1.5rem;display:none;flex-direction:column;gap:1.3rem;}
+.sb.open{display:flex;}
+.ss{border-left:3px solid var(--acc);padding-left:1rem;}
+.ss.g2{border-left-color:var(--acc2);}
+.ss.g3{border-left-color:var(--acc3);}
+.sh{font-family:'Noto Serif TC',serif;font-size:.97rem;font-weight:700;color:var(--acc);margin-bottom:.45rem;}
+.sh.g2{color:var(--acc2);}
+.sh.g3{color:var(--acc3);}
+ul.nl{padding-left:1.2rem;font-size:.9rem;line-height:1.9;}
+ul.nl li{margin-bottom:.2rem;}
+ul.nl li::marker{color:var(--acc);}
+.fm{background:var(--fm-bg);border:1px solid var(--fm-bd);border-radius:8px;padding:.75rem 1rem;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.9;color:#0d2d54;white-space:pre-wrap;}
+.kw{display:inline-block;background:#2c5f8a18;color:var(--acc);border-radius:4px;padding:0 .35rem;font-weight:500;font-size:.88em;}
+.kw2{display:inline-block;background:#5a8a5f18;color:var(--acc2);border-radius:4px;padding:0 .35rem;font-weight:500;font-size:.88em;}
+.kw3{display:inline-block;background:#8a5a2c18;color:var(--acc3);border-radius:4px;padding:0 .35rem;font-weight:500;font-size:.88em;}
+.ca{background:var(--nb);border-left:3px solid var(--nb-bd);border-radius:0 8px 8px 0;padding:.7rem 1rem;font-size:.87rem;line-height:1.8;}
+.ca strong{color:var(--acc3);}
+.ca.g{border-left-color:var(--acc2);background:#f0f8f0;}
+.tw{overflow-x:auto;}
+table{border-collapse:collapse;width:100%;font-size:.84rem;}
+th{background:var(--acc);color:#fff;padding:.5rem .8rem;text-align:left;font-weight:500;}
 td{border:1px solid var(--border);padding:.45rem .8rem;vertical-align:top;}
 tr:nth-child(even) td{background:var(--sec-bg);}
-.q-divider{display:flex;align-items:center;gap:.7rem;font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--muted);margin:.2rem 0;}
-.q-divider::before,.q-divider::after{content:'';flex:1;height:1px;background:var(--border);}
-.q-card{border:1px solid var(--border);border-radius:10px;overflow:hidden;background:#fff;}
-.q-head{background:var(--sec-bg);padding:.7rem 1rem;display:flex;align-items:flex-start;gap:.6rem;}
-.q-num{font-family:'JetBrains Mono',monospace;font-size:.7rem;background:var(--accent);color:#fff;border-radius:4px;padding:.1rem .4rem;flex-shrink:0;margin-top:2px;}
-.q-year{font-family:'JetBrains Mono',monospace;font-size:.7rem;background:#1a527622;color:var(--accent);border-radius:4px;padding:.1rem .4rem;flex-shrink:0;margin-top:2px;}
-.q-stem{font-weight:500;font-size:.9rem;line-height:1.75;}
-.q-opts{padding:.7rem 1rem;display:flex;flex-direction:column;gap:.45rem;}
-.opt{display:flex;align-items:flex-start;gap:.5rem;background:var(--bg);border:1.5px solid var(--border);border-radius:7px;padding:.45rem .75rem;cursor:pointer;font-size:.87rem;line-height:1.65;font-family:'Noto Sans TC',sans-serif;text-align:left;width:100%;color:var(--text);transition:border-color .15s,background .15s;}
-.opt:hover:not(:disabled){border-color:var(--accent);background:var(--sec-bg);}
-.opt .ol{font-family:'JetBrains Mono',monospace;font-size:.8rem;font-weight:600;flex-shrink:0;margin-top:1px;}
-.opt.correct{background:var(--correct-bg);border-color:var(--correct-bd);color:#1b5e20;}
-.opt.wrong{background:var(--wrong-bg);border-color:var(--wrong-bd);color:#b71c1c;}
-.opt:disabled{cursor:default;}
-.q-foot{padding:.4rem 1rem .75rem;display:flex;gap:.5rem;flex-wrap:wrap;}
-.btn-exp{font-family:'JetBrains Mono',monospace;font-size:.75rem;border:1.5px solid var(--border);background:var(--card);border-radius:6px;padding:.25rem .75rem;cursor:pointer;color:var(--muted);transition:all .15s;}
-.btn-exp:hover{border-color:var(--accent);color:var(--accent);}
-.btn-reset{font-family:'JetBrains Mono',monospace;font-size:.75rem;border:1.5px solid var(--border);background:var(--card);border-radius:6px;padding:.25rem .75rem;cursor:pointer;color:var(--muted);transition:all .15s;}
-.btn-reset:hover{border-color:var(--accent3);color:var(--accent3);}
-.q-explain{display:none;margin:0 1rem .8rem;padding:.65rem .9rem;background:var(--formula-bg);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;font-size:.85rem;line-height:1.8;}
-.note-area-wrap{display:none;margin:0 1rem .8rem;}
-.note-area{width:100%;min-height:60px;border:1.5px solid var(--border);border-radius:7px;padding:.5rem .75rem;font-family:'Noto Sans TC',sans-serif;font-size:.83rem;background:var(--note-bg);color:var(--text);resize:vertical;line-height:1.7;}
-.note-area:focus{outline:none;border-color:var(--accent);}
-.note-save-btn{font-family:'JetBrains Mono',monospace;font-size:.72rem;border:1px solid var(--border);background:var(--card);border-radius:5px;padding:.18rem .6rem;cursor:pointer;color:var(--muted);margin-top:.35rem;transition:all .15s;}
-.note-save-btn:hover{background:var(--accent2);color:#fff;border-color:var(--accent2);}
-.note-saved-msg{font-size:.72rem;color:var(--accent2);font-family:'JetBrains Mono',monospace;margin-left:.5rem;opacity:0;transition:opacity .3s;}
+.qd{display:flex;align-items:center;gap:.7rem;font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--muted);margin:.2rem 0;}
+.qd::before,.qd::after{content:'';flex:1;height:1px;background:var(--border);}
+.qc{border:1px solid var(--border);border-radius:10px;overflow:hidden;background:#fff;}
+.qh{background:var(--sec-bg);padding:.7rem 1rem;display:flex;align-items:flex-start;gap:.6rem;}
+.qn{font-family:'JetBrains Mono',monospace;font-size:.7rem;background:var(--acc);color:#fff;border-radius:4px;padding:.1rem .4rem;flex-shrink:0;margin-top:2px;}
+.qy{font-family:'JetBrains Mono',monospace;font-size:.7rem;background:#2c5f8a18;color:var(--acc);border-radius:4px;padding:.1rem .4rem;flex-shrink:0;margin-top:2px;}
+.qs{font-weight:500;font-size:.9rem;line-height:1.75;}
+.qo{padding:.7rem 1rem;display:flex;flex-direction:column;gap:.45rem;}
+.op{display:flex;align-items:flex-start;gap:.5rem;background:var(--bg);border:1.5px solid var(--border);border-radius:7px;padding:.45rem .75rem;cursor:pointer;font-size:.87rem;line-height:1.65;font-family:'Noto Sans TC',sans-serif;text-align:left;width:100%;color:var(--text);transition:border-color .15s,background .15s;}
+.op:hover:not(:disabled){border-color:var(--acc);background:var(--sec-bg);}
+.op .ol{font-family:'JetBrains Mono',monospace;font-size:.8rem;font-weight:600;flex-shrink:0;margin-top:1px;}
+.op.ok{background:var(--ok-bg);border-color:var(--ok-bd);color:#1b5e20;}
+.op.ng{background:var(--ng-bg);border-color:var(--ng-bd);color:#b71c1c;}
+.op:disabled{cursor:default;}
+.qf{padding:.4rem 1rem .75rem;display:flex;gap:.5rem;flex-wrap:wrap;}
+.be{font-family:'JetBrains Mono',monospace;font-size:.75rem;border:1.5px solid var(--border);background:var(--card);border-radius:6px;padding:.25rem .75rem;cursor:pointer;color:var(--muted);transition:all .15s;}
+.be:hover{border-color:var(--acc);color:var(--acc);}
+.br{font-family:'JetBrains Mono',monospace;font-size:.75rem;border:1.5px solid var(--border);background:var(--card);border-radius:6px;padding:.25rem .75rem;cursor:pointer;color:var(--muted);transition:all .15s;}
+.br:hover{border-color:var(--acc3);color:var(--acc3);}
+.qe{display:none;margin:0 1rem .8rem;padding:.65rem .9rem;background:var(--fm-bg);border-left:3px solid var(--acc);border-radius:0 8px 8px 0;font-size:.85rem;line-height:1.8;}
+.nw{display:none;margin:0 1rem .8rem;}
+.na{width:100%;min-height:58px;border:1.5px solid var(--border);border-radius:7px;padding:.5rem .75rem;font-family:'Noto Sans TC',sans-serif;font-size:.83rem;background:var(--nb);color:var(--text);resize:vertical;line-height:1.7;}
+.na:focus{outline:none;border-color:var(--acc);}
+.ns{font-family:'JetBrains Mono',monospace;font-size:.72rem;border:1px solid var(--border);background:var(--card);border-radius:5px;padding:.18rem .6rem;cursor:pointer;color:var(--muted);margin-top:.35rem;transition:all .15s;}
+.ns:hover{background:var(--acc);color:#fff;border-color:var(--acc);}
+.nm{font-size:.72rem;color:var(--acc2);font-family:'JetBrains Mono',monospace;margin-left:.5rem;opacity:0;transition:opacity .3s;}
 </style>
 </head>
 <body>
 <header>
   <h1>膠體 Colloids</h1>
-  <div class="sub">藥劑學筆記 · 完整講義整理 + 歷屆試題穿插</div>
+  <div class="sub">藥劑學筆記 · 完整講義整理 + 歷屆試題</div>
 </header>
-<div id="prog-bar-wrap">
-  <span id="prog-text">0 / 0 題已作答</span>
-  <div id="prog-bar"><div id="prog-fill"></div></div>
-</div>
+<div id="pw"><span id="pt">0 / 0 題已作答</span><div id="pb"><div id="pf"></div></div></div>
 <div id="toc">
-  <a class="toc-btn" href="#sec1">緒言·分散系統</a>
-  <a class="toc-btn" href="#sec2">比表面積</a>
-  <a class="toc-btn" href="#sec3">膠體類型</a>
-  <a class="toc-btn" href="#sec4">光學性質</a>
-  <a class="toc-btn" href="#sec5">動力學性質</a>
-  <a class="toc-btn" href="#sec6">電性</a>
-  <a class="toc-btn" href="#sec7">親溶媒安定性</a>
-  <a class="toc-btn" href="#sec8">厭溶媒安定性</a>
-  <a class="toc-btn" href="#sec9">安定化·金數</a>
-  <a class="toc-btn" href="#sec10">分子量測定</a>
+  <a class="tb" href="#s1">粒子大小與比表面積</a>
+  <a class="tb" href="#s2">膠體系統類型</a>
+  <a class="tb" href="#s3">光學性質</a>
+  <a class="tb" href="#s4">動力學性質</a>
+  <a class="tb" href="#s5">電性</a>
+  <a class="tb" href="#s6">安定性：親溶媒</a>
+  <a class="tb" href="#s7">安定性：厭溶媒</a>
+  <a class="tb" href="#s8">厭溶媒安定化</a>
+  <a class="tb" href="#s9">分子量測定</a>
+  <a class="tb" href="#s10">藥劑學應用</a>
 </div>
 <main>
-
-<!-- ═══ SEC 1 緒言 ═══ -->
-<div class="sec" id="sec1">
-<div class="sec-title open" onclick="toggleSec(this)"><span>🧪</span> 緒言：分散系統概論 <span class="chev">▶</span></div>
-<div class="sec-body open">
-<div class="sub-sec">
-<div class="sub-title">依粒子大小分類</div>
-<div class="tbl-wrap"><table>
-<tr><th>系統</th><th>粒徑</th><th>特性</th><th>例子</th></tr>
-<tr><td>真溶液</td><td>&lt; 1 nm</td><td>散射弱、滲透壓高、擴散快、不沉降</td><td>葡萄糖、電解質</td></tr>
-<tr><td><span class="kw">膠體溶液（sol）</span></td><td>1 nm ～ 1 μm（約 2～500 nm）</td><td>Tyndall 效應、布朗運動、低滲透壓</td><td>蛋白質溶液、金膠溶體</td></tr>
-<tr><td>粗分散系</td><td>&gt; 1 μm</td><td>反射光、沉降、不行布朗運動</td><td>懸液劑、乳劑</td></tr>
-</table></div>
-<div class="callout" style="margin-top:.6rem;"><strong>常考換算：</strong> 0.01 mm = 10 μm（粗分散）；0.01 μm = 10 nm（膠體）；10⁻⁵ cm = 100 nm（膠體）</div>
-</div>
-
-<div class="q-divider">歷屆試題</div>
-
-<div class="q-card" data-qid="q1">
-<div class="q-head"><span class="q-num">Q1</span><span class="q-year">107-1</span>
-<span class="q-stem">下列粒徑大小何者<strong>不屬於</strong>膠體範圍？</span></div>
-<div class="q-opts">
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">A</span>0.01 mm</button>
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">B</span>10⁻⁶ m</button>
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">C</span>0.01 μm</button>
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">D</span>10⁻⁵ cm</button>
-</div>
-<div class="q-foot"><button class="btn-exp" onclick="toggleExp(this)">顯示詳解</button><button class="btn-reset" onclick="resetQ(this)">重置</button></div>
-<div class="q-explain">✅ 答案：<strong>A</strong>｜0.01 mm = 10 μm，超過膠體上限 1 μm，屬粗分散系。B=1μm（臨界）；C=10nm✓；D=100nm✓</div>
-<div class="note-area-wrap"><textarea class="note-area" placeholder="📝 補充筆記…" data-key="note_q1"></textarea><br><button class="note-save-btn" onclick="saveNote(this)">儲存筆記</button><span class="note-saved-msg">已儲存 ✓</span></div>
-</div>
-
-<div class="q-card" data-qid="q2">
-<div class="q-head"><span class="q-num">Q2</span><span class="q-year">106-2</span>
-<span class="q-stem">Colloid 顆粒大小範圍為下列何者？</span></div>
-<div class="q-opts">
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">A</span>&lt; 0.01 nm</button>
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">B</span>0.01 ～ 0.5 nm</button>
-<button class="opt" onclick="answer(this,'correct')"><span class="ol">C</span>2 ～ 500 nm</button>
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">D</span>1 ～ 5 μm</button>
-</div>
-<div class="q-foot"><button class="btn-exp" onclick="toggleExp(this)">顯示詳解</button><button class="btn-reset" onclick="resetQ(this)">重置</button></div>
-<div class="q-explain">✅ 答案：<strong>C</strong>｜膠體範圍 2～500 nm。D（1～5 μm）為粗分散系。</div>
-<div class="note-area-wrap"><textarea class="note-area" placeholder="📝 補充筆記…" data-key="note_q2"></textarea><br><button class="note-save-btn" onclick="saveNote(this)">儲存筆記</button><span class="note-saved-msg">已儲存 ✓</span></div>
-</div>
-
-<div class="q-card" data-qid="q3">
-<div class="q-head"><span class="q-num">Q3</span><span class="q-year">105-1</span>
-<span class="q-stem">有關 aluminum hydroxide gel 分散系性質之敘述，下列何者正確？</span></div>
-<div class="q-opts">
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">A</span>具高滲透壓</button>
-<button class="opt" onclick="answer(this,'correct')"><span class="ol">B</span>粒子行布朗運動</button>
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">C</span>擴散速度較溶液劑大</button>
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">D</span>粒子會沉降</button>
-</div>
-<div class="q-foot"><button class="btn-exp" onclick="toggleExp(this)">顯示詳解</button><button class="btn-reset" onclick="resetQ(this)">重置</button></div>
-<div class="q-explain">✅ 答案：<strong>B</strong>｜Al(OH)₃ gel 為膠體，具布朗運動。膠體滲透壓低、擴散慢、不易沉降（布朗運動抵抗）。</div>
-<div class="note-area-wrap"><textarea class="note-area" placeholder="📝 補充筆記…" data-key="note_q3"></textarea><br><button class="note-save-btn" onclick="saveNote(this)">儲存筆記</button><span class="note-saved-msg">已儲存 ✓</span></div>
-</div>
-
-<div class="q-card" data-qid="q4">
-<div class="q-head"><span class="q-num">Q4</span><span class="q-year">101-2</span>
-<span class="q-stem">有關 sterile epinephrine suspension 分散系性質之敘述，下列何者正確？</span></div>
-<div class="q-opts">
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">A</span>具高滲透壓</button>
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">B</span>粒子具布朗運動</button>
-<button class="opt" onclick="answer(this,'correct')"><span class="ol">C</span>粒子會沉降</button>
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">D</span>粒子擴散速度較溶液劑大</button>
-</div>
-<div class="q-foot"><button class="btn-exp" onclick="toggleExp(this)">顯示詳解</button><button class="btn-reset" onclick="resetQ(this)">重置</button></div>
-<div class="q-explain">✅ 答案：<strong>C</strong>｜Suspension 為粗分散系（&gt;1 μm），粒子受重力影響會沉降。不行布朗運動、滲透壓低、擴散慢。</div>
-<div class="note-area-wrap"><textarea class="note-area" placeholder="📝 補充筆記…" data-key="note_q4"></textarea><br><button class="note-save-btn" onclick="saveNote(this)">儲存筆記</button><span class="note-saved-msg">已儲存 ✓</span></div>
-</div>
-</div></div>
-
-<!-- ═══ SEC 2 比表面積 ═══ -->
-<div class="sec" id="sec2">
-<div class="sec-title open" onclick="toggleSec(this)"><span>📐</span> 膠體粒子大小與比表面積 <span class="chev">▶</span></div>
-<div class="sec-body open">
-<div class="sub-sec">
-<div class="sub-title">比表面積公式（Specific Surface Area, Aₛₚ）</div>
-<div class="formula">【正方體，邊長 ι，密度 d】
-  Aₛₚ = A/V = 6/ι
-  Aₛₚ = A/M = 6/(ι·d)
-
-【球形，直徑 D，密度 d】
-  Aₛₚ = A/V = 6/D
-  Aₛₚ = A/M = 6/(D·d)
-
-➜ 粒子越小 → 比表面積越大
-➜ 倍增關係：邊長 L₁ → L₂，Aₛₚ 增加 L₁/L₂ 倍</div>
-</div>
-<div class="sub-sec">
-<div class="sub-title">粒徑影響各種性質</div>
-<ul class="note-list">
-<li><span class="kw">顏色</span>：細→淺（HgO、Fe₂O₃：細→黃，粗→紅）</li>
-<li><span class="kw">氣味</span>：細→濃</li>
-<li><span class="kw">溶解速率</span>：細→快</li>
-<li><span class="kw">化學穩定性</span>：細→不安定（接觸面積大）</li>
-<li><span class="kw">催化效果</span>：鉑黑（膠態鉑）Aₛₚ 大，催化佳</li>
-<li><span class="kw">藥物吸收</span>：細→吸收快</li>
-<li><span class="kw">局部刺激性</span>：細→刺激大（AgNO₃→colloidal silver protein）</li>
-<li><span class="kw">透析</span>：火棉膠/玻璃紙膜，依粒子大小分離（超濾、血液透析）</li>
-</ul>
-</div>
-
-<div class="q-divider">歷屆試題</div>
-
-<div class="q-card" data-qid="q5">
-<div class="q-head"><span class="q-num">Q5</span><span class="q-year">109-2</span>
-<span class="q-stem">將邊長 1 cm 的正立方體切割成邊長 0.1 μm 相同大小的正立方體，下列敘述何者正確？</span></div>
-<div class="q-opts">
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">A</span>比表面積是 6,000 cm⁻¹</button>
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">B</span>可切割成 10⁹ 個邊長 0.1 μm 的正立方體</button>
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">C</span>比表面積變為原來的 10,000 倍</button>
-<button class="opt" onclick="answer(this,'correct')"><span class="ol">D</span>切割後的粒徑大小屬於膠體</button>
-</div>
-<div class="q-foot"><button class="btn-exp" onclick="toggleExp(this)">顯示詳解</button><button class="btn-reset" onclick="resetQ(this)">重置</button></div>
-<div class="q-explain">✅ 答案：<strong>D</strong>｜0.1 μm = 100 nm，屬膠體範圍（1～500 nm）✓<br>
-A：Aₛₚ = 6/(10⁻⁵ cm) = 600,000 cm⁻¹（非 6000）<br>
-B：個數 = (1 cm / 10⁻⁵ cm)³ = 10¹⁵（非 10⁹）<br>
-C：倍數 = 1 cm / 10⁻⁵ cm = 100,000 倍（非 10,000）</div>
-<div class="note-area-wrap"><textarea class="note-area" placeholder="📝 補充筆記…" data-key="note_q5"></textarea><br><button class="note-save-btn" onclick="saveNote(this)">儲存筆記</button><span class="note-saved-msg">已儲存 ✓</span></div>
-</div>
-
-<div class="q-card" data-qid="q6">
-<div class="q-head"><span class="q-num">Q6</span><span class="q-year">105-1</span>
-<span class="q-stem">邊長為 10 μm 的立方固體，若分割成邊長 100 nm 的微小立方體，其比表面積增加幾倍？</span></div>
-<div class="q-opts">
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">A</span>1</button>
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">B</span>10</button>
-<button class="opt" onclick="answer(this,'correct')"><span class="ol">C</span>100</button>
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">D</span>1000</button>
-</div>
-<div class="q-foot"><button class="btn-exp" onclick="toggleExp(this)">顯示詳解</button><button class="btn-reset" onclick="resetQ(this)">重置</button></div>
-<div class="q-explain">✅ 答案：<strong>C（100 倍）</strong>｜倍數 = L₁/L₂ = 10 μm / 100 nm = 10,000 nm / 100 nm = 100 倍</div>
-<div class="note-area-wrap"><textarea class="note-area" placeholder="📝 補充筆記…" data-key="note_q6"></textarea><br><button class="note-save-btn" onclick="saveNote(this)">儲存筆記</button><span class="note-saved-msg">已儲存 ✓</span></div>
-</div>
-</div></div>
-
-<!-- ═══ SEC 3 膠體類型 ═══ -->
-<div class="sec" id="sec3">
-<div class="sec-title open" onclick="toggleSec(this)"><span>🗂️</span> 膠體系統類型 <span class="chev">▶</span></div>
-<div class="sec-body open">
-<div class="sub-sec">
-<div class="sub-title">依分散相與分散媒親和性分類</div>
-<div class="tbl-wrap"><table>
-<tr><th>類型</th><th>特性</th><th>代表例</th><th>電解質影響</th></tr>
-<tr><td><span class="kw">親溶媒性膠體</span><br>Lyophilic</td><td>分散相與分散媒有引力（媒合）；可自然形成；較穩定</td><td>acacia, gelatin, insulin, albumin, starch, bentonite, povidone</td><td>高濃度電解質→鹽析</td></tr>
-<tr><td><span class="kw">厭溶媒性膠體</span><br>Lyophobic</td><td>粒子外無溶劑包覆；熱力學不穩定；需特殊方法製備</td><td>膠態金、銀；gum rubber, cholesterol 於水中</td><td>極少量電解質即不安定</td></tr>
-<tr><td><span class="kw">結合膠體</span><br>Association（Amphiphilic）</td><td>≥50 個界面活性劑凝集成微膠粒；澄清；單相；直徑 ~50 Å</td><td>Surfactant ≥ CMC 時形成</td><td>高濃度電解質→鹽析</td></tr>
-</table></div>
-</div>
-<div class="sub-sec">
-<div class="sub-title">親溶媒性膠體製備</div>
-<ul class="note-list">
-<li><strong>簡單分散法</strong>：將分散相加入分散媒，濕潤後輕攪至分散</li>
-<li><strong>化學反應法</strong>：鎂乳：MgSO₄ + 2NaOH → Mg(OH)₂↓；氫氧化鋁膠漿：Al₂(SO₄)₃ + Na₂CO₃ + H₂O → Al(OH)₃↓</li>
-</ul>
-</div>
-<div class="sub-sec">
-<div class="sub-title">厭溶媒性膠體製備（不能自然形成）</div>
-<ul class="note-list">
-<li><span class="kw">分散法</span>：超音波、膠體磨（colloidal mill）、電極分散法</li>
-<li><span class="kw">凝結法</span>：降低溶解度（硫磺酒精液倒入水中）；還原法（金/銀鹽+甲醛）；氧化法（H₂S→硫原子）；水解法（AlCl₃+沸水→Al(OH)₃）</li>
-</ul>
-</div>
-<div class="sub-sec">
-<div class="sub-title">CMC（臨界微膠粒濃度）</div>
-<ul class="note-list">
-<li>超過 CMC 才形成微膠粒；單體濃度超過 CMC 後不再增加</li>
-<li>交互作用常數 B：非離子性≈0；離子性 B&gt;0；B&lt;0 表多分散性</li>
-</ul>
-</div>
-
-<div class="q-divider">歷屆試題</div>
-
-<div class="q-card" data-qid="q7">
-<div class="q-head"><span class="q-num">Q7</span><span class="q-year">101-1</span>
-<span class="q-stem">乳漿劑（magma）是屬於下列何種分散系？</span></div>
-<div class="q-opts">
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">A</span>固體分散於固體</button>
-<button class="opt" onclick="answer(this,'correct')"><span class="ol">B</span>固體分散於液體</button>
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">C</span>氣體分散於液體</button>
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">D</span>液體分散於液體</button>
-</div>
-<div class="q-foot"><button class="btn-exp" onclick="toggleExp(this)">顯示詳解</button><button class="btn-reset" onclick="resetQ(this)">重置</button></div>
-<div class="q-explain">✅ 答案：<strong>B</strong>｜Magma（乳漿劑）= 固體分散於液體的粗分散系（如 Milk of Magnesia）。</div>
-<div class="note-area-wrap"><textarea class="note-area" placeholder="📝 補充筆記…" data-key="note_q7"></textarea><br><button class="note-save-btn" onclick="saveNote(this)">儲存筆記</button><span class="note-saved-msg">已儲存 ✓</span></div>
-</div>
-</div></div>
-
-<!-- ═══ SEC 4 光學性質 ═══ -->
-<div class="sec" id="sec4">
-<div class="sec-title open" onclick="toggleSec(this)"><span>💡</span> 膠體的光學性質 <span class="chev">▶</span></div>
-<div class="sec-body open">
-<div class="sub-sec">
-<div class="sub-title">Faraday-Tyndall 效應</div>
-<div class="note-p">強光通過膠體溶液 → 光被膠體粒子<span class="kw">散射</span> → 產生可見光錐</div>
-<div class="callout" style="margin-top:.5rem;"><strong>粒子大小 vs 光：</strong><br>
-粒子 &gt; 入射光波長（400-700nm）→ 光反射（粗分散系）<br>
-粒子 &lt; 入射光波長 → 光散射（膠體）✓<br>
-真溶液：太小 → 散射強度弱</div>
-</div>
-<div class="sub-sec">
-<div class="sub-title">光散射與分子量（Debye 方程式）</div>
-<div class="formula">Hc/τ = 1/M + 2Bc
-
-H��系統常數（與波長 λ 有關）
-c：溶質濃度  τ：渾濁度
-M：重量平均分子量  B：交互作用常數
-
-以 Hc/τ 對 c 作圖：截距 = 1/M → 求 Mw；斜率 = 2B → 看交互作用
-B > 0：離子性微膠粒（粒子間排斥）
-B = 0：非離子性/兩性微膠粒（典型）
-B < 0：多分散性系統</div>
-</div>
-<div class="sub-sec">
-<div class="sub-title">微膠粒分子量（利用光散射）</div>
-<div class="formula">總濃度 c = c_monomer + c_micelle
-單體超過 CMC 後固定 = CMC
-∴ c_micelle = c − CMC
-τ_micelle = τ_total − τ_monomer
-H(c−CMC)/τ_micelle = 1/M_micelle + 2B(c−CMC)</div>
-</div>
-</div></div>
-
-<!-- ═══ SEC 5 動力學性質 ═══ -->
-<div class="sec" id="sec5">
-<div class="sec-title open" onclick="toggleSec(this)"><span>⚛️</span> 膠體的動力學性質 <span class="chev">▶</span></div>
-<div class="sec-body open">
-
-<div class="sub-sec">
-<div class="sub-title">布朗運動 (Brownian Motion)</div>
-<ul class="note-list">
-<li>粒子 &lt;5 μm 在顯微鏡下可見不規則運動（液體分子隨機撞擊）</li>
-<li>位移公式：<span class="kw">x² = 2Dt</span>（D = 擴散係數）</li>
-<li>位移與<strong>溫度↑</strong>成正比；與<strong>粒徑↑、黏度↑</strong>成反比；<strong>與濃度無關</strong></li>
-<li>觀察皂土扁平粒子布朗運動 → 利用 <span class="kw">Tyndall 效應</span></li>
-</ul>
-</div>
-
-<div class="q-divider">歷屆試題</div>
-
-<div class="q-card" data-qid="q8">
-<div class="q-head"><span class="q-num">Q8</span><span class="q-year">108-2</span>
-<span class="q-stem">皂土溶液其扁平質粒（platelet）利用下列何項效應可觀察到其布朗運動？</span></div>
-<div class="q-opts">
-<button class="opt" onclick="answer(this,'correct')"><span class="ol">A</span>丁道爾（Tyndall）</button>
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">B</span>擴散</button>
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">C</span>滲透</button>
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">D</span>電泳</button>
-</div>
-<div class="q-foot"><button class="btn-exp" onclick="toggleExp(this)">顯示詳解</button><button class="btn-reset" onclick="resetQ(this)">重置</button></div>
-<div class="q-explain">✅ 答案：<strong>A</strong>｜Tyndall 效應使膠體粒子在光錐中可被超顯微鏡觀察到，從而看到布朗運動。</div>
-<div class="note-area-wrap"><textarea class="note-area" placeholder="📝 補充筆記…" data-key="note_q8"></textarea><br><button class="note-save-btn" onclick="saveNote(this)">儲存筆記</button><span class="note-saved-msg">已儲存 ✓</span></div>
-</div>
-
-<div class="q-card" data-qid="q9">
-<div class="q-head"><span class="q-num">Q9</span><span class="q-year">109-1</span>
-<span class="q-stem">膠體粒子布朗運動的位移與下列何項因素<strong>無關</strong>？</span></div>
-<div class="q-opts">
-<button class="opt" onclick="answer(this,'correct')"><span class="ol">A</span>濃度</button>
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">B</span>絕對溫度</button>
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">C</span>粒徑</button>
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">D</span>液體黏稠度</button>
-</div>
-<div class="q-foot"><button class="btn-exp" onclick="toggleExp(this)">顯示詳解</button><button class="btn-reset" onclick="resetQ(this)">重置</button></div>
-<div class="q-explain">✅ 答案：<strong>A（濃度）</strong>｜x² = 2Dt，D = kT/(6πηr) → 與溫度T、粒徑r、黏度η有關，與<strong>濃度無關</strong>。</div>
-<div class="note-area-wrap"><textarea class="note-area" placeholder="📝 補充筆記…" data-key="note_q9"></textarea><br><button class="note-save-btn" onclick="saveNote(this)">儲存筆記</button><span class="note-saved-msg">已儲存 ✓</span></div>
-</div>
-
-<div class="sub-sec" style="margin-top:.3rem;">
-<div class="sub-title">擴散 (Diffusion) — Fick's First Law</div>
-<div class="formula">J = dM/(S·dt) = −D·(dC/dx)
-
-D（擴散係數）= kT/(6πηr) = RT/(6πηrN)
-
-球形粒子分子量：
-  M = (4/3)πr³·ρ·N  →  r = [3M/(4πρN)]^(1/3)
-
-擴散速率：粒子↓ → D↑；溫度↑ → D↑；黏度↑ → D↓</div>
-</div>
-
-<div class="sub-sec">
-<div class="sub-title">滲透壓 (Osmotic Pressure)</div>
-<div class="formula">理想稀薄溶液：π = cRT = (cg/M)RT
-
-聚合物（非理想）：π/cg = RT/M + RTBcg
-  截距 RT/M → 求 Mₙ（數目平均分子量）
-  斜率 RTB  → 看溶質-溶劑交互作用
-
-B > 0：溶劑-溶質引力大（媒合佳）
-B < 0：溶質間引力大 → 可能沉澱
-B = 0：理想溶液</div>
-<div class="callout">滲透壓只適用於<strong>親溶媒系統</strong>；厭溶媒系統難測。</div>
-</div>
-
-<div class="q-divider">歷屆試題（滲透壓）</div>
-
-<div class="q-card" data-qid="q10">
-<div class="q-head"><span class="q-num">Q10</span><span class="q-year">107-2</span>
-<span class="q-stem">利用滲透壓儀器測量，以 π/C 為縱軸對溶質濃度（C）作圖時，截距相同而<strong>斜率越大</strong>者，代表溶質與溶媒的：</span></div>
-<div class="q-opts">
-<button class="opt" onclick="answer(this,'correct')"><span class="ol">A</span>吸引力越大</button>
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">B</span>吸引力越小</button>
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">C</span>排斥力越大</button>
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">D</span>排斥力與吸引力相等</button>
-</div>
-<div class="q-foot"><button class="btn-exp" onclick="toggleExp(this)">顯示詳解</button><button class="btn-reset" onclick="resetQ(this)">重置</button></div>
-<div class="q-explain">✅ 答案：<strong>A</strong>｜斜率 = RTB，B↑ → 溶劑-溶質吸引力越大（媒合程度高）。</div>
-<div class="note-area-wrap"><textarea class="note-area" placeholder="📝 補充筆記…" data-key="note_q10"></textarea><br><button class="note-save-btn" onclick="saveNote(this)">儲存筆記</button><span class="note-saved-msg">已儲存 ✓</span></div>
-</div>
-
-<div class="q-card" data-qid="q11">
-<div class="q-head"><span class="q-num">Q11</span><span class="q-year">104-2</span>
-<span class="q-stem">利用滲透壓儀器測量，以 π/C（Y 軸）對溶質濃度 C（X 軸）作圖之斜率 &gt;0 時，代表溶質與溶媒之間何種力量較大？</span></div>
-<div class="q-opts">
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">A</span>排斥力</button>
-<button class="opt" onclick="answer(this,'correct')"><span class="ol">B</span>吸引力</button>
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">C</span>凡得瓦爾力</button>
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">D</span>滲透力</button>
-</div>
-<div class="q-foot"><button class="btn-exp" onclick="toggleExp(this)">顯示詳解</button><button class="btn-reset" onclick="resetQ(this)">重置</button></div>
-<div class="q-explain">✅ 答案：<strong>B</strong>｜斜率 = RTB &gt; 0 → B &gt; 0 → 溶劑-溶質<strong>吸引力</strong>大。</div>
-<div class="note-area-wrap"><textarea class="note-area" placeholder="📝 補充筆記…" data-key="note_q11"></textarea><br><button class="note-save-btn" onclick="saveNote(this)">儲存筆記</button><span class="note-saved-msg">已儲存 ✓</span></div>
-</div>
-
-<div class="sub-sec" style="margin-top:.3rem;">
-<div class="sub-title">沉降作用 (Sedimentation) — Stokes' Law</div>
-<div class="formula">沉降速率：v = 2r²(ρ−ρ₀)g / 9η = d²(ρ−ρ₀)g / 18η
-
-ρ > ρ₀ → 沉降；ρ < ρ₀ → 上浮
-
-Reynolds number 判斷層流：
-  Rₑ = vdρ₀/η ≤ 0.2 → 適用 Stokes' law
-  → 臨界直徑：d²= 18×0.2×η / [(ρ−ρ₀)ρ₀g]
-
-儀器：Andreasen pipette（需知粒子密度才能計算粒徑）</div>
-<div class="callout"><strong>v 正比：</strong>r²、(ρ−ρ₀)、g；<strong>v 反比：</strong>η（黏度↑ → 沉降↓ → 更穩定）</div>
-</div>
-
-<div class="q-divider">歷屆試題（沉降）</div>
-
-<div class="q-card" data-qid="q12">
-<div class="q-head"><span class="q-num">Q12</span><span class="q-year">109-1</span>
-<span class="q-stem">以沉降速率法測量藥物粉末之粒徑時，下列敘述何者正確？</span></div>
-<div class="q-opts">
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">A</span>測定原理與 Smoluchowski equation 有關</button>
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">B</span>粒徑平方與分散媒液之黏度成反比</button>
-<button class="opt" onclick="answer(this,'correct')"><span class="ol">C</span>測量粉末粒徑時，需先得知其密度</button>
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">D</span>一般檢測時常用之儀器為立體雷射攝影機</button>
-</div>
-<div class="q-foot"><button class="btn-exp" onclick="toggleExp(this)">顯示詳解</button><button class="btn-reset" onclick="resetQ(this)">重置</button></div>
-<div class="q-explain">✅ 答案：<strong>C</strong>｜d = √[18ηv/(ρ−ρ₀)g]，需知 ρ（粒子密度）。A：原理為 Stokes' law；B：d² 正比於η；D：儀器為 Andreasen pipette。</div>
-<div class="note-area-wrap"><textarea class="note-area" placeholder="📝 補充筆記…" data-key="note_q12"></textarea><br><button class="note-save-btn" onclick="saveNote(this)">儲存筆記</button><span class="note-saved-msg">已儲存 ✓</span></div>
-</div>
-
-<div class="q-card" data-qid="q13">
-<div class="q-head"><span class="q-num">Q13</span><span class="q-year">101-2</span>
-<span class="q-stem">依據 Stokes' 方程式，下列何項數值<strong>變小</strong>，可促進懸液劑中質粒的沉降速率？</span></div>
-<div class="q-opts">
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">A</span>質粒的平均粒徑</button>
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">B</span>質粒的密度</button>
-<button class="opt" onclick="answer(this,'correct')"><span class="ol">C</span>分散介質的黏稠度</button>
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">D</span>分散介質的溫度</button>
-</div>
-<div class="q-foot"><button class="btn-exp" onclick="toggleExp(this)">顯示詳解</button><button class="btn-reset" onclick="resetQ(this)">重置</button></div>
-<div class="q-explain">✅ 答案：<strong>C</strong>｜v ∝ 1/η，η↓ → v↑（沉降加快）。A：粒徑↓ → v↓；B：密度↓ → v↓；D：溫度↓ → η↑ → v↓。</div>
-<div class="note-area-wrap"><textarea class="note-area" placeholder="📝 補充筆記…" data-key="note_q13"></textarea><br><button class="note-save-btn" onclick="saveNote(this)">儲存筆記</button><span class="note-saved-msg">已儲存 ✓</span></div>
-</div>
-
-<div class="q-card" data-qid="q14">
-<div class="q-head"><span class="q-num">Q14</span><span class="q-year">101-2</span>
-<span class="q-stem">依據 Stokes' 方程式測得同材質兩球形粉體沉降速率分別是 4.25×10⁻⁸ cm/s 與 4.25×10⁻¹⁰ cm/s，則後者粒徑是前者的多少倍？</span></div>
-<div class="q-opts">
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">A</span>100</button>
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">B</span>10</button>
-<button class="opt" onclick="answer(this,'correct')"><span class="ol">C</span>0.1</button>
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">D</span>0.01</button>
-</div>
-<div class="q-foot"><button class="btn-exp" onclick="toggleExp(this)">顯示詳解</button><button class="btn-reset" onclick="resetQ(this)">重置</button></div>
-<div class="q-explain">✅ 答案：<strong>C（0.1 倍）</strong>｜v ∝ d²，故 d ∝ √v；d₂/d₁ = √(10⁻¹⁰/10⁻⁸) = √0.01 = 0.1</div>
-<div class="note-area-wrap"><textarea class="note-area" placeholder="📝 補充筆記…" data-key="note_q14"></textarea><br><button class="note-save-btn" onclick="saveNote(this)">儲存筆記</button><span class="note-saved-msg">已儲存 ✓</span></div>
-</div>
-
-<div class="q-card" data-qid="q15">
-<div class="q-head"><span class="q-num">Q15</span><span class="q-year">100-1</span>
-<span class="q-stem">下列何種外界因子最<strong>不會</strong>影響粒子在劑型中之臨界半徑（critical radius）？</span></div>
-<div class="q-opts">
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">A</span>黏度</button>
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">B</span>重力</button>
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">C</span>溫度</button>
-<button class="opt" onclick="answer(this,'correct')"><span class="ol">D</span>分配係數</button>
-</div>
-<div class="q-foot"><button class="btn-exp" onclick="toggleExp(this)">顯示詳解</button><button class="btn-reset" onclick="resetQ(this)">重置</button></div>
-<div class="q-explain">✅ 答案：<strong>D</strong>｜臨界半徑由布朗運動位移=沉降位移決定，影響因素為 η、g、T（均出現在 D 和 v 的公式中）。分配係數與兩相分布有關，不影響臨界半徑。</div>
-<div class="note-area-wrap"><textarea class="note-area" placeholder="📝 補充筆記…" data-key="note_q15"></textarea><br><button class="note-save-btn" onclick="saveNote(this)">儲存筆記</button><span class="note-saved-msg">已儲存 ✓</span></div>
-</div>
-
-<div class="sub-sec" style="margin-top:.3rem;">
-<div class="sub-title">黏度 (Viscosity)</div>
-<div class="formula">η/η₀ = relative viscosity（相對黏度）
-ηsp = (η−η₀)/η₀ = specific viscosity（比黏度）
-ηred = ηsp/c = reduced viscosity（比濃黏度）
-[η] = lim(c→0) ηred = intrinsic viscosity（極限黏度）
-
-Einstein 方程式（理想球形）：reduced viscosity = 2.5</div>
-<ul class="note-list" style="margin-top:.5rem;">
-<li>球形粒子 → 較低黏度；線形粒子 → 較高黏度</li>
-<li>親溶媒性膠體（媒合）→ 黏度高；厭溶媒性 → 黏度低</li>
-<li>血漿替代品：dextran、hydroxyethyl starch、gelatin</li>
-</ul>
-</div>
-
-<div class="q-divider">歷屆試題（黏度）</div>
-
-<div class="q-card" data-qid="q16">
-<div class="q-head"><span class="q-num">Q16</span><span class="q-year">111-1</span>
-<span class="q-stem">分散系統遵循 Einstein viscosity equation，其理想之 reduced viscosity 值應為何？</span></div>
-<div class="q-opts">
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">A</span>0</button>
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">B</span>1.0</button>
-<button class="opt" onclick="answer(this,'correct')"><span class="ol">C</span>2.5</button>
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">D</span>5.0</button>
-</div>
-<div class="q-foot"><button class="btn-exp" onclick="toggleExp(this)">顯示詳解</button><button class="btn-reset" onclick="resetQ(this)">重置</button></div>
-<div class="q-explain">✅ 答案：<strong>C（2.5）</strong>｜Einstein 方程式對理想球形分散系預測 ηred = ηsp/c = 2.5。</div>
-<div class="note-area-wrap"><textarea class="note-area" placeholder="📝 補充筆記…" data-key="note_q16"></textarea><br><button class="note-save-btn" onclick="saveNote(this)">儲存筆記</button><span class="note-saved-msg">已儲存 ✓</span></div>
-</div>
-
-<div class="q-card" data-qid="q17">
-<div class="q-head"><span class="q-num">Q17</span><span class="q-year">109-1</span>
-<span class="q-stem">依據愛因斯坦黏滯係數方程式，溶液的黏稠度除以溶劑的黏稠度，其比值稱為下列何者？</span></div>
-<div class="q-opts">
-<button class="opt" onclick="answer(this,'correct')"><span class="ol">A</span>relative viscosity</button>
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">B</span>reduced viscosity</button>
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">C</span>specific viscosity</button>
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">D</span>intrinsic viscosity</button>
-</div>
-<div class="q-foot"><button class="btn-exp" onclick="toggleExp(this)">顯示詳解</button><button class="btn-reset" onclick="resetQ(this)">重置</button></div>
-<div class="q-explain">✅ 答案：<strong>A</strong>｜η/η₀ = relative viscosity；(η−η₀)/η₀ = specific；ηsp/c = reduced；lim(c→0)ηred = intrinsic。</div>
-<div class="note-area-wrap"><textarea class="note-area" placeholder="📝 補充筆記…" data-key="note_q17"></textarea><br><button class="note-save-btn" onclick="saveNote(this)">儲存筆記</button><span class="note-saved-msg">已儲存 ✓</span></div>
-</div>
-</div></div>
-
-<!-- ═══ SEC 6 電性 ═══ -->
-<div class="sec" id="sec6">
-<div class="sec-title open" onclick="toggleSec(this)"><span>⚡</span> 膠體的電性 <span class="chev">▶</span></div>
-<div class="sec-body open">
-<div class="sub-sec">
-<div class="sub-title">電位與電性雙層</div>
-<div class="formula">固體表面(a-a') → 緊密結合層(b-b') → 擴散層(c-c') → 電中性區(d-d')
-
-Nernst potential (E)：固體表面 與 電中性區 之電位差（最大）
-Zeta potential (ζ) ：緊密結合層外 與 電中性區 之電位差
-
-大小關係：E（表面電位）> ζ（Zeta 電位）> 擴散層外界限電位
-
-ζ 大 → 粒子間排斥 → 穩定（去凝絮）
-ζ 小 → 引力 > 斥力 → 凝集（凝絮）</div>
-</div>
-<div class="sub-sec">
-<div class="sub-title">AgI 膠體帶電範例（電位決定離子）</div>
-<ul class="note-list">
-<li>KI 加入 AgNO₃（Ag⁺ 過量）→ Ag⁺ 吸附於表面 → <span class="kw">帶正電</span></li>
-<li>AgNO₃ 加入 NaI（I⁻ 過量）→ I⁻ 吸附於表面 → <span class="kw">帶負電</span></li>
-</ul>
-</div>
-<div class="sub-sec">
-<div class="sub-title">電泳 (Electrophoresis)</div>
-<div class="formula">ζ（statvolts）= (v/E) × (4πη/ε)
-水溶液 20℃：ζ（V）≈ 141 × (v/E)
-v/E = mobility（移動性）</div>
-</div>
-
-<div class="q-divider">歷屆試題</div>
-
-<div class="q-card" data-qid="q18">
-<div class="q-head"><span class="q-num">Q18</span><span class="q-year">109-2</span>
-<span class="q-stem">硝酸銀與氯化鈉水溶液的沉澱反應，若<strong>氯化鈉為過量</strong>，則沉澱質粒將帶何種電荷？</span></div>
-<div class="q-opts">
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">A</span>Ag⁺</button>
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">B</span>Na⁺</button>
-<button class="opt" onclick="answer(this,'correct')"><span class="ol">C</span>Cl⁻</button>
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">D</span>NO₃⁻</button>
-</div>
-<div class="q-foot"><button class="btn-exp" onclick="toggleExp(this)">顯示詳解</button><button class="btn-reset" onclick="resetQ(this)">重置</button></div>
-<div class="q-explain">✅ 答案：<strong>C</strong>｜NaCl 過量 → Cl⁻ 過量 → Cl⁻ 吸附於 AgCl 粒子表面（電位決定離子）→ 粒子帶負電，以 Cl⁻ 表示。</div>
-<div class="note-area-wrap"><textarea class="note-area" placeholder="📝 補充筆記…" data-key="note_q18"></textarea><br><button class="note-save-btn" onclick="saveNote(this)">儲存筆記</button><span class="note-saved-msg">已儲存 ✓</span></div>
-</div>
-
-<div class="q-card" data-qid="q19">
-<div class="q-head"><span class="q-num">Q19</span><span class="q-year">107-2</span>
-<span class="q-stem">膠體質粒的電位分別以甲（Zeta 電位）、乙（表面電位）與丙（電性雙層界限電位）表示之，則三者大小關係何者正確？</span></div>
-<div class="q-opts">
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">A</span>甲 &gt; 乙 &gt; 丙</button>
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">B</span>甲 &gt; 丙 &gt; 乙</button>
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">C</span>乙 &gt; 丙 &gt; 甲</button>
-<button class="opt" onclick="answer(this,'correct')"><span class="ol">D</span>乙 &gt; 甲 &gt; 丙</button>
-</div>
-<div class="q-foot"><button class="btn-exp" onclick="toggleExp(this)">顯示詳解</button><button class="btn-reset" onclick="resetQ(this)">重置</button></div>
-<div class="q-explain">✅ 答案：<strong>D</strong>｜乙（表面電位 E）最大 → 甲（Zeta potential ζ，緊密層外界面）次之 → 丙（擴散層外緣，趨近 0）最小。</div>
-<div class="note-area-wrap"><textarea class="note-area" placeholder="📝 補充筆記…" data-key="note_q19"></textarea><br><button class="note-save-btn" onclick="saveNote(this)">儲存筆記</button><span class="note-saved-msg">已儲存 ✓</span></div>
-</div>
-</div></div>
-
-<!-- ═══ SEC 7 親溶媒安定性 ═══ -->
-<div class="sec" id="sec7">
-<div class="sec-title open" onclick="toggleSec(this)"><span>🛡️</span> 膠體安定性：親溶媒性膠體 <span class="chev">▶</span></div>
-<div class="sec-body open">
-<div class="sub-sec">
-<div class="sub-title">影響因素</div>
-<ul class="note-list">
-<li><span class="kw">溫度</span>：溶解度↓ → 凝膠化（gelation）；反向升溫可恢復（Plastibase® = 5%聚乙烯+95%礦油，&lt;90℃凝膠）</li>
-<li><span class="kw">非溶媒性液體</span>：加入可混溶但不溶解聚合物的液體 → 溶解度↓ → 凝膠化（加水可逆轉）</li>
-<li><span class="kw">相反電荷膠體</span>：正+負電荷親水膠體 → <strong>共聚（coacervation）</strong>（gelatin+acacia → 製備磺胺甲噁唑微膠囊）</li>
-<li><span class="kw">鹽類（鹽析）</span>：高濃度電解質水合搶水 → 聚合物沉澱</li>
-</ul>
-</div>
-<div class="sub-sec">
-<div class="sub-title">Lyotropic（Hofmeister）Series — 鹽析能力</div>
-<div class="formula">水合程度越大 → 鹽析能力越強（所需濃度越小）
-
-陽離子：Li⁺ > Na⁺ > K⁺ > NH₄⁺ > Rb⁺ > Cs⁺
-         Mg²⁺ > Ca²⁺ > Sr²⁺ > Ba²⁺
-
-陰離子：F⁻ > Citrate³⁻ > HPO₄²⁻ > tartrate²⁻ > SO₄²⁻ >
-         acetate⁻ > Cl⁻ > NO₃⁻ > Br⁻ > ClO₄⁻ > I⁻ > SCN⁻
-
-親溶媒膠體安定化方式：
-1. 減少外界環境造成之溶解度變化
-2. 增加連續相黏度（阻止布朗運動碰撞造成凝集）</div>
-</div>
-
-<div class="q-divider">歷屆試題</div>
-
-<div class="q-card" data-qid="q20">
-<div class="q-head"><span class="q-num">Q20</span><span class="q-year">101-1</span>
-<span class="q-stem">下列何者能最有效的使<strong>親水性膠體</strong>產生沈澱、鹽析等反應？</span></div>
-<div class="q-opts">
-<button class="opt" onclick="answer(this,'correct')"><span class="ol">A</span>citrate</button>
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">B</span>tartrate</button>
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">C</span>acetate</button>
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">D</span>nitrate</button>
-</div>
-<div class="q-foot"><button class="btn-exp" onclick="toggleExp(this)">顯示詳解</button><button class="btn-reset" onclick="resetQ(this)">重置</button></div>
-<div class="q-explain">✅ 答案：<strong>A（citrate）</strong>｜Hofmeister 陰離子序列：F⁻ > Citrate³⁻ > HPO₄²⁻ > tartrate²⁻ > SO₄²⁻ > acetate⁻ > Cl⁻ > NO₃⁻…，四選項中 citrate 鹽析能力最強。</div>
-<div class="note-area-wrap"><textarea class="note-area" placeholder="📝 補充筆記…" data-key="note_q20"></textarea><br><button class="note-save-btn" onclick="saveNote(this)">儲存筆記</button><span class="note-saved-msg">已儲存 ✓</span></div>
-</div>
-
-<div class="q-card" data-qid="q21">
-<div class="q-head"><span class="q-num">Q21</span><span class="q-year">102-2</span>
-<span class="q-stem">下列何者增加<strong>親水性膠體</strong>粒子之安定性？</span></div>
-<div class="q-opts">
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">A</span>增加粒徑大小</button>
-<button class="opt" onclick="answer(this,'correct')"><span class="ol">B</span>增加連續相黏度</button>
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">C</span>增加粒子密度</button>
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">D</span>增加重力</button>
-</div>
-<div class="q-foot"><button class="btn-exp" onclick="toggleExp(this)">顯示詳解</button><button class="btn-reset" onclick="resetQ(this)">重置</button></div>
-<div class="q-explain">✅ 答案：<strong>B</strong>｜v ∝ 1/η，黏度↑ → 沉降↓ → 穩定性↑。A/C：v↑；D：v↑，均更不穩定。</div>
-<div class="note-area-wrap"><textarea class="note-area" placeholder="📝 補充筆記…" data-key="note_q21"></textarea><br><button class="note-save-btn" onclick="saveNote(this)">儲存筆記</button><span class="note-saved-msg">已儲存 ✓</span></div>
-</div>
-</div></div>
-
-<!-- ═══ SEC 8 厭溶媒安定性 ═══ -->
-<div class="sec" id="sec8">
-<div class="sec-title open" onclick="toggleSec(this)"><span>⚠️</span> 膠體安定性：厭溶媒性膠體 <span class="chev">▶</span></div>
-<div class="sec-body open">
-<div class="sub-sec">
-<div class="sub-title">電荷與安定性</div>
-<ul class="note-list">
-<li>厭溶媒膠體靠<strong>表面電荷（Zeta potential）</strong>維持安定</li>
-<li>加入相反電荷電解質 → ζ↓ → 凝集</li>
-<li><span class="kw2">Schulze-Hardy rule</span>：凝集能力隨對等離子<strong>價數增加</strong>而急劇增加</li>
-</ul>
-</div>
-<div class="sub-sec">
-<div class="sub-title">D-L-V-O 理論（最小凝結濃度 MCC）</div>
-<div class="formula">MCC ∝ 1/z⁶（z = 對等離子價數）
-
-理論比：一價：二價：三價 = 1/1⁶：1/2⁶：1/3⁶ = 100：1.56：0.13
-
-帶負電金膠溶體實測：
-  一價（NaCl、KNO₃…）  MCC ≈ 24 mmol/L
-  二價（CaCl₂、BaCl₂…）MCC ≈ 0.38 mmol/L
-  三價（Al₂(SO₄)₃…）   MCC ≈ 0.0325 mmol/L
-
-同價數→水合程度越大→越難靠近表面→凝集能力越弱→MCC越大
-  陽離子：Li⁺ > Na⁺ > K⁺ > Cs⁺（Li⁺ 水合最大，MCC最大，凝集最弱）
-  二價：Mg²⁺ > Ca²⁺ > Sr²⁺ > Ba²⁺</div>
-</div>
-
-<div class="q-divider">歷屆試題</div>
-
-<div class="q-card" data-qid="q22">
-<div class="q-head"><span class="q-num">Q22</span><span class="q-year">106-2</span>
-<span class="q-stem">使帶負電之金膠溶體產生凝結所需添加之<strong>陽離子最小凝結濃度（MCC）</strong>，下列何者正確？</span></div>
-<div class="q-opts">
-<button class="opt" onclick="answer(this,'correct')"><span class="ol">A</span>Na⁺ &gt; Al³⁺</button>
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">B</span>Al³⁺ &gt; Ca²⁺</button>
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">C</span>Mg²⁺ &gt; Ca²⁺</button>
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">D</span>Mg²⁺ &gt; Na⁺</button>
-</div>
-<div class="q-foot"><button class="btn-exp" onclick="toggleExp(this)">顯示詳解</button><button class="btn-reset" onclick="resetQ(this)">重置</button></div>
-<div class="q-explain">✅ 答案：<strong>A</strong>｜MCC 越大 = 凝集能力越弱。Na⁺（一價）≈24；Al³⁺（三價）≈0.03 → Na⁺ MCC > Al³⁺ MCC ✓<br>B：Al³⁺ MCC &lt; Ca²⁺ MCC（三價能力>二價，MCC更小）→錯；D：Mg²⁺（二價）MCC &lt; Na⁺（一價）MCC →錯</div>
-<div class="note-area-wrap"><textarea class="note-area" placeholder="📝 補充筆記…" data-key="note_q22"></textarea><br><button class="note-save-btn" onclick="saveNote(this)">儲存筆記</button><span class="note-saved-msg">已儲存 ✓</span></div>
-</div>
-
-<div class="q-card" data-qid="q23">
-<div class="q-head"><span class="q-num">Q23</span><span class="q-year">104-1</span>
-<span class="q-stem">下列何種鹽類造成金溶媒系統顏色改變之所需濃度為<strong>最小</strong>？</span></div>
-<div class="q-opts">
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">A</span>NaCl</button>
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">B</span>K₂SO₄</button>
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">C</span>CaCl₂</button>
-<button class="opt" onclick="answer(this,'correct')"><span class="ol">D</span>Al₂(SO₄)₃</button>
-</div>
-<div class="q-foot"><button class="btn-exp" onclick="toggleExp(this)">顯示詳解</button><button class="btn-reset" onclick="resetQ(this)">重置</button></div>
-<div class="q-explain">✅ 答案：<strong>D（Al₂(SO₄)₃）</strong>｜Al³⁺ 三價，MCC 最小（≈0.03 mmol/L），最少量即可凝集使顏色紅→藍紫。</div>
-<div class="note-area-wrap"><textarea class="note-area" placeholder="📝 補充筆記…" data-key="note_q23"></textarea><br><button class="note-save-btn" onclick="saveNote(this)">儲存筆記</button><span class="note-saved-msg">已儲存 ✓</span></div>
-</div>
-</div></div>
-
-<!-- ═══ SEC 9 安定化·金數 ═══ -->
-<div class="sec" id="sec9">
-<div class="sec-title open" onclick="toggleSec(this)"><span>🥇</span> 厭溶媒膠體安定化 &amp; 保護性膠體（金數） <span class="chev">▶</span></div>
-<div class="sec-body open">
-<div class="sub-sec">
-<div class="sub-title">三種安定化方式</div>
-<ul class="note-list">
-<li><span class="kw">Charge stabilization</span>：使粒子帶電荷（加鹽類或離子性界面活性劑）</li>
-<li><span class="kw">Steric stabilization</span>：加非離子性界面活性劑（碳氫鏈吸附粒子表面，PEO 鏈與水形成氫鍵）</li>
-<li><span class="kw">Protective colloidal action</span>：親水性膠體包覆厭水性粒子</li>
-</ul>
-</div>
-<div class="sub-sec">
-<div class="sub-title">保護性膠體作用 vs 敏感化（Sensitization）</div>
-<div class="tbl-wrap"><table>
-<tr><th></th><th>保護性膠體作用</th><th>敏感化 (Sensitization)</th></tr>
-<tr><td>親水膠體濃度</td><td>足夠（大量）</td><td>不足（低濃度）</td></tr>
-<tr><td>作用</td><td>完全覆蓋粒子 → 阻止碰撞 → 穩定</td><td>橋接兩粒子 → 促進凝聚</td></tr>
-<tr><td>結果</td><td>穩定</td><td>凝結（coagulation）</td></tr>
-</table></div>
-</div>
-<div class="sub-sec">
-<div class="sub-title">金數 (Gold Number)</div>
-<div class="formula">在 10 mL 金溶膠中加入 1 mL 10% NaCl，
-阻止顏色由紅色 → 藍紫色所需保護性膠體之最小重量（mg）
+<div class="sec" id="s1"><div class="st open" onclick="toggleSec(this)"><span>📐</span> 粒子大小、比表面積與物理化學性質 <span class="chev">▶</span></div><div class="sb open"><div class="ss"><div class="sh">粒子大小分類</div><div class="tw"><table><tr><th>分類</th><th>粒徑範圍</th><th>例子</th></tr><tr><td>真溶液（True solution）</td><td>&lt;1 nm</td><td>NaCl、glucose</td></tr><tr><td><span class="kw">膠體（Colloid）</span></td><td><strong>1 nm – 1 μm（= 1000 nm）</strong></td><td>蛋白質、Al(OH)₃、澱粉</td></tr><tr><td>粗分散系（Coarse dispersion）</td><td>&gt;1 μm</td><td>懸液劑、乳劑</td></tr></table></div></div><div class="ss"><div class="sh">比表面積（Specific Surface Area, Asp）</div><div class="fm">正方體（邊長 ι，密度 d）：
+  Asp = A/V = 6/ι
+  Asp = A/M = 6/(ι·d)
+
+球形（直徑 D，密度 d）：
+  Asp = A/V = 6/D
+  Asp = A/M = 6/(D·d)
+
+★ 粒子越小 → Asp 越大 → 與外界接觸面積越大</div><div class="ca"><strong>計算口訣：</strong>邊長縮小 n 倍 → Asp 增大 n 倍（體積縮 n³，面積縮 n²，Asp = 面積/體積 增加 n 倍）</div></div><div class="ss"><div class="sh">粒子大小對性質的影響</div><div class="tw"><table><tr><th>性質</th><th>粒子越小效果</th><th>例子</th></tr><tr><td>Color</td><td>顏色越淺</td><td>HgO 細粒→黃色；粗粒→紅色；Calamine 中 Fe₂O₃ 同</td></tr><tr><td>Odour</td><td>味道越濃</td><td>—</td></tr><tr><td>Solubility rate</td><td>溶解速率越快</td><td>—</td></tr><tr><td>Stability</td><td>越不安定（接觸面積大）</td><td>—</td></tr><tr><td>Chemical reaction rate</td><td>反應速率越大</td><td>鉑需以鉑黑膠體形式作催化劑</td></tr><tr><td>Absorption（藥效）</td><td>吸收越快</td><td>—</td></tr><tr><td>Local irritation（副作用）</td><td>局部刺激性越大</td><td>AgNO₃ → colloidal silver protein</td></tr></table></div></div><div class="ss"><div class="sh">透析（Dialysis）</div><ul class="nl"><li>利用粒子大小差異，以 collodion（火棉膠）或 cellophane（玻璃紙）半透膜</li><li>將小分子/離子與膠體粒子分開</li><li>應用：Ultrafiltration、Hemodialysis</li></ul></div><div class="qd">歷屆試題</div><div class="qc" data-qid="q1"><div class="qh"><span class="qn">Q1</span><span class="qy">107-1</span><span class="qs">下列粒徑大小何者不屬於膠體範圍？</span></div><div class="qo"><button class="op" onclick="answer(this,'correct')"><span class="ol">A</span>0.01 mm</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">B</span>10⁻⁶ m</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">C</span>0.01 μm</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">D</span>10⁻⁵ cm</button></div><div class="qf"><button class="be" onclick="toggleExp(this)">顯示詳解</button><button class="br" onclick="resetQ(this)">重置</button></div><div class="qe">✅ 答案：<strong>A（0.01 mm = 10 μm = 10,000 nm）</strong>｜膠體範圍 1 nm – 1 μm（1000 nm）。B = 1 μm（邊界）；C = 10 nm ✓；D = 100 nm ✓。</div><div class="nw"><textarea class="na" placeholder="📝 補充筆記…" data-key="col_q1"></textarea><br><button class="ns" onclick="saveNote(this)">儲存筆記</button><span class="nm">已儲存 ✓</span></div></div><div class="qc" data-qid="q2"><div class="qh"><span class="qn">Q2</span><span class="qy">106-2</span><span class="qs">Colloid 顆粒大小範圍為下列何者？</span></div><div class="qo"><button class="op" onclick="answer(this,'wrong')"><span class="ol">A</span>&lt; 0.01 nm</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">B</span>0.01–0.5 nm</button><button class="op" onclick="answer(this,'correct')"><span class="ol">C</span>2–500 nm</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">D</span>1–5 μm</button></div><div class="qf"><button class="be" onclick="toggleExp(this)">顯示詳解</button><button class="br" onclick="resetQ(this)">重置</button></div><div class="qe">✅ 答案：<strong>C（2–500 nm）</strong>｜膠體範圍為 1 nm–1 μm，選項 C 最符合（完全落在此範圍內）。</div><div class="nw"><textarea class="na" placeholder="📝 補充筆記…" data-key="col_q2"></textarea><br><button class="ns" onclick="saveNote(this)">儲存筆記</button><span class="nm">已儲存 ✓</span></div></div><div class="qc" data-qid="q3"><div class="qh"><span class="qn">Q3</span><span class="qy">109-2</span><span class="qs">將邊長 1 cm 的正立方體切割成邊長 0.1 μm 相同大小的正立方體，下列敘述何者正確？</span></div><div class="qo"><button class="op" onclick="answer(this,'wrong')"><span class="ol">A</span>比表面積是 6,000 cm⁻¹</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">B</span>可切割成 10⁹ 個邊長 0.1 μm 的正立方體</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">C</span>比表面積變為原來的 10,000 倍</button><button class="op" onclick="answer(this,'correct')"><span class="ol">D</span>切割後的粒徑大小屬於膠體</button></div><div class="qf"><button class="be" onclick="toggleExp(this)">顯示詳解</button><button class="br" onclick="resetQ(this)">重置</button></div><div class="qe">✅ 答案：<strong>D</strong>｜0.1 μm = 100 nm，落在膠體範圍（1 nm–1 μm）✓。A：Asp = 6/(0.1×10⁻⁴ cm) = 6×10⁵ cm⁻¹；B：(1 cm/0.1×10⁻⁴ cm)³ = 10¹⁵ 個，非 10⁹；C：原 Asp = 6/1，新 Asp = 6/(10⁻⁵)，增加 10⁵ 倍，非 10,000 倍。</div><div class="nw"><textarea class="na" placeholder="📝 補充筆記…" data-key="col_q3"></textarea><br><button class="ns" onclick="saveNote(this)">儲存筆記</button><span class="nm">已儲存 ✓</span></div></div><div class="qc" data-qid="q4"><div class="qh"><span class="qn">Q4</span><span class="qy">105-1</span><span class="qs">邊長為 10 μm 的立方固體，若分割形成邊長 100 nm 的微小立方體，比表面積增加幾倍？</span></div><div class="qo"><button class="op" onclick="answer(this,'wrong')"><span class="ol">A</span>1</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">B</span>10</button><button class="op" onclick="answer(this,'correct')"><span class="ol">C</span>100</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">D</span>1,000</button></div><div class="qf"><button class="be" onclick="toggleExp(this)">顯示詳解</button><button class="br" onclick="resetQ(this)">重置</button></div><div class="qe">✅ 答案：<strong>C（100 倍）</strong>｜Asp ∝ 1/邊長。原邊長 10 μm = 10,000 nm；新邊長 100 nm。比例 = 10,000/100 = 100 倍。</div><div class="nw"><textarea class="na" placeholder="📝 補充筆記…" data-key="col_q4"></textarea><br><button class="ns" onclick="saveNote(this)">儲存筆記</button><span class="nm">已儲存 ✓</span></div></div></div></div><div class="sec" id="s2"><div class="st open" onclick="toggleSec(this)"><span>🔬</span> 膠體系統類型 <span class="chev">▶</span></div><div class="sb open"><div class="ss"><div class="sh">依分散相與分散媒親和性分類</div><div class="tw"><table><tr><th>類型</th><th>特性</th><th>例子</th><th>電解質影響</th></tr><tr><td><span class="kw">親溶媒性膠體（Lyophilic）</span></td><td>分散相與分散媒有吸引力，產生媒合（solvation）；熱力學穩定系統</td><td>acacia、gelatin、insulin、albumin、starch、bentonite、povidone 分散於水；polystyrene 溶於苯</td><td>高濃度電解質 → 鹽析</td></tr><tr><td><span class="kw">厭溶媒性膠體（Lyophobic）</span></td><td>分散相對分散媒吸引力很小，粒子外圍無溶劑包覆；熱力學不穩定，需靠電荷安定</td><td>gum rubber、cholesterol、polystyrene 於水；acacia、gelatin 於非極性溶媒</td><td>極少量電解質就不穩定</td></tr><tr><td><span class="kw">結合膠體（Association colloid）</span></td><td>亦稱兩性膠體（amphiphilic），兼具 lyophilic 與 lyophobic；由≥50 個 surfactant 單體凝集成 micelle（直徑約 50 Å）；肉眼下澄清，屬單相系</td><td>界面活性劑水溶液超過 CMC 時</td><td>高濃度電解質 → 鹽析</td></tr></table></div></div><div class="ss"><div class="sh">親溶媒性膠體細分</div><ul class="nl"><li><strong>True solutions：</strong>水溶性高分子（acacia、povidone）</li><li><strong>Gelled solutions / gels / jellies：</strong>高濃度或降溫使溶解度降低而形成（gelatin 冷卻；MC 加熱）</li><li><strong>Particulate dispersions：</strong>不形成分子溶液，維持小而分散的粒子（bentonite、microcrystalline cellulose）</li></ul></div><div class="ss"><div class="sh">Micelle（微膠粒）與 CMC</div><div class="fm">CMC（Critical Micelle Concentration，臨界微膠粒濃度）：
+  濃度 &lt; CMC → surfactant 以單體存在（&lt; 膠體大小）
+  濃度 ≥ CMC → 自然凝集形成 micelle（結合膠體）
+
+光散射測 micelle 分子量：
+  H(c−cCMC)/(τ−τCMC) = 1/M + 2B(c−cCMC)
+  截距 → 分子量 M；斜率 B：
+    B = 0：非離子/兩性 micelle（無交互作用）
+    B &gt; 0：離子性 micelle（電荷排斥）
+    B &lt; 0：多分散系統</div></div><div class="qd">歷屆試題</div><div class="qc" data-qid="q5"><div class="qh"><span class="qn">Q5</span><span class="qy">101-2</span><span class="qs">乳漿劑（magma）是屬於下列何種分散系？</span></div><div class="qo"><button class="op" onclick="answer(this,'wrong')"><span class="ol">A</span>固體分散於固體</button><button class="op" onclick="answer(this,'correct')"><span class="ol">B</span>固體分散於液體</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">C</span>氣體分散於液體</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">D</span>液體分散於液體</button></div><div class="qf"><button class="be" onclick="toggleExp(this)">顯示詳解</button><button class="br" onclick="resetQ(this)">重置</button></div><div class="qe">✅ 答案：<strong>B</strong>｜Magma（乳漿劑）= 不溶性固體微粒子分散於液體（例：Bentonite magma、Milk of magnesia）。</div><div class="nw"><textarea class="na" placeholder="📝 補充筆記…" data-key="col_q5"></textarea><br><button class="ns" onclick="saveNote(this)">儲存筆記</button><span class="nm">已儲存 ✓</span></div></div><div class="qc" data-qid="q6"><div class="qh"><span class="qn">Q6</span><span class="qy">105-1</span><span class="qs">有關 aluminum hydroxide gel 分散系性質之敘述，下列何者正確？</span></div><div class="qo"><button class="op" onclick="answer(this,'wrong')"><span class="ol">A</span>具高滲透壓</button><button class="op" onclick="answer(this,'correct')"><span class="ol">B</span>粒子行布朗運動</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">C</span>擴散速度較溶液劑大</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">D</span>粒子會沉降</button></div><div class="qf"><button class="be" onclick="toggleExp(this)">顯示詳解</button><button class="br" onclick="resetQ(this)">重置</button></div><div class="qe">✅ 答案：<strong>B</strong>｜Al(OH)₃ gel 為膠體 → 粒子進行布朗運動 ✓。A：膠體滲透壓低；C：擴散速度比真溶液小；D：膠體粒子因布朗運動不易沉降（懸浮）。</div><div class="nw"><textarea class="na" placeholder="📝 補充筆記…" data-key="col_q6"></textarea><br><button class="ns" onclick="saveNote(this)">儲存筆記</button><span class="nm">已儲存 ✓</span></div></div><div class="qc" data-qid="q7"><div class="qh"><span class="qn">Q7</span><span class="qy">101-2</span><span class="qs">有關 sterile epinephrine suspension 分散系性質之敘述，下列何者正確？</span></div><div class="qo"><button class="op" onclick="answer(this,'wrong')"><span class="ol">A</span>具高滲透壓</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">B</span>粒子具布朗運動</button><button class="op" onclick="answer(this,'correct')"><span class="ol">C</span>粒子會沉降</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">D</span>粒子擴散速度較溶液劑大</button></div><div class="qf"><button class="be" onclick="toggleExp(this)">顯示詳解</button><button class="br" onclick="resetQ(this)">重置</button></div><div class="qe">✅ 答案：<strong>C</strong>｜Suspension（粗分散系，&gt;1 μm）→ 粒子因重力沉降 ✓。布朗運動不明顯；擴散速度&lt;溶液劑。</div><div class="nw"><textarea class="na" placeholder="📝 補充筆記…" data-key="col_q7"></textarea><br><button class="ns" onclick="saveNote(this)">儲存筆記</button><span class="nm">已儲存 ✓</span></div></div></div></div><div class="sec" id="s3"><div class="st open" onclick="toggleSec(this)"><span>💡</span> 膠體的光學性質 <span class="chev">▶</span></div><div class="sb open"><div class="ss"><div class="sh">Faraday-Tyndall Effect（法拉第-丁達爾效應）</div><ul class="nl"><li>一束強光通過膠體溶液 → 光被膠體粒子<strong>散射</strong> → 產生可見光錐</li><li>粒子大小 &gt; 入射光波長 → 光<strong>反射</strong>；粒子大小 &lt; 入射光波長 → 光<strong>散射</strong></li><li>可見光波長：400–700 nm</li><li>真溶液：太小，散射強度弱；粗分散系：太大，只反射</li></ul></div><div class="ss"><div class="sh">光散射測分子量</div><div class="fm">Hc/τ = 1/M + 2Bc
+
+τ：渾濁度（cm⁻¹）；c：溶質濃度（g/cm³）
+M：平均分子量；B：交互作用常數
+H = 32π³n²(dn/dc)²/(2λ⁴N)
+
+以 Hc/τ（Y軸）對 c（X軸）作圖：
+  截距 = 1/M → 求分子量
+  斜率 = 2B → 看交互作用</div></div><div class="qd">歷屆試題</div><div class="qc" data-qid="q8"><div class="qh"><span class="qn">Q8</span><span class="qy">108-2</span><span class="qs">皂土溶液其扁平質粒（platelet）利用下列何項效應可觀察到其布朗運動？</span></div><div class="qo"><button class="op" onclick="answer(this,'correct')"><span class="ol">A</span>丁達爾（Tyndall）</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">B</span>擴散</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">C</span>滲透</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">D</span>電泳</button></div><div class="qf"><button class="be" onclick="toggleExp(this)">顯示詳解</button><button class="br" onclick="resetQ(this)">重置</button></div><div class="qe">✅ 答案：<strong>A（Tyndall effect）</strong>｜Tyndall 效應可在顯微鏡下藉光散射觀察到膠體粒子（包含 bentonite platelet）的布朗運動軌跡。</div><div class="nw"><textarea class="na" placeholder="📝 補充筆記…" data-key="col_q8"></textarea><br><button class="ns" onclick="saveNote(this)">儲存筆記</button><span class="nm">已儲存 ✓</span></div></div></div></div><div class="sec" id="s4"><div class="st open" onclick="toggleSec(this)"><span>⚡</span> 膠體的動力學性質 <span class="chev">▶</span></div><div class="sb open"><div class="ss"><div class="sh">布朗運動（Brownian Motion）</div><ul class="nl"><li>Robert Brown 提出：&lt;5 μm 之粒子在顯微鏡下可見不規則運動</li><li>液體分子不斷隨機碰撞膠體粒子 → 連續不規則運動</li><li>影響因素：<span class="kw">與濃度無關</span>；溫度↑ → 位移↑；粒徑↑ → 位移↓；黏度↑ → 位移↓</li></ul></div><div class="ss"><div class="sh">擴散（Diffusion）</div><div class="fm">Fick's First Law：
+  J = dM/(S·dt) = −D·(dC/dx)
+
+擴散係數 D = kT/(6πrη) = RT/(6πrηN)
+
+由 D 計算球形分子量：
+  D = RT/(6πηN) · ∛(3/(4πN) · 1/M · 1/v)
+
+擴散速率 ∝ 溫度↑、粒子↓
+擴散速率 ∝ 1/黏度、1/粒子大小</div></div><div class="ss"><div class="sh">滲透壓（Osmotic Pressure）</div><div class="fm">理想稀薄溶液：π = cRT = (cg/M)RT
+  → π/cg = RT/M
+
+聚合物（考慮交互作用）：
+  π/cg = RT/M + RTBcg
+  截距（RT/M）→ 求 M
+  斜率（RTB）→ 看溶質-溶劑交互作用
+
+  B &gt; 0：溶劑-溶質引力 &gt; 溶質間引力（媒合良好）
+  B = 0：理想溶液
+  B &lt; 0：溶質間引力 &gt; 溶劑-溶質（會沉澱）</div><div class="ca"><strong>注意：</strong>滲透壓法只適用於<strong>親溶媒系統</strong>（大分子溶液或 surfactant micelle）；厭溶媒系統之滲透壓不易準確測量。</div></div><div class="ss"><div class="sh">沉降作用（Sedimentation）</div><div class="fm">Stokes' Law（假設球形粒子、層流、稀薄分散系）：
+  v = 2r²(ρ−ρ₀)g / 9η
+    = d²(ρ−ρ₀)g / 18η
+
+r：半徑  ρ：粒子密度  ρ₀：液體密度
+g：重力加速度  η：液體黏滯係數
+
+臨界半徑（critical radius）：
+  布朗運動位移 = 沉降向下位移 時的半徑
+  影響因素：溫度、重力、黏度（與分配係數無關）
+
+Reynolds number Re = vdρ₀/η
+  Re &gt; 0.2 → 亂流 → 不適用 Stokes' law</div></div><div class="ss"><div class="sh">黏度（Viscosity）</div><div class="fm">Einstein viscosity equation（球形膠體）：
+  η = η₀(1 + 2.5φ)
+  η/η₀ = relative viscosity
+  (η−η₀)/η₀ = specific viscosity
+  reduced viscosity = specific viscosity/c → 理想值 2.5
+  intrinsic viscosity [η] = lim(c→0) reduced viscosity
+
+形狀影響：
+  球形 → 較低黏度
+  線形（rod/fiber）→ 較高黏度
+
+應用：血漿替代劑（dextran、hydroxyethyl starch、gelatin）</div></div><div class="qd">歷屆試題</div><div class="qc" data-qid="q9"><div class="qh"><span class="qn">Q9</span><span class="qy">109-1</span><span class="qs">膠體粒子布朗運動的位移與下列何項因素無關？</span></div><div class="qo"><button class="op" onclick="answer(this,'correct')"><span class="ol">A</span>濃度</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">B</span>絕對溫度</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">C</span>粒徑</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">D</span>液體黏稠度</button></div><div class="qf"><button class="be" onclick="toggleExp(this)">顯示詳解</button><button class="br" onclick="resetQ(this)">重置</button></div><div class="qe">✅ 答案：<strong>A（濃度）</strong>｜布朗運動位移 x = √(2Dt)，D = kT/(6πrη)，故與溫度、粒徑、黏度有關，<strong>與濃度無關</strong>。</div><div class="nw"><textarea class="na" placeholder="📝 補充筆記…" data-key="col_q9"></textarea><br><button class="ns" onclick="saveNote(this)">儲存筆記</button><span class="nm">已儲存 ✓</span></div></div><div class="qc" data-qid="q10"><div class="qh"><span class="qn">Q10</span><span class="qy">107-2</span><span class="qs">利用滲透壓儀器測量，以 π/C 為縱軸對溶質濃度(C)作圖時，截距相同而斜率越大者，代表溶質與溶媒的：</span></div><div class="qo"><button class="op" onclick="answer(this,'correct')"><span class="ol">A</span>吸引力越大</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">B</span>吸引力越小</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">C</span>排斥力越大</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">D</span>排斥力與吸引力相等</button></div><div class="qf"><button class="be" onclick="toggleExp(this)">顯示詳解</button><button class="br" onclick="resetQ(this)">重置</button></div><div class="qe">✅ 答案：<strong>A</strong>｜斜率 = RTB，B &gt; 0 且越大 → 溶劑-溶質間吸引力越大（媒合越好）。</div><div class="nw"><textarea class="na" placeholder="📝 補充筆記…" data-key="col_q10"></textarea><br><button class="ns" onclick="saveNote(this)">儲存筆記</button><span class="nm">已儲存 ✓</span></div></div><div class="qc" data-qid="q11"><div class="qh"><span class="qn">Q11</span><span class="qy">104-2</span><span class="qs">利用滲透壓儀器測量，以 π/C（Y軸）對溶質濃度（C）（X軸）作圖之斜率為 &gt;0 時，代表溶質與溶媒之間何種力量較大？</span></div><div class="qo"><button class="op" onclick="answer(this,'wrong')"><span class="ol">A</span>排斥力</button><button class="op" onclick="answer(this,'correct')"><span class="ol">B</span>吸引力</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">C</span>凡得瓦爾力</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">D</span>滲透力</button></div><div class="qf"><button class="be" onclick="toggleExp(this)">顯示詳解</button><button class="br" onclick="resetQ(this)">重置</button></div><div class="qe">✅ 答案：<strong>B（吸引力）</strong>｜斜率 RTB &gt; 0 → B &gt; 0 → 溶劑-溶質吸引力大於溶質間引力 → 吸引力較大。</div><div class="nw"><textarea class="na" placeholder="📝 補充筆記…" data-key="col_q11"></textarea><br><button class="ns" onclick="saveNote(this)">儲存筆記</button><span class="nm">已儲存 ✓</span></div></div><div class="qc" data-qid="q12"><div class="qh"><span class="qn">Q12</span><span class="qy">109-1</span><span class="qs">以沉降速率法測量藥物粉末之粒徑時，下列敘述何者正確？</span></div><div class="qo"><button class="op" onclick="answer(this,'wrong')"><span class="ol">A</span>測定原理與 Smoluchowski equation 有關</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">B</span>粒徑平方與分散媒液之黏度成反比</button><button class="op" onclick="answer(this,'correct')"><span class="ol">C</span>測量粉末粒徑時，需先得知其密度</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">D</span>一般檢測時常用之儀器為立體雷射攝影機</button></div><div class="qf"><button class="be" onclick="toggleExp(this)">顯示詳解</button><button class="br" onclick="resetQ(this)">重置</button></div><div class="qe">✅ 答案：<strong>C</strong>｜Stokes' law 中 v = d²(ρ−ρ₀)g/18η，計算粒徑 d 需知道 ρ（粒子密度）和 ρ₀（媒液密度）✓。A：Stokes' law，非 Smoluchowski；B：d² ∝ η（成正比）；D：Andreasen pipette。</div><div class="nw"><textarea class="na" placeholder="📝 補充筆記…" data-key="col_q12"></textarea><br><button class="ns" onclick="saveNote(this)">儲存筆記</button><span class="nm">已儲存 ✓</span></div></div><div class="qc" data-qid="q13"><div class="qh"><span class="qn">Q13</span><span class="qy">101-2</span><span class="qs">依據 Stokes' 方程式，下列何項數值變小，可促進懸液劑中質粒的沉降速率？</span></div><div class="qo"><button class="op" onclick="answer(this,'wrong')"><span class="ol">A</span>質粒的平均粒徑</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">B</span>質粒的密度</button><button class="op" onclick="answer(this,'correct')"><span class="ol">C</span>分散介質的黏稠度</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">D</span>分散介質的溫度</button></div><div class="qf"><button class="be" onclick="toggleExp(this)">顯示詳解</button><button class="br" onclick="resetQ(this)">重置</button></div><div class="qe">✅ 答案：<strong>C</strong>｜v = d²(ρ−ρ₀)g/18η → η↓ → v↑（沉降加快）。A/B 變小則 v 變小。D：溫度↑→η↓→v↑，溫度變小則沉降變慢。</div><div class="nw"><textarea class="na" placeholder="📝 補充筆記…" data-key="col_q13"></textarea><br><button class="ns" onclick="saveNote(this)">儲存筆記</button><span class="nm">已儲存 ✓</span></div></div><div class="qc" data-qid="q14"><div class="qh"><span class="qn">Q14</span><span class="qy">111-1</span><span class="qs">分散系統遵循 Einstein viscosity equation，其理想之 reduced viscosity 值應為何？</span></div><div class="qo"><button class="op" onclick="answer(this,'wrong')"><span class="ol">A</span>0</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">B</span>1.0</button><button class="op" onclick="answer(this,'correct')"><span class="ol">C</span>2.5</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">D</span>5.0</button></div><div class="qf"><button class="be" onclick="toggleExp(this)">顯示詳解</button><button class="br" onclick="resetQ(this)">重置</button></div><div class="qe">✅ 答案：<strong>C（2.5）</strong>｜Einstein 方程式 η/η₀ = 1 + 2.5φ，故 specific viscosity/φ（reduced viscosity）理想值 = 2.5。</div><div class="nw"><textarea class="na" placeholder="📝 補充筆記…" data-key="col_q14"></textarea><br><button class="ns" onclick="saveNote(this)">儲存筆記</button><span class="nm">已儲存 ✓</span></div></div><div class="qc" data-qid="q15"><div class="qh"><span class="qn">Q15</span><span class="qy">109-1</span><span class="qs">依據愛因斯坦黏滯係數方程式，溶液的黏稠度除以溶劑的黏稠度，其比值稱為：</span></div><div class="qo"><button class="op" onclick="answer(this,'correct')"><span class="ol">A</span>relative viscosity</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">B</span>reduced viscosity</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">C</span>specific viscosity</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">D</span>intrinsic viscosity</button></div><div class="qf"><button class="be" onclick="toggleExp(this)">顯示詳解</button><button class="br" onclick="resetQ(this)">重置</button></div><div class="qe">✅ 答案：<strong>A（relative viscosity）</strong>｜η/η₀ = relative viscosity（相對黏度）。Specific viscosity = (η−η₀)/η₀；Reduced viscosity = specific viscosity/c；Intrinsic viscosity = lim(c→0) reduced viscosity。</div><div class="nw"><textarea class="na" placeholder="📝 補充筆記…" data-key="col_q15"></textarea><br><button class="ns" onclick="saveNote(this)">儲存筆記</button><span class="nm">已儲存 ✓</span></div></div></div></div><div class="sec" id="s5"><div class="st open" onclick="toggleSec(this)"><span>⚡</span> 膠體的電性 <span class="chev">▶</span></div><div class="sb open"><div class="ss"><div class="sh">電性雙層（Electric Double Layer）</div><ul class="nl"><li>膠體粒子帶電原因：① 選擇性吸附溶液中特定離子；② 表面基團（如 −COOH）離子化</li><li><span class="kw">緊密結合層</span>（Stern layer）：緊密結合的溶劑分子與反離子（counter ions / gegenions）</li><li><span class="kw">擴散層</span>（Diffuse/Mobile layer）：可移動層</li></ul><div class="tw"><table><tr><th>電位名稱</th><th>定義</th><th>大小關係</th></tr><tr><td>Nernst potential（E，電熱力學電位）</td><td>實際表面與電中性區之電位差</td><td>最大</td></tr><tr><td>Zeta potential（ζ）</td><td>緊密結合層表面（滑動面）與電中性區之電位差</td><td>中間（E &gt; ζ）</td></tr></table></div><div class="ca"><strong>Zeta potential 的重要性：</strong><br>ζ 高 → 粒子間排斥力強 → 系統安定（去凝絮）<br>ζ 低（&lt;引力）→ 粒子凝集（凝絮）<br>但 ζ 太高 → 動能過大，相撞也可能沉澱</div></div><div class="ss"><div class="sh">電泳（Electrophoresis）</div><div class="fm">帶電粒子在外加電位差下，往相反電荷電極移動
+
+ζ = (v/E) × (4πη/ε) × (9×10⁴)    [ζ in volts]
+v/E = mobility（移動性）
+
+20°C 水性系統：ζ ≈ 141(v/E)</div></div><div class="ss"><div class="sh">AgI 膠體帶電示例</div><ul class="nl"><li>KI 加入 AgNO₃（Ag⁺ 過量）→ AgI 粒子吸附 Ag⁺ → <span class="kw">帶正電膠體</span></li><li>AgNO₃ 加入 NaI（I⁻ 過量）→ AgI 粒子吸附 I⁻ → <span class="kw">帶負電膠體</span></li></ul></div><div class="qd">歷屆試題</div><div class="qc" data-qid="q16"><div class="qh"><span class="qn">Q16</span><span class="qy">109-2</span><span class="qs">硝酸銀與氯化鈉水溶液的沉澱反應，若氯化鈉為過量，則沉澱質粒將帶何種電荷？</span></div><div class="qo"><button class="op" onclick="answer(this,'wrong')"><span class="ol">A</span>Ag⁺</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">B</span>Na⁺</button><button class="op" onclick="answer(this,'correct')"><span class="ol">C</span>Cl⁻</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">D</span>NO₃⁻</button></div><div class="qf"><button class="be" onclick="toggleExp(this)">顯示詳解</button><button class="br" onclick="resetQ(this)">重置</button></div><div class="qe">✅ 答案：<strong>C（Cl⁻）</strong>｜NaCl 過量 → Cl⁻ 過量 → AgCl 沉澱粒子選擇性吸附過量的 Cl⁻ → 帶負電。電位決定離子為構成晶格的離子（此處為 Cl⁻）。</div><div class="nw"><textarea class="na" placeholder="📝 補充筆記…" data-key="col_q16"></textarea><br><button class="ns" onclick="saveNote(this)">儲存筆記</button><span class="nm">已儲存 ✓</span></div></div><div class="qc" data-qid="q17"><div class="qh"><span class="qn">Q17</span><span class="qy">107-2</span><span class="qs">膠體質粒的電位分別以甲（Zeta 電位）、乙（表面電位）與丙（電性雙層界限電位）表示之，則三者大小關係何者正確？</span></div><div class="qo"><button class="op" onclick="answer(this,'wrong')"><span class="ol">A</span>甲>乙>丙</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">B</span>甲>丙>乙</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">C</span>乙>丙>甲</button><button class="op" onclick="answer(this,'correct')"><span class="ol">D</span>乙>甲>丙</button></div><div class="qf"><button class="be" onclick="toggleExp(this)">顯示詳解</button><button class="br" onclick="resetQ(this)">重置</button></div><div class="qe">✅ 答案：<strong>D（乙>甲>丙）</strong>｜乙 = Nernst potential（最大）&gt; 甲 = Zeta potential（中間）&gt; 丙 = 雙層界限（接近零）。</div><div class="nw"><textarea class="na" placeholder="📝 補充筆記…" data-key="col_q17"></textarea><br><button class="ns" onclick="saveNote(this)">儲存筆記</button><span class="nm">已儲存 ✓</span></div></div></div></div><div class="sec" id="s6"><div class="st open" onclick="toggleSec(this)"><span>🛡️</span> 膠體系統安定性：親溶媒性膠體 <span class="chev">▶</span></div><div class="sb open"><div class="ss"><div class="sh">影響親溶媒膠體安定性之因素</div><ul class="nl"><li><strong>1. 溫度：</strong>改變溫度 → 聚合物相分離 → 凝膠化（gelation）或溶化（sol）</li><li class="ca" style="list-style:none;margin-left:-1rem;padding:.5rem .8rem;margin-bottom:.3rem"><strong>例：Plastibase®</strong>（5% polyethylene + 95% mineral oil）<br>・&gt;90°C：polyethylene 溶於 mineral oil → 液狀<br>・&lt;90°C：polyethylene 沉澱析出 → 凝膠<br>・口內膏（Orabase）= Plastibase + sodium CMC + pectin + gelatin</li><li><strong>2. 非溶媒性液體：</strong>加入可與溶媒混合但不溶聚合物之液體 → 降低溶解度 → 沉澱/凝膠化（ex：乙醇於聚電解質水溶液）；加水可逆轉</li><li><strong>3. 相反電荷之膠體（Coacervation，共聚作用）：</strong>正與負電荷親水性膠體混合 → 巨分子分離為兩液層</li></ul><div class="ca"><strong>Coacervation 應用 — sulfamethoxazole microcapsule：</strong><br>帶正電的 gelatin + 帶負電的 acacia → coacervation → 包覆 sulfamethoxazole 製備微膠囊<br><span style="font-size:.82rem;opacity:.8">（H. Takenaka, Y. Kawashima, S.Y. Lin, J.P.S. 69, 513, 1980）</span><br><br>目的：sulfamethoxazole 味苦 → 以 gelatin/acacia coacervate 包覆 → <strong>taste masking（遮味）</strong></div><ul class="nl"><li><strong>4. 鹽類（鹽析）：</strong>高度水合性鹽類溶解後緊繫住水 → 供聚合物溶解之水減少 → 沉澱/凝膠化</li></ul></div><div class="ss"><div class="sh">Hofmeister / Lyotropic Series（鹽析能力）</div><div class="fm">陽離子（鹽析能力）：Li⁺ > Na⁺ > K⁺ > NH₄⁺ > Rb⁺ > Cs⁺
+                     Mg²⁺ > Ca²⁺ > Sr²⁺ > Ba²⁺
+
+陰離子（鹽析能力）：
+F⁻ > Citrate³⁻ > HPO₄²⁻ > tartrate²⁻ > SO₄²⁻ > acetate⁻
+  > Cl⁻ > NO₃⁻ > ClO₃⁻ > Br⁻ > ClO₄⁻ > I⁻ > SCN⁻
+
+水合程度越高 → 鹽析能力越強</div></div><div class="ss"><div class="sh">親溶媒膠體安定化方法</div><ul class="nl"><li>減少外界環境造成之溶解度變化</li><li>增加連續相黏度 → 阻止布朗運動碰撞造成凝集（Stokes' law：η↑ → v↓）</li></ul></div><div class="qd">歷屆試題</div><div class="qc" data-qid="q18"><div class="qh"><span class="qn">Q18</span><span class="qy">101-1</span><span class="qs">下列何者能最有效的使親水性膠體產生沈澱、鹽析等反應？</span></div><div class="qo"><button class="op" onclick="answer(this,'correct')"><span class="ol">A</span>citrate</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">B</span>tartrate</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">C</span>acetate</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">D</span>nitrate</button></div><div class="qf"><button class="be" onclick="toggleExp(this)">顯示詳解</button><button class="br" onclick="resetQ(this)">重置</button></div><div class="qe">✅ 答案：<strong>A（citrate）</strong>｜Hofmeister series 陰離子鹽析能力：F⁻ &gt; Citrate³⁻ &gt; HPO₄²⁻ &gt; tartrate²⁻ &gt; SO₄²⁻ &gt; acetate⁻ &gt; Cl⁻ &gt; NO₃⁻…，citrate 鹽析能力 &gt; tartrate &gt; acetate &gt; nitrate。</div><div class="nw"><textarea class="na" placeholder="📝 補充筆記…" data-key="col_q18"></textarea><br><button class="ns" onclick="saveNote(this)">儲存筆記</button><span class="nm">已儲存 ✓</span></div></div><div class="qc" data-qid="q19"><div class="qh"><span class="qn">Q19</span><span class="qy">102-2</span><span class="qs">下列何者增加親水性膠體（colloidal）粒子之安定性？</span></div><div class="qo"><button class="op" onclick="answer(this,'wrong')"><span class="ol">A</span>增加粒徑大小</button><button class="op" onclick="answer(this,'correct')"><span class="ol">B</span>增加連續相黏度</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">C</span>增加粒子密度</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">D</span>增加重力</button></div><div class="qf"><button class="be" onclick="toggleExp(this)">顯示詳解</button><button class="br" onclick="resetQ(this)">重置</button></div><div class="qe">✅ 答案：<strong>B</strong>｜連續相黏度↑ → Stokes 沉降速率↓；同時布朗運動碰撞頻率↓ → 安定性↑。A/C/D 均使沉降加快。</div><div class="nw"><textarea class="na" placeholder="📝 補充筆記…" data-key="col_q19"></textarea><br><button class="ns" onclick="saveNote(this)">儲存筆記</button><span class="nm">已儲存 ✓</span></div></div></div></div><div class="sec" id="s7"><div class="st open" onclick="toggleSec(this)"><span>⚠️</span> 膠體系統安定性：厭溶媒性膠體 <span class="chev">▶</span></div><div class="sb open"><div class="ss"><div class="sh">影響厭溶媒膠體安定性之因素</div><ul class="nl"><li><strong>1. 溫度、非溶媒液體、鹽類：</strong>同親溶媒膠體，但更敏感（極少量電解質就不穩）</li><li><strong>2. 電荷（最重要）：</strong>粒子表面電荷 → 彼此排斥 → 安定；Zeta potential 越高越安定（但太高反而因動能大而相撞沉澱）</li><li>加入相反電荷鹽類 → Zeta potential↓ → 凝集</li></ul></div><div class="ss"><div class="sh">Schulze-Hardy Rule（DLVO 理論）</div><div class="fm">凝集能力隨對等離子（counter ion）價數增加而急劇增加
+
+最小凝集濃度（MCC）比例：
+  一價 : 二價 : 三價 = 1/1⁶ : 1/2⁶ : 1/3⁶
+               = 100  :  1.6  :  0.14
+
+例：帶負電金膠溶體（gold sol）之 MCC：
+  一價陽離子（Na⁺, K⁺）：avg 24 mmol/L
+  二價陽離子（Ca²⁺, Ba²⁺, Mg²⁺）：avg 0.38 mmol/L
+  三價陽離子（Al³⁺, Ce³⁺, Cr³⁺）：avg 0.0325 mmol/L
+
+同價數離子：水合程度越低 → 越靠近膠體表面 → 凝集能力越強
+  e.g. Cs⁺ 水合殼較小 → 比 Li⁺ 更靠近表面 → Cs⁺ 凝集能力 &gt; Li⁺</div></div><div class="qd">歷屆試題</div><div class="qc" data-qid="q20"><div class="qh"><span class="qn">Q20</span><span class="qy">106-2</span><span class="qs">使帶負電之金膠溶體產生凝結所需添加之陽離子最小凝結濃度，下列何者正確？</span></div><div class="qo"><button class="op" onclick="answer(this,'correct')"><span class="ol">A</span>Na⁺ > Al³⁺</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">B</span>Al³⁺ > Ca²⁺</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">C</span>Mg²⁺ > Ca²⁺</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">D</span>Mg²⁺ > Na⁺</button></div><div class="qf"><button class="be" onclick="toggleExp(this)">顯示詳解</button><button class="br" onclick="resetQ(this)">重置</button></div><div class="qe">✅ 答案：<strong>A（Na⁺ > Al³⁺）</strong>｜價數越高，MCC 越低（越少量就能凝集）→ Al³⁺（三價）MCC &lt; Ca²⁺（二價）&lt; Na⁺（一價）。所以 Na⁺ 所需濃度 &gt; Al³⁺ 是正確的。B/D 相反；C：同為二價，Mg²⁺ 與 Ca²⁺ MCC 相近（Mg²⁺ 水合程度較高 → 凝集力稍弱 → MCC 稍大，選項錯誤表達大小關係）。</div><div class="nw"><textarea class="na" placeholder="📝 補充筆記…" data-key="col_q20"></textarea><br><button class="ns" onclick="saveNote(this)">儲存筆記</button><span class="nm">已儲存 ✓</span></div></div><div class="qc" data-qid="q21"><div class="qh"><span class="qn">Q21</span><span class="qy">104-1</span><span class="qs">下列何種鹽類造成金溶媒系統顏色改變之所需濃度為最小？</span></div><div class="qo"><button class="op" onclick="answer(this,'wrong')"><span class="ol">A</span>NaCl</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">B</span>K₂SO₄</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">C</span>CaCl₂</button><button class="op" onclick="answer(this,'correct')"><span class="ol">D</span>Al₂(SO₄)₃</button></div><div class="qf"><button class="be" onclick="toggleExp(this)">顯示詳解</button><button class="br" onclick="resetQ(this)">重置</button></div><div class="qe">✅ 答案：<strong>D（Al₂(SO₄)₃）</strong>｜提供 Al³⁺（三價），MCC 最低（約 0.0325 mmol/L），最少量即可凝集改變顏色。</div><div class="nw"><textarea class="na" placeholder="📝 補充筆記…" data-key="col_q21"></textarea><br><button class="ns" onclick="saveNote(this)">儲存筆記</button><span class="nm">已儲存 ✓</span></div></div><div class="qc" data-qid="q22"><div class="qh"><span class="qn">Q22</span><span class="qy">101-1</span><span class="qs">下列鹽類何者在最少量時，即可造成帶負電荷的金膠溶體產生凝結？</span></div><div class="qo"><button class="op" onclick="answer(this,'wrong')"><span class="ol">A</span>氯化鈉</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">B</span>鹽酸嗎啡</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">C</span>氯化鈣</button><button class="op" onclick="answer(this,'correct')"><span class="ol">D</span>硫酸鋁</button></div><div class="qf"><button class="be" onclick="toggleExp(this)">顯示詳解</button><button class="br" onclick="resetQ(this)">重置</button></div><div class="qe">✅ 答案：<strong>D（硫酸鋁 → Al³⁺，三價）</strong>｜三價陽離子凝集能力最強（MCC 最低）。</div><div class="nw"><textarea class="na" placeholder="📝 補充筆記…" data-key="col_q22"></textarea><br><button class="ns" onclick="saveNote(this)">儲存筆記</button><span class="nm">已儲存 ✓</span></div></div></div></div><div class="sec" id="s8"><div class="st open" onclick="toggleSec(this)"><span>🔒</span> 厭溶媒膠體之安定化 <span class="chev">▶</span></div><div class="sb open"><div class="ss"><div class="sh">三種安定化方式</div><div class="tw"><table><tr><th>方法</th><th>說明</th><th>例子</th></tr><tr><td><span class="kw">1. Charge stabilization</span></td><td>使粒子帶電荷 → Zeta potential↑ → 排斥力↑</td><td>加入離子性界面活性劑或鹽類</td></tr><tr><td><span class="kw">2. Steric stabilization</span></td><td>非離子性界面活性劑：碳氫部分吸附在粒子表面，polyoxyethylene 部分與水形成氫鍵 → 空間障蔽</td><td>Poloxamer、Tween</td></tr><tr><td><span class="kw">3. Protective colloidal action</span></td><td>以親水性膠體（保護性膠體）包圍厭水性粒子 → 障蔽 + 增加黏度 → 減少碰撞凝集</td><td>Gold Au¹⁹⁸ injection 加 gelatin</td></tr></table></div></div><div class="ss"><div class="sh">保護性膠體作用 vs 敏感化（Sensitization）</div><div class="tw"><table><tr><th>情形</th><th>濃度</th><th>結果</th></tr><tr><td>保護性膠體作用</td><td>大量親水性膠體</td><td>完整覆蓋粒子表面 → 障蔽 → 安定</td></tr><tr><td>Sensitization（敏感化）</td><td>低濃度親水性膠體</td><td>無法完全覆蓋 → 同一高分子同時被兩粒子吸著 → 橋接 → 凝聚（反而加速沉降）</td></tr></table></div></div><div class="ss"><div class="sh">保護性膠體金數（Gold Number）</div><div class="fm">定義：在 10 mL gold sol 中加入 1 mL 10% NaCl 溶液，
+阻止顏色由紅色→藍紫色（凝結）所需保護性膠體之
+最小重量（mg）
 
 金數越小 → 保護能力越強
 
-保護性膠體種類：
-  蛋白質：albumin, gelatin
-  多醣：acacia, tragacanth, pectin
-  纖維素衍生物：methylcellulose, HPMC
-  合成聚合物：PEG, PVP
-  
-例：Gold Au-198 injection（放射性膠體金）加 gelatin 當保護性膠體</div>
-</div>
+常見保護性膠體種類：
+  蛋白質類：albumin、gelatin
+  多醣類：gum、acacia、tragacanth、pectin
+  可溶性纖維衍生物：methylcellulose、hydroxypropyl cellulose
+  合成聚合物：polyethylene glycol、polyvinylpyrrolidone</div></div><div class="qd">歷屆試題</div><div class="qc" data-qid="q23"><div class="qh"><span class="qn">Q23</span><span class="qy">103-2</span><span class="qs">有些 polymer 在高濃度時對厭水性膠體有保護作用，但在低濃度時，反而促進凝結（coagulation），此種現象稱為：</span></div><div class="qo"><button class="op" onclick="answer(this,'correct')"><span class="ol">A</span>Sensitization</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">B</span>Steric stabilization</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">C</span>Charge stabilization</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">D</span>Protective action</button></div><div class="qf"><button class="be" onclick="toggleExp(this)">顯示詳解</button><button class="br" onclick="resetQ(this)">重置</button></div><div class="qe">✅ 答案：<strong>A（Sensitization）</strong>｜低濃度親水性膠體無法完全覆蓋厭水性粒子 → 同一高分子橋接多個粒子 → 凝聚（敏感化）。</div><div class="nw"><textarea class="na" placeholder="📝 補充筆記…" data-key="col_q23"></textarea><br><button class="ns" onclick="saveNote(this)">儲存筆記</button><span class="nm">已儲存 ✓</span></div></div><div class="qc" data-qid="q24"><div class="qh"><span class="qn">Q24</span><span class="qy">109-2</span><span class="qs">所謂金數是指為防止因加入甲 cm³ 之乙 % 氯化鈉而使丙 cm³ 的紅色金膠溶體凝聚變為藍色，所需的乾燥聚合物的最小重量單位為丁，則下列何者正確？</span></div><div class="qo"><button class="op" onclick="answer(this,'wrong')"><span class="ol">A</span>甲是 10</button><button class="op" onclick="answer(this,'correct')"><span class="ol">B</span>乙是 10</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">C</span>丙是 1</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">D</span>丁是 g</button></div><div class="qf"><button class="be" onclick="toggleExp(this)">顯示詳解</button><button class="br" onclick="resetQ(this)">重置</button></div><div class="qe">✅ 答案：<strong>B（乙是 10）</strong>｜標準：10 mL gold sol + 1 mL <strong>10%</strong> NaCl。甲 = 1（mL NaCl）；乙 = 10（%）✓；丙 = 10（mL gold sol）；丁 = mg。</div><div class="nw"><textarea class="na" placeholder="📝 補充筆記…" data-key="col_q24"></textarea><br><button class="ns" onclick="saveNote(this)">儲存筆記</button><span class="nm">已儲存 ✓</span></div></div><div class="qc" data-qid="q25"><div class="qh"><span class="qn">Q25</span><span class="qy">102-2</span><span class="qs">下列有關金數（gold number）之敘述，何者正確？</span></div><div class="qo"><button class="op" onclick="answer(this,'wrong')"><span class="ol">A</span>添加一物質防止金膠變成紅色</button><button class="op" onclick="answer(this,'correct')"><span class="ol">B</span>添加一物質防止金膠變成藍色</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">C</span>添加一相反電荷離子防止金膠變成黑色</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">D</span>添加一相反電荷離子防止金膠變成黃色</button></div><div class="qf"><button class="be" onclick="toggleExp(this)">顯示詳解</button><button class="br" onclick="resetQ(this)">重置</button></div><div class="qe">✅ 答案：<strong>B</strong>｜金數 = 防止 gold sol 由紅色→<strong>藍紫色</strong>（凝結色）所需保護性膠體最小量（mg）。</div><div class="nw"><textarea class="na" placeholder="📝 補充筆記…" data-key="col_q25"></textarea><br><button class="ns" onclick="saveNote(this)">儲存筆記</button><span class="nm">已儲存 ✓</span></div></div><div class="qc" data-qid="q26"><div class="qh"><span class="qn">Q26</span><span class="qy">102-2</span><span class="qs">下列何者為金數（gold number）的正確單位？</span></div><div class="qo"><button class="op" onclick="answer(this,'wrong')"><span class="ol">A</span>μg</button><button class="op" onclick="answer(this,'correct')"><span class="ol">B</span>mg</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">C</span>mg/cm³</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">D</span>g</button></div><div class="qf"><button class="be" onclick="toggleExp(this)">顯示詳解</button><button class="br" onclick="resetQ(this)">重置</button></div><div class="qe">✅ 答案：<strong>B（mg）</strong>｜金數單位為 mg（毫克）。</div><div class="nw"><textarea class="na" placeholder="📝 補充筆記…" data-key="col_q26"></textarea><br><button class="ns" onclick="saveNote(this)">儲存筆記</button><span class="nm">已儲存 ✓</span></div></div><div class="qc" data-qid="q27"><div class="qh"><span class="qn">Q27</span><span class="qy">102-2</span><span class="qs">在一具負電荷金溶媒系統下，添加相反電荷離子時，會造成下列何種現象？</span></div><div class="qo"><button class="op" onclick="answer(this,'wrong')"><span class="ol">A</span>溶解度增加</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">B</span>顏色變紅</button><button class="op" onclick="answer(this,'correct')"><span class="ol">C</span>粒子凝集</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">D</span>正的 Zeta potential 變大</button></div><div class="qf"><button class="be" onclick="toggleExp(this)">顯示詳解</button><button class="br" onclick="resetQ(this)">重置</button></div><div class="qe">✅ 答案：<strong>C（粒子凝集）</strong>｜加入正電荷離子 → 中和負電荷 → Zeta potential↓ → 排斥力消失 → 粒子凝集（凝結）→ 顏色由紅→藍紫。</div><div class="nw"><textarea class="na" placeholder="📝 補充筆記…" data-key="col_q27"></textarea><br><button class="ns" onclick="saveNote(this)">儲存筆記</button><span class="nm">已儲存 ✓</span></div></div><div class="qc" data-qid="q28"><div class="qh"><span class="qn">Q28</span><span class="qy">101-1</span><span class="qs">由下列何者可知道一物質保護膠體之能力？</span></div><div class="qo"><button class="op" onclick="answer(this,'wrong')"><span class="ol">A</span>Reynolds number</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">B</span>HLB 值</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">C</span>critical micelle concentration</button><button class="op" onclick="answer(this,'correct')"><span class="ol">D</span>gold number</button></div><div class="qf"><button class="be" onclick="toggleExp(this)">顯示詳解</button><button class="br" onclick="resetQ(this)">重置</button></div><div class="qe">✅ 答案：<strong>D（gold number）</strong>｜金數越小 = 保護能力越強。</div><div class="nw"><textarea class="na" placeholder="📝 補充筆記…" data-key="col_q28"></textarea><br><button class="ns" onclick="saveNote(this)">儲存筆記</button><span class="nm">已儲存 ✓</span></div></div></div></div><div class="sec" id="s9"><div class="st open" onclick="toggleSec(this)"><span>⚖️</span> 膠體粒子分子量測定 <span class="chev">▶</span></div><div class="sb open"><div class="ss"><div class="sh">單分散系 vs 多分散系</div><ul class="nl"><li><span class="kw">單分散系（Monodisperse）：</span>所有粒子大小相同（天然/純蛋白質、簡單有機分子）</li><li><span class="kw">多分散系（Polydisperse）：</span>粒子大小不一（研細或沉澱法製備之膠體懸液、聚合物）</li></ul></div><div class="ss"><div class="sh">數目平均分子量 vs 重量平均分子量</div><div class="fm">數目平均分子量 Mn = ΣNᵢMᵢ / ΣNᵢ
+  → 由滲透壓、蒸汽壓、凝固點測得
 
-<div class="q-divider">歷屆試題</div>
+重量平均分子量 Mw = ΣWᵢMᵢ / ΣWᵢ = ΣNᵢMᵢ² / ΣNᵢMᵢ
+  → 由光散射、超速離心法測得
 
-<div class="q-card" data-qid="q24">
-<div class="q-head"><span class="q-num">Q24</span><span class="q-year">103-2</span>
-<span class="q-stem">有些 polymer 在<strong>高濃度</strong>時對厭水性膠體有保護作用，但在<strong>低濃度</strong>時，反而促進凝結，此種現象稱為：</span></div>
-<div class="q-opts">
-<button class="opt" onclick="answer(this,'correct')"><span class="ol">A</span>Sensitization</button>
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">B</span>Steric stabilization</button>
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">C</span>Charge stabilization</button>
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">D</span>Protective action</button>
-</div>
-<div class="q-foot"><button class="btn-exp" onclick="toggleExp(this)">顯示詳解</button><button class="btn-reset" onclick="resetQ(this)">重置</button></div>
-<div class="q-explain">✅ 答案：<strong>A（Sensitization 敏感化）</strong>｜低濃度親水膠體無法完全覆蓋粒子，同一分子橋接多粒子 → 促進凝聚。</div>
-<div class="note-area-wrap"><textarea class="note-area" placeholder="📝 補充筆記…" data-key="note_q24"></textarea><br><button class="note-save-btn" onclick="saveNote(this)">儲存筆記</button><span class="note-saved-msg">已儲存 ✓</span></div>
-</div>
-
-<div class="q-card" data-qid="q25">
-<div class="q-head"><span class="q-num">Q25</span><span class="q-year">109-2</span>
-<span class="q-stem">所謂金數是指為防止因加入甲 cm³ 之乙 % 氯化鈉而使丙 cm³ 的紅色金膠溶體凝聚變為藍色，所需乾燥聚合物的最小重量單位為丁，則下列何者正確？</span></div>
-<div class="q-opts">
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">A</span>甲是 10</button>
-<button class="opt" onclick="answer(this,'correct')"><span class="ol">B</span>乙是 10</button>
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">C</span>丙是 1</button>
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">D</span>丁是 g</button>
-</div>
-<div class="q-foot"><button class="btn-exp" onclick="toggleExp(this)">顯示詳解</button><button class="btn-reset" onclick="resetQ(this)">重置</button></div>
-<div class="q-explain">✅ 答案：<strong>B</strong>｜金數標準：甲（NaCl 量）= 1 mL；乙（NaCl 濃度）= 10%；丙（金溶膠）= 10 mL；丁（重量單位）= mg。</div>
-<div class="note-area-wrap"><textarea class="note-area" placeholder="📝 補充筆記…" data-key="note_q25"></textarea><br><button class="note-save-btn" onclick="saveNote(this)">儲存筆記</button><span class="note-saved-msg">已儲存 ✓</span></div>
-</div>
-
-<div class="q-card" data-qid="q26">
-<div class="q-head"><span class="q-num">Q26</span><span class="q-year">102-2</span>
-<span class="q-stem">下列有關金數（gold number）之敘述，何者正確？</span></div>
-<div class="q-opts">
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">A</span>添加一物質防止金膠變成紅色</button>
-<button class="opt" onclick="answer(this,'correct')"><span class="ol">B</span>添加一物質防止金膠變成藍色</button>
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">C</span>添加一相反電荷離子防止金膠變成黑色</button>
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">D</span>添加一相反電荷離子防止金膠變成黃色</button>
-</div>
-<div class="q-foot"><button class="btn-exp" onclick="toggleExp(this)">顯示詳解</button><button class="btn-reset" onclick="resetQ(this)">重置</button></div>
-<div class="q-explain">✅ 答案：<strong>B</strong>｜金溶膠正常為<strong>紅色</strong>，凝集後變<strong>藍紫色</strong>。金數 = 阻止由紅變藍所需保護性膠體最小量（mg）。</div>
-<div class="note-area-wrap"><textarea class="note-area" placeholder="📝 補充筆記…" data-key="note_q26"></textarea><br><button class="note-save-btn" onclick="saveNote(this)">儲存筆記</button><span class="note-saved-msg">已儲存 ✓</span></div>
-</div>
-
-<div class="q-card" data-qid="q27">
-<div class="q-head"><span class="q-num">Q27</span><span class="q-year">102-2</span>
-<span class="q-stem">下列何者為金數（gold number）的正確單位？</span></div>
-<div class="q-opts">
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">A</span>μg</button>
-<button class="opt" onclick="answer(this,'correct')"><span class="ol">B</span>mg</button>
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">C</span>mg/cm³</button>
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">D</span>g</button>
-</div>
-<div class="q-foot"><button class="btn-exp" onclick="toggleExp(this)">顯示詳解</button><button class="btn-reset" onclick="resetQ(this)">重置</button></div>
-<div class="q-explain">✅ 答案：<strong>B（mg）</strong>｜金數單位為毫克（mg）。</div>
-<div class="note-area-wrap"><textarea class="note-area" placeholder="📝 補充筆記…" data-key="note_q27"></textarea><br><button class="note-save-btn" onclick="saveNote(this)">儲存筆記</button><span class="note-saved-msg">已儲存 ✓</span></div>
-</div>
-
-<div class="q-card" data-qid="q28">
-<div class="q-head"><span class="q-num">Q28</span><span class="q-year">102-2</span>
-<span class="q-stem">在一具<strong>負電荷</strong>金溶媒系統下，添加相反電荷離子時，會造成下列何種現象？</span></div>
-<div class="q-opts">
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">A</span>溶解度增加</button>
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">B</span>顏色變紅</button>
-<button class="opt" onclick="answer(this,'correct')"><span class="ol">C</span>粒子凝集</button>
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">D</span>正的 Zeta potential 變大</button>
-</div>
-<div class="q-foot"><button class="btn-exp" onclick="toggleExp(this)">顯示詳解</button><button class="btn-reset" onclick="resetQ(this)">重置</button></div>
-<div class="q-explain">✅ 答案：<strong>C</strong>｜加正電荷離子 → 中和 ζ → 排斥力↓ → 粒子<strong>凝集</strong> → 顏色由紅變藍。</div>
-<div class="note-area-wrap"><textarea class="note-area" placeholder="📝 補充筆記…" data-key="note_q28"></textarea><br><button class="note-save-btn" onclick="saveNote(this)">儲存筆記</button><span class="note-saved-msg">已儲存 ✓</span></div>
-</div>
-
-<div class="q-card" data-qid="q29">
-<div class="q-head"><span class="q-num">Q29</span><span class="q-year">102-1</span>
-<span class="q-stem">下列鹽類何者在<strong>最少量</strong>時，即可造成帶負電荷的金膠溶體產生凝結？</span></div>
-<div class="q-opts">
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">A</span>氯化鈉</button>
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">B</span>鹽酸嗎啡</button>
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">C</span>氯化鈣</button>
-<button class="opt" onclick="answer(this,'correct')"><span class="ol">D</span>硫酸鋁</button>
-</div>
-<div class="q-foot"><button class="btn-exp" onclick="toggleExp(this)">顯示詳解</button><button class="btn-reset" onclick="resetQ(this)">重置</button></div>
-<div class="q-explain">✅ 答案：<strong>D（硫酸鋁）</strong>｜Al³⁺ 三價，MCC 最低（≈0.03 mmol/L），最少量即可凝集。NaCl→Na⁺一價；嗎啡鹽→一價；CaCl₂→Ca²⁺二價。</div>
-<div class="note-area-wrap"><textarea class="note-area" placeholder="📝 補充筆記…" data-key="note_q29"></textarea><br><button class="note-save-btn" onclick="saveNote(this)">儲存筆記</button><span class="note-saved-msg">已儲存 ✓</span></div>
-</div>
-
-<div class="q-card" data-qid="q30">
-<div class="q-head"><span class="q-num">Q30</span><span class="q-year">101-1</span>
-<span class="q-stem">由下列何者可知道一物質保護膠體之能力？</span></div>
-<div class="q-opts">
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">A</span>Reynolds number</button>
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">B</span>HLB 值</button>
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">C</span>critical micelle concentration</button>
-<button class="opt" onclick="answer(this,'correct')"><span class="ol">D</span>gold number</button>
-</div>
-<div class="q-foot"><button class="btn-exp" onclick="toggleExp(this)">顯示詳解</button><button class="btn-reset" onclick="resetQ(this)">重置</button></div>
-<div class="q-explain">✅ 答案：<strong>D（gold number）</strong>｜金數越小→保護能力越強。HLB→親水性；CMC→微膠粒；Reynolds→流動型態。</div>
-<div class="note-area-wrap"><textarea class="note-area" placeholder="📝 補充筆記…" data-key="note_q30"></textarea><br><button class="note-save-btn" onclick="saveNote(this)">儲存筆記</button><span class="note-saved-msg">已儲存 ✓</span></div>
-</div>
-</div></div>
-
-<!-- ═══ SEC 10 分子量測定 ═══ -->
-<div class="sec" id="sec10">
-<div class="sec-title open" onclick="toggleSec(this)"><span>⚖️</span> 膠體分子量測定方法 <span class="chev">▶</span></div>
-<div class="sec-body open">
-<div class="sub-sec">
-<div class="sub-title">數目平均 Mₙ vs 重量平均 Mw</div>
-<div class="formula">Mₙ（數目平均）= ΣNᵢMᵢ / ΣNᵢ
-  每個分子等權重；由滲透壓、蒸汽壓、凝固點測得
-
-Mw（重量平均）= ΣNᵢMᵢ² / ΣNᵢMᵢ
-  以本身重量為權重；由光散射、超速離心測得
-
-Mw ≥ Mₙ（多分散系）；Mw = Mₙ（單分散系）
-Polydispersity = Mw/Mₙ</div>
-</div>
-<div class="sub-sec">
-<div class="sub-title">各方法對應分子量類型</div>
-<div class="tbl-wrap"><table>
-<tr><th>方法</th><th>測得分子量</th></tr>
-<tr><td>滲透壓、蒸汽壓、凝固點下降</td><td>數目平均 Mₙ</td></tr>
-<tr><td>光散射（Tyndall/turbidity）</td><td>重量平均 Mw</td></tr>
-<tr><td>超速離心（沉降速率）</td><td>重量平均 Mw</td></tr>
-<tr><td>黏度法</td><td>黏度平均 Mη（介於 Mₙ 與 Mw 之間）</td></tr>
-<tr><td>掃描式電子顯微鏡（SEM）</td><td>❌ 測粒徑形狀，<strong>無法</strong>直接測分子量</td></tr>
-<tr><td>過篩法</td><td>❌ 粒徑分級，<strong>無法</strong>測分子量</td></tr>
-</table></div>
-</div>
-
-<div class="q-divider">歷屆試題</div>
-
-<div class="q-card" data-qid="q31">
-<div class="q-head"><span class="q-num">Q31</span><span class="q-year">109-1</span>
-<span class="q-stem">下列何者<strong>不能</strong>作為膠體質粒平均分子量的測量方法？</span></div>
-<div class="q-opts">
-<button class="opt" onclick="answer(this,'correct')"><span class="ol">A</span>掃描式電子顯微鏡測粒徑</button>
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">B</span>超速離心機測沉降速率</button>
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">C</span>滲透壓儀測滲透壓</button>
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">D</span>濁度計測散射光</button>
-</div>
-<div class="q-foot"><button class="btn-exp" onclick="toggleExp(this)">顯示詳解</button><button class="btn-reset" onclick="resetQ(this)">重置</button></div>
-<div class="q-explain">✅ 答案：<strong>A</strong>｜SEM 測粒子外觀/粒徑，無法直接測分子量。B→Mw；C→Mₙ；D→Mw，均可測分子量。</div>
-<div class="note-area-wrap"><textarea class="note-area" placeholder="📝 補充筆記…" data-key="note_q31"></textarea><br><button class="note-save-btn" onclick="saveNote(this)">儲存筆記</button><span class="note-saved-msg">已儲存 ✓</span></div>
-</div>
-
-<div class="q-card" data-qid="q32">
-<div class="q-head"><span class="q-num">Q32</span><span class="q-year">（類題）</span>
-<span class="q-stem">下列何種儀器或方法<strong>無法</strong>測量物質之分子量？</span></div>
-<div class="q-opts">
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">A</span>滲透壓器</button>
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">B</span>光散射器</button>
-<button class="opt" onclick="answer(this,'wrong')"><span class="ol">C</span>黏度器</button>
-<button class="opt" onclick="answer(this,'correct')"><span class="ol">D</span>過篩法</button>
-</div>
-<div class="q-foot"><button class="btn-exp" onclick="toggleExp(this)">顯示詳解</button><button class="btn-reset" onclick="resetQ(this)">重置</button></div>
-<div class="q-explain">✅ 答案：<strong>D（過篩法）</strong>｜過篩只能分級/測粒徑，無法求分子量。A→Mₙ；B→Mw；C→Mη。</div>
-<div class="note-area-wrap"><textarea class="note-area" placeholder="📝 補充筆記…" data-key="note_q32"></textarea><br><button class="note-save-btn" onclick="saveNote(this)">儲存筆記</button><span class="note-saved-msg">已儲存 ✓</span></div>
-</div>
-</div></div>
-
-</main>
-
+多分散系：Mw &gt; Mn
+單分散系：Mw = Mn
+Polydispersity index = Mw/Mn</div></div><div class="ss"><div class="sh">各測量方法對應的分子量</div><div class="tw"><table><tr><th>方法</th><th>測得分子量類型</th><th>適用</th></tr><tr><td>滲透壓法</td><td>Mn（數目平均）</td><td>親溶媒系統</td></tr><tr><td>光散射法</td><td>Mw（重量平均）</td><td>膠體、高分子</td></tr><tr><td>超速離心沉降法</td><td>Mw（重量平均）</td><td>蛋白質、膠體</td></tr><tr><td>黏度法</td><td>黏均分子量（近似 Mw）</td><td>聚合物</td></tr><tr><td>過篩法</td><td><strong>❌ 無法測分子量</strong></td><td>—</td></tr><tr><td>掃描式電子顯微鏡（SEM）</td><td><strong>❌ 無法測分子量</strong>（測粒徑形態）</td><td>—</td></tr></table></div></div><div class="qd">歷屆試題</div><div class="qc" data-qid="q29"><div class="qh"><span class="qn">Q29</span><span class="qy">109-1</span><span class="qs">下列何者不能作為膠體質粒平均分子量的測量方法？</span></div><div class="qo"><button class="op" onclick="answer(this,'correct')"><span class="ol">A</span>掃描式電子顯微鏡測粒徑</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">B</span>超速離心機測沉降速率</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">C</span>滲透壓儀測滲透壓</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">D</span>濁度計測散射光</button></div><div class="qf"><button class="be" onclick="toggleExp(this)">顯示詳解</button><button class="br" onclick="resetQ(this)">重置</button></div><div class="qe">✅ 答案：<strong>A（SEM）</strong>｜SEM 測粒子形態/大小，不能測分子量。B（超速離心）→ Mw；C（滲透壓）→ Mn；D（濁度/光散射）→ Mw。</div><div class="nw"><textarea class="na" placeholder="📝 補充筆記…" data-key="col_q29"></textarea><br><button class="ns" onclick="saveNote(this)">儲存筆記</button><span class="nm">已儲存 ✓</span></div></div><div class="qc" data-qid="q30"><div class="qh"><span class="qn">Q30</span><span class="qy">106-1</span><span class="qs">下列何種儀器或方法無法測量物質之分子量？</span></div><div class="qo"><button class="op" onclick="answer(this,'wrong')"><span class="ol">A</span>滲透壓器</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">B</span>光散射器</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">C</span>黏度器</button><button class="op" onclick="answer(this,'correct')"><span class="ol">D</span>過篩法</button></div><div class="qf"><button class="be" onclick="toggleExp(this)">顯示詳解</button><button class="br" onclick="resetQ(this)">重置</button></div><div class="qe">✅ 答案：<strong>D（過篩法）</strong>｜過篩法只能分離不同粒徑，無法測量分子量。</div><div class="nw"><textarea class="na" placeholder="📝 補充筆記…" data-key="col_q30"></textarea><br><button class="ns" onclick="saveNote(this)">儲存筆記</button><span class="nm">已儲存 ✓</span></div></div></div></div><div class="sec" id="s10"><div class="st g2 open" onclick="toggleSec(this)"><span>💊</span> 膠體的藥劑學應用 <span class="chev">▶</span></div><div class="sb open"><div class="ss g2"><div class="sh g2">臨床應用</div><div class="tw"><table><tr><th>膠體製劑</th><th>優點/用途</th></tr><tr><td>膠體 AgCl、AgI、colloidal silver protein（蛋白銀）</td><td>比離子性銀鹽刺激性小，殺菌性更佳</td></tr><tr><td>膠體硫（colloidal sulfur）</td><td>比粗粉硫吸收更好（口服）</td></tr><tr><td>膠態銅</td><td>治療癌症</td></tr><tr><td>膠態金（Gold Au¹⁹⁸ injection）</td><td>放射性診斷劑；加 gelatin 為保護性膠體</td></tr><tr><td>膠態汞</td><td>治療梅毒</td></tr><tr><td>Hydroxyethyl starch 膠體</td><td>血漿替代品</td></tr></table></div></div><div class="ss g2"><div class="sh g2">藥劑學上之遞藥系統應用</div><ul class="nl"><li>固體劑型之包衣材質</li><li>界面活性劑之增加溶解度（micelle solubilization）</li><li>Micelles（微膠粒）</li><li>Hydrogels（水凝膠）</li><li>Parenteral emulsions（注射用乳劑）</li><li>Microemulsions（微乳劑）</li><li>Liposomes（微脂粒）</li><li>Microparticles（微粒子）：包括 microcapsules</li><li>Drug-polymer conjugates（藥物-高分子結合物）</li><li>Nanoparticles（奈米粒子）</li><li>Nanocrystals（奈米結晶）</li></ul></div></div></div></main>
 <script>
-function toggleSec(el){
-  el.classList.toggle('open');
-  el.nextElementSibling.classList.toggle('open');
-}
+function toggleSec(el){el.classList.toggle('open');el.nextElementSibling.classList.toggle('open');}
 function answer(btn,result){
-  const card=btn.closest('.q-card');
+  const card=btn.closest('.qc');
   if(card.dataset.answered)return;
   card.dataset.answered='1';
-  card.querySelectorAll('.opt').forEach(o=>o.disabled=true);
-  if(result==='correct'){
-    btn.classList.add('correct');
-  }else{
-    btn.classList.add('wrong');
-    card.querySelectorAll('.opt').forEach(o=>{
-      if(o.getAttribute('onclick').includes("'correct'"))o.classList.add('correct');
-    });
-  }
+  card.querySelectorAll('.op').forEach(o=>o.disabled=true);
+  if(result==='correct'){btn.classList.add('ok');}
+  else{btn.classList.add('ng');card.querySelectorAll('.op').forEach(o=>{if(o.getAttribute('onclick').includes("'correct'"))o.classList.add('ok');});}
   updateProgress();
 }
 function toggleExp(btn){
-  const card=btn.closest('.q-card');
-  const exp=card.querySelector('.q-explain');
-  const nw=card.querySelector('.note-area-wrap');
-  if(exp.style.display==='block'){
-    exp.style.display='none';nw.style.display='none';
-    btn.textContent='顯示詳解';
-  }else{
-    exp.style.display='block';nw.style.display='block';
-    const ta=nw.querySelector('.note-area');
-    const saved=localStorage.getItem(ta.dataset.key);
-    if(saved)ta.value=saved;
-    btn.textContent='隱藏詳解';
-  }
+  const card=btn.closest('.qc');
+  const exp=card.querySelector('.qe');
+  const nw=card.querySelector('.nw');
+  if(exp.style.display==='block'){exp.style.display='none';nw.style.display='none';btn.textContent='顯示詳解';}
+  else{exp.style.display='block';nw.style.display='block';
+    const ta=nw.querySelector('.na');
+    const v=localStorage.getItem(ta.dataset.key);if(v)ta.value=v;
+    btn.textContent='隱藏詳解';}
 }
 function resetQ(btn){
-  const card=btn.closest('.q-card');
+  const card=btn.closest('.qc');
   delete card.dataset.answered;
-  card.querySelectorAll('.opt').forEach(o=>{o.disabled=false;o.classList.remove('correct','wrong');});
-  card.querySelector('.q-explain').style.display='none';
-  card.querySelector('.note-area-wrap').style.display='none';
-  card.querySelector('.btn-exp').textContent='顯示詳解';
+  card.querySelectorAll('.op').forEach(o=>{o.disabled=false;o.classList.remove('ok','ng');});
+  card.querySelector('.qe').style.display='none';
+  card.querySelector('.nw').style.display='none';
+  card.querySelector('.be').textContent='顯示詳解';
   updateProgress();
 }
 function saveNote(btn){
-  const wrap=btn.closest('.note-area-wrap');
-  const ta=wrap.querySelector('.note-area');
-  const msg=wrap.querySelector('.note-saved-msg');
+  const wrap=btn.closest('.nw');
+  const ta=wrap.querySelector('.na');
+  const msg=wrap.querySelector('.nm');
   localStorage.setItem(ta.dataset.key,ta.value);
-  msg.style.opacity='1';
-  setTimeout(()=>msg.style.opacity='0',1800);
+  msg.style.opacity='1';setTimeout(()=>msg.style.opacity='0',1800);
 }
 function updateProgress(){
-  const total=document.querySelectorAll('.q-card').length;
-  const done=document.querySelectorAll('.q-card[data-answered]').length;
-  document.getElementById('prog-text').textContent=`${done} / ${total} 題已作答`;
-  document.getElementById('prog-fill').style.width=(done/total*100)+'%';
+  const total=document.querySelectorAll('.qc').length;
+  const done=document.querySelectorAll('.qc[data-answered]').length;
+  document.getElementById('pt').textContent=`${done} / ${total} 題已作答`;
+  document.getElementById('pf').style.width=(done/total*100)+'%';
 }
 document.addEventListener('DOMContentLoaded',()=>{
   updateProgress();
-  document.querySelectorAll('.note-area').forEach(ta=>{
-    const v=localStorage.getItem(ta.dataset.key);
-    if(v)ta.value=v;
-  });
+  document.querySelectorAll('.na').forEach(ta=>{const v=localStorage.getItem(ta.dataset.key);if(v)ta.value=v;});
 });
 </script>
 </body>
