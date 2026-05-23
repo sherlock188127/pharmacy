@@ -1,0 +1,2311 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>錠劑的包衣與其他固體劑型 — 藥學國考筆記</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fdf6e3;
+    --bg-card: #fffdf5;
+    --bg-section: #f5efe0;
+    --accent: #2c5f8a;
+    --accent2: #4a8fbc;
+    --accent3: #1a3d5c;
+    --gold: #b8860b;
+    --gold-light: #d4a843;
+    --text: #2a2a2a;
+    --text-muted: #6b6b6b;
+    --border: #d4c8a8;
+    --border-light: #e8dfc5;
+    --correct: #2d6a4f;
+    --correct-bg: #d8f3dc;
+    --wrong: #9b2335;
+    --wrong-bg: #fde8ec;
+    --explain-bg: #eaf2fb;
+    --explain-border: #2c5f8a;
+    --note-bg: #fffde7;
+    --note-border: #f9a825;
+    --shadow: 0 2px 12px rgba(44,95,138,0.08);
+    --shadow-lg: 0 6px 28px rgba(44,95,138,0.14);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Noto Sans TC', sans-serif;
+    line-height: 1.75;
+    min-height: 100vh;
+  }
+
+  header {
+    background: linear-gradient(135deg, var(--accent3) 0%, var(--accent) 60%, var(--accent2) 100%);
+    color: #fff;
+    padding: 2.5rem 2rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(255,255,255,0.03) 40px, rgba(255,255,255,0.03) 80px);
+  }
+  header h1 {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1.7rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    position: relative;
+  }
+  header p {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    opacity: 0.82;
+    position: relative;
+  }
+
+  nav {
+    background: var(--accent3);
+    padding: 0 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.2rem;
+    border-bottom: 3px solid var(--gold);
+  }
+  nav a {
+    color: rgba(255,255,255,0.78);
+    text-decoration: none;
+    font-size: 0.78rem;
+    padding: 0.55rem 0.9rem;
+    border-radius: 3px 3px 0 0;
+    transition: all 0.2s;
+    font-family: 'Noto Sans TC', sans-serif;
+    white-space: nowrap;
+  }
+  nav a:hover { background: rgba(255,255,255,0.12); color: #fff; }
+
+  main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+  }
+
+  /* Section */
+  .section {
+    margin-bottom: 2.8rem;
+  }
+  .section-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--accent3);
+    border-left: 5px solid var(--gold);
+    padding: 0.5rem 0 0.5rem 1rem;
+    margin-bottom: 1.2rem;
+    background: linear-gradient(90deg, rgba(184,134,11,0.07), transparent);
+    border-radius: 0 4px 4px 0;
+  }
+  .subsection-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--accent);
+    border-left: 3px solid var(--accent2);
+    padding: 0.3rem 0 0.3rem 0.75rem;
+    margin: 1.4rem 0 0.8rem;
+  }
+
+  /* Notes card */
+  .note-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    padding: 1.1rem 1.3rem;
+    margin-bottom: 1rem;
+    box-shadow: var(--shadow);
+    font-size: 0.9rem;
+  }
+  .note-card ul { padding-left: 1.4rem; }
+  .note-card li { margin-bottom: 0.25rem; }
+  .note-card strong { color: var(--accent3); font-family: 'JetBrains Mono', monospace; font-size: 0.88rem; }
+  .tag {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.7rem;
+    padding: 0.1rem 0.5rem;
+    border-radius: 20px;
+    margin-right: 0.35rem;
+    font-family: 'JetBrains Mono', monospace;
+    vertical-align: middle;
+  }
+  .tag.gold { background: var(--gold); }
+  .tag.green { background: var(--correct); }
+
+  /* Steps */
+  .steps {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0.7rem 0;
+    align-items: center;
+  }
+  .step {
+    background: var(--accent);
+    color: #fff;
+    border-radius: 6px;
+    padding: 0.3rem 0.8rem;
+    font-size: 0.8rem;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .step-arrow { color: var(--gold); font-size: 1.1rem; }
+
+  /* Table */
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    margin: 0.8rem 0;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+  .compare-table th {
+    background: var(--accent3);
+    color: #fff;
+    padding: 0.55rem 0.9rem;
+    text-align: left;
+    font-family: 'Noto Serif TC', serif;
+  }
+  .compare-table td {
+    padding: 0.5rem 0.9rem;
+    border-bottom: 1px solid var(--border-light);
+    background: var(--bg-card);
+    vertical-align: top;
+  }
+  .compare-table tr:last-child td { border-bottom: none; }
+  .compare-table tr:nth-child(even) td { background: var(--bg-section); }
+
+  /* Quiz */
+  .quiz-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.3rem 1.4rem 1rem;
+    margin-bottom: 1.3rem;
+    box-shadow: var(--shadow);
+    position: relative;
+  }
+  .quiz-year {
+    position: absolute;
+    top: 0.8rem; right: 1rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    background: var(--bg-section);
+    padding: 0.1rem 0.5rem;
+    border-radius: 10px;
+    border: 1px solid var(--border-light);
+  }
+  .quiz-stem {
+    font-weight: 600;
+    font-size: 0.92rem;
+    margin-bottom: 0.9rem;
+    padding-right: 4rem;
+    line-height: 1.6;
+    color: var(--text);
+  }
+  .options { display: flex; flex-direction: column; gap: 0.45rem; margin-bottom: 0.9rem; }
+  .option-btn {
+    background: var(--bg-section);
+    border: 1.5px solid var(--border);
+    border-radius: 7px;
+    padding: 0.5rem 1rem;
+    text-align: left;
+    cursor: pointer;
+    font-size: 0.88rem;
+    font-family: 'Noto Sans TC', sans-serif;
+    color: var(--text);
+    transition: all 0.18s;
+    line-height: 1.5;
+  }
+  .option-btn:hover:not(:disabled) { border-color: var(--accent2); background: #e8f2fa; transform: translateX(3px); }
+  .option-btn.correct { background: var(--correct-bg); border-color: var(--correct); color: var(--correct); font-weight: 600; }
+  .option-btn.wrong { background: var(--wrong-bg); border-color: var(--wrong); color: var(--wrong); }
+  .option-btn:disabled { cursor: default; }
+
+  .explain-btn {
+    background: none;
+    border: 1.5px solid var(--accent);
+    color: var(--accent);
+    border-radius: 6px;
+    padding: 0.35rem 0.9rem;
+    font-size: 0.82rem;
+    cursor: pointer;
+    font-family: 'Noto Sans TC', sans-serif;
+    transition: all 0.18s;
+    margin-bottom: 0.6rem;
+  }
+  .explain-btn:hover { background: var(--accent); color: #fff; }
+
+  .explanation {
+    display: none;
+    background: var(--explain-bg);
+    border-left: 4px solid var(--explain-border);
+    border-radius: 0 6px 6px 0;
+    padding: 0.8rem 1rem;
+    font-size: 0.86rem;
+    line-height: 1.65;
+    margin-bottom: 0.6rem;
+    color: var(--accent3);
+  }
+  .explanation.visible { display: block; }
+
+  .note-area-wrap { margin-top: 0.5rem; }
+  .note-area-label {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-bottom: 0.3rem;
+    display: block;
+  }
+  .note-area {
+    width: 100%;
+    min-height: 56px;
+    border: 1.5px solid var(--note-border);
+    border-radius: 6px;
+    background: var(--note-bg);
+    padding: 0.5rem 0.7rem;
+    font-size: 0.84rem;
+    font-family: 'Noto Sans TC', sans-serif;
+    color: var(--text);
+    resize: vertical;
+    transition: border-color 0.2s;
+  }
+  .note-area:focus { outline: none; border-color: var(--gold); }
+  .note-saved { font-size: 0.72rem; color: var(--correct); margin-top: 0.2rem; display: none; }
+
+  hr.divider {
+    border: none;
+    border-top: 2px dashed var(--border);
+    margin: 2rem 0;
+  }
+
+  /* Highlight box */
+  .highlight-box {
+    background: linear-gradient(135deg, rgba(44,95,138,0.07), rgba(74,143,188,0.05));
+    border: 1px solid var(--accent2);
+    border-radius: 8px;
+    padding: 0.9rem 1.1rem;
+    margin: 0.8rem 0;
+    font-size: 0.88rem;
+  }
+  .highlight-box.warning {
+    background: rgba(184,134,11,0.07);
+    border-color: var(--gold);
+  }
+
+  @media (max-width: 600px) {
+    header h1 { font-size: 1.25rem; }
+    main { padding: 1.2rem 0.8rem 3rem; }
+    .quiz-stem { padding-right: 0; }
+    .quiz-year { position: static; display: inline-block; margin-bottom: 0.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>錠劑的包衣與其他固體劑型</h1>
+  <p>Tablet Coating · Quality Standards · Other Solid Dosage Forms｜藥劑學國考筆記</p>
+</header>
+
+<nav>
+  <a href="#sugar">糖衣</a>
+  <a href="#film">膜衣</a>
+  <a href="#enteric">腸溶衣</a>
+  <a href="#fluidbed">流動床</a>
+  <a href="#compression">壓製包衣</a>
+  <a href="#quality">品質標準</a>
+  <a href="#lozenges">口含錠</a>
+  <a href="#other">其他劑型</a>
+  <a href="#pastexam">歷屆考題</a>
+</nav>
+
+<main>
+
+<!-- ══════════════════════════════════════ -->
+<!-- SUGAR COATING -->
+<!-- ══════════════════════════════════════ -->
+<div class="section" id="sugar">
+  <div class="section-title">🍬 糖衣錠包衣（Sugar Coating）</div>
+
+  <div class="note-card">
+    <strong>目的</strong>：保護藥品不受環境影響、遮蔽不良味道、增進外觀<br>
+    <strong>重量增加</strong>：約增加 <span style="color:var(--wrong);font-weight:700">50%</span> 未包衣錠之重量與體積<br>
+    <strong>缺點</strong>：包衣耗時（數天）、需高度技術、增加大小與重量
+  </div>
+
+  <div class="subsection-title">包衣步驟順序（必考！）</div>
+  <div class="steps">
+    <span class="step">①防水固封</span>
+    <span class="step-arrow">→</span>
+    <span class="step">②包底衣</span>
+    <span class="step-arrow">→</span>
+    <span class="step">③修平圓化</span>
+    <span class="step-arrow">→</span>
+    <span class="step">④著色完成</span>
+    <span class="step-arrow">→</span>
+    <span class="step">⑤刻印</span>
+    <span class="step-arrow">→</span>
+    <span class="step">⑥磨光</span>
+  </div>
+  <div class="highlight-box warning">
+    ⚠️ 考試常考順序：<strong>1→2→3→4→5</strong>（waterproofing → subcoating → smoothing → coloring → polishing）
+  </div>
+
+  <table class="compare-table" style="margin-top:1rem">
+    <tr><th>步驟</th><th>材料</th><th>重點</th></tr>
+    <tr><td><strong>防水固封</strong> Waterproofing & Sealing</td><td><code>Shellac</code>（蟲膠）/ cellulose acetate phosphate</td><td>水不溶性；避免糖漿中水分溶蝕裸錠</td></tr>
+    <tr><td><strong>包底衣</strong> Subcoating</td><td>sugar-based syrup（+gelatin/acacia/PVP）+ dusting powder（sucrose/starch/talc/chalk）</td><td>包3~5層；提供圓化基礎</td></tr>
+    <tr><td><strong>修平圓化</strong> Smoothing</td><td>濃糖漿（sucrose±starch/calcium carbonate）</td><td>5~10次包衣；使完全圓化平滑；此二步驟需一天以上</td></tr>
+    <tr><td><strong>著色完成</strong> Coloring</td><td>稀糖漿＋著色劑（第一次濃度較淡，逐次加深）</td><td>表面平滑均勻但顏色較暗；完成後接刻印</td></tr>
+    <tr><td><strong>刻印</strong> Imprinting</td><td>FDA 1995年規定：所有固體劑型須刻產品辨識碼</td><td>Debossed / Embossed / Engraved</td></tr>
+    <tr><td><strong>磨光</strong> Polishing</td><td><code>Carnauba wax</code> / <code>Beeswax</code></td><td>最後一步；+少量 talc 使更光亮</td></tr>
+  </table>
+
+  <!-- Quiz 1111 糖衣步驟 -->
+  <div class="quiz-card">
+    <span class="quiz-year">1111</span>
+    <div class="quiz-stem">製備糖衣錠時，依其步驟先後次序，下列何者正確？<br>
+    (1)waterproofing and sealing coat (2)subcoating (3)smoothing (4)coloring (5)polishing</div>
+    <div class="options" id="opts_q1">
+      <button class="option-btn" onclick="answer('q1','A','D')">A. 12345</button>
+      <button class="option-btn" onclick="answer('q1','B','D')">B. 13245</button>
+      <button class="option-btn" onclick="answer('q1','C','D')">C. 21354</button>
+      <button class="option-btn" onclick="answer('q1','D','D')">D. 13254</button>
+    </div>
+    <button class="explain-btn" onclick="toggleExplain('q1')">顯示詳解</button>
+    <div class="explanation" id="exp_q1">
+      ✅ 正確答案：<strong>A（12345）</strong><br><br>
+      記憶口訣：<strong>防底平色印光</strong><br>
+      ① 防水固封（waterproofing & sealing）— 先保護裸錠不被水侵蝕<br>
+      ② 包底衣（subcoating）— 讓糖衣黏合在錠片上並開始圓化<br>
+      ③ 修平圓化（smoothing）— 用濃糖漿使完全圓形平滑<br>
+      ④ 著色完成（coloring）— 用稀糖漿加色素，顏色由淡到深<br>
+      ⑤ 磨光（polishing）— 最後加蠟，讓表面亮亮的<br><br>
+      C 和 D 的順序都錯了（C 把 subcoating 提前到第一步）。
+    </div>
+    <div class="note-area-wrap">
+      <span class="note-area-label">📝 補充筆記</span>
+      <textarea class="note-area" id="note_q1" placeholder="在此輸入你的補充..." oninput="saveNote('q1')"></textarea>
+      <div class="note-saved" id="saved_q1">已儲存 ✓</div>
+    </div>
+  </div>
+
+  <!-- Quiz 1102 蟲膠防水 -->
+  <div class="quiz-card">
+    <span class="quiz-year">1102</span>
+    <div class="quiz-stem">糖衣錠在裸錠和糖衣層間有一層防水固封包衣，最可能為下列何者？</div>
+    <div class="options" id="opts_q2">
+      <button class="option-btn" onclick="answer('q2','A','B')">A. 蔗糖</button>
+      <button class="option-btn" onclick="answer('q2','B','B')">B. 蟲膠</button>
+      <button class="option-btn" onclick="answer('q2','C','B')">C. 硬脂酸鎂</button>
+      <button class="option-btn" onclick="answer('q2','D','B')">D. 滑石粉</button>
+    </div>
+    <button class="explain-btn" onclick="toggleExplain('q2')">顯示詳解</button>
+    <div class="explanation" id="exp_q2">
+      ✅ 正確答案：<strong>B（蟲膠 Shellac）</strong><br><br>
+      <strong>Shellac（蟲膠）</strong>是最古老的腸溶/防水材質，水不溶性，可用於：<br>
+      ① 糖衣錠的「防水固封包衣」— 防止糖漿水分溶蝕裸錠<br>
+      ② 腸溶包衣材質（雖然現已較少用，因儲存時易發生聚合）<br><br>
+      硬脂酸鎂 → 潤滑劑；滑石粉 → 助滑劑；蔗糖 → 糖衣本體
+    </div>
+    <div class="note-area-wrap">
+      <span class="note-area-label">📝 補充筆記</span>
+      <textarea class="note-area" id="note_q2" placeholder="在此輸入你的補充..." oninput="saveNote('q2')"></textarea>
+      <div class="note-saved" id="saved_q2">已儲存 ✓</div>
+    </div>
+  </div>
+
+  <!-- Quiz 1031 糖衣程序 -->
+  <div class="quiz-card">
+    <span class="quiz-year">1031</span>
+    <div class="quiz-stem">下列何者是正確的糖衣包覆（sugar coating）程序？（防水層：sealing；底衣層：subcoating；平滑層：smoothing；磨光層：polishing）</div>
+    <div class="options" id="opts_q3">
+      <button class="option-btn" onclick="answer('q3','A','A')">A. 防水層－底衣層－平滑層－磨光層</button>
+      <button class="option-btn" onclick="answer('q3','B','A')">B. 平滑層－防水層－底衣層－磨光層</button>
+      <button class="option-btn" onclick="answer('q3','C','A')">C. 底衣層－平滑層－磨光層－防水層</button>
+      <button class="option-btn" onclick="answer('q3','D','A')">D. 磨光層－防水層－平滑層－底衣層</button>
+    </div>
+    <button class="explain-btn" onclick="toggleExplain('q3')">顯示詳解</button>
+    <div class="explanation" id="exp_q3">
+      ✅ 正確答案：<strong>A</strong><br><br>
+      順序永遠是：防水固封 → 底衣 → 平滑圓化 → 著色 → 刻印 → 磨光<br>
+      這題省略了著色和刻印步驟，但磨光（polishing）一定在最後。
+    </div>
+    <div class="note-area-wrap">
+      <span class="note-area-label">📝 補充筆記</span>
+      <textarea class="note-area" id="note_q3" placeholder="在此輸入你的補充..." oninput="saveNote('q3')"></textarea>
+      <div class="note-saved" id="saved_q3">已儲存 ✓</div>
+    </div>
+  </div>
+
+  <!-- Quiz 1012 糖衣重量 -->
+  <div class="quiz-card">
+    <span class="quiz-year">1012</span>
+    <div class="quiz-stem">下列對糖衣錠的敘述何者為正確？</div>
+    <div class="options" id="opts_q4">
+      <button class="option-btn" onclick="answer('q4','A','B')">A. 包覆糖衣製程簡單時程短</button>
+      <button class="option-btn" onclick="answer('q4','B','B')">B. 包覆糖衣重量可提高</button>
+      <button class="option-btn" onclick="answer('q4','C','B')">C. 包覆糖衣步驟單純易學習</button>
+      <button class="option-btn" onclick="answer('q4','D','B')">D. 包覆糖衣適於高劑量藥物</button>
+    </div>
+    <button class="explain-btn" onclick="toggleExplain('q4')">顯示詳解</button>
+    <div class="explanation" id="exp_q4">
+      ✅ 正確答案：<strong>B</strong><br><br>
+      糖衣包覆約增加 <strong>50%</strong> 未包衣錠的重量與體積 → B 正確<br>
+      A/C 錯：糖衣製程複雜耗時（需數天）且需高度技術<br>
+      D 錯：正因為體積大，不適合高劑量藥物（錠片會太大顆不易吞嚥）
+    </div>
+    <div class="note-area-wrap">
+      <span class="note-area-label">📝 補充筆記</span>
+      <textarea class="note-area" id="note_q4" placeholder="在此輸入你的補充..." oninput="saveNote('q4')"></textarea>
+      <div class="note-saved" id="saved_q4">已儲存 ✓</div>
+    </div>
+  </div>
+</div><!-- /sugar -->
+
+<hr class="divider">
+
+<!-- ══════════════════════════════════════ -->
+<!-- FILM COATING -->
+<!-- ══════════════════════════════════════ -->
+<div class="section" id="film">
+  <div class="section-title">🎞 膜衣錠（Film Coating）</div>
+
+  <div class="note-card">
+    <strong>特色</strong>：薄膜聚合物（≈ 原錠大小不變）、可顯示刻印圖案<br>
+    <strong>優點</strong>：比糖衣省時（數小時）、不增加太多重量、可設計腸溶特性
+  </div>
+
+  <table class="compare-table">
+    <tr><th>類別</th><th>用途</th><th>非水性配方舉例</th><th>水性配方舉例</th></tr>
+    <tr><td><strong>Film former 成膜材料</strong></td><td>產生光滑薄膜（最基本）</td><td>cellulose acetate phthalate（腸溶）</td><td>HPMC, HPC, MC（7~18%）</td></tr>
+    <tr><td><strong>Alloying substance 熔合物</strong></td><td>提供水溶性/穿透性 → 保證體液可進入</td><td>PEG</td><td>—</td></tr>
+    <tr><td><strong>Plasticizer 塑化劑</strong></td><td>韌性＋彈性＋耐久性</td><td>castor oil（蓖麻油，0.5~2%）</td><td>glycerin, propylene glycol, PEG, diethyl phthalate, dibutyl subacetate</td></tr>
+    <tr><td><strong>Surfactant 界面活性劑</strong></td><td>增進延展性</td><td colspan="2">polyoxyethylene sorbitan derivatives</td></tr>
+    <tr><td><strong>Opaquant 不透明劑</strong></td><td>遮光＋著色</td><td>titanium dioxide; FD&amp;C dyes</td><td>FD&amp;C/D&amp;C lakes; iron oxide pigments</td></tr>
+    <tr><td><strong>Glassant 亮光劑</strong></td><td>不須磨光即可光亮</td><td colspan="2">beeswax</td></tr>
+    <tr><td><strong>Vehicle 媒液</strong></td><td>幫助成分散佈並快速揮發</td><td>volatile solvents: alcohol+acetone</td><td>water</td></tr>
+  </table>
+
+  <div class="highlight-box warning">
+    ⚠️ <strong>DEP（diethyl phthalate）</strong>注意：雖然有 phthalate 字根（→ 腸溶材質），但在水性膜衣配方中作為 <strong>塑化劑</strong>（在 Aquacoat® pseudolatex 系統中）。這是考試陷阱！
+  </div>
+
+  <div class="subsection-title">水性乙基纖維素分散液</div>
+  <div class="note-card">
+    <ul>
+      <li><strong>Aquacoat®</strong>（FMC公司）：含 30% ethylcellulose pseudolatex + plasticizer（DBS, DEP, Triacetin等）+ cetyl alcohol + sodium lauryl sulfate</li>
+      <li><strong>Surelease®</strong>（Colorcon公司）：同樣是 <strong>ethylcellulose</strong> 水性分散液</li>
+    </ul>
+  </div>
+
+  <!-- Quiz 膜衣塑化劑 1081 -->
+  <div class="quiz-card">
+    <span class="quiz-year">1081</span>
+    <div class="quiz-stem">製備膜衣錠時，通常可添加下列何種賦形劑，以增加膜衣的柔韌性（flexibility）？</div>
+    <div class="options" id="opts_q5">
+      <button class="option-btn" onclick="answer('q5','A','C')">A. film former</button>
+      <button class="option-btn" onclick="answer('q5','B','C')">B. opaquant</button>
+      <button class="option-btn" onclick="answer('q5','C','C')">C. plasticizer</button>
+      <button class="option-btn" onclick="answer('q5','D','C')">D. surfactant</button>
+    </div>
+    <button class="explain-btn" onclick="toggleExplain('q5')">顯示詳解</button>
+    <div class="explanation" id="exp_q5">
+      ✅ 正確答案：<strong>C（plasticizer 塑化劑）</strong><br><br>
+      塑化劑（plasticizer）的功能：增加包衣的<strong>韌性（toughness）與彈性（elasticity）</strong>，提供耐久性。<br>
+      常見塑化劑：castor oil、glycerin、propylene glycol、PEG、diethyl phthalate（DEP）、dibutyl subacetate
+    </div>
+    <div class="note-area-wrap">
+      <span class="note-area-label">📝 補充筆記</span>
+      <textarea class="note-area" id="note_q5" placeholder="在此輸入你的補充..." oninput="saveNote('q5')"></textarea>
+      <div class="note-saved" id="saved_q5">已儲存 ✓</div>
+    </div>
+  </div>
+
+  <!-- Quiz coated beads 1081 -->
+  <div class="quiz-card">
+    <span class="quiz-year">1081</span>
+    <div class="quiz-stem">下列何者不適合作為包覆性圓粒（coated beads）劑型的包覆材料？</div>
+    <div class="options" id="opts_q6">
+      <button class="option-btn" onclick="answer('q6','A','C')">A. beeswax</button>
+      <button class="option-btn" onclick="answer('q6','B','C')">B. glyceryl monostearate</button>
+      <button class="option-btn" onclick="answer('q6','C','C')">C. hydroxypropyl methylcellulose</button>
+      <button class="option-btn" onclick="answer('q6','D','C')">D. ethylcellulose</button>
+    </div>
+    <button class="explain-btn" onclick="toggleExplain('q6')">顯示詳解</button>
+    <div class="explanation" id="exp_q6">
+      ✅ 正確答案：<strong>C（HPMC）</strong><br><br>
+      HPMC（hydroxypropyl methylcellulose）是<strong>水溶性</strong>的，溶於水後就無法維持包覆效果，不適合作為 coated beads 的包覆材料（包覆材料需為水不溶性才能控釋）。<br><br>
+      A beeswax、B glyceryl monostearate、D ethylcellulose 都是<strong>水不溶性</strong>，適合當包覆材料。
+    </div>
+    <div class="note-area-wrap">
+      <span class="note-area-label">📝 補充筆記</span>
+      <textarea class="note-area" id="note_q6" placeholder="在此輸入你的補充..." oninput="saveNote('q6')"></textarea>
+      <div class="note-saved" id="saved_q6">已儲存 ✓</div>
+    </div>
+  </div>
+
+  <!-- Quiz 1071 Surelease -->
+  <div class="quiz-card">
+    <span class="quiz-year">1071</span>
+    <div class="quiz-stem">Colorcon公司所出產的Surelease，是含有下列何種包覆材料的水性分散液？</div>
+    <div class="options" id="opts_q7">
+      <button class="option-btn" onclick="answer('q7','A','D')">A. 纖維素醋酸酯（cellulose acetate）</button>
+      <button class="option-btn" onclick="answer('q7','B','D')">B. 巴西棕櫚蠟（carnauba wax）</button>
+      <button class="option-btn" onclick="answer('q7','C','D')">C. 蟲膠（shellac）</button>
+      <button class="option-btn" onclick="answer('q7','D','D')">D. 乙基纖維素（ethylcellulose）</button>
+    </div>
+    <button class="explain-btn" onclick="toggleExplain('q7')">顯示詳解</button>
+    <div class="explanation" id="exp_q7">
+      ✅ 正確答案：<strong>D（ethylcellulose）</strong><br><br>
+      <strong>Surelease®</strong>（Colorcon）= ethylcellulose 水性分散液<br>
+      <strong>Aquacoat®</strong>（FMC）= ethylcellulose pseudolatex<br>
+      兩者都是 ethylcellulose 的水性系統，因為 ethylcellulose 本身不溶於水，需做成假乳膠（pseudolatex）分散系統。
+    </div>
+    <div class="note-area-wrap">
+      <span class="note-area-label">📝 補充筆記</span>
+      <textarea class="note-area" id="note_q7" placeholder="在此輸入你的補充..." oninput="saveNote('q7')"></textarea>
+      <div class="note-saved" id="saved_q7">已儲存 ✓</div>
+    </div>
+  </div>
+
+  <!-- Quiz 1062 castor oil -->
+  <div class="quiz-card">
+    <span class="quiz-year">1062</span>
+    <div class="quiz-stem">製備膜衣錠時，配方中castor oil的作用為何？</div>
+    <div class="options" id="opts_q8">
+      <button class="option-btn" onclick="answer('q8','A','D')">A. film former</button>
+      <button class="option-btn" onclick="answer('q8','B','D')">B. glossant</button>
+      <button class="option-btn" onclick="answer('q8','C','D')">C. opaquant</button>
+      <button class="option-btn" onclick="answer('q8','D','D')">D. plasticizer</button>
+    </div>
+    <button class="explain-btn" onclick="toggleExplain('q8')">顯示詳解</button>
+    <div class="explanation" id="exp_q8">
+      ✅ 正確答案：<strong>D（plasticizer 塑化劑）</strong><br><br>
+      <strong>Castor oil（蓖麻油）</strong>在非水性膜衣配方中作為<strong>塑化劑</strong>（0.5~2%），增加膜的韌性與彈性。<br>
+      記憶：castor oil → 油脂類 → 讓膜「有彈性」→ 塑化劑
+    </div>
+    <div class="note-area-wrap">
+      <span class="note-area-label">📝 補充筆記</span>
+      <textarea class="note-area" id="note_q8" placeholder="在此輸入你的補充..." oninput="saveNote('q8')"></textarea>
+      <div class="note-saved" id="saved_q8">已儲存 ✓</div>
+    </div>
+  </div>
+
+  <!-- Quiz 1062 水性膜衣 plasticizer -->
+  <div class="quiz-card">
+    <span class="quiz-year">1062</span>
+    <div class="quiz-stem">水性膜衣包覆處方中添加塑化劑（plasticizer）之主要目的為改善膜衣的何種特性？</div>
+    <div class="options" id="opts_q9">
+      <button class="option-btn" onclick="answer('q9','A','D')">A. 易於被乾燥</button>
+      <button class="option-btn" onclick="answer('q9','B','D')">B. 較易於貼附</button>
+      <button class="option-btn" onclick="answer('q9','C','D')">C. 易溶解於水</button>
+      <button class="option-btn" onclick="answer('q9','D','D')">D. 易軟化成膜</button>
+    </div>
+    <button class="explain-btn" onclick="toggleExplain('q9')">顯示詳解</button>
+    <div class="explanation" id="exp_q9">
+      ✅ 正確答案：<strong>D（易軟化成膜）</strong><br><br>
+      水性膜衣系統中，乙基纖維素（ethylcellulose）懸浮在水中不溶，加入塑化劑後可降低最低成膜溫度（MFT），使聚合物粒子能聚合（coalescence）形成緻密的膜。
+    </div>
+    <div class="note-area-wrap">
+      <span class="note-area-label">📝 補充筆記</span>
+      <textarea class="note-area" id="note_q9" placeholder="在此輸入你的補充..." oninput="saveNote('q9')"></textarea>
+      <div class="note-saved" id="saved_q9">已儲存 ✓</div>
+    </div>
+  </div>
+
+  <!-- Quiz 1021 DEP -->
+  <div class="quiz-card">
+    <span class="quiz-year">1021</span>
+    <div class="quiz-stem">Diethyl phthalate在水性膜衣中主要扮演功能角色為何？</div>
+    <div class="options" id="opts_q10">
+      <button class="option-btn" onclick="answer('q10','A','A')">A. 塑化劑</button>
+      <button class="option-btn" onclick="answer('q10','B','A')">B. 遮光劑</button>
+      <button class="option-btn" onclick="answer('q10','C','A')">C. 腸溶劑</button>
+      <button class="option-btn" onclick="answer('q10','D','A')">D. 濕潤劑</button>
+    </div>
+    <button class="explain-btn" onclick="toggleExplain('q10')">顯示詳解</button>
+    <div class="explanation" id="exp_q10">
+      ✅ 正確答案：<strong>A（塑化劑）</strong><br><br>
+      ⚠️ 陷阱！<strong>Diethyl phthalate（DEP）</strong>雖有 phthalate 字根（通常聯想到腸溶材質），但在水性膜衣配方（Aquacoat® pseudolatex 系統）中是作為<strong>塑化劑</strong>使用！<br><br>
+      phthalate 字根當腸溶：CAP, PVAP, HPMCP（整個高分子）<br>
+      DEP 是小分子酯類 → 這裡是塑化劑。
+    </div>
+    <div class="note-area-wrap">
+      <span class="note-area-label">📝 補充筆記</span>
+      <textarea class="note-area" id="note_q10" placeholder="在此輸入你的補充..." oninput="saveNote('q10')"></textarea>
+      <div class="note-saved" id="saved_q10">已儲存 ✓</div>
+    </div>
+  </div>
+
+  <!-- 糖衣vs膜衣比較 -->
+  <div class="subsection-title">糖衣錠 vs 膜衣錠比較</div>
+  <table class="compare-table">
+    <tr><th></th><th>糖衣錠</th><th>膜衣錠</th></tr>
+    <tr><td>包衣時間</td><td>數天（耗時）</td><td>數小時</td></tr>
+    <tr><td>技術要求</td><td>高度技巧</td><td>較低</td></tr>
+    <tr><td>重量/大小</td><td>增加約 50%</td><td>幾乎不變</td></tr>
+    <tr><td>批次均一性</td><td>略有差異</td><td>較均一</td></tr>
+    <tr><td>耐磨性</td><td>較能抵抗磨損</td><td>—</td></tr>
+    <tr><td>相同點</td><td colspan="2">都可著色；都可提供識別外觀</td></tr>
+  </table>
+
+  <!-- Quiz 1032 糖衣膜衣差異 -->
+  <div class="quiz-card">
+    <span class="quiz-year">1032</span>
+    <div class="quiz-stem">糖衣包覆（sugar coating）除了製程繁瑣費時且需要專家與錠片增重一倍等缺點外，其與膜衣包覆（film coating）在兩者錠片性質方面尚有何最大差異？</div>
+    <div class="options" id="opts_q11">
+      <button class="option-btn" onclick="answer('q11','A','B')">A. 藥物含量較不均一</button>
+      <button class="option-btn" onclick="answer('q11','B','B')">B. 錠片重量較不一致</button>
+      <button class="option-btn" onclick="answer('q11','C','B')">C. 整體外觀較不順眼</button>
+      <button class="option-btn" onclick="answer('q11','D','B')">D. 長期儲存較不安定</button>
+    </div>
+    <button class="explain-btn" onclick="toggleExplain('q11')">顯示詳解</button>
+    <div class="explanation" id="exp_q11">
+      ✅ 正確答案：<strong>B（錠片重量較不一致）</strong><br><br>
+      糖衣包覆是逐層手動噴灑，「同批次與批次間之大小與重量略有差異」，所以重量<strong>均一性</strong>比膜衣差。<br>
+      膜衣是用噴霧精確控制，重量增加少且一致。
+    </div>
+    <div class="note-area-wrap">
+      <span class="note-area-label">📝 補充筆記</span>
+      <textarea class="note-area" id="note_q11" placeholder="在此輸入你的補充..." oninput="saveNote('q11')"></textarea>
+      <div class="note-saved" id="saved_q11">已儲存 ✓</div>
+    </div>
+  </div>
+
+  <!-- Quiz 1022 包衣材質 -->
+  <div class="quiz-card">
+    <span class="quiz-year">1022</span>
+    <div class="quiz-stem">同一種藥品，膜衣錠與糖衣錠的最大不同處為何？</div>
+    <div class="options" id="opts_q12">
+      <button class="option-btn" onclick="answer('q12','A','C')">A. 釋放機轉</button>
+      <button class="option-btn" onclick="answer('q12','B','C')">B. 錠片處方</button>
+      <button class="option-btn" onclick="answer('q12','C','C')">C. 包衣材質</button>
+      <button class="option-btn" onclick="answer('q12','D','C')">D. 有效時期</button>
+    </div>
+    <button class="explain-btn" onclick="toggleExplain('q12')">顯示詳解</button>
+    <div class="explanation" id="exp_q12">
+      ✅ 正確答案：<strong>C（包衣材質）</strong><br><br>
+      同一種藥品，核心的錠片處方是一樣的，但：<br>
+      糖衣 → 用多層糖漿（sucrose-based）<br>
+      膜衣 → 用薄膜聚合物（HPMC等）<br>
+      → 最大差異在於<strong>包衣材質</strong>
+    </div>
+    <div class="note-area-wrap">
+      <span class="note-area-label">📝 補充筆記</span>
+      <textarea class="note-area" id="note_q12" placeholder="在此輸入你的補充..." oninput="saveNote('q12')"></textarea>
+      <div class="note-saved" id="saved_q12">已儲存 ✓</div>
+    </div>
+  </div>
+</div><!-- /film -->
+
+<hr class="divider">
+
+<!-- ══════════════════════════════════════ -->
+<!-- ENTERIC COATING -->
+<!-- ══════════════════════════════════════ -->
+<div class="section" id="enteric">
+  <div class="section-title">🏥 腸溶包衣（Enteric Coating）</div>
+
+  <div class="note-card">
+    <strong>目的</strong>：在胃中不釋放 → 到腸才崩散溶離吸收<br>
+    <strong>機轉</strong>：腸溶材質 = 弱酸性高分子（pKa 3~5），在胃的低 pH 不解離 → 在腸（pH ≥ 5）解離溶解
+  </div>
+
+  <div class="subsection-title">腸溶目的</div>
+  <div class="note-card">
+    <ul>
+      <li>避免藥物被<strong>胃酸</strong>破壞（如 erythromycin、PPI、pancreatin）</li>
+      <li>避免藥物<strong>刺激胃黏膜</strong>（如 aspirin、steroids）</li>
+      <li>藥物需在<strong>腸道吸收或作用</strong>時</li>
+    </ul>
+  </div>
+
+  <table class="compare-table">
+    <tr><th>腸溶材質</th><th>縮寫</th><th>特點</th></tr>
+    <tr><td>Pharmaceutical shellac 蟲膠</td><td>—</td><td>最古老；天然混合物；儲存易聚合 → 藥物無法釋放</td></tr>
+    <tr><td>Cellulose acetate phthalate</td><td><strong>CAP</strong></td><td>最古老合成聚合物；pH ≥ 6 溶解；水解穩定性較差；水分/胃液滲透性較高</td></tr>
+    <tr><td>Polyvinyl acetate phthalate</td><td><strong>PVAP</strong></td><td>對水分/胃液滲透性低；水解更穩定；可在較低 pH 解離</td></tr>
+    <tr><td>Hydroxypropyl methylcellulose phthalate</td><td><strong>HPMCP</strong></td><td>性質類似 PVAP</td></tr>
+    <tr><td>Diethyl phthalate</td><td><strong>DEP</strong></td><td>⚠️ 在水性膜衣中作塑化劑（非腸溶材質！）</td></tr>
+    <tr><td>Cellulose acetate trimellitate</td><td><strong>CAT</strong></td><td>性質類似 CAP</td></tr>
+    <tr><td>Carboxymethyl ethylcellulose</td><td><strong>CMEC</strong></td><td>—</td></tr>
+    <tr><td>Acrylic copolymers（methacrylic acid copolymers）</td><td><strong>Eudragit</strong></td><td>近年最優選；dissolution above pH 5.5；Eudragit L（pH≥6）/ S（pH≥7）/ FS / E（非腸溶）</td></tr>
+    <tr><td>Hydroxypropyl methylcellulose acetate succinate</td><td><strong>HPMCAS</strong></td><td>常做水性膜衣系統</td></tr>
+  </table>
+
+  <div class="highlight-box">
+    🔑 <strong>phthalate 字根 = 腸溶材質</strong>：CAP、PVAP、HPMCP 結構中都有鄰苯二甲酸（phthalate）基<br>
+    但 <strong>DEP 除外</strong>（小分子酯，在 Aquacoat 中當塑化劑）<br>
+    <strong>HPMC 本身（不加 phthalate）= 水溶性</strong>，不能當腸溶！
+  </div>
+
+  <div class="highlight-box warning">
+    <strong>Eudragit S100</strong>（methacrylic acid copolymer B）→ pH ≥ 7 才溶解 → 可到<strong>迴腸（ileum）</strong>才釋放
+  </div>
+
+  <!-- Quiz 腸溶包衣目的 -->
+  <div class="quiz-card">
+    <span class="quiz-year">1042</span>
+    <div class="quiz-stem">腸溶包覆（enteric coating）的最主要目的為何？</div>
+    <div class="options" id="opts_q13">
+      <button class="option-btn" onclick="answer('q13','A','D')">A. 阻斷空氣水氣的破壞性</button>
+      <button class="option-btn" onclick="answer('q13','B','D')">B. 掩蓋不良的味道或氣味</button>
+      <button class="option-btn" onclick="answer('q13','C','D')">C. 提供美麗外觀或辨別力</button>
+      <button class="option-btn" onclick="answer('q13','D','D')">D. 呈現特別藥物釋離特性</button>
+    </div>
+    <button class="explain-btn" onclick="toggleExplain('q13')">顯示詳解</button>
+    <div class="explanation" id="exp_q13">
+      ✅ 正確答案：<strong>D</strong><br><br>
+      腸溶包衣的核心目的是<strong>控制釋放部位</strong>（在腸才釋放），屬於特殊的 delayed-release 設計。<br>
+      A（保護）→ 一般包衣也有；B（遮蔽味覺）→ 糖衣/膜衣的目的；C（外觀）→ 次要目的。
+    </div>
+    <div class="note-area-wrap">
+      <span class="note-area-label">📝 補充筆記</span>
+      <textarea class="note-area" id="note_q13" placeholder="在此輸入你的補充..." oninput="saveNote('q13')"></textarea>
+      <div class="note-saved" id="saved_q13">已儲存 ✓</div>
+    </div>
+  </div>
+
+  <!-- Quiz 1102 不適合腸溶 -->
+  <div class="quiz-card">
+    <span class="quiz-year">1102</span>
+    <div class="quiz-stem">下列何者最不適合做為錠劑之腸溶包衣？</div>
+    <div class="options" id="opts_q14">
+      <button class="option-btn" onclick="answer('q14','A','B')">A. shellac</button>
+      <button class="option-btn" onclick="answer('q14','B','B')">B. hydroxypropyl methylcellulose</button>
+      <button class="option-btn" onclick="answer('q14','C','B')">C. polyvinyl acetate phthalate</button>
+      <button class="option-btn" onclick="answer('q14','D','B')">D. cellulose acetate phthalate</button>
+    </div>
+    <button class="explain-btn" onclick="toggleExplain('q14')">顯示詳解</button>
+    <div class="explanation" id="exp_q14">
+      ✅ 正確答案：<strong>B（HPMC）</strong><br><br>
+      <strong>HPMC</strong>（hydroxypropyl methylcellulose）本身是<strong>水溶性</strong>的，在胃的酸性環境雖然溶解慢，但它並沒有腸溶特性（不是在特定 pH 才溶解的弱酸）。它可以當成膜材料（film former）但不是腸溶包衣。<br><br>
+      ⚠️ 注意：<strong>HPMCP</strong>（加了 phthalate）才是腸溶材質！
+    </div>
+    <div class="note-area-wrap">
+      <span class="note-area-label">📝 補充筆記</span>
+      <textarea class="note-area" id="note_q14" placeholder="在此輸入你的補充..." oninput="saveNote('q14')"></textarea>
+      <div class="note-saved" id="saved_q14">已儲存 ✓</div>
+    </div>
+  </div>
+
+  <!-- Quiz 1081 迴腸 Eudragit S -->
+  <div class="quiz-card">
+    <span class="quiz-year">1081</span>
+    <div class="quiz-stem">下列何種材料可保護劑型通過胃部到達迴腸（ileum）後溶解而釋出藥物？</div>
+    <div class="options" id="opts_q15">
+      <button class="option-btn" onclick="answer('q15','A','D')">A. hydroxyl propylmethylcellulose phthalate（HPMCP）</button>
+      <button class="option-btn" onclick="answer('q15','B','D')">B. cellulose acetate phthalate（CAP）</button>
+      <button class="option-btn" onclick="answer('q15','C','D')">C. shellac</button>
+      <button class="option-btn" onclick="answer('q15','D','D')">D. methacrylic acid copolymer B（Eudragit S）</button>
+    </div>
+    <button class="explain-btn" onclick="toggleExplain('q15')">顯示詳解</button>
+    <div class="explanation" id="exp_q15">
+      ✅ 正確答案：<strong>D（Eudragit S）</strong><br><br>
+      各材質的溶解 pH：<br>
+      · CAP → pH ≥ 6（十二指腸 ~ 小腸前段）<br>
+      · HPMCP → 類似 PVAP，pH ≥ 5<br>
+      · Shellac → pH ≥ 7，但天然材質不穩定<br>
+      · <strong>Eudragit S（methacrylic acid copolymer B）→ pH ≥ 7</strong>，保護到<strong>迴腸</strong>才釋放，是最佳選擇
+    </div>
+    <div class="note-area-wrap">
+      <span class="note-area-label">📝 補充筆記</span>
+      <textarea class="note-area" id="note_q15" placeholder="在此輸入你的補充..." oninput="saveNote('q15')"></textarea>
+      <div class="note-saved" id="saved_q15">已儲存 ✓</div>
+    </div>
+  </div>
+
+  <!-- Quiz 1062 不具腸溶 -->
+  <div class="quiz-card">
+    <span class="quiz-year">1062</span>
+    <div class="quiz-stem">下列何者不具腸溶特性？</div>
+    <div class="options" id="opts_q16">
+      <button class="option-btn" onclick="answer('q16','A','B')">A. cellulose acetate phthalate</button>
+      <button class="option-btn" onclick="answer('q16','B','B')">B. hydroxypropylcellulose</button>
+      <button class="option-btn" onclick="answer('q16','C','B')">C. hydroxypropyl methylcellulose phthalate</button>
+      <button class="option-btn" onclick="answer('q16','D','B')">D. shellac</button>
+    </div>
+    <button class="explain-btn" onclick="toggleExplain('q16')">顯示詳解</button>
+    <div class="explanation" id="exp_q16">
+      ✅ 正確答案：<strong>B（HPC，hydroxypropylcellulose）</strong><br><br>
+      HPC 是水溶性纖維素衍生物，常用於黏合劑或包衣材料，但<strong>沒有腸溶特性</strong>。<br>
+      A（CAP）、C（HPMCP）→ 有 phthalate → 腸溶 ✓<br>
+      D（shellac）→ 水不溶性天然腸溶 ✓
+    </div>
+    <div class="note-area-wrap">
+      <span class="note-area-label">📝 補充筆記</span>
+      <textarea class="note-area" id="note_q16" placeholder="在此輸入你的補充..." oninput="saveNote('q16')"></textarea>
+      <div class="note-saved" id="saved_q16">已儲存 ✓</div>
+    </div>
+  </div>
+
+  <!-- Quiz 1041 phthalate 官能基 -->
+  <div class="quiz-card">
+    <span class="quiz-year">1041</span>
+    <div class="quiz-stem">腸溶包衣的高分子材質的結構式中大都含有下列何種官能基？</div>
+    <div class="options" id="opts_q17">
+      <button class="option-btn" onclick="answer('q17','A','B')">A. Acetate</button>
+      <button class="option-btn" onclick="answer('q17','B','B')">B. Phthalate</button>
+      <button class="option-btn" onclick="answer('q17','C','B')">C. Ethoxylate</button>
+      <button class="option-btn" onclick="answer('q17','D','B')">D. Carboxylate</button>
+    </div>
+    <button class="explain-btn" onclick="toggleExplain('q17')">顯示詳解</button>
+    <div class="explanation" id="exp_q17">
+      ✅ 正確答案：<strong>B（Phthalate）</strong><br><br>
+      腸溶高分子材質結構中含有 <strong>-COOH</strong>（carboxyl group），以 phthalate（鄰苯二甲酸酯）最為代表性。<br>
+      Phthalate 在低 pH（胃）不解離 → 在高 pH（腸）解離 → 溶解釋藥。<br>
+      代表：CAP、PVAP、HPMCP 等。
+    </div>
+    <div class="note-area-wrap">
+      <span class="note-area-label">📝 補充筆記</span>
+      <textarea class="note-area" id="note_q17" placeholder="在此輸入你的補充..." oninput="saveNote('q17')"></textarea>
+      <div class="note-saved" id="saved_q17">已儲存 ✓</div>
+    </div>
+  </div>
+
+  <!-- Quiz 1012 腸溶膜衣作用 -->
+  <div class="quiz-card">
+    <span class="quiz-year">1012</span>
+    <div class="quiz-stem">下列對於腸溶膜衣的敘述，何者正確？</div>
+    <div class="options" id="opts_q18">
+      <button class="option-btn" onclick="answer('q18','A','C')">A. 於腸道酸鹼值下會膨脹</button>
+      <button class="option-btn" onclick="answer('q18','B','C')">B. 於腸道酸鹼值下會滲透</button>
+      <button class="option-btn" onclick="answer('q18','C','C')">C. 於腸道酸鹼值下會溶解</button>
+      <button class="option-btn" onclick="answer('q18','D','C')">D. 於腸道酸鹼值下會爆破</button>
+    </div>
+    <button class="explain-btn" onclick="toggleExplain('q18')">顯示詳解</button>
+    <div class="explanation" id="exp_q18">
+      ✅ 正確答案：<strong>C（溶解）</strong><br><br>
+      腸溶材質在腸道偏中性/鹼性 pH 下解離 → <strong>溶解</strong>，讓藥物釋放出來。<br>
+      膨脹是崩散劑的機轉；爆破是滲透壓系統（OROS）；滲透是膜的穿透現象。
+    </div>
+    <div class="note-area-wrap">
+      <span class="note-area-label">📝 補充筆記</span>
+      <textarea class="note-area" id="note_q18" placeholder="在此輸入你的補充..." oninput="saveNote('q18')"></textarea>
+      <div class="note-saved" id="saved_q18">已儲存 ✓</div>
+    </div>
+  </div>
+
+  <!-- Quiz 1022 不需腸溶 -->
+  <div class="quiz-card">
+    <span class="quiz-year">1022</span>
+    <div class="quiz-stem">具有下列何種特質的藥物不須製備成腸溶錠？</div>
+    <div class="options" id="opts_q19">
+      <button class="option-btn" onclick="answer('q19','A','B')">A. 會被胃酸液降解者</button>
+      <button class="option-btn" onclick="answer('q19','B','B')">B. 具有酸性官能基者</button>
+      <button class="option-btn" onclick="answer('q19','C','B')">C. 具胃黏膜刺激性者</button>
+      <button class="option-btn" onclick="answer('q19','D','B')">D. 避免被胃部吸收者</button>
+    </div>
+    <button class="explain-btn" onclick="toggleExplain('q19')">顯示詳解</button>
+    <div class="explanation" id="exp_q19">
+      ✅ 正確答案：<strong>B（具有酸性官能基者）</strong><br><br>
+      「具酸性官能基」本身並不需要腸溶錠設計。<br>
+      需要腸溶錠的原因：<br>
+      A → 被胃酸降解（如 erythromycin、PPI）→ 需保護 ✓<br>
+      C → 刺激胃黏膜（如 aspirin）→ 需跳過胃 ✓<br>
+      D → 想在腸道吸收 → 需延遲釋放 ✓
+    </div>
+    <div class="note-area-wrap">
+      <span class="note-area-label">📝 補充筆記</span>
+      <textarea class="note-area" id="note_q19" placeholder="在此輸入你的補充..." oninput="saveNote('q19')"></textarea>
+      <div class="note-saved" id="saved_q19">已儲存 ✓</div>
+    </div>
+  </div>
+
+  <!-- Quiz 1012 水不溶性高分子 -->
+  <div class="quiz-card">
+    <span class="quiz-year">1012</span>
+    <div class="quiz-stem">下列何者是一種水不溶性的高分子膜衣材質？</div>
+    <div class="options" id="opts_q20">
+      <button class="option-btn" onclick="answer('q20','A','C')">A. Hydroxypropyl methylcellulose</button>
+      <button class="option-btn" onclick="answer('q20','B','C')">B. Polyvinylpyrrolidone</button>
+      <button class="option-btn" onclick="answer('q20','C','C')">C. Cellulose acetate phthalate</button>
+      <button class="option-btn" onclick="answer('q20','D','C')">D. Methylcellulose</button>
+    </div>
+    <button class="explain-btn" onclick="toggleExplain('q20')">顯示詳解</button>
+    <div class="explanation" id="exp_q20">
+      ✅ 正確答案：<strong>C（CAP）</strong><br><br>
+      <strong>CAP（cellulose acetate phthalate）</strong>在胃的低 pH 環境不解離 → 水不溶性 → 保護藥物通過胃。<br>
+      A HPMC → 水溶性（熱水分散冷水溶解）<br>
+      B PVP → 水溶性（常當黏合劑）<br>
+      D MC → 水溶性（冷水溶，熱水不溶）
+    </div>
+    <div class="note-area-wrap">
+      <span class="note-area-label">📝 補充筆記</span>
+      <textarea class="note-area" id="note_q20" placeholder="在此輸入你的補充..." oninput="saveNote('q20')"></textarea>
+      <div class="note-saved" id="saved_q20">已儲存 ✓</div>
+    </div>
+  </div>
+</div><!-- /enteric -->
+
+<hr class="divider">
+
+<!-- ══════════════════════════════════════ -->
+<!-- FLUID BED COATING -->
+<!-- ══════════════════════════════════════ -->
+<div class="section" id="fluidbed">
+  <div class="section-title">🌬 流動床包衣（Fluid Bed / Air Suspension Coating）</div>
+
+  <div class="note-card">
+    <strong>Wurster process</strong>：將粉末/顆粒/錠劑置入垂直圓筒，底部吹熱空氣使物料懸浮，噴嘴噴包衣液，快速乾燥。
+  </div>
+
+  <table class="compare-table">
+    <tr><th>噴灑方式</th><th>特性</th><th>適用</th><th>不適用</th></tr>
+    <tr>
+      <td><strong>頂噴（Top-spray）</strong></td>
+      <td>最大 capacity；包衣較不均勻</td>
+      <td>造粒；taste masking；enteric release；barrier films；<strong>hot melts</strong>；aqueous/latex 包衣</td>
+      <td>sustained-release（需均勻包覆）</td>
+    </tr>
+    <tr>
+      <td><strong>底噴（Bottom-spray / Wurster）</strong></td>
+      <td>均勻性最佳（對流讓每顆都經過噴嘴）；capacity 較小</td>
+      <td>sustained-release；enteric-release</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td><strong>側噴（Tangential-spray）</strong></td>
+      <td>均勻度不錯；底盤旋轉</td>
+      <td>layering coatings；sustained-release；enteric-release</td>
+      <td>—</td>
+    </tr>
+  </table>
+
+  <div class="highlight-box warning">
+    ⚠️ 考試重點：<strong>頂噴不適合 sustained-release</strong>（包覆不夠均勻）<br>
+    <strong>Hot melts → 頂噴</strong>（從上往下噴，黏稠物不會噴不均）<br>
+    <strong>腸溶 enteric coating → 三種都可以</strong>（但課本說頂噴最常提到）
+  </div>
+
+  <!-- Quiz 1131 hot melts -->
+  <div class="quiz-card">
+    <span class="quiz-year">1131</span>
+    <div class="quiz-stem">下列何種流動床包衣（fluid bed system）方法，最適合用於以熱熔材料（hot melts）作為包衣材料之製程？</div>
+    <div class="options" id="opts_q21">
+      <button class="option-btn" onclick="answer('q21','A','C')">A. bottom-spray method</button>
+      <button class="option-btn" onclick="answer('q21','B','C')">B. tangential-spray method</button>
+      <button class="option-btn" onclick="answer('q21','C','C')">C. top-spray method</button>
+      <button class="option-btn" onclick="answer('q21','D','C')">D. Wurster process method</button>
+    </div>
+    <button class="explain-btn" onclick="toggleExplain('q21')">顯示詳解</button>
+    <div class="explanation" id="exp_q21">
+      ✅ 正確答案：<strong>C（top-spray）</strong><br><br>
+      Hot melts（熱熔材料）黏稠度高，若由下往上噴（底噴）難以均勻噴灑；<br>
+      <strong>頂噴（top-spray）</strong>從上方噴下，結合 aqueous solutions、latexes 或 hot melts 時最有效。
+    </div>
+    <div class="note-area-wrap">
+      <span class="note-area-label">📝 補充筆記</span>
+      <textarea class="note-area" id="note_q21" placeholder="在此輸入你的補充..." oninput="saveNote('q21')"></textarea>
+      <div class="note-saved" id="saved_q21">已儲存 ✓</div>
+    </div>
+  </div>
+
+  <!-- Quiz 1102 腸溶膜衣頂噴 -->
+  <div class="quiz-card">
+    <span class="quiz-year">1102</span>
+    <div class="quiz-stem">製備可掩蓋味覺之腸溶膜衣錠時，最推薦使用下列何種型式的流動床？①頂噴型 ②底噴型 ③側噴型</div>
+    <div class="options" id="opts_q22">
+      <button class="option-btn" onclick="answer('q22','A','A')">A. 僅①</button>
+      <button class="option-btn" onclick="answer('q22','B','A')">B. 僅②</button>
+      <button class="option-btn" onclick="answer('q22','C','A')">C. 僅③</button>
+      <button class="option-btn" onclick="answer('q22','D','A')">D. ①②③</button>
+    </div>
+    <button class="explain-btn" onclick="toggleExplain('q22')">顯示詳解</button>
+    <div class="explanation" id="exp_q22">
+      ✅ 正確答案：<strong>A（僅①頂噴）</strong><br><br>
+      依課本，頂噴（top-spray）特別適合 taste masking（掩蓋味覺）和 enteric release。<br>
+      雖然事實上三種都可以包腸衣，但課本只列出頂噴用於 taste masking 和 enteric，所以考試選 A。
+    </div>
+    <div class="note-area-wrap">
+      <span class="note-area-label">📝 補充筆記</span>
+      <textarea class="note-area" id="note_q22" placeholder="在此輸入你的補充..." oninput="saveNote('q22')"></textarea>
+      <div class="note-saved" id="saved_q22">已儲存 ✓</div>
+    </div>
+  </div>
+
+  <!-- Quiz 1052 top-spray 不建議 -->
+  <div class="quiz-card">
+    <span class="quiz-year">1052</span>
+    <div class="quiz-stem">流動床包覆製程有top-spray、bottom-spray、tangential-spray等三種噴灑包覆法，只有由上往下噴（top-spray）的包覆製程較不建議用於下列何種包覆？</div>
+    <div class="options" id="opts_q23">
+      <button class="option-btn" onclick="answer('q23','A','C')">A. Barrier film</button>
+      <button class="option-btn" onclick="answer('q23','B','C')">B. Enteric coating</button>
+      <button class="option-btn" onclick="answer('q23','C','C')">C. Sustained release</button>
+      <button class="option-btn" onclick="answer('q23','D','C')">D. Taste masking</button>
+    </div>
+    <button class="explain-btn" onclick="toggleExplain('q23')">顯示詳解</button>
+    <div class="explanation" id="exp_q23">
+      ✅ 正確答案：<strong>C（Sustained release）</strong><br><br>
+      頂噴的包覆均勻性較差，若包覆不均勻會導致藥物突釋（dose dumping），<strong>sustained-release 需要非常均勻的包覆</strong>，因此不建議用頂噴。<br>
+      底噴和側噴的均勻度更好，適合 sustained-release 和 enteric-release。
+    </div>
+    <div class="note-area-wrap">
+      <span class="note-area-label">📝 補充筆記</span>
+      <textarea class="note-area" id="note_q23" placeholder="在此輸入你的補充..." oninput="saveNote('q23')"></textarea>
+      <div class="note-saved" id="saved_q23">已儲存 ✓</div>
+    </div>
+  </div>
+</div><!-- /fluidbed -->
+
+<hr class="divider">
+
+<!-- ══════════════════════════════════════ -->
+<!-- COMPRESSION COATING -->
+<!-- ══════════════════════════════════════ -->
+<div class="section" id="compression">
+  <div class="section-title">🔩 壓製包衣（Compression Coating）</div>
+
+  <div class="note-card">
+    <strong>方法</strong>：將顆粒/粉末包衣材質用特殊壓錠機<strong>壓製</strong>在核心錠外<br>
+    <strong>優點</strong>：
+    <ul>
+      <li>✅ <strong>無水操作</strong>→ 適合對水不穩定藥物</li>
+      <li>✅ 比糖衣缽包衣更<strong>均勻</strong></li>
+      <li>✅ 使用較少包衣材料 → 錠片較輕小、易吞嚥</li>
+    </ul>
+    <strong>缺點</strong>：核心錠需精確定位；若內外錠結合不良會 capping 或散開；製備速度慢
+  </div>
+
+  <!-- Quiz 1081 compression coating -->
+  <div class="quiz-card">
+    <span class="quiz-year">1081</span>
+    <div class="quiz-stem">有關compression coating之敘述，下列何者正確？</div>
+    <div class="options" id="opts_q24">
+      <button class="option-btn" onclick="answer('q24','A','B')">A. 較利用pans進行糖衣包衣時，使用較多的包衣材料</button>
+      <button class="option-btn" onclick="answer('q24','B','B')">B. 適用於對濕不穩定的藥品</button>
+      <button class="option-btn" onclick="answer('q24','C','B')">C. 較利用pans進行糖衣包衣時，其產品之均一度較差</button>
+      <button class="option-btn" onclick="answer('q24','D','B')">D. 製備之成品一般較大，不易吞嚥</button>
+    </div>
+    <button class="explain-btn" onclick="toggleExplain('q24')">顯示詳解</button>
+    <div class="explanation" id="exp_q24">
+      ✅ 正確答案：<strong>B</strong><br><br>
+      壓製包衣是<strong>無水操作</strong>，不需要水/有機溶劑，故<strong>適合對濕（水分）不穩定的藥品</strong>。<br>
+      A 錯：使用<strong>較少</strong>包衣材料<br>
+      C 錯：均一度比糖衣缽<strong>更好</strong>（更精確）<br>
+      D 錯：成品較<strong>輕小</strong>，易吞嚥
+    </div>
+    <div class="note-area-wrap">
+      <span class="note-area-label">📝 補充筆記</span>
+      <textarea class="note-area" id="note_q24" placeholder="在此輸入你的補充..." oninput="saveNote('q24')"></textarea>
+      <div class="note-saved" id="saved_q24">已儲存 ✓</div>
+    </div>
+  </div>
+
+  <!-- Quiz 1021 水敏感包衣 -->
+  <div class="quiz-card">
+    <span class="quiz-year">1021</span>
+    <div class="quiz-stem">下列何種包覆方法是在一種無水狀態下的操作，適合於含有水氣敏感性藥物之錠片的包覆製程？</div>
+    <div class="options" id="opts_q25">
+      <button class="option-btn" onclick="answer('q25','A','A')">A. Compression coating</button>
+      <button class="option-btn" onclick="answer('q25','B','A')">B. Tangential-spray coating</button>
+      <button class="option-btn" onclick="answer('q25','C','A')">C. Top-spray coating</button>
+      <button class="option-btn" onclick="answer('q25','D','A')">D. Bottom-spray coating</button>
+    </div>
+    <button class="explain-btn" onclick="toggleExplain('q25')">顯示詳解</button>
+    <div class="explanation" id="exp_q25">
+      ✅ 正確答案：<strong>A（Compression coating）</strong><br><br>
+      只有<strong>壓製包衣（compression coating）</strong>是純粹的乾式（無水）操作。<br>
+      B/C/D 的流動床方法都需要包衣液（水性或有機溶劑），對水敏感藥品不適合。
+    </div>
+    <div class="note-area-wrap">
+      <span class="note-area-label">📝 補充筆記</span>
+      <textarea class="note-area" id="note_q25" placeholder="在此輸入你的補充..." oninput="saveNote('q25')"></textarea>
+      <div class="note-saved" id="saved_q25">已儲存 ✓</div>
+    </div>
+  </div>
+</div><!-- /compression -->
+
+<hr class="divider">
+
+<!-- ══════════════════════════════════════ -->
+<!-- QUALITY STANDARDS -->
+<!-- ══════════════════════════════════════ -->
+<div class="section" id="quality">
+  <div class="section-title">📊 壓製錠品質標準</div>
+
+  <table class="compare-table">
+    <tr><th>項目</th><th>標準/要求</th></tr>
+    <tr><td><strong>錠片厚度</strong></td><td>控制在標準值之 <strong>±5%</strong> 以內</td></tr>
+    <tr><td><strong>硬度</strong></td><td>最低要求 <strong>4 kg</strong>（4 公斤壓力）；影響因素：壓錠壓力、材質硬度</td></tr>
+    <tr><td><strong>脆度（friability）</strong></td><td>重量損失不超過 <strong>1%</strong>；影響因素：顆粒濕度（太乾 0.5~1% 可能脆度不佳）</td></tr>
+    <tr><td><strong>崩散時間</strong></td><td>未著衣錠 ≤ 30 分鐘；腸衣錠：胃液中 1 小時不崩散→腸液中崩散；NTG ≈ 2 分鐘；口腔錠 4 小時</td></tr>
+    <tr><td><strong>溶離</strong></td><td>體外溶離試驗（合理預測 bioavailability）；BCS 分類應用</td></tr>
+  </table>
+
+  <div class="subsection-title">劑型單元含量均一度（中華藥典規定）</div>
+  <div class="note-card">
+    <strong>方法一：重量差異（Weight Variation）</strong> — 未包衣錠，先稱重計算含量<br>
+    <strong>方法二：含量均一度（Content Uniformity）</strong> — 包衣或未包衣錠，各別分析<br><br>
+    <strong>判定標準（壓製錠，平均含量 ≤ 100%）：</strong><br>
+    初次取 <strong>10 粒</strong>：<br>
+    ✅ 合格：10粒均在 85~115%，且 RSD ≤ 6.0%<br>
+    ⚠️ 再取 20 粒（共 30 粒）：30粒中僅 ≤1 粒超出 85~115%（但均未超 75~125%），且 RSD ≤ 7.8% → 合格<br>
+    ❌ 不合格：否則判定不符
+  </div>
+
+  <!-- Quiz 1091 厚度 -->
+  <div class="quiz-card">
+    <span class="quiz-year">1091</span>
+    <div class="quiz-stem">通常錠劑厚度的誤差度應控制在下列何範圍內？</div>
+    <div class="options" id="opts_q26">
+      <button class="option-btn" onclick="answer('q26','A','A')">A. ±5%</button>
+      <button class="option-btn" onclick="answer('q26','B','A')">B. ±7%</button>
+      <button class="option-btn" onclick="answer('q26','C','A')">C. ±10%</button>
+      <button class="option-btn" onclick="answer('q26','D','A')">D. ±12%</button>
+    </div>
+    <button class="explain-btn" onclick="toggleExplain('q26')">顯示詳解</button>
+    <div class="explanation" id="exp_q26">
+      ✅ 正確答案：<strong>A（±5%）</strong><br><br>
+      錠劑厚度由模（die）直徑、充填量、充填材料壓緊特性及壓製壓力決定，一般控制在標準值的 <strong>±5%</strong> 以內。
+    </div>
+    <div class="note-area-wrap">
+      <span class="note-area-label">📝 補充筆記</span>
+      <textarea class="note-area" id="note_q26" placeholder="在此輸入你的補充..." oninput="saveNote('q26')"></textarea>
+      <div class="note-saved" id="saved_q26">已儲存 ✓</div>
+    </div>
+  </div>
+
+  <!-- Quiz 1022 硬度 -->
+  <div class="quiz-card">
+    <span class="quiz-year">1022</span>
+    <div class="quiz-stem">硬度表示壓碎錠片所需要使用的力量，一般理想錠片的最低硬度要求為多少公斤？</div>
+    <div class="options" id="opts_q27">
+      <button class="option-btn" onclick="answer('q27','A','D')">A. 1</button>
+      <button class="option-btn" onclick="answer('q27','B','D')">B. 2</button>
+      <button class="option-btn" onclick="answer('q27','C','D')">C. 3</button>
+      <button class="option-btn" onclick="answer('q27','D','D')">D. 4</button>
+    </div>
+    <button class="explain-btn" onclick="toggleExplain('q27')">顯示詳解</button>
+    <div class="explanation" id="exp_q27">
+      ✅ 正確答案：<strong>D（4 公斤）</strong><br><br>
+      <strong>4 kg</strong> 的壓力為滿意錠片硬度之最小要求。<br>
+      注意：TWP 和 USP 現在更傾向使用「破碎力（breaking force）」和「抗張強度（tensile strength）」來表示，但 4 kg 仍是常考數值。
+    </div>
+    <div class="note-area-wrap">
+      <span class="note-area-label">📝 補充筆記</span>
+      <textarea class="note-area" id="note_q27" placeholder="在此輸入你的補充..." oninput="saveNote('q27')"></textarea>
+      <div class="note-saved" id="saved_q27">已儲存 ✓</div>
+    </div>
+  </div>
+
+  <!-- Quiz 1141 脆度試驗 -->
+  <div class="quiz-card">
+    <span class="quiz-year">1141</span>
+    <div class="quiz-stem">依中華藥典，有關錠劑脆度試驗之敘述，下列何者錯誤？</div>
+    <div class="options" id="opts_q28">
+      <button class="option-btn" onclick="answer('q28','A','C')">A. 錠劑單位重量為650 mg或以下者，取若干錠劑使其重量接近6.5 g，始進行測試</button>
+      <button class="option-btn" onclick="answer('q28','B','C')">B. 試驗前須除去錠劑表面粉塵並精確秤重後放入脆度計轉動100次</button>
+      <button class="option-btn" onclick="answer('q28','C','C')">C. 脆度測試1次後檢品出現明顯之裂紋、開裂或碎片，則應再次試驗2次</button>
+      <button class="option-btn" onclick="answer('q28','D','C')">D. 對大部分藥品，其平均重量減少不得超過1％</button>
+    </div>
+    <button class="explain-btn" onclick="toggleExplain('q28')">顯示詳解</button>
+    <div class="explanation" id="exp_q28">
+      ✅ 正確答案（錯誤者）：<strong>C</strong><br><br>
+      C 錯誤：脆度測試 1 次後，若出現明顯裂紋、開裂或碎片，應<strong>判定為不合格</strong>，不須再測試 2 次（不是重複試驗）。<br><br>
+      A ✓：650 mg 以下，取約 6.5 g 進行<br>
+      B ✓：除去粉塵→秤重→轉 100 次<br>
+      D ✓：重量損失 ≤ 1%
+    </div>
+    <div class="note-area-wrap">
+      <span class="note-area-label">📝 補充筆記</span>
+      <textarea class="note-area" id="note_q28" placeholder="在此輸入你的補充..." oninput="saveNote('q28')"></textarea>
+      <div class="note-saved" id="saved_q28">已儲存 ✓</div>
+    </div>
+  </div>
+
+  <!-- Quiz 1132 脆度試驗目的 -->
+  <div class="quiz-card">
+    <span class="quiz-year">1132</span>
+    <div class="quiz-stem">測定錠劑承受機械應力之能力，及其對碎屑與表面磨耗抗性之試驗為下列何者？</div>
+    <div class="options" id="opts_q29">
+      <button class="option-btn" onclick="answer('q29','A','B')">A. 崩散度測試</button>
+      <button class="option-btn" onclick="answer('q29','B','B')">B. 脆度試驗</button>
+      <button class="option-btn" onclick="answer('q29','C','B')">C. 應力試驗</button>
+      <button class="option-btn" onclick="answer('q29','D','B')">D. 破碎力測試</button>
+    </div>
+    <button class="explain-btn" onclick="toggleExplain('q29')">顯示詳解</button>
+    <div class="explanation" id="exp_q29">
+      ✅ 正確答案：<strong>B（脆度試驗）</strong><br><br>
+      <strong>脆度（friability）</strong>試驗：測定錠片於轉動的脆度試驗計中，前後重量之損失，評估錠片耐磨性。<br>
+      <strong>硬度</strong>試驗：測定壓碎錠片所需的力量（不同概念！）
+    </div>
+    <div class="note-area-wrap">
+      <span class="note-area-label">📝 補充筆記</span>
+      <textarea class="note-area" id="note_q29" placeholder="在此輸入你的補充..." oninput="saveNote('q29')"></textarea>
+      <div class="note-saved" id="saved_q29">已儲存 ✓</div>
+    </div>
+  </div>
+
+  <!-- Quiz 1101 含量均一度繼續試驗 -->
+  <div class="quiz-card">
+    <span class="quiz-year">1101</span>
+    <div class="quiz-stem">依錠劑含量均一度試驗，測得10個檢品之個別有效成分，其中有9個檢品在標誌含量90.0%～110.0%之範圍內，1個檢品在標誌含量的80.5%，而其相對標準差為7.0%。依藥典規定，應如何繼續進行該試驗？</div>
+    <div class="options" id="opts_q30">
+      <button class="option-btn" onclick="answer('q30','A','B')">A. 再取10個檢品重複進行同一試驗</button>
+      <button class="option-btn" onclick="answer('q30','B','B')">B. 再取20個檢品重複進行同一試驗</button>
+      <button class="option-btn" onclick="answer('q30','C','B')">C. 再取30個檢品重複進行同一試驗</button>
+      <button class="option-btn" onclick="answer('q30','D','B')">D. 判定為不符規格，不須再進行試驗</button>
+    </div>
+    <button class="explain-btn" onclick="toggleExplain('q30')">顯示詳解</button>
+    <div class="explanation" id="exp_q30">
+      ✅ 正確答案：<strong>B（再取20個）</strong><br><br>
+      分析：<br>
+      · 1 個超出 85~115%（80.5%）→ 未超出 75~125% ✓（還可以繼續）<br>
+      · RSD = 7.0% > 6.0% → 不符合第一關<br>
+      → 進入第二關：<strong>再取 20 個</strong>（共 30 個）<br><br>
+      若 30 個中 ≤1 個超出 85~115%，且 RSD ≤ 7.8% → 合格<br>
+      若 80.5% 那顆 < 75% 或 > 125%，才直接不合格。
+    </div>
+    <div class="note-area-wrap">
+      <span class="note-area-label">📝 補充筆記</span>
+      <textarea class="note-area" id="note_q30" placeholder="在此輸入你的補充..." oninput="saveNote('q30')"></textarea>
+      <div class="note-saved" id="saved_q30">已儲存 ✓</div>
+    </div>
+  </div>
+
+  <!-- Quiz 1082 含量均一度 B錯 -->
+  <div class="quiz-card">
+    <span class="quiz-year">1082</span>
+    <div class="quiz-stem">依中華藥典第八版「單位劑量均一度試驗法」規定，對於檢品各別所含有效成分百分率的敘述，下列何者錯誤？</div>
+    <div class="options" id="opts_q31">
+      <button class="option-btn" onclick="answer('q31','A','B')">A. 壓製錠劑：10個檢品各別所含有效成分均在標誌含量的85.0～115.0%，且相對標準差小於或等於6.0%</button>
+      <button class="option-btn" onclick="answer('q31','B','B')">B. 壓製錠劑：合計30個檢品含量，僅3個超出標誌含量的85.0～115.0%，但未超出75.0～125.0%，且相對標準差小於或等於7.8%</button>
+      <button class="option-btn" onclick="answer('q31','C','B')">C. 膠囊劑：10個檢品至少9個未超出標誌含量的85.0～115.0%，且均未超出標誌含量的75.0～125.0%，且相對標準差小於或等於6.0%</button>
+      <button class="option-btn" onclick="answer('q31','D','B')">D. 膠囊劑：合計30個檢品含量，僅3個超出標誌含量的85.0～115.0%，但均未超出75.0～125.0%，且相對標準差小於或等於7.8%</button>
+    </div>
+    <button class="explain-btn" onclick="toggleExplain('q31')">顯示詳解</button>
+    <div class="explanation" id="exp_q31">
+      ✅ 正確答案（錯誤者）：<strong>B</strong><br><br>
+      B 錯誤：壓製錠劑在 30 粒中，<strong>僅 ≤1 粒</strong>（不是 3 粒）超出 85~115% 才合格。<br>
+      3 粒超出 85~115% → 不合格！<br><br>
+      膠囊（C、D）的標準較寬鬆（3粒可能是膠囊的標準，但此題 B 是在說壓製錠）。
+    </div>
+    <div class="note-area-wrap">
+      <span class="note-area-label">📝 補充筆記</span>
+      <textarea class="note-area" id="note_q31" placeholder="在此輸入你的補充..." oninput="saveNote('q31')"></textarea>
+      <div class="note-saved" id="saved_q31">已儲存 ✓</div>
+    </div>
+  </div>
+
+  <!-- Quiz 崩散度 1141 膜衣錠 -->
+  <div class="quiz-card">
+    <span class="quiz-year">1141</span>
+    <div class="quiz-stem">依中華藥典，有關膜衣錠崩散度試驗之規定，下列何者正確？</div>
+    <div class="options" id="opts_q32">
+      <button class="option-btn" onclick="answer('q32','A','B')">A. 先取10顆錠劑進行試驗，若未在規定時間內崩散則另取20顆進行試驗</button>
+      <button class="option-btn" onclick="answer('q32','B','B')">B. 進行測定時，置放錠劑之網架升降頻率為每分鐘29～32週期</button>
+      <button class="option-btn" onclick="answer('q32','C','B')">C. 測定網架之頂端在測定過程中均須保持在浸液內，不可高於浸液之液面</button>
+      <button class="option-btn" onclick="answer('q32','D','B')">D. 完全崩散狀態之評估，是指整個劑型或其所含之有效成分完全溶解</button>
+    </div>
+    <button class="explain-btn" onclick="toggleExplain('q32')">顯示詳解</button>
+    <div class="explanation" id="exp_q32">
+      ✅ 正確答案：<strong>B（29~32週期/分鐘）</strong><br><br>
+      A 錯：先取 <strong>6 顆</strong>（不是10顆）<br>
+      B ✓：網架升降頻率 <strong>29~32 週期/分鐘</strong><br>
+      C 錯：網架頂端在浸液<strong>液面上方</strong>時才能讓錠劑充分與液體接觸（頂端每次升出液面）<br>
+      D 錯：完全崩散≠完全溶解，是指殘留物已呈稀軟團塊，無可覺察之硬質部分
+    </div>
+    <div class="note-area-wrap">
+      <span class="note-area-label">📝 補充筆記</span>
+      <textarea class="note-area" id="note_q32" placeholder="在此輸入你的補充..." oninput="saveNote('q32')"></textarea>
+      <div class="note-saved" id="saved_q32">已儲存 ✓</div>
+    </div>
+  </div>
+
+  <!-- Quiz 1121 不需崩散度 -->
+  <div class="quiz-card">
+    <span class="quiz-year">1121</span>
+    <div class="quiz-stem">下列何者不需要執行崩散度試驗？</div>
+    <div class="options" id="opts_q33">
+      <button class="option-btn" onclick="answer('q33','A','D')">A. 延遲釋放腸溶膜衣錠（delayed-release enteric-coated tablets）</button>
+      <button class="option-btn" onclick="answer('q33','B','D')">B. 舌下錠（sublingual tablets）</button>
+      <button class="option-btn" onclick="answer('q33','C','D')">C. 口腔片（buccal tablets）</button>
+      <button class="option-btn" onclick="answer('q33','D','D')">D. 於規定間隔時間分次釋離藥品之錠劑（extended-release dosage forms）</button>
+    </div>
+    <button class="explain-btn" onclick="toggleExplain('q33')">顯示詳解</button>
+    <div class="explanation" id="exp_q33">
+      ✅ 正確答案：<strong>D（extended-release）</strong><br><br>
+      <strong>Extended-release</strong> 劑型設計就是<strong>不要崩散</strong>（要緩慢釋放），所以不做崩散度試驗，而是做<strong>溶離試驗（dissolution）</strong>。<br><br>
+      A 腸衣錠：有崩散度試驗（胃液1小時不崩，腸液內崩散）<br>
+      B 舌下錠：有崩散度試驗（水中，規定時限內）<br>
+      C 口腔片（buccal）：有崩散度試驗（水，4小時）
+    </div>
+    <div class="note-area-wrap">
+      <span class="note-area-label">📝 補充筆記</span>
+      <textarea class="note-area" id="note_q33" placeholder="在此輸入你的補充..." oninput="saveNote('q33')"></textarea>
+      <div class="note-saved" id="saved_q33">已儲存 ✓</div>
+    </div>
+  </div>
+
+  <!-- Quiz 1102 崩散試驗各劑型 -->
+  <div class="quiz-card">
+    <span class="quiz-year">1102</span>
+    <div class="quiz-stem">有關崩散度試驗之敘述，下列何者最不適當？</div>
+    <div class="options" id="opts_q34">
+      <button class="option-btn" onclick="answer('q34','A','B')">A. 腸衣錠：於室溫以水漬浸5分鐘，以人工胃液進行試驗1小時，不得有破裂；再以人工腸液進行試驗，於正文規定時間，錠劑應完全崩散</button>
+      <button class="option-btn" onclick="answer('q34','B','B')">B. 丸劑：以人工胃液進行試驗60分鐘，應完全崩散，若沒有完全崩散時再延長60分鐘</button>
+      <button class="option-btn" onclick="answer('q34','C','B')">C. 口腔錠：以水進行試驗4小時，錠劑應完全崩散</button>
+      <button class="option-btn" onclick="answer('q34','D','B')">D. 舌下錠：以水進行試驗，於正文規定時間，錠劑應完全崩散</button>
+    </div>
+    <button class="explain-btn" onclick="toggleExplain('q34')">顯示詳解</button>
+    <div class="explanation" id="exp_q34">
+      ✅ 正確答案（最不適當）：<strong>B</strong><br><br>
+      B 錯誤：丸劑的崩散試驗步驟：<br>
+      (a) 人工<strong>胃液</strong> 60 分鐘<br>
+      (b) 若未完全崩散 → 繼續以人工<strong>腸液</strong>（不是再延長胃液60分鐘！）60 分鐘<br><br>
+      不是在胃液中再延長，而是換腸液繼續試驗。
+    </div>
+    <div class="note-area-wrap">
+      <span class="note-area-label">📝 補充筆記</span>
+      <textarea class="note-area" id="note_q34" placeholder="在此輸入你的補充..." oninput="saveNote('q34')"></textarea>
+      <div class="note-saved" id="saved_q34">已儲存 ✓</div>
+    </div>
+  </div>
+
+  <!-- Quiz 1092 口腔錠崩散時間 -->
+  <div class="quiz-card">
+    <span class="quiz-year">1092</span>
+    <div class="quiz-stem">依中華藥典規定，口腔錠（buccal tablets）作崩散度試驗時，應在多少小時內崩散？</div>
+    <div class="options" id="opts_q35">
+      <button class="option-btn" onclick="answer('q35','A','C')">A. 1</button>
+      <button class="option-btn" onclick="answer('q35','B','C')">B. 2</button>
+      <button class="option-btn" onclick="answer('q35','C','C')">C. 4</button>
+      <button class="option-btn" onclick="answer('q35','D','C')">D. 8</button>
+    </div>
+    <button class="explain-btn" onclick="toggleExplain('q35')">顯示詳解</button>
+    <div class="explanation" id="exp_q35">
+      ✅ 正確答案：<strong>C（4 小時）</strong><br><br>
+      口腔錠（buccal tablets）：水，37±2°C，<strong>4 小時</strong>崩散。<br>
+      設計是貼在口腔黏膜緩慢釋放，所以時間長。<br>
+      未著衣錠/一般膜衣錠：30 分鐘；NTG 舌下錠：~2 分鐘
+    </div>
+    <div class="note-area-wrap">
+      <span class="note-area-label">📝 補充筆記</span>
+      <textarea class="note-area" id="note_q35" placeholder="在此輸入你的補充..." oninput="saveNote('q35')"></textarea>
+      <div class="note-saved" id="saved_q35">已儲存 ✓</div>
+    </div>
+  </div>
+
+  <!-- Quiz 1092 崩散10號篩 -->
+  <div class="quiz-card">
+    <span class="quiz-year">1092</span>
+    <div class="quiz-stem">崩散度試驗是指錠劑必須在一定時間內崩解，且所產生的粒子要能通過幾號篩網？</div>
+    <div class="options" id="opts_q36">
+      <button class="option-btn" onclick="answer('q36','A','A')">A. 10</button>
+      <button class="option-btn" onclick="answer('q36','B','A')">B. 20</button>
+      <button class="option-btn" onclick="answer('q36','C','A')">C. 30</button>
+      <button class="option-btn" onclick="answer('q36','D','A')">D. 40</button>
+    </div>
+    <button class="explain-btn" onclick="toggleExplain('q36')">顯示詳解</button>
+    <div class="explanation" id="exp_q36">
+      ✅ 正確答案：<strong>A（10 號篩）</strong><br><br>
+      崩散試驗裝置底層篩網為 <strong>10 號篩</strong>（No. 10 mesh），崩散的粒子需能通過此篩網。<br>
+      升降頻率：29~32 週期/分鐘；溫度：37±2°C
+    </div>
+    <div class="note-area-wrap">
+      <span class="note-area-label">📝 補充筆記</span>
+      <textarea class="note-area" id="note_q36" placeholder="在此輸入你的補充..." oninput="saveNote('q36')"></textarea>
+      <div class="note-saved" id="saved_q36">已儲存 ✓</div>
+    </div>
+  </div>
+
+  <!-- Quiz 1041 品質最重要 -->
+  <div class="quiz-card">
+    <span class="quiz-year">1041</span>
+    <div class="quiz-stem">下列品質規格中對於錠片的臨床療效有最重要影響的為何者？</div>
+    <div class="options" id="opts_q37">
+      <button class="option-btn" onclick="answer('q37','A','D')">A. 重量變異度（weight variation）</button>
+      <button class="option-btn" onclick="answer('q37','B','D')">B. 含量均一度（content uniformity）</button>
+      <button class="option-btn" onclick="answer('q37','C','D')">C. 錠片崩散度（disintegration）</button>
+      <button class="option-btn" onclick="answer('q37','D','D')">D. 藥物溶離率（dissolution）</button>
+    </div>
+    <button class="explain-btn" onclick="toggleExplain('q37')">顯示詳解</button>
+    <div class="explanation" id="exp_q37">
+      ✅ 正確答案：<strong>D（dissolution 溶離）</strong><br><br>
+      臨床療效最終取決於藥物能否溶解並被吸收（bioavailability）。<br>
+      <strong>溶離試驗</strong>是最能合理預測體內表現（IVIVC）的試驗，直接影響生體可用率。<br>
+      崩散 → 溶離 → 吸收，但崩散不代表溶離，溶離才是關鍵步驟。
+    </div>
+    <div class="note-area-wrap">
+      <span class="note-area-label">📝 補充筆記</span>
+      <textarea class="note-area" id="note_q37" placeholder="在此輸入你的補充..." oninput="saveNote('q37')"></textarea>
+      <div class="note-saved" id="saved_q37">已儲存 ✓</div>
+    </div>
+  </div>
+</div><!-- /quality -->
+
+<hr class="divider">
+
+<!-- ══════════════════════════════════════ -->
+<!-- LOZENGES -->
+<!-- ══════════════════════════════════════ -->
+<div class="section" id="lozenges">
+  <div class="section-title">🍬 口含錠（Lozenges / Troches）</div>
+
+  <div class="note-card">
+    <strong>特性</strong>：圓碟型；口中緩慢溶解或崩散；<strong>局部作用</strong>為主（少數全身性）<br>
+    <strong>製備</strong>：模製（熱安定者，用糖果機）或壓製（較硬，緩慢溶解）<br>
+    <strong>成分</strong>：含糖（sucrose/glucose）或無糖（sorbitol/mannitol）<br>
+    <strong>常見主成分</strong>：local anesthetics、antiseptics、antitussives、antihistamines、analgesics、antibiotics<br>
+    <strong>添加延緩溶離</strong>：Polyethylene glycol、Hypromellose（HPMC）
+  </div>
+
+  <!-- Quiz 1072 局部作用 -->
+  <div class="quiz-card">
+    <span class="quiz-year">1072</span>
+    <div class="quiz-stem">欲產生局部作用，下列何種劑型最適合？</div>
+    <div class="options" id="opts_q38">
+      <button class="option-btn" onclick="answer('q38','A','D')">A. 舌下錠（sublingual）</button>
+      <button class="option-btn" onclick="answer('q38','B','D')">B. 口腔錠（buccal tablets）</button>
+      <button class="option-btn" onclick="answer('q38','C','D')">C. 皮下植入錠（implants）</button>
+      <button class="option-btn" onclick="answer('q38','D','D')">D. 口含錠（lozenges）</button>
+    </div>
+    <button class="explain-btn" onclick="toggleExplain('q38')">顯示詳解</button>
+    <div class="explanation" id="exp_q38">
+      ✅ 正確答案：<strong>D（lozenges 口含錠）</strong><br><br>
+      <strong>Lozenges</strong>（喉片）設計在口中緩慢溶解，藥物直接在口腔/咽喉部位發揮<strong>局部作用</strong>（如消炎、麻醉、止咳）。<br>
+      舌下錠、口腔錠雖然也在口中，但目的是<strong>全身性吸收</strong>（avoid first-pass effect）。<br>
+      植入錠 → 皮下，全身性。
+    </div>
+    <div class="note-area-wrap">
+      <span class="note-area-label">📝 補充筆記</span>
+      <textarea class="note-area" id="note_q38" placeholder="在此輸入你的補充..." oninput="saveNote('q38')"></textarea>
+      <div class="note-saved" id="saved_q38">已儲存 ✓</div>
+    </div>
+  </div>
+
+  <!-- Quiz 1021 lozenges 特性 -->
+  <div class="quiz-card">
+    <span class="quiz-year">1021</span>
+    <div class="quiz-stem">口含錠類劑型（lozenges或troches）的特性為何？</div>
+    <div class="options" id="opts_q39">
+      <button class="option-btn" onclick="answer('q39','A','D')">A. 以纖維質為基底而能緩慢釋放</button>
+      <button class="option-btn" onclick="answer('q39','B','D')">B. 以乳糖為基底而加速全身吸收</button>
+      <button class="option-btn" onclick="answer('q39','C','D')">C. 以磷酸二鈣為基底而加速釋放</button>
+      <button class="option-btn" onclick="answer('q39','D','D')">D. 以硬糖果為基底而作用於局部</button>
+    </div>
+    <button class="explain-btn" onclick="toggleExplain('q39')">顯示詳解</button>
+    <div class="explanation" id="exp_q39">
+      ✅ 正確答案：<strong>D</strong><br><br>
+      Lozenges 的基底是<strong>糖（sucrose/glucose）</strong>，成品類似「硬糖果」，含在口中緩慢溶解，以<strong>局部作用</strong>為主（如喉嚨、口腔）。
+    </div>
+    <div class="note-area-wrap">
+      <span class="note-area-label">📝 補充筆記</span>
+      <textarea class="note-area" id="note_q39" placeholder="在此輸入你的補充..." oninput="saveNote('q39')"></textarea>
+      <div class="note-saved" id="saved_q39">已儲存 ✓</div>
+    </div>
+  </div>
+</div><!-- /lozenges -->
+
+<hr class="divider">
+
+<!-- ══════════════════════════════════════ -->
+<!-- OTHER DOSAGE FORMS -->
+<!-- ══════════════════════════════════════ -->
+<div class="section" id="other">
+  <div class="section-title">💊 其他口服固體劑型</div>
+
+  <div class="subsection-title">Lollipops 棒棒糖劑型</div>
+  <div class="note-card">
+    <strong>代表：Fentanyl Actiq®（fentanyl citrate）</strong><br>
+    · 覆盆子蔗糖棒棒糖<br>
+    · 首個用於癌症突發性疼痛的產品（僅供已使用 opioids 且有耐受性患者）<br>
+    · 口腔黏膜吸收，作用維持約 15 分鐘<br>
+    · 有特殊防兒童開啟包裝
+  </div>
+
+  <div class="subsection-title">Pellets（小丸劑）</div>
+  <div class="note-card">
+    <strong>特性</strong>：均一形狀小固體顆粒（beads）；口服典型大小 710 μm~2.36 mm<br>
+    <strong>優點</strong>：可隔離不可配伍成分；可包衣做成延長/延遲釋放<br>
+    <strong>製備</strong>：wet extrusion + spheronization（常用 MCC 作為 diluent + binder）→ 流動床包衣；或 coacervation technique
+  </div>
+
+  <div class="subsection-title">Bolus tablets 大藥丸錠劑</div>
+  <div class="note-card">
+    大動物（牛、馬等）給藥的細長型錠片，以傳統壓錠機製造但需較高壓力。
+    橢圓形 → 較易吞嚥。
+  </div>
+
+  <div class="subsection-title">Pills 丸劑</div>
+  <div class="note-card">
+    · 小而圓的固體劑型，現已被錠劑與膠囊取代<br>
+    · 由濕軟塊 + 模製技術製備（圓筒 → 切段 → 滾圓）<br>
+    · 賦形劑需能維持形狀的可塑性
+  </div>
+
+  <!-- Quiz 1062 大劑量橢圓 -->
+  <div class="quiz-card">
+    <span class="quiz-year">1062</span>
+    <div class="quiz-stem">大劑量的藥品製成錠劑，下列何種形狀較易吞嚥？</div>
+    <div class="options" id="opts_q40">
+      <button class="option-btn" onclick="answer('q40','A','B')">A. 圓形</button>
+      <button class="option-btn" onclick="answer('q40','B','B')">B. 橢圓形</button>
+      <button class="option-btn" onclick="answer('q40','C','B')">C. 三角形</button>
+      <button class="option-btn" onclick="answer('q40','D','B')">D. 正方形</button>
+    </div>
+    <button class="explain-btn" onclick="toggleExplain('q40')">顯示詳解</button>
+    <div class="explanation" id="exp_q40">
+      ✅ 正確答案：<strong>B（橢圓形）</strong><br><br>
+      大劑量錠片體積大，<strong>橢圓形（capsule shape）</strong>形狀符合食道弧度，最易吞嚥。<br>
+      圓形雖然看起來方便，但大顆圓形錠較難吞。橢圓/膠囊形是大錠劑的最佳選擇。
+    </div>
+    <div class="note-area-wrap">
+      <span class="note-area-label">📝 補充筆記</span>
+      <textarea class="note-area" id="note_q40" placeholder="在此輸入你的補充..." oninput="saveNote('q40')"></textarea>
+      <div class="note-saved" id="saved_q40">已儲存 ✓</div>
+    </div>
+  </div>
+
+  <div class="subsection-title">錠劑貯存注意事項</div>
+  <div class="note-card">
+    <ul>
+      <li>一般：<strong>緊密容器</strong>、低濕度、避免極端溫度</li>
+      <li>怕水分：加乾燥劑</li>
+      <li>怕光：阻光容器</li>
+      <li>RDT（速溶錠）：較軟，需特別包裝（卡片型或泡型）</li>
+      <li><strong>NTG（硝化甘油）</strong>：揮發性高，用<strong>玻璃緊密容器</strong>；開蓋後立即蓋緊；不可用棉花或塑膠（會吸附）</li>
+      <li>硬度增加（老化）：黏合劑黏性增加 → 崩散/溶離速率降低</li>
+    </ul>
+  </div>
+</div><!-- /other -->
+
+<hr class="divider">
+
+<!-- ══════════════════════════════════════ -->
+<!-- PAST EXAM QUESTIONS -->
+<!-- ══════════════════════════════════════ -->
+<div class="section" id="pastexam">
+  <div class="section-title">📝 歷屆國考混合題</div>
+
+  <!-- Q 1131 崩散最快 -->
+  <div class="quiz-card">
+    <span class="quiz-year">1131</span>
+    <div class="quiz-stem">下列何者在服用後，其崩散速度最快？</div>
+    <div class="options" id="opts_q41">
+      <button class="option-btn" onclick="answer('q41','A','B')">A. buccal tablets</button>
+      <button class="option-btn" onclick="answer('q41','B','B')">B. chewable tablets</button>
+      <button class="option-btn" onclick="answer('q41','C','B')">C. enteric-coated tablets</button>
+      <button class="option-btn" onclick="answer('q41','D','B')">D. lozenges</button>
+    </div>
+    <button class="explain-btn" onclick="toggleExplain('q41')">顯示詳解</button>
+    <div class="explanation" id="exp_q41">
+      ✅ 正確答案：<strong>B（chewable tablets）</strong><br><br>
+      咀嚼錠經口腔機械性碎裂後吞下，到胃中的碎片面積大且結構鬆散，崩散最快。<br>
+      A buccal：設計緩慢溶解（4小時）<br>
+      C 腸衣錠：在胃中不崩散<br>
+      D lozenges：設計緩慢溶解
+    </div>
+    <div class="note-area-wrap">
+      <span class="note-area-label">📝 補充筆記</span>
+      <textarea class="note-area" id="note_q41" placeholder="在此輸入你的補充..." oninput="saveNote('q41')"></textarea>
+      <div class="note-saved" id="saved_q41">已儲存 ✓</div>
+    </div>
+  </div>
+
+  <!-- Q 1122 最適腸溶包衣 -->
+  <div class="quiz-card">
+    <span class="quiz-year">1122</span>
+    <div class="quiz-stem">下列何者最適合做為腸溶錠之包衣材料？</div>
+    <div class="options" id="opts_q42">
+      <button class="option-btn" onclick="answer('q42','A','B')">A. carboxymethyl cellulose</button>
+      <button class="option-btn" onclick="answer('q42','B','B')">B. cellulose acetate phthalate</button>
+      <button class="option-btn" onclick="answer('q42','C','B')">C. ethylcellulose</button>
+      <button class="option-btn" onclick="answer('q42','D','B')">D. hydroxypropyl methylcellulose</button>
+    </div>
+    <button class="explain-btn" onclick="toggleExplain('q42')">顯示詳解</button>
+    <div class="explanation" id="exp_q42">
+      ✅ 正確答案：<strong>B（CAP）</strong><br><br>
+      <strong>CAP（cellulose acetate phthalate）</strong>：有 phthalate 字根 → 腸溶材質，在胃的低 pH 不溶，到腸的高 pH 才溶。<br>
+      A CMC → 水溶性，常作崩散劑<br>
+      C ethylcellulose → 水不溶，但沒有 pH 感應特性，常作緩釋包衣<br>
+      D HPMC → 水溶性，常作膜衣成膜材料
+    </div>
+    <div class="note-area-wrap">
+      <span class="note-area-label">📝 補充筆記</span>
+      <textarea class="note-area" id="note_q42" placeholder="在此輸入你的補充..." oninput="saveNote('q42')"></textarea>
+      <div class="note-saved" id="saved_q42">已儲存 ✓</div>
+    </div>
+  </div>
+
+  <!-- Q 1121 高壓製備緩慢溶解 -->
+  <div class="quiz-card">
+    <span class="quiz-year">1121</span>
+    <div class="quiz-stem">下列何種錠片劑型在高程度壓錠（a high degree of compression）下完成製備，使其可以緩慢溶解釋出活性成分？</div>
+    <div class="options" id="opts_q43">
+      <button class="option-btn" onclick="answer('q43','A','C')">A. enteric-coated granular tablet</button>
+      <button class="option-btn" onclick="answer('q43','B','C')">B. chewable tablet</button>
+      <button class="option-btn" onclick="answer('q43','C','C')">C. lozenge tablet</button>
+      <button class="option-btn" onclick="answer('q43','D','C')">D. sublingual tablet</button>
+    </div>
+    <button class="explain-btn" onclick="toggleExplain('q43')">顯示詳解</button>
+    <div class="explanation" id="exp_q43">
+      ✅ 正確答案：<strong>C（lozenge）</strong><br><br>
+      壓製的 <strong>lozenge（口含錠）</strong>：用較大的壓力製備，使錠片<strong>硬且緻密</strong>，在口中緩慢溶解釋出藥物，達到局部作用。<br>
+      咀嚼錠用最小壓力（軟錠）；舌下錠需快速崩散；腸溶錠是在腸道溶解。
+    </div>
+    <div class="note-area-wrap">
+      <span class="note-area-label">📝 補充筆記</span>
+      <textarea class="note-area" id="note_q43" placeholder="在此輸入你的補充..." oninput="saveNote('q43')"></textarea>
+      <div class="note-saved" id="saved_q43">已儲存 ✓</div>
+    </div>
+  </div>
+
+  <!-- Q 1102 增加溶離速率 -->
+  <div class="quiz-card">
+    <span class="quiz-year">1102</span>
+    <div class="quiz-stem">下列賦形劑何者最有可能增加難溶性藥品之溶離速率（dissolution rate）？</div>
+    <div class="options" id="opts_q44">
+      <button class="option-btn" onclick="answer('q44','A','C')">A. calcium sulfate</button>
+      <button class="option-btn" onclick="answer('q44','B','C')">B. ethylcellulose</button>
+      <button class="option-btn" onclick="answer('q44','C','C')">C. lactose</button>
+      <button class="option-btn" onclick="answer('q44','D','C')">D. magnesium stearate</button>
+    </div>
+    <button class="explain-btn" onclick="toggleExplain('q44')">顯示詳解</button>
+    <div class="explanation" id="exp_q44">
+      ✅ 正確答案：<strong>C（lactose）</strong><br><br>
+      <strong>Lactose</strong>（乳糖）是水溶性稀釋劑，溶於水後可增加藥物周圍的溶液體積，加速難溶性藥物的溶離。<br>
+      A calcium sulfate → 水不溶，不會增加溶離<br>
+      B ethylcellulose → 水不溶，緩釋材料<br>
+      D magnesium stearate → 疏水性潤滑劑，<strong>降低</strong>溶離速率
+    </div>
+    <div class="note-area-wrap">
+      <span class="note-area-label">📝 補充筆記</span>
+      <textarea class="note-area" id="note_q44" placeholder="在此輸入你的補充..." oninput="saveNote('q44')"></textarea>
+      <div class="note-saved" id="saved_q44">已儲存 ✓</div>
+    </div>
+  </div>
+
+  <!-- Q 1101 一般崩散溶離最快 -->
+  <div class="quiz-card">
+    <span class="quiz-year">1101</span>
+    <div class="quiz-stem">一般而言，下列錠劑何者之崩散及溶離最快？</div>
+    <div class="options" id="opts_q45">
+      <button class="option-btn" onclick="answer('q45','A','D')">A. buccal tablets</button>
+      <button class="option-btn" onclick="answer('q45','B','D')">B. immediate-release tablets</button>
+      <button class="option-btn" onclick="answer('q45','C','D')">C. molded tablets</button>
+      <button class="option-btn" onclick="answer('q45','D','D')">D. rapidly dissolving tablets</button>
+    </div>
+    <button class="explain-btn" onclick="toggleExplain('q45')">顯示詳解</button>
+    <div class="explanation" id="exp_q45">
+      ✅ 正確答案：<strong>D（rapidly dissolving tablets）</strong><br><br>
+      <strong>RDT（速溶錠）</strong>設計在口中 1 分鐘內溶解，崩散溶離最快。<br>
+      Molded tablets 雖然軟且溶離快，但 RDT 更快（冷凍乾燥法製備的 Zydis® 甚至幾秒溶解）。<br>
+      Buccal → 緩慢溶解4小時；immediate-release → 一般快，但不如 RDT。
+    </div>
+    <div class="note-area-wrap">
+      <span class="note-area-label">📝 補充筆記</span>
+      <textarea class="note-area" id="note_q45" placeholder="在此輸入你的補充..." oninput="saveNote('q45')"></textarea>
+      <div class="note-saved" id="saved_q45">已儲存 ✓</div>
+    </div>
+  </div>
+
+  <!-- Q 1082 IR 頻繁導致 -->
+  <div class="quiz-card">
+    <span class="quiz-year">1082</span>
+    <div class="quiz-stem">一般而言，服用速放性（immediate-release）藥物劑型太過於頻繁，往往會導致下列何種狀況發生？</div>
+    <div class="options" id="opts_q46">
+      <button class="option-btn" onclick="answer('q46','A','A')">A. 縮短達到最低毒性血漿濃度的時間</button>
+      <button class="option-btn" onclick="answer('q46','B','A')">B. 穩定緩慢達到最佳有效血漿濃度</button>
+      <button class="option-btn" onclick="answer('q46','C','A')">C. 延長達到最低有效血漿濃度的時間</button>
+      <button class="option-btn" onclick="answer('q46','D','A')">D. 緩慢達到穩定狀態時的血漿濃度</button>
+    </div>
+    <button class="explain-btn" onclick="toggleExplain('q46')">顯示詳解</button>
+    <div class="explanation" id="exp_q46">
+      ✅ 正確答案：<strong>A</strong><br><br>
+      IR 劑型每次服藥都快速釋放全部藥物，若服藥頻率太高，血漿濃度會持續累積，<strong>縮短達到毒性濃度（toxic level）的時間</strong>，增加副作用風險。<br>
+      這正是設計 extended-release 的原因之一：維持穩定血中濃度，減少峰谷差異。
+    </div>
+    <div class="note-area-wrap">
+      <span class="note-area-label">📝 補充筆記</span>
+      <textarea class="note-area" id="note_q46" placeholder="在此輸入你的補充..." oninput="saveNote('q46')"></textarea>
+      <div class="note-saved" id="saved_q46">已儲存 ✓</div>
+    </div>
+  </div>
+
+  <!-- Q 1082 NTG RDT 優點 -->
+  <div class="quiz-card">
+    <span class="quiz-year">1082</span>
+    <div class="quiz-stem">硝化甘油製備成速溶錠（rapidly dissolving tablets, RDTs）的最主要優點為何？</div>
+    <div class="options" id="opts_q47">
+      <button class="option-btn" onclick="answer('q47','A','A')">A. 迅速溶解吸收達到療效</button>
+      <button class="option-btn" onclick="answer('q47','B','A')">B. 製程穩定使其含量均一</button>
+      <button class="option-btn" onclick="answer('q47','C','A')">C. 低溫製備提高其安定性</button>
+      <button class="option-btn" onclick="answer('q47','D','A')">D. 單片包裝易於取出服用</button>
+    </div>
+    <button class="explain-btn" onclick="toggleExplain('q47')">顯示詳解</button>
+    <div class="explanation" id="exp_q47">
+      ✅ 正確答案：<strong>A</strong><br><br>
+      NTG（硝化甘油）治療急性心絞痛，需要<strong>迅速發揮療效</strong>。<br>
+      製備成 RDT → 口中快速溶解 → 黏膜吸收 → 快速達到有效血中濃度。<br>
+      這就是 NTG 傳統做成舌下錠、現在也做成速溶錠的原因。
+    </div>
+    <div class="note-area-wrap">
+      <span class="note-area-label">📝 補充筆記</span>
+      <textarea class="note-area" id="note_q47" placeholder="在此輸入你的補充..." oninput="saveNote('q47')"></textarea>
+      <div class="note-saved" id="saved_q47">已儲存 ✓</div>
+    </div>
+  </div>
+
+  <!-- Q 1082 MC溶解度 -->
+  <div class="quiz-card">
+    <span class="quiz-year">1082</span>
+    <div class="quiz-stem">有關纖維素之衍生物的水溶解度敘述，下列何者正確？</div>
+    <div class="options" id="opts_q48">
+      <button class="option-btn" onclick="answer('q48','A','B')">A. 甲基纖維素溶於熱水</button>
+      <button class="option-btn" onclick="answer('q48','B','B')">B. 甲基纖維素溶於冷水</button>
+      <button class="option-btn" onclick="answer('q48','C','B')">C. 乙基纖維素溶於冷水</button>
+      <button class="option-btn" onclick="answer('q48','D','B')">D. 乙基纖維素溶於熱水</button>
+    </div>
+    <button class="explain-btn" onclick="toggleExplain('q48')">顯示詳解</button>
+    <div class="explanation" id="exp_q48">
+      ✅ 正確答案：<strong>B（甲基纖維素溶於冷水）</strong><br><br>
+      <strong>甲基纖維素（MC）</strong>：<strong>冷水溶、熱水不溶</strong>（加熱形成凝膠）— 與 HPMC 特性相同<br>
+      配製方式：先加熱水讓其分散，再加冷水（冰塊）促進溶解<br><br>
+      <strong>乙基纖維素（EC）</strong>：<strong>水不溶</strong>，溶於酒精（有機溶劑）
+    </div>
+    <div class="note-area-wrap">
+      <span class="note-area-label">📝 補充筆記</span>
+      <textarea class="note-area" id="note_q48" placeholder="在此輸入你的補充..." oninput="saveNote('q48')"></textarea>
+      <div class="note-saved" id="saved_q48">已儲存 ✓</div>
+    </div>
+  </div>
+
+  <!-- Q 1081 舌下錠錯誤 -->
+  <div class="quiz-card">
+    <span class="quiz-year">1081</span>
+    <div class="quiz-stem">有關舌下錠之敘述，下列何者錯誤？</div>
+    <div class="options" id="opts_q49">
+      <button class="option-btn" onclick="answer('q49','A','C')">A. 較不會被胃酸破壞</button>
+      <button class="option-btn" onclick="answer('q49','B','C')">B. 作用比吞服的劑型快</button>
+      <button class="option-btn" onclick="answer('q49','C','C')">C. 易受肝臟酵素代謝</button>
+      <button class="option-btn" onclick="answer('q49','D','C')">D. 錠劑在口腔並不崩散而是溶解</button>
+    </div>
+    <button class="explain-btn" onclick="toggleExplain('q49')">顯示詳解</button>
+    <div class="explanation" id="exp_q49">
+      ✅ 正確答案（錯誤者）：<strong>C</strong><br><br>
+      C 錯誤：舌下錠的優點之一正是<strong>避免首渡效應（first-pass effect）</strong>，藥物由口腔黏膜吸收直接進入全身循環，<strong>不經過肝臟代謝</strong>。<br><br>
+      A ✓：不經過胃，避免胃酸破壞<br>
+      B ✓：黏膜吸收快，起效快（NTG 幾分鐘生效）<br>
+      D ✓：舌下錠含在舌下，是<strong>溶解</strong>（不是崩散）
+    </div>
+    <div class="note-area-wrap">
+      <span class="note-area-label">📝 補充筆記</span>
+      <textarea class="note-area" id="note_q49" placeholder="在此輸入你的補充..." oninput="saveNote('q49')"></textarea>
+      <div class="note-saved" id="saved_q49">已儲存 ✓</div>
+    </div>
+  </div>
+
+  <!-- Q 1071 固醇類稀釋劑 -->
+  <div class="quiz-card">
+    <span class="quiz-year">1071</span>
+    <div class="quiz-stem">下列何者比較適合用來當作製備固醇類錠劑時的稀釋劑？</div>
+    <div class="options" id="opts_q50">
+      <button class="option-btn" onclick="answer('q50','A','A')">A. calcium sulfate</button>
+      <button class="option-btn" onclick="answer('q50','B','A')">B. lactose</button>
+      <button class="option-btn" onclick="answer('q50','C','A')">C. sorbitol</button>
+      <button class="option-btn" onclick="answer('q50','D','A')">D. starch</button>
+    </div>
+    <button class="explain-btn" onclick="toggleExplain('q50')">顯示詳解</button>
+    <div class="explanation" id="exp_q50">
+      ✅ 正確答案：<strong>A（calcium sulfate）</strong><br><br>
+      <strong>Calcium sulfate</strong>（硫酸鈣）和 dibasic calcium phosphate 都是<strong>水不溶性鈣鹽</strong>，特別適合作為<strong>vitamins、steroids（固醇類）</strong>等<strong>對水敏感藥品</strong>的稀釋劑，因為：<br>
+      · 以 dihydrate 存在，但不輕易釋出結合水<br>
+      · 可乾燥至含水量很低 → 避免化學反應<br><br>
+      Lactose 雖常用但有時會與某些藥品反應（如 amines）；sorbitol 溶於水；starch 會吸濕。
+    </div>
+    <div class="note-area-wrap">
+      <span class="note-area-label">📝 補充筆記</span>
+      <textarea class="note-area" id="note_q50" placeholder="在此輸入你的補充..." oninput="saveNote('q50')"></textarea>
+      <div class="note-saved" id="saved_q50">已儲存 ✓</div>
+    </div>
+  </div>
+
+  <!-- Q 1071 噴霧乾燥降解 -->
+  <div class="quiz-card">
+    <span class="quiz-year">1071</span>
+    <div class="quiz-stem">以噴霧乾燥法進行藥物乾燥時偶遇藥物會發生降解之情況，下列藥物何者最容易降解？</div>
+    <div class="options" id="opts_q51">
+      <button class="option-btn" onclick="answer('q51','A','B')">A. epinephrine</button>
+      <button class="option-btn" onclick="answer('q51','B','B')">B. insulin</button>
+      <button class="option-btn" onclick="answer('q51','C','B')">C. pepsin</button>
+      <button class="option-btn" onclick="answer('q51','D','B')">D. vitamin A and D</button>
+    </div>
+    <button class="explain-btn" onclick="toggleExplain('q51')">顯示詳解</button>
+    <div class="explanation" id="exp_q51">
+      ✅ 正確答案：<strong>B（insulin 胰島素）</strong><br><br>
+      噴霧乾燥需要高溫，<strong>蛋白質（insulin）</strong>對熱最敏感，極易發生<strong>熱降解與變性</strong>（denaturing）。<br>
+      這也是為什麼胰島素的製備要用冷凍乾燥法（lyophilization），並添加保護劑（cryoprotectants）。<br>
+      Epinephrine、pepsin 雖也是蛋白質/酵素類，但 insulin 是最常被考的例子。
+    </div>
+    <div class="note-area-wrap">
+      <span class="note-area-label">📝 補充筆記</span>
+      <textarea class="note-area" id="note_q51" placeholder="在此輸入你的補充..." oninput="saveNote('q51')"></textarea>
+      <div class="note-saved" id="saved_q51">已儲存 ✓</div>
+    </div>
+  </div>
+
+  <!-- Q 1062 噴霧乾燥機用途 -->
+  <div class="quiz-card">
+    <span class="quiz-year">1062</span>
+    <div class="quiz-stem">有關噴霧乾燥機之使用，下列敘述何者較正確？</div>
+    <div class="options" id="opts_q52">
+      <button class="option-btn" onclick="answer('q52','A','D')">A. 以油壓滾輪混合粉末</button>
+      <button class="option-btn" onclick="answer('q52','B','D')">B. 使用乾式黏合劑造粒</button>
+      <button class="option-btn" onclick="answer('q52','C','D')">C. 以微波乾燥顆粒</button>
+      <button class="option-btn" onclick="answer('q52','D','D')">D. 可用於藥物之包衣</button>
+    </div>
+    <button class="explain-btn" onclick="toggleExplain('q52')">顯示詳解</button>
+    <div class="explanation" id="exp_q52">
+      ✅ 正確答案：<strong>D（可用於藥物包衣）</strong><br><br>
+      噴霧乾燥機（spray dryer）的應用包括：<br>
+      · 噴霧乾燥乳糖（製成直打用賦形劑）<br>
+      · 微膠囊製備（包衣）<br>
+      · 製備固態分散體（solid dispersion）<br><br>
+      A → 滾輪是用於乾粒法（roller compaction）<br>
+      B → 乾式黏合劑 → 乾粒法<br>
+      C → 微波乾燥 → 微波真空製程
+    </div>
+    <div class="note-area-wrap">
+      <span class="note-area-label">📝 補充筆記</span>
+      <textarea class="note-area" id="note_q52" placeholder="在此輸入你的補充..." oninput="saveNote('q52')"></textarea>
+      <div class="note-saved" id="saved_q52">已儲存 ✓</div>
+    </div>
+  </div>
+
+  <!-- Q 1041 賦形劑功能配對 -->
+  <div class="quiz-card">
+    <span class="quiz-year">1041</span>
+    <div class="quiz-stem">下列有關口服固體製劑賦型劑及其功能之配對，何者正確？</div>
+    <div class="options" id="opts_q53">
+      <button class="option-btn" onclick="answer('q53','A','D')">A. 微晶纖維素－潤滑劑</button>
+      <button class="option-btn" onclick="answer('q53','B','D')">B. 硬脂酸－稀釋劑</button>
+      <button class="option-btn" onclick="answer('q53','C','D')">C. 二氧化鈦－崩散劑</button>
+      <button class="option-btn" onclick="answer('q53','D','D')">D. 甲基纖維素－包衣劑</button>
+    </div>
+    <button class="explain-btn" onclick="toggleExplain('q53')">顯示詳解</button>
+    <div class="explanation" id="exp_q53">
+      ✅ 正確答案：<strong>D（甲基纖維素－包衣劑）</strong><br><br>
+      A 錯：MCC → 稀釋劑（一人多功能：崩散劑、黏合劑、助滑劑，但不是潤滑劑）<br>
+      B 錯：硬脂酸（stearic acid）→ 潤滑劑（不是稀釋劑）<br>
+      C 錯：二氧化鈦（titanium dioxide）→ 不透明劑（opaquant）<br>
+      D ✓：甲基纖維素（MC）→ 可作膜衣成膜材料（film former）
+    </div>
+    <div class="note-area-wrap">
+      <span class="note-area-label">📝 補充筆記</span>
+      <textarea class="note-area" id="note_q53" placeholder="在此輸入你的補充..." oninput="saveNote('q53')"></textarea>
+      <div class="note-saved" id="saved_q53">已儲存 ✓</div>
+    </div>
+  </div>
+
+  <!-- Q 1041 增加吸收速率 -->
+  <div class="quiz-card">
+    <span class="quiz-year">1041</span>
+    <div class="quiz-stem">下列常使用於口服藥品的賦型劑，何項較可能會增加藥品在體內的吸收速率常數？</div>
+    <div class="options" id="opts_q54">
+      <button class="option-btn" onclick="answer('q54','A','A')">A. Microcrystalline cellulose</button>
+      <button class="option-btn" onclick="answer('q54','B','A')">B. Talc</button>
+      <button class="option-btn" onclick="answer('q54','C','A')">C. Methylcellulose</button>
+      <button class="option-btn" onclick="answer('q54','D','A')">D. Veegum</button>
+    </div>
+    <button class="explain-btn" onclick="toggleExplain('q54')">顯示詳解</button>
+    <div class="explanation" id="exp_q54">
+      ✅ 正確答案：<strong>A（MCC）</strong><br><br>
+      <strong>MCC（微晶纖維素）</strong>：崩散快速、流動性佳，藥片崩散後粒子細小，增大接觸面積 → <strong>加速溶離與吸收</strong>。<br>
+      B Talc：助滑劑，對溶離無特別幫助<br>
+      C MC：增黏劑，黏稠性可能降低溶離<br>
+      D Veegum（magnesium aluminum silicate）：增黏/懸浮劑，可能延緩溶離
+    </div>
+    <div class="note-area-wrap">
+      <span class="note-area-label">📝 補充筆記</span>
+      <textarea class="note-area" id="note_q54" placeholder="在此輸入你的補充..." oninput="saveNote('q54')"></textarea>
+      <div class="note-saved" id="saved_q54">已儲存 ✓</div>
+    </div>
+  </div>
+
+  <!-- Q 1041 biopharmaceutics 最終考量 -->
+  <div class="quiz-card">
+    <span class="quiz-year">1042</span>
+    <div class="quiz-stem">在口服劑型設計時，生物藥劑學（biopharmaceutics）上的最終的考量是下列何者？</div>
+    <div class="options" id="opts_q55">
+      <button class="option-btn" onclick="answer('q55','A','D')">A. 藥品溶解度</button>
+      <button class="option-btn" onclick="answer('q55','B','D')">B. 藥品安定性</button>
+      <button class="option-btn" onclick="answer('q55','C','D')">C. 藥品的穿透率</button>
+      <button class="option-btn" onclick="answer('q55','D','D')">D. 藥品生體可用率</button>
+    </div>
+    <button class="explain-btn" onclick="toggleExplain('q55')">顯示詳解</button>
+    <div class="explanation" id="exp_q55">
+      ✅ 正確答案：<strong>D（生體可用率）</strong><br><br>
+      生物藥劑學（biopharmaceutics）的核心目標：確保藥品被充分吸收進入體循環發揮療效。<br>
+      溶解度、穿透率、安定性都是達成<strong>高生體可用率（bioavailability）</strong>的手段，而非最終目標。
+    </div>
+    <div class="note-area-wrap">
+      <span class="note-area-label">📝 補充筆記</span>
+      <textarea class="note-area" id="note_q55" placeholder="在此輸入你的補充..." oninput="saveNote('q55')"></textarea>
+      <div class="note-saved" id="saved_q55">已儲存 ✓</div>
+    </div>
+  </div>
+
+  <!-- Q 1022 變更最不影響 -->
+  <div class="quiz-card">
+    <span class="quiz-year">1022</span>
+    <div class="quiz-stem">錠片劑型的品質與功效會受到處方成分與製程方法變更之影響，試問下列何種變更最不易對錠片品質產生影響？</div>
+    <div class="options" id="opts_q56">
+      <button class="option-btn" onclick="answer('q56','A','B')">A. 黏合劑用量提高</button>
+      <button class="option-btn" onclick="answer('q56','B','B')">B. 色素成分的調換</button>
+      <button class="option-btn" onclick="answer('q56','C','B')">C. 混合機種的變更</button>
+      <button class="option-btn" onclick="answer('q56','D','B')">D. 整粒篩網的改變</button>
+    </div>
+    <button class="explain-btn" onclick="toggleExplain('q56')">顯示詳解</button>
+    <div class="explanation" id="exp_q56">
+      ✅ 正確答案：<strong>B（色素成分的調換）</strong><br><br>
+      <strong>色素（著色劑）</strong>是非功能性成分，只影響外觀，不影響溶離、崩散、硬度等物性。<br>
+      A 黏合劑用量 → 直接影響硬度和溶離<br>
+      C 混合機種 → 影響均勻度<br>
+      D 整粒篩網 → 影響顆粒大小 → 影響可壓性和溶離
+    </div>
+    <div class="note-area-wrap">
+      <span class="note-area-label">📝 補充筆記</span>
+      <textarea class="note-area" id="note_q56" placeholder="在此輸入you的補充..." oninput="saveNote('q56')"></textarea>
+      <div class="note-saved" id="saved_q56">已儲存 ✓</div>
+    </div>
+  </div>
+
+  <!-- Q 1022 testosterone RDT -->
+  <div class="quiz-card">
+    <span class="quiz-year">1022</span>
+    <div class="quiz-stem">睪丸素（testosterone）製備成速溶錠（rapidly dissolving tablets, RDTs）的主要優點為何？</div>
+    <div class="options" id="opts_q57">
+      <button class="option-btn" onclick="answer('q57','A','B')">A. 口腔酸鹼值有利於溶解</button>
+      <button class="option-btn" onclick="answer('q57','B','B')">B. 口腔吸收降低首渡效應</button>
+      <button class="option-btn" onclick="answer('q57','C','B')">C. 崩解成細顆粒有利溶解</button>
+      <button class="option-btn" onclick="answer('q57','D','B')">D. 口腔酵素水解有利吸收</button>
+    </div>
+    <button class="explain-btn" onclick="toggleExplain('q57')">顯示詳解</button>
+    <div class="explanation" id="exp_q57">
+      ✅ 正確答案：<strong>B</strong><br><br>
+      <strong>Testosterone（睪固酮）</strong>口服給藥 → 大量被肝臟首渡代謝（first-pass effect）→ 生體可用率極低。<br>
+      製成 RDT → 在口腔溶解 → 黏膜吸收直接進入全身循環 → <strong>避免首渡效應</strong> → 提高生體可用率。<br>
+      這也是 testosterone 傳統做舌下錠的原因。
+    </div>
+    <div class="note-area-wrap">
+      <span class="note-area-label">📝 補充筆記</span>
+      <textarea class="note-area" id="note_q57" placeholder="在此輸入你的補充..." oninput="saveNote('q57')"></textarea>
+      <div class="note-saved" id="saved_q57">已儲存 ✓</div>
+    </div>
+  </div>
+
+  <!-- Q 1022 賦形劑變更最大負面 -->
+  <div class="quiz-card">
+    <span class="quiz-year">1022</span>
+    <div class="quiz-stem">下列何種賦型劑種類變更對於錠片品質與功效之負面影響最大？</div>
+    <div class="options" id="opts_q58">
+      <button class="option-btn" onclick="answer('q58','A','D')">A. MCC 101改用MCC 102</button>
+      <button class="option-btn" onclick="answer('q58','B','D')">B. Lactose monohydrate改用lactose anhydrate</button>
+      <button class="option-btn" onclick="answer('q58','C','D')">C. Sucrose改用mannitol</button>
+      <button class="option-btn" onclick="answer('q58','D','D')">D. Magnesium stearate改用calcium stearate</button>
+    </div>
+    <button class="explain-btn" onclick="toggleExplain('q58')">顯示詳解</button>
+    <div class="explanation" id="exp_q58">
+      ✅ 正確答案：<strong>D</strong><br><br>
+      <strong>Magnesium stearate → Calcium stearate</strong> 是潤滑劑的種類改變，兩者雖都是金屬硬脂酸鹽，但理化性質和潤滑效果有差異，且<strong>潤滑劑對溶離和錠片成型影響很大</strong>，是最重要的賦形劑之一。<br><br>
+      A MCC 101→102：粒徑不同，影響較小<br>
+      B 乳糖水合物→無水：水分含量差異，影響有限<br>
+      C 蔗糖→甘露醇：甜味劑/稀釋劑更換，影響相對小（同為甜味劑）
+    </div>
+    <div class="note-area-wrap">
+      <span class="note-area-label">📝 補充筆記</span>
+      <textarea class="note-area" id="note_q58" placeholder="在此輸入你的補充..." oninput="saveNote('q58')"></textarea>
+      <div class="note-saved" id="saved_q58">已儲存 ✓</div>
+    </div>
+  </div>
+
+  <!-- Q 1012 溶離非一致性 -->
+  <div class="quiz-card">
+    <span class="quiz-year">1012</span>
+    <div class="quiz-stem">錠片藥物溶離的非一致性（inconsistencies）最不容易發生在下列何種狀況下？</div>
+    <div class="options" id="opts_q59">
+      <button class="option-btn" onclick="answer('q59','A','A')">A. 同一批次的不同錠片</button>
+      <button class="option-btn" onclick="answer('q59','B','A')">B. 不同批次的不同錠片</button>
+      <button class="option-btn" onclick="answer('q59','C','A')">C. 不同廠牌的不同錠片</button>
+      <button class="option-btn" onclick="answer('q59','D','A')">D. 不同國家的不同錠片</button>
+    </div>
+    <button class="explain-btn" onclick="toggleExplain('q59')">顯示詳解</button>
+    <div class="explanation" id="exp_q59">
+      ✅ 正確答案：<strong>A（同一批次）</strong><br><br>
+      同一批次使用相同原料、相同製程，品質控管一致，溶離的<strong>批內（intra-batch）變異最小</strong>。<br>
+      不同批次、不同廠牌、不同國家 → 原料差異、製程差異 → 溶離非一致性更大。
+    </div>
+    <div class="note-area-wrap">
+      <span class="note-area-label">📝 補充筆記</span>
+      <textarea class="note-area" id="note_q59" placeholder="在此輸入你的補充..." oninput="saveNote('q59')"></textarea>
+      <div class="note-saved" id="saved_q59">已儲存 ✓</div>
+    </div>
+  </div>
+
+  <!-- Q 1012 gel forming -->
+  <div class="quiz-card">
+    <span class="quiz-year">1012</span>
+    <div class="quiz-stem">下列何種材質遇水後可形成凝膠（gel）而具控釋能力？</div>
+    <div class="options" id="opts_q60">
+      <button class="option-btn" onclick="answer('q60','A','B')">A. Polyglycolide</button>
+      <button class="option-btn" onclick="answer('q60','B','B')">B. Methylcellulose</button>
+      <button class="option-btn" onclick="answer('q60','C','B')">C. Ethylcellulose</button>
+      <button class="option-btn" onclick="answer('q60','D','B')">D. Polylactide</button>
+    </div>
+    <button class="explain-btn" onclick="toggleExplain('q60')">顯示詳解</button>
+    <div class="explanation" id="exp_q60">
+      ✅ 正確答案：<strong>B（Methylcellulose）</strong><br><br>
+      <strong>MC（甲基纖維素）</strong>溶於冷水，加熱形成凝膠（gel）；親水性纖維素凝膠基質可控制藥物釋放（hydrophilic matrix）。<br>
+      HPMC 也有類似特性，常用於 hydrophilic matrix tablets。<br><br>
+      A Polyglycolide / D Polylactide → 生物可降解高分子（注射劑型用，如 PLGA）<br>
+      C Ethylcellulose → 水不溶，用於疏水性包衣/緩釋包衣
+    </div>
+    <div class="note-area-wrap">
+      <span class="note-area-label">📝 補充筆記</span>
+      <textarea class="note-area" id="note_q60" placeholder="在此輸入你的補充..." oninput="saveNote('q60')"></textarea>
+      <div class="note-saved" id="saved_q60">已儲存 ✓</div>
+    </div>
+  </div>
+
+  <!-- Q 1011 速溶錠適合幼兒 -->
+  <div class="quiz-card">
+    <span class="quiz-year">1011</span>
+    <div class="quiz-stem">下列那種錠劑是設計供兒童、老人或吞嚥困難的病人使用的？</div>
+    <div class="options" id="opts_q61">
+      <button class="option-btn" onclick="answer('q61','A','D')">A. 模製錠</button>
+      <button class="option-btn" onclick="answer('q61','B','D')">B. 皮下錠</button>
+      <button class="option-btn" onclick="answer('q61','C','D')">C. 調製錠</button>
+      <button class="option-btn" onclick="answer('q61','D','D')">D. 快崩錠</button>
+    </div>
+    <button class="explain-btn" onclick="toggleExplain('q61')">顯示詳解</button>
+    <div class="explanation" id="exp_q61">
+      ✅ 正確答案：<strong>D（快崩錠 / RDT）</strong><br><br>
+      <strong>RDT（Rapidly Disintegrating/Dissolving Tablets）速溶錠</strong>的主要設計目的：<br>
+      提供<strong>吞嚥困難的兒童、老人</strong>一個方便服藥的選項。<br>
+      在口中1分鐘內溶解，不需要水，直接吞嚥液化的藥物。<br><br>
+      皮下錠 → 溶於注射液再注射；調製錠 → 供藥師調配用；模製錠 → 歷史上的舌下錠前身
+    </div>
+    <div class="note-area-wrap">
+      <span class="note-area-label">📝 補充筆記</span>
+      <textarea class="note-area" id="note_q61" placeholder="在此輸入你的補充..." oninput="saveNote('q61')"></textarea>
+      <div class="note-saved" id="saved_q61">已儲存 ✓</div>
+    </div>
+  </div>
+
+  <!-- Q 1011 Gelcap -->
+  <div class="quiz-card">
+    <span class="quiz-year">1011</span>
+    <div class="quiz-stem">下列那一製品是明膠衣錠？</div>
+    <div class="options" id="opts_q62">
+      <button class="option-btn" onclick="answer('q62','A','B')">A. Valium</button>
+      <button class="option-btn" onclick="answer('q62','B','B')">B. Gelcap</button>
+      <button class="option-btn" onclick="answer('q62','C','B')">C. Nitrostat</button>
+      <button class="option-btn" onclick="answer('q62','D','B')">D. Coumadin</button>
+    </div>
+    <button class="explain-btn" onclick="toggleExplain('q62')">顯示詳解</button>
+    <div class="explanation" id="exp_q62">
+      ✅ 正確答案：<strong>B（Gelcap）</strong><br><br>
+      <strong>Gelcap（明膠衣錠）</strong>：將膠囊狀壓製錠用明膠（gelatin）包衣，體積小、形狀利於吞嚥、比未密封膠囊更具防摻假（tamper-evident）性。<br>
+      代表產品如 Tylenol Cold Multi-symptom（acetaminophen）。<br><br>
+      Nitrostat → NTG 舌下錠；Valium → diazepam；Coumadin → warfarin
+    </div>
+    <div class="note-area-wrap">
+      <span class="note-area-label">📝 補充筆記</span>
+      <textarea class="note-area" id="note_q62" placeholder="在此輸入你的補充..." oninput="saveNote('q62')"></textarea>
+      <div class="note-saved" id="saved_q62">已儲存 ✓</div>
+    </div>
+  </div>
+
+  <!-- Q 1011 崩散篩網 -->
+  <div class="quiz-card">
+    <span class="quiz-year">1011</span>
+    <div class="quiz-stem">依中華藥典，崩散試驗裝置底層的篩網是幾號？</div>
+    <div class="options" id="opts_q63">
+      <button class="option-btn" onclick="answer('q63','A','A')">A. 10號篩</button>
+      <button class="option-btn" onclick="answer('q63','B','A')">B. 16號篩</button>
+      <button class="option-btn" onclick="answer('q63','C','A')">C. 20號篩</button>
+      <button class="option-btn" onclick="answer('q63','D','A')">D. 24號篩</button>
+    </div>
+    <button class="explain-btn" onclick="toggleExplain('q63')">顯示詳解</button>
+    <div class="explanation" id="exp_q63">
+      ✅ 正確答案：<strong>A（10號篩）</strong><br><br>
+      崩散試驗裝置底部篩網為 <strong>No. 10（10號篩）</strong>。<br>
+      升降頻率：29~32 週期/分鐘（每分鐘）<br>
+      溫度：37±2°C<br>
+      先取 6 粒進行，如 1~2 粒未崩散 → 再取 12 粒，共 18 粒中至少 16 粒需完全崩散。
+    </div>
+    <div class="note-area-wrap">
+      <span class="note-area-label">📝 補充筆記</span>
+      <textarea class="note-area" id="note_q63" placeholder="在此輸入你的補充..." oninput="saveNote('q63')"></textarea>
+      <div class="note-saved" id="saved_q63">已儲存 ✓</div>
+    </div>
+  </div>
+
+  <!-- Q 1011 崩散頻率 -->
+  <div class="quiz-card">
+    <span class="quiz-year">1011</span>
+    <div class="quiz-stem">依中華藥典，崩散試驗篩網每分鐘上下幾次？</div>
+    <div class="options" id="opts_q64">
+      <button class="option-btn" onclick="answer('q64','A','C')">A. 18~20</button>
+      <button class="option-btn" onclick="answer('q64','B','C')">B. 24~26</button>
+      <button class="option-btn" onclick="answer('q64','C','C')">C. 28~32</button>
+      <button class="option-btn" onclick="answer('q64','D','C')">D. 36~40</button>
+    </div>
+    <button class="explain-btn" onclick="toggleExplain('q64')">顯示詳解</button>
+    <div class="explanation" id="exp_q64">
+      ✅ 正確答案：<strong>C（28~32次/分鐘）</strong><br><br>
+      崩散試驗裝置升降頻率：<strong>29~32 週期/分鐘</strong>（TWP 規定29~32，此題答案說28~32，選C）。<br>
+      行程（stroke）約 53~57 mm。
+    </div>
+    <div class="note-area-wrap">
+      <span class="note-area-label">📝 補充筆記</span>
+      <textarea class="note-area" id="note_q64" placeholder="在此輸入你的補充..." oninput="saveNote('q64')"></textarea>
+      <div class="note-saved" id="saved_q64">已儲存 ✓</div>
+    </div>
+  </div>
+
+  <!-- Q 1011 崩散溫度 -->
+  <div class="quiz-card">
+    <span class="quiz-year">1011</span>
+    <div class="quiz-stem">依中華藥典規定，錠劑之崩散度試驗一般在那一溫度下進行？</div>
+    <div class="options" id="opts_q65">
+      <button class="option-btn" onclick="answer('q65','A','D')">A. 無溫度規定</button>
+      <button class="option-btn" onclick="answer('q65','B','D')">B. 20±2℃</button>
+      <button class="option-btn" onclick="answer('q65','C','D')">C. 25±2℃</button>
+      <button class="option-btn" onclick="answer('q65','D','D')">D. 37±2℃</button>
+    </div>
+    <button class="explain-btn" onclick="toggleExplain('q65')">顯示詳解</button>
+    <div class="explanation" id="exp_q65">
+      ✅ 正確答案：<strong>D（37±2℃）</strong><br><br>
+      崩散試驗模擬體溫環境，浸液溫度為 <strong>37±2°C</strong>（模擬胃腸道溫度）。<br>
+      腸衣錠的腸液試驗也是 37±2°C；腸衣錠防水層試驗是室溫水（5分鐘）。
+    </div>
+    <div class="note-area-wrap">
+      <span class="note-area-label">📝 補充筆記</span>
+      <textarea class="note-area" id="note_q65" placeholder="在此輸入你的補充..." oninput="saveNote('q65')"></textarea>
+      <div class="note-saved" id="saved_q65">已儲存 ✓</div>
+    </div>
+  </div>
+
+  <!-- Q 1002 Zydis不是的 -->
+  <div class="quiz-card">
+    <span class="quiz-year">1002</span>
+    <div class="quiz-stem">下列各種快速釋放錠中，何者不是使用冷凍乾燥法Zydis技術製成的？</div>
+    <div class="options" id="opts_q66">
+      <button class="option-btn" onclick="answer('q66','A','B')">A. Claritin Reditabs</button>
+      <button class="option-btn" onclick="answer('q66','B','B')">B. Quicksolv</button>
+      <button class="option-btn" onclick="answer('q66','C','B')">C. Zofran ODT</button>
+      <button class="option-btn" onclick="answer('q66','D','B')">D. Maxalt-MLT</button>
+    </div>
+    <button class="explain-btn" onclick="toggleExplain('q66')">顯示詳解</button>
+    <div class="explanation" id="exp_q66">
+      ✅ 正確答案：<strong>B（Quicksolv）</strong><br><br>
+      依照 Ansel's 教科書，<strong>Quicksolv</strong> 不是用冷凍乾燥法（Zydis技術）製成，而是其他方法。<br>
+      （雖然有些資料說 Quicksolv 也用冷凍乾燥，但考試依 Ansel's 為主）<br><br>
+      冷凍乾燥 Zydis® 技術製品：Claritin Reditabs®（loratadine）、Clarinex Reditabs®、Zofran ODT®（ondansetron）、Maxalt-MLT®（rizatriptan）、Zyprexa Zydis®（olanzapine）
+    </div>
+    <div class="note-area-wrap">
+      <span class="note-area-label">📝 補充筆記</span>
+      <textarea class="note-area" id="note_q66" placeholder="在此輸入你的補充..." oninput="saveNote('q66')"></textarea>
+      <div class="note-saved" id="saved_q66">已儲存 ✓</div>
+    </div>
+  </div>
+
+  <!-- Q 1091 硬度評估錯誤 -->
+  <div class="quiz-card">
+    <span class="quiz-year">1091</span>
+    <div class="quiz-stem">有關錠劑的評估，下列敘述何者錯誤？</div>
+    <div class="options" id="opts_q67">
+      <button class="option-btn" onclick="answer('q67','A','CD')">A. 一般錠劑厚度的誤差標準值應在±5%以內</button>
+      <button class="option-btn" onclick="answer('q67','B','CD')">B. 脆度分析時重量損失應小於1%</button>
+      <button class="option-btn" onclick="answer('q67','C','CD')">C. 硬度應大於5公斤</button>
+      <button class="option-btn" onclick="answer('q67','D','CD')">D. 壓錠壓力應大於3,650磅</button>
+    </div>
+    <button class="explain-btn" onclick="toggleExplain('q67')">顯示詳解</button>
+    <div class="explanation" id="exp_q67">
+      ✅ 正確答案（錯誤者）：<strong>C 和 D</strong><br><br>
+      C 錯：硬度最低要求 <strong>4 kg</strong>（不是 5 kg）<br>
+      D 錯：壓錠壓力一般約 3,000~40,000 lb（英磅），沒有規定「應大於 3,650 磅」的下限<br><br>
+      A ✓：厚度 ±5% 以內<br>
+      B ✓：脆度 ≤1% 重量損失
+    </div>
+    <div class="note-area-wrap">
+      <span class="note-area-label">📝 補充筆記</span>
+      <textarea class="note-area" id="note_q67" placeholder="在此輸入你的補充..." oninput="saveNote('q67')"></textarea>
+      <div class="note-saved" id="saved_q67">已儲存 ✓</div>
+    </div>
+  </div>
+
+</div><!-- /pastexam -->
+
+</main>
+
+<script>
+function answer(qId, chosen, correct) {
+  const opts = document.getElementById('opts_' + qId);
+  if (!opts || opts.dataset.answered) return;
+  opts.dataset.answered = '1';
+  const btns = opts.querySelectorAll('.option-btn');
+  const correctList = correct.split('');
+  btns.forEach(btn => {
+    btn.disabled = true;
+    const label = btn.textContent.trim()[0];
+    if (correctList.includes(label)) {
+      btn.classList.add('correct');
+    } else if (label === chosen) {
+      btn.classList.add('wrong');
+    }
+  });
+}
+
+function toggleExplain(qId) {
+  const exp = document.getElementById('exp_' + qId);
+  if (!exp) return;
+  exp.classList.toggle('visible');
+}
+
+function saveNote(qId) {
+  const ta = document.getElementById('note_' + qId);
+  const savedMsg = document.getElementById('saved_' + qId);
+  if (!ta) return;
+  try {
+    localStorage.setItem('coating_note_' + qId, ta.value);
+    if (savedMsg) {
+      savedMsg.style.display = 'block';
+      setTimeout(() => { savedMsg.style.display = 'none'; }, 1200);
+    }
+  } catch(e) {}
+}
+
+// Load saved notes
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.note-area').forEach(ta => {
+    const id = ta.id.replace('note_', '');
+    try {
+      const saved = localStorage.getItem('coating_note_' + id);
+      if (saved) ta.value = saved;
+    } catch(e) {}
+  });
+});
+</script>
+</body>
+</html>
