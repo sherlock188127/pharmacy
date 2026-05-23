@@ -1,1 +1,327 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>凝膠劑 Gels | 完整筆記</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@300;400;500&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f4f0e6;--card:#faf8f3;--sec-bg:#eae4d6;--acc:#2c5f2e;--acc2:#1a5276;--acc3:#7d4a00;--text:#1c1810;--muted:#6a5f4a;--border:#cfc5aa;--ok-bg:#eaf6ea;--ok-bd:#3a9c3a;--ng-bg:#fdecea;--ng-bd:#d32f2f;--nb:#fff9ed;--nb-bd:#e0a030;--fb:#f0f5ed;--fb-bd:#2c5f2e;--sh:0 2px 14px rgba(30,20,5,.07);}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans TC',sans-serif;font-size:15px;line-height:1.85;}
+header{background:var(--acc);color:#fff;padding:2.2rem 2rem 1.8rem;position:relative;overflow:hidden;}
+header::before{content:'';position:absolute;width:300px;height:300px;border-radius:50%;background:rgba(255,255,255,.05);top:-100px;right:-80px;}
+header h1{font-family:'Noto Serif TC',serif;font-size:2rem;font-weight:700;letter-spacing:.05em;}
+header .sub{margin-top:.4rem;font-size:.82rem;opacity:.7;font-family:'JetBrains Mono',monospace;}
+#pw{background:var(--sec-bg);padding:.7rem 1.5rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:1rem;}
+#pt{font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--muted);white-space:nowrap;}
+#pb{flex:1;height:6px;background:var(--border);border-radius:3px;overflow:hidden;}
+#pf{height:100%;width:0%;background:var(--acc);border-radius:3px;transition:width .4s;}
+#toc{background:var(--sec-bg);border-bottom:1px solid var(--border);padding:.65rem 1.5rem;display:flex;gap:.5rem;flex-wrap:wrap;position:sticky;top:0;z-index:100;}
+.tb{font-family:'JetBrains Mono',monospace;font-size:.72rem;border:1px solid var(--border);background:var(--card);border-radius:5px;padding:.2rem .6rem;cursor:pointer;color:var(--muted);transition:all .15s;text-decoration:none;}
+.tb:hover{background:var(--acc);color:#fff;border-color:var(--acc);}
+main{max-width:920px;margin:0 auto;padding:2rem 1.5rem 5rem;display:flex;flex-direction:column;gap:2.4rem;}
+.sec{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;box-shadow:var(--sh);}
+.st{padding:1rem 1.5rem;font-family:'Noto Serif TC',serif;font-size:1.1rem;font-weight:700;display:flex;align-items:center;gap:.7rem;cursor:pointer;user-select:none;color:#fff;}
+.st.g{background:var(--acc);}
+.st.b{background:var(--acc2);}
+.chev{margin-left:auto;font-size:.8rem;transition:transform .3s;}
+.st.open .chev{transform:rotate(90deg);}
+.sb{padding:1.4rem 1.5rem;display:none;flex-direction:column;gap:1.3rem;}
+.sb.open{display:flex;}
+.ss{border-left:3px solid var(--acc);padding-left:1rem;}
+.ss.b{border-left-color:var(--acc2);}
+.ss.o{border-left-color:var(--acc3);}
+.ss.hi{background:#f9f3e8;border-radius:8px;padding:.8rem 1rem;border:1px solid var(--border);}
+.sh{font-family:'Noto Serif TC',serif;font-size:.98rem;font-weight:700;color:var(--acc);margin-bottom:.5rem;}
+.sh.b{color:var(--acc2);}
+.sh.o{color:var(--acc3);}
+ul.nl{padding-left:1.2rem;font-size:.9rem;line-height:1.9;}
+ul.nl li{margin-bottom:.25rem;}
+ul.nl li::marker{color:var(--acc);}
+.fm{background:var(--fb);border:1px solid var(--fb-bd);border-radius:8px;padding:.75rem 1rem;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.9;color:#1a3d1c;white-space:pre-wrap;}
+.fm.b{background:#edf3f9;border-color:var(--acc2);color:#0d3554;}
+.kw{display:inline-block;background:#2c5f2e18;color:var(--acc);border-radius:4px;padding:0 .35rem;font-weight:500;font-size:.88em;}
+.kw2{display:inline-block;background:#1a527618;color:var(--acc2);border-radius:4px;padding:0 .35rem;font-weight:500;font-size:.88em;}
+.kw3{display:inline-block;background:#7d4a0018;color:var(--acc3);border-radius:4px;padding:0 .35rem;font-weight:500;font-size:.88em;}
+.ca{background:var(--nb);border-left:3px solid var(--nb-bd);border-radius:0 8px 8px 0;padding:.7rem 1rem;font-size:.87rem;line-height:1.8;}
+.ca strong{color:var(--acc3);}
+.ca.g{border-left-color:var(--acc);background:#f0f8f0;}
+.tw{overflow-x:auto;}
+table{border-collapse:collapse;width:100%;font-size:.84rem;}
+th{background:var(--acc);color:#fff;padding:.5rem .8rem;text-align:left;font-weight:500;}
+th.b{background:var(--acc2);}
+td{border:1px solid var(--border);padding:.45rem .8rem;vertical-align:top;}
+tr:nth-child(even) td{background:var(--sec-bg);}
+.qd{display:flex;align-items:center;gap:.7rem;font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--muted);margin:.2rem 0;}
+.qd::before,.qd::after{content:'';flex:1;height:1px;background:var(--border);}
+.qc{border:1px solid var(--border);border-radius:10px;overflow:hidden;background:#fff;}
+.qh{background:var(--sec-bg);padding:.7rem 1rem;display:flex;align-items:flex-start;gap:.6rem;}
+.qn{font-family:'JetBrains Mono',monospace;font-size:.7rem;background:var(--acc);color:#fff;border-radius:4px;padding:.1rem .4rem;flex-shrink:0;margin-top:2px;}
+.qy{font-family:'JetBrains Mono',monospace;font-size:.7rem;background:#2c5f2e22;color:var(--acc);border-radius:4px;padding:.1rem .4rem;flex-shrink:0;margin-top:2px;}
+.qs{font-weight:500;font-size:.9rem;line-height:1.75;}
+.qo{padding:.7rem 1rem;display:flex;flex-direction:column;gap:.45rem;}
+.op{display:flex;align-items:flex-start;gap:.5rem;background:var(--bg);border:1.5px solid var(--border);border-radius:7px;padding:.45rem .75rem;cursor:pointer;font-size:.87rem;line-height:1.65;font-family:'Noto Sans TC',sans-serif;text-align:left;width:100%;color:var(--text);transition:border-color .15s,background .15s;}
+.op:hover:not(:disabled){border-color:var(--acc);background:var(--sec-bg);}
+.op .ol{font-family:'JetBrains Mono',monospace;font-size:.8rem;font-weight:600;flex-shrink:0;margin-top:1px;}
+.op.ok{background:var(--ok-bg);border-color:var(--ok-bd);color:#1b5e20;}
+.op.ng{background:var(--ng-bg);border-color:var(--ng-bd);color:#b71c1c;}
+.op:disabled{cursor:default;}
+.qf{padding:.4rem 1rem .75rem;display:flex;gap:.5rem;flex-wrap:wrap;}
+.be{font-family:'JetBrains Mono',monospace;font-size:.75rem;border:1.5px solid var(--border);background:var(--card);border-radius:6px;padding:.25rem .75rem;cursor:pointer;color:var(--muted);transition:all .15s;}
+.be:hover{border-color:var(--acc);color:var(--acc);}
+.br{font-family:'JetBrains Mono',monospace;font-size:.75rem;border:1.5px solid var(--border);background:var(--card);border-radius:6px;padding:.25rem .75rem;cursor:pointer;color:var(--muted);transition:all .15s;}
+.br:hover{border-color:var(--acc3);color:var(--acc3);}
+.qe{display:none;margin:0 1rem .8rem;padding:.65rem .9rem;background:var(--fb);border-left:3px solid var(--acc);border-radius:0 8px 8px 0;font-size:.85rem;line-height:1.8;}
+.nw{display:none;margin:0 1rem .8rem;}
+.na{width:100%;min-height:60px;border:1.5px solid var(--border);border-radius:7px;padding:.5rem .75rem;font-family:'Noto Sans TC',sans-serif;font-size:.83rem;background:var(--nb);color:var(--text);resize:vertical;line-height:1.7;}
+.na:focus{outline:none;border-color:var(--acc);}
+.ns{font-family:'JetBrains Mono',monospace;font-size:.72rem;border:1px solid var(--border);background:var(--card);border-radius:5px;padding:.18rem .6rem;cursor:pointer;color:var(--muted);margin-top:.35rem;transition:all .15s;}
+.ns:hover{background:var(--acc);color:#fff;border-color:var(--acc);}
+.nm{font-size:.72rem;color:var(--acc);font-family:'JetBrains Mono',monospace;margin-left:.5rem;opacity:0;transition:opacity .3s;}
+</style>
+</head>
+<body>
+<header>
+  <h1>凝膠劑 Gels</h1>
+  <div class="sub">藥劑學筆記 · 完整講義整理 + 歷屆試題 · 113學年</div>
+</header>
+<div id="pw"><span id="pt">0 / 0 題已作答</span><div id="pb"><div id="pf"></div></div></div>
+<div id="toc">
+  <a class="tb" href="#s1">定義與分類</a>
+  <a class="tb" href="#s2">製備原理</a>
+  <a class="tb" href="#s3">膠凝劑總覽</a>
+  <a class="tb" href="#s4">多醣類</a>
+  <a class="tb" href="#s5">Carbomer</a>
+  <a class="tb" href="#s6">纖維素衍生物</a>
+  <a class="tb" href="#s7">其他膠凝劑</a>
+  <a class="tb" href="#s8">黏度整合</a>
+  <a class="tb" href="#s9">凝膠化機制</a>
+  <a class="tb" href="#s10">法定製劑</a>
+  <a class="tb" href="#s11">配方示例</a>
+  <a class="tb" href="#s12">透皮吸收</a>
+  <a class="tb" href="#s13">穿透增進劑</a>
+</div>
+<main>
+<div class="sec" id="s1"><div class="st g open" onclick="toggleSec(this)"><span>🧫</span> 凝膠劑定義與分類 <span class="chev">▶</span></div><div class="sb open"><div class="ss"><div class="sh">定義</div><ul class="nl"><li>又稱 <span class="kw">jellies</span>；小或大分子/分散系在水性媒液中加入膠凝劑 → 似膠凍狀半固體</li><li>由無機小粒子或有機大分子被液體包覆且互相滲透組成之<strong>分散系架構的半固體系統</strong></li><li>精確定義：分散媒的運動被分散相粒子或巨分子形成的<strong>交叉立體網狀結構</strong>限制的半剛性系統</li><li>例：tragacanth、CMC 凝膠由扭曲糾纏的分子鏈組成，以凡得瓦爾力纏在一起，形成結晶及無定形區</li></ul></div><div class="ss"><div class="sh">組成成分</div><ul class="nl"><li>水（主要分散媒）</li><li>膠凝劑：合成高分子（carbomer 934）、纖維素衍生物（CMC、HPMC）、天然膠（tragacanth）</li><li>其他：活性成分、溶劑（乙醇、丙二醇）、防腐劑（methylparaben、propylparaben、chlorhexidine glyconate）、安定劑（edetate disodium）</li><li>貯存：緊密容器，防止水分散失；<strong>避免冷凍</strong></li></ul></div><div class="ss"><div class="sh">分類：單相 vs 二相系統</div><div class="tw"><table><tr><th>類型</th><th>說明</th><th>例子</th><th>特性</th></tr><tr><td><span class="kw">單相 Single-phase</span></td><td>巨分子均勻分散，與液體無明顯界線</td><td>Androgel®、Carbopol 凝膠、tragacanth、CMC 凝膠、<strong>Poloxamer gel</strong></td><td>均勻、澄清</td></tr><tr><td><span class="kw">二相 Two-phase</span></td><td>凝膠團由小而明顯微粒子凝絮物組成，稱 magma 或 milk</td><td>Milk of magnesia（Mg(OH)₂）、<strong>Al(OH)₃ gel</strong>、<strong>Bentonite magma</strong></td><td>搖變性（thixotropy）</td></tr></table></div><div class="ca"><strong>Emulgel：</strong>厭水藥物溶於油相（礦物油±paraffin）→ 製成 o/w emulsion → 再與 gel 混合。</div></div><div class="qd">歷屆試題</div><div class="qc" data-qid="q1">
+<div class="qh"><span class="qn">Q1</span><span class="qy">113-1</span><span class="qs">下列何者所製成之凝膠，通常屬於<strong>二相系統（two-phase system）</strong>？</span></div>
+<div class="qo"><button class="op" onclick="answer(this,'wrong')"><span class="ol">A</span>海藻酸</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">B</span>西黃蓍膠</button><button class="op" onclick="answer(this,'correct')"><span class="ol">C</span>氫氧化鋁</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">D</span>明膠</button></div>
+<div class="qf"><button class="be" onclick="toggleExp(this)">顯示詳解</button><button class="br" onclick="resetQ(this)">重置</button></div><div class="qe">✅ 答案：<strong>C</strong>｜Al(OH)₃ = 無機微粒子凝絮物 → 二相系統。A（海藻酸）、B（西黃蓍膠）、D（明膠）均為有機大分子均勻分散 → 單相。</div><div class="nw"><textarea class="na" placeholder="📝 補充筆記…" data-key="gel_q1"></textarea><br><button class="ns" onclick="saveNote(this)">儲存筆記</button><span class="nm">已儲存 ✓</span></div></div><div class="qc" data-qid="q2">
+<div class="qh"><span class="qn">Q2</span><span class="qy">112-2</span><span class="qs">有關凝膠劑（gel），下列敘述何者<strong>錯誤</strong>？</span></div>
+<div class="qo"><button class="op" onclick="answer(this,'wrong')"><span class="ol">A</span>為半固體製劑</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">B</span>由無機小粒子或有機大分子所組成</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">C</span>可能具有搖變性（thixotropy）</button><button class="op" onclick="answer(this,'correct')"><span class="ol">D</span>僅供局部外用</button></div>
+<div class="qf"><button class="be" onclick="toggleExp(this)">顯示詳解</button><button class="br" onclick="resetQ(this)">重置</button></div><div class="qe">✅ 答案：<strong>D（錯誤）</strong>｜凝膠劑可口服（制酸劑）、局部外用、眼用、陰道用、直腸用等，並非僅供局部外用。</div><div class="nw"><textarea class="na" placeholder="📝 補充筆記…" data-key="gel_q2"></textarea><br><button class="ns" onclick="saveNote(this)">儲存筆記</button><span class="nm">已儲存 ✓</span></div></div><div class="qc" data-qid="q3">
+<div class="qh"><span class="qn">Q3</span><span class="qy">111-1</span><span class="qs">下列水性製劑中，何者屬於<strong>單相系統（single-phase systems）</strong>？</span></div>
+<div class="qo"><button class="op" onclick="answer(this,'wrong')"><span class="ol">A</span>bentonite magma</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">B</span>milk of magnesia</button><button class="op" onclick="answer(this,'correct')"><span class="ol">C</span>poloxamer gel</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">D</span>aluminum hydroxide gel</button></div>
+<div class="qf"><button class="be" onclick="toggleExp(this)">顯示詳解</button><button class="br" onclick="resetQ(this)">重置</button></div><div class="qe">✅ 答案：<strong>C</strong>｜Poloxamer 為有機高分子均勻分散 → 單相。A（bentonite）/D（Al(OH)₃）= 無機微粒子 → 二相；B（Mg(OH)₂）= 二相 magma。</div><div class="nw"><textarea class="na" placeholder="📝 補充筆記…" data-key="gel_q3"></textarea><br><button class="ns" onclick="saveNote(this)">儲存筆記</button><span class="nm">已儲存 ✓</span></div></div><div class="qc" data-qid="q4">
+<div class="qh"><span class="qn">Q4</span><span class="qy">106-2</span><span class="qs">下列何者是<strong>無機親水膠體</strong>？</span></div>
+<div class="qo"><button class="op" onclick="answer(this,'wrong')"><span class="ol">A</span>tragacanth jelly</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">B</span>pectin paste</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">C</span>carbowax bases</button><button class="op" onclick="answer(this,'correct')"><span class="ol">D</span>bentonite gel</button></div>
+<div class="qf"><button class="be" onclick="toggleExp(this)">顯示詳解</button><button class="br" onclick="resetQ(this)">重置</button></div><div class="qe">✅ 答案：<strong>D</strong>｜Bentonite（皂土）= 矽酸鋁黏土，無機親水膠體。A/B 天然有機多醣；C = PEG（合成聚合物）。</div><div class="nw"><textarea class="na" placeholder="📝 補充筆記…" data-key="gel_q4"></textarea><br><button class="ns" onclick="saveNote(this)">儲存筆記</button><span class="nm">已儲存 ✓</span></div></div></div></div><div class="sec" id="s2"><div class="st g open" onclick="toggleSec(this)"><span>⚗️</span> 凝膠劑製備原理 <span class="chev">▶</span></div><div class="sb open"><div class="ss"><div class="sh">大有機分子凝膠製備方式</div><ul class="nl"><li><span class="kw">分散法</span>：分子分散於連續相（如 starch 加熱水分散）</li><li><span class="kw">改變 pH 法</span>：使分散分子交連（如 carbomers 加鹼中和 → 羧基解離 → 展開成凝膠）</li><li><span class="kw">降低連續相法</span>：以蔗糖製備的 jellies（濃縮水分）</li></ul></div><div class="ss"><div class="sh">永久性 vs 可逆性凝膠</div><div class="tw"><table><tr><th>類型</th><th>結合力</th><th>例子</th><th>可逆？</th></tr><tr><td><span class="kw">永久性凝膠</span></td><td>Primary valency forces（共價交連）</td><td>交連型聚合物</td><td>❌</td></tr><tr><td><span class="kw">可逆性凝膠</span></td><td>Secondary valency forces（氫鍵、偶極-偶極、凡得瓦爾力）</td><td>gelatin（冷卻成膠）；MC（加熱成膠）</td><td>✅</td></tr></table></div><div class="ca"><strong>記憶重點：</strong><br>Gelatin：37°C 以上任何濃度均不成膠；降溫(&lt;30°C)成膠。濃度越高，凝膠化溫度越高：10%(25°C)、20%(30°C)、30%(32°C)。<br>Methylcellulose（MC）：冷水易溶 → 加熱>50°C 成膠（與 gelatin 相反）。</div></div></div></div><div class="sec" id="s3"><div class="st g open" onclick="toggleSec(this)"><span>📋</span> 膠凝劑總覽 <span class="chev">▶</span></div><div class="sb open"><div class="tw"><table><tr><th>類別</th><th>代表成員</th></tr><tr><td>天然多醣（gums）</td><td>acacia, tragacanth, xanthan gum, guar gum, pectin, alginic acid, sodium alginate, agar</td></tr><tr><td>蛋白質</td><td>gelatin</td></tr><tr><td>合成高分子</td><td><strong>carbomer (carbopol)</strong>、PVA、povidone (PVP)</td></tr><tr><td>纖維素衍生物</td><td>MC, EC, HEC, HPC, HPMC, CMC, CMC-Na</td></tr><tr><td>澱粉衍生物</td><td>starch, sodium starch glycolate, maltodextrin</td></tr><tr><td>無機</td><td>colloidal silicon dioxide (Aerosil®), magnesium aluminum silicate (Veegum®), bentonite</td></tr><tr><td>聚合物嵌段共聚物</td><td>Poloxamer (Pluronic®)：PEO-PPO 共聚物</td></tr><tr><td>烴基/礦油系</td><td>Plastibase® (5% 低分子量聚乙烯 + 95% 礦油)</td></tr><tr><td>其他</td><td>cetostearyl alcohol, propylene carbonate, propylene glycol alginate</td></tr></table></div></div></div><div class="sec" id="s4"><div class="st g open" onclick="toggleSec(this)"><span>🌿</span> 聚電解質多醣（Natural Gums） <span class="chev">▶</span></div><div class="sb open"><div class="ss"><div class="sh">1. 阿拉伯膠（Acacia）</div><ul class="nl"><li>主要由 polyarabic acid 之鈣鹽（有時鎂鹽或鉀鹽）組成，分支狀</li><li>用途：稠化劑、懸液劑/乳劑的保護性膠體</li><li>乙醇可使 acacia、tragacanth、agar 從水溶液中<strong>沉澱</strong></li></ul></div><div class="ss"><div class="sh">2. 果膠（Pectin）</div><ul class="nl"><li>線性聚合物多醣類；用途：稠化劑、助懸劑、食品膠凝劑</li></ul></div><div class="ss"><div class="sh">3. 西黃耆膠（Tragacanth gum）</div><ul class="nl"><li>膠漿在 <span class="kw">pH 4–8</span> 最安定</li><li>防腐：0.1% benzoic acid 或 sodium benzoate；或 0.17% methylparaben + 0.03% propylparaben</li><li>可用<span class="kw">高壓蒸氣法滅菌</span>（不破壞凝膠）</li><li>製備：粉末加入強力攪拌之水中；可先用<strong>乙醇、甘油或丙二醇</strong>濕潤粉末再與水混合（避免團塊）</li></ul></div><div class="qd">歷屆試題</div><div class="qc" data-qid="q5">
+<div class="qh"><span class="qn">Q5</span><span class="qy">111-2</span><span class="qs">有關 tragacanth gum 之敘述，下列何者正確？</span></div>
+<div class="qo"><button class="op" onclick="answer(this,'wrong')"><span class="ol">A</span>以高溫高壓蒸氣滅菌處理會破壞 tragacanth gum 凝膠劑</button><button class="op" onclick="answer(this,'correct')"><span class="ol">B</span>製備 tragacanth gum 凝膠劑時，可加入甘油避免團塊產生</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">C</span>常利用 tragacanth gum 製備酸鹼值小於 3 之凝膠劑</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">D</span>製備 tragacanth gum 凝膠劑時，不可加入乙醇，以避免團塊產生</button></div>
+<div class="qf"><button class="be" onclick="toggleExp(this)">顯示詳解</button><button class="br" onclick="resetQ(this)">重置</button></div><div class="qe">✅ 答案：<strong>B</strong>｜甘油（或乙醇、丙二醇）可用來濕潤 tragacanth 粉末，避免加水時結塊。A：可高壓蒸氣滅菌，不破壞。C：最安定 pH 4-8，非&lt;3。D：乙醇可用來預先濕潤。</div><div class="nw"><textarea class="na" placeholder="📝 補充筆記…" data-key="gel_q5"></textarea><br><button class="ns" onclick="saveNote(this)">儲存筆記</button><span class="nm">已儲存 ✓</span></div></div><div class="ss"><div class="sh">4. 藻膠酸（Alginic acid）</div><ul class="nl"><li>1–5% 作凝膠增稠劑；在水中膨脹至自身重量 200–300 倍而不溶解</li><li>添加<span class="kw">鈣鹽（如 calcium citrate）→ 交連 → 黏度↑</span></li></ul></div><div class="ss"><div class="sh">5. 藻膠酸鈉（Sodium alginate）</div><ul class="nl"><li>濃度達 10% 可產生凝膠；&gt;2.5% + 鈣鹽 → 安定凝膠（pH 5–10）</li><li>水性製劑 <span class="kw">pH 4–10</span> 最安定；pH &lt;3 沉澱</li><li>電解質（低濃度）→ 黏度↑；高濃度電解質（NaCl ~4%）→ 鹽析</li></ul></div><div class="ss"><div class="sh">6. 瓊脂（Agar）</div><ul class="nl"><li>溶於熱水，冷卻成凝膠；對水溶解度比 acacia 小</li></ul></div><div class="ss hi o"><div class="sh o">聚電解質多醣（Gums）配伍禁忌整合</div><ul class="nl"><li>均含 −COO−，屬<strong>陰離子性聚電解質</strong> → 與陽離子性界面活性劑形成複合共聚物</li><li>pH &lt;3：−COO− 變成 −COOH → 溶解度↓</li><li>重金屬離子 → 不溶性重金屬鹽沉澱</li><li>過量甘油或乙醇 → 沉澱；大量單價陽離子（如 (NH₄)₂SO₄）→ 鹽析（可逆，加水再溶）</li></ul></div></div></div><div class="sec" id="s5"><div class="st g open" onclick="toggleSec(this)"><span>🔬</span> 卡波美 Carbomer（Carbopol） <span class="chev">▶</span></div><div class="sb open"><div class="ss"><div class="sh">化學與基本性質</div><ul class="nl"><li>Poly(acrylic acid)；由 acrylic acid 與蔗糖或 pentaerythritol 之 allyl ether 交連而得</li><li>絨毛狀乾粉；濃度 <span class="kw">0.5–2.0%</span> 作膠凝劑</li><li>1.0% 水分散液 pH = <span class="kw">2.5–3.0</span>（酸性，必須加鹼中和才能成膠）</li><li>數字越大 = 聚合分子越大（910 &lt; 934 &lt; 940 &lt; 941…）</li></ul></div><div class="ss"><div class="sh">USP 收載型號</div><div class="tw"><table><tr><th>型號</th><th>主要特性與用途</th></tr><tr><td>Carbomer 910</td><td>安定懸液劑</td></tr><tr><td>Carbomer 934</td><td>黏稠配方效果佳；持續釋放；局部凝膠</td></tr><tr><td>Carbomer 934p</td><td>製藥界最廣用；適合口服或黏膜接觸</td></tr><tr><td>Carbomer 940</td><td>晶瑩剔透水性/水醇性膠漿；最好不滴落特性；化妝品；乾眼症凝膠（vidisic gel）</td></tr></table></div></div><div class="ss"><div class="sh">製備凝膠：分散 → 中和（關鍵步驟）</div><div class="fm">分散：在快速攪拌液體漩渦中加入 carbomer；可用甘油/丙二醇/丁二醇先濕潤
 
+中和（膠化）：
+  1% 分散體 pH 2.5~3.0 → 加鹼中和至 pH 6~7 → 黏度大增
+  最大黏度與澄明度：pH ≈ 7；可接受範圍：pH 4.5~11
+
+中和劑選擇：
+  乙醇含量 &lt;20%  → NaOH 或 KOH
+  乙醇含量 ≈50%  → Triethanolamine（TEA）
+  其他：碳酸鈉、氨水、硼砂</div></div><div class="ss"><div class="sh">影響 Carbomer 黏度之因素</div><ul class="nl"><li><span class="kw">乙醇↑</span> → 黏度↓、澄明度↓（需增加 carbomer 量補償）</li><li><span class="kw">電解質 &gt;3%</span> → 崩解為水相，黏度大幅↓</li><li><span class="kw">pH &lt;4.5</span> → 無法成膠（羧基未解離）</li></ul></div><div class="qd">歷屆試題</div><div class="qc" data-qid="q6">
+<div class="qh"><span class="qn">Q6</span><span class="qy">113-1</span><span class="qs">有關 carbomer 之敘述，下列何者正確？</span></div>
+<div class="qo"><button class="op" onclick="answer(this,'wrong')"><span class="ol">A</span>將超過 3% 電解質加入 carbomer 凝膠劑可生成透明液狀物質</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">B</span>將乙醇加入 carbomer 凝膠劑可提高黏稠度</button><button class="op" onclick="answer(this,'correct')"><span class="ol">C</span>可利用改變酸鹼度調整 carbomer 凝膠劑黏稠度</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">D</span>其為 polyoxyethylene-polyoxypropylene 共聚合物</button></div>
+<div class="qf"><button class="be" onclick="toggleExp(this)">顯示詳解</button><button class="br" onclick="resetQ(this)">重置</button></div><div class="qe">✅ 答案：<strong>C</strong>｜加鹼（pH↑）→ 羧基解離 → 網狀結構展開 → 黏度↑。A：&gt;3%電解質→崩解（非透明液）。B：乙醇→黏度↓。D：PEO-PPO共聚物 = Poloxamer，非carbomer。</div><div class="nw"><textarea class="na" placeholder="📝 補充筆記…" data-key="gel_q6"></textarea><br><button class="ns" onclick="saveNote(this)">儲存筆記</button><span class="nm">已儲存 ✓</span></div></div><div class="qc" data-qid="q7">
+<div class="qh"><span class="qn">Q7</span><span class="qy">107-1</span><span class="qs">Carbopol（carbomer）於下列何種 pH 時<strong>一定無法</strong>形成 gel？</span></div>
+<div class="qo"><button class="op" onclick="answer(this,'correct')"><span class="ol">A</span>2</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">B</span>5</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">C</span>7</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">D</span>9</button></div>
+<div class="qf"><button class="be" onclick="toggleExp(this)">顯示詳解</button><button class="br" onclick="resetQ(this)">重置</button></div><div class="qe">✅ 答案：<strong>A（pH 2）</strong>｜carbomer 在 pH &lt;4.5 無法成膠。pH 5/7/9 均在可接受範圍（4.5–11）內。</div><div class="nw"><textarea class="na" placeholder="📝 補充筆記…" data-key="gel_q7"></textarea><br><button class="ns" onclick="saveNote(this)">儲存筆記</button><span class="nm">已儲存 ✓</span></div></div></div></div><div class="sec" id="s6"><div class="st g open" onclick="toggleSec(this)"><span>🧵</span> 纖維素衍生物（Cellulose Derivatives） <span class="chev">▶</span></div><div class="sb open"><div class="ss b"><div class="sh b">溶解度速記表（國考高頻）</div><div class="tw"><table><tr><th class="b">成員</th><th class="b">冷水</th><th class="b">熱水</th><th class="b">有機溶劑</th><th class="b">備注</th></tr><tr><td><strong>甲基纖維素 MC</strong></td><td>✅ 易溶</td><td>❌（&gt;50°C 成凝膠）</td><td>不溶</td><td>冷水＞熱水；與 paraben 配伍禁忌</td></tr><tr><td>羥丙基纖維素 HPC</td><td>✅</td><td>❌</td><td>-</td><td>-</td></tr><tr><td>羥丙基甲基纖維素 HPMC</td><td>✅</td><td>❌（50–90°C 成膠）</td><td>-</td><td>眼科常用；cloud point 高；抗鹽析比MC強</td></tr><tr><td>羥乙基纖維素 HEC</td><td>✅</td><td>-</td><td>-</td><td>眼用濃度 0.8%</td></tr><tr><td><strong>乙基纖維素 EC</strong></td><td>❌</td><td>❌</td><td>✅（有機溶劑）</td><td>防水膜衣；長效錠劑</td></tr><tr><td>CMC</td><td>✅</td><td>✅</td><td>不溶乙醇</td><td>4–6% 成凝膠；pH 2–10 安定；+甘油防乾燥</td></tr><tr><td>CMC-Na（羧甲基纖維素鈉）</td><td>✅</td><td>✅</td><td>-</td><td>pH &lt;5 或 &gt;10 黏度↓</td></tr></table></div></div><div class="ss"><div class="sh">甲基纖維素（MC）重點</div><ul class="nl"><li>製備：先在 80–90°C 以高切變力分散於 1/3 水量，再加冷水/冰水；或先用<strong>無水酒精或丙二醇</strong>濕潤</li><li>冷卻至 0–10°C 約 1hr → 最大澄明度與黏度；需添加防腐劑</li><li>高濃度電解質 → 鹽析；pH 2–12 安定</li><li><span class="kw3">配伍禁忌：與 paraben 形成氫鍵 → paraben 失效</span>（MC 上多數 -OH 基與 paraben 形成氫鍵）</li></ul></div><div class="ss"><div class="sh">CMC 重點</div><ul class="nl"><li>添加甘油可<strong>預防乾燥</strong>（最常考點）</li><li>與乙醇<strong>不相溶</strong>；pH &lt;2 沉澱</li></ul></div><div class="ss"><div class="sh">乙基纖維素（EC）</div><ul class="nl"><li>不溶於水及丙二醇；可溶有機溶劑 → 防水膜衣、長效錠劑</li><li><span class="kw">Surelease®（Colorcon）</span>、Aquacoat®（FMC）= EC 加塑化劑之水性膜衣分散液</li></ul></div><div class="ss"><div class="sh">眼用增稠劑濃度比較</div><div class="fm">HPMC   1.0%（最低濃度即可）
+PVA    1.4%
+PVP    1.7%
+MC     2.0%（需最高濃度）
+HEC    0.8%
+CMC    0.4–1%</div></div><div class="qd">歷屆試題</div><div class="qc" data-qid="q8">
+<div class="qh"><span class="qn">Q8</span><span class="qy">111-1</span><span class="qs">以 5% 中等黏度等級之 carboxymethylcellulose 製備凝膠劑時，加入 glycerin 之目的為何？</span></div>
+<div class="qo"><button class="op" onclick="answer(this,'wrong')"><span class="ol">A</span>增加均一度</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">B</span>增加黏稠度</button><button class="op" onclick="answer(this,'correct')"><span class="ol">C</span>避免乾燥</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">D</span>避免分層</button></div>
+<div class="qf"><button class="be" onclick="toggleExp(this)">顯示詳解</button><button class="br" onclick="resetQ(this)">重置</button></div><div class="qe">✅ 答案：<strong>C</strong>｜CMC 凝膠加甘油（glycerin）= 保濕，<strong>預防乾燥</strong>（甘油為吸濕劑）。</div><div class="nw"><textarea class="na" placeholder="📝 補充筆記…" data-key="gel_q8"></textarea><br><button class="ns" onclick="saveNote(this)">儲存筆記</button><span class="nm">已儲存 ✓</span></div></div><div class="qc" data-qid="q9">
+<div class="qh"><span class="qn">Q9</span><span class="qy">108-2</span><span class="qs">有關纖維素之衍生物的水溶解度敘述，下列何者正確？</span></div>
+<div class="qo"><button class="op" onclick="answer(this,'wrong')"><span class="ol">A</span>甲基纖維素溶於熱水</button><button class="op" onclick="answer(this,'correct')"><span class="ol">B</span>甲基纖維素溶於冷水</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">C</span>乙基纖維素溶於冷水</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">D</span>乙基纖維素溶於熱水</button></div>
+<div class="qf"><button class="be" onclick="toggleExp(this)">顯示詳解</button><button class="br" onclick="resetQ(this)">重置</button></div><div class="qe">✅ 答案：<strong>B</strong>｜MC 冷水易溶，加熱 &gt;50°C 形成凝膠（不溶）。EC 不溶於水（冷或熱）。</div><div class="nw"><textarea class="na" placeholder="📝 補充筆記…" data-key="gel_q9"></textarea><br><button class="ns" onclick="saveNote(this)">儲存筆記</button><span class="nm">已儲存 ✓</span></div></div><div class="qc" data-qid="q10">
+<div class="qh"><span class="qn">Q10</span><span class="qy">104-1</span><span class="qs">Cellulose 衍生物中，何者易溶於冷水，但較不易溶於熱水？</span></div>
+<div class="qo"><button class="op" onclick="answer(this,'wrong')"><span class="ol">A</span>Ethylcellulose</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">B</span>Hydroxypropyl methylcellulose</button><button class="op" onclick="answer(this,'correct')"><span class="ol">C</span>Methylcellulose</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">D</span>Sodium carboxymethylcellulose</button></div>
+<div class="qf"><button class="be" onclick="toggleExp(this)">顯示詳解</button><button class="br" onclick="resetQ(this)">重置</button></div><div class="qe">✅ 答案：<strong>C（Methylcellulose）</strong>｜MC = 冷水易溶、熱水成膠（凝膠化溫度 ~50°C，最低）。HPMC 也冷水易溶但凝膠化溫度更高（50–90°C）。EC 不溶水。CMC-Na 冷熱均溶。</div><div class="nw"><textarea class="na" placeholder="📝 補充筆記…" data-key="gel_q10"></textarea><br><button class="ns" onclick="saveNote(this)">儲存筆記</button><span class="nm">已儲存 ✓</span></div></div><div class="qc" data-qid="q11">
+<div class="qh"><span class="qn">Q11</span><span class="qy">107-1</span><span class="qs">Colorcon 公司所出產的 Surelease，是含有下列何種包覆材料的水性分散液？</span></div>
+<div class="qo"><button class="op" onclick="answer(this,'wrong')"><span class="ol">A</span>纖維素醋酸酯（cellulose acetate）</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">B</span>巴西棕櫚蠟（carnauba wax）</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">C</span>蟲膠（shellac）</button><button class="op" onclick="answer(this,'correct')"><span class="ol">D</span>乙基纖維素（ethylcellulose）</button></div>
+<div class="qf"><button class="be" onclick="toggleExp(this)">顯示詳解</button><button class="br" onclick="resetQ(this)">重置</button></div><div class="qe">✅ 答案：<strong>D</strong>｜Surelease®（Colorcon）= EC 加塑化劑之水性膜衣分散液（緩釋膜衣用）。</div><div class="nw"><textarea class="na" placeholder="📝 補充筆記…" data-key="gel_q11"></textarea><br><button class="ns" onclick="saveNote(this)">儲存筆記</button><span class="nm">已儲存 ✓</span></div></div></div></div><div class="sec" id="s7"><div class="st g open" onclick="toggleSec(this)"><span>🧪</span> 其他重要膠凝劑 <span class="chev">▶</span></div><div class="sb open"><div class="ss"><div class="sh">澱粉（Starch）</div><ul class="nl"><li>amylose（10–20%，線狀）可溶於熱水；amylopectin（80–90%，枝狀）不溶於熱水，只吸水膨脹</li><li>幾乎不溶於冷水；具 <span class="kw">dilatancy（搖稠性）</span>特性</li><li>用途：稀釋劑、崩散劑；痱子粉（吸潮比滑石粉強）；易吸潮易腐敗</li></ul></div><div class="qd">歷屆試題</div><div class="qc" data-qid="q13">
+<div class="qh"><span class="qn">Q13</span><span class="qy">106-1</span><span class="qs">有關 starch 之敘述，下列何者<strong>錯誤</strong>？</span></div>
+<div class="qo"><button class="op" onclick="answer(this,'correct')"><span class="ol">A</span>適合利用熱水溶解</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">B</span>具有 dilatancy 特性</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">C</span>常做為稀釋劑</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">D</span>具較多 α-1,4-glucosidic 鍵結</button></div>
+<div class="qf"><button class="be" onclick="toggleExp(this)">顯示詳解</button><button class="br" onclick="resetQ(this)">重置</button></div><div class="qe">✅ 答案：<strong>A（錯誤）</strong>｜澱粉不溶於冷水；amylopectin 在熱水中也只吸水膨脹不溶解。製備澱粉凝膠是透過加熱使澱粉糊化（粒子破裂吸水），非靠溶解。</div><div class="nw"><textarea class="na" placeholder="📝 補充筆記…" data-key="gel_q13"></textarea><br><button class="ns" onclick="saveNote(this)">儲存筆記</button><span class="nm">已儲存 ✓</span></div></div><div class="ss"><div class="sh">環糊精（Cyclodextrin）</div><ul class="nl"><li>α-CD：6 個葡萄糖；β-CD：7 個；γ-CD：8 個</li><li>外親水、內疏水（中空筒狀）→ 包覆難溶藥物 → 形成<span class="kw">包合物（inclusion complex）</span>→ 助溶</li></ul></div><div class="ss"><div class="sh">膠體二氧化矽（Colloidal Silicon Dioxide, Aerosil®）</div><ul class="nl"><li>吸濕性；不溶於水；可吸收大量水而不液化</li><li>黏度<span class="kw">大部分不受溫度影響</span>（大部分不受溫度影響 = 考點）</li><li><span class="kw">pH 影響黏度</span>：隨 pH↑ 而增加，pH 7.5 最有效；超過 pH 7.5 則↓</li><li>低極性液體中成凝膠；可形成氫鍵之液體（如丙醇）中不成膠</li></ul></div><div class="qc" data-qid="q15">
+<div class="qh"><span class="qn">Q15</span><span class="qy">111-1</span><span class="qs">以膠體二氧化矽（colloidal silicon dioxide）製備凝膠劑時，下列何者最易達到調整黏度之目的？</span></div>
+<div class="qo"><button class="op" onclick="answer(this,'correct')"><span class="ol">A</span>酸鹼值</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">B</span>溫度</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">C</span>添加乙醇</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">D</span>無法改變黏度</button></div>
+<div class="qf"><button class="be" onclick="toggleExp(this)">顯示詳解</button><button class="br" onclick="resetQ(this)">重置</button></div><div class="qe">✅ 答案：<strong>A（酸鹼值）</strong>｜colloidal SiO₂ 黏度受 pH 影響（pH 7.5 最大）；溫度影響不大。</div><div class="nw"><textarea class="na" placeholder="📝 補充筆記…" data-key="gel_q15"></textarea><br><button class="ns" onclick="saveNote(this)">儲存筆記</button><span class="nm">已儲存 ✓</span></div></div><div class="ss"><div class="sh">明膠（Gelatin）</div><ul class="nl"><li>冷水不溶，可吸水（5–10倍）膨脹；分散於<strong>熱水，冷卻形成凝膠</strong></li><li><span class="kw">Type A</span>：豬皮（酸處理），等電點 pH 7–9；乳化劑最適 pH 3.2（帶<strong>正電</strong>）</li><li><span class="kw">Type B</span>：獸皮或骨骼（鹼處理），等電點 pH 4.7–5；乳化劑最適 pH 8（帶<strong>負電</strong>）</li><li>為兩性聚電解質（amphoteric），非僅帶負電；可做保護性膠體、助懸劑、乳化劑、黏合劑、膠囊殼</li></ul></div><div class="qc" data-qid="q16">
+<div class="qh"><span class="qn">Q16</span><span class="qy">105-1</span><span class="qs">Type B gelatin 之等電點（isoelectric point）在 pH 多少？</span></div>
+<div class="qo"><button class="op" onclick="answer(this,'wrong')"><span class="ol">A</span>2</button><button class="op" onclick="answer(this,'correct')"><span class="ol">B</span>5</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">C</span>8</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">D</span>11</button></div>
+<div class="qf"><button class="be" onclick="toggleExp(this)">顯示詳解</button><button class="br" onclick="resetQ(this)">重置</button></div><div class="qe">✅ 答案：<strong>B（pH 4.7–5）</strong>｜Type B（鹼處理）等電點 pH 4.7–5；Type A（酸處理）等電點 pH 7–9。</div><div class="nw"><textarea class="na" placeholder="📝 補充筆記…" data-key="gel_q16"></textarea><br><button class="ns" onclick="saveNote(this)">儲存筆記</button><span class="nm">已儲存 ✓</span></div></div><div class="qc" data-qid="q17">
+<div class="qh"><span class="qn">Q17</span><span class="qy">100-1</span><span class="qs">下列關於明膠（gelatin）的敘述何者<strong>錯誤</strong>？</span></div>
+<div class="qo"><button class="op" onclick="answer(this,'wrong')"><span class="ol">A</span>明膠屬於蛋白質與多肽類的衍生物</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">B</span>它可作為錠劑的黏合劑</button><button class="op" onclick="answer(this,'correct')"><span class="ol">C</span>為帶負電的聚電解質（polyelectrolyte）</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">D</span>可作為懸浮劑型的凝絮劑，使液體澄清</button></div>
+<div class="qf"><button class="be" onclick="toggleExp(this)">顯示詳解</button><button class="br" onclick="resetQ(this)">重置</button></div><div class="qe">✅ 答案：<strong>C（錯誤）</strong>｜gelatin 為兩性聚電解質（amphoteric），依 pH 不同可帶正電或負電，並非僅帶負電。</div><div class="nw"><textarea class="na" placeholder="📝 補充筆記…" data-key="gel_q17"></textarea><br><button class="ns" onclick="saveNote(this)">儲存筆記</button><span class="nm">已儲存 ✓</span></div></div><div class="ss"><div class="sh">Poloxamer（Pluronic®）</div><ul class="nl"><li>聚氧乙烯-聚氧丙烯（PEO-PPO）嵌段共聚物；濃度 15–50%；熱敏感（thermo-responsive）</li><li>常用：Poloxamer 188（F-68）、<span class="kw">407（F-127）</span></li><li>Pluronic F-127®：毒性低，局部遞藥系統良好媒液；與 isopropyl palmitate + lecithin 合用 → PLO gel</li></ul></div><div class="qc" data-qid="q18">
+<div class="qh"><span class="qn">Q18</span><span class="qy">102-1</span><span class="qs">下列何者是由 polyoxyethylene-polyoxypropylene 所組成之共聚合物，可用於製備凝膠劑？</span></div>
+<div class="qo"><button class="op" onclick="answer(this,'wrong')"><span class="ol">A</span>Carbomer</button><button class="op" onclick="answer(this,'correct')"><span class="ol">B</span>Poloxamer</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">C</span>Plastibase</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">D</span>Veegum</button></div>
+<div class="qf"><button class="be" onclick="toggleExp(this)">顯示詳解</button><button class="br" onclick="resetQ(this)">重置</button></div><div class="qe">✅ 答案：<strong>B（Poloxamer）</strong>｜Poloxamer = PEO-PPO 嵌段共聚物。Carbomer = poly(acrylic acid)；Plastibase = 5% 聚乙烯 + 95% 礦油；Veegum = 矽酸鎂鋁。</div><div class="nw"><textarea class="na" placeholder="📝 補充筆記…" data-key="gel_q18"></textarea><br><button class="ns" onclick="saveNote(this)">儲存筆記</button><span class="nm">已儲存 ✓</span></div></div><div class="ss"><div class="sh">普維酮（Povidone, PVP）</div><ul class="nl"><li>非離子性；可溶於水及多種極性溶媒；較高分子量時 ~10% 可成凝膠</li><li>與碘形成 PVP-Iodine（弱包合物，增加碘之溶解度及安定性）</li><li>陽離子性藥物與 PVP <span class="kw">不會</span>產生沉澱（PVP 為非離子性，無陰離子基）</li></ul></div><div class="qc" data-qid="q19">
+<div class="qh"><span class="qn">Q19</span><span class="qy">102-1</span><span class="qs">陽離子性藥物與下列何種水溶性膠體<strong>不會</strong>產生沉澱反應？</span></div>
+<div class="qo"><button class="op" onclick="answer(this,'wrong')"><span class="ol">A</span>Agar</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">B</span>Acacia</button><button class="op" onclick="answer(this,'correct')"><span class="ol">C</span>Povidone</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">D</span>Pectate</button></div>
+<div class="qf"><button class="be" onclick="toggleExp(this)">顯示詳解</button><button class="br" onclick="resetQ(this)">重置</button></div><div class="qe">✅ 答案：<strong>C（Povidone/PVP）</strong>｜PVP 為非離子性，無 −COO− 等陰離子基，不與陽離子藥物沉澱。A/B/D 含 −COO−（陰離子聚電解質）→ 與陽離子藥物形成沉澱。</div><div class="nw"><textarea class="na" placeholder="📝 補充筆記…" data-key="gel_q19"></textarea><br><button class="ns" onclick="saveNote(this)">儲存筆記</button><span class="nm">已儲存 ✓</span></div></div></div></div><div class="sec" id="s8"><div class="st g open" onclick="toggleSec(this)"><span>📊</span> 各膠凝劑黏度影響因素整合比較 <span class="chev">▶</span></div><div class="sb open"><div class="tw"><table><tr><th>膠凝劑</th><th>條件/添加劑</th><th>黏度</th><th>說明</th></tr><tr><td>Carbomer</td><td>加鹼（pH↑至6–7）</td><td>↑↑</td><td>最大黏度 pH≈7；pH&lt;4.5 = 無法成膠</td></tr><tr><td>Carbomer</td><td>乙醇↑ 或 電解質&gt;3%</td><td>↓（崩解）</td><td>電解質&gt;3% 崩解為水相</td></tr><tr><td>Alginic acid</td><td>加鈣鹽（Ca²⁺）</td><td>↑（交連）</td><td>calcium citrate 等</td></tr><tr><td>Sodium alginate</td><td>低濃度電解質</td><td>↑</td><td>NaCl 約4% → 鹽析</td></tr><tr><td>Methylcellulose</td><td>溫度↑（&gt;50°C）</td><td>↑（成膠）</td><td>可逆，冷卻後恢復</td></tr><tr><td>Methylcellulose</td><td>高濃度電解質</td><td>先↑後沉澱</td><td>鹽析</td></tr><tr><td>CMC-Na</td><td>pH &lt;5 或 &gt;10</td><td>↓</td><td>carboxylate 基對 pH 敏感</td></tr><tr><td>Colloidal SiO₂</td><td>溫度改變</td><td>幾乎不變</td><td>大部分不受溫度影響</td></tr><tr><td>Colloidal SiO₂</td><td>pH↑（至7.5）</td><td>↑</td><td>超過 pH 7.5 則↓</td></tr></table></div><div class="qd">歷屆試題</div><div class="qc" data-qid="q20">
+<div class="qh"><span class="qn">Q20</span><span class="qy">111-2</span><span class="qs">下列敘述何者正確？</span></div>
+<div class="qo"><button class="op" onclick="answer(this,'wrong')"><span class="ol">A</span>在 carbomer 凝膠中加入酒精，可增加其黏稠度</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">B</span>carboxymethylcellulose 製成之凝膠，在 pH &gt;10 時會增加其黏稠度</button><button class="op" onclick="answer(this,'correct')"><span class="ol">C</span>alginic acid 添加鈣鹽，可因產生交聯而增加黏稠度</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">D</span>以 colloidal silicon dioxide 製成之凝膠，其黏稠度不受 pH 值影響</button></div>
+<div class="qf"><button class="be" onclick="toggleExp(this)">顯示詳解</button><button class="br" onclick="resetQ(this)">重置</button></div><div class="qe">✅ 答案：<strong>C</strong>｜alginic acid + Ca²⁺ → 交連 → 黏度↑ ✓。A：酒精→carbomer黏度↓。B：CMC 在pH&gt;10 黏度↓。D：colloidal SiO₂ 黏度受pH影響（pH7.5最大）。</div><div class="nw"><textarea class="na" placeholder="📝 補充筆記…" data-key="gel_q20"></textarea><br><button class="ns" onclick="saveNote(this)">儲存筆記</button><span class="nm">已儲存 ✓</span></div></div><div class="qc" data-qid="q21">
+<div class="qh"><span class="qn">Q21</span><span class="qy">110-1</span><span class="qs">以不同成分製備的水性凝膠劑，有關其黏度變化之敘述，下列何者<strong>錯誤</strong>？</span></div>
+<div class="qo"><button class="op" onclick="answer(this,'correct')"><span class="ol">A</span>鈣鹽會降低 alginic acid 凝膠之黏度</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">B</span>氫氧化鈉會增加 carbomer 凝膠之黏度</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">C</span>溫度對 colloidal silicon dioxide 凝膠之黏度無太大影響</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">D</span>高濃度電解質會增加 methylcellulose 凝膠之黏度</button></div>
+<div class="qf"><button class="be" onclick="toggleExp(this)">顯示詳解</button><button class="br" onclick="resetQ(this)">重置</button></div><div class="qe">✅ 答案：<strong>A（錯誤）</strong>｜鈣鹽與 alginic acid 交連 → 黏度<strong>增加</strong>，非降低。B✓；C✓；D✓（高濃度電解質先使MC黏度增加，最終鹽析沉澱）。</div><div class="nw"><textarea class="na" placeholder="📝 補充筆記…" data-key="gel_q21"></textarea><br><button class="ns" onclick="saveNote(this)">儲存筆記</button><span class="nm">已儲存 ✓</span></div></div></div></div><div class="sec" id="s9"><div class="st g open" onclick="toggleSec(this)"><span>🔁</span> 凝膠化機制 <span class="chev">▶</span></div><div class="sb open"><div class="ss"><div class="sh">Gelatin 可逆性凝膠化機制</div><div class="fm">冷卻（&lt;30°C）：
+  巨分子動能↓ → 偶極-偶極交互作用↑ → 細長凝集物形成
+  → 分散媒被保留在網狀結構中 → 半固體
+
+促進凝膠化（更強韌）：低溫 + 高濃度 + 高分子量
+
+Gel point（凝膠化溫度）：
+  10% → 25°C；20% → 30°C；30% → 32°C
+  ★ 37°C 以上任何濃度均不成膠
+  ★ 凝膠化溫度在等電點時最高
+
+其他形成原理相同之 gums：
+  agar、Irish moss、algin（藻膠）、pectin（果膠）、tragacanth</div></div><div class="qd">歷屆試題</div><div class="qc" data-qid="q22">
+<div class="qh"><span class="qn">Q22</span><span class="qy">106-1</span><span class="qs">下列何者<strong>不是</strong> gelatin 溶液降溫形成 gel 時之原因？</span></div>
+<div class="qo"><button class="op" onclick="answer(this,'wrong')"><span class="ol">A</span>降低動能</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">B</span>增加 dipole-dipole 交互作用</button><button class="op" onclick="answer(this,'correct')"><span class="ol">C</span>活化能負值</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">D</span>增加聚合物交互作用</button></div>
+<div class="qf"><button class="be" onclick="toggleExp(this)">顯示詳解</button><button class="br" onclick="resetQ(this)">重置</button></div><div class="qe">✅ 答案：<strong>C</strong>｜凝膠化原因：A（動能↓）、B（偶極-偶極交互作用↑）、D（聚合物交互作用↑）。C（活化能負值）沒有物理意義，非凝膠化機制。</div><div class="nw"><textarea class="na" placeholder="📝 補充筆記…" data-key="gel_q22"></textarea><br><button class="ns" onclick="saveNote(this)">儲存筆記</button><span class="nm">已儲存 ✓</span></div></div><div class="qc" data-qid="q23">
+<div class="qh"><span class="qn">Q23</span><span class="qy">104-2</span><span class="qs">下列明膠製劑何者有<strong>最高凝膠化溫度</strong>？</span></div>
+<div class="qo"><button class="op" onclick="answer(this,'wrong')"><span class="ol">A</span>10% Type B gelatin 於 pH 10 之水溶液</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">B</span>20% Type B gelatin 於 pH 9 之水溶液</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">C</span>30% Type A gelatin 於 pH 5 之水溶液</button><button class="op" onclick="answer(this,'correct')"><span class="ol">D</span>30% Type A gelatin 於 pH 8 之水溶液</button></div>
+<div class="qf"><button class="be" onclick="toggleExp(this)">顯示詳解</button><button class="br" onclick="resetQ(this)">重置</button></div><div class="qe">✅ 答案：<strong>D</strong>｜①濃度越高→凝膠化溫度越高（30%最高）②在等電點時凝膠化溫度最高。Type A 等電點 pH 7–9，pH 8 ≈ 等電點 ✓；Type B 等電點 pH 4.7–5，pH 9/10 均遠離。→ 30% Type A at pH 8 凝膠化溫度最高。</div><div class="nw"><textarea class="na" placeholder="📝 補充筆記…" data-key="gel_q23"></textarea><br><button class="ns" onclick="saveNote(this)">儲存筆記</button><span class="nm">已儲存 ✓</span></div></div></div></div><div class="sec" id="s10"><div class="st g open" onclick="toggleSec(this)"><span>📜</span> 法定乳漿劑 / 無機凝膠劑 <span class="chev">▶</span></div><div class="sb open"><div class="ss"><div class="sh">皂土乳漿（Bentonite Magma N.F.）</div><ul class="nl"><li>皂土（Bentonite）= 矽酸鋁黏土之鈉鹽；層狀結構，基本粒子小板狀</li><li>不溶於水；分散後膨脹至原體積 <span class="kw">12 倍</span>；Sod. Bentonite 每克可吸水約 11 cm³</li><li>製備：5% sod. bentonite 分散於純水機械攪拌；或熱水濕潤靜置 24h</li><li>濃度 <span class="kw">&gt;4%</span> → 搖變性（thixotropy）凝膠：靜置→凝膠，攪拌→溶膠（無限重複）</li><li>機制：粒子帶正電荷及負電荷部分互相吸引 → 格架狀結構（類撲克牌架）</li><li>應用：助懸媒液（calamine lotion U.S.P.）；面膜；化妝水粉體層</li></ul><div class="ca"><strong>Bentonite 配伍禁忌：</strong><br>• 陽離子性藥品 → 化學性吸著（不可）<br>• 非離子性水溶性藥品 → 物理性吸著 → 效能↓<br>• pH 9（9.5–10.5），具緩衝能力；pH&lt;7 助懸力顯著↓ → 不可與酸同處方</div></div><div class="qd">歷屆試題</div><div class="qc" data-qid="q24">
+<div class="qh"><span class="qn">Q24</span><span class="qy">113-1</span><span class="qs">Bentonite magma 與下列何者調配時，會產生 absorption 現象？</span></div>
+<div class="qo"><button class="op" onclick="answer(this,'wrong')"><span class="ol">A</span>sodium bisulfate</button><button class="op" onclick="answer(this,'correct')"><span class="ol">B</span>sodium dodecyl sulfate</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">C</span>potassium chloride</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">D</span>sodium chloride</button></div>
+<div class="qf"><button class="be" onclick="toggleExp(this)">顯示詳解</button><button class="br" onclick="resetQ(this)">重置</button></div><div class="qe">✅ 答案：<strong>B（sodium dodecyl sulfate, SDS）</strong>｜SDS 為陰離子性界面活性劑，含長鏈 dodecyl，可被 bentonite 物理吸著（absorption）。A/C/D 為簡單電解質，不產生特殊吸著現象。</div><div class="nw"><textarea class="na" placeholder="📝 補充筆記…" data-key="gel_q24"></textarea><br><button class="ns" onclick="saveNote(this)">儲存筆記</button><span class="nm">已儲存 ✓</span></div></div><div class="qc" data-qid="q25">
+<div class="qh"><span class="qn">Q25</span><span class="qy">113-1</span><span class="qs">Bentonite 作為軟膏基劑，其成分中含有下列何種金屬？</span></div>
+<div class="qo"><button class="op" onclick="answer(this,'correct')"><span class="ol">A</span>鋁</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">B</span>鉛</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">C</span>銀</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">D</span>錫</button></div>
+<div class="qf"><button class="be" onclick="toggleExp(this)">顯示詳解</button><button class="br" onclick="resetQ(this)">重置</button></div><div class="qe">✅ 答案：<strong>A（鋁）</strong>｜Bentonite = 矽酸<strong>鋁</strong>黏土 → 含鋁。</div><div class="nw"><textarea class="na" placeholder="📝 補充筆記…" data-key="gel_q25"></textarea><br><button class="ns" onclick="saveNote(this)">儲存筆記</button><span class="nm">已儲存 ✓</span></div></div><div class="qc" data-qid="q26">
+<div class="qh"><span class="qn">Q26</span><span class="qy">109-2</span><span class="qs">6% 皂土（bentonite）分散於水中時，靜置後會形成下列何者？</span></div>
+<div class="qo"><button class="op" onclick="answer(this,'correct')"><span class="ol">A</span>gel</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">B</span>suspension</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">C</span>emulsion</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">D</span>lotion</button></div>
+<div class="qf"><button class="be" onclick="toggleExp(this)">顯示詳解</button><button class="br" onclick="resetQ(this)">重置</button></div><div class="qe">✅ 答案：<strong>A（gel）</strong>｜6% &gt; 4% → 靜置後形成搖變性凝膠。</div><div class="nw"><textarea class="na" placeholder="📝 補充筆記…" data-key="gel_q26"></textarea><br><button class="ns" onclick="saveNote(this)">儲存筆記</button><span class="nm">已儲存 ✓</span></div></div><div class="qc" data-qid="q27">
+<div class="qh"><span class="qn">Q27</span><span class="qy">100-1</span><span class="qs">下列何者可作為助懸劑（suspending agent）及親水性稠化劑（hydrophilic thickener）？</span></div>
+<div class="qo"><button class="op" onclick="answer(this,'wrong')"><span class="ol">A</span>Benzalkonium chloride</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">B</span>Methylparaben</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">C</span>Polysorbate 80</button><button class="op" onclick="answer(this,'correct')"><span class="ol">D</span>Sodium bentonite</button></div>
+<div class="qf"><button class="be" onclick="toggleExp(this)">顯示詳解</button><button class="br" onclick="resetQ(this)">重置</button></div><div class="qe">✅ 答案：<strong>D（Sodium bentonite）</strong>｜具搖變性 → 助懸劑；在水中膨脹成凝膠 → 親水性稠化劑。A=防腐劑；B=防腐劑；C=乳化劑。</div><div class="nw"><textarea class="na" placeholder="📝 補充筆記…" data-key="gel_q27"></textarea><br><button class="ns" onclick="saveNote(this)">儲存筆記</button><span class="nm">已儲存 ✓</span></div></div><div class="ss"><div class="sh">氫氧化鋁膠漿（Aluminium Hydroxide Gel, U.S.P.）</div><ul class="nl"><li>不溶性 Al(OH)₃ 和水合 Al(OH)₃ 組成；白色黏性水性懸液；含氧化鋁約 4%</li><li>用途：制酸劑（10 mL 中和 13 meq 酸）；覆蓋胃表面</li><li>製備：Al₂(SO₄)₃ + Na₂CO₃ + H₂O → Al(OH)₃↓ + Na₂SO₄ + CO₂</li><li><span class="kw3">配伍禁忌</span>：與 tetracycline 在腸道中螯合，干擾藥效；貯存：密封，避免冷凍</li></ul></div><div class="ss"><div class="sh">鎂乳（Milk of Magnesia）</div><ul class="nl"><li>含 Mg(OH)₂ 7–8.5%；制酸劑（5 mL 中和 10 meq 酸）；pH ≈ 10</li><li>製備：NaOH + MgSO₄ → Mg(OH)₂↓；或 MgO + H₂O → Mg(OH)₂</li><li>靜置時水分釋出 → 需搖勻；&gt;35°C 降低凝膠結構；避免冷凍</li></ul></div></div></div><div class="sec" id="s11"><div class="st g open" onclick="toggleSec(this)"><span>🍵</span> 凝膠配方示例 <span class="chev">▶</span></div><div class="sb open"><div class="ss"><div class="sh">潤滑凍膠（Lubricating Jelly）</div><div class="fm">Methylcellulose 4000cps    0.8%
+Carbopol 934               0.24%
+Propylene glycol           16.7%
+Methylparaben             0.015%
+Sodium hydroxide           qs pH 7
+Purified water             qs ad 100%
+
+製備：
+① MC 分散於熱水（80-90°C）40 mL → 冰箱過夜溶解
+② Carbopol 934 分散於水 20 mL + 1% NaOH（~12 mL）調至 pH 7 → 加水至 40 mL
+③ Methylparaben 溶於丙二醇 → 全部混合均勻
+
+用途：醫療檢查、導管/栓劑、臨時調配媒劑</div></div><div class="ss"><div class="sh">澱粉甘油（Starch Glycerite）</div><div class="fm">Starch           100 g
+Benzoic acid       2 g   （防腐劑）
+Purified water   200 g
+Glycerin         700 g
+
+製備：澱粉+苯甲酸+水研磨，加甘油混合，加熱至 140°C → 透明軟塊
+（高溫使澱粉粒破裂 → 吸水糊化 → 凝膠）
+
+用途：局部媒劑及保護劑</div></div><div class="ss"><div class="sh">Poloxamer 凝膠基劑 / PLO gel</div><div class="fm">Pluronic F-127, NF   20-50 g
+Purified water/buffer  qs 100 mL
+
+PLO gel（增加皮膚吸收）：
+Pluronic F127 gel (20%) : [isopropyl palmitate/lecithin (1:1)] = 1:5
+→ 透皮給藥系統之良好媒液</div></div></div></div><div class="sec" id="s12"><div class="st b open" onclick="toggleSec(this)"><span>💊</span> 透皮吸收（Transdermal Permeation） <span class="chev">▶</span></div><div class="sb open"><div class="ss b"><div class="sh b">皮膚結構（由外至內）</div><div class="fm b">角質層（stratum corneum）← 主要障蔽，pH 4.5–6.5；親脂層；厚 10~15 mm
+  ↓
+透明層（stratum lucidum）
+  ↓
+顆粒層（stratum granulosum）
+  ↓
+有棘層（stratum spinosum）
+  ↓
+基底/發生層（stratum germinativum = basal cell layer）← 最內層
+  ↓（活組織：親水層）
+真皮（dermis）：血管、毛囊、皮脂腺、汗腺；厚度 3–5 mm
+  ↓（到達此層 → 吸收進入全身循環）</div></div><div class="ss b"><div class="sh b">藥物穿透角質層的三條路徑</div><div class="tw"><table><tr><th class="b">路徑</th><th class="b">說明</th><th class="b">適合藥物</th></tr><tr><td>①Transcellular path（直接穿透角質細胞）</td><td>路徑最短；但角質蛋白難透</td><td>非極性藥物</td></tr><tr><td>②Intercellular path（細胞間脂質雙層）★<strong>大部分藥物主要途徑</strong></td><td>連續脂質相；角質層主要障蔽</td><td>非極性；小極性分子</td></tr><tr><td>③Appendage path（毛囊、汗腺、皮脂腺）</td><td>繞過角質層；對小極性分子/離子重要</td><td>極性分子、離子</td></tr></table></div><div class="ca g"><strong>大部分藥物穿透角質層主要途徑 = ②Intercellular path（細胞間脂質雙層）</strong></div></div><div class="ss b"><div class="sh b">Fick's Law — 透皮吸收動力學</div><div class="fm b">flux = dM/(S·dt) = DSkc/h = PScd
+
+D：擴散係數  S：施用面積  k：分配係數（角質層/媒劑）
+c：藥物濃度  h：皮膚厚度  P：permeability coefficient = Dk/h
+
+★ flux 正比：D、S、k（分配係數）、c（濃度）
+★ flux 反比：h（皮膚厚度）</div></div><div class="ss b"><div class="sh b">影響透皮吸收的因素</div><ul class="nl"><li><strong>藥物特性：</strong>分子量 100–800；水溶解度 &gt;100 μg/mL；log P（octanol/water）在 1–3.5 間；未解離態穿透較好；候選藥物 flux ≈ 1 mg/cm²/d</li><li><strong>濃度↑ → flux↑；施用面積↑ → 吸收↑；接觸時間↑ → 吸收↑</strong></li><li><strong>角質層厚度↑ → 吸收↓；封閉（occlusion）→ 水合↑ → 穿透↑</strong></li><li>藥物對皮膚親和力 &gt; 對媒劑 → 吸收↑；若藥物與基劑親和性強 → 活性低 → 吸收↓</li><li>極性藥物傾向走 intercellular path 或 appendage path（非 transcellular）</li></ul></div><div class="qd">歷屆試題</div><div class="qc" data-qid="q28">
+<div class="qh"><span class="qn">Q28</span><span class="qy">105-1</span><span class="qs">大部分經由皮膚吸收的藥物通過角質層的主要途徑為何？</span></div>
+<div class="qo"><button class="op" onclick="answer(this,'correct')"><span class="ol">A</span>脂質雙層</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">B</span>角質細胞</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">C</span>汗腺</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">D</span>毛囊</button></div>
+<div class="qf"><button class="be" onclick="toggleExp(this)">顯示詳解</button><button class="br" onclick="resetQ(this)">重置</button></div><div class="qe">✅ 答案：<strong>A（脂質雙層 = intercellular path）</strong>｜細胞間脂質雙層為大部分藥物穿透角質層的主要途徑。</div><div class="nw"><textarea class="na" placeholder="📝 補充筆記…" data-key="gel_q28"></textarea><br><button class="ns" onclick="saveNote(this)">儲存筆記</button><span class="nm">已儲存 ✓</span></div></div><div class="qc" data-qid="q29">
+<div class="qh"><span class="qn">Q29</span><span class="qy">107-1</span><span class="qs">藥物經由皮膚吸收之被動擴散效應最主要是遵循：</span></div>
+<div class="qo"><button class="op" onclick="answer(this,'wrong')"><span class="ol">A</span>Beer-Lambert law</button><button class="op" onclick="answer(this,'correct')"><span class="ol">B</span>Fick's law</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">C</span>Stokes' law</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">D</span>Moore's law</button></div>
+<div class="qf"><button class="be" onclick="toggleExp(this)">顯示詳解</button><button class="br" onclick="resetQ(this)">重置</button></div><div class="qe">✅ 答案：<strong>B（Fick's law）</strong>｜透皮被動擴散遵循 Fick's First Law：flux = DSkc/h。</div><div class="nw"><textarea class="na" placeholder="📝 補充筆記…" data-key="gel_q29"></textarea><br><button class="ns" onclick="saveNote(this)">儲存筆記</button><span class="nm">已儲存 ✓</span></div></div><div class="qc" data-qid="q30">
+<div class="qh"><span class="qn">Q30</span><span class="qy">106-2</span><span class="qs">依 Fick's law，藥物之皮膚吸收速率與下列何者<strong>成反比</strong>？</span></div>
+<div class="qo"><button class="op" onclick="answer(this,'wrong')"><span class="ol">A</span>分配係數（partition coefficient）</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">B</span>藥物於劑型內之濃度</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">C</span>藥物於劑型內之溶解度</button><button class="op" onclick="answer(this,'correct')"><span class="ol">D</span>皮膚厚度</button></div>
+<div class="qf"><button class="be" onclick="toggleExp(this)">顯示詳解</button><button class="br" onclick="resetQ(this)">重置</button></div><div class="qe">✅ 答案：<strong>D（皮膚厚度）</strong>｜flux = DSkc/h → 與厚度 h 成反比。A（分配係數）、B（濃度）均成正比。</div><div class="nw"><textarea class="na" placeholder="📝 補充筆記…" data-key="gel_q30"></textarea><br><button class="ns" onclick="saveNote(this)">儲存筆記</button><span class="nm">已儲存 ✓</span></div></div><div class="qc" data-qid="q31">
+<div class="qh"><span class="qn">Q31</span><span class="qy">109-2</span><span class="qs">有關局部用藥經皮吸收的影響因素，下列敘述何者<strong>錯誤</strong>？</span></div>
+<div class="qo"><button class="op" onclick="answer(this,'wrong')"><span class="ol">A</span>分子量在 100~800 間，並有適當脂溶性及水溶性的藥物分子，有機會利用經皮路徑進入體內</button><button class="op" onclick="answer(this,'correct')"><span class="ol">B</span>極性藥物傾向走 transcellular route 進入皮膚</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">C</span>藥物給與到角質層較薄的部位可有比較好的經皮吸收</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">D</span>一般而言，非離子態藥物比離子態藥物有較佳的經皮吸收效果</button></div>
+<div class="qf"><button class="be" onclick="toggleExp(this)">顯示詳解</button><button class="br" onclick="resetQ(this)">重置</button></div><div class="qe">✅ 答案：<strong>B（錯誤）</strong>｜極性藥物傾向走 <strong>intercellular path（細胞間脂質層）或 appendage path</strong>，非 transcellular route（後者為非極性藥物偏好的路徑）。</div><div class="nw"><textarea class="na" placeholder="📝 補充筆記…" data-key="gel_q31"></textarea><br><button class="ns" onclick="saveNote(this)">儲存筆記</button><span class="nm">已儲存 ✓</span></div></div></div></div><div class="sec" id="s13"><div class="st b open" onclick="toggleSec(this)"><span>🚀</span> 穿透增進劑（Penetration Enhancers） <span class="chev">▶</span></div><div class="sb open"><div class="ss b"><div class="sh b">常見穿透增進劑分類</div><div class="tw"><table><tr><th class="b">類別</th><th class="b">代表</th><th class="b">機制</th></tr><tr><td>界面活性劑</td><td>sodium lauryl sulfate（陰離子）；Pluronic F68/F127（非離子）；bile salts</td><td>擾亂角質層脂質結構，使角蛋白變性</td></tr><tr><td>溶劑</td><td>DMSO、乙醇、丙二醇、Azone（laurocapram）、pyrrolidones、acetone、DMF、DMA</td><td>進入脂質雙層改變結構；增加流動性</td></tr><tr><td>還原劑</td><td>ascorbate, dithiothreitol</td><td>減少 disulfide 鍵 → 角質蛋白水合↑ → 穿透↑</td></tr><tr><td>脂肪酸</td><td>oleic acid, lauric acid, linoleic acid</td><td>改變細胞間脂質結構</td></tr><tr><td>其他</td><td>urea, terpenes, phospholipids, lecithin, proteolytic enzymes</td><td>多種機制</td></tr></table></div></div><div class="ss b"><div class="sh b">Azone（Laurocapram）vs DMSO 比較</div><div class="tw"><table><tr><th class="b">項目</th><th class="b">Azone（laurocapram）</th><th class="b">DMSO（dimethyl sulfoxide）</th></tr><tr><td>化學名</td><td>1-dodecyl-azacycloheptan-2-one；非極性</td><td>強的偶極溶劑</td></tr><tr><td>水溶性</td><td>❌ 不溶於水</td><td>✅ 可與水及有機溶劑互溶</td></tr><tr><td>作用機制</td><td>進入脂質雙層 → 破壞結構 → 細胞間脂質流體化 → 降低障壁阻力</td><td>進入水性區 + 脂質極性端交互作用 → 形成媒合殼 → 親水區脹大 → 流動性↑</td></tr><tr><td>使用濃度</td><td><span class="kw">低濃度（&lt;5%，一般 0.2–2%）</span>即有效</td><td>需高濃度（&gt;70%）才能促進穿透</td></tr><tr><td>效力比較</td><td colspan="2">1% Azone 效果比 50% DMSO <strong>大 13 倍</strong></td></tr><tr><td>持久性</td><td>塗敷後留在皮膚表面，效果<strong>持久</strong>；少量吸收快速腎清除</td><td>效果較短</td></tr><tr><td>毒性</td><td>低毒性，安全</td><td>潛在眼睛/皮膚毒性；令人不悅味道/氣味</td></tr><tr><td>輔助</td><td>在<strong>丙二醇</strong>存在下增進效果</td><td>decylmethyl sulfoxide 在一些製劑有應用</td></tr></table></div></div><div class="qd">歷屆試題</div><div class="qc" data-qid="q32">
+<div class="qh"><span class="qn">Q32</span><span class="qy">113-2</span><span class="qs">有關 laurocapram（Azone）與 dimethyl sulfoxide（DMSO）促進藥物穿皮吸收之敘述，下列何者<strong>錯誤</strong>？</span></div>
+<div class="qo"><button class="op" onclick="answer(this,'wrong')"><span class="ol">A</span>Azone 不溶於水，DMSO 可與水互溶</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">B</span>兩者主要作用都是降低角質層障蔽對藥物擴散之阻力</button><button class="op" onclick="answer(this,'correct')"><span class="ol">C</span>一般作為促進穿透所使用之濃度，Azone 比 DMSO 高</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">D</span>單次施用下，Azone 在角質層存留之時間比 DMSO 長</button></div>
+<div class="qf"><button class="be" onclick="toggleExp(this)">顯示詳解</button><button class="br" onclick="resetQ(this)">重置</button></div><div class="qe">✅ 答案：<strong>C（錯誤）</strong>｜Azone 使用低濃度（0.2–2%，&lt;5%）即有效；DMSO 需高濃度（&gt;70%）。<strong>Azone 使用濃度遠低於 DMSO</strong>，C 的敘述相反。</div><div class="nw"><textarea class="na" placeholder="📝 補充筆記…" data-key="gel_q32"></textarea><br><button class="ns" onclick="saveNote(this)">儲存筆記</button><span class="nm">已儲存 ✓</span></div></div><div class="qc" data-qid="q33">
+<div class="qh"><span class="qn">Q33</span><span class="qy">106-2</span><span class="qs">軟膏中添加之 azone，其作用為何？</span></div>
+<div class="qo"><button class="op" onclick="answer(this,'correct')"><span class="ol">A</span>穿透促進劑</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">B</span>硬化劑</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">C</span>抗氧化劑</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">D</span>防腐劑</button></div>
+<div class="qf"><button class="be" onclick="toggleExp(this)">顯示詳解</button><button class="br" onclick="resetQ(this)">重置</button></div><div class="qe">✅ 答案：<strong>A（穿透促進劑）</strong>｜Azone = laurocapram，最有效的透皮吸收增進劑之一。</div><div class="nw"><textarea class="na" placeholder="📝 補充筆記…" data-key="gel_q33"></textarea><br><button class="ns" onclick="saveNote(this)">儲存筆記</button><span class="nm">已儲存 ✓</span></div></div><div class="qc" data-qid="q34">
+<div class="qh"><span class="qn">Q34</span><span class="qy">106-1</span><span class="qs">下列何者在軟膏中<strong>不作為</strong>穿皮促進劑？</span></div>
+<div class="qo"><button class="op" onclick="answer(this,'wrong')"><span class="ol">A</span>dimethyl formamide（DMF）</button><button class="op" onclick="answer(this,'correct')"><span class="ol">B</span>sodium benzoate</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">C</span>petroleum ether</button><button class="op" onclick="answer(this,'wrong')"><span class="ol">D</span>sodium lauryl sulfate</button></div>
+<div class="qf"><button class="be" onclick="toggleExp(this)">顯示詳解</button><button class="br" onclick="resetQ(this)">重置</button></div><div class="qe">✅ 答案：<strong>B（sodium benzoate）</strong>｜Sodium benzoate 為防腐劑，非穿透增進劑。A（DMF）、C（petroleum ether，溶劑類）、D（sodium lauryl sulfate，陰離子界面活性劑）均可作穿透增進劑。</div><div class="nw"><textarea class="na" placeholder="📝 補充筆記…" data-key="gel_q34"></textarea><br><button class="ns" onclick="saveNote(this)">儲存筆記</button><span class="nm">已儲存 ✓</span></div></div></div></div></main>
+<script>
+function toggleSec(el){el.classList.toggle('open');el.nextElementSibling.classList.toggle('open');}
+function answer(btn,result){
+  const card=btn.closest('.qc');
+  if(card.dataset.answered)return;
+  card.dataset.answered='1';
+  card.querySelectorAll('.op').forEach(o=>o.disabled=true);
+  if(result==='correct'){btn.classList.add('ok');}
+  else{
+    btn.classList.add('ng');
+    card.querySelectorAll('.op').forEach(o=>{if(o.getAttribute('onclick').includes("'correct'"))o.classList.add('ok');});
+  }
+  updateProgress();
+}
+function toggleExp(btn){
+  const card=btn.closest('.qc');
+  const exp=card.querySelector('.qe');
+  const nw=card.querySelector('.nw');
+  if(exp.style.display==='block'){exp.style.display='none';nw.style.display='none';btn.textContent='顯示詳解';}
+  else{
+    exp.style.display='block';nw.style.display='block';
+    const ta=nw.querySelector('.na');
+    const saved=localStorage.getItem(ta.dataset.key);
+    if(saved)ta.value=saved;
+    btn.textContent='隱藏詳解';
+  }
+}
+function resetQ(btn){
+  const card=btn.closest('.qc');
+  delete card.dataset.answered;
+  card.querySelectorAll('.op').forEach(o=>{o.disabled=false;o.classList.remove('ok','ng');});
+  card.querySelector('.qe').style.display='none';
+  card.querySelector('.nw').style.display='none';
+  card.querySelector('.be').textContent='顯示詳解';
+  updateProgress();
+}
+function saveNote(btn){
+  const wrap=btn.closest('.nw');
+  const ta=wrap.querySelector('.na');
+  const msg=wrap.querySelector('.nm');
+  localStorage.setItem(ta.dataset.key,ta.value);
+  msg.style.opacity='1';
+  setTimeout(()=>msg.style.opacity='0',1800);
+}
+function updateProgress(){
+  const total=document.querySelectorAll('.qc').length;
+  const done=document.querySelectorAll('.qc[data-answered]').length;
+  document.getElementById('pt').textContent=`${done} / ${total} 題已作答`;
+  document.getElementById('pf').style.width=(done/total*100)+'%';
+}
+document.addEventListener('DOMContentLoaded',()=>{
+  updateProgress();
+  document.querySelectorAll('.na').forEach(ta=>{const v=localStorage.getItem(ta.dataset.key);if(v)ta.value=v;});
+});
+</script>
+</body>
+</html>
