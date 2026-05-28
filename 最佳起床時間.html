@@ -196,6 +196,86 @@
     box-shadow: 0 0 10px var(--rem-glow);
   }
 
+  /* Full night timeline */
+  .night-tl-outer {
+    position: relative;
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+
+  .night-tl-canvas {
+    position: relative;
+    height: 110px;
+    min-width: 500px;
+  }
+
+  /* phase bar row */
+  .ntl-bar-row {
+    position: absolute;
+    top: 8px;
+    left: 0;
+    right: 0;
+    height: 28px;
+  }
+
+  .ntl-segment {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    border-radius: 3px;
+  }
+
+  /* alarm marker */
+  .ntl-alarm {
+    position: absolute;
+    top: 0;
+    width: 2px;
+    height: 44px;
+    border-radius: 1px;
+  }
+
+  .ntl-alarm-dot {
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+
+  .ntl-alarm-label {
+    position: absolute;
+    top: 46px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    white-space: nowrap;
+    text-align: center;
+  }
+
+  /* time axis ticks */
+  .ntl-tick {
+    position: absolute;
+    bottom: 0;
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    color: var(--text-dimmer);
+    transform: translateX(-50%);
+    white-space: nowrap;
+  }
+
+  .ntl-tick-line {
+    position: absolute;
+    bottom: 14px;
+    width: 1px;
+    height: 6px;
+    background: var(--text-dimmer);
+    transform: translateX(-50%);
+    opacity: 0.4;
+  }
+
   /* Sleep legend */
   .legend {
     display: flex;
@@ -466,6 +546,33 @@
     <p style="font-size:11px;color:var(--text-dimmer);margin-top:4px;" id="cycle-info">每週期 85 分鐘</p>
   </div>
 
+  <!-- Full night timeline -->
+  <div class="card">
+    <div class="card-title">整晚睡眠時間軸</div>
+    <div class="legend" style="margin-bottom:14px;">
+      <div class="legend-item">
+        <div class="legend-dot" style="background:var(--accent);opacity:0.7"></div>
+        <span>核心睡眠（避免起床）</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-dot" style="background:var(--rem-color);opacity:0.7"></div>
+        <span>REM（可以起床）</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-dot" style="background:var(--green);border-radius:50%"></div>
+        <span>最佳鬧鐘</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-dot" style="background:var(--accent);border-radius:50%;opacity:0.5"></div>
+        <span>其他可選</span>
+      </div>
+    </div>
+    <div class="night-tl-outer">
+      <div class="night-tl-canvas" id="ntl"></div>
+    </div>
+    <p style="font-size:10px;color:var(--text-dimmer);margin-top:8px;">在核心睡眠（藍色）中被鬧鐘叫醒最難受；REM（紫色）結束瞬間是最佳起床點。</p>
+  </div>
+
   <!-- Results -->
   <div class="card">
     <div class="results-header">
@@ -524,7 +631,75 @@ function render() {
     tl.appendChild(t);
   });
 
-  // Build alarm options (5:00 - 9:00)
+  // ── Full night timeline ──────────────────────────────
+  const ntl = document.getElementById('ntl');
+  ntl.innerHTML = '';
+
+  // Timeline spans from asleep to 9:00 (or last cycle end, whichever later)
+  const tlEnd = Math.max(9 * 60, asleep + 7 * cycle);
+  const tlStart = asleep;
+  const tlDur = tlEnd - tlStart;
+
+  // Draw phase segments
+  for (let c = 1; c <= 8; c++) {
+    const coreStart = asleep + (c - 1) * cycle;
+    const coreEnd   = coreStart + core;
+    const remEnd    = coreEnd + rem;
+    if (coreStart > tlEnd) break;
+
+    const cleft = ((coreStart - tlStart) / tlDur * 100).toFixed(2);
+    const cw    = (Math.min(core, tlEnd - coreStart) / tlDur * 100).toFixed(2);
+    const rl    = ((coreEnd - tlStart) / tlDur * 100).toFixed(2);
+    const rw    = (Math.min(rem, tlEnd - coreEnd) / tlDur * 100).toFixed(2);
+
+    if (coreEnd <= tlEnd) {
+      const cs = document.createElement('div');
+      cs.className = 'ntl-segment';
+      cs.style.cssText = `left:${cleft}%;width:${cw}%;background:var(--accent);opacity:0.55;`;
+      cs.title = `第${c}週期 核心睡眠`;
+      document.querySelector('.ntl-bar-row') ? null : ntl.appendChild(createBarRow());
+      ntl.querySelector('.ntl-bar-row').appendChild(cs);
+    }
+
+    if (remEnd <= tlEnd + rem) {
+      const rs = document.createElement('div');
+      rs.className = 'ntl-segment';
+      const rw2 = (Math.min(rem, tlEnd - coreEnd) / tlDur * 100).toFixed(2);
+      rs.style.cssText = `left:${rl}%;width:${rw2}%;background:var(--rem-color);opacity:0.65;`;
+      rs.title = `第${c}週期 REM`;
+      ntl.querySelector('.ntl-bar-row').appendChild(rs);
+    }
+  }
+
+  function createBarRow() {
+    const row = document.createElement('div');
+    row.className = 'ntl-bar-row';
+    ntl.appendChild(row);
+    return row;
+  }
+  if (!ntl.querySelector('.ntl-bar-row')) createBarRow();
+
+  // Time axis ticks (every hour from floor(tlStart/60) to ceil(tlEnd/60))
+  const tickHrStart = Math.floor(((tlStart % 1440) + 1440) % 1440 / 60);
+  const tickHrEnd   = Math.ceil(((tlEnd   % 1440) + 1440) % 1440 / 60) + 1;
+  for (let h = tickHrStart; h <= tickHrEnd; h++) {
+    const hAbs = h * 60;
+    const pct  = ((hAbs - tlStart) / tlDur * 100).toFixed(2);
+    if (pct < 0 || pct > 102) continue;
+
+    const tick = document.createElement('div');
+    tick.className = 'ntl-tick';
+    tick.style.left = pct + '%';
+    tick.textContent = String(h % 24).padStart(2,'0') + ':00';
+    ntl.appendChild(tick);
+
+    const line = document.createElement('div');
+    line.className = 'ntl-tick-line';
+    line.style.left = pct + '%';
+    ntl.appendChild(line);
+  }
+
+  // ── Build alarm options (5:00 - 9:00)
   const TARGET_MIN = 5 * 60;
   const TARGET_MAX = 9 * 60;
   const options = [];
@@ -555,6 +730,33 @@ function render() {
 
   const bestIdx = options.reduce((bi, o, i) =>
     Math.abs(o.hrs - 7.5) < Math.abs(options[bi].hrs - 7.5) ? i : bi, 0);
+
+  // Draw alarm markers on night timeline
+  options.forEach((o, i) => {
+    const isBest = (i === bestIdx);
+    const pct = ((o.wakeAbs - tlStart) / tlDur * 100).toFixed(2);
+    if (pct < 0 || pct > 105) return;
+
+    const markerColor = isBest ? 'var(--green)' : 'var(--accent)';
+    const markerOpacity = isBest ? '1' : '0.5';
+
+    const marker = document.createElement('div');
+    marker.className = 'ntl-alarm';
+    marker.style.cssText = `left:calc(${pct}% - 1px);background:${markerColor};opacity:${markerOpacity};top:0;position:absolute;`;
+
+    const dot = document.createElement('div');
+    dot.className = 'ntl-alarm-dot';
+    dot.style.cssText = `background:${markerColor};opacity:${markerOpacity};box-shadow:0 0 6px ${markerColor};`;
+    marker.appendChild(dot);
+
+    const lbl = document.createElement('div');
+    lbl.className = 'ntl-alarm-label';
+    lbl.style.cssText = `color:${markerColor};opacity:${markerOpacity};font-weight:${isBest ? '500' : '400'};`;
+    lbl.textContent = fmt(o.wakeMin);
+    marker.appendChild(lbl);
+
+    ntl.appendChild(marker);
+  });
 
   options.forEach((o, i) => {
     const isBest = (i === bestIdx);
