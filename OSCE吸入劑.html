@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OSCE 吸入劑衛教筆記</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f7f3ec;
+    --surface: #fffef9;
+    --border: #e0d8cc;
+    --text: #2a2118;
+    --text-dim: #7a6f60;
+    --text-dimmer: #b5a898;
+    --red: #8b1a1a;
+    --red-light: #f5e8e8;
+    --red-border: #d4a0a0;
+    --blue: #1a4a6b;
+    --blue-light: #e8f0f7;
+    --blue-border: #9ab8d4;
+    --green: #1a5c3a;
+    --green-light: #e8f5ee;
+    --green-border: #9acdb5;
+    --amber: #7a4a00;
+    --amber-light: #fdf3e0;
+    --amber-border: #e0c080;
+    --score-bg: #2a2118;
+    --score-text: #f7f3ec;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Noto Sans TC', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    padding: 40px 20px 80px;
+  }
+
+  .wrapper { max-width: 780px; margin: 0 auto; }
+
+  /* Header */
+  .header {
+    border-bottom: 2px solid var(--red);
+    padding-bottom: 20px;
+    margin-bottom: 36px;
+  }
+
+  .header-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--red);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .header h1 {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.3;
+  }
+
+  .header-meta {
+    margin-top: 10px;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    font-size: 12px;
+    color: var(--text-dim);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .meta-item { display: flex; align-items: center; gap: 6px; }
+
+  /* Alert box */
+  .alert {
+    background: var(--amber-light);
+    border: 1px solid var(--amber-border);
+    border-left: 4px solid var(--amber);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 28px;
+    font-size: 13px;
+    color: var(--amber);
+    line-height: 1.6;
+  }
+
+  .alert strong { font-weight: 500; }
+
+  /* Section */
+  .section { margin-bottom: 36px; }
+
+  .section-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* Drug card */
+  .drug-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+
+  .drug-header {
+    padding: 16px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .drug-header.blue { background: var(--blue-light); border-bottom: 1px solid var(--blue-border); }
+  .drug-header.red  { background: var(--red-light);  border-bottom: 1px solid var(--red-border); }
+
+  .drug-name {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  .drug-header.blue .drug-name { color: var(--blue); }
+  .drug-header.red  .drug-name { color: var(--red); }
+
+  .drug-generic {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+    margin-top: 3px;
+  }
+
+  .drug-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+
+  .tag {
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-family: 'JetBrains Mono', monospace;
+    white-space: nowrap;
+  }
+
+  .tag-blue   { background: var(--blue-light);  color: var(--blue);  border: 1px solid var(--blue-border); }
+  .tag-red    { background: var(--red-light);   color: var(--red);   border: 1px solid var(--red-border); }
+  .tag-green  { background: var(--green-light); color: var(--green); border: 1px solid var(--green-border); }
+  .tag-amber  { background: var(--amber-light); color: var(--amber); border: 1px solid var(--amber-border); }
+
+  .drug-body { padding: 20px; }
+
+  /* Info grid */
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .info-cell {
+    background: var(--bg);
+    border-radius: 8px;
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+  }
+
+  .info-label {
+    font-size: 10px;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.08em;
+    color: var(--text-dimmer);
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+
+  .info-value {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+  }
+
+  /* Steps */
+  .steps-title {
+    font-size: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.1em;
+    color: var(--text-dimmer);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .steps { display: flex; flex-direction: column; gap: 8px; }
+
+  .step {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .step-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    min-width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .blue .step-num { background: var(--blue-light); color: var(--blue); border: 1px solid var(--blue-border); }
+  .red  .step-num { background: var(--red-light);  color: var(--red);  border: 1px solid var(--red-border); }
+
+  .step-text { color: var(--text); }
+  .step-text em { font-style: normal; font-weight: 500; color: var(--red); }
+
+  .step-divider {
+    font-size: 11px;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--text-dimmer);
+    padding: 6px 0 4px 34px;
+    letter-spacing: 0.06em;
+  }
+
+  /* Warning box inside card */
+  .warn-box {
+    background: var(--amber-light);
+    border: 1px solid var(--amber-border);
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 12px;
+    color: var(--amber);
+    margin-top: 14px;
+    line-height: 1.6;
+  }
+
+  /* Comparison table */
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    background: var(--surface);
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+
+  .compare-table th {
+    padding: 12px 16px;
+    text-align: left;
+    font-size: 11px;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-dimmer);
+    border-bottom: 1px solid var(--border);
+    background: var(--bg);
+  }
+
+  .compare-table th:first-child { width: 36%; }
+
+  .compare-table td {
+    padding: 11px 16px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: middle;
+  }
+
+  .compare-table tr:last-child td { border-bottom: none; }
+
+  .compare-table td:first-child {
+    font-size: 12px;
+    color: var(--text-dim);
+    font-weight: 400;
+  }
+
+  .compare-table td.blue-val { color: var(--blue); font-weight: 500; }
+  .compare-table td.red-val  { color: var(--red);  font-weight: 500; }
+
+  .diff-row td { background: #fdf8f0; }
+
+  /* Score checklist */
+  .score-list { display: flex; flex-direction: column; gap: 8px; }
+
+  .score-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 13px;
+  }
+
+  .score-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    background: var(--score-bg);
+    color: var(--score-text);
+    min-width: 26px;
+    height: 22px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .score-content { flex: 1; }
+  .score-title { font-weight: 500; color: var(--text); }
+  .score-answer { font-size: 12px; color: var(--text-dim); margin-top: 3px; line-height: 1.6; }
+  .score-pts {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dimmer);
+    flex-shrink: 0;
+    align-self: flex-start;
+    margin-top: 2px;
+  }
+
+  /* Highlight */
+  .hl-blue { color: var(--blue); font-weight: 500; }
+  .hl-red  { color: var(--red);  font-weight: 500; }
+
+  @media (max-width: 520px) {
+    .info-grid { grid-template-columns: 1fr 1fr; }
+    h1 { font-size: 22px; }
+    .drug-header { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <header class="header">
+    <div class="header-tag">OSCE · 呼吸道系統 · 第一站</div>
+    <h1>指導病人正確使用氣喘吸入劑</h1>
+    <div class="header-meta">
+      <div class="meta-item">⏱ 測驗時間：8 分鐘</div>
+      <div class="meta-item">📋 評分項目：13 項，滿分 26 分</div>
+      <div class="meta-item">👤 標病：王先生，54歲，麵店老闆</div>
+    </div>
+  </header>
+
+  <div class="alert">
+    <strong>標病特性：</strong>習慣說台語、稍微焦躁、強調要趕回去開店。說話時語速放慢、用語口語化，並在適當時機說「我知道你要趕時間，我盡快教你。」
+  </div>
+
+  <!-- 潤娃易利達 -->
+  <div class="section">
+    <div class="section-title">藥品一</div>
+    <div class="drug-card blue">
+      <div class="drug-header blue">
+        <div>
+          <div class="drug-name">潤娃易利達乾粉吸入劑</div>
+          <div class="drug-generic">Relvar Ellipta｜Fluticasone/Vilanterol 92/22 mcg</div>
+        </div>
+        <div class="drug-tags">
+          <span class="tag tag-blue">控制性用藥</span>
+          <span class="tag tag-blue">DPI</span>
+          <span class="tag tag-green">含類固醇→需漱口</span>
+        </div>
+      </div>
+      <div class="drug-body blue">
+        <div class="info-grid">
+          <div class="info-cell">
+            <div class="info-label">使用時機</div>
+            <div class="info-value">每天固定一次</div>
+          </div>
+          <div class="info-cell">
+            <div class="info-label">每次劑量</div>
+            <div class="info-value">1個定劑量</div>
+          </div>
+          <div class="info-cell">
+            <div class="info-label">總劑量</div>
+            <div class="info-value">30劑/瓶</div>
+          </div>
+          <div class="info-cell">
+            <div class="info-label">補藥時機</div>
+            <div class="info-value">視窗出現紅色（剩10劑）</div>
+          </div>
+        </div>
+
+        <div class="steps-title">操作步驟</div>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-text">吸口蓋向下滑到底，聽到「<em>卡嗒</em>」聲 → 劑量計數器減 1，表示上藥完成</div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-text"><em>不需要搖</em>（DPI不需振搖）</div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-text">先慢慢深呼一口氣，<em>不要對著吸嘴呼氣</em>（會受潮）</div>
+          </div>
+          <div class="step">
+            <div class="step-num">4</div>
+            <div class="step-text">嘴唇緊含吸口，以<em>長而穩定的方式深吸氣</em>（成人約 4–5 秒），吸氣過程不可中斷，<em>用嘴吸，不能用鼻子</em></div>
+          </div>
+          <div class="step">
+            <div class="step-num">5</div>
+            <div class="step-text"><em>手指不要擋住通氣孔</em></div>
+          </div>
+          <div class="step">
+            <div class="step-num">6</div>
+            <div class="step-text">吸完移開吸入器，閉緊嘴唇，盡可能閉氣（<em>至少 10 秒</em>）</div>
+          </div>
+          <div class="step">
+            <div class="step-num">7</div>
+            <div class="step-text">閉氣後恢復正常呼吸</div>
+          </div>
+          <div class="step">
+            <div class="step-num">8</div>
+            <div class="step-text">若需清潔吸口，用<em>乾面紙</em>擦（不用濕的）</div>
+          </div>
+          <div class="step">
+            <div class="step-num">9</div>
+            <div class="step-text">吸口蓋向上滑回蓋住吸口</div>
+          </div>
+          <div class="step">
+            <div class="step-num">10</div>
+            <div class="step-text"><em>注意：蓋子打開但還沒吸，絕對不要把蓋子關起來</em>——會浪費那一劑，且無法取回</div>
+          </div>
+        </div>
+
+        <div class="warn-box">
+          ⚠ <strong>漱口：</strong>吸完後需漱口，要漱到喉嚨，漱完水<strong>吐掉不能吞</strong>。<br>
+          原因：避免<strong>聲音嘶啞</strong>或<strong>口腔念珠菌感染</strong>。
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 泛得林 -->
+  <div class="section">
+    <div class="section-title">藥品二</div>
+    <div class="drug-card red">
+      <div class="drug-header red">
+        <div>
+          <div class="drug-name">泛得林定量噴霧劑</div>
+          <div class="drug-generic">Ventolin｜Salbutamol 100 mcg/dose</div>
+        </div>
+        <div class="drug-tags">
+          <span class="tag tag-red">緩解用藥</span>
+          <span class="tag tag-red">pMDI</span>
+          <span class="tag tag-amber">PRN，需隨身攜帶</span>
+        </div>
+      </div>
+      <div class="drug-body red">
+        <div class="info-grid">
+          <div class="info-cell">
+            <div class="info-label">使用時機</div>
+            <div class="info-value">覺得喘或有發作預感時</div>
+          </div>
+          <div class="info-cell">
+            <div class="info-label">一日極量</div>
+            <div class="info-value"><span style="color:var(--red);font-weight:500;">不超過 4 次</span></div>
+          </div>
+          <div class="info-cell">
+            <div class="info-label">兩劑間隔</div>
+            <div class="info-value">至少 30–60 秒</div>
+          </div>
+          <div class="info-cell">
+            <div class="info-label">漱口</div>
+            <div class="info-value">不需要</div>
+          </div>
+        </div>
+
+        <div class="steps-title">首次使用 / 超過 5 天未用 → 先測試</div>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">①</div>
+            <div class="step-text">輕壓吸口蓋兩側，移除吸口蓋</div>
+          </div>
+          <div class="step">
+            <div class="step-num">②</div>
+            <div class="step-text">對空氣<em>試噴 2 下</em>，確認可以使用</div>
+          </div>
+        </div>
+
+        <div class="step-divider">── 正常使用步驟 ──</div>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-text">移除吸口蓋，檢查吸入器內外乾不乾淨，吸口有無鬆動</div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-text"><em>充分搖晃</em>，讓藥品混合均勻</div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-text">吸入器直立，拇指放底部、食指在上方</div>
+          </div>
+          <div class="step">
+            <div class="step-num">4</div>
+            <div class="step-text">先慢慢深呼一口氣</div>
+          </div>
+          <div class="step">
+            <div class="step-num">5</div>
+            <div class="step-text">嘴唇含住吸口，<em>同時按壓並緩慢吸氣</em>（成人約 4–5 秒），吸氣過程不可中斷</div>
+          </div>
+          <div class="step">
+            <div class="step-num">6</div>
+            <div class="step-text">吸完移開，閉緊嘴唇，盡量閉氣（<em>至少 10 秒</em>）</div>
+          </div>
+          <div class="step">
+            <div class="step-num">7</div>
+            <div class="step-text">閉氣後恢復正常呼吸</div>
+          </div>
+          <div class="step">
+            <div class="step-num">8</div>
+            <div class="step-text">用完把吸口蓋壓緊蓋好</div>
+          </div>
+          <div class="step">
+            <div class="step-num">9</div>
+            <div class="step-text"><em>每週至少清潔一次</em></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 比較表 -->
+  <div class="section">
+    <div class="section-title">兩瓶重點差異</div>
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>項目</th>
+          <th>潤娃易利達（DPI）</th>
+          <th>泛得林（pMDI）</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>藥品分類</td>
+          <td class="blue-val">控制性用藥</td>
+          <td class="red-val">緩解用藥</td>
+        </tr>
+        <tr>
+          <td>使用時機</td>
+          <td class="blue-val">每天固定一次</td>
+          <td class="red-val">覺得喘時才用（PRN）</td>
+        </tr>
+        <tr class="diff-row">
+          <td>⚠ 需不需要搖</td>
+          <td class="blue-val">不需要</td>
+          <td class="red-val">需要充分搖晃</td>
+        </tr>
+        <tr class="diff-row">
+          <td>⚠ 吸氣方式</td>
+          <td class="blue-val">長而穩定深吸</td>
+          <td class="red-val">按壓的同時緩慢吸氣</td>
+        </tr>
+        <tr class="diff-row">
+          <td>⚠ 漱口</td>
+          <td class="blue-val">需要（漱到喉嚨、吐掉）</td>
+          <td class="red-val">不需要</td>
+        </tr>
+        <tr>
+          <td>一日極量</td>
+          <td class="blue-val">無（每天固定 1 次）</td>
+          <td class="red-val">不超過 4 次</td>
+        </tr>
+        <tr>
+          <td>劑量確認方式</td>
+          <td class="blue-val">劑量視窗（紅色=剩10劑）</td>
+          <td class="red-val">目視罐內，可水浮測試</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 評分對照 toggle -->
+  <div class="section">
+    <div class="section-title">13 個評分點（點題目展開答案）</div>
+    <div class="score-list" id="scoreList"></div>
+  </div>
+
+  <!-- 模擬問答 -->
+  <div class="section">
+    <div class="section-title">模擬問答練習</div>
+    <div class="mock-intro">標病照劇本提問，你在下方輸入你的回答，按「確認」後看哪些評分點有覆蓋到。</div>
+    <div class="mock-area">
+      <div class="mock-q-nav">
+        <button class="mock-prev" id="mockPrev" onclick="mockNav(-1)">←</button>
+        <span class="mock-q-counter" id="mockCounter">1 / 13</span>
+        <button class="mock-next" id="mockNext" onclick="mockNav(1)">→</button>
+      </div>
+      <div class="mock-question" id="mockQuestion"></div>
+      <textarea class="mock-input" id="mockInput" placeholder="在這裡輸入你的回答…" rows="4"></textarea>
+      <div class="mock-actions">
+        <button class="mock-btn" onclick="checkAnswer()">確認答案</button>
+        <button class="mock-btn-ghost" onclick="resetAnswer()">清除重答</button>
+      </div>
+      <div class="mock-result" id="mockResult"></div>
+    </div>
+  </div>
+
+</div>
+
+<style>
+  /* Toggle accordion */
+  .score-item { cursor: pointer; user-select: none; }
+  .score-item .score-answer {
+    display: none;
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--text-dim);
+    line-height: 1.7;
+    cursor: default;
+  }
+  .score-item.open .score-answer { display: block; }
+  .score-toggle {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--text-dimmer);
+    transition: transform 0.2s;
+    flex-shrink: 0;
+    margin-left: auto;
+    padding-left: 10px;
+  }
+  .score-item.open .score-toggle { transform: rotate(90deg); }
+
+  /* Mock exam */
+  .mock-intro {
+    font-size: 12px;
+    color: var(--text-dim);
+    margin-bottom: 16px;
+    line-height: 1.6;
+  }
+  .mock-area {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+  }
+  .mock-q-nav {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .mock-prev, .mock-next {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 4px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    color: var(--text);
+    transition: background 0.15s;
+  }
+  .mock-prev:hover, .mock-next:hover { background: var(--border); }
+  .mock-prev:disabled, .mock-next:disabled { opacity: 0.3; cursor: default; }
+  .mock-q-counter {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--text-dimmer);
+  }
+  .mock-question {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text);
+    background: var(--bg);
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin-bottom: 14px;
+    border-left: 3px solid var(--red);
+    line-height: 1.6;
+  }
+  .mock-question .q-prefix {
+    font-size: 11px;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--red);
+    letter-spacing: 0.08em;
+    display: block;
+    margin-bottom: 5px;
+  }
+  .mock-input {
+    width: 100%;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 13px;
+    color: var(--text);
+    resize: vertical;
+    outline: none;
+    transition: border-color 0.2s;
+    line-height: 1.7;
+  }
+  .mock-input:focus { border-color: var(--red); }
+  .mock-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 12px;
+  }
+  .mock-btn {
+    background: var(--red);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 9px 20px;
+    font-size: 13px;
+    font-family: 'Noto Sans TC', sans-serif;
+    cursor: pointer;
+    transition: opacity 0.15s;
+  }
+  .mock-btn:hover { opacity: 0.85; }
+  .mock-btn-ghost {
+    background: transparent;
+    color: var(--text-dim);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 9px 20px;
+    font-size: 13px;
+    font-family: 'Noto Sans TC', sans-serif;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .mock-btn-ghost:hover { background: var(--border); }
+  .mock-result {
+    margin-top: 16px;
+    font-size: 13px;
+    line-height: 1.8;
+    display: none;
+  }
+  .mock-result.show { display: block; }
+  .result-hit {
+    background: var(--green-light);
+    border: 1px solid var(--green-border);
+    border-radius: 6px;
+    padding: 10px 14px;
+    color: var(--green);
+    margin-bottom: 8px;
+  }
+  .result-miss {
+    background: var(--red-light);
+    border: 1px solid var(--red-border);
+    border-radius: 6px;
+    padding: 10px 14px;
+    color: var(--red);
+    margin-bottom: 8px;
+  }
+  .result-partial {
+    background: var(--amber-light);
+    border: 1px solid var(--amber-border);
+    border-radius: 6px;
+    padding: 10px 14px;
+    color: var(--amber);
+    margin-bottom: 8px;
+  }
+  .result-label { font-weight: 500; margin-bottom: 4px; }
+  .result-std { font-size: 12px; margin-top: 6px; opacity: 0.85; }
+</style>
+
+<script>
+const scoreData = [
+  {
+    num: 1, pts: '2分',
+    title: '控制性用藥是哪一瓶？',
+    question: '醫師說有開一瓶平時控制氣喘每天固定噴的藥，不知道是哪一瓶呢？',
+    answer: '明確指出：<strong>潤娃易利達乾粉吸入劑</strong>',
+    keywords: ['潤娃', 'Relvar', 'Ellipta']
+  },
+  {
+    num: 2, pts: '2分',
+    title: '潤娃易利達使用時機',
+    question: '什麼時候使用潤娃易利達乾粉吸入劑？',
+    answer: '一天一次，固定同一時間',
+    keywords: ['一天一次', '固定', '同一時間']
+  },
+  {
+    num: 3, pts: '2分',
+    title: '潤娃易利達使用劑量',
+    question: '這一瓶潤娃易利達有需要的時候每次要吸幾下呢？',
+    answer: '每次吸 1 個定劑量',
+    keywords: ['一', '1', '定劑量', '一下', '一次']
+  },
+  {
+    num: 4, pts: '0–2分',
+    title: '潤娃易利達正確操作（10項達6項→2分）',
+    question: '你可以教我這一瓶潤娃正確的操作方式嗎？',
+    answer: '開蓋卡嗒聲 / 不需搖 / 先呼氣（不對吸嘴）/ 長穩吸氣4–5秒用嘴不用鼻 / 手指不擋通氣孔 / 閉氣10秒 / 恢復呼吸 / 乾面紙清潔吸口 / 關蓋 / 開蓋未吸勿關蓋',
+    keywords: ['卡嗒', '不需搖', '不需要搖', '呼氣', '4', '5秒', '通氣孔', '閉氣', '10秒', '乾面紙', '關蓋', '不要關']
+  },
+  {
+    num: 5, pts: '0–2分',
+    title: '潤娃吸完須漱口',
+    question: '這一瓶潤娃吸完之後需要漱口嗎？',
+    answer: '需要漱口，漱到喉嚨，漱口水<strong>吐掉</strong>',
+    keywords: ['需要', '漱口', '喉嚨', '吐掉', '吐']
+  },
+  {
+    num: 6, pts: '2分',
+    title: '為什麼要漱口',
+    question: '為什麼潤娃吸完之後需要漱口呢？',
+    answer: '避免<strong>聲音嘶啞</strong>或<strong>口腔念珠菌感染</strong>',
+    keywords: ['聲音嘶啞', '嘶啞', '念珠菌', '口腔念珠']
+  },
+  {
+    num: 7, pts: '0–2分',
+    title: '潤娃劑量視窗',
+    question: '我怎麼知道這一瓶潤娃吸完還剩多少呢？',
+    answer: '每瓶30劑，每次使用後數字遞減；<strong>出現紅色=剩10劑，要回診</strong>',
+    keywords: ['30', '數字', '遞減', '紅色', '10劑', '10次', '回診']
+  },
+  {
+    num: 8, pts: '2分',
+    title: '泛得林使用時機',
+    question: '這一瓶泛得林是什麼時候使用？',
+    answer: '急性發作的緩解用藥，覺得喘或有發作預感時使用，<strong>需隨身攜帶</strong>',
+    keywords: ['喘', '發作', '緩解', '隨身']
+  },
+  {
+    num: 9, pts: '2分',
+    title: '泛得林一日極量',
+    question: '泛得林每天最多可以使用幾次？',
+    answer: '需要時使用，<strong>一天不超過 4 次</strong>',
+    keywords: ['4次', '四次', '不超過4', '不超過四']
+  },
+  {
+    num: 10, pts: '0–2分',
+    title: '泛得林正確操作（12項達6項→2分）',
+    question: '你可以教我這一瓶泛得林正確的操作方式嗎？',
+    answer: '首次/5天未用先試噴2下 / 移除吸口蓋 / 充分搖晃 / 直立握持 / 先呼氣 / 同時按壓並緩慢吸氣4–5秒 / 閉氣10秒 / 恢復呼吸 / 蓋好吸口蓋 / 每週清潔',
+    keywords: ['試噴', '2下', '移除', '搖', '直立', '呼氣', '按壓', '同時', '閉氣', '10秒', '每週清潔', '蓋好']
+  },
+  {
+    num: 11, pts: '2分',
+    title: '吸兩劑的間隔時間',
+    question: '如果泛得林我需要連續吸兩次，中間要隔多久？',
+    answer: '兩劑相隔至少 <strong>30–60 秒</strong>',
+    keywords: ['30', '60', '30秒', '60秒', '30到60']
+  },
+  {
+    num: 12, pts: '2分',
+    title: '泛得林吸完不需要漱口',
+    question: '這一瓶泛得林吸完之後也需要漱口嗎？',
+    answer: '<strong>不需要</strong>漱口',
+    keywords: ['不需要', '不用', '不必']
+  },
+  {
+    num: 13, pts: '2分',
+    title: '請標病操作一遍',
+    question: '（衛教結束後）',
+    answer: '主動請標病操作：「王先生，現在可以請你照剛才教的操作一遍給我看嗎？」',
+    keywords: ['操作', '給我看', '示範', '做一遍', '操作一遍']
+  }
+];
+
+// Render toggle accordion
+const scoreList = document.getElementById('scoreList');
+scoreData.forEach((d, i) => {
+  const item = document.createElement('div');
+  item.className = 'score-item';
+  item.innerHTML = `
+    <div style="display:flex;align-items:flex-start;gap:12px;">
+      <div class="score-num">${d.num}</div>
+      <div class="score-content" style="flex:1;">
+        <div class="score-title">${d.title}</div>
+        <div class="score-answer">${d.answer}</div>
+      </div>
+      <div class="score-pts">${d.pts}</div>
+      <div class="score-toggle">▶</div>
+    </div>
+  `;
+  item.addEventListener('click', () => item.classList.toggle('open'));
+  scoreList.appendChild(item);
+});
+
+// Mock exam
+let mockIdx = 0;
+
+function renderMock() {
+  const d = scoreData[mockIdx];
+  document.getElementById('mockQuestion').innerHTML = `<span class="q-prefix">王先生問：</span>${d.question}`;
+  document.getElementById('mockCounter').textContent = `${mockIdx + 1} / ${scoreData.length}`;
+  document.getElementById('mockPrev').disabled = mockIdx === 0;
+  document.getElementById('mockNext').disabled = mockIdx === scoreData.length - 1;
+  document.getElementById('mockInput').value = '';
+  document.getElementById('mockResult').className = 'mock-result';
+  document.getElementById('mockResult').innerHTML = '';
+}
+
+function mockNav(dir) {
+  mockIdx = Math.max(0, Math.min(scoreData.length - 1, mockIdx + dir));
+  renderMock();
+}
+
+function checkAnswer() {
+  const input = document.getElementById('mockInput').value.trim();
+  if (!input) return;
+  const d = scoreData[mockIdx];
+  const hits = d.keywords.filter(k => input.includes(k));
+  const total = d.keywords.length;
+  const ratio = hits.length / total;
+
+  let html = '';
+  if (ratio >= 0.5) {
+    html += `<div class="result-hit"><div class="result-label">✓ 有覆蓋到關鍵內容（${hits.length}/${total} 個關鍵詞）</div><div class="result-std">標準答案：${d.answer}</div></div>`;
+  } else if (hits.length > 0) {
+    const missed = d.keywords.filter(k => !input.includes(k));
+    html += `<div class="result-partial"><div class="result-label">△ 部分正確（${hits.length}/${total}），注意補充：${missed.slice(0,4).join('、')}</div><div class="result-std">標準答案：${d.answer}</div></div>`;
+  } else {
+    html += `<div class="result-miss"><div class="result-label">✗ 未涵蓋關鍵內容，請重新練習</div><div class="result-std">標準答案：${d.answer}</div></div>`;
+  }
+
+  const result = document.getElementById('mockResult');
+  result.innerHTML = html;
+  result.className = 'mock-result show';
+}
+
+function resetAnswer() {
+  document.getElementById('mockInput').value = '';
+  document.getElementById('mockResult').className = 'mock-result';
+  document.getElementById('mockResult').innerHTML = '';
+}
+
+renderMock();
+</script>
+</body>
+</html>
