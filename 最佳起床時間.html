@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>睡眠週期鬧鐘計算器</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d0f14;
+    --surface: #161920;
+    --surface2: #1e2230;
+    --border: #2a2f3e;
+    --text: #e8eaf0;
+    --text-dim: #7a8099;
+    --text-dimmer: #3d4257;
+    --accent: #7eb8f7;
+    --accent-glow: rgba(126,184,247,0.15);
+    --green: #5dd8a4;
+    --green-glow: rgba(93,216,164,0.12);
+    --amber: #f0b94a;
+    --amber-glow: rgba(240,185,74,0.12);
+    --rem-color: #a78bfa;
+    --rem-glow: rgba(167,139,250,0.12);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Noto Sans TC', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    padding: 40px 24px 60px;
+    line-height: 1.6;
+  }
+
+  /* starfield bg */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 20% 30%, rgba(255,255,255,0.15) 0%, transparent 100%),
+      radial-gradient(1px 1px at 60% 70%, rgba(255,255,255,0.1) 0%, transparent 100%),
+      radial-gradient(1px 1px at 80% 20%, rgba(255,255,255,0.12) 0%, transparent 100%),
+      radial-gradient(1px 1px at 40% 80%, rgba(255,255,255,0.08) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 10% 60%, rgba(255,255,255,0.1) 0%, transparent 100%),
+      radial-gradient(1px 1px at 90% 50%, rgba(255,255,255,0.09) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .wrapper {
+    position: relative;
+    z-index: 1;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  header {
+    margin-bottom: 40px;
+  }
+
+  .label-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(28px, 6vw, 40px);
+    font-weight: 400;
+    color: var(--text);
+    line-height: 1.15;
+    margin-bottom: 8px;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .subtitle {
+    font-size: 13px;
+    color: var(--text-dim);
+  }
+
+  /* Controls card */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+    margin-bottom: 20px;
+  }
+
+  .card-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-dimmer);
+    margin-bottom: 22px;
+  }
+
+  .controls-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px 28px;
+  }
+
+  .control-row {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .control-row.full { grid-column: 1 / -1; }
+
+  .ctrl-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  .ctrl-name {
+    font-size: 12px;
+    color: var(--text-dim);
+    letter-spacing: 0.02em;
+  }
+
+  .ctrl-val {
+    font-family: 'DM Mono', monospace;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+  }
+
+  /* Time input */
+  input[type="time"] {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    color: var(--text);
+    font-family: 'DM Mono', monospace;
+    font-size: 22px;
+    font-weight: 500;
+    padding: 10px 14px;
+    width: 100%;
+    outline: none;
+    transition: border-color 0.2s;
+    -webkit-appearance: none;
+    color-scheme: dark;
+  }
+
+  input[type="time"]:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-glow);
+  }
+
+  /* Range slider */
+  input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 4px;
+    border-radius: 2px;
+    background: var(--surface2);
+    outline: none;
+    cursor: pointer;
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 10px var(--accent-glow);
+    cursor: pointer;
+    transition: box-shadow 0.2s;
+  }
+
+  input[type="range"]::-webkit-slider-thumb:hover {
+    box-shadow: 0 0 16px rgba(126,184,247,0.4);
+  }
+
+  input[type="range"].rem-range::-webkit-slider-thumb {
+    background: var(--rem-color);
+    box-shadow: 0 0 10px var(--rem-glow);
+  }
+
+  /* Sleep legend */
+  .legend {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 11px;
+    color: var(--text-dim);
+  }
+
+  .legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 3px;
+    flex-shrink: 0;
+  }
+
+  /* Timeline */
+  .timeline-wrap {
+    position: relative;
+    height: 52px;
+    margin-bottom: 8px;
+  }
+
+  .tl-bg {
+    position: absolute;
+    top: 16px;
+    height: 22px;
+    border-radius: 4px;
+    transition: left 0.3s, width 0.3s;
+  }
+
+  .tl-tick {
+    position: absolute;
+    bottom: 0;
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    color: var(--text-dimmer);
+    transform: translateX(-50%);
+    white-space: nowrap;
+  }
+
+  /* Results */
+  .results-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  .results-count {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dimmer);
+  }
+
+  .alarm-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .alarm-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 18px;
+    transition: border-color 0.2s, background 0.2s;
+    cursor: default;
+  }
+
+  .alarm-item.best {
+    background: rgba(93,216,164,0.06);
+    border-color: var(--green);
+    box-shadow: 0 0 20px var(--green-glow);
+  }
+
+  .alarm-item.good {
+    background: rgba(126,184,247,0.05);
+    border-color: rgba(126,184,247,0.4);
+  }
+
+  .alarm-time {
+    font-family: 'DM Serif Display', serif;
+    font-size: 28px;
+    font-weight: 400;
+    color: var(--text);
+    min-width: 80px;
+    line-height: 1;
+  }
+
+  .alarm-item.best .alarm-time {
+    color: var(--green);
+  }
+
+  .alarm-info {
+    flex: 1;
+  }
+
+  .alarm-cycle {
+    font-size: 12px;
+    color: var(--text-dim);
+    margin-bottom: 3px;
+  }
+
+  .alarm-hrs {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dimmer);
+  }
+
+  .alarm-badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    padding: 4px 10px;
+    border-radius: 20px;
+    flex-shrink: 0;
+  }
+
+  .badge-best {
+    background: rgba(93,216,164,0.15);
+    color: var(--green);
+    border: 1px solid rgba(93,216,164,0.3);
+  }
+
+  .badge-good {
+    background: rgba(126,184,247,0.1);
+    color: var(--accent);
+    border: 1px solid rgba(126,184,247,0.2);
+  }
+
+  .badge-ok {
+    background: rgba(255,255,255,0.04);
+    color: var(--text-dimmer);
+    border: 1px solid var(--border);
+  }
+
+  /* Sleep hours bar */
+  .hrs-bar-track {
+    height: 3px;
+    background: var(--surface2);
+    border-radius: 2px;
+    margin-top: 6px;
+    overflow: hidden;
+  }
+
+  .hrs-bar-fill {
+    height: 100%;
+    border-radius: 2px;
+    transition: width 0.4s;
+  }
+
+  /* Empty state */
+  .empty {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--text-dimmer);
+    font-size: 13px;
+  }
+
+  /* Cycle viz mini */
+  .mini-bar {
+    display: flex;
+    height: 6px;
+    border-radius: 3px;
+    overflow: hidden;
+    margin-top: 6px;
+    gap: 1px;
+  }
+
+  .mini-core { background: var(--accent); opacity: 0.7; }
+  .mini-rem { background: var(--rem-color); opacity: 0.7; }
+
+  /* Note */
+  .note-box {
+    margin-top: 20px;
+    padding: 16px 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    border-left: 3px solid var(--green);
+    font-size: 12px;
+    color: var(--text-dim);
+    line-height: 1.7;
+  }
+
+  .note-box strong {
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  @media (max-width: 480px) {
+    .controls-grid { grid-template-columns: 1fr; }
+    .control-row.full { grid-column: 1; }
+    .alarm-time { font-size: 22px; }
+    h1 { font-size: 26px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrapper">
+  <header>
+    <div class="label-tag">Sleep Cycle Calculator</div>
+    <h1>找到你的<br><em>最佳起床時間</em></h1>
+    <p class="subtitle">依照個人睡眠週期，計算早上 5–9 點的最佳鬧鐘時間</p>
+  </header>
+
+  <div class="card">
+    <div class="card-title">睡眠參數設定</div>
+    <div class="controls-grid">
+      <div class="control-row full">
+        <div class="ctrl-label">
+          <span class="ctrl-name">上床時間</span>
+        </div>
+        <input type="time" id="bed" value="22:00">
+      </div>
+
+      <div class="control-row">
+        <div class="ctrl-label">
+          <span class="ctrl-name">入睡緩衝</span>
+          <span class="ctrl-val" id="lat-v">30 分</span>
+        </div>
+        <input type="range" id="lat" min="5" max="60" step="5" value="30">
+      </div>
+
+      <div class="control-row">
+        <div class="ctrl-label">
+          <span class="ctrl-name">核心睡眠</span>
+          <span class="ctrl-val" id="core-v">60 分</span>
+        </div>
+        <input type="range" id="core" min="40" max="80" step="5" value="60">
+      </div>
+
+      <div class="control-row full">
+        <div class="ctrl-label">
+          <span class="ctrl-name">快速動眼期（REM）</span>
+          <span class="ctrl-val" id="rem-v">25 分</span>
+        </div>
+        <input type="range" id="rem" class="rem-range" min="15" max="40" step="5" value="25">
+      </div>
+    </div>
+  </div>
+
+  <!-- Sleep cycle mini preview -->
+  <div class="card">
+    <div class="card-title">一個週期示意</div>
+    <div class="legend">
+      <div class="legend-item">
+        <div class="legend-dot" style="background:var(--accent)"></div>
+        <span>核心睡眠（N2/N3）</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-dot" style="background:var(--rem-color)"></div>
+        <span>快速動眼期（REM）</span>
+      </div>
+    </div>
+    <div class="timeline-wrap" id="tl-preview"></div>
+    <p style="font-size:11px;color:var(--text-dimmer);margin-top:4px;" id="cycle-info">每週期 85 分鐘</p>
+  </div>
+
+  <!-- Results -->
+  <div class="card">
+    <div class="results-header">
+      <div class="card-title" style="margin-bottom:0">適合起床的時間點（05:00–09:00）</div>
+      <div class="results-count" id="results-count"></div>
+    </div>
+    <div class="alarm-list" id="alarms"></div>
+  </div>
+
+  <div class="note-box" id="note"></div>
+</div>
+
+<script>
+function fmt(m) {
+  const t = ((m % 1440) + 1440) % 1440;
+  return String(Math.floor(t/60)).padStart(2,'0') + ':' + String(t%60).padStart(2,'0');
+}
+
+function render() {
+  const [bh, bm] = document.getElementById('bed').value.split(':').map(Number);
+  const lat  = +document.getElementById('lat').value;
+  const core = +document.getElementById('core').value;
+  const rem  = +document.getElementById('rem').value;
+
+  document.getElementById('lat-v').textContent  = lat  + ' 分';
+  document.getElementById('core-v').textContent = core + ' 分';
+  document.getElementById('rem-v').textContent  = rem  + ' 分';
+
+  const cycle   = core + rem;
+  const asleep  = bh * 60 + bm + lat;
+
+  document.getElementById('cycle-info').textContent = `每週期 ${cycle} 分鐘（核心 ${core} 分 + REM ${rem} 分）`;
+
+  // Timeline preview (1 cycle)
+  const tl = document.getElementById('tl-preview');
+  tl.innerHTML = '';
+  const corePct = (core / cycle * 100).toFixed(1);
+  const remPct  = (rem  / cycle * 100).toFixed(1);
+
+  const coreBar = document.createElement('div');
+  coreBar.className = 'tl-bg';
+  coreBar.style.cssText = `left:0;width:${corePct}%;background:var(--accent);opacity:0.6;top:16px;height:22px;position:absolute;border-radius:4px 0 0 4px;`;
+  tl.appendChild(coreBar);
+
+  const remBar = document.createElement('div');
+  remBar.className = 'tl-bg';
+  remBar.style.cssText = `left:${corePct}%;width:${remPct}%;background:var(--rem-color);opacity:0.6;top:16px;height:22px;position:absolute;border-radius:0 4px 4px 0;`;
+  tl.appendChild(remBar);
+
+  const labels = [['0', '0%'], ['核心結束', corePct+'%'], ['週期結束', '100%']];
+  labels.forEach(([txt, pos]) => {
+    const t = document.createElement('div');
+    t.className = 'tl-tick';
+    t.style.left = pos;
+    t.textContent = txt;
+    tl.appendChild(t);
+  });
+
+  // Build alarm options (5:00 - 9:00)
+  const TARGET_MIN = 5 * 60;
+  const TARGET_MAX = 9 * 60;
+  const options = [];
+
+  for (let c = 1; c <= 10; c++) {
+    const wakeMin = asleep + c * cycle;
+    const wakeAbs = ((wakeMin % 1440) + 1440) % 1440;
+    if (wakeAbs >= TARGET_MIN && wakeAbs <= TARGET_MAX) {
+      const hrs = (c * cycle / 60).toFixed(1);
+      options.push({ cycle: c, wakeMin, wakeAbs, hrs: parseFloat(hrs) });
+    }
+  }
+
+  // Find best: closest to 7.5 hrs
+  const alarmsEl = document.getElementById('alarms');
+  const countEl  = document.getElementById('results-count');
+  const noteEl   = document.getElementById('note');
+  alarmsEl.innerHTML = '';
+
+  if (options.length === 0) {
+    alarmsEl.innerHTML = '<div class="empty">目前設定下，沒有週期結束點落在 05:00–09:00 之間。<br>請調整上床時間或睡眠參數。</div>';
+    countEl.textContent = '';
+    noteEl.innerHTML = '';
+    return;
+  }
+
+  countEl.textContent = options.length + ' 個時間點';
+
+  const bestIdx = options.reduce((bi, o, i) =>
+    Math.abs(o.hrs - 7.5) < Math.abs(options[bi].hrs - 7.5) ? i : bi, 0);
+
+  options.forEach((o, i) => {
+    const isBest = (i === bestIdx);
+    const isGood = !isBest && Math.abs(o.hrs - 7.5) <= 1.5;
+    const hrsPct  = Math.min((o.hrs / 9) * 100, 100).toFixed(1);
+    const fillColor = isBest ? 'var(--green)' : isGood ? 'var(--accent)' : 'var(--text-dimmer)';
+    const badgeClass = isBest ? 'badge-best' : isGood ? 'badge-good' : 'badge-ok';
+    const badgeText  = isBest ? '最佳' : isGood ? '推薦' : '可選';
+
+    const coreW = (core / cycle * 100).toFixed(1);
+    const remW  = (rem  / cycle * 100).toFixed(1);
+
+    const item = document.createElement('div');
+    item.className = 'alarm-item' + (isBest ? ' best' : isGood ? ' good' : '');
+    item.innerHTML = `
+      <div class="alarm-time">${fmt(o.wakeMin)}</div>
+      <div class="alarm-info">
+        <div class="alarm-cycle">第 ${o.cycle} 週期結束・REM 完畢後</div>
+        <div class="alarm-hrs">${o.hrs} 小時睡眠</div>
+        <div class="mini-bar">
+          <div class="mini-core" style="flex:${coreW}"></div>
+          <div class="mini-rem"  style="flex:${remW}"></div>
+        </div>
+        <div class="hrs-bar-track">
+          <div class="hrs-bar-fill" style="width:${hrsPct}%;background:${fillColor};"></div>
+        </div>
+      </div>
+      <div class="alarm-badge ${badgeClass}">${badgeText}</div>
+    `;
+    alarmsEl.appendChild(item);
+  });
+
+  const best = options[bestIdx];
+  const sleepStart = fmt(asleep);
+  noteEl.innerHTML = `
+    <strong>今晚建議：</strong>上床後約 ${lat} 分鐘入睡，睡著時間約 ${sleepStart}。<br>
+    設鬧鐘在 <strong style="color:var(--green)">${fmt(best.wakeMin)}</strong>，這是第 ${best.cycle} 個完整週期結束後、REM 剛結束的時刻——
+    腦部完成記憶整合，身體進入最淺眠，此時起床最清醒、最不容易有睡眠慣性（腦霧感）。
+  `;
+}
+
+['lat','core','rem'].forEach(id =>
+  document.getElementById(id).addEventListener('input', render));
+document.getElementById('bed').addEventListener('change', render);
+
+render();
+</script>
+</body>
+</html>
