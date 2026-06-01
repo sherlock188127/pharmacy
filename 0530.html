@@ -306,7 +306,7 @@ function applyMoves(){
     origRow.style.opacity="0.4";origRow.title="已移到 "+targetDate;
     var m2=String(dd.getMonth()+1),d2=String(dd.getDate());
     var targetCard=null;
-    document.querySelectorAll(".wcard:not(.week-summary)").forEach(function(card){var dtEl=card.querySelector(".wdt");if(!dtEl)return;if(dtEl.textContent.trim().indexOf(m2+"/"+d2)===0)targetCard=card;});
+    document.querySelectorAll(".wcard:not(.week-summary)").forEach(function(card){var dtEl=card.querySelector(".wdt");if(!dtEl)return;if(dtEl.textContent.trim().split(" ")[0]===(m2+"/"+d2))targetCard=card;});
     if(!targetCard)return;
     var body=targetCard.querySelector(".wbody");if(!body)return;
     var container=body.querySelector(".moved-container");
@@ -351,7 +351,7 @@ function initCustomTasks(){var ctasks=loadCtasks();var cdone=loadCdone();Object.
 function autoToday(){
   var now=new Date();var mm=String(now.getMonth()+1);var dd=String(now.getDate());var target=mm+"/"+dd;
   document.querySelectorAll(".wcard.today").forEach(function(c){c.classList.remove("today");});
-  document.querySelectorAll(".wcard:not(.week-summary)").forEach(function(card){var dtEl=card.querySelector(".wdt");if(!dtEl)return;var txt=dtEl.textContent.trim();if(txt.indexOf(target)===0){card.classList.add("today");var body=card.querySelector(".wbody");var chev=card.querySelector(".chev");if(body)body.classList.add("open");if(chev)chev.classList.add("open");setTimeout(function(){card.scrollIntoView({behavior:"smooth",block:"start"});},300);}});
+  document.querySelectorAll(".wcard:not(.week-summary)").forEach(function(card){var dtEl=card.querySelector(".wdt");if(!dtEl)return;var txt=dtEl.textContent.trim().split(" ")[0];if(txt===target){card.classList.add("today");var body=card.querySelector(".wbody");var chev=card.querySelector(".chev");if(body)body.classList.add("open");if(chev)chev.classList.add("open");setTimeout(function(){card.scrollIntoView({behavior:"smooth",block:"start"});},300);}});
 }
 function initStaticItems(){
   var s=load();var cdone=loadCdone();
