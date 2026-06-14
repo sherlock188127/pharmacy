@@ -1,0 +1,2356 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>散劑與顆粒劑 ｜ 藥劑學筆記</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;600;700;900&family=Noto+Sans+TC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#f5efe3;
+  --cream-2:#efe7d6;
+  --paper:#fbf7ee;
+  --ink:#2e2620;
+  --ink-soft:#574b3e;
+  --crimson:#8c1d2c;
+  --crimson-deep:#6e1623;
+  --crimson-soft:#b14150;
+  --gold:#b8893b;
+  --line:#ddd0b8;
+  --green:#2f7d4f;
+  --green-bg:#e3f1e6;
+  --red:#b5283a;
+  --red-bg:#f7e3e3;
+  --shadow:0 2px 10px rgba(80,55,30,.08);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;background:var(--cream);color:var(--ink);
+  font-family:"Noto Sans TC",sans-serif;font-weight:400;line-height:1.85;
+  font-size:16.5px;letter-spacing:.01em;
+}
+.mono,code{font-family:"JetBrains Mono",monospace;font-weight:500;
+  color:var(--crimson-deep);background:rgba(140,29,44,.06);
+  padding:.05em .32em;border-radius:4px;font-size:.92em;letter-spacing:0;}
+.wrap{max-width:920px;margin:0 auto;padding:0 22px 120px;}
+
+/* Header */
+header.hero{
+  background:linear-gradient(160deg,var(--crimson-deep),var(--crimson) 60%,#a32636);
+  color:#fbf3e6;padding:54px 22px 46px;text-align:center;
+  border-bottom:5px solid var(--gold);
+}
+header.hero .kicker{font-family:"JetBrains Mono",monospace;letter-spacing:.35em;
+  font-size:.72rem;text-transform:uppercase;color:#f0d9a8;margin-bottom:14px;}
+header.hero h1{font-family:"Noto Serif TC",serif;font-weight:900;
+  font-size:2.5rem;margin:0 0 10px;letter-spacing:.04em;}
+header.hero .sub{font-size:1rem;color:#f3e3cd;font-weight:300;}
+header.hero .eng{font-family:"JetBrains Mono",monospace;font-size:.78rem;
+  color:#e9cfa0;margin-top:8px;letter-spacing:.06em;}
+
+/* TOC */
+nav.toc{background:var(--paper);border:1px solid var(--line);border-radius:14px;
+  padding:22px 26px;margin:34px 0;box-shadow:var(--shadow);}
+nav.toc h2{font-family:"Noto Serif TC",serif;color:var(--crimson);
+  font-size:1.05rem;margin:0 0 14px;letter-spacing:.05em;
+  border-left:4px solid var(--gold);padding-left:10px;}
+nav.toc ol{margin:0;padding-left:20px;columns:2;column-gap:34px;}
+nav.toc li{margin:5px 0;break-inside:avoid;}
+nav.toc a{color:var(--ink-soft);text-decoration:none;font-size:.95rem;}
+nav.toc a:hover{color:var(--crimson);text-decoration:underline;}
+
+/* Sections */
+section{margin:48px 0;}
+h2.sec{font-family:"Noto Serif TC",serif;font-weight:900;color:var(--crimson);
+  font-size:1.7rem;letter-spacing:.04em;margin:0 0 6px;
+  padding-bottom:10px;border-bottom:3px solid var(--gold);}
+h2.sec .num{font-family:"JetBrains Mono",monospace;color:var(--gold);
+  font-size:1.1rem;margin-right:12px;font-weight:700;}
+h2.sec .en{display:block;font-family:"JetBrains Mono",monospace;font-weight:400;
+  font-size:.78rem;color:var(--ink-soft);letter-spacing:.08em;margin-top:6px;}
+h3{font-family:"Noto Serif TC",serif;font-weight:700;color:var(--crimson-deep);
+  font-size:1.22rem;margin:30px 0 8px;letter-spacing:.03em;
+  padding-left:12px;border-left:4px solid var(--crimson-soft);}
+h4{font-family:"Noto Serif TC",serif;font-weight:600;color:var(--ink);
+  font-size:1.04rem;margin:20px 0 6px;}
+p{margin:8px 0;}
+ul,ol.body{margin:8px 0 8px;padding-left:24px;}
+li{margin:4px 0;}
+strong{color:var(--crimson-deep);font-weight:700;}
+em{font-style:normal;color:var(--gold);font-weight:700;}
+
+/* callout cards */
+.card{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+  padding:16px 20px;margin:16px 0;box-shadow:var(--shadow);}
+.tip{border-left:5px solid var(--gold);background:#fbf4e3;}
+.warn{border-left:5px solid var(--crimson);background:#f9ebe9;}
+.key{border-left:5px solid var(--green);background:var(--green-bg);}
+.card .label{font-family:"JetBrains Mono",monospace;font-size:.7rem;
+  letter-spacing:.2em;text-transform:uppercase;font-weight:700;
+  display:block;margin-bottom:6px;}
+.tip .label{color:var(--gold);}
+.warn .label{color:var(--crimson);}
+.key .label{color:var(--green);}
+
+/* tables */
+.tbl-wrap{overflow-x:auto;margin:18px 0;border-radius:10px;box-shadow:var(--shadow);}
+table{border-collapse:collapse;width:100%;background:var(--paper);font-size:.92rem;}
+th,td{border:1px solid var(--line);padding:9px 12px;text-align:center;vertical-align:middle;}
+th{background:var(--crimson-deep);color:#f6e9d3;font-family:"Noto Serif TC",serif;
+  font-weight:600;letter-spacing:.04em;}
+tbody tr:nth-child(even){background:var(--cream-2);}
+td.l{text-align:left;}
+.tbl-wrap caption{caption-side:top;font-family:"Noto Serif TC",serif;
+  color:var(--crimson);font-weight:600;padding:6px;font-size:.95rem;}
+
+/* quiz */
+.quiz{background:var(--paper);border:1px solid var(--line);border-radius:14px;
+  padding:18px 20px 16px;margin:22px 0;box-shadow:var(--shadow);
+  border-top:4px solid var(--crimson);}
+.quiz .q-meta{display:inline-block;font-family:"JetBrains Mono",monospace;
+  font-size:.72rem;font-weight:700;letter-spacing:.1em;color:#fff;
+  background:var(--crimson);padding:2px 10px;border-radius:20px;margin-bottom:10px;}
+.quiz .q-text{font-weight:500;margin-bottom:12px;line-height:1.7;}
+.options{display:flex;flex-direction:column;gap:8px;}
+.option{border:1.5px solid var(--line);border-radius:9px;padding:10px 14px;
+  cursor:pointer;transition:.15s;background:#fdfaf3;font-size:.97rem;
+  display:flex;gap:8px;align-items:flex-start;}
+.option:hover{border-color:var(--crimson-soft);background:#fbf3ec;}
+.option .opt-k{font-family:"JetBrains Mono",monospace;font-weight:700;
+  color:var(--crimson);flex-shrink:0;}
+.option.correct{background:var(--green-bg);border-color:var(--green);}
+.option.correct .opt-k{color:var(--green);}
+.option.wrong{background:var(--red-bg);border-color:var(--red);}
+.option.wrong .opt-k{color:var(--red);}
+.option.correct::after{content:"✓";margin-left:auto;color:var(--green);font-weight:700;}
+.option.wrong::after{content:"✕";margin-left:auto;color:var(--red);font-weight:700;}
+.q-actions{margin-top:12px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;}
+.show-exp{font-family:"Noto Sans TC",sans-serif;background:var(--crimson);
+  color:#fbf3e6;border:none;border-radius:8px;padding:7px 16px;cursor:pointer;
+  font-size:.86rem;font-weight:500;letter-spacing:.05em;transition:.15s;}
+.show-exp:hover{background:var(--crimson-deep);}
+.ans-tag{display:none;font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--ink-soft);}
+.quiz.locked .ans-tag{display:inline-block;}
+.ans-tag b{color:var(--green);}
+.explanation{display:none;margin-top:12px;padding:13px 16px;background:#fdf6e9;
+  border-left:4px solid var(--gold);border-radius:8px;font-size:.93rem;
+  line-height:1.75;color:var(--ink-soft);}
+.explanation.show{display:block;}
+.note-wrap{margin-top:12px;}
+.note-wrap label{font-family:"JetBrains Mono",monospace;font-size:.72rem;
+  color:var(--gold);letter-spacing:.08em;display:block;margin-bottom:4px;}
+textarea.note{width:100%;min-height:46px;resize:vertical;border:1.5px dashed var(--line);
+  border-radius:8px;padding:8px 10px;font-family:"Noto Sans TC",sans-serif;
+  font-size:.9rem;background:#fffdf8;color:var(--ink);line-height:1.6;}
+textarea.note:focus{outline:none;border-color:var(--gold);background:#fffef9;}
+
+.divider{text-align:center;color:var(--gold);margin:40px 0 10px;
+  font-family:"JetBrains Mono",monospace;letter-spacing:.4em;font-size:.8rem;}
+.formula{font-family:"JetBrains Mono",monospace;background:#efe7d6;
+  border:1px solid var(--line);border-radius:8px;padding:10px 14px;margin:10px 0;
+  font-size:.92rem;color:var(--crimson-deep);overflow-x:auto;}
+.bank-head{background:linear-gradient(135deg,var(--crimson-deep),var(--crimson));
+  color:#fbf3e6;border-radius:14px;padding:24px 26px;margin:30px 0 24px;text-align:center;}
+.bank-head h2{margin:0;font-family:"Noto Serif TC",serif;font-size:1.6rem;letter-spacing:.06em;border:none;color:#fbf3e6;}
+.bank-head p{margin:6px 0 0;font-size:.9rem;color:#f0dcc0;}
+footer{text-align:center;padding:30px;color:var(--ink-soft);font-size:.82rem;
+  font-family:"JetBrains Mono",monospace;letter-spacing:.05em;}
+@media(max-width:640px){
+  nav.toc ol{columns:1;}
+  header.hero h1{font-size:2rem;}
+  h2.sec{font-size:1.4rem;}
+  body{font-size:16px;}
+}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="kicker">Pharmaceutics · Solid Dosage Forms</div>
+  <h1>散劑與顆粒劑</h1>
+  <div class="sub">固體劑型 I — 粉末與顆粒</div>
+  <div class="eng">Powders &amp; Granules</div>
+</header>
+<div class="wrap">
+<nav class="toc">
+  <h2>目錄</h2>
+  <ol>
+    <li><a href="#s1">緒論</a></li>
+    <li><a href="#s2">Powders 散劑</a></li>
+    <li><a href="#s3">物理化學考量</a></li>
+    <li><a href="#s4">粒子大小與分析</a></li>
+    <li><a href="#s5">粉體之流動性</a></li>
+    <li><a href="#s6">粒子大小之降低</a></li>
+    <li><a href="#s7">粉末的混合</a></li>
+    <li><a href="#s8">藥用散劑</a></li>
+    <li><a href="#s9">Granules 顆粒劑</a></li>
+    <li><a href="#s10">發泡顆粒鹽</a></li>
+    <li><a href="#bank">歷屆國考題庫（統整）</a></li>
+  </ol>
+</nav>
+<!-- ============ S1 緒論 ============ -->
+<section id="s1">
+  <h2 class="sec"><span class="num">1</span>緒論<span class="en">Introduction</span></h2>
+
+  <p>本學期延續上學期，進入<strong>固體劑型（solid dosage form）</strong>。固體劑型最基本的概念：從<strong>粉末</strong> → 做成<strong>顆粒</strong> → 進一步裝入<strong>膠囊</strong>或壓製成<strong>錠劑</strong>。藥劑學重點不變：用什麼成分製備、每個成分當什麼劑（功能）、做好後的性質要求、製備方法與儀器設備。</p>
+
+  <h3>Powders 散劑（中華藥典稱「粉劑」）</h3>
+  <p><strong>定義：</strong>乾燥微細藥物及／或化學藥品之<strong>均勻混合物</strong>，可供內服或外用。</p>
+  <h4>散劑之投與途徑</h4>
+  <ul>
+    <li><strong>傳統：</strong>內服（口服散劑 <span class="mono">oral powders</span>）；外用（局部用散劑 <span class="mono">topical powders</span>）、吹入（吹入散劑 <span class="mono">insufflated powders</span>）；再調製（<span class="mono">reconstitution</span>）成供局部、口服或灌洗使用之液劑（<span class="mono">powder for …</span>）。</li>
+    <li><strong>較新：</strong>含<strong>生物黏性材料</strong>之散劑，施用於身體部位，使藥物黏著並延長藥效。</li>
+  </ul>
+  <div class="card tip"><span class="label">考點 · powder for …</span>名稱中只要有 <span class="mono">for</span>（如 <span class="mono">powder for oral suspension</span>、<span class="mono">powder for injection</span>），就代表它<strong>不是</strong>以粉末狀態投與，而是要先「再調製（reconstitution）」。國考考過數次。</div>
+
+  <h4>應用與優點</h4>
+  <ul>
+    <li>調整劑量容易（一堆粉可分次服用）。</li>
+    <li>適合吞嚥不易的對象（不用吞大顆錠劑或膠囊）。</li>
+    <li>適合「製成膠囊或錠劑時體積過於龐大之藥物」（主成分份量大時，做成散劑可少加黏合劑等附加成分）。</li>
+    <li>比其他固體劑型可提供<strong>較快之作用開始</strong>──易分散、表面積大、<strong>不須崩散直接溶離</strong>。</li>
+  </ul>
+
+  <h3>Granules 顆粒劑</h3>
+  <p>由粉末物質製成之<strong>凝集粒狀物</strong>，可直接應用或製備成膠囊或錠劑。</p>
+</section>
+<!-- ============ S2 Powders ============ -->
+<section id="s2">
+  <h2 class="sec"><span class="num">2</span>Powders 散劑<span class="en">Composition · Topical · Insufflated</span></h2>
+
+  <h3>組成與性質</h3>
+  <ul>
+    <li><strong>Composition：</strong>有優美外觀之均勻、小的粒子（可能白色，或染色方便辨識）。</li>
+    <li><strong>Properties：</strong>因不放在水性環境，故對<strong>易水解藥物</strong>，散劑通常比液體劑型<strong>安定</strong>；比錠劑顆粒<strong>快速溶解與吸收</strong>（不須崩散、溶離）。</li>
+    <li>性質與<strong>粒子大小及表面積</strong>有關。</li>
+  </ul>
+  <div class="card warn"><span class="label">注意 · 安定性與均勻性</span>散劑是「一堆散的粉」，與空氣／水分接觸的<strong>表面積大</strong>，若易氧化、潮解則安定性較差（如小兒科磨粉後效期常只剩 2 週或標示效期的 25%）。儲存、運送時因成分大小／重量不同易<strong>分離</strong>，故<strong>均勻性</strong>是本章節重要性質。</div>
+
+  <div class="quiz" data-qid="q1" data-answer="D">
+    <span class="q-meta">112-2</span>
+    <div class="q-text">有關散劑之特性，下列敘述何者最適當？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>係僅供內服之一種製劑</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>對易降解之藥物而言，散劑通常比錠劑來得安定</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>宜用廣口且能緊密關閉之容器貯存，以避免空氣之影響及揮發性成分之散失</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>極易溶解，且對腸胃道刺激性較大之藥品，通常膠囊劑比散劑更易引起噁心、嘔吐</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>D</b></span></div>
+    <div class="explanation">散劑可內服可外用（A 錯，非僅供內服）。散劑表面積大、直接溶離，對易溶且具刺激性的藥品，散劑分散快、刺激較廣，膠囊則把藥物包覆延遲釋出，故膠囊「較不易」引起噁心嘔吐──D 敘述為「膠囊比散劑更易引起」屬此題設定之最適當選項。B、C 雖部分正確但本題以 D 為答。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q1"></textarea></div>
+  </div>
+
+  <h3>Topical powders 局部用散劑</h3>
+  <ul>
+    <li><strong>性質：</strong>均勻之小粒子，不刺激皮膚、無砂礫感、流動自如、易於附著，至少<strong>通過 100 mesh 篩</strong>（100 號篩孔約 <span class="mono">150 μm</span>）。</li>
+    <li><strong>應用：</strong>潤滑、抗菌。</li>
+    <li><strong>組成：</strong>有效成分 <span class="mono">API</span>；基劑 base／vehicle（如<strong>玉米澱粉</strong>或<strong>滑石粉</strong>）；附著劑（<span class="mono">硬脂酸鎂、硬脂酸鈣、硬脂酸鋅</span>，皆 18 碳、細輕、厭水，易附著又有潤滑性）；芳香成分。</li>
+  </ul>
+  <div class="card warn"><span class="label">注意事項</span>
+  ① <strong>高度吸著性粉末不可用於滲液傷口</strong>（吸了汗水／組織液會結成硬痂，撕除時傷害傷口）。<br>
+  ② <strong>厭水性散劑</strong>可阻止水分自皮膚散失，且在滲液傷口不會結餅。<br>
+  ③ 滑石粉或其他天然來源，用於<strong>開放性傷口</strong>之成分須先<strong>滅菌</strong>。</div>
+
+  <div class="quiz" data-qid="q2" data-answer="B">
+    <span class="q-meta">114-1</span>
+    <div class="q-text">有關局部用散劑（topical powders）之敘述，下列何者最適當？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>可使用高度吸濕的散劑於滲出性傷口</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>應避免使用親水性較強的粉劑</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>散劑應設計為有較低的流動型，增加附著於皮膚的能力</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>使用具有較小表面積的散劑可提高流動性、均勻度及皮膚的涼感</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>B</b></span></div>
+    <div class="explanation">A：吸濕性粉末用於滲液傷口會吸液結痂，錯。B：親水／高吸水性粉末吸汗或滲液後黏結，應避免，<strong>正確</strong>。C：流動性太低無法均勻撒佈，錯。D：較小表面積＝較大顆粒，需通過 100 號篩；均勻度、皮膚涼感與表面積無絕對相關，錯。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q2"></textarea></div>
+  </div>
+
+  <h3>Insufflated powders 吹入用散劑</h3>
+  <ul>
+    <li><strong>性質：</strong>利用吹入器（insufflator）或噴器（puffer），將細微之分包散劑供用於<strong>體腔</strong>（喉嚨、耳、鼻、陰道、牙槽）。</li>
+    <li><strong>應用：</strong>抗感染藥物。</li>
+    <li><strong>組成：</strong>有效成分／基劑；其他如水分活化黏劑（moisture-activated adherent）<span class="mono">Polyox®</span>。</li>
+  </ul>
+  <div class="card tip"><span class="label">Polyox®</span><span class="mono">Poly(ethylene oxide)</span>，高分子量之 ethylene oxide 聚合物（與界面活性劑、水溶性軟膏基劑 PEG 同為 CCO 單體聚合；分子量 2 萬以上稱 PEO，2 萬以下稱 PEG）。與水接觸後形成<strong>水溶膠體（黏膜黏附性凝膠）</strong>，可持續數小時遞送藥物；<strong>分子量越高，黏性越大</strong>。應用：口腔黏膜／經皮傳遞之生物黏膠、濕式造粒、直接打錠配方（控釋膠體）。</div>
+
+  <div class="quiz" data-qid="q3" data-answer="A">
+    <span class="q-meta">108-1</span>
+    <div class="q-text">Polyox® 為高分子量之 ethylene oxide polymer，有時會添加於吹入劑（insufflated powders）的配方中，通常其添加之主要目的為何？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>延長藥物於黏膜之作用時間</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>增加藥物溶解度及溶離</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>使於黏膜處具等張性</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>具抗菌作用，輔以增強藥效</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>A</b></span></div>
+    <div class="explanation">Polyox® 為水分活化黏劑，遇黏膜水分形成黏附性凝膠，使藥物黏著於黏膜、<strong>延長作用時間</strong>，故選 A。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q3"></textarea></div>
+  </div>
+</section>
+<!-- ============ S3 物理化學考量 ============ -->
+<section id="s3">
+  <h2 class="sec"><span class="num">3</span>物理化學考量<span class="en">Physicochemical Considerations</span></h2>
+
+  <h3>Particle size 各劑型粒徑範圍（μm）</h3>
+  <div class="card warn"><span class="label">必背 · Ansel 新增頁</span>此頁為 Ansel 新版新增，務必<strong>全部背清楚</strong>。單位皆為 <span class="mono">μm</span>。</div>
+  <div class="tbl-wrap">
+  <table>
+    <thead><tr><th>劑型</th><th>粒徑範圍（μm）</th></tr></thead>
+    <tbody>
+      <tr><td class="l">Aerosols for the lung（乾粉吸入劑）</td><td><strong>1～5</strong></td></tr>
+      <tr><td class="l">Parenteral suspensions（注射用懸液，打 IM/SC）</td><td>0.5～25</td></tr>
+      <tr><td class="l">Ophthalmic suspensions（眼用懸液）</td><td>≤10</td></tr>
+      <tr><td class="l">Oral suspensions（口服懸液）</td><td>10～50</td></tr>
+      <tr><td class="l">Tablets &amp; capsules immediate release</td><td>≤50</td></tr>
+      <tr><td class="l">Topical emulsions</td><td>≤50</td></tr>
+      <tr><td class="l">Topical suspensions</td><td>10～50</td></tr>
+      <tr><td class="l">Topical aerosols</td><td>50～100</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="card tip"><span class="label">重點</span>肺部乾粉吸入劑 <strong>1～5 μm</strong>（有版本 1～6、2～6 皆可），太大太重會沉積口腔到不了支氣管。注射懸液可達 25 μm（針頭內徑可達 1 mm 以上）；眼睛 ≤10 μm。</p>
+
+  <h3>其他粒子特性對混合的影響</h3>
+  <ul>
+    <li><strong>Particle shape：</strong>球形易混合（但實際粉末多非正圓球形）。</li>
+    <li><strong>Particle density：</strong>密度不一須注意混合均勻度。</li>
+    <li><strong>Electrostatic charge：</strong>靜電（同電相斥）阻礙混合。可<strong>加濕工作區域</strong>，或加少量 <span class="mono">Sodium lauryl sulfate</span>（SLS）等中和電荷。</li>
+    <li><strong>Adhering/repelling：</strong>有相互粘附或排斥之顆粒，以<strong>惰性／非反應性材料稀釋</strong>促進混合。</li>
+    <li><strong>Other（如 camphor 樟腦，gummy material）：</strong>利用<strong>介入研磨法</strong>（<span class="mono">pulverization by intervention</span>，加幾滴酒精）並立即與處方中其他惰性物質混合。</li>
+  </ul>
+
+  <div class="quiz" data-qid="q4" data-answer="B">
+    <span class="q-meta">102-2</span>
+    <div class="q-text">於實務上，不同固體粉末之混合均勻度，受固體粉末之何因素影響最小？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>粒徑粗細</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>密度大小</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>粉粒外型</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>靜電存在與否</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>B</b></span></div>
+    <div class="explanation">四者皆會影響，但題問「最小」。混合時通常有外力（攪拌、翻轉）介入，可對抗密度差異，故<strong>密度</strong>在混合過程影響相對最小（但混合「完成後」密度差仍易造成沉降分離）。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q4"></textarea></div>
+  </div>
+</section>
+<!-- ============ S4 粒子大小與分析 ============ -->
+<section id="s4">
+  <h2 class="sec"><span class="num">4</span>粒子大小與分析<span class="en">Particle Size &amp; Analysis</span></h2>
+
+  <h3>粉末粗細度（中華藥典）</h3>
+  <p>以「規定時間內通過篩孔之粉粒比例」區分。篩號越大、篩孔越小（篩號 = 每一吋 = 2.54 cm 內的洞數）。粉末分為<strong>生藥粉末</strong>與<strong>化學藥品粉末</strong>。生藥粉末因含纖維（葉、莖、根）較粗，<strong>才有「極粗粉」</strong>；化學藥品粉末沒有極粗粉。</p>
+  <div class="tbl-wrap">
+  <table>
+    <caption>生藥粉末</caption>
+    <thead><tr><th>粗細度</th><th>所有粉需通過</th><th>下限條件</th></tr></thead>
+    <tbody>
+      <tr><td class="l">極粗粉 very coarse</td><td><strong>No.8</strong></td><td>通過 60 號篩者不得超過 <strong>20%</strong></td></tr>
+      <tr><td class="l">粗粉 coarse</td><td><strong>No.20</strong></td><td>通過 60 號篩者不得超過 40%</td></tr>
+      <tr><td class="l">中粉 moderately coarse</td><td><strong>No.40</strong></td><td>通過 80 號篩者不得超過 40%</td></tr>
+      <tr><td class="l">細粉 fine</td><td><strong>No.60</strong></td><td>通過 100 號篩者不得超過 40%</td></tr>
+      <tr><td class="l">極細粉 very fine</td><td><strong>No.80</strong></td><td>—</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="tbl-wrap">
+  <table>
+    <caption>化學藥品粉末（無極粗粉）</caption>
+    <thead><tr><th>粗細度</th><th>所有粉需通過</th><th>下限條件</th></tr></thead>
+    <tbody>
+      <tr><td class="l">粗粉 coarse</td><td><strong>No.20</strong></td><td>通過 40 號篩者不得超過 60%</td></tr>
+      <tr><td class="l">中粉 moderately coarse</td><td><strong>No.40</strong></td><td>通過 60 號篩者不得超過 60%</td></tr>
+      <tr><td class="l">細粉 fine</td><td><strong>No.80</strong></td><td>—</td></tr>
+      <tr><td class="l">極細粉 very fine</td><td><strong>No.120</strong></td><td>—</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="card key"><span class="label">記憶法</span>第一條件（所有粉需通過幾號篩）必背：<br>生藥 = <strong>8 / 20 / 40 / 60 / 80</strong>（極粗 / 粗 / 中 / 細 / 極細）；<br>化學 = <strong>20 / 40 / 80 / 120</strong>（粗 / 中 / 細 / 極細，化學藥品較細故細／極細更嚴格）。<br>顆粒劑典型範圍 8～12，粉末造粒範圍 12～20。</div>
+  <div class="card tip"><span class="label">篩孔換算技巧</span>超過 50 號篩時：<strong>篩號 × 篩孔(μm) ≈ 15000</strong>。例：100 號→150 μm；400 號→15000÷400 ≈ 37.5 → 選 38 μm。（50 號以下不規則，約 16000～19000。）</div>
+
+  <div class="quiz" data-qid="q5" data-answer="D">
+    <span class="q-meta">113-1</span>
+    <div class="q-text">依據中華藥典，對化學藥品粉末粗細度之規定，「細粉」之所有粉粒均應通過幾號標準試驗篩？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>20</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>40</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>60</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>80</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>D</b></span></div>
+    <div class="explanation">化學藥品粉末：粗 20 / 中 40 / <strong>細 80</strong> / 極細 120。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q5"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q6" data-answer="C">
+    <span class="q-meta">112-2</span>
+    <div class="q-text">若某批生藥粉末可完全通過 40 號標準試驗篩，且 30% 可通過 80 號標準試驗篩時，是屬於中華藥典所列何種粉末粗細度？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>極粗粉</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>粗粉</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>中粉</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>細粉</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>C</b></span></div>
+    <div class="explanation">生藥粉末完全通過 40 號 → 中粉；下限條件「通過 80 號者不得超過 40%」，30% &lt; 40% 符合，故為<strong>中粉</strong>。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q6"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q7" data-answer="B">
+    <span class="q-meta">101-1</span>
+    <div class="q-text">標準篩篩號 400 之篩孔約為多少 μm？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>30</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>38</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>45</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>63</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>B</b></span></div>
+    <div class="explanation">15000 ÷ 400 ≈ 37.5 → 選 38 μm。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q7"></textarea></div>
+  </div>
+  <h3>受粒子大小影響之性質</h3>
+  <ul>
+    <li><strong>Dissolution rate &amp; bioavailability</strong>（越小溶離越快、吸收越快、生體可用率越好）。</li>
+    <li><strong>Suspendability</strong>（細分散約 0.5～10 μm 懸浮性較佳，較不沉降結塊）。</li>
+    <li><strong>Uniform distribution</strong>（粒徑均一 → dose-to-dose 含量均一）。</li>
+    <li><strong>吸入劑粒徑</strong>（深部呼吸道沉積 1～5 μm）。</li>
+    <li><strong>Lack of grittiness</strong>（皮膚軟膏、乳膏、眼用製劑無砂礫感，細粉約 50～100 μm）。</li>
+  </ul>
+
+  <div class="quiz" data-qid="q8" data-answer="D">
+    <span class="q-meta">103-2</span>
+    <div class="q-text">一般乾粉吸入劑之粉末，其粒徑範圍以下列何者最適當？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>&lt; 1 μm</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>&gt; 15 μm</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>7～15 μm</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>1～6 μm</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>D</b></span></div>
+    <div class="explanation">乾粉吸入劑深達支氣管／肺部，粒徑約 1～5（6）μm。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q8"></textarea></div>
+  </div>
+
+  <h3>粒子大小之測量方法</h3>
+  <div class="card key"><span class="label">記憶準則</span>大部分方法測 <strong>1～100 μm</strong>，再記例外。過篩法只能測<strong>較大顆</strong>（金屬線編織，洞編不細）；氣體吸附法可測<strong>較小</strong>。原理要會配對。</div>
+  <div class="tbl-wrap">
+  <table>
+    <thead><tr><th>方法</th><th>範圍（μm）</th><th>對應儀器／原理重點</th></tr></thead>
+    <tbody>
+      <tr><td class="l">光學顯微鏡法 microscopy</td><td>0.2～100</td><td>顯微鏡；測<strong>投影粒徑</strong></td></tr>
+      <tr><td class="l">過篩法 sieving</td><td>40～9500</td><td>搖篩機；測<strong>較大顆</strong>，原理與<strong>重量</strong>有關</td></tr>
+      <tr><td class="l">沉降速率法 sedimentation</td><td>0.8～300</td><td><span class="mono">Andreasen pipette</span>；Stokes' law，與<strong>重量</strong>有關，需知密度</td></tr>
+      <tr><td class="l">氣體通透法</td><td>1～100</td><td><span class="mono">Fisher subsieve sizer</span>；測<strong>表面積</strong></td></tr>
+      <tr><td class="l">吸著法</td><td>0.03～1</td><td><span class="mono">Quantasorb QS-16</span>（氣體吸附）；測<strong>比表面積</strong></td></tr>
+      <tr><td class="l">電子計數器法</td><td>2～80</td><td><span class="mono">Coulter counter</span>；測<strong>體積</strong>（電子感應區法）</td></tr>
+      <tr><td class="l">光阻斷法</td><td>2～100</td><td><span class="mono">HIAC</span></td></tr>
+      <tr><td class="l">光繞射／散射法</td><td>0.2～500</td><td>分散於氣體／液體，光減弱量定大小</td></tr>
+      <tr><td class="l">雷射散射法</td><td>0.02～2000</td><td>He-Ne 雷射、矽光兩極偵測器、超音波探針</td></tr>
+      <tr><td class="l">雷射立體攝影法 holography</td><td>1.4～100</td><td>氣霧化噴霧、三度空間相片</td></tr>
+      <tr><td class="l">多階撞擊法 cascade impaction</td><td>—</td><td>氣流速率依大小分離</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="card tip"><span class="label">Fisher subsieve sizer</span>① 測粉末<strong>表面積</strong>。② 利用<strong>空氣通透（氣流阻力）</strong>原理，<strong>非</strong>「空氣電離子化」。③ 空氣進入樣本前宜<strong>恆壓、除濕</strong>。</div>
+
+  <div class="formula">沉降法（Stokes' law）：v = h/t = d²(ρ−ρ₀)g / 18η　→　d = √[18ηh / (ρ−ρ₀)g·t]
+h:液面至移液管下端高度　d:直徑　ρ:質粒密度　ρ₀:液體密度　η:液體黏滯係數</div>
+
+  <div class="quiz" data-qid="q9" data-answer="A">
+    <span class="q-meta">110-2</span>
+    <div class="q-text">下列何種測定粉末粒子大小之方法，其估算粒子平均大小之原理與重量有關？①過篩法 ②光學顯微鏡法 ③電子感應區法（Coulter counter）④沉降法</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>僅 ①④</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>僅 ②③</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>①③④</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>②③④</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>A</b></span></div>
+    <div class="explanation">過篩法（秤各篩重）與沉降法（Andreasen pipette 吸取後乾燥秤重）與<strong>重量</strong>有關。光學顯微鏡測投影面積、Coulter counter 測體積，與重量無關。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q9"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q10" data-answer="B">
+    <span class="q-meta">109-2</span>
+    <div class="q-text">下列何者可測量質粒之體積？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>air permeability</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>Coulter Counter</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>microscopic method</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>sedimentation method</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>B</b></span></div>
+    <div class="explanation">Coulter counter（電子感應區法）測粒子<strong>體積</strong>。air permeability 測表面積、microscopy 測投影、sedimentation 與重量／沉降速率有關。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q10"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q11" data-answer="C">
+    <span class="q-meta">109-1</span>
+    <div class="q-text">以沉降速率法測量藥物粉末之粒徑時，下列敘述何者正確？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>測定原理與 Smoluchowski equation 有關</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>粒徑平方與分散媒液之黏度成反比</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>測量粉末粒徑時，需先得知其密度</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>一般檢測時常用之儀器為立體雷射攝影機</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>C</b></span></div>
+    <div class="explanation">沉降法依 Stokes' law，公式含質粒密度 ρ，故<strong>需先知密度</strong>。原理為 Stokes（非 Smoluchowski）；常用儀器為 Andreasen pipette（非立體雷射攝影）。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q11"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q12" data-answer="A">
+    <span class="q-meta">108-2</span>
+    <div class="q-text">下列何種方法不適合測量藥物粒子大小？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>Fisher sub-sieve sizer</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>optical microscopy</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>sedimentation</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>sieve analysis</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>A</b></span></div>
+    <div class="explanation">Fisher sub-sieve sizer 測<strong>表面積</strong>（再換算平均粒徑屬間接），相對不直接適合測「粒子大小」；其餘三者皆為直接測粒徑方法。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q12"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q13" data-answer="B">
+    <span class="q-meta">102-2</span>
+    <div class="q-text">下列有關 Fisher subsieve sizer 之敘述，何者錯誤？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>可用來測定粉末之表面積</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>是利用空氣受電離子化之原理</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>空氣進入樣本前宜恆壓</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>空氣進入樣本前宜除濕</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>B</b></span></div>
+    <div class="explanation">Fisher subsieve sizer 為<strong>氣體通透（空氣阻力）</strong>原理，非「空氣電離子化」，B 錯誤。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q13"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q14" data-answer="A">
+    <span class="q-meta">102-1</span>
+    <div class="q-text">下列何者可測量質粒之比表面積？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>Air permeability</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>Coulter counter</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>Sedimentation method</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>Sieve analysis</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>A</b></span></div>
+    <div class="explanation">Air permeability（氣體通透／吸著法）測<strong>比表面積</strong>。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q14"></textarea></div>
+  </div>
+</section>
+<!-- ============ S5 流動性 ============ -->
+<section id="s5">
+  <h2 class="sec"><span class="num">5</span>粉體之流動性<span class="en">Powder Flowability</span></h2>
+
+  <p>寬鬆粉末有時類似<strong>非牛頓性流體</strong>，可表現<strong>塑膠性流動</strong>或<strong>膨脹性流動</strong>。流動性影響成品性質：粉末經給料槽一次掉一定份量，若流動性差則每次重量差異大、後續檢驗不合格（含膠囊、分包、打錠）。流動性 = 阻力 = 來自摩擦力，與吸引力有關。</p>
+  <h4>影響流動性的因素</h4>
+  <ul>
+    <li>圓形粒子流動性佳；狹長、扁平粒子易堆積。</li>
+    <li><strong>Arambulo：</strong>顆粒大小降低 → 錠劑重量差異下降，最小重量差異在顆粒直徑 <strong>400～800 μm</strong> 達到；再降低反而流動較不自由。</li>
+    <li>大粒子流動性佳；小粒子間吸引力大、吸附性大、易集結成團、流動性差。</li>
+    <li>表面光滑流動佳；表面粗糙易堆積。高密度低孔度流動佳；鬆散高孔度易堆積。</li>
+    <li>含水量高可能增加黏性、流動不佳；乾燥可改善。</li>
+  </ul>
+
+  <h3>撒佈性 dustibility</h3>
+  <p>自由流動粉末以撒佈性為特徵（與皮膚均勻性有關；黏結性對通過自動充填機／膠囊機重要）。若<strong>石松粉 lycopodium = 100%</strong>，則滑石粉 57%、馬鈴薯澱粉 27%、細碳 23%、甘汞細粉 0.7%。<br>石松粉流動性佳，與滑石粉以往用於潤滑醫用手套內層，但會刺激組織，已被<strong>玉米澱粉</strong>取代。</p>
+
+  <h3>安息角 angle of repose</h3>
+  <p>自由流動與安息角有很好關聯性（但不一定適合所有粉末）。將粉末通過漏斗落於平坦表面，測錐體與表面之夾角 θ。</p>
+  <div class="formula">tan θ = h / r　（h:錐高　r:底半徑）</div>
+  <ul>
+    <li>安息角 = 一堆粉末表面與水平面間之最大可能角度；<strong>越小流動性越好</strong>。</li>
+    <li>與粒子大小、表面粗糙、不規則性、細粉存在、摩擦力、重力有關。</li>
+    <li>通常粒子大小降低 → 安息角增加。</li>
+  </ul>
+  <div class="card tip"><span class="label">數值參考</span>&gt;45° 流動性差；41～45° 勉強可接受；30 多度不錯；20 幾度更好。</div>
+
+  <h4>助滑劑 glidants</h4>
+  <p>改善流動特性之物質：<span class="mono">colloidal silicon dioxide</span>（膠體二氧化矽，又稱 fumed silicon dioxide／商品名 Aerosil®）、<span class="mono">硬脂酸鎂</span>、澱粉、滑石粉（<strong>≤1% 最適合</strong>，太高反增加安息角；滑石粉可至 5%）。</p>
+  <div class="card key"><span class="label">概念區分</span><strong>glidant 助滑劑</strong>（填平粒子表面凹洞，使更圓滑好流動）首選 <span class="mono">colloidal silicon dioxide</span>；<strong>lubricant 潤滑劑</strong>（防止黏附機器模型）首選 <span class="mono">硬脂酸鎂</span>（厭水、細小、不黏模）。膠體二氧化矽很細很鬆、表面積大，亦可當 adsorbent 吸附劑。</div>
+
+  <h4>Flow meter</h4>
+  <p>測固定量粉末流完所需時間（流動性好則快）。操作以擋板或尺（避免手濕影響數據）。比安息角準確（漏斗法各人力道不同誤差大）。</p>
+
+  <div class="quiz" data-qid="q15" data-answer="C">
+    <span class="q-meta">109-1</span>
+    <div class="q-text">粉末質粒在重力作用下，其流動性常受到粉末間之磨擦力及吸附力之影響，就此相關敘述之比較，下列何者最正確？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>粉末粒徑大於 10 μm 以上時，顆粒間吸附力會相對性地增大</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>當混合不同材質之粉末時，粉末間之密度差異性通常對整個粉體之流動性影響很小</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>評估粉末流動性時，通常以 flow meter 之測定值比評估粉末安息角較具實用參考價值</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>膠囊劑之重量差異受粉末流動性之影響小</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>C</b></span></div>
+    <div class="explanation">A：粒徑越大吸附力越小（錯）。B：密度差異會影響流動性（錯）。C：flow meter 比安息角準（正確）。D：膠囊重量差異受流動性影響大（錯）。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q15"></textarea></div>
+  </div>
+  <h3>Carr's Index &amp; Hausner Ratio</h3>
+  <p>兩者皆可評估流動性，且可看<strong>壓縮性（compressibility）</strong>（因有外力振實）。皆用 bulk density 與 tapped density 計算。Compressibility 高 = cohesive 黏聚性粉末 = 流動性不佳。</p>
+  <div class="formula">Carr's index (compressibility index) = (tapped − bulk) / tapped × 100%　→ 越大流動性越差
+Hausner ratio = tapped density / bulk density　→ &gt; 1.4 為 cohesive material</div>
+
+  <h3>各種體積與密度</h3>
+  <div class="tbl-wrap">
+  <table>
+    <thead><tr><th>體積</th><th>測法</th><th>包含內容</th></tr></thead>
+    <tbody>
+      <tr><td class="l"><strong>真體積</strong> true volume</td><td>氣體吸附法（氦密度劑 densitometer）</td><td>實心部分（氣體可深入縫隙）</td></tr>
+      <tr><td class="l"><strong>顆粒體積</strong> granule volume</td><td>汞取代法</td><td>真體積 + 表面裂縫／孔洞（汞不入縫隙）</td></tr>
+      <tr><td class="l"><strong>整體體積</strong> bulk volume</td><td>量筒記錄</td><td>真體積 + 縫隙 + 粉粒間孔洞</td></tr>
+      <tr><td class="l"><strong>振實體積</strong> tapped volume</td><td>量筒振實後記錄</td><td>振實壓縮後體積</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="card key"><span class="label">密度大小</span>體積越小密度越大 → <strong>true density &gt; granule density &gt; bulk density</strong>。<br>多孔性質粒以汞（比重瓶裝汞）測得 = <strong>granule density</strong>。</div>
+
+  <div class="quiz" data-qid="q16" data-answer="D">
+    <span class="q-meta">113-1</span>
+    <div class="q-text">下列何者與粉體流動特性（powder flowability）最不相關？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>Carr's index</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>angle of repose</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>Hausner ratio</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>contact angle</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>D</b></span></div>
+    <div class="explanation">contact angle 接觸角看液體對固體之<strong>潤濕性</strong>（0°完全濕潤、180°完全不濕潤），與流動性無關。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q16"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q17" data-answer="D">
+    <span class="q-meta">111-1</span>
+    <div class="q-text">有關粒子密度大小，下列何者正確？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>bulk density ＞ granule density ＞ true density</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>granule density ＞ bulk density ＞ true density</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>true density ＞ bulk density ＞ granule density</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>true density ＞ granule density ＞ bulk density</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>D</b></span></div>
+    <div class="explanation">體積 true &lt; granule &lt; bulk，故密度 <strong>true ＞ granule ＞ bulk</strong>。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q17"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q18" data-answer="C">
+    <span class="q-meta">110-1</span>
+    <div class="q-text">有關粉體之流動性，下列敘述何者最適當？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>粒徑越小流動性越佳</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>壓縮比越大流動性越佳</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>以圓形粒子之流動性較佳</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>具較大安息角之流動性較佳</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>C</b></span></div>
+    <div class="explanation">圓形粒子流動性較佳（C）。粒徑越小／壓縮比越大／安息角越大，流動性皆越差。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q18"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q19" data-answer="D">
+    <span class="q-meta">110-1</span>
+    <div class="q-text">將重量 36 g 之粉末小心倒入 100 mL 之量筒，測得整體體積（bulk volume）為 72 mL，若此時之整體孔度（porosity）為 25%，該粉末之真密度（true density）為多少 g/mL？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>0.36</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>0.48</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>0.54</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>0.67</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>D</b></span></div>
+    <div class="explanation">整體孔度 = (V整 − V真)/V整 → 0.25 = (72 − V真)/72 → V真 = 54 mL。真密度 = 36/54 ≈ <strong>0.67 g/mL</strong>。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q19"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q20" data-answer="A">
+    <span class="q-meta">102-1</span>
+    <div class="q-text">安息角（angle of repose）之數值通常較可反應出何種物理性質？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>粉粒間之吸附力或磨擦力</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>粉粒間之壓縮性及流動性</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>粉粒之潤濕性及分散性</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>粉體密度（bulk density）及壓縮性</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>A</b></span></div>
+    <div class="explanation">安息角源於粉粒間<strong>吸附力與摩擦力</strong>。壓縮性需 Carr's index／Hausner ratio（bulk 與 tapped density）才能看；潤濕性看接觸角。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q20"></textarea></div>
+  </div>
+</section>
+<!-- ============ S6 粒子大小之降低 ============ -->
+<section id="s6">
+  <h2 class="sec"><span class="num">6</span>粒子大小之降低<span class="en">Particle Size Reduction</span></h2>
+
+  <h4>小規模</h4>
+  <ul>
+    <li><strong>Trituration 研磨法 / comminution 粉碎法：</strong>研缽研磨（兼具粉碎與混合）。</li>
+    <li><strong>Levigation 研調法：</strong>研缽或軟膏板；軟膏劑與懸液劑常用；可添加 levigating agent（助研劑，油性加礦油、水性加甘油，增加摩擦力）。</li>
+  </ul>
+  <h4>大規模</h4>
+  <ul><li>Mills 磨粉機、Pulverizers 粉碎機。</li></ul>
+
+  <h3>Comminution 機轉</h3>
+  <ul>
+    <li><strong>Attrition（磨擦）：</strong>兩介面摩擦，適合纖維狀需撕裂之物質。</li>
+    <li><strong>Rolling（壓碎／研磨）：</strong>滾筒壓碎。</li>
+    <li><strong>Impact（撞擊）：</strong>鎚／棍高速撞擊，或高速氣流／離心力撞擊。</li>
+  </ul>
+
+  <h3>設備分類（依粒度由粗到細）</h3>
+  <div class="card key"><span class="label">原則</span><strong>crushers 最粗</strong> → <strong>grinders 中等</strong>（20–200 mesh）→ <strong>grinding mills 最細</strong>（多過 200 mesh）。Ball / rod / hammer / colloid / fluid-energy mills 屬細磨範圍。</div>
+  <div class="tbl-wrap">
+  <table>
+    <thead><tr><th>類別</th><th>例</th><th>產品粒度</th></tr></thead>
+    <tbody>
+      <tr><td class="l">Coarse crushers（最粗）</td><td>jaw, gyratory, roll, impact crushers</td><td>大顆（礦業常用）</td></tr>
+      <tr><td class="l">Intermediate grinders（中）</td><td>rotary cutters, roller, chaser, hammer, disk mills</td><td>20–200 mesh</td></tr>
+      <tr><td class="l">Fine grinding mills（細）</td><td>ball, rod, hammer, colloid, fluid energy mills</td><td>多數過 200 mesh</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="card tip"><span class="label">粒度排序記憶</span>Roller mill 較<strong>粗</strong>；Ball / Fluid-energy / Colloid mill 較<strong>細</strong>；Hammer mill 多數分在較細範圍。Crushers 無法達到 &lt;120 mesh 之細度。</div>
+
+  <h3>Ball mill 球磨機</h3>
+  <ul>
+    <li>滾筒內放不鏽鋼球／陶瓷球／鐵球，靠<strong>撞擊與磨擦</strong>降低大小：球被帶上後重力掉下砸碎物料。</li>
+    <li>球需<strong>夠硬夠重</strong>；大小可不同（增加研磨作用，大球力道夠、小球可砸中間）。</li>
+    <li>球量約佔球罐 <strong>45～55%</strong>（過少不夠力、過多無掉落空間）。</li>
+    <li>轉速需適中（太慢只滑動、太快離心貼壁不掉落）；密度越大研磨效率越佳。</li>
+    <li><strong>適用濕式研磨</strong>（加液增摩擦、減少細粉生熱／火花爆炸，安全性高；粉體奈米化常用）。</li>
+  </ul>
+
+  <h3>Hammer mill（FitzMill 粉碎機）</h3>
+  <ul>
+    <li>藉<strong>葉片（甲片）快速旋轉撞擊</strong>粉碎，通過篩網收集適當大小。</li>
+    <li><strong>轉速快 → 粒子小</strong>（離心力大、貼壁、小顆才飛下）。</li>
+    <li><strong>篩網厚 → 粒子小</strong>（厚易卡，得較細）。</li>
+    <li>亦受進料速度、槌之種類與數目影響。</li>
+  </ul>
+
+  <h3>Colloidal mill 膠體磨</h3>
+  <p>靜態錐體（定子）與快速旋轉錐體（轉子）間之狹窄間隙剪切。用途：粉碎固體、製備膠體分散系、懸浮液、乳液、軟膏。<strong>適合不耐熱材料；不適合太軟或黏性材料。</strong></p>
+
+  <h3>Fluid-energy mill 流能磨</h3>
+  <p>「Fluid」指<strong>氣流</strong>（非液體）。壓縮氣體膨脹產生衝力，物料隨氣流高速跑、互撞與撞壁變細。<strong>氣體膨脹帶走熱、效率高、不需操作久</strong> → 最適合<strong>不耐熱材料</strong>。但<strong>不適合濕式研磨、不適合太軟太黏材料</strong>。</p>
+  <p>離心式衝擊式磨機亦適合怕熱物質（停留短、空氣不斷抽出保持低溫）。</p>
+
+  <div class="quiz" data-qid="q21" data-answer="A">
+    <span class="q-meta">110-1</span>
+    <div class="q-text">下列何者無法達到粉末粒度小於 120 mesh？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>錘擊式粉碎機（impact crusher）</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>水飛法（water grinding）</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>流能磨（fluid energy mill）</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>球磨機（ball mill）</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>A</b></span></div>
+    <div class="explanation">impact crusher 屬 crusher（最粗），無法達到 &lt;120 mesh 細度。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q21"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q22" data-answer="A">
+    <span class="q-meta">105-1</span>
+    <div class="q-text">下列何種粉碎機器，一般得到之粒子較大？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>Roller mill</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>Ball mill</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>Fluid-energy mill</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>Colloid mill</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>A</b></span></div>
+    <div class="explanation">Roller mill 較粗；ball / fluid-energy / colloid mill 皆屬細磨。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q22"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q23" data-answer="C">
+    <span class="q-meta">111-1</span>
+    <div class="q-text">有關球磨機之敘述，下列何者最不適當？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>圓球重量和硬度要足夠</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>圓球大小可不同，以增加圓球間的研磨作用</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>圓球數量至少應為整體球罐體積之 60%</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>常見的圓球材質是鐵球和陶瓷</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>C</b></span></div>
+    <div class="explanation">球量約 45～55%（非 60%），太滿無掉落空間，C 最不適當。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q23"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q24" data-answer="D">
+    <span class="q-meta">103-1</span>
+    <div class="q-text">以球磨機研磨固體粉末時，下列敘述何者最不適當？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>研磨效率深受轉動速率影響</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>球壺內容物容量占 45~55% 時研磨效率較佳</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>研磨用球之密度越大，則研磨效率通常越佳</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>不適用於溼式研磨為其主要缺點</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>D</b></span></div>
+    <div class="explanation">球磨機<strong>適用</strong>濕式研磨（粉體奈米化濕式球磨效率高、安全性高），D 錯誤。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q24"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q25" data-answer="B">
+    <span class="q-meta">103-2 · 101-1</span>
+    <div class="q-text">有關 hammer mills 之原理，下列敘述何者最適當？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>藉由高速氣流產生之切力，造成顆粒彼此互相撞擊以粉碎粒子</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>藉由槌或葉片快速撞擊粉碎粒子，並通過篩網得到適當大小之粒子</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>藉由不鏽鋼球的摩擦撞擊粉碎顆粒，並配合震盪裝置以提高效率</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>藉由旋轉軸上之刀片，對物質進行剪切以降低粒子大小</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>B</b></span></div>
+    <div class="explanation">B 為 hammer mill 原理。A 為 fluid-energy mill；C 為 ball mill；D 為 cutter mill。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q25"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q26" data-answer="B">
+    <span class="q-meta">101-1</span>
+    <div class="q-text">有關槌式研磨機（Hammer mill），所得到粒子大小之敘述，下列何者錯誤？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>粒子大小受轉速影響</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>粒子大小與篩網厚薄無關</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>粒子大小與槌（Hammer）之種類與數目有關</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>粒子大小受進料速度影響</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>B</b></span></div>
+    <div class="explanation">篩網厚薄會影響粒子大小（篩網厚 → 粒子小），B「無關」錯誤。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q26"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q27" data-answer="C">
+    <span class="q-meta">112-1</span>
+    <div class="q-text">下列何種研磨機，研磨過程最適用於對熱不安定的藥品？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>錘擊式粉碎機（impact crushers）</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>顎式粉碎機（jaw crusher）</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>流能磨（fluid-energy mill）</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>球磨機（ball mill）</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>C</b></span></div>
+    <div class="explanation">fluid-energy mill 氣體膨脹帶走熱、效率高，最適合不耐熱藥品。槌、撞、磨皆會生熱。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q27"></textarea></div>
+  </div>
+  <h3>比表面積計算（粒徑降低）</h3>
+  <p>粒徑降低 → 比表面積增加 → 溶解快、溶離快、吸收快。膠體範圍 <strong>1 nm ～ 0.5（或 1）μm</strong>。</p>
+
+  <div class="quiz" data-qid="q28" data-answer="D">
+    <span class="q-meta">109-2</span>
+    <div class="q-text">將邊長 1 cm 的正立方體切割成邊長 0.1 μm 相同大小的正立方體，下列敘述何者正確？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>比表面積是 6,000 cm⁻¹</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>可切割成 10⁹ 個邊長 0.1 μm 的正立方體</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>比表面積變為原來的 10,000 倍</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>切割後的粒徑大小屬於膠體</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>D</b></span></div>
+    <div class="explanation">0.1 μm = 10⁻⁵ cm，落在膠體範圍（1 nm～0.5/1 μm），D 正確。1 cm = 10⁵ × 10⁻⁵ cm，每邊切 10⁵ 段 → 共 (10⁵)³ = 10¹⁵ 個（非 10⁹）；比表面積增加 10⁵ 倍（非 10000）。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q28"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q29" data-answer="C">
+    <span class="q-meta">105-1</span>
+    <div class="q-text">邊長為 10 μm 的立方固體，若經分割形成邊長為 100 nm 的微小立方形固體，其比表面積增加幾倍？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>1</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>10</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>100</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>1000</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>C</b></span></div>
+    <div class="explanation">10 μm = 10000 nm，邊長縮為 100 nm → 縮小 100 倍。比表面積 ∝ 1/邊長，故增加 <strong>100 倍</strong>。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q29"></textarea></div>
+  </div>
+</section>
+<!-- ============ S7 粉末的混合 ============ -->
+<section id="s7">
+  <h2 class="sec"><span class="num">7</span>粉末的混合<span class="en">Blending Powders</span></h2>
+
+  <p>混合 = 將 heterogeneous（異質）物理系統 → homogeneous（同質）。分為 <strong>Random mixtures</strong> 與 <strong>Ordered mixtures</strong>。</p>
+
+  <h3>Random mixing 隨機混合</h3>
+  <ul>
+    <li>個別粒子獨立且隨機無規則移動；粒子大小一致混合效果較佳。</li>
+    <li>影響因素：粒子大小、外型、密度、共聚、吸濕、硬度、粒徑分布；混合速度／時間／批量／移動方式；分離（segregation）趨勢。</li>
+  </ul>
+  <h4>混合物類型</h4>
+  <ul>
+    <li><strong>Free-flowing mixtures：</strong>自由流動（圓、重），可獨立移動但<strong>後續易分離</strong>；處理時避免晃動／彈跳，盡快填充膠囊。</li>
+    <li><strong>Cohesive mixtures：</strong>分離程度比 free-flowing 少，但<strong>易形成小聚集物、難重新分散</strong>。成因：濕度、靜電、凡得瓦爾力、粒子間 solid bridges。</li>
+  </ul>
+
+  <h3>Ordered mixing 規則混合（較新）</h3>
+  <ul>
+    <li>將細小<strong>微粉化粉末（主成分）</strong>與較大<strong>載體 carrier</strong> 顆粒混合，微粉化粉末黏附並固定於載體表面，兩者為一單位一起移動。</li>
+    <li>黏附力：mechanical、adhesion、coating forces（含靜電或表面張力）。</li>
+    <li><strong>Rs（surface area ratio）= 主成分覆蓋表面積 / carrier 全部表面積。Rs 越大 → 溶離減少；</strong>Rs 可低至 0.5，若接近或大於 1 溶離顯著下降。</li>
+    <li>載體常用<strong>水溶性</strong>者（如 <span class="mono">mannitol</span>、<span class="mono">lactose</span>），與水接觸時溶解，連帶釋放／分散藥物（避免選水溶性差的載體）。</li>
+  </ul>
+  <div class="card key"><span class="label">優點與應用</span>製備錠劑／膠囊若主成分為<strong>強效藥（potent materials）</strong>，standard deviation 很小、可避免直打基劑與藥物分離。應用：<span class="mono">micronized antibiotics + coarse sucrose</span>（抗生素再調製成糖漿）；<span class="mono">micronized albuterol sulfate + coarse lactose</span>（powder for oral inhalation，微粉 ≤10 μm 入肺，乳糖較重沉積口腔故吸時口腔甜甜）。</div>
+
+  <h3>混合方法與設備</h3>
+  <h4>小規模</h4>
+  <ul>
+    <li><strong>研磨法 trituration：</strong>用於粉碎與混合，特別適合結晶性材料，適用含強效藥之粉末（<strong>幾何稀釋法 geometric dilution</strong>）。</li>
+    <li><strong>攪拌法 spatulation：</strong>軟膏板與調藥刀，適合小量（幾何稀釋法）；效率較低，<strong>不適用大量或強效藥</strong>。</li>
+    <li><strong>過篩法 sifting：</strong>產生輕而鬆軟混合物；<strong>不適用強效藥</strong>混入稀釋劑。</li>
+    <li><strong>Pulverization by Intervention（加溶劑）：</strong><span class="mono">camphor/ethanol</span> 或 <span class="mono">iodine/ether</span>。</li>
+    <li><strong>Levigation（加非溶劑）：</strong>將固體併入軟膏與懸液。</li>
+  </ul>
+  <h4>大規模（tumbling 滾動法）</h4>
+  <p>轉動容器中滾動混合，完全但費時、不適合小量。設備：Rotating-Shell Mixers、Cubical/polyhedron、<strong>Double-cone blenders</strong>、Cross-Flow blender。</p>
+  <div class="card tip"><span class="label">Remington 建議</span>需<strong>精密 solid-solid 混合</strong>時，推薦 <strong>rotating twin-shell（V-blender）</strong> 或 <strong>double-cone</strong> 型混合機（以滾動代替滑動，混合佳、清潔容易）。其他：Fixed-Shell、Sigma-Blade & Planetary Paddle、Vertical Impeller（fluidize air mixer，以氣流代葉輪但較難清潔；Ribbon blender）。</div>
+
+  <div class="quiz" data-qid="q30" data-answer="D">
+    <span class="q-meta">111-1</span>
+    <div class="q-text">有關混合操作要點，下列敘述何者最不適當？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>各成分密度差較大時，先裝密度小的原料，再裝密度大的原料</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>成分比例量相差懸殊時，應採用幾何稀釋法混合</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>物理狀態和粉末粗細相近的等量藥物，較容易混合均勻</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>若藥物色澤差異大，先加色淺的再加色深的藥物混合，此方法稱為「spatulation method」</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>D</b></span></div>
+    <div class="explanation">先加色淺再加色深（利於觀察是否混勻，常用於毒劇藥）敘述正確，但此法<strong>不叫 spatulation</strong>（spatulation 只是調藥刀拌合，與顏色無關），故 D 最不適當。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q30"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q31" data-answer="B">
+    <span class="q-meta">102-2</span>
+    <div class="q-text">欲將塊狀樟腦製成固體粉末，下列所述方法中何者較適當？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>在球磨機中以鋼球撞擊研磨之</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>先將其置於研缽中，隨後加少量酒精以杵研磨，再於開放空間中任其乾燥</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>以溶劑溶解後，再噴霧乾燥即可</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>以水溶解後，再行凍晶乾燥</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>B</b></span></div>
+    <div class="explanation">樟腦 camphor 為 gummy material，用<strong>介入研磨法</strong>：加少量酒精助研磨，酒精揮發後得乾粉，B 正確。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q31"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q32" data-answer="B">
+    <span class="q-meta">102-1</span>
+    <div class="q-text">以稀釋劑混合毒劇性藥物粉末時，下述方法何者較適當？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>過篩法（sifting）</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>研磨法（trituration）</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>搖滾法（tumbling）</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>調藥刀法（spatulation）</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>B</b></span></div>
+    <div class="explanation">毒劇（強效）藥需用研磨法 trituration 配合幾何稀釋法；sifting 與 spatulation 不適用強效藥。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q32"></textarea></div>
+  </div>
+  <h3>分離 segregation</h3>
+  <p>指混合物中不同成分之<strong>不合意分開</strong>。主要成因：粒子大小差異；其他：密度與外型差異。</p>
+  <ul>
+    <li><strong>Sifting / Percolation：</strong>細粒由粗粒篩出滲濾、落底，大粒被「舉起」到表面。</li>
+    <li><strong>Air entrapment（fluidization 流體化）：</strong>細粉暴露空氣，傳送途中產生條紋圖案。</li>
+    <li><strong>Particle entrapment（dusting 撒粉）：</strong>較細／輕粒懸浮較久，大而緻密粒沉降快。</li>
+  </ul>
+  <div class="card key"><span class="label">改善 segregation</span>減少靜電排斥；適當混合時間（勿太久）；適當漏斗設計／操作閥；減少運送步驟與落差；控制粉塵與流體化；緩慢充填／傳送；適當通風；使用變流裝置（deflector）、葉片（vane）、分配器（distributor）。</div>
+
+  <div class="quiz" data-qid="q33" data-answer="B">
+    <span class="q-meta">107-1</span>
+    <div class="q-text">散劑中若混合有不同粒徑之粉末時，在自動裝填過程中有時會發生粉末分離（segregation）的現象，為降低此缺失，下列敘述何者較適當？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>增加粉末混合時之攪拌時間</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>減少操作過程中粉塵之產出</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>增加粉末貯料斗（hopper）之長度及流動時程</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>若粉末流動時有靜電產生，則粉末流動性會增加</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>B</b></span></div>
+    <div class="explanation">減少粉塵（dusting）可降低分離，B 正確。攪拌太久反易分開；hopper 太長運送久更易分離；靜電會阻礙流動。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q33"></textarea></div>
+  </div>
+
+  <h3>粉末之特別考量</h3>
+  <h4>① 共熔物 eutectics</h4>
+  <p>混合（尤其研磨加壓）時可能變黏、漿糊狀或液化（熔點下降）。處理：保持乾燥，用<strong>惰性吸附劑 adsorbent</strong>（碳酸鎂、輕質氧化鎂）混合並減少接觸；操作宜用藥刀與丸劑板（壓縮少，研缽不適合）；或使之共熔後再吸附到鬆散粉末上。</p>
+  <div class="card tip"><span class="label">Husa &amp; Becker</span><strong>碳酸鎂最好</strong>；輕質氧化鎂較會產生水泥塊狀物影響崩散；重質氧化鎂、滑石粉、乳糖亦可；<strong>澱粉效果較不佳</strong>。各自與吸附劑研磨後再輕輕混合。常見共熔對：phenol/thymol、camphor/menthol、lidocaine/prilocaine（EMLA cream）。</div>
+
+  <h4>② 吸濕與潮解 hygroscopic &amp; deliquescent</h4>
+  <p>吸濕 = 吸空氣水分；潮解 = 吸水後部分或全部液化（鹽類如 bromide、chloride、HCl、sulfate 易吸濕潮解）。處理：① 置緊密容器並合併乾燥劑或膠囊；② 用惰性乾燥粉末稀釋、減少暴露表面積。</p>
+
+  <h4>③ 風化性散劑 efflorescent powders</h4>
+  <p>含水合／結晶水之結晶粉末，操作或低濕度時釋出水分。處理：① 使用<strong>無水鹽型</strong>；② 加入乾燥鬆散粉末。</p>
+
+  <h4>④ 爆炸性混合物 explosive mixture</h4>
+  <p>混合時起激烈反應（一氧化劑＋一還原劑），須小心。如過錳酸鉀不宜以研缽研磨。</p>
+
+  <h4>⑤ 液體的併入 incorporation of liquids</h4>
+  <p>液體先吸著於惰性材料（乳糖／澱粉）再以幾何稀釋法併入；過程可噴少量乙醇，揮發後留下均勻分散成分（特別適合高效價藥或矯味劑）。</p>
+
+  <div class="quiz" data-qid="q34" data-answer="D">
+    <span class="q-meta">114-1</span>
+    <div class="q-text">某些固體物質在混合時容易形成共熔混合物（eutectic mixtures）而軟化或液化，較適合用調藥刀法（spatulation）混合，下列何者除外？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>aminopyrine</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>chloral hydrate</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>prilocaine</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>magnesium carbonate</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>D</b></span></div>
+    <div class="explanation"><span class="mono">magnesium carbonate</span>（碳酸鎂）是惰性<strong>吸附劑</strong>，用來防止共熔液化，本身不會形成共熔物，故除外。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q34"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q35" data-answer="D">
+    <span class="q-meta">106-1</span>
+    <div class="q-text">欲將薄荷與水楊酸以等量（w/w）比例研合時，為避免共熔物或液化之現象出現，通常可預行添加下列何者以避免之？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>三酸甘油酯</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>乳酸</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>聚乙二醇</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>碳酸鎂</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>D</b></span></div>
+    <div class="explanation">加惰性吸附劑<strong>碳酸鎂</strong>可避免共熔液化。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q35"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q36" data-answer="A">
+    <span class="q-meta">102-1</span>
+    <div class="q-text">下列藥物若欲添加澱粉稀釋，為使其能混合均勻，何者不宜以研缽研磨，因可能會有爆炸之危險性？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>過錳酸鉀</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>碘化鉀</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>硫酸鈉</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>硫酸亞鐵</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>A</b></span></div>
+    <div class="explanation">過錳酸鉀為強氧化劑，與澱粉（還原性）研磨可能爆炸。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q36"></textarea></div>
+  </div>
+</section>
+<!-- ============ S8 藥用散劑 ============ -->
+<section id="s8">
+  <h2 class="sec"><span class="num">8</span>藥用散劑<span class="en">Medicated Powder</span></h2>
+
+  <h4>用途</h4>
+  <ul>
+    <li><strong>內服：</strong>與水混合後口服；reconstitution 供口服。</li>
+    <li><strong>外用：</strong>吸入供局部或全身效用；reconstitution 供注射、陰道灌洗等用。<span class="mono">標籤：For external use only 僅供外用</span></li>
+  </ul>
+
+  <h3>Aerosol powder：乾粉吸入劑（DPIs）</h3>
+  <p>有些含稀釋劑 <span class="mono">α-lactose monohydrate</span>：協助流動性、計量均一性、保護免於受潮。微米級到達肺深部。例：<span class="mono">Advair diskus®</span>、<span class="mono">Flovent rotadisk®</span>、<span class="mono">Foradil aerolizer®</span>、<span class="mono">Relenza®（Zanamivir for inhalation）</span>。</p>
+  <div class="card tip"><span class="label">課本不恰當處</span>課本以金屬罐圖示 DPI 並不正確──金屬罐前端細，裝的是<strong>液體</strong>（噴出霧狀小液滴），DPI 裡才是<strong>乾粉</strong>（刺破劑量孔或定量掉粉後吸入）。</div>
+
+  <h3>散裝與分包散劑 bulk &amp; divided powders</h3>
+  <ul>
+    <li><strong>Bulk powders（散裝，劑量不需很準）：</strong>限非強效藥。如制酸劑 <span class="mono">sodium bicarbonate</span>、緩瀉劑 <span class="mono">psyllium</span>、陰道灌洗 <span class="mono">massengill powder</span>、外用抗感染（<span class="mono">bacitracin zinc, polymyxin B sulfate</span>）、抗真菌（<span class="mono">tolnaftate</span>）、營養補充（brewer's yeast powder）。</li>
+    <li><strong>Divided powders（分包，劑量需準）：</strong>每份包於包藥紙（chartula；縮寫 chart）。如頭痛散（BC powders）、瀉劑（psyllium mucilloid、cholestyramine resin）、灌洗散（massengill）。</li>
+  </ul>
+
+  <h3>品質管制 Quality control</h3>
+  <ul>
+    <li><strong>Bulk powders：</strong>製劑重量 vs 理論重量、顏色均一性、粒子大小、流動性、有無結塊。</li>
+    <li><strong>Divided powders：</strong>製劑重量 vs 理論重量、均一性。</li>
+  </ul>
+
+  <h3>最低內容量試驗法（中華藥典）</h3>
+  <p>適用乳膏、凝膠、洗劑、軟膏、糊劑、粉劑、氣化噴霧劑及噴霧劑等同一規定。一律先取 10 個，不合格再取 20 個。</p>
+  <div class="tbl-wrap">
+  <table>
+    <thead><tr><th>標誌量</th><th>初取 10 件</th><th>不合格再取 20 件（共 30 件）</th></tr></thead>
+    <tbody>
+      <tr><td>≤ 60 g 或 mL</td><td>平均不得少於標誌量；單一不得少於 <strong>90%</strong></td><td>30 件平均不得少於標誌量；少於 90% 者不超過 1 個</td></tr>
+      <tr><td>&gt; 60 g 或 mL</td><td>平均不得少於標誌量；單一不得少於 <strong>95%</strong></td><td>30 件平均不得少於標誌量；少於 95% 者不超過 1 個</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="quiz" data-qid="q37" data-answer="A">
+    <span class="q-meta">111-1</span>
+    <div class="q-text">依中華藥典，有關最低內容量試驗法，於初次選取檢品十件進行測試之敘述，下列何者正確？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>檢品平均內容量不得少於標誌量；如標誌量為 60 克或 60 毫升以下，其單一內容量均不得少於 90%</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>檢品平均內容量不得少於標誌量；如標誌量為 60 克或 60 毫升以上，但在 250 克或 250 毫升以下，其單一內容量均不得少於 85%</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>初次檢測不符合規定時，可另以三十件檢品重行試驗，在全部四十件檢品中，平均內容量不得少於標誌量</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>適用於容器標誌內容量不超過 250 克之軟膏劑</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>A</b></span></div>
+    <div class="explanation">標誌量 ≤60 時單一不得少於 90%，A 正確。不合格係另取 20 件（共 30 件），非 30/40 件。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q37"></textarea></div>
+  </div>
+</section>
+<!-- ============ S9 顆粒劑 ============ -->
+<section id="s9">
+  <h2 class="sec"><span class="num">9</span>Granules 顆粒劑<span class="en">Granules &amp; Granulation</span></h2>
+
+  <h3>定義與特性</h3>
+  <ul>
+    <li><strong>定義：</strong>含一種或多種 API（加或不加其他成分）的粉末粒子之<strong>乾燥凝集物</strong>，通常為 <strong>No.4～12 篩</strong> 大小範圍。</li>
+  </ul>
+  <div class="tbl-wrap">
+  <table>
+    <thead><tr><th colspan="2">顆粒 vs 粉末</th></tr></thead>
+    <tbody>
+      <tr><td class="l"><strong>顆粒</strong></td><td class="l">流動性較佳；溶解較快；比表面積較小；易漂浮之粉末製成顆粒可增溶解速度；較不易吸濕或結塊</td></tr>
+      <tr><td class="l"><strong>粉末</strong></td><td class="l">容易吸濕或結塊；比表面積較大</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="tbl-wrap">
+  <table>
+    <thead><tr><th colspan="2">粗顆粒 vs 細顆粒</th></tr></thead>
+    <tbody>
+      <tr><td class="l"><strong>粗顆粒</strong></td><td class="l">流動性較佳；與粉末混合較易 segregation；比表面積較小、溶解較慢</td></tr>
+      <tr><td class="l"><strong>細顆粒</strong></td><td class="l">與粉末混合較均勻；溶解較快</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h4>組成與應用</h4>
+  <ul>
+    <li>組成：有效成分；稀釋劑、黏合劑、崩散劑、著色劑、矯味劑等。</li>
+    <li>應用：直接吞服或 reconstitution 成溶液／懸浮劑（如 <span class="mono">Lactinex® granules</span>、<span class="mono">Biaxin®</span>、<span class="mono">Augmentin ES-600®</span>、<span class="mono">Ceftin®</span>）；充填膠囊；壓製成錠（發泡顆粒壓錠 <span class="mono">Zantac EFFERdose</span>）。</li>
+  </ul>
+
+  <div class="quiz" data-qid="q38" data-answer="C">
+    <span class="q-meta">112-1</span>
+    <div class="q-text">有關散劑與顆粒劑的比較，下列敘述何者最不適當？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>於靜置時，顆粒劑通常較不易結塊或硬化</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>於大氣中，顆粒劑通常較不易受潮</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>顆粒劑的表面積比相同體積的粉末小，因此不容易濕潤再製成其他劑型</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>顆粒劑通常比散劑容易製成溶液劑或懸浮劑</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>C</b></span></div>
+    <div class="explanation">易漂浮的細粉不易濕潤，做成<strong>顆粒</strong>反而較重會沉入水中、<strong>較好濕潤</strong>並製成溶液／懸浮劑。C 說顆粒「不容易濕潤」最不適當。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q38"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q39" data-answer="D">
+    <span class="q-meta">108-1</span>
+    <div class="q-text">於相同混合條件下，就藥品之粗粒與細粒比較，細粒通常有何特性？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>流動性較佳</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>於儲存時較不會因振動而產生分離狀態</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>較不易溶解或分散於水中</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>較易與其他細粉末混合均勻</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>D</b></span></div>
+    <div class="explanation">細粒與其他細粉大小相近，較易混合均勻（D）。流動性較差、較易分離、溶解較快。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q39"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q40" data-answer="B">
+    <span class="q-meta">103-2</span>
+    <div class="q-text">若以「顆粒劑」與「散劑」來比較，下列之敘述何者較正確？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>於大氣中，散劑通常較不易受潮</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>於大氣中，顆粒劑通常較不易結塊或變硬</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>易飄浮之固體粉末，當欲臨用時加水使成液劑，則顆粒劑通常比散劑較不容易完成</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>藥物於水中不安定時，很適宜將其製成散劑，於臨用時加水使其溶解，而成溶液劑</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>B</b></span></div>
+    <div class="explanation">顆粒劑表面積小、較不易吸濕結塊（B 正確）。散劑表面積大較易受潮（A 錯）；易漂浮粉末做成顆粒反而較易加水成液劑（C 錯）。D 雖合「powder for…」概念但本題以 B 為最正確。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q40"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q41" data-answer="B">
+    <span class="q-meta">101-2</span>
+    <div class="q-text">固體粉末粒徑不同時物性也常不同，假設若原料 A 及原料 B 分別為粒徑 0.2 及 0.8 mm 之球狀粉末，當製劑時由原來之 A 改換為 B 時，試問下列敘述何者正確？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>原料 B 與其他不同粉末混合時，彼此間之混合均勻度會較佳</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>原料 B 粉末流動性較佳</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>原料 B 之溶離度較佳</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>原料 B 之比表面積較大</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>B</b></span></div>
+    <div class="explanation">B（0.8 mm）較大顆 → 流動性較佳（B 正確）。較大顆比表面積較小、溶離較差；與不同粉末混合均勻度未必較佳。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q41"></textarea></div>
+  </div>
+  <h3>顆粒劑之製備</h3>
+  <h4>濕法 wet granulation</h4>
+  <ul>
+    <li><strong>濕法 I：</strong>稱重混合 → 濕潤形成濕團塊（捏起成團、丟下能大致散開為佳）→ 通過篩網造粒 → 乾燥盤乾燥（定期翻動防結塊）。</li>
+    <li><strong>濕法 II（fluid bed 流動床）：</strong>粒子於錐形槽以風力分散懸浮 → 噴灑含黏合劑液態賦形劑造粒 → 立即乾燥至所需水分。</li>
+  </ul>
+  <h4>乾法 dry granulation</h4>
+  <ul>
+    <li><strong>乾法 I（roll compactor 滾壓機）：</strong>乾粉經相對旋轉滾筒壓成緊密薄片 → 造粒機形成均一顆粒 → 可再壓錠。</li>
+    <li><strong>乾法 II（slugging）：</strong>乾粉經壓製機（8000～12000 磅）壓成大錠片／塊（slug，直徑約 2.5 cm 扁平片）→ 再造粒。此法常產生粉狀細粒，需分離收集再處理。</li>
+  </ul>
+  <div class="card tip"><span class="label">設備</span>Low shear、<strong>High shear mixers/granulators</strong>（大型刮刀＋高速切碎刀片，混合＋切粒效率高）。大型 V-blender／Double-cone 加黏合劑可順便造粒。</div>
+
+  <h4>噴霧乾燥 spray dryers</h4>
+  <p>液體（solution／suspension）噴成小液滴＋熱空氣 → 蒸發乾燥。粉末顆粒<strong>均勻、近似球形、尺寸均勻、常中空、流動性佳</strong>；水分迅速蒸發使產品保持冷卻 → <strong>適用對熱敏感材料</strong>（胺基酸、抗生素如 aureomycin/bacitracin/penicillin/streptomycin、ascorbic acid、cascara/liver extracts、pepsin、protein hydrolysates、thiamine）。</p>
+
+  <h4>噴霧凝結 spray congealing</h4>
+  <p>類似噴霧乾燥但<strong>過程不加熱</strong>（設備相同）。由熔化固體組成，將熔融進料噴入空氣／氣流製成小珠或粉末（如 mannitol 167° 熔化後噴霧凝結成小珠）。</p>
+
+  <h4>流動床 fluid bed（造粒／包衣）</h4>
+  <ul>
+    <li><strong>頂噴式：</strong>噴槍於頂部向下霧化（似 spray dryers），用於造粒最多。</li>
+    <li><strong>底噴式（包覆）：</strong>底部噴槍向上噴，中空導管造成對流；糖蕊（nonpareil seed）外表形成薄膜，達包覆效果（批量較少）。</li>
+    <li><strong>側噴式（粉末包覆造粒）：</strong>轉盤旋轉使核心滾動，側噴液劑同時定量下粉，一層層包覆造粒。</li>
+  </ul>
+
+  <div class="quiz" data-qid="q42" data-answer="B">
+    <span class="q-meta">112-2</span>
+    <div class="q-text">實務上有時會將噴霧造粒和冷凍乾燥搭配操作製備藥品，其最主要目的為何？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>均在低溫生產，產品較穩定</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>噴霧造粒可獲得最大表面積，以利進行冷凍乾燥</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>冷凍乾燥可獲得最大表面積，以利進行噴霧造粒</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>冷凍乾燥抽真空，幫助噴霧造粒時脫水的過程</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>B</b></span></div>
+    <div class="explanation">噴霧造粒先把液體變一顆顆小顆粒（表面積大、分散），後續冷凍乾燥比一整坨冰乾得快很多，故 B。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q42"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q43" data-answer="C">
+    <span class="q-meta">112-1</span>
+    <div class="q-text">實務上，進行噴霧乾燥時，若提高乾燥溫度，下列敘述何者最適當？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>粉末易黏結使顆粒變大</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>不影響顆粒大小</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>顆粒較易粉碎</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>粉末黏結使沉降速度加快</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>C</b></span></div>
+    <div class="explanation">提高乾燥溫度使水分蒸發更快、顆粒乾硬中空、<strong>較易粉碎</strong>，故 C。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q43"></textarea></div>
+  </div>
+</section>
+<!-- ============ S10 發泡顆粒鹽 ============ -->
+<section id="s10">
+  <h2 class="sec"><span class="num">10</span>發泡顆粒鹽<span class="en">Effervescent Granulated Salts</span></h2>
+
+  <h4>定義與組成</h4>
+  <ul>
+    <li><strong>定義：</strong>使用前將顆粒溶於／分散於水中，發泡後再服用。</li>
+    <li><strong>組成：</strong>有效成分；鹼 <span class="mono">sodium bicarbonate</span>（碳酸氫鈉）；酸 <span class="mono">citric acid</span> 與／或 <span class="mono">tartaric acid</span>。</li>
+  </ul>
+  <div class="card key"><span class="label">酸的搭配（必背 1:2）</span>citric acid : tartaric acid <strong>= 1 : 2</strong> 合併使用最佳。<br>只用 tartaric acid → 顆粒失去堅固、變脆（有鹹味）；只用 citric acid → 產生較黏混合物、難造粒（易吸濕）。</div>
+  <ul>
+    <li><strong>特性：</strong>碳酸化溶液可掩蓋藥品不良味道；用粗粒劑型比小粉末溶解慢，可預防劇烈而無法控制之發泡（故市面少見發泡「粉」）。</li>
+  </ul>
+
+  <h4>製備（器具須用不鏽鋼或抗酸材料；環境低濕度）</h4>
+  <ul>
+    <li><strong>乾法／熔合法 Dry/fusion：</strong>citric acid <strong>monohydrate</strong> 結晶先粉化，與相同篩號粉末混合 → 置烘箱 <strong>34～40°C</strong> 並以抗酸藥刀攪拌成軟塊（利用<strong>結晶水當黏合劑</strong>）→ 過篩造粒 → <strong>不超過 54°C</strong> 乾燥 → 立即緊密封存（緊密乾燥廣口玻璃瓶或防潮包裝）。</li>
+    <li><strong>濕法 Wet：</strong>citric acid 結晶先粉化混合 → 加<strong>水醇溶液</strong>（水加入乙醇作濕化劑，分次添加）成軟塊 → 過篩造粒 → 不超過 54°C 乾燥 → 立即緊密封存。</li>
+  </ul>
+  <div class="card warn"><span class="label">篩號（不鏽鋼／抗酸）</span>No.4 大顆 · No.8 中顆 · No.10 小顆。乾燥溫度<strong>不可超過 54°C</strong>（超過 CO₂ 開始逸失）；乾燥後須<strong>立即</strong>緊密封存（防吸濕再反應冒泡）。錠劑劑型：酸與鹼分別加惰性粉末造粒，再混合壓錠較易製備。</div>
+
+  <div class="quiz" data-qid="q44" data-answer="B">
+    <span class="q-meta">113-2</span>
+    <div class="q-text">有關發泡顆粒劑（effervescent granules）之製備方法，下列敘述何者最適當？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>乾法是以酒精作為黏合劑，濕法則是以水作為黏合劑</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>在粉末混合物形成軟塊之過程中，乾法需經過適當之加熱</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>乾法是以無水檸檬酸進行顆粒製備，濕法是以含結晶水檸檬酸製備之</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>兩種方法製得之顆粒，以 65℃ 溫度烘乾後，須立即放入密蓋容器中儲存</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>B</b></span></div>
+    <div class="explanation">乾法（熔合法）需加熱（34～40°C）釋出結晶水當黏合劑，B 正確。乾法用含結晶水檸檬酸；乾燥不可超過 54°C（非 65°C）。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q44"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q45" data-answer="D">
+    <span class="q-meta">112-2</span>
+    <div class="q-text">有關發泡顆粒之敘述，下列何者錯誤？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>單獨使用檸檬酸易成黏稠混合物，致難以造粒</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>單獨使用酒石酸時，其顆粒易失去堅固性而易碎</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>以融合法製備時，為利用檸檬酸的結晶水作為黏合劑</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>以濕式法製備時，須添加碳酸氫鈉為黏合劑</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>D</b></span></div>
+    <div class="explanation">濕式法以<strong>水醇溶液</strong>為黏合劑，非碳酸氫鈉（碳酸氫鈉是反應產生 CO₂ 之鹼），D 錯誤。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q45"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q46" data-answer="C">
+    <span class="q-meta">112-1</span>
+    <div class="q-text">有關發泡顆粒劑之敘述，下列何者最適當？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>應貯存於易開啟之廣口容器中</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>基本成分常包含酒石酸、檸檬酸及碳酸鈉</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>對於鹽類性藥品通常具矯味作用</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>主成分通常為難溶性藥品</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>C</b></span></div>
+    <div class="explanation">碳酸化溶液可矯味（C 正確）。應貯存緊密容器；鹼為碳酸氫鈉（非碳酸鈉）；主成分通常為<strong>水溶性</strong>（難溶會殘留白粉、賣相差）。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q46"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q47" data-answer="B">
+    <span class="q-meta">110-2</span>
+    <div class="q-text">以乾式法製備「發泡性顆粒劑」時，下列敘述何者錯誤？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>通常以檸檬酸之結晶水為黏合劑</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>為得較均一之粒徑，檸檬酸粉末應先通過銅製篩網過篩</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>混合後之粉末宜置於 34～40℃ 烘箱加熱，並偶爾攪拌，以製備軟塊</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>製得之軟塊通常含許多小氣孔，故其外觀常成海綿狀</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>B</b></span></div>
+    <div class="explanation">器具須用不鏽鋼或<strong>抗酸</strong>材料，非銅製篩網，B 錯誤。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q47"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q48" data-answer="B">
+    <span class="q-meta">110-1</span>
+    <div class="q-text">製備發泡性顆粒劑時，下列敘述何者錯誤？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>乾式法或熔合法製備時，黏合劑的來源是檸檬酸的結晶水</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>溼式法製備時，只以水作為黏合劑，將粉末潤溼，製得軟塊以造粒</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>製備過程所接觸之容器，必須為不銹鋼或其他抗酸之材質</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>乾燥後之顆粒，應立即放入容器中緊密封存</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>B</b></span></div>
+    <div class="explanation">濕式法以<strong>水醇溶液</strong>（含乙醇）為黏合劑，非「只以水」，否則酸鹼會立即反應，B 錯誤。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q48"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q49" data-answer="B">
+    <span class="q-meta">108-2</span>
+    <div class="q-text">有關發泡性顆粒劑之敘述，下列何者最正確？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>主藥通常為難溶性藥物</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>此類劑型對於鹽類性藥物通常具有相對有效之矯味作用</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>常併用酒石酸、檸檬酸及碳酸鈉為配方中之基本成分</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>應貯存於易開啟之廣口容器中</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>B</b></span></div>
+    <div class="explanation">矯味作用 B 正確。主藥通常水溶性；鹼為碳酸氫鈉；應緊密容器貯存。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q49"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q50" data-answer="C">
+    <span class="q-meta">105-1</span>
+    <div class="q-text">以溼式法製備「發泡性顆粒劑」時，下列敘述何者錯誤？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>通常以含水之酒精作為黏合劑，將粉末潤溼，以製得軟塊</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>將軟塊過篩製粒後，移置於烘箱，以低於 54℃ 溫度乾燥</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>乾燥後之顆粒應置於空氣中冷卻，始能分包裝填</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>製備過程所接觸之容器，宜為不銹鋼之材質</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>C</b></span></div>
+    <div class="explanation">乾燥後須<strong>立即</strong>緊密封存，不可置於空氣中冷卻（會吸濕再冒泡），C 錯誤。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q50"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q51" data-answer="B">
+    <span class="q-meta">104-1</span>
+    <div class="q-text">製備「發泡性顆粒劑」時，下列何者通常不是配方中必要之成分？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>檸檬酸</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>氫氧化鈉</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>酒石酸</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>主藥</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>B</b></span></div>
+    <div class="explanation">配方必要成分為主藥、酸（檸檬酸／酒石酸）、鹼（碳酸氫鈉）。<strong>氫氧化鈉</strong>非必要成分。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q51"></textarea></div>
+  </div>
+
+  <h4>製備計算（酸鹼比例 1 : 2 : 3.4）</h4>
+  <div class="card key"><span class="label">必背比例</span>citric acid : tartaric acid : <span class="mono">NaHCO₃</span> = <strong>1 : 2 : 3.4</strong>。<br>
+  推導：設 citric acid 1 g → 與 <span class="mono">NaHCO₃</span> 反應需 1.2 g；設 tartaric acid 2 g → 與 <span class="mono">NaHCO₃</span> 反應需 2.24 g；合計 <span class="mono">NaHCO₃</span> = 1.2 + 2.24 = 3.44 ≈ <strong>3.4</strong>（零頭 0.04 不加，使略偏酸，配合甜味劑成酸甜口感）。</div>
+  <div class="card tip"><span class="label">120 g 範例</span>一次服 1 TSP ≈ 5 g（含主成分 500 mg）。批量 120 g → 可服 120 ÷ 5 = 24 次；主成分 500 mg × 24 = 12 g；發泡材料 = 120 − 12 = 108 g，再依 1 : 2 : 3.4 分配 citric / tartaric / <span class="mono">NaHCO₃</span>。含一結晶水之 citric acid 故可用乾法。</div>
+
+  <div class="quiz" data-qid="q52" data-answer="A">
+    <span class="q-meta">112-2</span>
+    <div class="q-text">欲製備批量為 200 g 之 <span class="mono">acetaminophen</span> 100 mg/g 的發泡顆粒，已知 citric acid : tartaric acid = 1 : 2 可得到最佳產品，則碳酸氫鈉應取若干 g？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>96</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>48</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>17</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>34</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>A</b></span></div>
+    <div class="explanation">主成分 = 200 g × 100 mg/g = 20 g；發泡材料 = 200 − 20 = 180 g。酸鹼比 citric : tartaric : <span class="mono">NaHCO₃</span> = 1 : 2 : 3.4，<span class="mono">NaHCO₃</span> = 180 × 3.4 ÷ (1+2+3.4) = 180 × 3.4 ÷ 6.4 = <strong>96 g</strong>。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q52"></textarea></div>
+  </div>
+</section>
+
+<section id="bank">
+  <div class="bank-head">
+    <h2>歷屆國考題庫（統整）</h2>
+    <p>含講義未分段之歷屆題（q53–q66）＋全章節題目重整（q1–q52）。補充筆記與內文同步。</p>
+  </div>
+
+  <h3 style="margin-top:8px;">A · 歷屆綜合題（講義 p141–155）</h3>
+  <div class="quiz" data-qid="q53" data-answer="C">
+    <span class="q-meta">114-1</span>
+    <div class="q-text">依中華藥典，有關粉劑之敘述，下列何者錯誤？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>外用粉劑應能通過 100 號篩，避免刺激皮膚</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>隨著粒徑減小，顆粒表面積增加，藥品溶解速率提高</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>細顆粒通常比粗顆粒更易流動</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>粉劑中可加入法定色素著色</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>C</b></span></div>
+    <div class="explanation">C 錯誤：<strong>粗顆粒</strong>流動性較佳，細顆粒間吸附力大反而流動差。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q53"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q54" data-answer="A">
+    <span class="q-meta">103-2</span>
+    <div class="q-text">符合中華藥典第七版規格之「生藥粗粉」，所有粉粒均應通過第幾號標準試驗篩？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>20</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>40</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>60</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>100</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>A</b></span></div>
+    <div class="explanation">生藥粗粉：所有粉粒均通過 <strong>20</strong> 號篩。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q54"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q55" data-answer="A">
+    <span class="q-meta">113-1</span>
+    <div class="q-text">當固體粉末之粒徑差異性很大時，最易出現之現象為何？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>其製劑因運送過程之震動而分層</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>因細粒之存在而使膠囊劑之充填更緻密</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>可溶性藥物口服時可得多次釋放作用</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>製備為懸液劑時較不易結塊</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>A</b></span></div>
+    <div class="explanation">粒徑差異大主要造成 <strong>segregation（分離／分層）</strong>，A 正確。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q55"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q56" data-answer="B">
+    <span class="q-meta">102-2</span>
+    <div class="q-text">以比重瓶內裝汞，可測得多孔性質粒之密度為何？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>Bulk density</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>Granule density</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>Total density</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>True density</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>B</b></span></div>
+    <div class="explanation">汞取代法測得<strong>顆粒體積</strong>（含表面孔隙，不入內部真孔）→ <strong>Granule density</strong>。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q56"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q57" data-answer="D">
+    <span class="q-meta">102-1</span>
+    <div class="q-text">下列何者為分析粒徑在 50 μm 以上質粒之常用分析方法？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>光學顯微鏡</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>電子顯微鏡</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>沉降法</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>過篩法</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>D</b></span></div>
+    <div class="explanation">過篩法測較大顆（40～9500 μm），50 μm 以上常用 <strong>過篩法</strong>。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q57"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q58" data-answer="A">
+    <span class="q-meta">102-1</span>
+    <div class="q-text">符合藥典之「化學藥品中粉」，所有粉粒均應通過第幾號標準試驗篩？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>40</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>60</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>80</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>100</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>A</b></span></div>
+    <div class="explanation">化學藥品中粉：所有粉粒均通過 <strong>40</strong> 號篩（化學 20/40/80/120）。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q58"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q59" data-answer="C">
+    <span class="q-meta">101-2</span>
+    <div class="q-text">粒徑之表示法中有所謂之「容積直徑（volume diameter）」…下列何種儀器或方法最適宜測定容積直徑？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>篩網過篩</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>顯微鏡觀察</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span><span class="mono">Coulter counter</span> 測定</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span><span class="mono">Andersen pipette</span> 測沈降速率</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>C</b></span></div>
+    <div class="explanation">電子計數器 <span class="mono">Coulter counter</span> 測<strong>體積</strong>（容積直徑），C 正確。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q59"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q60" data-answer="D">
+    <span class="q-meta">101-2</span>
+    <div class="q-text">固體粉末於造粒後，下列物理性質之變化，何者較不易發生？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>粉體流動性增加</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>粉體內粉粒之分層現象減少</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>粉粒壓縮性增加</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>粉粒較易結塊</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>D</b></span></div>
+    <div class="explanation">造粒後較<strong>不易</strong>結塊（流動性↑、分層↓），故「較易結塊」不會發生，D 正確。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q60"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q61" data-answer="B">
+    <span class="q-meta">101-2</span>
+    <div class="q-text">欲使吸入用之「散劑」深達支氣管，以期能局部緩解或預防氣喘…則其粒徑至多應達多少 μm？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>0.1~0.5</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>1~6</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>8~15</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>20~25</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>B</b></span></div>
+    <div class="explanation">深達支氣管／肺部之吸入粒徑 <strong>1～6 μm</strong>。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q61"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q62" data-answer="A">
+    <span class="q-meta">101-1</span>
+    <div class="q-text">造粒後，與原粉末比較，其優點為何？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>藥物較安定</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>較不易被溶媒濕潤</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>較會結塊</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>較省空間</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>A</b></span></div>
+    <div class="explanation">造粒後表面積減小、較不吸濕 → <strong>藥物較安定</strong>，A 正確。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q62"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q63" data-answer="B">
+    <span class="q-meta">101-1</span>
+    <div class="q-text">化學物質粉末的中粉是指：</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>20 號粉</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>40 號粉</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>60 號粉</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>80 號粉</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>B</b></span></div>
+    <div class="explanation">化學藥品中粉 = 所有粉通過 <strong>40</strong> 號篩 → 40 號粉。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q63"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q64" data-answer="A">
+    <span class="q-meta">101-1</span>
+    <div class="q-text">一個半徑 5 cm 的球體，裝在邊長 10 cm 的正方體空盒中，其孔隙度約為多少？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>47%</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>30%</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>25%</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>10%</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>A</b></span></div>
+    <div class="explanation">孔隙度 = (10³ − 4/3·π·5³) ÷ 10³ × 100% = (1000 − 523.6) ÷ 1000 ≈ <strong>47.6%</strong>。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q64"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q65" data-answer="D">
+    <span class="q-meta">101-1</span>
+    <div class="q-text">顯微鏡觀察測得的粒徑稱為：</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>算數平均粒徑</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>容積表面平均粒徑</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>史特克當量粒徑</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>投影粒徑</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>D</b></span></div>
+    <div class="explanation">顯微鏡觀察 → <strong>投影粒徑（projected diameter）</strong>。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q65"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q66" data-answer="B">
+    <span class="q-meta">101-1</span>
+    <div class="q-text">光學顯微鏡可見之低限約為：</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>50 nm</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>500 nm</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>5 μm</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>50 μm</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>B</b></span></div>
+    <div class="explanation">光學顯微鏡可見低限約 <strong>500 nm</strong>。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q66"></textarea></div>
+  </div>
+
+  <h3 style="margin-top:28px;">B · 各章節題目重整（依講義順序 q1–q52）</h3>
+  <div class="quiz" data-qid="q1" data-answer="D">
+    <span class="q-meta">112-2</span>
+    <div class="q-text">有關散劑之特性，下列敘述何者最適當？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>係僅供內服之一種製劑</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>對易降解之藥物而言，散劑通常比錠劑來得安定</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>宜用廣口且能緊密關閉之容器貯存，以避免空氣之影響及揮發性成分之散失</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>極易溶解，且對腸胃道刺激性較大之藥品，通常膠囊劑比散劑更易引起噁心、嘔吐</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>D</b></span></div>
+    <div class="explanation">散劑可內服可外用（A 錯，非僅供內服）。散劑表面積大、直接溶離，對易溶且具刺激性的藥品，散劑分散快、刺激較廣，膠囊則把藥物包覆延遲釋出，故膠囊「較不易」引起噁心嘔吐──D 敘述為「膠囊比散劑更易引起」屬此題設定之最適當選項。B、C 雖部分正確但本題以 D 為答。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q1"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q2" data-answer="B">
+    <span class="q-meta">114-1</span>
+    <div class="q-text">有關局部用散劑（topical powders）之敘述，下列何者最適當？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>可使用高度吸濕的散劑於滲出性傷口</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>應避免使用親水性較強的粉劑</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>散劑應設計為有較低的流動型，增加附著於皮膚的能力</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>使用具有較小表面積的散劑可提高流動性、均勻度及皮膚的涼感</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>B</b></span></div>
+    <div class="explanation">A：吸濕性粉末用於滲液傷口會吸液結痂，錯。B：親水／高吸水性粉末吸汗或滲液後黏結，應避免，<strong>正確</strong>。C：流動性太低無法均勻撒佈，錯。D：較小表面積＝較大顆粒，需通過 100 號篩；均勻度、皮膚涼感與表面積無絕對相關，錯。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q2"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q3" data-answer="A">
+    <span class="q-meta">108-1</span>
+    <div class="q-text">Polyox® 為高分子量之 ethylene oxide polymer，有時會添加於吹入劑（insufflated powders）的配方中，通常其添加之主要目的為何？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>延長藥物於黏膜之作用時間</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>增加藥物溶解度及溶離</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>使於黏膜處具等張性</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>具抗菌作用，輔以增強藥效</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>A</b></span></div>
+    <div class="explanation">Polyox® 為水分活化黏劑，遇黏膜水分形成黏附性凝膠，使藥物黏著於黏膜、<strong>延長作用時間</strong>，故選 A。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q3"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q4" data-answer="B">
+    <span class="q-meta">102-2</span>
+    <div class="q-text">於實務上，不同固體粉末之混合均勻度，受固體粉末之何因素影響最小？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>粒徑粗細</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>密度大小</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>粉粒外型</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>靜電存在與否</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>B</b></span></div>
+    <div class="explanation">四者皆會影響，但題問「最小」。混合時通常有外力（攪拌、翻轉）介入，可對抗密度差異，故<strong>密度</strong>在混合過程影響相對最小（但混合「完成後」密度差仍易造成沉降分離）。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q4"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q5" data-answer="D">
+    <span class="q-meta">113-1</span>
+    <div class="q-text">依據中華藥典，對化學藥品粉末粗細度之規定，「細粉」之所有粉粒均應通過幾號標準試驗篩？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>20</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>40</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>60</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>80</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>D</b></span></div>
+    <div class="explanation">化學藥品粉末：粗 20 / 中 40 / <strong>細 80</strong> / 極細 120。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q5"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q6" data-answer="C">
+    <span class="q-meta">112-2</span>
+    <div class="q-text">若某批生藥粉末可完全通過 40 號標準試驗篩，且 30% 可通過 80 號標準試驗篩時，是屬於中華藥典所列何種粉末粗細度？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>極粗粉</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>粗粉</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>中粉</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>細粉</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>C</b></span></div>
+    <div class="explanation">生藥粉末完全通過 40 號 → 中粉；下限條件「通過 80 號者不得超過 40%」，30% &lt; 40% 符合，故為<strong>中粉</strong>。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q6"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q7" data-answer="B">
+    <span class="q-meta">101-1</span>
+    <div class="q-text">標準篩篩號 400 之篩孔約為多少 μm？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>30</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>38</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>45</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>63</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>B</b></span></div>
+    <div class="explanation">15000 ÷ 400 ≈ 37.5 → 選 38 μm。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q7"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q8" data-answer="D">
+    <span class="q-meta">103-2</span>
+    <div class="q-text">一般乾粉吸入劑之粉末，其粒徑範圍以下列何者最適當？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>&lt; 1 μm</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>&gt; 15 μm</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>7～15 μm</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>1～6 μm</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>D</b></span></div>
+    <div class="explanation">乾粉吸入劑深達支氣管／肺部，粒徑約 1～5（6）μm。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q8"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q9" data-answer="A">
+    <span class="q-meta">110-2</span>
+    <div class="q-text">下列何種測定粉末粒子大小之方法，其估算粒子平均大小之原理與重量有關？①過篩法 ②光學顯微鏡法 ③電子感應區法（Coulter counter）④沉降法</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>僅 ①④</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>僅 ②③</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>①③④</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>②③④</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>A</b></span></div>
+    <div class="explanation">過篩法（秤各篩重）與沉降法（Andreasen pipette 吸取後乾燥秤重）與<strong>重量</strong>有關。光學顯微鏡測投影面積、Coulter counter 測體積，與重量無關。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q9"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q10" data-answer="B">
+    <span class="q-meta">109-2</span>
+    <div class="q-text">下列何者可測量質粒之體積？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>air permeability</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>Coulter Counter</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>microscopic method</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>sedimentation method</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>B</b></span></div>
+    <div class="explanation">Coulter counter（電子感應區法）測粒子<strong>體積</strong>。air permeability 測表面積、microscopy 測投影、sedimentation 與重量／沉降速率有關。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q10"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q11" data-answer="C">
+    <span class="q-meta">109-1</span>
+    <div class="q-text">以沉降速率法測量藥物粉末之粒徑時，下列敘述何者正確？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>測定原理與 Smoluchowski equation 有關</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>粒徑平方與分散媒液之黏度成反比</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>測量粉末粒徑時，需先得知其密度</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>一般檢測時常用之儀器為立體雷射攝影機</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>C</b></span></div>
+    <div class="explanation">沉降法依 Stokes' law，公式含質粒密度 ρ，故<strong>需先知密度</strong>。原理為 Stokes（非 Smoluchowski）；常用儀器為 Andreasen pipette（非立體雷射攝影）。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q11"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q12" data-answer="A">
+    <span class="q-meta">108-2</span>
+    <div class="q-text">下列何種方法不適合測量藥物粒子大小？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>Fisher sub-sieve sizer</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>optical microscopy</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>sedimentation</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>sieve analysis</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>A</b></span></div>
+    <div class="explanation">Fisher sub-sieve sizer 測<strong>表面積</strong>（再換算平均粒徑屬間接），相對不直接適合測「粒子大小」；其餘三者皆為直接測粒徑方法。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q12"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q13" data-answer="B">
+    <span class="q-meta">102-2</span>
+    <div class="q-text">下列有關 Fisher subsieve sizer 之敘述，何者錯誤？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>可用來測定粉末之表面積</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>是利用空氣受電離子化之原理</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>空氣進入樣本前宜恆壓</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>空氣進入樣本前宜除濕</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>B</b></span></div>
+    <div class="explanation">Fisher subsieve sizer 為<strong>氣體通透（空氣阻力）</strong>原理，非「空氣電離子化」，B 錯誤。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q13"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q14" data-answer="A">
+    <span class="q-meta">102-1</span>
+    <div class="q-text">下列何者可測量質粒之比表面積？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>Air permeability</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>Coulter counter</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>Sedimentation method</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>Sieve analysis</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>A</b></span></div>
+    <div class="explanation">Air permeability（氣體通透／吸著法）測<strong>比表面積</strong>。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q14"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q15" data-answer="C">
+    <span class="q-meta">109-1</span>
+    <div class="q-text">粉末質粒在重力作用下，其流動性常受到粉末間之磨擦力及吸附力之影響，就此相關敘述之比較，下列何者最正確？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>粉末粒徑大於 10 μm 以上時，顆粒間吸附力會相對性地增大</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>當混合不同材質之粉末時，粉末間之密度差異性通常對整個粉體之流動性影響很小</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>評估粉末流動性時，通常以 flow meter 之測定值比評估粉末安息角較具實用參考價值</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>膠囊劑之重量差異受粉末流動性之影響小</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>C</b></span></div>
+    <div class="explanation">A：粒徑越大吸附力越小（錯）。B：密度差異會影響流動性（錯）。C：flow meter 比安息角準（正確）。D：膠囊重量差異受流動性影響大（錯）。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q15"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q16" data-answer="D">
+    <span class="q-meta">113-1</span>
+    <div class="q-text">下列何者與粉體流動特性（powder flowability）最不相關？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>Carr's index</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>angle of repose</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>Hausner ratio</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>contact angle</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>D</b></span></div>
+    <div class="explanation">contact angle 接觸角看液體對固體之<strong>潤濕性</strong>（0°完全濕潤、180°完全不濕潤），與流動性無關。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q16"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q17" data-answer="D">
+    <span class="q-meta">111-1</span>
+    <div class="q-text">有關粒子密度大小，下列何者正確？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>bulk density ＞ granule density ＞ true density</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>granule density ＞ bulk density ＞ true density</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>true density ＞ bulk density ＞ granule density</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>true density ＞ granule density ＞ bulk density</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>D</b></span></div>
+    <div class="explanation">體積 true &lt; granule &lt; bulk，故密度 <strong>true ＞ granule ＞ bulk</strong>。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q17"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q18" data-answer="C">
+    <span class="q-meta">110-1</span>
+    <div class="q-text">有關粉體之流動性，下列敘述何者最適當？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>粒徑越小流動性越佳</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>壓縮比越大流動性越佳</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>以圓形粒子之流動性較佳</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>具較大安息角之流動性較佳</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>C</b></span></div>
+    <div class="explanation">圓形粒子流動性較佳（C）。粒徑越小／壓縮比越大／安息角越大，流動性皆越差。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q18"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q19" data-answer="D">
+    <span class="q-meta">110-1</span>
+    <div class="q-text">將重量 36 g 之粉末小心倒入 100 mL 之量筒，測得整體體積（bulk volume）為 72 mL，若此時之整體孔度（porosity）為 25%，該粉末之真密度（true density）為多少 g/mL？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>0.36</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>0.48</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>0.54</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>0.67</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>D</b></span></div>
+    <div class="explanation">整體孔度 = (V整 − V真)/V整 → 0.25 = (72 − V真)/72 → V真 = 54 mL。真密度 = 36/54 ≈ <strong>0.67 g/mL</strong>。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q19"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q20" data-answer="A">
+    <span class="q-meta">102-1</span>
+    <div class="q-text">安息角（angle of repose）之數值通常較可反應出何種物理性質？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>粉粒間之吸附力或磨擦力</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>粉粒間之壓縮性及流動性</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>粉粒之潤濕性及分散性</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>粉體密度（bulk density）及壓縮性</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>A</b></span></div>
+    <div class="explanation">安息角源於粉粒間<strong>吸附力與摩擦力</strong>。壓縮性需 Carr's index／Hausner ratio（bulk 與 tapped density）才能看；潤濕性看接觸角。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q20"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q21" data-answer="A">
+    <span class="q-meta">110-1</span>
+    <div class="q-text">下列何者無法達到粉末粒度小於 120 mesh？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>錘擊式粉碎機（impact crusher）</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>水飛法（water grinding）</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>流能磨（fluid energy mill）</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>球磨機（ball mill）</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>A</b></span></div>
+    <div class="explanation">impact crusher 屬 crusher（最粗），無法達到 &lt;120 mesh 細度。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q21"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q22" data-answer="A">
+    <span class="q-meta">105-1</span>
+    <div class="q-text">下列何種粉碎機器，一般得到之粒子較大？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>Roller mill</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>Ball mill</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>Fluid-energy mill</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>Colloid mill</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>A</b></span></div>
+    <div class="explanation">Roller mill 較粗；ball / fluid-energy / colloid mill 皆屬細磨。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q22"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q23" data-answer="C">
+    <span class="q-meta">111-1</span>
+    <div class="q-text">有關球磨機之敘述，下列何者最不適當？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>圓球重量和硬度要足夠</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>圓球大小可不同，以增加圓球間的研磨作用</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>圓球數量至少應為整體球罐體積之 60%</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>常見的圓球材質是鐵球和陶瓷</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>C</b></span></div>
+    <div class="explanation">球量約 45～55%（非 60%），太滿無掉落空間，C 最不適當。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q23"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q24" data-answer="D">
+    <span class="q-meta">103-1</span>
+    <div class="q-text">以球磨機研磨固體粉末時，下列敘述何者最不適當？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>研磨效率深受轉動速率影響</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>球壺內容物容量占 45~55% 時研磨效率較佳</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>研磨用球之密度越大，則研磨效率通常越佳</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>不適用於溼式研磨為其主要缺點</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>D</b></span></div>
+    <div class="explanation">球磨機<strong>適用</strong>濕式研磨（粉體奈米化濕式球磨效率高、安全性高），D 錯誤。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q24"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q25" data-answer="B">
+    <span class="q-meta">103-2 · 101-1</span>
+    <div class="q-text">有關 hammer mills 之原理，下列敘述何者最適當？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>藉由高速氣流產生之切力，造成顆粒彼此互相撞擊以粉碎粒子</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>藉由槌或葉片快速撞擊粉碎粒子，並通過篩網得到適當大小之粒子</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>藉由不鏽鋼球的摩擦撞擊粉碎顆粒，並配合震盪裝置以提高效率</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>藉由旋轉軸上之刀片，對物質進行剪切以降低粒子大小</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>B</b></span></div>
+    <div class="explanation">B 為 hammer mill 原理。A 為 fluid-energy mill；C 為 ball mill；D 為 cutter mill。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q25"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q26" data-answer="B">
+    <span class="q-meta">101-1</span>
+    <div class="q-text">有關槌式研磨機（Hammer mill），所得到粒子大小之敘述，下列何者錯誤？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>粒子大小受轉速影響</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>粒子大小與篩網厚薄無關</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>粒子大小與槌（Hammer）之種類與數目有關</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>粒子大小受進料速度影響</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>B</b></span></div>
+    <div class="explanation">篩網厚薄會影響粒子大小（篩網厚 → 粒子小），B「無關」錯誤。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q26"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q27" data-answer="C">
+    <span class="q-meta">112-1</span>
+    <div class="q-text">下列何種研磨機，研磨過程最適用於對熱不安定的藥品？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>錘擊式粉碎機（impact crushers）</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>顎式粉碎機（jaw crusher）</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>流能磨（fluid-energy mill）</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>球磨機（ball mill）</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>C</b></span></div>
+    <div class="explanation">fluid-energy mill 氣體膨脹帶走熱、效率高，最適合不耐熱藥品。槌、撞、磨皆會生熱。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q27"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q28" data-answer="D">
+    <span class="q-meta">109-2</span>
+    <div class="q-text">將邊長 1 cm 的正立方體切割成邊長 0.1 μm 相同大小的正立方體，下列敘述何者正確？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>比表面積是 6,000 cm⁻¹</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>可切割成 10⁹ 個邊長 0.1 μm 的正立方體</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>比表面積變為原來的 10,000 倍</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>切割後的粒徑大小屬於膠體</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>D</b></span></div>
+    <div class="explanation">0.1 μm = 10⁻⁵ cm，落在膠體範圍（1 nm～0.5/1 μm），D 正確。1 cm = 10⁵ × 10⁻⁵ cm，每邊切 10⁵ 段 → 共 (10⁵)³ = 10¹⁵ 個（非 10⁹）；比表面積增加 10⁵ 倍（非 10000）。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q28"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q29" data-answer="C">
+    <span class="q-meta">105-1</span>
+    <div class="q-text">邊長為 10 μm 的立方固體，若經分割形成邊長為 100 nm 的微小立方形固體，其比表面積增加幾倍？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>1</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>10</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>100</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>1000</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>C</b></span></div>
+    <div class="explanation">10 μm = 10000 nm，邊長縮為 100 nm → 縮小 100 倍。比表面積 ∝ 1/邊長，故增加 <strong>100 倍</strong>。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q29"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q30" data-answer="D">
+    <span class="q-meta">111-1</span>
+    <div class="q-text">有關混合操作要點，下列敘述何者最不適當？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>各成分密度差較大時，先裝密度小的原料，再裝密度大的原料</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>成分比例量相差懸殊時，應採用幾何稀釋法混合</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>物理狀態和粉末粗細相近的等量藥物，較容易混合均勻</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>若藥物色澤差異大，先加色淺的再加色深的藥物混合，此方法稱為「spatulation method」</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>D</b></span></div>
+    <div class="explanation">先加色淺再加色深（利於觀察是否混勻，常用於毒劇藥）敘述正確，但此法<strong>不叫 spatulation</strong>（spatulation 只是調藥刀拌合，與顏色無關），故 D 最不適當。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q30"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q31" data-answer="B">
+    <span class="q-meta">102-2</span>
+    <div class="q-text">欲將塊狀樟腦製成固體粉末，下列所述方法中何者較適當？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>在球磨機中以鋼球撞擊研磨之</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>先將其置於研缽中，隨後加少量酒精以杵研磨，再於開放空間中任其乾燥</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>以溶劑溶解後，再噴霧乾燥即可</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>以水溶解後，再行凍晶乾燥</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>B</b></span></div>
+    <div class="explanation">樟腦 camphor 為 gummy material，用<strong>介入研磨法</strong>：加少量酒精助研磨，酒精揮發後得乾粉，B 正確。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q31"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q32" data-answer="B">
+    <span class="q-meta">102-1</span>
+    <div class="q-text">以稀釋劑混合毒劇性藥物粉末時，下述方法何者較適當？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>過篩法（sifting）</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>研磨法（trituration）</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>搖滾法（tumbling）</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>調藥刀法（spatulation）</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>B</b></span></div>
+    <div class="explanation">毒劇（強效）藥需用研磨法 trituration 配合幾何稀釋法；sifting 與 spatulation 不適用強效藥。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q32"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q33" data-answer="B">
+    <span class="q-meta">107-1</span>
+    <div class="q-text">散劑中若混合有不同粒徑之粉末時，在自動裝填過程中有時會發生粉末分離（segregation）的現象，為降低此缺失，下列敘述何者較適當？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>增加粉末混合時之攪拌時間</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>減少操作過程中粉塵之產出</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>增加粉末貯料斗（hopper）之長度及流動時程</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>若粉末流動時有靜電產生，則粉末流動性會增加</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>B</b></span></div>
+    <div class="explanation">減少粉塵（dusting）可降低分離，B 正確。攪拌太久反易分開；hopper 太長運送久更易分離；靜電會阻礙流動。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q33"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q34" data-answer="D">
+    <span class="q-meta">114-1</span>
+    <div class="q-text">某些固體物質在混合時容易形成共熔混合物（eutectic mixtures）而軟化或液化，較適合用調藥刀法（spatulation）混合，下列何者除外？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>aminopyrine</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>chloral hydrate</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>prilocaine</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>magnesium carbonate</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>D</b></span></div>
+    <div class="explanation"><span class="mono">magnesium carbonate</span>（碳酸鎂）是惰性<strong>吸附劑</strong>，用來防止共熔液化，本身不會形成共熔物，故除外。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q34"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q35" data-answer="D">
+    <span class="q-meta">106-1</span>
+    <div class="q-text">欲將薄荷與水楊酸以等量（w/w）比例研合時，為避免共熔物或液化之現象出現，通常可預行添加下列何者以避免之？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>三酸甘油酯</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>乳酸</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>聚乙二醇</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>碳酸鎂</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>D</b></span></div>
+    <div class="explanation">加惰性吸附劑<strong>碳酸鎂</strong>可避免共熔液化。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q35"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q36" data-answer="A">
+    <span class="q-meta">102-1</span>
+    <div class="q-text">下列藥物若欲添加澱粉稀釋，為使其能混合均勻，何者不宜以研缽研磨，因可能會有爆炸之危險性？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>過錳酸鉀</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>碘化鉀</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>硫酸鈉</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>硫酸亞鐵</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>A</b></span></div>
+    <div class="explanation">過錳酸鉀為強氧化劑，與澱粉（還原性）研磨可能爆炸。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q36"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q37" data-answer="A">
+    <span class="q-meta">111-1</span>
+    <div class="q-text">依中華藥典，有關最低內容量試驗法，於初次選取檢品十件進行測試之敘述，下列何者正確？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>檢品平均內容量不得少於標誌量；如標誌量為 60 克或 60 毫升以下，其單一內容量均不得少於 90%</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>檢品平均內容量不得少於標誌量；如標誌量為 60 克或 60 毫升以上，但在 250 克或 250 毫升以下，其單一內容量均不得少於 85%</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>初次檢測不符合規定時，可另以三十件檢品重行試驗，在全部四十件檢品中，平均內容量不得少於標誌量</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>適用於容器標誌內容量不超過 250 克之軟膏劑</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>A</b></span></div>
+    <div class="explanation">標誌量 ≤60 時單一不得少於 90%，A 正確。不合格係另取 20 件（共 30 件），非 30/40 件。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q37"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q38" data-answer="C">
+    <span class="q-meta">112-1</span>
+    <div class="q-text">有關散劑與顆粒劑的比較，下列敘述何者最不適當？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>於靜置時，顆粒劑通常較不易結塊或硬化</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>於大氣中，顆粒劑通常較不易受潮</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>顆粒劑的表面積比相同體積的粉末小，因此不容易濕潤再製成其他劑型</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>顆粒劑通常比散劑容易製成溶液劑或懸浮劑</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>C</b></span></div>
+    <div class="explanation">易漂浮的細粉不易濕潤，做成<strong>顆粒</strong>反而較重會沉入水中、<strong>較好濕潤</strong>並製成溶液／懸浮劑。C 說顆粒「不容易濕潤」最不適當。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q38"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q39" data-answer="D">
+    <span class="q-meta">108-1</span>
+    <div class="q-text">於相同混合條件下，就藥品之粗粒與細粒比較，細粒通常有何特性？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>流動性較佳</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>於儲存時較不會因振動而產生分離狀態</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>較不易溶解或分散於水中</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>較易與其他細粉末混合均勻</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>D</b></span></div>
+    <div class="explanation">細粒與其他細粉大小相近，較易混合均勻（D）。流動性較差、較易分離、溶解較快。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q39"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q40" data-answer="B">
+    <span class="q-meta">103-2</span>
+    <div class="q-text">若以「顆粒劑」與「散劑」來比較，下列之敘述何者較正確？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>於大氣中，散劑通常較不易受潮</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>於大氣中，顆粒劑通常較不易結塊或變硬</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>易飄浮之固體粉末，當欲臨用時加水使成液劑，則顆粒劑通常比散劑較不容易完成</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>藥物於水中不安定時，很適宜將其製成散劑，於臨用時加水使其溶解，而成溶液劑</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>B</b></span></div>
+    <div class="explanation">顆粒劑表面積小、較不易吸濕結塊（B 正確）。散劑表面積大較易受潮（A 錯）；易漂浮粉末做成顆粒反而較易加水成液劑（C 錯）。D 雖合「powder for…」概念但本題以 B 為最正確。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q40"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q41" data-answer="B">
+    <span class="q-meta">101-2</span>
+    <div class="q-text">固體粉末粒徑不同時物性也常不同，假設若原料 A 及原料 B 分別為粒徑 0.2 及 0.8 mm 之球狀粉末，當製劑時由原來之 A 改換為 B 時，試問下列敘述何者正確？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>原料 B 與其他不同粉末混合時，彼此間之混合均勻度會較佳</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>原料 B 粉末流動性較佳</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>原料 B 之溶離度較佳</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>原料 B 之比表面積較大</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>B</b></span></div>
+    <div class="explanation">B（0.8 mm）較大顆 → 流動性較佳（B 正確）。較大顆比表面積較小、溶離較差；與不同粉末混合均勻度未必較佳。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q41"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q42" data-answer="B">
+    <span class="q-meta">112-2</span>
+    <div class="q-text">實務上有時會將噴霧造粒和冷凍乾燥搭配操作製備藥品，其最主要目的為何？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>均在低溫生產，產品較穩定</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>噴霧造粒可獲得最大表面積，以利進行冷凍乾燥</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>冷凍乾燥可獲得最大表面積，以利進行噴霧造粒</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>冷凍乾燥抽真空，幫助噴霧造粒時脫水的過程</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>B</b></span></div>
+    <div class="explanation">噴霧造粒先把液體變一顆顆小顆粒（表面積大、分散），後續冷凍乾燥比一整坨冰乾得快很多，故 B。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q42"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q43" data-answer="C">
+    <span class="q-meta">112-1</span>
+    <div class="q-text">實務上，進行噴霧乾燥時，若提高乾燥溫度，下列敘述何者最適當？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>粉末易黏結使顆粒變大</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>不影響顆粒大小</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>顆粒較易粉碎</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>粉末黏結使沉降速度加快</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>C</b></span></div>
+    <div class="explanation">提高乾燥溫度使水分蒸發更快、顆粒乾硬中空、<strong>較易粉碎</strong>，故 C。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q43"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q44" data-answer="B">
+    <span class="q-meta">113-2</span>
+    <div class="q-text">有關發泡顆粒劑（effervescent granules）之製備方法，下列敘述何者最適當？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>乾法是以酒精作為黏合劑，濕法則是以水作為黏合劑</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>在粉末混合物形成軟塊之過程中，乾法需經過適當之加熱</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>乾法是以無水檸檬酸進行顆粒製備，濕法是以含結晶水檸檬酸製備之</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>兩種方法製得之顆粒，以 65℃ 溫度烘乾後，須立即放入密蓋容器中儲存</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>B</b></span></div>
+    <div class="explanation">乾法（熔合法）需加熱（34～40°C）釋出結晶水當黏合劑，B 正確。乾法用含結晶水檸檬酸；乾燥不可超過 54°C（非 65°C）。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q44"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q45" data-answer="D">
+    <span class="q-meta">112-2</span>
+    <div class="q-text">有關發泡顆粒之敘述，下列何者錯誤？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>單獨使用檸檬酸易成黏稠混合物，致難以造粒</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>單獨使用酒石酸時，其顆粒易失去堅固性而易碎</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>以融合法製備時，為利用檸檬酸的結晶水作為黏合劑</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>以濕式法製備時，須添加碳酸氫鈉為黏合劑</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>D</b></span></div>
+    <div class="explanation">濕式法以<strong>水醇溶液</strong>為黏合劑，非碳酸氫鈉（碳酸氫鈉是反應產生 CO₂ 之鹼），D 錯誤。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q45"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q46" data-answer="C">
+    <span class="q-meta">112-1</span>
+    <div class="q-text">有關發泡顆粒劑之敘述，下列何者最適當？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>應貯存於易開啟之廣口容器中</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>基本成分常包含酒石酸、檸檬酸及碳酸鈉</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>對於鹽類性藥品通常具矯味作用</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>主成分通常為難溶性藥品</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>C</b></span></div>
+    <div class="explanation">碳酸化溶液可矯味（C 正確）。應貯存緊密容器；鹼為碳酸氫鈉（非碳酸鈉）；主成分通常為<strong>水溶性</strong>（難溶會殘留白粉、賣相差）。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q46"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q47" data-answer="B">
+    <span class="q-meta">110-2</span>
+    <div class="q-text">以乾式法製備「發泡性顆粒劑」時，下列敘述何者錯誤？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>通常以檸檬酸之結晶水為黏合劑</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>為得較均一之粒徑，檸檬酸粉末應先通過銅製篩網過篩</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>混合後之粉末宜置於 34～40℃ 烘箱加熱，並偶爾攪拌，以製備軟塊</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>製得之軟塊通常含許多小氣孔，故其外觀常成海綿狀</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>B</b></span></div>
+    <div class="explanation">器具須用不鏽鋼或<strong>抗酸</strong>材料，非銅製篩網，B 錯誤。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q47"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q48" data-answer="B">
+    <span class="q-meta">110-1</span>
+    <div class="q-text">製備發泡性顆粒劑時，下列敘述何者錯誤？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>乾式法或熔合法製備時，黏合劑的來源是檸檬酸的結晶水</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>溼式法製備時，只以水作為黏合劑，將粉末潤溼，製得軟塊以造粒</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>製備過程所接觸之容器，必須為不銹鋼或其他抗酸之材質</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>乾燥後之顆粒，應立即放入容器中緊密封存</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>B</b></span></div>
+    <div class="explanation">濕式法以<strong>水醇溶液</strong>（含乙醇）為黏合劑，非「只以水」，否則酸鹼會立即反應，B 錯誤。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q48"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q49" data-answer="B">
+    <span class="q-meta">108-2</span>
+    <div class="q-text">有關發泡性顆粒劑之敘述，下列何者最正確？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>主藥通常為難溶性藥物</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>此類劑型對於鹽類性藥物通常具有相對有效之矯味作用</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>常併用酒石酸、檸檬酸及碳酸鈉為配方中之基本成分</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>應貯存於易開啟之廣口容器中</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>B</b></span></div>
+    <div class="explanation">矯味作用 B 正確。主藥通常水溶性；鹼為碳酸氫鈉；應緊密容器貯存。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q49"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q50" data-answer="C">
+    <span class="q-meta">105-1</span>
+    <div class="q-text">以溼式法製備「發泡性顆粒劑」時，下列敘述何者錯誤？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>通常以含水之酒精作為黏合劑，將粉末潤溼，以製得軟塊</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>將軟塊過篩製粒後，移置於烘箱，以低於 54℃ 溫度乾燥</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>乾燥後之顆粒應置於空氣中冷卻，始能分包裝填</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>製備過程所接觸之容器，宜為不銹鋼之材質</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>C</b></span></div>
+    <div class="explanation">乾燥後須<strong>立即</strong>緊密封存，不可置於空氣中冷卻（會吸濕再冒泡），C 錯誤。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q50"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q51" data-answer="B">
+    <span class="q-meta">104-1</span>
+    <div class="q-text">製備「發泡性顆粒劑」時，下列何者通常不是配方中必要之成分？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>檸檬酸</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>氫氧化鈉</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>酒石酸</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>主藥</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>B</b></span></div>
+    <div class="explanation">配方必要成分為主藥、酸（檸檬酸／酒石酸）、鹼（碳酸氫鈉）。<strong>氫氧化鈉</strong>非必要成分。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q51"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q52" data-answer="A">
+    <span class="q-meta">112-2</span>
+    <div class="q-text">欲製備批量為 200 g 之 <span class="mono">acetaminophen</span> 100 mg/g 的發泡顆粒，已知 citric acid : tartaric acid = 1 : 2 可得到最佳產品，則碳酸氫鈉應取若干 g？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>96</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>48</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>17</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>34</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>A</b></span></div>
+    <div class="explanation">主成分 = 200 g × 100 mg/g = 20 g；發泡材料 = 200 − 20 = 180 g。酸鹼比 citric : tartaric : <span class="mono">NaHCO₃</span> = 1 : 2 : 3.4，<span class="mono">NaHCO₃</span> = 180 × 3.4 ÷ (1+2+3.4) = 180 × 3.4 ÷ 6.4 = <strong>96 g</strong>。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q52"></textarea></div>
+  </div>
+</section>
+</div><!-- /wrap -->
+
+<footer>散劑與顆粒劑 · Powders &amp; Granules — 國考複習講義 · 米黃底 × 深緋紅</footer>
+
+<script>
+(function(){
+  var NS = "pg_note_";
+  // ---- option click reveal ----
+  document.querySelectorAll(".quiz").forEach(function(q){
+    var ans = q.getAttribute("data-answer");
+    q.querySelectorAll(".option").forEach(function(op){
+      op.addEventListener("click", function(){
+        if(q.classList.contains("locked")) return;
+        q.classList.add("locked");
+        q.querySelectorAll(".option").forEach(function(o){
+          if(o.getAttribute("data-opt")===ans) o.classList.add("correct");
+        });
+        if(op.getAttribute("data-opt")!==ans) op.classList.add("wrong");
+      });
+    });
+    // ---- show explanation ----
+    var btn = q.querySelector(".show-exp");
+    if(btn){
+      btn.addEventListener("click", function(){
+        var ex = q.querySelector(".explanation");
+        if(ex){ ex.classList.toggle("show"); btn.textContent = ex.classList.contains("show") ? "隱藏詳解" : "顯示詳解"; }
+      });
+    }
+  });
+  // ---- notes: load + save + sync across same qid ----
+  function load(){
+    document.querySelectorAll("textarea.note").forEach(function(t){
+      var qid = t.getAttribute("data-qid");
+      try{ var v = localStorage.getItem(NS+qid); if(v!==null) t.value = v; }catch(e){}
+    });
+  }
+  document.querySelectorAll("textarea.note").forEach(function(t){
+    t.addEventListener("input", function(){
+      var qid = t.getAttribute("data-qid");
+      try{ localStorage.setItem(NS+qid, t.value); }catch(e){}
+      document.querySelectorAll('textarea.note[data-qid="'+qid+'"]').forEach(function(o){
+        if(o!==t) o.value = t.value;
+      });
+    });
+  });
+  load();
+})();
+</script>
+</body>
+</html>
