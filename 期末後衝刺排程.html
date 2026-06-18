@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>衝刺排程 6/23–6/28</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f4 ecd9;
+    --bg:#f4ecd9;
+    --card:#fbf6ea;
+    --ink:#3a3026;
+    --ink-soft:#6b5d4b;
+    --line:#e3d6bd;
+    --ink-light:#9a8a72;
+    /* 科目色：避開以紅為主色，採沉穩多彩 */
+    --pharm:#2f6f5e;      /* 藥理 — 墨綠 */
+    --pharm-bg:#e4efe9;
+    --anal:#3d5a80;       /* 藥分 — 靛藍 */
+    --anal-bg:#e3eaf2;
+    --formul:#9c6b3f;     /* 藥劑 — 赭棕 */
+    --formul-bg:#f1e6d8;
+    --accent:#8a3b3b;     /* 深緋 — 僅做點綴 */
+    --done:#bcae93;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Noto Sans TC",sans-serif;
+    line-height:1.7;
+    padding:28px 16px 64px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:760px;margin:0 auto}
+  header{text-align:center;margin-bottom:8px}
+  h1{
+    font-family:"Noto Serif TC",serif;
+    font-weight:900;
+    font-size:1.9rem;
+    letter-spacing:.04em;
+    color:var(--ink);
+  }
+  .sub{color:var(--ink-soft);font-size:.92rem;margin-top:4px}
+  .legend{
+    display:flex;gap:14px;justify-content:center;flex-wrap:wrap;
+    margin:18px 0 8px;font-size:.82rem;color:var(--ink-soft);
+  }
+  .legend span{display:inline-flex;align-items:center;gap:5px}
+  .dot{width:10px;height:10px;border-radius:50%;display:inline-block}
+
+  /* 總進度 */
+  .progress-box{
+    background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:16px 18px;margin:18px 0 26px;
+  }
+  .progress-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px}
+  .progress-top b{font-family:"Noto Serif TC",serif;font-size:1.05rem}
+  .pct{font-family:"JetBrains Mono",monospace;font-weight:700;color:var(--pharm)}
+  .bar{height:11px;background:#ece2cd;border-radius:99px;overflow:hidden}
+  .bar-fill{height:100%;width:0;background:linear-gradient(90deg,var(--pharm),var(--anal));
+    border-radius:99px;transition:width .35s ease}
+
+  .day{
+    background:var(--card);border:1px solid var(--line);border-radius:16px;
+    padding:18px 18px 8px;margin-bottom:18px;
+    box-shadow:0 1px 0 #fff inset, 0 2px 8px rgba(120,95,55,.06);
+  }
+  .day-head{display:flex;align-items:baseline;gap:12px;margin-bottom:4px;flex-wrap:wrap}
+  .date{font-family:"Noto Serif TC",serif;font-weight:900;font-size:1.25rem;color:var(--ink)}
+  .tag{
+    font-size:.72rem;font-weight:700;padding:2px 9px;border-radius:99px;
+    background:var(--formul-bg);color:var(--formul);
+  }
+  .tag.rest{background:#efe7d3;color:var(--ink-light)}
+  .hours{margin-left:auto;font-family:"JetBrains Mono",monospace;font-size:.85rem;
+    color:var(--ink-soft);font-weight:700}
+
+  ul{list-style:none;margin-top:8px}
+  li{
+    display:flex;align-items:flex-start;gap:11px;
+    padding:9px 4px;border-top:1px dashed var(--line);
+    cursor:pointer;user-select:none;transition:opacity .2s;
+  }
+  li:first-child{border-top:none}
+  .cb{
+    flex:0 0 auto;width:20px;height:20px;margin-top:2px;border-radius:6px;
+    border:2px solid var(--line);background:#fff;position:relative;transition:.18s;
+  }
+  li[data-subj="pharm"] .cb{border-color:#bcd6ca}
+  li[data-subj="anal"]  .cb{border-color:#c2d0e0}
+  li[data-subj="formul"].cb{border-color:#e0cdb3}
+  .item-body{flex:1;min-width:0}
+  .subj{
+    font-size:.7rem;font-weight:700;padding:1px 7px;border-radius:5px;margin-right:7px;
+    vertical-align:1px;white-space:nowrap;
+  }
+  .subj.pharm{background:var(--pharm-bg);color:var(--pharm)}
+  .subj.anal{background:var(--anal-bg);color:var(--anal)}
+  .subj.formul{background:var(--formul-bg);color:var(--formul)}
+  .name{font-family:"JetBrains Mono",monospace;font-weight:500;font-size:.92rem;color:var(--ink)}
+  .dur{font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--ink-light);margin-left:6px}
+  .milestone{font-size:.74rem;color:var(--accent);font-weight:700;margin-left:6px}
+
+  li.checked .cb{background:var(--pharm);border-color:var(--pharm)}
+  li.checked .cb::after{
+    content:"";position:absolute;left:6px;top:2px;width:5px;height:10px;
+    border:solid #fff;border-width:0 2.5px 2.5px 0;transform:rotate(42deg);
+  }
+  li.checked .name,li.checked .dur{text-decoration:line-through;color:var(--done)}
+  li.checked{opacity:.62}
+
+  .note{
+    margin-top:26px;background:#f6eede;border:1px solid #e7d3d3;border-left:4px solid var(--accent);
+    border-radius:10px;padding:14px 16px;font-size:.86rem;color:var(--ink-soft);
+  }
+  .note b{color:var(--accent);font-family:"Noto Serif TC",serif}
+  .note ul{margin-top:6px}
+  .note li{display:list-item;border:none;padding:2px 0 2px 4px;cursor:default;list-style:disc;margin-left:18px}
+  .reset{
+    display:block;margin:22px auto 0;background:none;border:1px solid var(--line);
+    color:var(--ink-light);font-family:"Noto Sans TC";font-size:.82rem;
+    padding:7px 18px;border-radius:99px;cursor:pointer;transition:.2s;
+  }
+  .reset:hover{background:#fff;color:var(--ink-soft)}
+  footer{text-align:center;color:var(--ink-light);font-size:.78rem;margin-top:24px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>期末後衝刺排程</h1>
+    <div class="sub">6/23 – 6/28　第一次讀完：藥理 · 藥分光譜段 · 藥劑剩餘</div>
+  </header>
+
+  <div class="legend">
+    <span><i class="dot" style="background:var(--pharm)"></i>藥理</span>
+    <span><i class="dot" style="background:var(--anal)"></i>藥分</span>
+    <span><i class="dot" style="background:var(--formul)"></i>藥劑</span>
+  </div>
+
+  <div class="progress-box">
+    <div class="progress-top"><b>總進度</b><span class="pct" id="pct">0 / 0</span></div>
+    <div class="bar"><div class="bar-fill" id="barfill"></div></div>
+  </div>
+
+  <div id="days"></div>
+
+  <div class="note">
+    <b>守住不要提前的（移到實習後晚上／週末＋刷考古）</b>
+    <ul>
+      <li>生藥剩 4 章：多醣/樹脂、苯丙烷、萜類、揮發油</li>
+      <li>中藥複習（祛風濕起）</li>
+      <li>生物藥劑全部（非線性需先複習前面幾章）</li>
+      <li>藥分：2D NMR + 光譜推理大題（進階補充）、傳統滴定整塊 → 刷題帶</li>
+    </ul>
+    <div style="margin-top:8px">每讀完一大段，立刻用該段嵌入的考古題即時驗收；整份計時刷題 6/29 晚上正式開始。</div>
+  </div>
+
+  <button class="reset" id="reset">清除所有勾選</button>
+  <footer>進度自動儲存於本機瀏覽器</footer>
+</div>
+
+<script>
+const DATA=[
+  {date:"6/23",tag:"剛考完 · 回血",rest:true,hours:"4.2hr",items:[
+    {s:"pharm",n:"鴉片類藥物",d:"2:10:00"},
+    {s:"pharm",n:"骨質疏鬆",d:"13:00"},
+    {s:"anal",n:"螢光光譜 FLUOR",d:"1:06:55"},
+    {s:"formul",n:"眼用製劑",d:"44:00"},
+  ]},
+  {date:"6/24",tag:"高鐵回台北 · 輕",rest:true,hours:"1.5hr",items:[
+    {s:"pharm",n:"抗甲狀腺藥物",d:"39:00",m:"高鐵上可看"},
+    {s:"pharm",n:"糖尿病藥物",d:"53:00",m:"高鐵上可看"},
+  ]},
+  {date:"6/25",hours:"4.6hr",items:[
+    {s:"pharm",n:"NSAID 非類固醇抗發炎",d:"1:21:00"},
+    {s:"pharm",n:"抗痛風藥物",d:"14:00"},
+    {s:"anal",n:"拉曼/原子/旋光/折光",d:"1:49:12"},
+    {s:"formul",n:"散劑/微粒學",d:"1:09:40"},
+  ]},
+  {date:"6/26",tag:"NMR 專場",hours:"4.4hr",items:[
+    {s:"anal",n:"NMR 核磁共振光譜",d:"3:02:54",m:"✔ 藥分光譜段收工"},
+    {s:"pharm",n:"抗痙攣",d:"18:00"},
+    {s:"pharm",n:"貧血治療劑",d:"28:00"},
+    {s:"pharm",n:"解毒劑",d:"33:00"},
+  ]},
+  {date:"6/27",hours:"4.3hr",items:[
+    {s:"pharm",n:"抗組織胺 1+2",d:"47:00"},
+    {s:"pharm",n:"與胃酸分泌有關的藥物",d:"36:00"},
+    {s:"formul",n:"糖漿…生物製劑1",d:"40:18"},
+    {s:"formul",n:"糖漿…生物製劑2",d:"1:25:54"},
+    {s:"formul",n:"試驗檢查法1",d:"49:34"},
+  ]},
+  {date:"6/28",hours:"4.7hr",items:[
+    {s:"pharm",n:"抗病毒藥物",d:"1:24:00"},
+    {s:"pharm",n:"止吐/止瀉/瀉劑/腸胃蠕動",d:"42:00",m:"✔ 藥理收工"},
+    {s:"formul",n:"試驗檢查法2",d:"1:14:11"},
+    {s:"formul",n:"滅菌檢查/度量衡/CYP450",d:"1:23:34",m:"✔ 藥劑收工"},
+  ]},
+];
+const SUBJ={pharm:"藥理",anal:"藥分",formul:"藥劑"};
+const KEY="ada_sprint_0623_0628";
+let state=JSON.parse(localStorage.getItem(KEY)||"{}");
+
+const daysEl=document.getElementById("days");
+let total=0;
+DATA.forEach((day,di)=>{
+  const card=document.createElement("div");card.className="day";
+  let head=`<div class="day-head"><span class="date">${day.date}</span>`;
+  if(day.tag)head+=`<span class="tag ${day.rest?'rest':''}">${day.tag}</span>`;
+  head+=`<span class="hours">${day.hours}</span></div>`;
+  let ul="<ul>";
+  day.items.forEach((it,ii)=>{
+    const id=`${di}-${ii}`;total++;
+    const on=state[id]?"checked":"";
+    ul+=`<li data-id="${id}" data-subj="${it.s}" class="${on}">
+      <span class="cb"></span>
+      <span class="item-body">
+        <span class="subj ${it.s}">${SUBJ[it.s]}</span>
+        <span class="name">${it.n}</span><span class="dur">${it.d}</span>
+        ${it.m?`<span class="milestone">${it.m}</span>`:""}
+      </span></li>`;
+  });
+  ul+="</ul>";
+  card.innerHTML=head+ul;
+  daysEl.appendChild(card);
+});
+
+function refresh(){
+  let done=0;
+  document.querySelectorAll("li[data-id]").forEach(li=>{
+    if(li.classList.contains("checked"))done++;
+  });
+  const pct=total?Math.round(done/total*100):0;
+  document.getElementById("pct").textContent=`${done} / ${total}　${pct}%`;
+  document.getElementById("barfill").style.width=pct+"%";
+}
+daysEl.addEventListener("click",e=>{
+  const li=e.target.closest("li[data-id]");if(!li)return;
+  const id=li.dataset.id;
+  li.classList.toggle("checked");
+  state[id]=li.classList.contains("checked");
+  localStorage.setItem(KEY,JSON.stringify(state));
+  refresh();
+});
+document.getElementById("reset").addEventListener("click",()=>{
+  if(!confirm("確定要清除所有勾選嗎？"))return;
+  state={};localStorage.removeItem(KEY);
+  document.querySelectorAll("li.checked").forEach(li=>li.classList.remove("checked"));
+  refresh();
+});
+refresh();
+</script>
+</body>
+</html>
