@@ -859,6 +859,18 @@ footer{text-align:center;color:var(--ink-soft);font-size:12.5px;margin-top:60px;
 
 </div>
 
+<!-- 筆記工具列（固定右下） -->
+<div id="noteBar" style="position:fixed;right:16px;bottom:16px;z-index:50;
+  background:#fff;border:1px solid #e3dccb;border-radius:14px;
+  box-shadow:0 6px 24px rgba(60,50,30,.16);padding:10px 12px;
+  display:flex;align-items:center;gap:8px;font-family:'Noto Sans TC',sans-serif;">
+  <span style="font-size:12px;color:#a8322d;font-weight:700;">⚠ 筆記不會自動存，請匯出</span>
+  <button id="btnExport" style="font-size:13px;font-weight:700;cursor:pointer;border:1px solid #c08a2d;color:#c08a2d;background:#fff;border-radius:8px;padding:6px 12px;">💾 匯出筆記</button>
+  <button id="btnImport" style="font-size:13px;font-weight:700;cursor:pointer;border:1px solid #5b7b7a;color:#5b7b7a;background:#fff;border-radius:8px;padding:6px 12px;">📂 匯入</button>
+  <span id="noteMsg" style="font-size:12px;color:#3f7a5a;font-weight:700;"></span>
+  <input type="file" id="fileImport" accept=".json,application/json" style="display:none;">
+</div>
+
 <script>
 // 選項點選顯示對錯
 document.querySelectorAll('.q').forEach(function(q){
@@ -882,14 +894,44 @@ document.querySelectorAll('.q').forEach(function(q){
     eb.textContent = ex.classList.contains('show')?'隱藏詳解':'顯示詳解';
   });}
 });
-// 補充筆記 localStorage
+// 補充筆記：記憶體保存（此環境不支援 localStorage），可匯出/匯入成檔案
+var noteStore={};
 document.querySelectorAll('textarea[data-note]').forEach(function(t){
-  var key='cvpk_'+t.getAttribute('data-note');
-  try{ var v=localStorage.getItem(key); if(v) t.value=v; }catch(e){}
-  t.addEventListener('input',function(){
-    try{ localStorage.setItem(key,t.value); }catch(e){}
-  });
+  var key=t.getAttribute('data-note');
+  t.addEventListener('input',function(){ noteStore[key]=t.value; });
 });
+function exportNotes(){
+  // 只匯出有內容的筆記
+  var out={};
+  Object.keys(noteStore).forEach(function(k){ if(noteStore[k] && noteStore[k].trim()) out[k]=noteStore[k]; });
+  var blob=new Blob([JSON.stringify(out,null,2)],{type:'application/json'});
+  var a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='digoxin筆記_'+new Date().toISOString().slice(0,10)+'.json';
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+}
+function importNotes(file){
+  var r=new FileReader();
+  r.onload=function(){
+    try{
+      var data=JSON.parse(r.result);
+      document.querySelectorAll('textarea[data-note]').forEach(function(t){
+        var key=t.getAttribute('data-note');
+        if(data[key]!==undefined){ t.value=data[key]; noteStore[key]=data[key]; }
+      });
+      flash('已匯入筆記 ✓');
+    }catch(e){ flash('匯入失敗：檔案格式錯誤'); }
+  };
+  r.readAsText(file);
+}
+function flash(msg){
+  var bar=document.getElementById('noteBar');
+  var s=document.getElementById('noteMsg');
+  s.textContent=msg; setTimeout(function(){s.textContent='';},2500);
+}
+document.getElementById('btnExport').addEventListener('click',exportNotes);
+document.getElementById('btnImport').addEventListener('click',function(){document.getElementById('fileImport').click();});
+document.getElementById('fileImport').addEventListener('change',function(e){ if(e.target.files[0]) importNotes(e.target.files[0]); e.target.value=''; });
 </script>
 </body>
 </html>
