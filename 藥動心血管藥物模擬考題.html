@@ -284,13 +284,13 @@ footer{text-align:center;color:var(--ink-soft);font-size:12.5px;margin-top:50px;
 <!-- Q14 -->
 <div class="q" data-ans="C">
   <div class="top"><span class="qnum">14</span><span class="qtag">臨床案例</span></div>
-  <p class="stem">70 歲病人有 CHF（NYHA III），CL<sub>cr</sub> 20 mL/min，服用 digoxin 後濃度 2.8 ng/mL，HR 58 bpm、血鉀 5.0 mmol/L、無不適。下列處置何者最<strong>不</strong>適當？</p>
+  <p class="stem">70 歲病人有 CHF（NYHA III），CL<sub>cr</sub> 20 mL/min，服用 digoxin 後濃度 2.8 ng/mL，HR 58 bpm、血鉀 5.0 mmol/L、<strong>無不適症狀</strong>。下列處置何者最<strong>不</strong>適當？</p>
   <button class="opt" data-k="A"><span class="mk">A</span>暫不需給予 digoxin-specific antibody</button>
   <button class="opt" data-k="B"><span class="mk">B</span>HF 之目標濃度一般落在 0.5~0.9 ng/mL</button>
-  <button class="opt" data-k="C"><span class="mk">C</span>應立即停藥數天後再抽血，據以調整劑量</button>
+  <button class="opt" data-k="C"><span class="mk">C</span>因濃度過高，應立即給予 digoxin-specific antibody</button>
   <button class="opt" data-k="D"><span class="mk">D</span>濃度回到目標值後可減量並延長給藥間隔</button>
   <div class="qbtns"><button class="btn btn-expl">顯示詳解</button></div>
-  <div class="expl"><b>答案：C</b>　病人無毒性症狀、心跳不快、血鉀僅略偏高，不需「停藥數天再抽血」此種不符 TDM 原則之處置。其餘皆合理。<br><span class="flag">⚑</span> 此題仿 113-2 第 69 題改編，重點在辨識不符監測原則之選項。</div>
+  <div class="expl"><b>答案：C</b>　病人濃度雖偏高（2.8 ng/mL），但<strong>無中毒症狀、HR 58 不慢得危險、血鉀僅略偏高</strong>，屬可接受、不需拮抗的情況。digoxin-specific antibody（DigiFab）保留給危及生命的毒性，此時「應立即給予」是最不適當的處置，故選 C。A、B、D 皆為合理處置。<br><span class="flag">⚑</span> 此題仿 113-2 第 69 題改編，正解邏輯與原題一致（立即給 antibody 為錯誤處置）。</div>
   <div class="notebox"><label>📝 補充筆記</label><textarea data-note="m14"></textarea></div>
 </div>
 
@@ -521,6 +521,18 @@ footer{text-align:center;color:var(--ink-soft);font-size:12.5px;margin-top:50px;
 
 </div>
 
+<!-- 筆記工具列（固定右下） -->
+<div id="noteBar" style="position:fixed;right:16px;bottom:16px;z-index:50;
+  background:#fff;border:1px solid #e3dccb;border-radius:14px;
+  box-shadow:0 6px 24px rgba(60,50,30,.16);padding:10px 12px;
+  display:flex;align-items:center;gap:8px;font-family:'Noto Sans TC',sans-serif;">
+  <span style="font-size:12px;color:#a8322d;font-weight:700;">⚠ 筆記不會自動存，請匯出</span>
+  <button id="btnExport" style="font-size:13px;font-weight:700;cursor:pointer;border:1px solid #bf9b3a;color:#bf9b3a;background:#fff;border-radius:8px;padding:6px 12px;">💾 匯出筆記</button>
+  <button id="btnImport" style="font-size:13px;font-weight:700;cursor:pointer;border:1px solid #6d8b74;color:#6d8b74;background:#fff;border-radius:8px;padding:6px 12px;">📂 匯入</button>
+  <span id="noteMsg" style="font-size:12px;color:#3f7a5a;font-weight:700;"></span>
+  <input type="file" id="fileImport" accept=".json,application/json" style="display:none;">
+</div>
+
 <script>
 var total=30, answered=0, correct=0, done={};
 function updateScore(){
@@ -550,12 +562,42 @@ document.querySelectorAll('.q').forEach(function(q,i){
     eb.textContent=ex.classList.contains('show')?'隱藏詳解':'顯示詳解';
   });}
 });
-// 補充筆記 localStorage
+// 補充筆記：記憶體保存（此環境不支援 localStorage），可匯出/匯入成檔案
+var noteStore={};
 document.querySelectorAll('textarea[data-note]').forEach(function(t){
-  var key='cvmock_'+t.getAttribute('data-note');
-  try{var v=localStorage.getItem(key); if(v)t.value=v;}catch(e){}
-  t.addEventListener('input',function(){try{localStorage.setItem(key,t.value);}catch(e){}});
+  var key=t.getAttribute('data-note');
+  t.addEventListener('input',function(){ noteStore[key]=t.value; });
 });
+function exportNotes(){
+  var out={};
+  Object.keys(noteStore).forEach(function(k){ if(noteStore[k] && noteStore[k].trim()) out[k]=noteStore[k]; });
+  var blob=new Blob([JSON.stringify(out,null,2)],{type:'application/json'});
+  var a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='心血管模擬考筆記_'+new Date().toISOString().slice(0,10)+'.json';
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+}
+function importNotes(file){
+  var r=new FileReader();
+  r.onload=function(){
+    try{
+      var data=JSON.parse(r.result);
+      document.querySelectorAll('textarea[data-note]').forEach(function(t){
+        var key=t.getAttribute('data-note');
+        if(data[key]!==undefined){ t.value=data[key]; noteStore[key]=data[key]; }
+      });
+      flash('已匯入筆記 ✓');
+    }catch(e){ flash('匯入失敗：檔案格式錯誤'); }
+  };
+  r.readAsText(file);
+}
+function flash(msg){
+  var s=document.getElementById('noteMsg');
+  if(s){ s.textContent=msg; setTimeout(function(){s.textContent='';},2500); }
+}
+document.getElementById('btnExport').addEventListener('click',exportNotes);
+document.getElementById('btnImport').addEventListener('click',function(){document.getElementById('fileImport').click();});
+document.getElementById('fileImport').addEventListener('change',function(e){ if(e.target.files[0]) importNotes(e.target.files[0]); e.target.value=''; });
 // 顯示全部詳解
 document.getElementById('revealAll').addEventListener('click',function(){
   document.querySelectorAll('.expl').forEach(function(ex){ex.classList.add('show');});
