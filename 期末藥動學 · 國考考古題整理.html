@@ -1,0 +1,1564 @@
+<!DOCTYPE html><html lang="zh-Hant"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>期末藥動學 · 國考考古題整理</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#FBF7EE;--card:#FFFDF8;--ink:#3A352C;--muted:#8A7F6C;--line:#E7DECB;--ok:#5F8A5F;--no:#B5645A;}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:'Noto Sans TC',sans-serif;line-height:1.7;font-size:15px;}
+code,.mono{font-family:'JetBrains Mono',monospace;}
+.wrap{max-width:880px;margin:0 auto;padding:0 16px 80px;}
+header.top{padding:30px 0 14px;border-bottom:2px solid #1F5C4C;margin-bottom:8px;}
+header.top h1{font-family:'Noto Serif TC',serif;font-size:27px;color:#1F5C4C;margin:0 0 6px;}
+header.top .sub{color:var(--muted);font-size:14px;}
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0;}
+.toolbar button{font-family:inherit;font-size:13px;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:20px;padding:5px 14px;cursor:pointer;}
+.toolbar button:hover{background:#F1EAD9;}
+nav.cats{position:sticky;top:0;background:rgba(251,247,238,.95);backdrop-filter:blur(4px);padding:10px 0;display:flex;flex-wrap:wrap;gap:6px;z-index:20;border-bottom:1px solid var(--line);margin-bottom:10px;}
+nav.cats a{text-decoration:none;font-size:12.5px;color:#fff;background:var(--acc);border-radius:16px;padding:3px 11px;display:inline-flex;align-items:center;gap:5px;opacity:.92;}
+nav.cats a i{background:rgba(255,255,255,.25);border-radius:10px;padding:0 6px;font-style:normal;font-size:11px;}
+section{margin-top:26px;}
+.sec-head{font-family:'Noto Serif TC',serif;font-size:20px;color:#fff;background:var(--acc);padding:9px 16px;border-radius:9px 9px 0 0;margin:0;display:flex;align-items:center;gap:10px;}
+.sec-no{background:rgba(255,255,255,.22);border-radius:50%;width:26px;height:26px;display:inline-flex;align-items:center;justify-content:center;font-size:14px;}
+.sec-cnt{margin-left:auto;font-size:13px;background:rgba(255,255,255,.2);border-radius:13px;padding:1px 10px;}
+.summary{background:#FCFAF3;border:1px solid var(--line);border-top:none;border-radius:0 0 9px 9px;padding:12px 18px;margin-bottom:14px;}
+.sum-t{font-size:12px;letter-spacing:1px;color:var(--acc);font-weight:700;margin-bottom:5px;}
+.summary ul{margin:0;padding-left:20px;}
+.summary li{margin:4px 0;font-size:13.5px;color:#544c3c;}
+.q{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--acc);border-radius:10px;padding:14px 16px;margin-bottom:14px;}
+.qhead .src{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--acc);font-weight:600;}
+.stem{font-weight:600;margin:5px 0 10px;font-size:15.5px;}
+.opts{display:flex;flex-direction:column;gap:7px;}
+.opt{font-family:inherit;text-align:left;font-size:14.5px;background:#FBF8F0;border:1px solid var(--line);border-radius:8px;padding:8px 12px;cursor:pointer;color:var(--ink);transition:.12s;}
+.opt:hover{border-color:var(--acc);}
+.opt.correct{background:#EAF3EA;border-color:var(--ok);color:#2f5a2f;font-weight:600;}
+.opt.wrong{background:#F6E9E7;border-color:var(--no);color:#7a3a34;}
+.opt.correct::after{content:" ✓";color:var(--ok);}
+.opt.wrong::after{content:" ✗";color:var(--no);}
+.actions{display:flex;align-items:center;gap:12px;margin-top:11px;}
+.btn-exp{font-family:inherit;font-size:13px;border:1px solid var(--acc);color:var(--acc);background:transparent;border-radius:18px;padding:4px 14px;cursor:pointer;}
+.btn-exp:hover{background:var(--acc);color:#fff;}
+.ans-reveal{font-size:13px;color:var(--muted);visibility:hidden;}
+.ans-reveal b{color:var(--ok);font-family:'JetBrains Mono',monospace;}
+.q.revealed .ans-reveal{visibility:visible;}
+.exp{display:none;margin-top:11px;background:#F6F1E4;border-left:3px solid var(--acc);border-radius:6px;padding:9px 13px;font-size:13.8px;color:#4a4233;}
+.q.show-exp .exp{display:block;}
+.exp-lab{display:inline-block;background:var(--acc);color:#fff;font-size:11px;border-radius:4px;padding:1px 8px;margin-right:7px;}
+.notebox{margin-top:11px;}
+.notebox label{font-size:12px;color:var(--muted);}
+.notebox textarea{width:100%;min-height:40px;margin-top:4px;border:1px dashed var(--line);border-radius:7px;background:#FFFEFB;padding:8px;font-family:inherit;font-size:13.5px;color:var(--ink);resize:vertical;}
+.notebox textarea:focus{outline:none;border-color:var(--acc);border-style:solid;}
+footer{margin-top:40px;text-align:center;color:var(--muted);font-size:12px;}
+.backtop{position:fixed;right:18px;bottom:20px;background:#1F5C4C;color:#fff;border:none;border-radius:50%;width:44px;height:44px;font-size:18px;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.2);z-index:30;}
+</style></head>
+<body><div class="wrap">
+<header class="top">
+  <h1>期末藥動學 · 國考考古題整理</h1>
+  <div class="sub">臨床藥物動力學 TDM 範圍 ｜ 調劑學與臨床藥學 108–115 年 ｜ 共 110 題</div>
+</header>
+<nav class="cats"><a href="#sec1" style="--acc:#6E8CA0">Lithium（鋰鹽）<i>13</i></a><a href="#sec2" style="--acc:#7C9082">Theophylline（茶鹼）<i>27</i></a><a href="#sec3" style="--acc:#8C7A95">免疫抑制劑<i>30</i></a><a href="#sec4" style="--acc:#B07A5B">Digoxin（毛地黃）<i>25</i></a><a href="#sec5" style="--acc:#6F9490">Lidocaine（含 Procainamide 比較）<i>2</i></a><a href="#sec6" style="--acc:#B8975A">Quinidine（奎尼丁）<i>3</i></a><a href="#sec7" style="--acc:#8A8275">通用 TDM／臨床藥動學概念<i>10</i></a></nav>
+<div class="toolbar">
+  <button id="revealAns">顯示所有答案</button>
+  <button id="showAllExp">展開全部詳解</button>
+  <button id="hideAllExp">收合並重置</button>
+</div>
+<section id="sec1" style="--acc:#6E8CA0">
+  <h2 class="sec-head"><span class="sec-no">1</span>壹、Lithium（鋰鹽）<span class="sec-cnt">13 題</span></h2>
+  <div class="summary"><div class="sum-t">重點整理</div><ul><li>治療範圍 0.6–1.2 mEq/L(mmol/L)：急性躁期 0.8–1.2、長期維持 0.6–0.8。</li><li>監測：服藥後 12±0.5 小時抽血；二室模式、無血漿蛋白結合、F≈100%、約 95% 原型由腎排出。</li><li>清除率 ≈ 0.2 × CrCl。</li><li>交互作用：thiazide / ACEI / ARB / NSAID / SSRI → 鋰濃度↑；theophylline → 清除↑、鋰濃度↓。</li><li>毒性：&gt;1.5 意識混亂、&gt;3 癲癇/不可逆腦損傷、&gt;3.5–4 致死需血液透析。</li></ul></div>
+  <div class="qlist"><div class="q" data-qid="108-1_65">
+  <div class="qhead"><span class="src">[108-1 第65題]</span></div>
+  <div class="stem">進行療劑監測時，下列何者之血液檢體須使用含抗凝劑試管採集？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)digoxin</button><button class="opt" data-correct="1">(B)cyclosporine</button><button class="opt" data-correct="0">(C)lithium</button><button class="opt" data-correct="0">(D)methotrexate</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>B</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>免疫抑制劑（cyclosporine、tacrolimus、sirolimus）大量結合於紅血球，TDM 須測「全血」濃度，採檢需用含抗凝劑（如 EDTA）試管。digoxin、methotrexate、lithium 測血清/血漿即可。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="108-1_65" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="108-1_79">
+  <div class="qhead"><span class="src">[108-1 第79題]</span></div>
+  <div class="stem">易造成鋰鹽血中濃度降低？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)ibuprofen</button><button class="opt" data-correct="0">(B)imidapril</button><button class="opt" data-correct="1">(C)theophylline</button><button class="opt" data-correct="0">(D)trichlormethiazide</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>C</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>theophylline 會增加鋰鹽腎清除率（約 58%）→ 血中濃度下降。其餘 NSAID(ibuprofen)、ACEI(imidapril)、thiazide(trichlormethiazide) 皆降低鋰鹽清除→濃度上升。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="108-1_79" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="109-1_63">
+  <div class="qhead"><span class="src">[109-1 第63題]</span></div>
+  <div class="stem">下列何者之藥品總血中濃度須依據血中albumin濃度校正數值？①phenytoin ②carbamazepine ③lithium ④vancomycin</div>
+  <div class="opts"><button class="opt" data-correct="1">(A)僅①</button><button class="opt" data-correct="0">(B)僅②</button><button class="opt" data-correct="0">(C)①③</button><button class="opt" data-correct="0">(D)②③④</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>A</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>僅 phenytoin 高度與白蛋白結合，低白蛋白時須校正總濃度。lithium 不與血漿蛋白結合，無須校正。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="109-1_63" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="109-1_78">
+  <div class="qhead"><span class="src">[109-1 第78題]</span></div>
+  <div class="stem">下列藥品之therapeutic range何者錯誤？</div>
+  <div class="opts"><button class="opt" data-correct="1">(A)digoxin 0.8～2.0 mg/L</button><button class="opt" data-correct="0">(B)carbamazepine 0.4～1.2 mg/dL</button><button class="opt" data-correct="0">(C)theophylline 0.5～1.5 mg/dL</button><button class="opt" data-correct="0">(D)lithium 0.6～1.2 mmol/L</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>A</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>問「錯誤」者。digoxin 治療範圍 0.5–2 ng/mL(=μg/L)，選項寫成 0.8–2.0 mg/L，單位與數值皆錯（高出千倍）。lithium 0.6–1.2 mmol/L 正確。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="109-1_78" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="110-1_59">
+  <div class="qhead"><span class="src">[110-1 第59題]</span></div>
+  <div class="stem">除了監測藥品血中濃度外，臨床上仍應監測其他檢驗項目以評估療效與副作用，下列用藥與應監測項目之配 對何者錯誤？</div>
+  <div class="opts"><button class="opt" data-correct="1">(A)vancomycin－白血球、肝功能</button><button class="opt" data-correct="0">(B)lithium－甲狀腺功能、血中電解質</button><button class="opt" data-correct="0">(C)valproic acid－血小板、肝功能</button><button class="opt" data-correct="0">(D)phenytoin－肝功能、血中白蛋白</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>A</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>問「錯誤配對」。vancomycin 主要為腎毒/耳毒，應監測腎功能(SCr) 而非肝功能，故 A 配對錯誤。lithium 監測甲狀腺功能與電解質正確（呼應筆記長期副作用）。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="110-1_59" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="110-2_70">
+  <div class="qhead"><span class="src">[110-2 第70題]</span></div>
+  <div class="stem">有關藥品交互作用之敘述，下列何者錯誤？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)sulfamethoxazole會增加warfarin的毒性</button><button class="opt" data-correct="0">(B)thiazide會增加lithium的毒性</button><button class="opt" data-correct="0">(C)amiodarone會增加dabigatran的毒性</button><button class="opt" data-correct="1">(D)furosemide會增加midazolam的毒性</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>D</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>問「錯誤」。furosemide 與 midazolam 無此交互作用，敘述錯誤。thiazide 確會升高 lithium 毒性（減少腎清除）。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="110-2_70" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="111-1_71">
+  <div class="qhead"><span class="src">[111-1 第71題]</span></div>
+  <div class="stem">下列何種組合不屬於藥效學的交互作用？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)benzodiazepines－flumazenil</button><button class="opt" data-correct="0">(B)glucocorticoids－glipizide</button><button class="opt" data-correct="0">(C)thiopental－midazolam</button><button class="opt" data-correct="1">(D)thiazide－lithium</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>D</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>thiazide–lithium 屬「藥動學」交互作用：thiazide 促 Na 排泄→近端小管代償性增加鋰再吸收，非藥效學。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="111-1_71" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="111-2_69">
+  <div class="qhead"><span class="src">[111-2 第69題]</span></div>
+  <div class="stem">併用lithium carbonate與indapamide之交互作用，主要影響lithium之：</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)腸道吸收</button><button class="opt" data-correct="0">(B)體內分布</button><button class="opt" data-correct="0">(C)肝臟代謝</button><button class="opt" data-correct="1">(D)腎臟排泄</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>D</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>indapamide 為類 thiazide 利尿劑，主要影響 lithium 的「腎臟排泄」（減少清除→濃度上升）。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="111-2_69" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="111-2_79">
+  <div class="qhead"><span class="src">[111-2 第79題]</span></div>
+  <div class="stem">在lithium maintenance therapy進行療劑監測時，下列抽血時間點及建議濃度範圍的配對，何者最為適當？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)正要給藥前，2～4 mEq/L</button><button class="opt" data-correct="0">(B)服藥後30分鐘，0.6～1.2 mEq/L</button><button class="opt" data-correct="0">(C)服藥後2小時，2～4 mEq/L</button><button class="opt" data-correct="1">(D)服藥後12小時，0.5～0.8 mEq/L</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>D</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>鋰鹽維持治療於服藥後 12 小時抽血（呼應筆記 12±0.5h），維持濃度約 0.6–0.8 mEq/L，故「12 小時、0.5–0.8 mEq/L」最適當。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="111-2_79" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="112-2_60">
+  <div class="qhead"><span class="src">[112-2 第60題]</span></div>
+  <div class="stem">下列何者可用於哺乳婦女？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)cyclosporine</button><button class="opt" data-correct="1">(B)warfarin</button><button class="opt" data-correct="0">(C)lithium</button><button class="opt" data-correct="0">(D)ergotamine</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>B</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>哺乳可用 warfarin（高蛋白結合、乳汁量少）。lithium 乳汁濃度達母體 30–100%（筆記），禁用；ergotamine、cyclosporine 亦不建議。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="112-2_60" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="112-2_74">
+  <div class="qhead"><span class="src">[112-2 第74題]</span></div>
+  <div class="stem">下列敘述何者正確？</div>
+  <div class="opts"><button class="opt" data-correct="1">(A)indapamide併用lithium，lithium level增加</button><button class="opt" data-correct="0">(B)lisinopril併用spironolactone，hypokalemia機率增加</button><button class="opt" data-correct="0">(C)tacrolimus併用methylprednisolone，hypoglycemia機率增加</button><button class="opt" data-correct="0">(D)amphotericin B併用piperacillin，hyperkalemia機率增加</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>A</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>indapamide（類 thiazide）併 lithium → lithium 濃度上升。其餘配對皆錯。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="112-2_74" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="112-2_78">
+  <div class="qhead"><span class="src">[112-2 第78題]</span></div>
+  <div class="stem">用於治療acute mania時，lithium適當的血中濃度為何？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)0.8～2 ng/mL</button><button class="opt" data-correct="0">(B)0.8～2 nmol/L</button><button class="opt" data-correct="1">(C)0.6～1.2 mEq/L</button><button class="opt" data-correct="0">(D)0.6～1.2 mg/L</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>C</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>急性躁症 lithium 適當濃度 0.6–1.2 mEq/L（單位須為 mEq/L 或 mmol/L），其餘選項單位皆錯（ng/mL、nmol/L、mg/L）。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="112-2_78" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="113-2_78">
+  <div class="qhead"><span class="src">[113-2 第78題]</span></div>
+  <div class="stem">下列何者之plasma albumin binding最低？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)phenytoin</button><button class="opt" data-correct="0">(B)carbamazepine</button><button class="opt" data-correct="0">(C)procainamide</button><button class="opt" data-correct="1">(D)lithium</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>D</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>lithium 不與血漿白蛋白結合（蛋白結合最低）；procainamide 約 15–20%，phenytoin/carbamazepine 高度結合。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="113-2_78" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div></div>
+</section><section id="sec2" style="--acc:#7C9082">
+  <h2 class="sec-head"><span class="sec-no">2</span>貳、Theophylline（茶鹼）<span class="sec-cnt">27 題</span></h2>
+  <div class="summary"><div class="sum-t">重點整理</div><ul><li>治療濃度 10–20 μg/mL（臨床多由 5–15 起始）；早產兒呼吸中止 6–13。</li><li>90% 經肝代謝（主 CYP1A2），理論上屬非線性；劑量調整以 ~25% 增減。</li><li>吸菸/大麻誘導 CYP1A2 → t½↓；肝病/心衰/老人 → t½↑。</li><li>抑制清除：cimetidine、fluoroquinolone(cipro/enoxacin)、巨環(除 azithromycin)、fluvoxamine。</li><li>誘導清除：rifampin、phenytoin、carbamazepine、phenobarbital。</li></ul></div>
+  <div class="qlist"><div class="q" data-qid="108-1_22">
+  <div class="qhead"><span class="src">[108-1 第22題]</span></div>
+  <div class="stem">Theophylline與下列何者併用時，較不會導致theophylline血中濃度上升？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)clarithromycin</button><button class="opt" data-correct="0">(B)telithromycin</button><button class="opt" data-correct="0">(C)erythromycin</button><button class="opt" data-correct="1">(D)azithromycin</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>D</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>巨環類抗生素中除 azithromycin 外（clarithromycin、telithromycin、erythromycin）皆抑制 CYP→升高 theophylline。azithromycin 影響最小（呼應筆記）。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="108-1_22" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="108-2_26">
+  <div class="qhead"><span class="src">[108-2 第26題]</span></div>
+  <div class="stem">Sustained-release theophylline的一般治療血中濃度範圍為若干μg/mL？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)2～5</button><button class="opt" data-correct="1">(B)5～15</button><button class="opt" data-correct="0">(C)15～30</button><button class="opt" data-correct="0">(D)30～60</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>B</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>緩釋 theophylline 臨床常用治療範圍 5–15 μg/mL（傳統 10–20，臨床多由 5–15 起始，呼應筆記）。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="108-2_26" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="108-2_30">
+  <div class="qhead"><span class="src">[108-2 第30題]</span></div>
+  <div class="stem">Neuromuscular blocking agents與下列藥品併用時，會增加神經肌肉阻斷作用，何者除外？</div>
+  <div class="opts"><button class="opt" data-correct="1">(A)theophylline</button><button class="opt" data-correct="0">(B)clindamycin</button><button class="opt" data-correct="0">(C)furosemide</button><button class="opt" data-correct="0">(D)amphotericin B</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>A</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>aminoglycosides、clindamycin、furosemide、amphotericin B（後二者經低血鉀）會增強神經肌肉阻斷；theophylline 不會（為例外）。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="108-2_30" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="109-1_3">
+  <div class="qhead"><span class="src">[109-1 第3題]</span></div>
+  <div class="stem">下列何者與theophylline併用時，須注意藥品之交互作用？</div>
+  <div class="opts"><button class="opt" data-correct="1">(A)fluvoxamine</button><button class="opt" data-correct="0">(B)lamotrigine</button><button class="opt" data-correct="0">(C)gabapentin</button><button class="opt" data-correct="0">(D)levetiracetam</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>A</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>fluvoxamine 為強 CYP1A2 抑制劑→升高 theophylline（筆記列為降低清除之藥）。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="109-1_3" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="109-1_69">
+  <div class="qhead"><span class="src">[109-1 第69題]</span></div>
+  <div class="stem">吸菸最可能影響下列何者之代謝？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)amiodarone</button><button class="opt" data-correct="0">(B)nifedipine</button><button class="opt" data-correct="0">(C)paroxetine</button><button class="opt" data-correct="1">(D)theophylline</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>D</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>吸菸誘導 CYP1A2，最影響 theophylline 代謝。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="109-1_69" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="109-1_73">
+  <div class="qhead"><span class="src">[109-1 第73題]</span></div>
+  <div class="stem">有關ciprofloxacin之敘述，下列何者正確？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)可以和含鋁或鎂的antacid同時服用</button><button class="opt" data-correct="0">(B)併用theophylline時，不會增加theophylline藥效</button><button class="opt" data-correct="1">(C)會抑制CYP1A2活性</button><button class="opt" data-correct="0">(D)會抑制CYP2C9活性</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>C</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>ciprofloxacin 抑制 CYP1A2→升高 theophylline；不可與含 Al/Mg 制酸劑或牛奶（鈣）同服（影響吸收）。故 C 正確。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="109-1_73" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="109-1_77">
+  <div class="qhead"><span class="src">[109-1 第77題]</span></div>
+  <div class="stem">下列那組藥品交互作用，不是經由藥效學機轉？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)tramadol－sertraline</button><button class="opt" data-correct="0">(B)digoxin－furosemide</button><button class="opt" data-correct="0">(C)ibuprofen－captopril</button><button class="opt" data-correct="1">(D)theophylline－erythromycin</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>D</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>問「非藥效學」。theophylline–erythromycin 屬藥動學(CYP3A 抑制)。其餘為藥效學（血清素、電解質、腎血流）。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="109-1_77" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="109-2_72">
+  <div class="qhead"><span class="src">[109-2 第72題]</span></div>
+  <div class="stem">下列何組藥品交互作用的機制，不屬於藥動學交互作用？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)theophylline－amiodarone</button><button class="opt" data-correct="0">(B)alcohol－disulfiram</button><button class="opt" data-correct="0">(C)allopurinol－mercaptopurine</button><button class="opt" data-correct="1">(D)digoxin－hydrochlorothiazide</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>D</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>問「非藥動學」。digoxin–HCTZ 屬藥效學（低血鉀增強 digoxin 毒性）；theophylline–amiodarone 為藥動學。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="109-2_72" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="109-2_76">
+  <div class="qhead"><span class="src">[109-2 第76題]</span></div>
+  <div class="stem">下列各項併用藥品與其相關副作用的配對中，何者最不可能發生？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)lisinopril＋trichlormethiazide：導致hypotension</button><button class="opt" data-correct="0">(B)verapamil＋digoxin：增加AV-block風險</button><button class="opt" data-correct="0">(C)theophylline＋linezolid：增加theophylline毒性</button><button class="opt" data-correct="1">(D)warfarin＋cimetidine：增加embolism風險</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>D</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>問「最不可能」。warfarin+cimetidine 抑制代謝→出血風險增加（非栓塞 embolism），故 D 最不可能。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="109-2_76" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="110-1_62">
+  <div class="qhead"><span class="src">[110-1 第62題]</span></div>
+  <div class="stem">下列何者可能影響theophylline之藥動學？①老年人＞65歲 ②肝硬化 ③肥胖（＞30% over IBW） ④嚼檳 榔 ⑤吸菸</div>
+  <div class="opts"><button class="opt" data-correct="1">(A)①②③⑤</button><button class="opt" data-correct="0">(B)①②④⑤</button><button class="opt" data-correct="0">(C)①③④⑤</button><button class="opt" data-correct="0">(D)②③④</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>A</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>影響 theophylline PK：年長&gt;65、肝硬化、肥胖、吸菸（①②③⑤）；嚼檳榔④非主要因子。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="110-1_62" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="110-2_50">
+  <div class="qhead"><span class="src">[110-2 第50題]</span></div>
+  <div class="stem">下列何者之肝臟代謝或腎臟清除率，在孕婦可能會降低，須調整劑量？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)phenytoin</button><button class="opt" data-correct="0">(B)β-lactams</button><button class="opt" data-correct="1">(C)theophylline</button><button class="opt" data-correct="0">(D)digoxin</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>C</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>孕期 theophylline 肝代謝/清除可能下降需調整；digoxin 清除反而增加。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="110-2_50" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="110-2_69">
+  <div class="qhead"><span class="src">[110-2 第69題]</span></div>
+  <div class="stem">下列何者是CYP2C8、3A4/5與2B6之enzyme inducer？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)ketoconazole</button><button class="opt" data-correct="1">(B)rifampin</button><button class="opt" data-correct="0">(C)theophylline</button><button class="opt" data-correct="0">(D)ethanol</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>B</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>rifampin 為 CYP2C8/3A4/5/2B6 強誘導劑。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="110-2_69" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="110-2_78">
+  <div class="qhead"><span class="src">[110-2 第78題]</span></div>
+  <div class="stem">有關theophylline與clarithromycin交互作用之敘述，下列何者正確？</div>
+  <div class="opts"><button class="opt" data-correct="1">(A)clarithromycin抑制肝臟酵素，使theophylline血中濃度上升</button><button class="opt" data-correct="0">(B)theophylline抑制clarithromycin代謝，使得clarithromycin血中濃度上升</button><button class="opt" data-correct="0">(C)theophylline增加胃中pH值，造成clarithromycin吸收增加</button><button class="opt" data-correct="0">(D)clarithromycin增加腸胃蠕動，造成theophylline吸收增加</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>A</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>clarithromycin 抑制肝酵素→theophylline 濃度上升。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="110-2_78" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="110-2_79">
+  <div class="qhead"><span class="src">[110-2 第79題]</span></div>
+  <div class="stem">下列建議何者最適當？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)建議醫師將theophylline劑量減半</button><button class="opt" data-correct="0">(B)建議醫師將clarithromycin劑量減半</button><button class="opt" data-correct="0">(C)建議病人特別注意是否腹瀉，可能是clarithromycin中毒的徵兆</button><button class="opt" data-correct="1">(D)建議病人特別注意心跳與腸胃道症狀，可能是theophylline濃度偏高的徵兆</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>D</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>應提醒注意心跳與腸胃道症狀（theophylline 濃度偏高徵兆，呼應筆記 &gt;15 μg/mL 類咖啡因症狀）。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="110-2_79" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="111-1_75">
+  <div class="qhead"><span class="src">[111-1 第75題]</span></div>
+  <div class="stem">下列敘述何者正確？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)綠色蔬菜富含vit. K，會改變服用warfarin病人的INR，故該類病人應避免食用綠色蔬菜</button><button class="opt" data-correct="0">(B)ethanol會增加estazolam的sedation效果，所以應建議病人以酒精飲料服用estazolam</button><button class="opt" data-correct="1">(C)吸菸會加快theophylline代謝，故評估theophylline劑量時務必權衡吸菸的影響</button><button class="opt" data-correct="0">(D)ciprofloxacin可搭配牛奶服用，以增加吸收率，提升抗菌效果</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>C</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>吸菸加快 theophylline 代謝，評估劑量務必納入吸菸影響。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="111-1_75" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="111-2_60">
+  <div class="qhead"><span class="src">[111-2 第60題]</span></div>
+  <div class="stem">氣喘在規律使用藥品控制下，何者為運動前使用，預防急性發作的首選藥品?</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)aminophylline</button><button class="opt" data-correct="0">(B)inhaled corticosteroids</button><button class="opt" data-correct="1">(C)inhaled short-acting β agonist</button><button class="opt" data-correct="0">(D)montelukast</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>C</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>運動前預防急性發作首選吸入型短效 β 致效劑(SABA)，非 aminophylline。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="111-2_60" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="111-2_72">
+  <div class="qhead"><span class="src">[111-2 第72題]</span></div>
+  <div class="stem">下列何者與長期吸菸產生之交互作用屬於pharmacodynamic interactions？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)clopidogrel</button><button class="opt" data-correct="1">(B)diazepam</button><button class="opt" data-correct="0">(C)olanzapine</button><button class="opt" data-correct="0">(D)theophylline</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>B</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>吸菸對 diazepam 之交互作用屬藥效學（尼古丁中樞興奮對抗鎮靜）；對 theophylline/olanzapine 為藥動學(CYP1A2 誘導)。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="111-2_72" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="111-2_78">
+  <div class="qhead"><span class="src">[111-2 第78題]</span></div>
+  <div class="stem">丁太太罹患COPD，她的theophylline穩定狀態血中濃度為3 mg/L，症狀無顯著改善。下列建議，何者最適當？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)將theophylline改換montelukast 10 mg PO QD</button><button class="opt" data-correct="0">(B)提高theophylline劑量約50%，並持續監測血中濃度</button><button class="opt" data-correct="0">(C)維持原theophylline劑量，再次檢測血中濃度正確性</button><button class="opt" data-correct="1">(D)提高theophylline劑量約25%，並持續監測血中濃度</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>D</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>theophylline 3 mg/L 偏低且近飽和（非線性），保守提高約 25% 並持續監測，避免濃度過衝。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="111-2_78" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="112-1_78">
+  <div class="qhead"><span class="src">[112-1 第78題]</span></div>
+  <div class="stem">楊先生 42 歲，菸齡 27 年，罹患 COPD 5 年，心律不整 2 年。醫師開立 theophylline sustained release cap 200 mg PO BID 7 天，囑咐於用藥 4 天後測血清濃度。藥師應如何建議？①保留服藥頻次 BID ②修改服藥頻次為 Q12H ③請病人於早餐與晚餐時服用 ④病人可以空腹或隨餐服用 ⑤病人應固定隨餐或空腹服用 ⑥抽血 時間最好在晚上服藥後 6 小時 ⑦抽血時間最好在白天服藥後 6 小時</div>
+  <div class="opts"><button class="opt" data-correct="1">(A)②⑤⑦</button><button class="opt" data-correct="0">(B)①③④⑦</button><button class="opt" data-correct="0">(C)①③④⑥</button><button class="opt" data-correct="0">(D)②⑤⑥</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>A</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>吸菸者為快代謝：②改 Q12H 均分、⑤固定隨餐或固定空腹（維持吸收一致性）、⑦白天服藥後 6 小時抽血。故 ②⑤⑦。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="112-1_78" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="112-1_79">
+  <div class="qhead"><span class="src">[112-1 第79題]</span></div>
+  <div class="stem">承上題，4 天後病人 theophylline 血中濃度為 22 mg/L，肝功能正常。醫師調低劑量為 200 mg QD，又 4 天後病 人 theophylline 血中濃度為 8 mg/L，抽血時間是早上服藥後 9 小時。下列建議何者最適當？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)抽血時間太晚，所以血中濃度偏低，應再重抽一次</button><button class="opt" data-correct="0">(B)抽血時間太晚，所以實際的峰濃度更低，應增加劑量之後再驗血中濃度</button><button class="opt" data-correct="1">(C)抽血時間正確，病人沒有明顯副作用，繼續原劑量</button><button class="opt" data-correct="0">(D)抽血時間正確，血中濃度未達治療範圍，應增加劑量之後再驗血中濃度</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>C</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>抽血時間正確、8 mg/L 落在臨床有效範圍且無副作用→續用原劑量。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="112-1_79" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="113-1_75">
+  <div class="qhead"><span class="src">[113-1 第75題]</span></div>
+  <div class="stem">下列何者在進行療劑監測時，須測peak與trough兩點濃度？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)digoxin in chronic use</button><button class="opt" data-correct="0">(B)phenytoin in chronic use</button><button class="opt" data-correct="1">(C)gentamicin in conventional dosing</button><button class="opt" data-correct="0">(D)aminophylline continuous infusion</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>C</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>需測 peak 與 trough 兩點者為傳統劑量 gentamicin；theophylline 連續輸注、慢性 digoxin、慢性 phenytoin 皆單點/谷濃度。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="113-1_75" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="113-2_70">
+  <div class="qhead"><span class="src">[113-2 第70題]</span></div>
+  <div class="stem">下列何者會縮短theophylline的半衰期？</div>
+  <div class="opts"><button class="opt" data-correct="1">(A)marijuana smoke</button><button class="opt" data-correct="0">(B)severe heart failure</button><button class="opt" data-correct="0">(C)age＞65歲</button><button class="opt" data-correct="0">(D)Child-pugh C liver cirrhosis</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>A</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>大麻(marijuana smoke) 誘導 CYP1A2→縮短 theophylline 半衰期（筆記：菸、大麻誘導）。其餘（心衰、老年、肝硬化）皆延長 t½。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="113-2_70" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="114-1_55">
+  <div class="qhead"><span class="src">[114-1 第55題]</span></div>
+  <div class="stem">有關懷孕婦女的藥動學變化，下列敘述何者最適當？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)gentamicin的最高血中濃度（C max）可能會增加，速效劑量應減少</button><button class="opt" data-correct="0">(B)valproic acid血中free form的比例會降低</button><button class="opt" data-correct="1">(C)theophylline之肝臟代謝會降低</button><button class="opt" data-correct="0">(D)digoxin之清除率會降低</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>C</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>孕期 theophylline 肝臟代謝會下降（需注意劑量）。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="114-1_55" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="114-1_63">
+  <div class="qhead"><span class="src">[114-1 第63題]</span></div>
+  <div class="stem">下列藥物交互作用之機轉，何者不屬於代謝抑制？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)tamoxifen－paroxetine</button><button class="opt" data-correct="1">(B)lopinavir－rifampin</button><button class="opt" data-correct="0">(C)theophylline－ciprofloxacin</button><button class="opt" data-correct="0">(D)azathioprine－allopurinol</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>B</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>問「非代謝抑制」。lopinavir–rifampin 之 rifampin 為「誘導劑」；其餘三組皆為代謝抑制。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="114-1_63" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="114-1_78">
+  <div class="qhead"><span class="src">[114-1 第78題]</span></div>
+  <div class="stem">有關theophylline之療劑監測，下列敘述何者錯誤？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)在cor pulmonale的病人劑量應降低</button><button class="opt" data-correct="0">(B)成人吸菸者之維持劑量高於非吸菸者</button><button class="opt" data-correct="1">(C)應監測谷濃度</button><button class="opt" data-correct="0">(D)目標血中濃度範圍為5～15 μg/mL</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>C</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>問「錯誤」。theophylline TDM 並非以谷濃度監測（連續輸注於穩態任意時間、SR 取適當時點），故「應監測谷濃度」為錯誤敘述。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="114-1_78" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="114-2_71">
+  <div class="qhead"><span class="src">[114-2 第71題]</span></div>
+  <div class="stem">下列併用藥品組合與交互作用機轉配對，何者錯誤？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)cotrimoxazole tab－warfarin tab：distribution</button><button class="opt" data-correct="0">(B)itraconazole cap－PPIs inj：absorption</button><button class="opt" data-correct="1">(C)furosemide inj－midazolam inj：metabolism</button><button class="opt" data-correct="0">(D)fluoroquinolones inj－theophylline tab：metabolism</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>C</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>問「錯誤配對」。furosemide–midazolam 無代謝交互作用，機轉標示錯誤；fluoroquinolone–theophylline 屬代謝(CYP1A2)正確。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="114-2_71" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="115-1_80">
+  <div class="qhead"><span class="src">[115-1 第80題]</span></div>
+  <div class="stem">70 歲江先生，因 COPD 使用 ipratropium 3 puffs QID、albuterol 2 puffs PRN 及 theophylline SR 200 mg Q12H PO。日前因 prostatitis服用 ciprofloxacin 500 mg Q12H，3 天後，出現噁心及心悸等症狀。引起這些副作用最可能的原因為何？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)ciprofloxacin 抑制 ipratropium 代謝</button><button class="opt" data-correct="0">(B)ciprofloxacin 增加 albuterol 代謝</button><button class="opt" data-correct="1">(C)ciprofloxacin 抑制 theophylline 代謝</button><button class="opt" data-correct="0">(D)theophylline 增加 ciprofloxacin 代謝</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>C</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>ciprofloxacin 抑制 theophylline 代謝→濃度升高，出現噁心、心悸（類咖啡因症狀）。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="115-1_80" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div></div>
+</section><section id="sec3" style="--acc:#8C7A95">
+  <h2 class="sec-head"><span class="sec-no">3</span>叁、免疫抑制劑　Cyclosporine／Tacrolimus／Sirolimus<span class="sec-cnt">30 題</span></h2>
+  <div class="summary"><div class="sum-t">重點整理</div><ul><li>皆測「全血 trough」濃度（大量結合紅血球）；cyclosporine 100–400、tacrolimus 5–20、sirolimus 5–15 ng/mL。</li><li>主要 CYP3A4 + P-gp 代謝。葡萄柚汁、azole、巨環、CCB、蛋白酶抑制劑 → 濃度↑；rifampin / SJW / 抗癲癇 → 濃度↓。</li><li>副作用：cyclosporine 高血壓·高血脂·多毛·牙齦增生；tacrolimus 神經毒·血糖↑·落髮；sirolimus 骨髓抑制·高血脂·傷口癒合慢。</li><li>voriconazole 併 tacrolimus 須大幅降低 tacrolimus 劑量。</li></ul></div>
+  <div class="qlist"><div class="q" data-qid="108-1_68">
+  <div class="qhead"><span class="src">[108-1 第68題]</span></div>
+  <div class="stem">下列何者最不會降低cyclosporine的療效？</div>
+  <div class="opts"><button class="opt" data-correct="1">(A)葡萄柚汁</button><button class="opt" data-correct="0">(B)貫葉連翹（St. John&#x27;s wort）</button><button class="opt" data-correct="0">(C)制酸劑</button><button class="opt" data-correct="0">(D)cholestyramine</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>A</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>問「最不會降低療效」。葡萄柚汁抑制 CYP3A4/P-gp→升高 cyclosporine（增強而非降低）。SJW、制酸劑、cholestyramine 才會降低療效。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="108-1_68" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="109-1_76">
+  <div class="qhead"><span class="src">[109-1 第76題]</span></div>
+  <div class="stem">有關免疫抑制劑血中濃度監測之敘述，下列何者最正確？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)mycophenolate的trough concentration與療效呈現正相關，應定期追蹤trough concentration</button><button class="opt" data-correct="0">(B)cyclosporine的peak concentration與腎毒性呈現正相關，應定期追蹤peak concentration</button><button class="opt" data-correct="1">(C)tacrolimus的trough concentration與療效呈現正相關，應定期追蹤trough concentration</button><button class="opt" data-correct="0">(D)sirolimus的peak concentration與抗排斥的效果呈現正相關，應定期追蹤peak concentration</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>C</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>tacrolimus 谷濃度與療效正相關，應定期追蹤 trough（免疫抑制劑皆測 trough，非 peak）。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="109-1_76" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="109-2_66">
+  <div class="qhead"><span class="src">[109-2 第66題]</span></div>
+  <div class="stem">在tacrolimus-based immunosuppression，一般標的tacrolimus血中trough concentration為多少μg/L？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)0.5～1.2</button><button class="opt" data-correct="1">(B)5～12</button><button class="opt" data-correct="0">(C)50～120</button><button class="opt" data-correct="0">(D)0.05～0.12</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>B</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>tacrolimus 目標 trough 約 5–12 μg/L(=ng/mL)（呼應筆記 5–20）。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="109-2_66" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="109-2_67">
+  <div class="qhead"><span class="src">[109-2 第67題]</span></div>
+  <div class="stem">下列何者與葡萄柚汁併服時，發生交互作用之可能性最小？</div>
+  <div class="opts"><button class="opt" data-correct="1">(A)citalopram</button><button class="opt" data-correct="0">(B)cyclosporine</button><button class="opt" data-correct="0">(C)nifedipine</button><button class="opt" data-correct="0">(D)verapamil</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>A</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>問「最小」。citalopram 非顯著 CYP3A4 受質，與葡萄柚汁交互作用最小；cyclosporine/nifedipine/verapamil 皆受影響。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="109-2_67" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="109-2_70">
+  <div class="qhead"><span class="src">[109-2 第70題]</span></div>
+  <div class="stem">有關tacrolimus之藥品交互作用，下列敘述何者正確？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)與itraconazole併用，tacrolimus的血中濃度會下降</button><button class="opt" data-correct="0">(B)與cimetidine併用，tacrolimus的血中濃度會下降</button><button class="opt" data-correct="1">(C)與St. John’s wort併用，tacrolimus的血中濃度會下降</button><button class="opt" data-correct="0">(D)與rifampin併用，tacrolimus的血中濃度會上升</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>C</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>St. John&#x27;s wort 誘導 CYP3A4→tacrolimus 濃度下降。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="109-2_70" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="110-1_60">
+  <div class="qhead"><span class="src">[110-1 第60題]</span></div>
+  <div class="stem">有關藥品血中濃度監測之敘述，下列何者正確？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)tacrolimus建議峰濃度範圍為15～20 μg/mL</button><button class="opt" data-correct="0">(B)phenytoin free drug建議谷濃度範圍為10～20 μg/mL</button><button class="opt" data-correct="1">(C)valproic acid建議谷濃度範圍為50～100 μg/mL</button><button class="opt" data-correct="0">(D)vancomycin建議血液透析後立即監測血中濃度</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>C</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>valproic acid 谷濃度 50–100 μg/mL 正確；tacrolimus 應測 trough 非 peak、free phenytoin 為 1–2、vanco 不在透析後立即測。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="110-1_60" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="110-1_63">
+  <div class="qhead"><span class="src">[110-1 第63題]</span></div>
+  <div class="stem">下列何者不是cyclosporine常見副作用？</div>
+  <div class="opts"><button class="opt" data-correct="1">(A)禿頭</button><button class="opt" data-correct="0">(B)高血壓</button><button class="opt" data-correct="0">(C)高血脂</button><button class="opt" data-correct="0">(D)腎毒性</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>A</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>問「非常見副作用」。cyclosporine 造成「多毛症」而非禿頭；落髮為 tacrolimus 的副作用。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="110-1_63" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="110-1_68">
+  <div class="qhead"><span class="src">[110-1 第68題]</span></div>
+  <div class="stem">有關repaglinide藥品交互作用之敘述，下列何者錯誤？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)與clopidogrel併用，會造成repaglinide血中濃度上升</button><button class="opt" data-correct="0">(B)與cyclosporine併用，會造成repaglinide血中濃度上升</button><button class="opt" data-correct="1">(C)與digoxin併用，會造成digoxin血中濃度上升</button><button class="opt" data-correct="0">(D)與gemfibrozil併用，會造成低血糖風險增加</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>C</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>問「錯誤」。digoxin+repaglinide 不會升高 digoxin（敘述錯誤）；cyclosporine 會升高 repaglinide 濃度。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="110-1_68" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="110-1_73">
+  <div class="qhead"><span class="src">[110-1 第73題]</span></div>
+  <div class="stem">下列何者對sirolimus藥效之影響與其他選項不同？</div>
+  <div class="opts"><button class="opt" data-correct="1">(A)grapefruit juice</button><button class="opt" data-correct="0">(B)St. John&#x27;s wort</button><button class="opt" data-correct="0">(C)carbamazepine</button><button class="opt" data-correct="0">(D)rifabutin</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>A</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>問「不同」。葡萄柚汁為抑制劑（升高 sirolimus），與其他（SJW、carbamazepine、rifabutin 為誘導劑→降低）方向相反。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="110-1_73" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="110-2_41">
+  <div class="qhead"><span class="src">[110-2 第41題]</span></div>
+  <div class="stem">下列何者導致腎毒性的可能性最低？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)gentamicin</button><button class="opt" data-correct="0">(B)cyclosporine</button><button class="opt" data-correct="0">(C)amphotericin B</button><button class="opt" data-correct="1">(D)sucralfate</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>D</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>問「最低」。sucralfate 腎毒性最低；gentamicin、cyclosporine、amphotericin B 皆具腎毒性。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="110-2_41" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="110-2_66">
+  <div class="qhead"><span class="src">[110-2 第66題]</span></div>
+  <div class="stem">臨床上，下列何者通常不例行性進行血中濃度監測？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)cyclosporine</button><button class="opt" data-correct="1">(B)mycophenolate mofetil</button><button class="opt" data-correct="0">(C)sirolimus</button><button class="opt" data-correct="0">(D)tacrolimus</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>B</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>mycophenolate mofetil 一般不例行 TDM；cyclosporine/sirolimus/tacrolimus 需常規監測。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="110-2_66" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="110-2_74">
+  <div class="qhead"><span class="src">[110-2 第74題]</span></div>
+  <div class="stem">葡萄柚汁較不會增加下列何者之血中濃度？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)amlodipine</button><button class="opt" data-correct="0">(B)lovastatin</button><button class="opt" data-correct="1">(C)lisinopril</button><button class="opt" data-correct="0">(D)cyclosporine</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>C</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>lisinopril 非 CYP3A4 受質，葡萄柚汁較不影響其濃度。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="110-2_74" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="111-1_64">
+  <div class="qhead"><span class="src">[111-1 第64題]</span></div>
+  <div class="stem">有關藥品血中濃度監測之敘述，下列何者正確？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)digoxin用於heart failure，血中濃度須維持1.2～1.5 ng/mL，以達到較好的inotropic作用</button><button class="opt" data-correct="1">(B)phenytoin血中濃度須依照serum albumin校正</button><button class="opt" data-correct="0">(C)血液透析病人施打vancomycin，應在透析後立即監測血中濃度</button><button class="opt" data-correct="0">(D)腎移植多年且控制良好的病人，tacrolimus血中濃度未達5 ng/mL時，須增加劑量以維持抗排斥效果</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>B</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>phenytoin 須依血清白蛋白校正（B 正確）。(D)長期穩定之腎移植 tacrolimus&lt;5 ng/mL 不一定需加量。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="111-1_64" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="111-1_66">
+  <div class="qhead"><span class="src">[111-1 第66題]</span></div>
+  <div class="stem">下列何者不是cyclosporine的典型副作用？</div>
+  <div class="opts"><button class="opt" data-correct="1">(A)低血壓</button><button class="opt" data-correct="0">(B)腎毒性</button><button class="opt" data-correct="0">(C)高脂血症</button><button class="opt" data-correct="0">(D)多毛症（hirsutism）</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>A</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>問「非典型副作用」。cyclosporine 造成「高血壓」而非低血壓。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="111-1_66" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="111-2_52">
+  <div class="qhead"><span class="src">[111-2 第52題]</span></div>
+  <div class="stem">吳先生因腎臟移植使用cyclosporine，有關其用藥指導，下列何者錯誤？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)一般1天服用2次，應固定時間服藥</button><button class="opt" data-correct="0">(B)可監測血中濃度來調整藥品劑量，應注意抽血時間</button><button class="opt" data-correct="0">(C)可能導致代謝異常，應規律監測血壓、血糖及血脂</button><button class="opt" data-correct="1">(D)可能導致掉髮及牙齦增生，應注意頭髮及口腔衛生</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>D</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>問「錯誤」。cyclosporine 造成多毛症與牙齦增生，並非掉髮（掉髮為 tacrolimus），故 D 敘述錯誤。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="111-2_52" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="111-2_68">
+  <div class="qhead"><span class="src">[111-2 第68題]</span></div>
+  <div class="stem">有關tacrolimus於移植術後之療劑監測，下列何者錯誤？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)主要監測血中谷濃度</button><button class="opt" data-correct="0">(B)主要經由CYP3A4/5代謝，須留意相關交互作用</button><button class="opt" data-correct="1">(C)目標血中濃度通常為5～10 μg/mL</button><button class="opt" data-correct="0">(D)須注意腎毒性的產生</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>C</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>問「錯誤」。tacrolimus 目標濃度依器官/時期約 5–15(20) ng/mL，「通常 5–10」過窄為錯誤。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="111-2_68" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="112-1_55">
+  <div class="qhead"><span class="src">[112-1 第55題]</span></div>
+  <div class="stem">有關免疫抑制劑之敘述，下列何者正確？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)為確保療效，服用免疫抑制劑時，應定期監測血中峰濃度</button><button class="opt" data-correct="0">(B)mycophenolate 最主要的副作用為血壓過高，應定期追蹤血壓變化</button><button class="opt" data-correct="0">(C)sirolimus 比較不會影響血脂肪，服藥期間的飲食限制較少</button><button class="opt" data-correct="1">(D)tacrolimus 可能造成血糖上升，應定期監測血糖變化</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>D</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>tacrolimus 易致血糖上升（比 cyclosporine 更具糖尿病傾向），應定期監測血糖。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="112-1_55" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="112-1_66">
+  <div class="qhead"><span class="src">[112-1 第66題]</span></div>
+  <div class="stem">器官移植者使用 sirolimus-based immunosuppression，一般建議 sirolimus 血中 trough concentration 為何？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)0.2～0.8 μg/L</button><button class="opt" data-correct="0">(B)5～15 mg/mL</button><button class="opt" data-correct="0">(C)1.2～2.0 ng/mL</button><button class="opt" data-correct="1">(D)5～15 ng/mL</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>D</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>sirolimus 目標 trough 5–15 ng/mL（呼應筆記）。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="112-1_66" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="112-1_77">
+  <div class="qhead"><span class="src">[112-1 第77題]</span></div>
+  <div class="stem">下列何者於臨床監測時使用 pharmacodynamic marker，而不使用 pharmacokinetic marker？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)vancomycin</button><button class="opt" data-correct="0">(B)digoxin</button><button class="opt" data-correct="1">(C)warfarin</button><button class="opt" data-correct="0">(D)tacrolimus</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>C</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>warfarin 以 PD marker(INR) 監測，不使用 PK 血中濃度。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="112-1_77" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="112-2_65">
+  <div class="qhead"><span class="src">[112-2 第65題]</span></div>
+  <div class="stem">60公斤男性病人，下列何種情況建議立即監測藥品血中濃度？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)診斷有心衰竭，使用ARB及beta blocker，開始給與digoxin 0.125 mg QD</button><button class="opt" data-correct="0">(B)診斷為MRSA pneumonia，給與vancomycin 1,000 mg loading dose</button><button class="opt" data-correct="1">(C)使用phenytoin injection 100 mg Q8H IV，出現vertigo</button><button class="opt" data-correct="0">(D)接受肝臟移植後，服用第一劑tacrolimus，無不適狀況</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>C</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>phenytoin IV 出現眩暈為毒性徵兆，應立即監測血中濃度。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="112-2_65" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="112-2_68">
+  <div class="qhead"><span class="src">[112-2 第68題]</span></div>
+  <div class="stem">下列何者可能降低cyclosporine之藥效？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)diltiazem</button><button class="opt" data-correct="0">(B)indinavir</button><button class="opt" data-correct="0">(C)fluvoxamine</button><button class="opt" data-correct="1">(D)ticlopidine</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>D</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>問「降低療效」。ticlopidine 誘導代謝→降低 cyclosporine（筆記：Ticlopidine 為 cyclosporine 之特定誘導劑）。diltiazem/indinavir/fluvoxamine 為抑制劑→升高。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="112-2_68" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="113-1_67">
+  <div class="qhead"><span class="src">[113-1 第67題]</span></div>
+  <div class="stem">有關療劑監測之敘述，下列何者正確？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)腎移植後使用cyclosporine，須經3～5個t 1/2 達steady-state後，再開始監測血中濃度</button><button class="opt" data-correct="0">(B)sirolimus須監測steady-state 服藥後2小時的濃度</button><button class="opt" data-correct="0">(C)tacrolimus開始併用sirolimus時，不須降低tacrolimus劑量，並維持相同血中濃度</button><button class="opt" data-correct="1">(D)everolimus用於器官移植，須監測steady-state谷濃度</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>D</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>everolimus 用於器官移植須監測穩態谷濃度(D 正確)。其餘有誤：cyclosporine 移植後即每日監測而非待 3–5 t½；sirolimus 測 trough 非 2h；加 sirolimus 須降 tacrolimus。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="113-1_67" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="113-1_74">
+  <div class="qhead"><span class="src">[113-1 第74題]</span></div>
+  <div class="stem">下列何者與ritonavir併用時，其血中濃度不會受ritonavir影響而上升？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)lovastatin</button><button class="opt" data-correct="0">(B)cyclosporine</button><button class="opt" data-correct="1">(C)allopurinol</button><button class="opt" data-correct="0">(D)darunavir</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>C</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>問「不受影響」。allopurinol 非 CYP3A4 受質，ritonavir 不影響其濃度。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="113-1_74" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="113-1_78">
+  <div class="qhead"><span class="src">[113-1 第78題]</span></div>
+  <div class="stem">下列何者會增加sirolimus的毒性？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)St. John&#x27;s wort</button><button class="opt" data-correct="1">(B)grapefruit juice</button><button class="opt" data-correct="0">(C)rifampin</button><button class="opt" data-correct="0">(D)ferrous sulfate</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>B</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>葡萄柚汁抑制代謝→增加 sirolimus 毒性（其餘 SJW、rifampin 為誘導→降低）。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="113-1_78" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="113-2_68">
+  <div class="qhead"><span class="src">[113-2 第68題]</span></div>
+  <div class="stem">有關tacrolimus療劑監測，下列敘述何者錯誤？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)AUC與C trough 具有相關性，臨床上常以C trough 作為療效評估依據</button><button class="opt" data-correct="1">(B)主要結合於erythrocytes，療劑監測時，藥品濃度需依據Hct進行轉換</button><button class="opt" data-correct="0">(C)排除半衰期不會受到腎功能的影響</button><button class="opt" data-correct="0">(D)與制酸劑併服時，血中濃度會降低，應間隔服用</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>B</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>問「錯誤」。tacrolimus 雖大量結合紅血球、測全血，但 TDM 不需依 Hct 換算（直接測全血），故 B 敘述錯誤。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="113-2_68" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="114-1_68">
+  <div class="qhead"><span class="src">[114-1 第68題]</span></div>
+  <div class="stem">有關voriconazole和tacrolimus交互作用之敘述，下列何者正確？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)交互作用結果嚴重，兩者不得併用</button><button class="opt" data-correct="0">(B)交互作用的機轉屬藥動學及藥效學</button><button class="opt" data-correct="1">(C)若兩藥必須併用時，須降低tacrolimus劑量</button><button class="opt" data-correct="0">(D)若兩藥必須併用時，須降低voriconazole劑量</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>C</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>voriconazole 為強 CYP3A4 抑制劑，必須併用時應降低 tacrolimus 劑量(C 正確)。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="114-1_68" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="114-1_74">
+  <div class="qhead"><span class="src">[114-1 第74題]</span></div>
+  <div class="stem">有關tacrolimus的敘述，下列何者錯誤？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)具高度親脂性，個體間生體可用率差異大</button><button class="opt" data-correct="0">(B)口服給藥優於注射，因副作用較小</button><button class="opt" data-correct="0">(C)TDM須監測whole blood concentration</button><button class="opt" data-correct="1">(D)目前的口服劑型都是1天使用2次</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>D</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>問「錯誤」。現已有每日一次緩釋型 tacrolimus（如 Advagraf），「都是一天兩次」錯誤。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="114-1_74" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="114-2_64">
+  <div class="qhead"><span class="src">[114-2 第64題]</span></div>
+  <div class="stem">68歲病人，BH 153 cm，BW 60 kg，接受肝臟移植手術不到1個月，tacrolimus目標濃度為5 ng/mL左右，因腹腔感染欲給與voriconazole empirical therapy。下列何者正確？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)voriconazole loading dose 400 mg Q12H兩劑後，因與tacrolimus具有交互作用，維持劑量應給與200 mg QD</button><button class="opt" data-correct="0">(B)voriconazole應在血中穩定濃度後進行療劑監測，約為開始治療後4～7天，抽取給藥後2小時血中 濃度</button><button class="opt" data-correct="0">(C)tacrolimus在開始給與voriconazole時之劑量為 4 mg Q12H，C trough 為4.0 ng/mL，應調整劑量至5 mg Q12H</button><button class="opt" data-correct="1">(D)voriconazole給藥3天後，tacrolimus C trough 為12 ng/mL，原劑量4 mg Q12H應調整為2 mg Q12H</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>D</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>voriconazole 升高 tacrolimus。給藥 3 天後 trough 12 ng/mL（過高），原 4 mg Q12H 依線性比例調整應降為 2 mg Q12H(D)。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="114-2_64" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="114-2_68">
+  <div class="qhead"><span class="src">[114-2 第68題]</span></div>
+  <div class="stem">有關tacrolimus之敘述，下列何者錯誤？</div>
+  <div class="opts"><button class="opt" data-correct="1">(A)low plasma protein binding</button><button class="opt" data-correct="0">(B)和cyclosporine一樣，監測trough concentration</button><button class="opt" data-correct="0">(C)target concentration range為3～15 ng/mL</button><button class="opt" data-correct="0">(D)和fluconazole併用會有增加毒性的風險</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>A</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>問「錯誤」。tacrolimus 為「高」血漿蛋白結合(72–99%)，A「low protein binding」錯誤。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="114-2_68" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="115-1_20">
+  <div class="qhead"><span class="src">[115-1 第20題]</span></div>
+  <div class="stem">下列那一組藥品之交互作用屬 pharmacodynamic drug interaction？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)dabigatran/amiodarone</button><button class="opt" data-correct="0">(B)cyclosporine/statins</button><button class="opt" data-correct="0">(C)methotrexate/salicylates</button><button class="opt" data-correct="1">(D)amikacin/cisatracurium</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>D</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>問「藥效學」。amikacin/cisatracurium 屬藥效學（aminoglycoside 增強神經肌肉阻斷）；其餘為藥動學。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="115-1_20" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div></div>
+</section><section id="sec4" style="--acc:#B07A5B">
+  <h2 class="sec-head"><span class="sec-no">4</span>肆、Digoxin（毛地黃）<span class="sec-cnt">25 題</span></h2>
+  <div class="summary"><div class="sum-t">重點整理</div><ul><li>治療：心衰 0.5–0.9(1.0) ng/mL；心房顫動 0.8–1.5（最高 2）；&gt;2 毒性風險增加。</li><li>二室模式、分佈期長 8–12h；給藥後 ≥6–12h 或下次給藥前(trough)抽血。</li><li>約 75% 經腎排除(GFR+腎小管分泌)、25% 肝/膽；F：錠劑 0.7、溶液 0.8。</li><li>低血鉀/低血鎂/高血鈣、甲狀腺低下會增強毒性。</li><li>升高：amiodarone(2–3×)、verapamil(↑70%)、quinidine、clarithromycin、cyclosporine；降低：rifampin、cholestyramine、metoclopramide。</li></ul></div>
+  <div class="qlist"><div class="q" data-qid="108-1_66">
+  <div class="qhead"><span class="src">[108-1 第66題]</span></div>
+  <div class="stem">Digoxin用於治療心臟衰竭，適當的血中濃度範圍為何？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)0.2～0.8 μg/L</button><button class="opt" data-correct="1">(B)0.5～1.0 ng/mL</button><button class="opt" data-correct="0">(C)1.2～2.0 ng/mL</button><button class="opt" data-correct="0">(D)2.0～2.5 μg/L</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>B</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>digoxin 治心衰之 inotropic 適當濃度 0.5–1.0 ng/mL（呼應筆記）。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="108-1_66" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="108-2_68">
+  <div class="qhead"><span class="src">[108-2 第68題]</span></div>
+  <div class="stem">下列何種病人對digoxin的作用非常敏感？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)abnormal liver function</button><button class="opt" data-correct="1">(B)hypothyroidism</button><button class="opt" data-correct="0">(C)dyspepsia</button><button class="opt" data-correct="0">(D)obesity</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>B</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>hypothyroidism 病人對 digoxin 特別敏感（清除下降、t½ 延長）。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="108-2_68" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="109-1_75">
+  <div class="qhead"><span class="src">[109-1 第75題]</span></div>
+  <div class="stem">尹先生患有心臟衰竭，其肝、腎功能正常。目前服用digoxin 0.125 mg QD、spironolactone 25 mg QD、ramipril 5 mg QD；測得serum digoxin 0.8 ng/mL、serum K + 3.7 mEq/L，下列敘述何者最適當？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)digoxin劑量不足</button><button class="opt" data-correct="0">(B)spironolactone不應與ramipril併用</button><button class="opt" data-correct="0">(C)ramipril劑量過高</button><button class="opt" data-correct="1">(D)尹先生之用藥無明顯問題</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>D</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>digoxin 0.8 ng/mL、K 3.7 mEq/L 皆正常；spironolactone+ramipril 雖均升 K 但數值仍正常，用藥無明顯問題(D)。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="109-1_75" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="109-2_69">
+  <div class="qhead"><span class="src">[109-2 第69題]</span></div>
+  <div class="stem">下列何者不會透過抑制P-glycoprotein而增加digoxin之血中濃度？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)atorvastatin</button><button class="opt" data-correct="0">(B)diltiazem</button><button class="opt" data-correct="0">(C)clarithromycin</button><button class="opt" data-correct="1">(D)St. John’s wort</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>D</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>問「不會」。St. John&#x27;s wort 為 P-gp 誘導劑→降低 digoxin；其餘 atorvastatin/diltiazem/clarithromycin 抑制 P-gp→升高。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="109-2_69" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="110-1_70">
+  <div class="qhead"><span class="src">[110-1 第70題]</span></div>
+  <div class="stem">下列何組藥品交互作用之機制與其他組別不同？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)moxifloxacin－sucralfate</button><button class="opt" data-correct="0">(B)minocycline－aluminum hydroxide</button><button class="opt" data-correct="1">(C)bisacodyl－aluminum hydroxide</button><button class="opt" data-correct="0">(D)digoxin－cholestyramine</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>C</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>問「機制不同」。bisacodyl–氫氧化鋁：制酸劑升高 pH 使腸溶衣提早溶解，與其他「吸附/螯合降低吸收」不同。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="110-1_70" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="110-2_58">
+  <div class="qhead"><span class="src">[110-2 第58題]</span></div>
+  <div class="stem">朱小弟體重15 kg，醫師處方digoxin elixir 0.05 mg/mL，10 μg/kg PO Q2D。下列用法標示何者正確？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)每天一次，每次7.5 mL，口服</button><button class="opt" data-correct="1">(B)每隔天一次，每次3 mL，口服</button><button class="opt" data-correct="0">(C)每隔天一次，每次0.6 mL，口服</button><button class="opt" data-correct="0">(D)每週一次，每次7.5 mL，口服</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>B</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>計算：15 kg×10 μg/kg=150 μg=0.15 mg；0.05 mg/mL→3 mL；Q2D=每隔一天。故「每隔天一次、每次 3 mL」。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="110-2_58" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="110-2_64">
+  <div class="qhead"><span class="src">[110-2 第64題]</span></div>
+  <div class="stem">李女士有hypothyroidism、heart failure及asthma病史。現因atrial fibrillation入院，下列何者最適合用來控制其心 跳速率？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)amiodarone</button><button class="opt" data-correct="1">(B)digoxin</button><button class="opt" data-correct="0">(C)propranolol</button><button class="opt" data-correct="0">(D)verapamil</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>B</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>合併甲低、心衰、氣喘之 AF 速率控制首選 digoxin（避 propranolol 因氣喘、verapamil 因心衰、amiodarone 因甲狀腺）。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="110-2_64" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="111-1_59">
+  <div class="qhead"><span class="src">[111-1 第59題]</span></div>
+  <div class="stem">陳女士73歲，158公分，58公斤，有type 2 DM，且有心衰竭病史，目前用藥：glyburide 2.5 mg PO BID、 furosemide 40 mg PO QD、valsartan 40 mg PO QD、digoxin 0.25 mg PO QD、carvedilol 6.25 mg PO BID。最近 檢測值：HbA1C 9.5%、serum creatinine 1.7 mg/dL、digoxin serum concentration 1.5 ng/mL。陳女士坦承沒有按 時服用「一天兩次的藥」，主因是服藥後會感到心悸、頭暈而且手似乎會抖。應如何處置最適當？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)為避免DM併發症的發生，HbA1C應嚴格控制在7%以下；應明確教育病人血糖控制的重要性，強調按時服藥</button><button class="opt" data-correct="0">(B)服藥後有低血糖症狀，應降低glyburide劑量但增加頻次以穩定血糖波動</button><button class="opt" data-correct="0">(C)服藥後有低血糖症狀，glyburide可改為pioglitazone，並向病人強調低血糖的症狀以及處置</button><button class="opt" data-correct="1">(D)服藥後有低血糖症狀，glyburide可改為glipizide或glimepiride並從低劑量開始</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>D</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>病人不服「一天兩次的藥」=glyburide。腎功能下降(SCr 1.7)易致低血糖，改用 glipizide/glimepiride 並低劑量起始(D)。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="111-1_59" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="111-1_60">
+  <div class="qhead"><span class="src">[111-1 第60題]</span></div>
+  <div class="stem">承上題，有關陳女士的藥品評估，下列何者最適當？</div>
+  <div class="opts"><button class="opt" data-correct="1">(A)頭暈也有可能是valsartan, carvedilol以及furosemide造成低血壓所導致，因此應監測血壓，必要時調整藥品</button><button class="opt" data-correct="0">(B)atenolol是較單純的β1-blocker，比起carvedilol更適合陳女士，可改用atenolol 100 mg</button><button class="opt" data-correct="0">(C)digoxin血中濃度在合理的範圍內</button><button class="opt" data-correct="0">(D)valsartan可以換成captopril比較容易調整</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>A</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>頭暈可能來自 valsartan/carvedilol/furosemide 之低血壓→應監測血壓(A)。digoxin 1.5 ng/mL 其實偏高，非合理範圍。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="111-1_60" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="111-1_70">
+  <div class="qhead"><span class="src">[111-1 第70題]</span></div>
+  <div class="stem">下列敘述何者正確？</div>
+  <div class="opts"><button class="opt" data-correct="1">(A)tetracycline與CaCO 3 併用，會影響tetracycline的生體可用率</button><button class="opt" data-correct="0">(B)ranitidine會影響ketoconazole之腎臟排泄</button><button class="opt" data-correct="0">(C)phenytoin與valproic acid會競爭抑制CYP450 enzyme</button><button class="opt" data-correct="0">(D)digoxin與verapamil因改變腸道菌落產生交互作用</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>A</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>tetracycline 與 CaCO₃ 螯合→影響生體可用率(A 正確)。(D)digoxin–verapamil 為 P-gp 抑制，非改變腸道菌叢。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="111-1_70" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="111-1_77">
+  <div class="qhead"><span class="src">[111-1 第77題]</span></div>
+  <div class="stem">下列何者最可能增加digoxin中毒的危險？</div>
+  <div class="opts"><button class="opt" data-correct="1">(A)erythromycin</button><button class="opt" data-correct="0">(B)neomycin</button><button class="opt" data-correct="0">(C)aztreonam</button><button class="opt" data-correct="0">(D)nafcillin</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>A</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>erythromycin（巨環）改變腸道菌叢並抑制 P-gp→升高 digoxin、增加中毒風險（筆記）。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="111-1_77" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="111-2_74">
+  <div class="qhead"><span class="src">[111-2 第74題]</span></div>
+  <div class="stem">有關verapamil與digoxin之交互作用，下列敘述何者正確？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)digoxin血中濃度降低</button><button class="opt" data-correct="0">(B)digoxin的代謝增加</button><button class="opt" data-correct="1">(C)verapamil抑制小腸中的P-glycoprotein</button><button class="opt" data-correct="0">(D)digoxin在腸道的吸收降低</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>C</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>verapamil 抑制小腸 P-gp→digoxin 吸收與血中濃度上升（筆記：↑約 70%）。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="111-2_74" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="112-1_72">
+  <div class="qhead"><span class="src">[112-1 第72題]</span></div>
+  <div class="stem">有關 digoxin 之藥品交互作用，下列敘述何者正確？</div>
+  <div class="opts"><button class="opt" data-correct="1">(A)與 amiodarone 併用，digoxin 的血中濃度會上升</button><button class="opt" data-correct="0">(B)與 clarithromycin 併用，digoxin 的血中濃度會下降</button><button class="opt" data-correct="0">(C)與 rifampin 併用，digoxin 的血中濃度會上升</button><button class="opt" data-correct="0">(D)與 verapamil 併用，digoxin 的血中濃度會下降</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>A</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>amiodarone 併 digoxin→digoxin 濃度上升（筆記：2–3 倍）。其餘配對皆反向錯誤。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="112-1_72" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="112-1_76">
+  <div class="qhead"><span class="src">[112-1 第76題]</span></div>
+  <div class="stem">下列那個處方須與醫師討論確認後，始可調劑？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)atorvastatin 10 mg QD PO</button><button class="opt" data-correct="0">(B)digoxin 0.125 mg QD PO</button><button class="opt" data-correct="0">(C)fluoxetine 20 mg QD PO</button><button class="opt" data-correct="1">(D)acarbose 25 mg QD PO</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>D</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>acarbose 用法特殊（須與每餐第一口同服），QD 處方須與醫師確認後始可調劑。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="112-1_76" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="113-1_66">
+  <div class="qhead"><span class="src">[113-1 第66題]</span></div>
+  <div class="stem">Digoxin用於治療congestive heart failure，建議therapeutic range為何？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)＜0.5 ng/mL</button><button class="opt" data-correct="1">(B)0.5～0.9 ng/mL</button><button class="opt" data-correct="0">(C)1.0～1.5 mg/L</button><button class="opt" data-correct="0">(D)1.5～2.0 μg/mL</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>B</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>digoxin 治 CHF 建議治療範圍 0.5–0.9 ng/mL（現代指引）。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="113-1_66" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="113-1_77">
+  <div class="qhead"><span class="src">[113-1 第77題]</span></div>
+  <div class="stem">下列何者對digoxin血中濃度的影響與其他選項不同？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)amiodarone</button><button class="opt" data-correct="1">(B)rifampin</button><button class="opt" data-correct="0">(C)verapamil</button><button class="opt" data-correct="0">(D)clarithromycin</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>B</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>問「不同」。rifampin 誘導 P-gp→降低 digoxin；其餘 amiodarone/verapamil/clarithromycin 皆抑制→升高。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="113-1_77" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="113-2_69">
+  <div class="qhead"><span class="src">[113-2 第69題]</span></div>
+  <div class="stem">65歲李太太有心臟衰竭（NYHA分級第三級），腎功能穩定，CL cr 約22 mL/min，醫師處方digoxin 125 µg QD，2週後回診，digoxin serum concentration 3 ng/mL，serum potassium 5.2 mmole/L，HR 60 beats/min，下列敘述何者錯誤？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)血中濃度降到目標值後，劑量改為62.5 µg Q2D</button><button class="opt" data-correct="0">(B)心臟衰竭血中濃度目標值一般為0.5～0.9 ng/mL</button><button class="opt" data-correct="1">(C)劑量過高，應立即給與digoxin-specific antibody</button><button class="opt" data-correct="0">(D)應先停藥數天再抽digoxin血中濃度，據以調整</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>C</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>問「錯誤」。digoxin 3 ng/mL 雖過高，但無危及生命之心律不整時不應「立即」給 DigiFab；應停藥再驗濃度後調整（呼應筆記：DigiFab 用於嚴重毒性）。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="113-2_69" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="113-2_77">
+  <div class="qhead"><span class="src">[113-2 第77題]</span></div>
+  <div class="stem">在合理的digoxin劑量下，合併下列何種藥品或情況可能造成病人digoxin C SS 為2.5 ng/mL？ ①erythromycin ②ritonavir ③phenytoin ④hyperkalemia</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)③④</button><button class="opt" data-correct="1">(B)①②</button><button class="opt" data-correct="0">(C)①④</button><button class="opt" data-correct="0">(D)②③</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>B</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>①erythromycin、②ritonavir 抑制 P-gp→升高 digoxin 至毒性(①②=B)；③phenytoin 降低濃度、④hyperkalemia 非升高濃度之因。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="113-2_77" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="114-1_66">
+  <div class="qhead"><span class="src">[114-1 第66題]</span></div>
+  <div class="stem">下列therapeutic range與藥品之配對，何者錯誤？</div>
+  <div class="opts"><button class="opt" data-correct="1">(A)2～10 μg/mL－free phenytoin</button><button class="opt" data-correct="0">(B)4～12 μg/mL－carbamazepine</button><button class="opt" data-correct="0">(C)20～30 μg/mL－amikacin peak</button><button class="opt" data-correct="0">(D)0.5～0.9 ng/mL－digoxin for heart failure</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>A</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>問「錯誤配對」。free phenytoin 目標 1–2 μg/mL，非 2–10(A 錯)；digoxin 0.5–0.9 ng/mL 正確。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="114-1_66" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="114-1_70">
+  <div class="qhead"><span class="src">[114-1 第70題]</span></div>
+  <div class="stem">進行digoxin的藥品血中濃度監測時，下列何項來自病人因素的影響最小？</div>
+  <div class="opts"><button class="opt" data-correct="1">(A)肝功能</button><button class="opt" data-correct="0">(B)年齡</button><button class="opt" data-correct="0">(C)體重</button><button class="opt" data-correct="0">(D)腎功能</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>A</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>問「影響最小」。digoxin 主要經腎排除，肝功能對其血中濃度影響最小。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="114-1_70" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="114-1_71">
+  <div class="qhead"><span class="src">[114-1 第71題]</span></div>
+  <div class="stem">藥品併用時，下列何者會產生pharmacodynamic interaction？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)verapamil－digoxin</button><button class="opt" data-correct="1">(B)alcohol－antihistamine</button><button class="opt" data-correct="0">(C)cimetidine－diazepam</button><button class="opt" data-correct="0">(D)cholestyramine resin－thyroxine</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>B</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>問「藥效學」。alcohol–antihistamine（中樞抑制相加）為藥效學；其餘為藥動學。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="114-1_71" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="114-2_67">
+  <div class="qhead"><span class="src">[114-2 第67題]</span></div>
+  <div class="stem">Digoxin QD治療heart failure，下列建議之therapeutic range及抽血時間點之配對，何者最適 當？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)2～4 ng/mL，用藥後30分鐘</button><button class="opt" data-correct="0">(B)0.5～0.8 μg/mL，用藥後12小時</button><button class="opt" data-correct="1">(C)0.5～0.8 ng/mL，下次給藥前</button><button class="opt" data-correct="0">(D)2～4 ng/mL，用藥後8小時</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>C</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>digoxin 0.5–0.8 ng/mL、於下次給藥前(trough)抽血最適當（分佈期長 8–12h，避開分佈相）。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="114-2_67" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="114-2_76">
+  <div class="qhead"><span class="src">[114-2 第76題]</span></div>
+  <div class="stem">Metoclopramide與digoxin交互作用之機轉為何？</div>
+  <div class="opts"><button class="opt" data-correct="1">(A)metoclopramide造成digoxin吸收降低</button><button class="opt" data-correct="0">(B)metoclopramide造成digoxin吸收增加</button><button class="opt" data-correct="0">(C)digoxin造成metoclopramide吸收降低</button><button class="opt" data-correct="0">(D)digoxin造成metoclopramide吸收增加</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>A</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>metoclopramide 促腸蠕動→縮短停留時間→digoxin 吸收降低（筆記）。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="114-2_76" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="115-1_14">
+  <div class="qhead"><span class="src">[115-1 第14題]</span></div>
+  <div class="stem">有關老年人的生理變化對藥品血中濃度的影響，下列何者錯誤？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)肌肉質量及全身水分減少，導致 digoxin 的血中濃度增加</button><button class="opt" data-correct="0">(B)serum albumin 減少，導致血中 free phenytoin 濃度增加</button><button class="opt" data-correct="1">(C)肝臟血流減少，肝臟代謝能力下降，導致 gentamicin 的血中濃度增加</button><button class="opt" data-correct="0">(D)腎臟血流減少，GFR 下降，導致 vancomycin 的血中濃度增加 ®</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>C</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>問「錯誤」。gentamicin 由腎排除，與「肝血流/肝代謝下降」無關，故老年人致其升高之理由錯誤(C)。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="115-1_14" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="115-1_71">
+  <div class="qhead"><span class="src">[115-1 第71題]</span></div>
+  <div class="stem">有關藥品 renal clearance 之機轉，下列組合何者最正確？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)腎小管主動分泌：vancomycin；腎絲球過濾：digoxin</button><button class="opt" data-correct="0">(B)腎小管主動分泌：gentamicin；腎絲球過濾：ciprofloxacin</button><button class="opt" data-correct="1">(C)腎絲球過濾：vancomycin；腎小管主動分泌與腎絲球過濾：ranitidine</button><button class="opt" data-correct="0">(D)腎小管主動分泌：amikacin；腎小管主動分泌與腎絲球過濾：procainamide</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>C</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>vancomycin 主要腎絲球過濾；ranitidine 兼具腎絲球過濾與腎小管分泌(C 正確)。procainamide 亦兼過濾+主動分泌（呼應筆記）。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="115-1_71" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div></div>
+</section><section id="sec5" style="--acc:#6F9490">
+  <h2 class="sec-head"><span class="sec-no">5</span>伍、Lidocaine（含 Procainamide 比較）<span class="sec-cnt">2 題</span></h2>
+  <div class="summary"><div class="sum-t">重點整理</div><ul><li>Lidocaine(Class IB) 治療 1.5–5 μg/mL；高肝萃取率(flow-limited)、t½ 1–1.5h（肝衰&gt;5h）。</li><li>Procainamide(Class IA) 4–10 μg/mL；活性代謝物 NAPA(Class III)；腎肝各半、腎兼過濾+分泌。</li><li>Quinidine(Class IA) 2–6 μg/mL；80% 肝(CYP3A)代謝；過量→Cinchonism；抑制 digoxin 清除(↑30–50%)。</li><li>三者皆二室模式，線性調整：Dnew/Css,new = Dold/Css,old。</li></ul></div>
+  <div class="qlist"><div class="q" data-qid="113-2_75">
+  <div class="qhead"><span class="src">[113-2 第75題]</span></div>
+  <div class="stem">Hepatic extraction ratio（ER H ）是指藥品在單次通過肝臟時被清除的比例，下列配對何者正確？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)低ER H ：lidocaine、valproic acid－高ER H ：warfarin、morphine</button><button class="opt" data-correct="1">(B)低ER H ：valproic acid、phenytoin－高ERH：lidocaine、imipramine</button><button class="opt" data-correct="0">(C)低ER H ：warfarin、morphine－高ER H ：lidocaine、phenytoin</button><button class="opt" data-correct="0">(D)低ER H ：phenytoin、morphine－高ER H ：lidocaine、warfarin</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>B</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>低 ERH（capacity-limited）：valproic acid、phenytoin；高 ERH（flow-limited）：lidocaine、imipramine。lidocaine 為高肝萃取率藥（呼應筆記：肝清除受肝血流影響）。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="113-2_75" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="114-2_79">
+  <div class="qhead"><span class="src">[114-2 第79題]</span></div>
+  <div class="stem">下列何者最可能降低codeine的療效？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)acetaminophen</button><button class="opt" data-correct="0">(B)lidocaine</button><button class="opt" data-correct="1">(C)paroxetine</button><button class="opt" data-correct="0">(D)trazodone</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>C</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>paroxetine 抑制 CYP2D6→阻斷 codeine 活化為 morphine→降低鎮痛療效。(lidocaine 為干擾選項)</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="114-2_79" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div></div>
+</section><section id="sec6" style="--acc:#B8975A">
+  <h2 class="sec-head"><span class="sec-no">6</span>陸、Quinidine（奎尼丁）<span class="sec-cnt">3 題</span></h2>
+  <div class="summary"><div class="sum-t">重點整理</div><ul><li>Quinidine(IA) 2–6 μg/mL；弱鹼，酸性尿增加排除；強抗膽鹼(Beers 老人避免)。</li><li>80% 肝 CYP3A 代謝、20% 腎排；過量特徵 Cinchonism（耳鳴、視覺模糊、眩暈）。</li><li>抑制 digoxin 清除 → digoxin↑30–50%；本身為 CYP2D6 抑制劑。</li></ul></div>
+  <div class="qlist"><div class="q" data-qid="108-2_25">
+  <div class="qhead"><span class="src">[108-2 第25題]</span></div>
+  <div class="stem">下列何種藥品的血中濃度，會隨尿液的pH值減少而上升？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)amphetamines</button><button class="opt" data-correct="0">(B)quinidine</button><button class="opt" data-correct="1">(C)salicylates</button><button class="opt" data-correct="0">(D)pseudoephedrine</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>C</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>弱酸 salicylates 於酸性尿(pH↓)非離子化、再吸收增加→血中濃度上升。quinidine 為弱鹼，酸性尿反而增加其排除。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="108-2_25" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="110-2_59">
+  <div class="qhead"><span class="src">[110-2 第59題]</span></div>
+  <div class="stem">下列何者因具有很強的anticholinergic effects，年長者應避免使用？</div>
+  <div class="opts"><button class="opt" data-correct="1">(A)quinidine</button><button class="opt" data-correct="0">(B)quinapril</button><button class="opt" data-correct="0">(C)desmopressin</button><button class="opt" data-correct="0">(D)dextromethorphan</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>A</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>quinidine 具強抗膽鹼作用，Beers 準則建議年長者避免使用。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="110-2_59" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="110-2_60">
+  <div class="qhead"><span class="src">[110-2 第60題]</span></div>
+  <div class="stem">使用下列何種藥品的病人，不可同時服用含dextromethorphan的產品？</div>
+  <div class="opts"><button class="opt" data-correct="1">(A)selegiline</button><button class="opt" data-correct="0">(B)pseudoephedrine</button><button class="opt" data-correct="0">(C)phenylephrine</button><button class="opt" data-correct="0">(D)quinidine</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>A</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>selegiline(MAOI) 不可與含 dextromethorphan 產品併用（血清素症候群風險）。(quinidine 為干擾選項；quinidine 為 CYP2D6 抑制劑會升高 DM)</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="110-2_60" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div></div>
+</section><section id="sec7" style="--acc:#8A8275">
+  <h2 class="sec-head"><span class="sec-no">7</span>柒、通用 TDM／臨床藥動學概念<span class="sec-cnt">10 題</span></h2>
+  <div class="summary"><div class="sum-t">重點整理</div><ul><li>交互作用/ADR 風險因子：狹窄治療指數、高蛋白結合、CYP/P-gp 受質、腎功能下降、多重用藥。</li><li>監測時點：免疫抑制劑 / digoxin / 抗癲癇多測 trough；aminoglycoside 傳統劑量測 peak+trough。</li><li>白蛋白校正：phenytoin（高蛋白結合）需校正；lithium 不需（無蛋白結合）。</li></ul></div>
+  <div class="qlist"><div class="q" data-qid="108-2_59">
+  <div class="qhead"><span class="src">[108-2 第59題]</span></div>
+  <div class="stem">有關藥師口頭指導病人藥品副作用或注意事項之原則，下列何者最不適當？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)治療指數狹窄的藥品，要提醒病人確實依照指示服藥</button><button class="opt" data-correct="0">(B)告知病人可能的藥品交互作用及用藥相關注意事項</button><button class="opt" data-correct="1">(C)告知病人藥品所有可能的副作用，以免日後被病人投訴</button><button class="opt" data-correct="0">(D)除了告訴病人認識藥品可能的副作用外，也要指導病人如何減輕與避免藥品的副作用</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>C</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>問「最不適當」。不應為防投訴而告知「所有」可能副作用—應聚焦重要、可處置之副作用並教導因應。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="108-2_59" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="109-1_72">
+  <div class="qhead"><span class="src">[109-1 第72題]</span></div>
+  <div class="stem">下列那種藥品特性，不是造成藥品交互作用的風險因素？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)narrow therapeutic index</button><button class="opt" data-correct="0">(B)highly protein bound</button><button class="opt" data-correct="1">(C)large volume of distribution</button><button class="opt" data-correct="0">(D)CYP450 substrate</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>C</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>問「非風險因素」。大分佈體積非交互作用風險因子；狹窄治療指數、高蛋白結合、CYP 受質才是。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="109-1_72" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="109-2_46">
+  <div class="qhead"><span class="src">[109-2 第46題]</span></div>
+  <div class="stem">下列何種情況，藥師交付藥品時，特別須對病人提供用藥指導？①藥品外盒有警語標示 ②可能有藥品交互 作用的問題 ③narrow therapeutic index的品項 ④有特殊用法</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)僅①②</button><button class="opt" data-correct="0">(B)僅②③④</button><button class="opt" data-correct="0">(C)僅①③④</button><button class="opt" data-correct="1">(D)①②③④</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>D</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>①②③④ 全部情況皆須特別加強用藥指導。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="109-2_46" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="110-1_65">
+  <div class="qhead"><span class="src">[110-1 第65題]</span></div>
+  <div class="stem">下列何者不是增加藥品交互作用之風險因素？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)narrow therapeutic index</button><button class="opt" data-correct="0">(B)small volume of distribution</button><button class="opt" data-correct="1">(C)low protein-binding</button><button class="opt" data-correct="0">(D)P-gp substrate</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>C</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>問「非風險因素」。低蛋白結合非風險因子（高蛋白結合才是）。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="110-1_65" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="111-1_68">
+  <div class="qhead"><span class="src">[111-1 第68題]</span></div>
+  <div class="stem">若valproic acid穩定谷濃度為159 μg/mL，疾病控制良好，但病人有嗜睡、顫抖、血小板低下等症狀，下列何 種處置最適當？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)持續使用valproic acid，更密切監測血中濃度、療效與毒性</button><button class="opt" data-correct="0">(B)立即停止使用valproic acid，換用其他藥品</button><button class="opt" data-correct="1">(C)調降valproic acid劑量，密切監測血中濃度、療效與毒性</button><button class="opt" data-correct="0">(D)將valproic acid與其他藥品錯開服用，以減少藥品交互作用</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>C</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>VPA 谷濃度 159 μg/mL（過高）併毒性症狀→調降劑量並密切監測療效與毒性(C)。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="111-1_68" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="111-2_70">
+  <div class="qhead"><span class="src">[111-2 第70題]</span></div>
+  <div class="stem">下列何種藥品之特性，在發生藥品交互作用時最容易導致劑量相關的不良事件？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)低蛋白結合率</button><button class="opt" data-correct="1">(B)治療指數狹窄</button><button class="opt" data-correct="0">(C)分布體積大</button><button class="opt" data-correct="0">(D)非CYP450 enzyme受質</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>B</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>治療指數狹窄之藥品最易因交互作用導致劑量相關不良事件。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="111-2_70" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="113-2_42">
+  <div class="qhead"><span class="src">[113-2 第42題]</span></div>
+  <div class="stem">有關adverse drug reactions（ADRs）風險因素之敘述，下列何者錯誤？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)多重用藥的病人發生ADRs的風險較高</button><button class="opt" data-correct="0">(B)narrow therapeutic index之藥品血中濃度與ADRs有高度相關性</button><button class="opt" data-correct="1">(C)男性發生ADRs的風險為女性的1.5～1.7倍</button><button class="opt" data-correct="0">(D)種族及基因差異為發生ADRs的相關因子</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>C</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>問「錯誤」。女性 ADR 風險高於男性，「男性為女性 1.5–1.7 倍」敘述錯誤。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="113-2_42" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="113-2_67">
+  <div class="qhead"><span class="src">[113-2 第67題]</span></div>
+  <div class="stem">下列何者不是藥品交互作用之風險因子？</div>
+  <div class="opts"><button class="opt" data-correct="1">(A)low plasma protein binding</button><button class="opt" data-correct="0">(B)decreased renal function</button><button class="opt" data-correct="0">(C)narrow therapeutic range</button><button class="opt" data-correct="0">(D)p-gp substrate</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>A</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>問「非風險因子」。低血漿蛋白結合非交互作用風險因子。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="113-2_67" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="114-1_53">
+  <div class="qhead"><span class="src">[114-1 第53題]</span></div>
+  <div class="stem">有關病人用藥指導，下列敘述何者錯誤？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)具narrow therapeutic index、嚴重不良反應、藥品交互作用多的藥品須優先提供用藥指導</button><button class="opt" data-correct="0">(B)年長、兒童、懷孕、授乳、身心障礙、服藥順從性不佳的病人須優先提供用藥指導</button><button class="opt" data-correct="1">(C)藥師要選擇提供用藥指導的病人，首先須考慮病人特性，再考慮藥品的特性</button><button class="opt" data-correct="0">(D)口頭提供病人用藥指導，用字（actual words）僅能傳達約10％的訊息，其餘90％靠非語言溝通</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>C</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>問「錯誤」。病人篩選用藥指導時應以藥品特性（狹窄 TI、嚴重 ADR、交互作用多）為主要優先考量，「先病人後藥品」之排序敘述為錯誤(C)。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="114-1_53" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div><div class="q" data-qid="115-1_74">
+  <div class="qhead"><span class="src">[115-1 第74題]</span></div>
+  <div class="stem">有關 anti-epileptics 之 TDM，下列敘述何者正確？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A)phenytoin 由肝臟代謝，透析病人若肝功能正常，藥動學與腎功能正常者相同</button><button class="opt" data-correct="0">(B)unbound phenytoin 目標濃度 10～20 µg/mL</button><button class="opt" data-correct="1">(C)valproic acid 目標濃度 50～150 mg/L</button><button class="opt" data-correct="0">(D)carbamazepine 開始服用一段時間後，t 1/2 會因代謝飽和而愈來愈長，血中濃度可能會突然增加</button></div>
+  <div class="actions">
+    <button class="btn-exp">顯示詳解</button>
+    <span class="ans-reveal">正解：<b>C</b></span>
+  </div>
+  <div class="exp"><span class="exp-lab">詳解</span>valproic acid 目標 50–150 mg/L(=μg/mL) 正確(C)；free phenytoin 為 1–2、carbamazepine 自體誘導使 t½ 變短（非變長）。</div>
+  <div class="notebox">
+    <label>📝 補充筆記</label>
+    <textarea data-note="115-1_74" placeholder="寫下你的記憶點…（自動儲存）"></textarea>
+  </div>
+</div></div>
+</section>
+<footer>點選項判定對錯 · 「顯示詳解」看解析 · 補充筆記會自動儲存於本機瀏覽器<br>為 Ada 整理 · 祝國考順利 🍀</footer>
+</div>
+<button class="backtop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>
+// 補充筆記：localStorage 自動儲存
+document.querySelectorAll('textarea[data-note]').forEach(t=>{
+  const k='pkq_note_'+t.dataset.note;
+  const v=localStorage.getItem(k); if(v) t.value=v;
+  t.addEventListener('input',()=>localStorage.setItem(k,t.value));
+});
+// 選項點擊判定
+document.querySelectorAll('.q').forEach(q=>{
+  q.querySelectorAll('.opt').forEach(o=>{
+    o.addEventListener('click',()=>{
+      const correct=o.dataset.correct==='1';
+      if(correct){o.classList.add('correct');}
+      else{o.classList.add('wrong');
+        q.querySelector('.opt[data-correct="1"]').classList.add('correct');}
+      q.classList.add('revealed');
+    });
+  });
+  q.querySelector('.btn-exp').addEventListener('click',function(){
+    q.classList.toggle('show-exp');
+    this.textContent=q.classList.contains('show-exp')?'隱藏詳解':'顯示詳解';
+  });
+});
+// 工具列
+document.getElementById('showAllExp').addEventListener('click',()=>{
+  document.querySelectorAll('.q').forEach(q=>{q.classList.add('show-exp');q.querySelector('.btn-exp').textContent='隱藏詳解';});
+});
+document.getElementById('hideAllExp').addEventListener('click',()=>{
+  document.querySelectorAll('.q').forEach(q=>{q.classList.remove('show-exp','revealed');q.querySelector('.btn-exp').textContent='顯示詳解';
+    q.querySelectorAll('.opt').forEach(o=>o.classList.remove('correct','wrong'));});
+});
+document.getElementById('revealAns').addEventListener('click',()=>{
+  document.querySelectorAll('.q').forEach(q=>{q.classList.add('revealed');q.querySelector('.opt[data-correct="1"]').classList.add('correct');});
+});
+</script>
+</body></html>
