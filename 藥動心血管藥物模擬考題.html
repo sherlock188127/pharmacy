@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>心血管藥物臨床藥動學 — 模擬考題（仿 112-2 出題風格）</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FBF7EE;--ink:#2c2a26;--ink-soft:#55514a;--line:#e3dccb;--card:#ffffff;
+  --accent:#6d8b74;        /* 霧綠主色 */
+  --accent-soft:#eaf1ea;
+  --gold:#bf9b3a;--gold-soft:#f6efd9;
+  --ok:#3f7a5a;--no:#a8322d;--crimson:#a8322d;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC",sans-serif;line-height:1.7;font-size:16px;}
+.mono{font-family:"JetBrains Mono",monospace;}
+.wrap{max-width:840px;margin:0 auto;padding:48px 22px 120px;}
+
+.hero{
+  border:1px solid var(--line);border-radius:18px;
+  background:linear-gradient(135deg,#fdfbf4 0%,var(--accent-soft) 130%);
+  padding:38px 34px;margin-bottom:22px;position:relative;overflow:hidden;
+}
+.hero::after{content:"";position:absolute;right:-40px;bottom:-40px;width:180px;height:180px;
+  border:14px solid #dfe9df;border-radius:50%;opacity:.5;}
+.hero::before{content:"";position:absolute;right:6px;bottom:50px;width:60px;height:2px;background:var(--gold);
+  transform:rotate(-18deg);box-shadow:0 14px 0 var(--gold),0 -14px 0 #cf6b5e;}
+.hero .eyebrow{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin:0 0 12px;}
+.hero h1{font-family:"Noto Serif TC",serif;font-weight:900;font-size:29px;line-height:1.35;margin:0 0 10px;}
+.hero p{margin:0;color:var(--ink-soft);font-size:14.5px;max-width:560px;}
+.meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px;}
+.chip{font-family:"JetBrains Mono",monospace;font-size:12px;font-weight:700;padding:5px 12px;border-radius:999px;border:1px solid var(--accent);color:var(--accent);background:#fff;}
+
+/* 計分板 */
+.scorebar{
+  position:sticky;top:0;z-index:20;background:rgba(251,247,238,.94);backdrop-filter:blur(6px);
+  border:1px solid var(--line);border-radius:14px;padding:12px 18px;margin-bottom:30px;
+  display:flex;align-items:center;gap:16px;flex-wrap:wrap;
+}
+.scorebar .stat{font-size:14px;}
+.scorebar .stat b{font-family:"JetBrains Mono",monospace;font-size:18px;color:var(--accent);}
+.scorebar .grow{flex:1;}
+.scorebar button{font-family:"Noto Sans TC";font-size:13px;font-weight:700;cursor:pointer;border-radius:8px;padding:7px 14px;border:1px solid var(--accent);color:var(--accent);background:#fff;transition:.15s;}
+.scorebar button:hover{background:var(--accent);color:#fff;}
+
+.sec-label{font-family:"Noto Serif TC",serif;font-weight:900;font-size:18px;margin:42px 0 4px;color:var(--accent);
+  padding-left:12px;border-left:5px solid var(--accent);}
+.sec-desc{font-size:13px;color:var(--ink-soft);margin:0 0 8px;padding-left:12px;}
+
+.q{border:1px solid var(--line);border-left:5px solid var(--accent);border-radius:12px;background:var(--card);padding:18px 20px;margin:16px 0;scroll-margin-top:80px;}
+.q .top{display:flex;align-items:center;gap:10px;margin-bottom:9px;}
+.qnum{font-family:"JetBrains Mono",monospace;font-weight:700;font-size:14px;background:var(--accent);color:#fff;padding:2px 10px;border-radius:7px;}
+.qtag{font-family:"JetBrains Mono",monospace;font-size:11px;font-weight:700;color:var(--gold);background:var(--gold-soft);padding:2px 8px;border-radius:6px;}
+.stem{font-weight:500;margin:0 0 12px;}
+.opt{display:block;width:100%;text-align:left;cursor:pointer;border:1px solid var(--line);background:#fff;border-radius:9px;padding:9px 14px;margin:7px 0;font-size:14.5px;font-family:inherit;color:var(--ink);transition:.15s;}
+.opt:hover{background:#f7f3ea;}
+.opt.correct{background:#e7f2ea;border-color:var(--ok);color:#235c3e;font-weight:700;}
+.opt.wrong{background:#f7e8e6;border-color:var(--no);color:#7a2420;}
+.opt .mk{font-family:"JetBrains Mono",monospace;font-weight:700;margin-right:8px;}
+.opt[disabled]{cursor:default;}
+.qbtns{margin-top:10px;display:flex;gap:8px;flex-wrap:wrap;}
+.btn{font-family:"Noto Sans TC";font-size:13px;font-weight:700;cursor:pointer;border:1px solid var(--gold);color:var(--gold);background:transparent;border-radius:8px;padding:6px 14px;transition:.15s;}
+.btn:hover{background:var(--gold);color:#fff;}
+.expl{display:none;margin-top:12px;padding:14px 16px;border-radius:10px;background:#faf6ed;border:1px dashed #e0cfa4;font-size:14px;line-height:1.7;}
+.expl.show{display:block;}
+.expl b{color:var(--gold);}
+.flag{color:var(--crimson);font-weight:700;}
+.notebox{margin-top:12px;}
+.notebox label{font-size:12.5px;font-weight:700;color:var(--ink-soft);display:block;margin-bottom:5px;}
+.notebox textarea{width:100%;min-height:54px;resize:vertical;border:1px solid var(--line);border-radius:9px;padding:9px 12px;font-family:"Noto Sans TC";font-size:14px;background:#fffdf8;color:var(--ink);}
+.notebox textarea:focus{outline:2px solid var(--gold);border-color:var(--gold);}
+
+footer{text-align:center;color:var(--ink-soft);font-size:12.5px;margin-top:50px;border-top:1px solid var(--line);padding-top:20px;}
+@media(max-width:600px){.hero h1{font-size:23px;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <p class="eyebrow">模擬考 · 仿 112-2 期中風格</p>
+  <h1>心血管藥物臨床藥動學<br>模擬試題</h1>
+  <p>依周宏璋老師 112-2 期中出題風格（藥動參數正誤、抽血時間／目標濃度配對、交互作用方向、疾病狀態影響、歸類題、劑量調整法）並參酌歷屆國考題型，就 Digoxin、Lidocaine、Procainamide、Quinidine 四藥命題。</p>
+  <div class="meta">
+    <span class="chip">共 30 題</span>
+    <span class="chip">Digoxin</span>
+    <span class="chip">Lidocaine</span>
+    <span class="chip">Procainamide</span>
+    <span class="chip">Quinidine</span>
+  </div>
+</header>
+
+<div class="scorebar">
+  <div class="stat">已作答 <b id="answered">0</b> / 30</div>
+  <div class="stat">答對 <b id="correct">0</b></div>
+  <div class="stat">正確率 <b id="rate">—</b></div>
+  <div class="grow"></div>
+  <button id="revealAll">顯示全部詳解</button>
+  <button id="resetAll">重新作答</button>
+</div>
+
+<!-- ============ PART A：綜合（混合藥物） ============ -->
+<p class="sec-label">第一部分 · 觀念與綜合</p>
+<p class="sec-desc">藥物分類、機轉、藥動模型的基本辨識</p>
+
+<!-- Q1 -->
+<div class="q" data-ans="C">
+  <div class="top"><span class="qnum">1</span><span class="qtag">機轉分類</span></div>
+  <p class="stem">下列四個藥物中，何者<strong>不屬於</strong> Type IA 抗心律不整藥？</p>
+  <button class="opt" data-k="A"><span class="mk">A</span>procainamide</button>
+  <button class="opt" data-k="B"><span class="mk">B</span>quinidine</button>
+  <button class="opt" data-k="C"><span class="mk">C</span>lidocaine</button>
+  <button class="opt" data-k="D"><span class="mk">D</span>disopyramide</button>
+  <div class="qbtns"><button class="btn btn-expl">顯示詳解</button></div>
+  <div class="expl"><b>答案：C</b>　lidocaine 為 <strong>Type IB</strong>（抑制鈉離子內流、縮短不反應期）；procainamide、quinidine、disopyramide 皆為 Type IA。</div>
+  <div class="notebox"><label>📝 補充筆記</label><textarea data-note="m1"></textarea></div>
+</div>
+
+<!-- Q2 -->
+<div class="q" data-ans="B">
+  <div class="top"><span class="qnum">2</span><span class="qtag">機轉</span></div>
+  <p class="stem">下列藥物與其作用機轉之配對，何者<strong>錯誤</strong>？</p>
+  <button class="opt" data-k="A"><span class="mk">A</span>digoxin 於 CHF 發揮正性肌力作用（inotropic）</button>
+  <button class="opt" data-k="B"><span class="mk">B</span>digoxin 於 AF 發揮正性肌力作用以恢復竇性心律</button>
+  <button class="opt" data-k="C"><span class="mk">C</span>lidocaine 抑制鈉離子內流以降低傳導速度</button>
+  <button class="opt" data-k="D"><span class="mk">D</span>procainamide 延長動作電位、降低傳導速度</button>
+  <div class="qbtns"><button class="btn btn-expl">顯示詳解</button></div>
+  <div class="expl"><b>答案：B</b>　digoxin 於 AF 是發揮<strong>變時性作用（chronotropic）</strong>控制心室率，且單獨使用<strong>無法</strong>恢復竇性心律。</div>
+  <div class="notebox"><label>📝 補充筆記</label><textarea data-note="m2"></textarea></div>
+</div>
+
+<!-- Q3 -->
+<div class="q" data-ans="D">
+  <div class="top"><span class="qnum">3</span><span class="qtag">藥動模型</span></div>
+  <p class="stem">本單元四個藥物（digoxin、lidocaine、procainamide、quinidine）之血中濃度變化，最主要遵循下列哪一種動力學模型？</p>
+  <button class="opt" data-k="A"><span class="mk">A</span>Non-compartment model</button>
+  <button class="opt" data-k="B"><span class="mk">B</span>One-compartment model</button>
+  <button class="opt" data-k="C"><span class="mk">C</span>Michaelis-Menten model</button>
+  <button class="opt" data-k="D"><span class="mk">D</span>Two-compartment model</button>
+  <div class="qbtns"><button class="btn btn-expl">顯示詳解</button></div>
+  <div class="expl"><b>答案：D</b>　四者皆為<strong>二室模式</strong>。臨床意義：須等分布相結束後再抽血（如 digoxin 給藥 8–12 小時後）。</div>
+  <div class="notebox"><label>📝 補充筆記</label><textarea data-note="m3"></textarea></div>
+</div>
+
+<!-- Q4 -->
+<div class="q" data-ans="A">
+  <div class="top"><span class="qnum">4</span><span class="qtag">歸類題</span></div>
+  <p class="stem">下列藥物何者主要排除途徑與其他三者<strong>不同</strong>？</p>
+  <button class="opt" data-k="A"><span class="mk">A</span>digoxin</button>
+  <button class="opt" data-k="B"><span class="mk">B</span>lidocaine</button>
+  <button class="opt" data-k="C"><span class="mk">C</span>quinidine</button>
+  <button class="opt" data-k="D"><span class="mk">D</span>procainamide（就肝代謝比例而言）</button>
+  <div class="qbtns"><button class="btn btn-expl">顯示詳解</button></div>
+  <div class="expl"><b>答案：A</b>　digoxin 以<strong>腎排除為主（~75%）</strong>；lidocaine &gt;95% 肝代謝、quinidine 80% 肝代謝。procainamide 雖肝腎各半，但相對 digoxin 而言仍有顯著肝代謝。digoxin 是唯一「腎排除佔絕對多數」者。</div>
+  <div class="notebox"><label>📝 補充筆記</label><textarea data-note="m4"></textarea></div>
+</div>
+
+<!-- ============ PART B：Digoxin ============ -->
+<p class="sec-label">第二部分 · Digoxin</p>
+<p class="sec-desc">藥動參數、治療／中毒濃度、電解質、交互作用、劑量</p>
+
+<!-- Q5 -->
+<div class="q" data-ans="C">
+  <div class="top"><span class="qnum">5</span><span class="qtag">參數正誤</span></div>
+  <p class="stem">有關 digoxin 的藥動學參數，下列敘述何者<strong>錯誤</strong>？</p>
+  <button class="opt" data-k="A"><span class="mk">A</span>約 75% 經腎臟排除</button>
+  <button class="opt" data-k="B"><span class="mk">B</span>蛋白結合率約 25%</button>
+  <button class="opt" data-k="C"><span class="mk">C</span>擬似分布體積小，不易蓄積於組織</button>
+  <button class="opt" data-k="D"><span class="mk">D</span>正常成人半衰期約 36 小時</button>
+  <div class="qbtns"><button class="btn btn-expl">顯示詳解</button></div>
+  <div class="expl"><b>答案：C</b>　digoxin 的<strong>擬似分布體積很大</strong>，會蓄積於組織，是 Vd 大的經典範例。其餘皆正確。</div>
+  <div class="notebox"><label>📝 補充筆記</label><textarea data-note="m5"></textarea></div>
+</div>
+
+<!-- Q6 -->
+<div class="q" data-ans="D">
+  <div class="top"><span class="qnum">6</span><span class="qtag">配對題</span></div>
+  <p class="stem">digoxin QD 治療 heart failure，下列治療範圍與抽血時間點之配對，何者最適當？</p>
+  <button class="opt" data-k="A"><span class="mk">A</span>2~4 ng/mL，用藥後 30 分鐘</button>
+  <button class="opt" data-k="B"><span class="mk">B</span>0.5~0.8 μg/mL，用藥後 12 小時</button>
+  <button class="opt" data-k="C"><span class="mk">C</span>0.5~0.8 ng/mL，用藥後 2 小時</button>
+  <button class="opt" data-k="D"><span class="mk">D</span>0.5~0.8 ng/mL，下次給藥前</button>
+  <div class="qbtns"><button class="btn btn-expl">顯示詳解</button></div>
+  <div class="expl"><b>答案：D</b>　HF 目標 0.5–0.8 ng/mL（<strong>ng/mL</strong> 非 μg/mL，B 單位錯）。須過分布相，給藥 8–12 小時後或下次給藥前抽血；C 的 2 小時尚在分布相內不適當。</div>
+  <div class="notebox"><label>📝 補充筆記</label><textarea data-note="m6"></textarea></div>
+</div>
+
+<!-- Q7 -->
+<div class="q" data-ans="B">
+  <div class="top"><span class="qnum">7</span><span class="qtag">毒性閾值</span></div>
+  <p class="stem">下列有關 digoxin 中毒之敘述，何者<strong>正確</strong>？</p>
+  <button class="opt" data-k="A"><span class="mk">A</span>血中濃度超過 1 ng/mL 即定義為中毒</button>
+  <button class="opt" data-k="B"><span class="mk">B</span>濃度 &gt; 2.5 ng/mL 時約半數病人出現中毒症狀</button>
+  <button class="opt" data-k="C"><span class="mk">C</span>高血鉀是誘發 digoxin 毒性最重要的電解質因素</button>
+  <button class="opt" data-k="D"><span class="mk">D</span>危及生命之毒性首選以活性碳處理</button>
+  <div class="qbtns"><button class="btn btn-expl">顯示詳解</button></div>
+  <div class="expl"><b>答案：B</b>　A：治療範圍可達 2 ng/mL，非 1。C：應為<strong>低血鉀</strong>（低血鎂、高血鈣亦加重毒性）。D：危及生命毒性以 <span class="mono">digoxin immune FAB（DigiFab）</span> 處理。</div>
+  <div class="notebox"><label>📝 補充筆記</label><textarea data-note="m7"></textarea></div>
+</div>
+
+<!-- Q8 -->
+<div class="q" data-ans="A">
+  <div class="top"><span class="qnum">8</span><span class="qtag">電解質</span></div>
+  <p class="stem">下列何種電解質異常<strong>不會</strong>加重 digoxin 之毒性？</p>
+  <button class="opt" data-k="A"><span class="mk">A</span>高血鉀</button>
+  <button class="opt" data-k="B"><span class="mk">B</span>低血鉀</button>
+  <button class="opt" data-k="C"><span class="mk">C</span>低血鎂</button>
+  <button class="opt" data-k="D"><span class="mk">D</span>高血鈣</button>
+  <div class="qbtns"><button class="btn btn-expl">顯示詳解</button></div>
+  <div class="expl"><b>答案：A</b>　加重毒性者為<strong>低血鉀、低血鎂、高血鈣</strong>。使用排鉀利尿劑、ACEI/ARB 者須監測血鉀。</div>
+  <div class="notebox"><label>📝 補充筆記</label><textarea data-note="m8"></textarea></div>
+</div>
+
+<!-- Q9 -->
+<div class="q" data-ans="B">
+  <div class="top"><span class="qnum">9</span><span class="qtag">疾病狀態</span></div>
+  <p class="stem">下列疾病或狀態對 digoxin 藥動學影響之敘述，何者<strong>錯誤</strong>？</p>
+  <button class="opt" data-k="A"><span class="mk">A</span>腎衰竭時半衰期由約 36 小時延長至約 120 小時</button>
+  <button class="opt" data-k="B"><span class="mk">B</span>肥胖病人 Vd 顯著增加，應以總體重（TBW）計算</button>
+  <button class="opt" data-k="C"><span class="mk">C</span>甲狀腺亢進時半衰期較短</button>
+  <button class="opt" data-k="D"><span class="mk">D</span>digoxin clearance 與 CrCl 成正比</button>
+  <div class="qbtns"><button class="btn btn-expl">顯示詳解</button></div>
+  <div class="expl"><b>答案：B</b>　digoxin 不分布至脂肪組織，肥胖者 Vd 變化不大，應以<strong>理想體重（IBW）</strong>計算。clearance 公式：無中重度 HF 為 Cl=1.303(CrCl)+40；有則 +20。</div>
+  <div class="notebox"><label>📝 補充筆記</label><textarea data-note="m9"></textarea></div>
+</div>
+
+<!-- Q10 -->
+<div class="q" data-ans="C">
+  <div class="top"><span class="qnum">10</span><span class="qtag">交互作用</span></div>
+  <p class="stem">下列藥物與 digoxin 併用時，何者<strong>不會</strong>使 digoxin 血中濃度上升？</p>
+  <button class="opt" data-k="A"><span class="mk">A</span>amiodarone</button>
+  <button class="opt" data-k="B"><span class="mk">B</span>verapamil</button>
+  <button class="opt" data-k="C"><span class="mk">C</span>rifampin</button>
+  <button class="opt" data-k="D"><span class="mk">D</span>clarithromycin</button>
+  <div class="qbtns"><button class="btn btn-expl">顯示詳解</button></div>
+  <div class="expl"><b>答案：C</b>　rifampin 為 P-glycoprotein <strong>誘導劑</strong>，使 digoxin 濃度下降。amiodarone（↑2–3 倍）、verapamil（↑70%）、clarithromycin（↑30%）皆使濃度上升。</div>
+  <div class="notebox"><label>📝 補充筆記</label><textarea data-note="m10"></textarea></div>
+</div>
+
+<!-- Q11 -->
+<div class="q" data-ans="D">
+  <div class="top"><span class="qnum">11</span><span class="qtag">交互作用機轉</span></div>
+  <p class="stem">下列關於 digoxin 交互作用機轉之敘述，何者<strong>正確</strong>？</p>
+  <button class="opt" data-k="A"><span class="mk">A</span>verapamil 透過誘導肝臟代謝使 digoxin 濃度上升</button>
+  <button class="opt" data-k="B"><span class="mk">B</span>neomycin 使 digoxin 生體可用率上升</button>
+  <button class="opt" data-k="C"><span class="mk">C</span>metoclopramide 延長腸道通過時間使 digoxin 吸收增加</button>
+  <button class="opt" data-k="D"><span class="mk">D</span>cyclosporine 抑制 P-glycoprotein 使 digoxin 濃度上升約 50%</button>
+  <div class="qbtns"><button class="btn btn-expl">顯示詳解</button></div>
+  <div class="expl"><b>答案：D</b>　A：verapamil 是抑制 PGP（與代謝無關）。B：neomycin 使生體可用率<strong>下降</strong>。C：metoclopramide 加速腸道通過使吸收<strong>降低</strong>。D 正確。</div>
+  <div class="notebox"><label>📝 補充筆記</label><textarea data-note="m11"></textarea></div>
+</div>
+
+<!-- Q12 -->
+<div class="q" data-ans="B">
+  <div class="top"><span class="qnum">12</span><span class="qtag">複選判斷</span></div>
+  <p class="stem">在合理 digoxin 劑量下，合併下列何種藥品或情況可能使 C<sub>ss</sub> 升高至中毒範圍？　① quinidine　② cholestyramine　③ erythromycin　④ 低血鉀</p>
+  <button class="opt" data-k="A"><span class="mk">A</span>②③</button>
+  <button class="opt" data-k="B"><span class="mk">B</span>①③④</button>
+  <button class="opt" data-k="C"><span class="mk">C</span>①②④</button>
+  <button class="opt" data-k="D"><span class="mk">D</span>②③④</button>
+  <div class="qbtns"><button class="btn btn-expl">顯示詳解</button></div>
+  <div class="expl"><b>答案：B（①③④）</b>　① quinidine ↑30–70%、③ erythromycin ↑、④ 低血鉀增加毒性敏感度。② cholestyramine 降低吸收（須間隔 8 小時），不會使濃度升高。</div>
+  <div class="notebox"><label>📝 補充筆記</label><textarea data-note="m12"></textarea></div>
+</div>
+
+<!-- Q13 -->
+<div class="q" data-ans="A">
+  <div class="top"><span class="qnum">13</span><span class="qtag">劑量決定法</span></div>
+  <p class="stem">下列 digoxin 起始劑量決定方法中，何者「最具彈性、可個別化目標濃度但計算最繁複」？</p>
+  <button class="opt" data-k="A"><span class="mk">A</span>Pharmacokinetic dosing method</button>
+  <button class="opt" data-k="B"><span class="mk">B</span>Nomogram-based dosing</button>
+  <button class="opt" data-k="C"><span class="mk">C</span>Jelliffe method（選定 total body store）</button>
+  <button class="opt" data-k="D"><span class="mk">D</span>Linear pharmacokinetics method</button>
+  <div class="qbtns"><button class="btn btn-expl">顯示詳解</button></div>
+  <div class="expl"><b>答案：A</b>　PK dosing 最有彈性、可依疾病狀態個別化，但計算最繁複。Nomogram 最簡單（圖表轉換、僅成人）；Jelliffe 類似 PK 但先選 total body store。</div>
+  <div class="notebox"><label>📝 補充筆記</label><textarea data-note="m13"></textarea></div>
+</div>
+
+<!-- Q14 -->
+<div class="q" data-ans="C">
+  <div class="top"><span class="qnum">14</span><span class="qtag">臨床案例</span></div>
+  <p class="stem">70 歲病人有 CHF（NYHA III），CL<sub>cr</sub> 20 mL/min，服用 digoxin 後濃度 2.8 ng/mL，HR 58 bpm、血鉀 5.0 mmol/L、無不適。下列處置何者最<strong>不</strong>適當？</p>
+  <button class="opt" data-k="A"><span class="mk">A</span>暫不需給予 digoxin-specific antibody</button>
+  <button class="opt" data-k="B"><span class="mk">B</span>HF 之目標濃度一般落在 0.5~0.9 ng/mL</button>
+  <button class="opt" data-k="C"><span class="mk">C</span>應立即停藥數天後再抽血，據以調整劑量</button>
+  <button class="opt" data-k="D"><span class="mk">D</span>濃度回到目標值後可減量並延長給藥間隔</button>
+  <div class="qbtns"><button class="btn btn-expl">顯示詳解</button></div>
+  <div class="expl"><b>答案：C</b>　病人無毒性症狀、心跳不快、血鉀僅略偏高，不需「停藥數天再抽血」此種不符 TDM 原則之處置。其餘皆合理。<br><span class="flag">⚑</span> 此題仿 113-2 第 69 題改編，重點在辨識不符監測原則之選項。</div>
+  <div class="notebox"><label>📝 補充筆記</label><textarea data-note="m14"></textarea></div>
+</div>
+
+<!-- ============ PART C：Lidocaine ============ -->
+<p class="sec-label">第三部分 · Lidocaine</p>
+<p class="sec-desc">代謝、治療／毒性濃度、代謝物、疾病狀態</p>
+
+<!-- Q15 -->
+<div class="q" data-ans="C">
+  <div class="top"><span class="qnum">15</span><span class="qtag">參數正誤</span></div>
+  <p class="stem">有關 lidocaine 之藥動學，下列敘述何者<strong>錯誤</strong>？</p>
+  <button class="opt" data-k="A"><span class="mk">A</span>正常半衰期約 1~1.5 小時</button>
+  <button class="opt" data-k="B"><span class="mk">B</span>&gt; 95% 經肝臟代謝（CYP3A）</button>
+  <button class="opt" data-k="C"><span class="mk">C</span>為濃度依賴型，主要經腎臟原型排除</button>
+  <button class="opt" data-k="D"><span class="mk">D</span>代謝物為 MEGX 與 GX</button>
+  <div class="qbtns"><button class="btn btn-expl">顯示詳解</button></div>
+  <div class="expl"><b>答案：C</b>　lidocaine 主要經<strong>肝臟代謝（&gt;95%）</strong>，非腎臟原型排除。其代謝物 MEGX、GX 經腎排除，腎衰竭時須監測 CNS 毒性。</div>
+  <div class="notebox"><label>📝 補充筆記</label><textarea data-note="m15"></textarea></div>
+</div>
+
+<!-- Q16 -->
+<div class="q" data-ans="B">
+  <div class="top"><span class="qnum">16</span><span class="qtag">濃度</span></div>
+  <p class="stem">lidocaine 之治療範圍與毒性閾值，下列何者<strong>正確</strong>？</p>
+  <button class="opt" data-k="A"><span class="mk">A</span>治療範圍 4~10 μg/mL</button>
+  <button class="opt" data-k="B"><span class="mk">B</span>治療範圍 1.5~5 μg/mL；&gt; 6 μg/mL 可能出現癲癇</button>
+  <button class="opt" data-k="C"><span class="mk">C</span>&gt; 3 μg/mL 即出現昏迷與心血管衰竭</button>
+  <button class="opt" data-k="D"><span class="mk">D</span>治療範圍 2~6 μg/mL</button>
+  <div class="qbtns"><button class="btn btn-expl">顯示詳解</button></div>
+  <div class="expl"><b>答案：B</b>　治療範圍 1.5–5 μg/mL；&gt;3 出現嗜睡頭暈感覺異常；&gt;6 出現肌肉抽搐、癲癇、昏迷、心血管衰竭。A 為 procainamide、D 為 quinidine 之範圍。</div>
+  <div class="notebox"><label>📝 補充筆記</label><textarea data-note="m16"></textarea></div>
+</div>
+
+<!-- Q17 -->
+<div class="q" data-ans="D">
+  <div class="top"><span class="qnum">17</span><span class="qtag">交互作用方向</span></div>
+  <p class="stem">下列藥物與 lidocaine 併用時對其清除率之影響，何者<strong>錯誤</strong>？</p>
+  <button class="opt" data-k="A"><span class="mk">A</span>propranolol 使清除率下降（↓肝血流）</button>
+  <button class="opt" data-k="B"><span class="mk">B</span>cimetidine 使清除率下降（抑制酶）</button>
+  <button class="opt" data-k="C"><span class="mk">C</span>phenytoin 使清除率上升（酶誘導）</button>
+  <button class="opt" data-k="D"><span class="mk">D</span>phenobarbital 使清除率下降，導致 lidocaine 濃度上升</button>
+  <div class="qbtns"><button class="btn btn-expl">顯示詳解</button></div>
+  <div class="expl"><b>答案：D</b>　phenobarbital 為酶<strong>誘導劑</strong>，使清除率<strong>上升</strong>、lidocaine 濃度下降。β-blocker 與 cimetidine 則使清除率下降、濃度上升。</div>
+  <div class="notebox"><label>📝 補充筆記</label><textarea data-note="m17"></textarea></div>
+</div>
+
+<!-- Q18 -->
+<div class="q" data-ans="A">
+  <div class="top"><span class="qnum">18</span><span class="qtag">疾病狀態</span></div>
+  <p class="stem">下列疾病狀態對 lidocaine 藥動學影響與建議調整之配對，何者<strong>錯誤</strong>？</p>
+  <button class="opt" data-k="A"><span class="mk">A</span>腎衰竭：原型藥清除大幅下降，須大幅減少負荷劑量</button>
+  <button class="opt" data-k="B"><span class="mk">B</span>肝硬化：清除率↓、半衰期↑，減量並密切監測</button>
+  <button class="opt" data-k="C"><span class="mk">C</span>心衰竭：清除率↓、Vd↓，減量</button>
+  <button class="opt" data-k="D"><span class="mk">D</span>心肌梗塞：蛋白結合↑，須監測 AGP 濃度</button>
+  <div class="qbtns"><button class="btn btn-expl">顯示詳解</button></div>
+  <div class="expl"><b>答案：A</b>　lidocaine 主要經肝代謝，腎衰竭的重點是<strong>代謝物（MEGX、GX）累積</strong>，須監測 CNS 毒性，而非原型藥清除大幅下降。</div>
+  <div class="notebox"><label>📝 補充筆記</label><textarea data-note="m18"></textarea></div>
+</div>
+
+<!-- Q19 -->
+<div class="q" data-ans="B">
+  <div class="top"><span class="qnum">19</span><span class="qtag">給藥</span></div>
+  <p class="stem">關於 lidocaine 給藥，下列何者<strong>正確</strong>？</p>
+  <button class="opt" data-k="A"><span class="mk">A</span>負荷劑量應以快速靜脈推注一次給完</button>
+  <button class="opt" data-k="B"><span class="mk">B</span>肝病或心衰竭患者持續輸注速率約為正常者之半量（1~2 mg/min）</button>
+  <button class="opt" data-k="C"><span class="mk">C</span>建議肌肉注射（IM）以延長作用</button>
+  <button class="opt" data-k="D"><span class="mk">D</span>正常持續輸注速率為 10~15 mg/min</button>
+  <div class="qbtns"><button class="btn btn-expl">顯示詳解</button></div>
+  <div class="expl"><b>答案：B</b>　負荷 1–1.5 mg/kg 應於 2–5 分鐘緩慢給予；正常輸注 3–4 mg/min，肝病/心衰竭減半至 1–2 mg/min。</div>
+  <div class="notebox"><label>📝 補充筆記</label><textarea data-note="m19"></textarea></div>
+</div>
+
+<!-- ============ PART D：Procainamide ============ -->
+<p class="sec-label">第四部分 · Procainamide</p>
+<p class="sec-desc">NAPA 代謝物、排除途徑、濃度、疾病狀態</p>
+
+<!-- Q20 -->
+<div class="q" data-ans="C">
+  <div class="top"><span class="qnum">20</span><span class="qtag">代謝物</span></div>
+  <p class="stem">有關 procainamide 之活性代謝物 NAPA（N-acetyl procainamide），下列敘述何者<strong>正確</strong>？</p>
+  <button class="opt" data-k="A"><span class="mk">A</span>NAPA 無藥理活性</button>
+  <button class="opt" data-k="B"><span class="mk">B</span>NAPA 仍具 Type IA 抗心律不整作用</button>
+  <button class="opt" data-k="C"><span class="mk">C</span>NAPA 具 Type III 抗心律不整作用，腎衰竭時會累積</button>
+  <button class="opt" data-k="D"><span class="mk">D</span>NAPA 由肝臟 CYP3A 代謝生成</button>
+  <div class="qbtns"><button class="btn btn-expl">顯示詳解</button></div>
+  <div class="expl"><b>答案：C</b>　procainamide 經 N-acetyltransferase II 生成 NAPA，由 Type I 轉為具 <strong>Type III</strong> 作用之活性代謝物，腎衰竭時累積須監測毒性。</div>
+  <div class="notebox"><label>📝 補充筆記</label><textarea data-note="m20"></textarea></div>
+</div>
+
+<!-- Q21 -->
+<div class="q" data-ans="D">
+  <div class="top"><span class="qnum">21</span><span class="qtag">參數正誤</span></div>
+  <p class="stem">有關 procainamide 藥動學，下列何者<strong>錯誤</strong>？</p>
+  <button class="opt" data-k="A"><span class="mk">A</span>約 50% 肝代謝、50% 腎排除</button>
+  <button class="opt" data-k="B"><span class="mk">B</span>正常成人半衰期約 2.5~5 小時</button>
+  <button class="opt" data-k="C"><span class="mk">C</span>腎衰竭時半衰期可達 14 小時以上</button>
+  <button class="opt" data-k="D"><span class="mk">D</span>生體可用率極低（&lt; 10%）</button>
+  <div class="qbtns"><button class="btn btn-expl">顯示詳解</button></div>
+  <div class="expl"><b>答案：D</b>　procainamide 生體可用率約 <strong>83%</strong>，並有持續釋放劑型。腎臟對其半衰期影響較大（經腎排除約一半）。</div>
+  <div class="notebox"><label>📝 補充筆記</label><textarea data-note="m21"></textarea></div>
+</div>
+
+<!-- Q22 -->
+<div class="q" data-ans="B">
+  <div class="top"><span class="qnum">22</span><span class="qtag">濃度</span></div>
+  <p class="stem">procainamide 之治療範圍與毒性，下列何者<strong>正確</strong>？</p>
+  <button class="opt" data-k="A"><span class="mk">A</span>治療範圍 1.5~5 μg/mL，&gt; 6 μg/mL 中毒</button>
+  <button class="opt" data-k="B"><span class="mk">B</span>治療範圍 4~10 μg/mL，&gt; 12 μg/mL 可能出現 torsade de pointes</button>
+  <button class="opt" data-k="C"><span class="mk">C</span>治療範圍 2~6 μg/mL</button>
+  <button class="opt" data-k="D"><span class="mk">D</span>≥ 8 μg/mL 即出現心跳停止</button>
+  <div class="qbtns"><button class="btn btn-expl">顯示詳解</button></div>
+  <div class="expl"><b>答案：B</b>　治療範圍 4–10 μg/mL；≥8 出現 GI 不適、BP 降低、ECG 間期延長；&gt;12 出現心臟阻斷、心室心律不整、心跳停止、torsade de pointes。</div>
+  <div class="notebox"><label>📝 補充筆記</label><textarea data-note="m22"></textarea></div>
+</div>
+
+<!-- Q23 -->
+<div class="q" data-ans="A">
+  <div class="top"><span class="qnum">23</span><span class="qtag">交互作用</span></div>
+  <p class="stem">下列藥物與 procainamide 併用時，何者<strong>不會</strong>使 procainamide 或 NAPA 濃度上升？</p>
+  <button class="opt" data-k="A"><span class="mk">A</span>rifampin</button>
+  <button class="opt" data-k="B"><span class="mk">B</span>cimetidine</button>
+  <button class="opt" data-k="C"><span class="mk">C</span>trimethoprim</button>
+  <button class="opt" data-k="D"><span class="mk">D</span>amiodarone</button>
+  <div class="qbtns"><button class="btn btn-expl">顯示詳解</button></div>
+  <div class="expl"><b>答案：A</b>　cimetidine、trimethoprim、fluoroquinolones 降低腎清除率使濃度上升；amiodarone 使 procainamide ↑約 57%。rifampin 不在使其上升之列。</div>
+  <div class="notebox"><label>📝 補充筆記</label><textarea data-note="m23"></textarea></div>
+</div>
+
+<!-- Q24 -->
+<div class="q" data-ans="C">
+  <div class="top"><span class="qnum">24</span><span class="qtag">疾病狀態</span></div>
+  <p class="stem">下列疾病狀態對 procainamide 劑量調整之建議，何者<strong>錯誤</strong>？</p>
+  <button class="opt" data-k="A"><span class="mk">A</span>腎衰竭：減量並監測毒性（NAPA 累積）</button>
+  <button class="opt" data-k="B"><span class="mk">B</span>心衰竭：清除率↓、Vd↓，減量 25~50%</button>
+  <button class="opt" data-k="C"><span class="mk">C</span>肥胖：Vd 以 TBW、CL 以 IBW 計算</button>
+  <button class="opt" data-k="D"><span class="mk">D</span>肝硬化：Child-Pugh ≥ 8 時減量</button>
+  <div class="qbtns"><button class="btn btn-expl">顯示詳解</button></div>
+  <div class="expl"><b>答案：C</b>　肥胖者 <strong>Vd ~ IBW、CL ~ TBW</strong>（恰與選項相反）。</div>
+  <div class="notebox"><label>📝 補充筆記</label><textarea data-note="m24"></textarea></div>
+</div>
+
+<!-- ============ PART E：Quinidine ============ -->
+<p class="sec-label">第五部分 · Quinidine</p>
+<p class="sec-desc">代謝、蛋白結合、交互作用、疾病狀態、鹽類劑量</p>
+
+<!-- Q25 -->
+<div class="q" data-ans="B">
+  <div class="top"><span class="qnum">25</span><span class="qtag">參數正誤</span></div>
+  <p class="stem">有關 quinidine 藥動學，下列何者<strong>錯誤</strong>？</p>
+  <button class="opt" data-k="A"><span class="mk">A</span>80% 經肝代謝（CYP3A）、20% 經腎排除</button>
+  <button class="opt" data-k="B"><span class="mk">B</span>蛋白結合率低（&lt; 30%）</button>
+  <button class="opt" data-k="C"><span class="mk">C</span>生體可用率約 70%，有強首渡代謝</button>
+  <button class="opt" data-k="D"><span class="mk">D</span>正常半衰期 6~8 小時，肝衰竭可達 10 小時以上</button>
+  <div class="qbtns"><button class="btn btn-expl">顯示詳解</button></div>
+  <div class="expl"><b>答案：B</b>　quinidine 蛋白結合率<strong>高達 80–90%</strong>（結合於 albumin 與 α1-酸性糖蛋白）。</div>
+  <div class="notebox"><label>📝 補充筆記</label><textarea data-note="m25"></textarea></div>
+</div>
+
+<!-- Q26 -->
+<div class="q" data-ans="C">
+  <div class="top"><span class="qnum">26</span><span class="qtag">交互作用</span></div>
+  <p class="stem">下列關於 quinidine 交互作用之敘述，何者<strong>正確</strong>？</p>
+  <button class="opt" data-k="A"><span class="mk">A</span>rifampin 使 quinidine 濃度上升</button>
+  <button class="opt" data-k="B"><span class="mk">B</span>ketoconazole 使 quinidine 濃度下降</button>
+  <button class="opt" data-k="C"><span class="mk">C</span>quinidine 抑制 digoxin 清除，使 digoxin 濃度上升 30~50%</button>
+  <button class="opt" data-k="D"><span class="mk">D</span>quinidine 為 CYP2D6 誘導劑，加速 β-blocker 代謝</button>
+  <div class="qbtns"><button class="btn btn-expl">顯示詳解</button></div>
+  <div class="expl"><b>答案：C</b>　A：rifampin 為 CYP3A 誘導劑使其下降。B：ketoconazole 為抑制劑使其上升。D：quinidine 為 CYP2D6 <strong>受質與抑制劑</strong>，會<strong>抑制</strong> β-blocker、TCA、opioid（如 codeine）代謝。</div>
+  <div class="notebox"><label>📝 補充筆記</label><textarea data-note="m26"></textarea></div>
+</div>
+
+<!-- Q27 -->
+<div class="q" data-ans="A">
+  <div class="top"><span class="qnum">27</span><span class="qtag">疾病狀態歸類</span></div>
+  <p class="stem">下列疾病狀態對 quinidine 藥動學影響最<strong>小</strong>、通常不需調整劑量者為何？</p>
+  <button class="opt" data-k="A"><span class="mk">A</span>腎衰竭</button>
+  <button class="opt" data-k="B"><span class="mk">B</span>肝硬化</button>
+  <button class="opt" data-k="C"><span class="mk">C</span>心衰竭</button>
+  <button class="opt" data-k="D"><span class="mk">D</span>心肌梗塞</button>
+  <div class="qbtns"><button class="btn btn-expl">顯示詳解</button></div>
+  <div class="expl"><b>答案：A</b>　quinidine 僅 20% 經腎排除，腎衰竭影響極小，通常不需調整。肝硬化影響最大（清除↓、半衰期↑），心衰竭減量 25–50%，MI 影響蛋白結合。</div>
+  <div class="notebox"><label>📝 補充筆記</label><textarea data-note="m27"></textarea></div>
+</div>
+
+<!-- Q28 -->
+<div class="q" data-ans="D">
+  <div class="top"><span class="qnum">28</span><span class="qtag">毒性</span></div>
+  <p class="stem">下列何者為 quinidine 特有、由金雞納鹼（cinchona）相關之毒性表現（cinchonism）？</p>
+  <button class="opt" data-k="A"><span class="mk">A</span>牙齦增生</button>
+  <button class="opt" data-k="B"><span class="mk">B</span>多毛症</button>
+  <button class="opt" data-k="C"><span class="mk">C</span>低血鉀</button>
+  <button class="opt" data-k="D"><span class="mk">D</span>耳鳴、視覺模糊、頭暈、噁心</button>
+  <div class="qbtns"><button class="btn btn-expl">顯示詳解</button></div>
+  <div class="expl"><b>答案：D</b>　cinchonism 表現為耳鳴、視覺模糊、頭暈、噁心、顫抖。另 &gt;6 μg/mL 可致 QT 延長、torsade de pointes。</div>
+  <div class="notebox"><label>📝 補充筆記</label><textarea data-note="m28"></textarea></div>
+</div>
+
+<!-- Q29 -->
+<div class="q" data-ans="C">
+  <div class="top"><span class="qnum">29</span><span class="qtag">劑型/鹽類</span></div>
+  <p class="stem">關於 quinidine 給藥，下列何者<strong>正確</strong>？</p>
+  <button class="opt" data-k="A"><span class="mk">A</span>quinidine sulfate 與 gluconate 兩種鹽類劑量相同</button>
+  <button class="opt" data-k="B"><span class="mk">B</span>口服 quinidine sulfate 之治療範圍為 4~10 μg/mL</button>
+  <button class="opt" data-k="C"><span class="mk">C</span>心衰竭患者建議減量 25~50%</button>
+  <button class="opt" data-k="D"><span class="mk">D</span>quinidine 不會與 digoxin 產生交互作用</button>
+  <div class="qbtns"><button class="btn btn-expl">顯示詳解</button></div>
+  <div class="expl"><b>答案：C</b>　A：兩鹽類劑量不同（sulfate 200–400 mg q6–8h；gluconate 緩釋 648 mg q8–12h）。B：治療範圍為 2–6 μg/mL。D：quinidine 抑制 digoxin 清除使其 ↑30–50%。</div>
+  <div class="notebox"><label>📝 補充筆記</label><textarea data-note="m29"></textarea></div>
+</div>
+
+<!-- Q30 綜合歸類 -->
+<div class="q" data-ans="B">
+  <div class="top"><span class="qnum">30</span><span class="qtag">綜合歸類</span></div>
+  <p class="stem">下列四個藥物對 digoxin 血中濃度的影響，何者與其他三者<strong>不同</strong>？</p>
+  <button class="opt" data-k="A"><span class="mk">A</span>quinidine</button>
+  <button class="opt" data-k="B"><span class="mk">B</span>neomycin</button>
+  <button class="opt" data-k="C"><span class="mk">C</span>verapamil</button>
+  <button class="opt" data-k="D"><span class="mk">D</span>amiodarone</button>
+  <div class="qbtns"><button class="btn btn-expl">顯示詳解</button></div>
+  <div class="expl"><b>答案：B</b>　quinidine、verapamil、amiodarone 皆使 digoxin 濃度<strong>上升</strong>；只有 neomycin 使其<strong>下降</strong>（降低生體可用率），與其他不同。</div>
+  <div class="notebox"><label>📝 補充筆記</label><textarea data-note="m30"></textarea></div>
+</div>
+
+<footer>
+  心血管藥物臨床藥動學模擬考 · 仿 112-2 期中出題風格<br>
+  Digoxin · Lidocaine · Procainamide · Quinidine　|　依講義內容命題，部分情境題參酌歷屆國考改編
+</footer>
+
+</div>
+
+<script>
+var total=30, answered=0, correct=0, done={};
+function updateScore(){
+  document.getElementById('answered').textContent=answered;
+  document.getElementById('correct').textContent=correct;
+  document.getElementById('rate').textContent = answered? Math.round(correct/answered*100)+'%' : '—';
+}
+document.querySelectorAll('.q').forEach(function(q,i){
+  var ans=q.getAttribute('data-ans');
+  var qid='q'+i;
+  q.querySelectorAll('.opt').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      if(done[qid]) return;            // 每題只計分一次
+      done[qid]=true; answered++;
+      var k=btn.getAttribute('data-k');
+      if(k===ans){ btn.classList.add('correct'); correct++; }
+      else{ btn.classList.add('wrong');
+        var right=q.querySelector('.opt[data-k="'+ans+'"]'); if(right) right.classList.add('correct');
+      }
+      q.querySelectorAll('.opt').forEach(function(o){o.setAttribute('disabled','');});
+      updateScore();
+    });
+  });
+  var eb=q.querySelector('.btn-expl');
+  if(eb){eb.addEventListener('click',function(){
+    var ex=q.querySelector('.expl'); ex.classList.toggle('show');
+    eb.textContent=ex.classList.contains('show')?'隱藏詳解':'顯示詳解';
+  });}
+});
+// 補充筆記 localStorage
+document.querySelectorAll('textarea[data-note]').forEach(function(t){
+  var key='cvmock_'+t.getAttribute('data-note');
+  try{var v=localStorage.getItem(key); if(v)t.value=v;}catch(e){}
+  t.addEventListener('input',function(){try{localStorage.setItem(key,t.value);}catch(e){}});
+});
+// 顯示全部詳解
+document.getElementById('revealAll').addEventListener('click',function(){
+  document.querySelectorAll('.expl').forEach(function(ex){ex.classList.add('show');});
+  document.querySelectorAll('.btn-expl').forEach(function(b){b.textContent='隱藏詳解';});
+});
+// 重新作答（保留筆記）
+document.getElementById('resetAll').addEventListener('click',function(){
+  answered=0; correct=0; done={};
+  document.querySelectorAll('.opt').forEach(function(o){o.classList.remove('correct','wrong');o.removeAttribute('disabled');});
+  document.querySelectorAll('.expl').forEach(function(ex){ex.classList.remove('show');});
+  document.querySelectorAll('.btn-expl').forEach(function(b){b.textContent='顯示詳解';});
+  updateScore();
+  window.scrollTo({top:0,behavior:'smooth'});
+});
+updateScore();
+</script>
+</body>
+</html>
