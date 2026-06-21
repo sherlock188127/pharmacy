@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>泌尿道感染與性傳染病・國考題庫</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700;900&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#f5f1e8; --cream2:#fbf8f2; --card:#fdfbf6;
+    --navy:#33507a; --navy-light:#4f72a0; --rust:#a8572c;
+    --ink:#272a30; --muted:#6a6660; --rule:#dcd3c2;
+    --green:#2e6b3e; --green-bg:#e7f0e8; --red:#a63a36; --red-bg:#f6e7e6; --gold:#9a6a16;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;background:var(--cream);color:var(--ink);
+    font-family:"Noto Sans TC",sans-serif;font-size:16px;line-height:1.75;-webkit-text-size-adjust:100%;}
+  .drug{font-family:"JetBrains Mono",monospace;font-size:.9em;color:var(--navy);font-weight:600;letter-spacing:-.3px;}
+  .wrap{max-width:860px;margin:0 auto;padding:24px 18px 80px;}
+
+  header.top{text-align:center;padding:34px 14px 26px;}
+  header.top .kicker{font-family:"Noto Serif TC",serif;letter-spacing:6px;color:var(--navy-light);font-size:13px;}
+  header.top h1{font-family:"Noto Serif TC",serif;color:var(--navy);font-size:30px;margin:12px 0 4px;font-weight:900;letter-spacing:1px;}
+  header.top .sub{color:var(--muted);font-size:14px;}
+  .bar{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:16px;}
+  .pill{background:var(--cream2);border:1px solid var(--rule);border-radius:20px;padding:5px 14px;font-size:13px;color:var(--muted);}
+  .pill b{color:var(--navy);}
+  .toolbtn{background:none;border:1px solid var(--rust);color:var(--rust);border-radius:20px;padding:5px 14px;font-size:13px;cursor:pointer;font-family:inherit;}
+  .toolbtn:hover{background:var(--rust);color:#fff;}
+
+  h2.sect{font-family:"Noto Serif TC",serif;color:#fff;background:linear-gradient(100deg,var(--navy),var(--navy-light));
+    font-size:18px;font-weight:900;padding:11px 16px;border-radius:8px;margin:34px 0 16px;letter-spacing:.5px;}
+  h2.sect .en{font-size:11px;font-weight:400;opacity:.9;letter-spacing:0;display:block;margin-top:2px;}
+
+  .q{background:var(--card);border:1px solid var(--rule);border-radius:12px;padding:16px 18px 18px;margin:0 0 18px;
+     box-shadow:0 1px 2px rgba(51,80,122,.04);}
+  .q .head{display:flex;align-items:center;gap:9px;margin-bottom:10px;flex-wrap:wrap;}
+  .badge{font-family:"Noto Serif TC",serif;background:var(--navy);color:#fff;font-size:12px;font-weight:700;padding:3px 11px;border-radius:20px;white-space:nowrap;}
+  .qnum{color:var(--muted);font-size:13px;}
+  .done{margin-left:auto;font-size:12px;color:var(--green);display:none;}
+  .done.show{display:inline;}
+  .stem{font-weight:500;margin-bottom:12px;}
+
+  .opts{list-style:none;margin:0 0 6px;padding:0;}
+  .opts li{display:flex;gap:9px;align-items:flex-start;padding:9px 12px;margin:7px 0;border-radius:8px;
+    border:1px solid var(--rule);background:#fff;cursor:pointer;transition:all .12s;user-select:none;}
+  .opts li:hover{border-color:var(--navy-light);background:#f8f6f0;}
+  .opts li .lab{font-family:"JetBrains Mono",monospace;font-weight:700;color:var(--navy);flex-shrink:0;}
+  .opts li .mark{margin-left:auto;flex-shrink:0;font-weight:700;font-size:15px;opacity:0;}
+  .opts.revealed li{cursor:default;}
+  .opts.revealed li.correct{background:var(--green-bg);border-color:var(--green);}
+  .opts.revealed li.correct .lab{color:var(--green);}
+  .opts.revealed li.correct .mark{opacity:1;color:var(--green);}
+  .opts.revealed li.wrong{background:var(--red-bg);border-color:var(--red);}
+  .opts.revealed li.wrong .lab{color:var(--red);}
+  .opts.revealed li.wrong .mark{opacity:1;color:var(--red);}
+
+  .actions{display:flex;gap:10px;margin-top:6px;flex-wrap:wrap;align-items:center;}
+  .ebtn{background:none;border:1px solid var(--navy);color:var(--navy);border-radius:8px;padding:6px 14px;font-size:13.5px;
+    cursor:pointer;font-family:inherit;font-weight:500;}
+  .ebtn:hover{background:var(--navy);color:#fff;}
+  .ans{font-size:13.5px;color:var(--green);font-weight:700;display:none;}
+  .ans.show{display:inline;}
+
+  .exp{display:none;margin-top:12px;border-top:1px dashed var(--rule);padding-top:11px;font-size:14.5px;line-height:1.8;}
+  .exp.show{display:block;}
+  .exp .t{font-family:"Noto Serif TC",serif;color:var(--navy);font-weight:700;font-size:14px;margin-right:6px;}
+
+  .noteWrap{margin-top:12px;}
+  .noteWrap label{font-size:12.5px;color:var(--muted);display:block;margin-bottom:5px;}
+  textarea.note{width:100%;min-height:46px;border:1px solid var(--rule);border-radius:8px;padding:9px 11px;
+    font-family:"Noto Sans TC",sans-serif;font-size:14px;line-height:1.7;resize:vertical;background:#fffdf8;color:var(--ink);}
+  textarea.note:focus{outline:none;border-color:var(--navy-light);background:#fff;}
+  .saved{font-size:11.5px;color:var(--green);margin-left:8px;opacity:0;transition:opacity .3s;}
+  .saved.show{opacity:1;}
+
+  .endnote{margin-top:30px;padding:18px 20px;background:var(--cream2);border:1px solid var(--rule);border-radius:12px;
+    font-size:14px;color:var(--muted);line-height:1.85;}
+  .endnote h4{font-family:"Noto Serif TC",serif;color:var(--navy);margin:0 0 8px;font-size:16px;}
+  .endnote b{color:var(--navy);}
+  footer{text-align:center;color:var(--muted);font-size:12px;margin-top:26px;letter-spacing:1px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="kicker">藥 物 治 療 學</div>
+    <h1>泌尿道感染與性傳染病</h1>
+    <div class="sub">111-1 ～ 115-1 國考題目互動題庫</div>
+    <div class="bar">
+      <span class="pill">收錄 <b>13</b> 題・<b>A–D</b> 四類</span>
+      <span class="pill">點選項看對錯・<b>顯示詳解</b>可展開</span>
+      <button class="toolbtn" id="expandAll">全部展開詳解</button>
+      <button class="toolbtn" id="resetAll">重設作答</button>
+    </div>
+  </header>
+  <div id="app"></div>
+
+  <div class="endnote">
+    <h4>重點脈絡：跨年度高頻考點</h4>
+    UTI／STD 的考法集中在五條主軸：<b>① 藥物到不到位</b>（<span class="drug">nitrofurantoin</span>、<span class="drug">fosfomycin</span>、<span class="drug">moxifloxacin</span> 因尿中或腎實質濃度問題，moxifloxacin 不用於 UTI；nitrofurantoin／fosfomycin 不用於腎盂腎炎）；<b>② 特殊族群安全</b>（孕婦避 tetracycline／FQ／近足月 TMP-SMX；G6PD 避 sulfonamide → 用 cephalexin）；<b>③ 療程長短</b>（攝護腺炎 2–4 週、孕婦膀胱炎 5–7 天、腎盂腎炎 5–14 天）；<b>④ 梅毒劑型</b>（早期 benzathine 單劑 IM；神經性梅毒須 aqueous crystalline PCN G IV，benzathine 不穿 CSF）；<b>⑤ STD 替代藥</b>（penicillin 過敏 → doxycycline；生殖器 HSV 用 acyclovir 類而非 ganciclovir）。
+  </div>
+  <footer>為 Ada 的 2026 國考準備整理　·　筆記自動儲存於本機瀏覽器</footer>
+</div>
+
+<script>
+const d = n => `<span class="drug">${n}</span>`;
+
+const SECTIONS = [
+ { code:"A", title:"下泌尿道感染與藥物選擇", en:"Lower UTI & Drug Selection", qs:[
+   { id:"a1", sit:"114-1", qnum:"第3題",
+     stem:`有關泌尿道感染之治療，下列敘述何者正確？`,
+     opts:[
+       `antibiotic susceptibility 報告可提供 microorganism 在尿路系統中的抗藥性與感受性`,
+       `最常見的致病菌是 ${d("Escherichia coli")}`,
+       `腎臟排除的 antibiotics，在尿液中活性濃度通常比在血液中低很多`,
+       `若 antibiotic susceptibility 報告顯示目前用藥有抗藥性，必須更改為後線藥品治療`],
+     correct:1,
+     exp:`${d("Escherichia coli")} 為各類 UTI（膀胱炎、腎盂腎炎）<b>最常見病原菌</b>，故 (B) 正確。(C) 經腎排除之抗生素在尿中濃度遠「高」於血中，許多 UTI 可用較低全身劑量達效；(D) 有抗藥性時應依藥敏改用「有效」藥，不一定是後線。〔對應講義：UTI 病原菌（E. coli 最常見）〕` },
+   { id:"a2", sit:"111-1", qnum:"第8題",
+     stem:`下列何者不適用於治療泌尿道感染？`,
+     opts:[d("fosfomycin"), d("amoxicillin/clavulanate"), d("moxifloxacin"), d("nitrofurantoin")],
+     correct:2,
+     exp:`${d("moxifloxacin")} 在<b>尿中濃度不足</b>，故不適用於 UTI（C）；同屬 fluoroquinolone 的 ${d("ciprofloxacin")}、${d("levofloxacin")} 則尿中濃度高、可用。${d("fosfomycin")}、${d("nitrofurantoin")}、${d("amoxicillin/clavulanate")} 皆為膀胱炎可選用藥。〔對應講義：膀胱炎用藥〕` },
+   { id:"a3", sit:"113-1", qnum:"第2題",
+     stem:`57 歲女性，過去曾因 penicillin 產生過敏性休克。因發燒、頻尿、排尿困難、腰痛，診斷有 acute complicated urinary infection，下列何者<b>不可</b>作為 empirical antibiotic therapy？`,
+     opts:[d("norfloxacin"), d("moxifloxacin"), d("ciprofloxacin"), d("levofloxacin")],
+     correct:1,
+     exp:`${d("moxifloxacin")} 尿中濃度不足，<b>不可</b>作為 UTI 經驗治療（B）；其餘 fluoroquinolone（${d("norfloxacin")}／${d("ciprofloxacin")}／${d("levofloxacin")}）尿中濃度高、可用。本例有發燒、腰痛（疑複雜性 UTI／腎盂腎炎），更需選能達腎實質與尿中有效濃度者。〔對應講義：複雜性膀胱炎／腎盂腎炎用藥〕` },
+ ]},
+ { code:"B", title:"特殊族群與療程", en:"Special Populations & Treatment Duration", qs:[
+   { id:"b1", sit:"112-2", qnum:"第1題",
+     stem:`懷孕 10 週的婦女發生 acute uncomplicated urinary tract infection，下列抗生素選擇何者正確？`,
+     opts:[d("nitrofurantoin"), d("doxycycline"), d("trimethoprim-sulfamethoxazole"), d("ciprofloxacin")],
+     correct:0,
+     exp:`孕婦單純性 UTI 可用 ${d("nitrofurantoin")}（A；但接近足月或 G6PD 缺乏者避免，因新生兒溶血風險）。(B) ${d("doxycycline")}（tetracycline）影響胎兒骨骼牙齒、禁用；(C) TMP-SMX 第一孕期（葉酸拮抗→神經管缺陷）與近足月（核黃疸）須避免；(D) fluoroquinolone 孕婦避免（軟骨疑慮）。〔對應講義：孕婦 UTI 致畸胎風險分級〕` },
+   { id:"b2", sit:"111-2", qnum:"第10題",
+     stem:`6 歲女童有 G6PD 缺乏症，下列何者為泌尿道感染初始治療之首選？`,
+     opts:[d("tetracycline"), d("sulfamethoxazole/trimethoprim"), d("ciprofloxacin"), d("cephalexin")],
+     correct:3,
+     exp:`G6PD 缺乏者應避免 sulfonamide（${d("sulfamethoxazole/trimethoprim")}）等氧化性藥物（溶血風險）；${d("tetracycline")} 影響幼兒骨骼牙齒、${d("ciprofloxacin")}（fluoroquinolone）幼兒避免（軟骨）。故首選 ${d("cephalexin")}（D）。〔對應講義：G6PD 與 sulfonamide、兒童用藥安全〕` },
+   { id:"b3", sit:"114-2", qnum:"第10題",
+     stem:`有關尿道感染與抗生素療程的配對，下列何者正確？`,
+     opts:[`慢性攝護腺炎：至少 4 週`, `糖尿病病人的急性膀胱炎：至少 3 週`, `輕微的急性腎盂腎炎：3 天`, `懷孕婦女的急性膀胱炎：3 天`],
+     correct:0,
+     exp:`慢性攝護腺炎因抗生素需能滲入攝護腺，療程長、<b>至少 4 週</b>（A 正確）。(B) 糖尿病屬複雜性膀胱炎，約 7 天而非 3 週；(C) 腎盂腎炎需 5–14 天，3 天太短；(D) 孕婦急性膀胱炎建議 5–7 天，非 3 天。〔對應講義：攝護腺炎療程、孕婦／複雜性 UTI 療程〕` },
+ ]},
+ { code:"C", title:"梅毒", en:"Syphilis", qs:[
+   { id:"c1", sit:"112-1", qnum:"第7題",
+     stem:`有關 ${d("penicillin G")} 用於治療成人早期梅毒（syphilis）的劑型與劑量，下列何者正確？`,
+     opts:[`aqueous crystalline penicillin G，6 million units IV，single dose`,
+       `aqueous crystalline penicillin G，2.4 million units IM，single dose`,
+       `benzathine penicillin G，12 million units IV，single dose`,
+       `benzathine penicillin G，2.4 million units IM，single dose`],
+     correct:3,
+     exp:`早期（第一／二期）梅毒首選 <b>${d("benzathine penicillin G")} 240 萬單位（2.4 million units）單次肌肉注射</b>（D）。${d("aqueous crystalline penicillin G")}（高劑量分次 IV）為神經性梅毒用藥。〔對應講義：梅毒分期治療〕` },
+   { id:"c2", sit:"114-1", qnum:"第10題",
+     stem:`對於 primary early syphilis，下列抗生素治療處方何者最不適當？`,
+     opts:[`${d("azithromycin")} 2 g PO QD × 10 days`, `${d("benzathine penicillin G")} 2.4 million-units IM single dose`,
+       `${d("ceftriaxone")} 1 g IM QD × 8 days`, `${d("doxycycline")} 100 mg PO BID × 14 days`],
+     correct:0,
+     exp:`${d("azithromycin")} 治療梅毒為「<b>單次 2 g 口服</b>」，且因抗藥性顧慮僅為次選；「2 g QD × 10 天」為錯誤處方，故最不適當（A）。(B) benzathine 單次 IM 為首選；(C) ceftriaxone、(D) doxycycline × 14 天為 penicillin 過敏之替代。〔對應講義：梅毒治療與替代藥〕` },
+   { id:"c3", sit:"115-1", qnum:"第6題",
+     stem:`有關梅毒（syphilis）的處置，下列何者<b>錯誤</b>？`,
+     opts:[`神經性梅毒可能以腦膜炎、腦神經異常表現，建議使用 ${d("benzathine penicillin G")} 治療`,
+       `感染 1 年之內的早期梅毒，僅需使用 1 劑 ${d("benzathine penicillin G")} 治療`,
+       `對於 penicillin 過敏的病人，可依病況選擇 ${d("doxycycline")}、${d("ceftriaxone")} 等替代`,
+       `早期梅毒經治療後應追蹤 nontreponemal test 效價以評估療效`],
+     correct:0,
+     exp:`神經性梅毒需用 <b>${d("aqueous crystalline penicillin G")}（高劑量靜脈注射，每 4 小時）</b> 10–14 天；${d("benzathine penicillin G")} <b>無法穿透 CSF</b>、不適用，故 (A) 錯誤。(B)(C)(D) 皆正確（早期單劑 benzathine、過敏替代、RPR/VDRL 追蹤）。〔對應講義：神經性梅毒治療、RPR／VDRL 追蹤〕` },
+   { id:"c4", sit:"112-2", qnum:"第10題",
+     stem:`梅毒病人若對於 penicillins 過敏，應使用下列何者做為替代治療？`,
+     opts:[d("acyclovir"), d("doxycycline"), d("metronidazole"), d("azithromycin")],
+     correct:1,
+     exp:`penicillin 過敏之梅毒替代以 <b>${d("doxycycline")}（100 mg BID × 14 天）</b> 為主（B）；${d("ceftriaxone")} 亦可。${d("azithromycin")} 因抗藥性僅選擇性使用、非首選替代；${d("acyclovir")}、${d("metronidazole")} 對梅毒無效。〔對應講義：梅毒替代治療〕` },
+ ]},
+ { code:"D", title:"淋病、生殖器疱疹與菜花（HPV）", en:"Gonorrhea, Genital Herpes & HPV", qs:[
+   { id:"d1", sit:"113-2", qnum:"第8題",
+     stem:`有關淋病（gonorrhea）的治療，下列何者<b>錯誤</b>？`,
+     opts:[`因抗藥性問題，目前治療首選是 ${d("ceftriaxone")}`,
+       `瀰漫性淋病感染應接受至少 7 天注射治療，並依感染部位如腦膜炎、心內膜炎決定療程天數`,
+       `無症狀的感染者不需要抗生素治療`,
+       `替代治療藥品包括 ${d("gentamicin")}＋${d("azithromycin")} 或 ${d("cefixime")}＋${d("azithromycin")} 等`],
+     correct:2,
+     exp:`無症狀淋病感染<b>仍需治療</b>（避免併發症與持續傳播），故 (C) 錯誤。(A) ${d("ceftriaxone")} 為首選；(B) 瀰漫性淋菌感染（DGI）需較長注射療程、依部位調整；(D) 為可接受之替代組合。〔對應講義：淋病藥物治療〕` },
+   { id:"d2", sit:"113-1", qnum:"第10題",
+     stem:`有關 HSV-2 引起的生殖器感染，first clinical episode 的藥品治療，下列何者最不適當？`,
+     opts:[`${d("acyclovir")} 400 mg PO TID`, `${d("famciclovir")} 250 mg PO TID`,
+       `${d("ganciclovir")} 1000 mg PO TID`, `${d("valacyclovir")} 1000 mg PO BID`],
+     correct:2,
+     exp:`生殖器疱疹初次發作以 ${d("acyclovir")}、${d("famciclovir")}、${d("valacyclovir")} 治療；${d("ganciclovir")} 主要用於 CMV、非生殖器 HSV 之標準用藥，故 (C) 最不適當。〔對應講義：生殖器疱疹初次發作給藥〕` },
+   { id:"d3", sit:"114-2", qnum:"第6題",
+     stem:`下列有關 genital warts 與 human papillomavirus（HPV）的敘述，何者正確？`,
+     opts:[`尖形濕疣俗稱菜花，主要由 HPV 第 9 型及第 18 型引起`,
+       `HPV 疫苗在有性行為以前施打可得最大保護效力，建議施打年齡為 16～45 歲`,
+       `HPV 與生殖器部位以及口咽部位的癌症相關`,
+       `治療應以藥品優先，如效果不彰，再以冷凍治療或手術移除`],
+     correct:2,
+     exp:`HPV 與生殖器及<b>口咽部位癌症</b>相關（C 正確）。(A) 菜花主要由 HPV 第 <b>6、11 型</b>（低致癌）引起，第 16、18 型為高致癌；(B) 建議於性行為前施打、年齡範圍非「16–45」（一般 9 歲起）；(D) 治療（外用藥、冷凍、電燒、手術）依病灶選擇，非一律藥品優先。〔對應講義：尖形濕疣（HPV）治療與疫苗〕` },
+ ]},
+];
+
+const LABELS = "ABCDEFG";
+const NS = "uti_std_v1_";
+const app = document.getElementById("app");
+
+SECTIONS.forEach(sec=>{
+  const h = document.createElement("h2");
+  h.className="sect";
+  h.innerHTML = `${sec.code}　${sec.title}<span class="en">${sec.en}</span>`;
+  app.appendChild(h);
+
+  sec.qs.forEach(q=>{
+    const card = document.createElement("div");
+    card.className="q";
+    const optsHtml = q.opts.map((o,i)=>
+      `<li data-i="${i}"><span class="lab">(${LABELS[i]})</span><span class="otext">${o}</span><span class="mark"></span></li>`).join("");
+    card.innerHTML = `
+      <div class="head">
+        <span class="badge">${q.sit}</span><span class="qnum">${q.qnum}</span>
+        <span class="done" id="done_${q.id}">✓ 已作答</span>
+      </div>
+      <div class="stem">${q.stem}</div>
+      <ul class="opts" id="opts_${q.id}">${optsHtml}</ul>
+      <div class="actions">
+        <button class="ebtn" id="ebtn_${q.id}">顯示詳解</button>
+        <span class="ans" id="ans_${q.id}">正解：${LABELS[q.correct]}</span>
+      </div>
+      <div class="exp" id="exp_${q.id}"><span class="t">詳解</span>${q.exp}</div>
+      <div class="noteWrap">
+        <label>📝 補充筆記<span class="saved" id="saved_${q.id}">已儲存</span></label>
+        <textarea class="note" id="note_${q.id}" placeholder="寫下你的記憶點、易錯處、口訣…（自動儲存）"></textarea>
+      </div>`;
+    app.appendChild(card);
+
+    // option reveal
+    const optList = card.querySelector(`#opts_${q.id}`);
+    optList.querySelectorAll("li").forEach(li=>{
+      li.addEventListener("click",()=>{
+        if(optList.classList.contains("revealed")) return;
+        const chosen = +li.dataset.i;
+        optList.classList.add("revealed");
+        optList.querySelectorAll("li").forEach(el=>{
+          const i = +el.dataset.i;
+          if(i===q.correct){ el.classList.add("correct"); el.querySelector(".mark").textContent="✓"; }
+          else if(i===chosen){ el.classList.add("wrong"); el.querySelector(".mark").textContent="✗"; }
+        });
+        card.querySelector(`#ans_${q.id}`).classList.add("show");
+        card.querySelector(`#done_${q.id}`).classList.add("show");
+      });
+    });
+
+    // explanation toggle
+    const ebtn = card.querySelector(`#ebtn_${q.id}`);
+    const exp = card.querySelector(`#exp_${q.id}`);
+    ebtn.addEventListener("click",()=>{
+      exp.classList.toggle("show");
+      ebtn.textContent = exp.classList.contains("show") ? "隱藏詳解" : "顯示詳解";
+    });
+
+    // note persistence
+    const ta = card.querySelector(`#note_${q.id}`);
+    const savedTag = card.querySelector(`#saved_${q.id}`);
+    try{ const v = localStorage.getItem(NS+q.id); if(v) ta.value = v; }catch(e){}
+    let t;
+    ta.addEventListener("input",()=>{
+      try{ localStorage.setItem(NS+q.id, ta.value); }catch(e){}
+      savedTag.classList.add("show");
+      clearTimeout(t); t=setTimeout(()=>savedTag.classList.remove("show"),1100);
+    });
+  });
+});
+
+// global controls
+document.getElementById("expandAll").addEventListener("click",()=>{
+  const exps = document.querySelectorAll(".exp");
+  const anyHidden = [...exps].some(e=>!e.classList.contains("show"));
+  exps.forEach(e=>e.classList.toggle("show", anyHidden));
+  document.querySelectorAll(".ebtn").forEach(b=>b.textContent = anyHidden ? "隱藏詳解":"顯示詳解");
+  document.getElementById("expandAll").textContent = anyHidden ? "全部收合詳解":"全部展開詳解";
+});
+document.getElementById("resetAll").addEventListener("click",()=>{
+  document.querySelectorAll(".opts").forEach(o=>{
+    o.classList.remove("revealed");
+    o.querySelectorAll("li").forEach(li=>{li.classList.remove("correct","wrong");li.querySelector(".mark").textContent="";});
+  });
+  document.querySelectorAll(".ans, .done").forEach(e=>e.classList.remove("show"));
+});
+</script>
+</body>
+</html>
