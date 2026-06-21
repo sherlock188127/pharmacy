@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>治療藥物監測 — Lithium & Theophylline</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F4EEE0;          /* 米黃底 */
+    --paper:#FBF7EE;
+    --ink:#2E2A24;
+    --ink-soft:#5C564C;
+    --line:#DAD0BC;
+    /* Morandi accents */
+    --sage:#7C8B73;        /* 章一 Lithium 主色 */
+    --sage-soft:#E4EADD;
+    --clay:#9C7A66;        /* 章二 Theophylline 主色 */
+    --clay-soft:#EDE0D6;
+    --dusty-blue:#6E8298;
+    --dusty-blue-soft:#DEE6EC;
+    --mustard:#B89150;
+    --mustard-soft:#EFE6D0;
+    --plum:#8A6E84;
+    --plum-soft:#E7DEE5;
+    --correct:#5E7A55;
+    --wrong:#A85F52;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;background:var(--bg);color:var(--ink);
+    font-family:"Noto Sans TC",sans-serif;line-height:1.85;
+    font-size:16px;
+  }
+  code,.mono{font-family:"JetBrains Mono",monospace;}
+  .drug{font-family:"JetBrains Mono",monospace;font-weight:700;color:var(--clay);letter-spacing:.2px;}
+  .wrap{max-width:880px;margin:0 auto;padding:0 22px 100px;}
+
+  /* ---------- Hero ---------- */
+  header.hero{
+    padding:64px 22px 40px;text-align:center;
+    background:
+      radial-gradient(circle at 18% 22%,var(--sage-soft) 0,transparent 42%),
+      radial-gradient(circle at 84% 70%,var(--clay-soft) 0,transparent 46%);
+    border-bottom:1px solid var(--line);
+  }
+  .hero .eyebrow{
+    font-family:"JetBrains Mono",monospace;font-size:.72rem;letter-spacing:.4em;
+    color:var(--ink-soft);text-transform:uppercase;margin-bottom:18px;
+  }
+  .hero h1{
+    font-family:"Noto Serif TC",serif;font-weight:900;
+    font-size:clamp(2rem,6vw,3.2rem);margin:0 0 6px;line-height:1.2;
+  }
+  .hero h1 .amp{color:var(--mustard);font-style:italic;}
+  .hero .sub{color:var(--ink-soft);font-size:1rem;}
+  .hero .meta{
+    margin-top:22px;font-family:"JetBrains Mono",monospace;font-size:.78rem;
+    color:var(--ink-soft);
+  }
+
+  /* ---------- TOC ---------- */
+  nav.toc{
+    max-width:880px;margin:34px auto 0;padding:0 22px;
+    display:grid;grid-template-columns:1fr 1fr;gap:14px;
+  }
+  nav.toc a{
+    display:block;text-decoration:none;color:var(--ink);
+    background:var(--paper);border:1px solid var(--line);border-radius:14px;
+    padding:16px 18px;transition:.2s;
+  }
+  nav.toc a:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(46,42,36,.08);}
+  nav.toc a .n{font-family:"JetBrains Mono",monospace;font-size:.7rem;color:var(--ink-soft);}
+  nav.toc a .t{font-family:"Noto Serif TC",serif;font-weight:700;font-size:1.05rem;display:block;margin-top:4px;}
+  nav.toc a.c1{border-left:4px solid var(--sage);}
+  nav.toc a.c2{border-left:4px solid var(--clay);}
+
+  /* ---------- Chapter ---------- */
+  .chapter{margin-top:70px;}
+  .chapter-head{
+    display:flex;align-items:baseline;gap:16px;
+    padding-bottom:14px;margin-bottom:8px;border-bottom:2px solid var(--ink);
+  }
+  .chapter-head .ch-no{
+    font-family:"JetBrains Mono",monospace;font-weight:700;font-size:.9rem;
+    padding:4px 12px;border-radius:20px;color:#fff;
+  }
+  .c1 .ch-no{background:var(--sage);}
+  .c2 .ch-no{background:var(--clay);}
+  .chapter-head h2{
+    font-family:"Noto Serif TC",serif;font-weight:900;font-size:1.9rem;margin:0;
+  }
+  .chapter-head .en{font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--ink-soft);margin-left:auto;}
+
+  section.block{margin-top:38px;}
+  section.block > h3{
+    font-family:"Noto Serif TC",serif;font-weight:700;font-size:1.28rem;
+    margin:0 0 14px;display:flex;align-items:center;gap:10px;
+  }
+  .c1 section.block > h3::before{content:"";width:10px;height:10px;border-radius:3px;background:var(--sage);}
+  .c2 section.block > h3::before{content:"";width:10px;height:10px;border-radius:3px;background:var(--clay);}
+
+  p{margin:0 0 14px;}
+  ul.clean{list-style:none;padding:0;margin:0 0 16px;}
+  ul.clean > li{
+    position:relative;padding:6px 0 6px 26px;border-bottom:1px dashed var(--line);
+  }
+  ul.clean > li::before{
+    content:"▸";position:absolute;left:4px;top:6px;color:var(--mustard);font-size:.9rem;
+  }
+  ul.clean > li:last-child{border-bottom:none;}
+  .lead{color:var(--ink-soft);}
+
+  /* callout cards */
+  .card{
+    background:var(--paper);border:1px solid var(--line);border-radius:14px;
+    padding:18px 20px;margin:16px 0;border-left:5px solid var(--dusty-blue);
+  }
+  .card .label{
+    font-family:"JetBrains Mono",monospace;font-size:.7rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--dusty-blue);font-weight:700;margin-bottom:8px;
+  }
+  .card.warn{border-left-color:var(--wrong);}
+  .card.warn .label{color:var(--wrong);}
+  .card.key{border-left-color:var(--mustard);}
+  .card.key .label{color:var(--mustard);}
+
+  /* range table */
+  .rngtable{width:100%;border-collapse:collapse;margin:14px 0;background:var(--paper);
+    border:1px solid var(--line);border-radius:12px;overflow:hidden;}
+  .rngtable th,.rngtable td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--line);font-size:.95rem;}
+  .rngtable th{background:var(--sage-soft);font-family:"Noto Serif TC",serif;font-weight:700;}
+  .c2 .rngtable th{background:var(--clay-soft);}
+  .rngtable tr:last-child td{border-bottom:none;}
+  .rngtable .num{font-family:"JetBrains Mono",monospace;color:var(--clay);font-weight:700;}
+
+  .pill{display:inline-block;font-family:"JetBrains Mono",monospace;font-size:.78rem;
+    background:var(--mustard-soft);color:#7a5e21;padding:2px 9px;border-radius:6px;font-weight:700;}
+
+  /* ---------- Quiz ---------- */
+  .quiz{
+    background:var(--paper);border:1px solid var(--line);border-radius:16px;
+    padding:20px 22px;margin:20px 0;
+  }
+  .quiz .qtag{
+    font-family:"JetBrains Mono",monospace;font-size:.7rem;font-weight:700;
+    color:#fff;background:var(--plum);padding:3px 10px;border-radius:6px;display:inline-block;margin-bottom:10px;
+  }
+  .quiz .qstem{font-weight:700;font-family:"Noto Serif TC",serif;font-size:1.05rem;margin-bottom:14px;}
+  .quiz .opt{
+    display:block;width:100%;text-align:left;cursor:pointer;
+    background:var(--bg);border:1.5px solid var(--line);border-radius:10px;
+    padding:11px 15px;margin-bottom:9px;font-family:inherit;font-size:.96rem;color:var(--ink);
+    transition:.15s;line-height:1.6;
+  }
+  .quiz .opt:hover{border-color:var(--dusty-blue);}
+  .quiz .opt .k{font-family:"JetBrains Mono",monospace;font-weight:700;margin-right:8px;color:var(--ink-soft);}
+  .quiz .opt.correct{background:#E3EEDD;border-color:var(--correct);color:#3f5638;}
+  .quiz .opt.correct .k{color:var(--correct);}
+  .quiz .opt.wrong{background:#F2E0DC;border-color:var(--wrong);color:#7d3f34;}
+  .quiz .opt.wrong .k{color:var(--wrong);}
+  .quiz .opt.correct::after{content:"  ✓";font-weight:700;}
+  .quiz .opt.wrong::after{content:"  ✕";font-weight:700;}
+
+  .quiz .controls{display:flex;gap:10px;margin-top:6px;flex-wrap:wrap;}
+  .btn{
+    font-family:"Noto Sans TC",sans-serif;font-weight:700;font-size:.9rem;cursor:pointer;
+    border:1.5px solid var(--ink);background:transparent;color:var(--ink);
+    border-radius:9px;padding:8px 16px;transition:.15s;
+  }
+  .btn:hover{background:var(--ink);color:var(--paper);}
+  .btn.acc{border-color:var(--mustard);color:#7a5e21;}
+  .btn.acc:hover{background:var(--mustard);color:#fff;}
+
+  .explain{
+    display:none;margin-top:14px;padding:15px 17px;border-radius:11px;
+    background:var(--sage-soft);border-left:4px solid var(--sage);font-size:.95rem;line-height:1.8;
+  }
+  .c2 .explain{background:var(--clay-soft);border-left-color:var(--clay);}
+  .explain.show{display:block;}
+  .explain .ans{font-family:"Noto Serif TC",serif;font-weight:900;color:var(--correct);margin-right:6px;}
+
+  .notebox{margin-top:14px;}
+  .notebox label{
+    font-family:"JetBrains Mono",monospace;font-size:.74rem;color:var(--ink-soft);
+    display:block;margin-bottom:6px;letter-spacing:.05em;
+  }
+  .notebox textarea{
+    width:100%;min-height:64px;resize:vertical;border:1.5px dashed var(--line);
+    border-radius:10px;padding:11px 13px;font-family:inherit;font-size:.92rem;
+    background:#FFFDF8;color:var(--ink);line-height:1.7;
+  }
+  .notebox textarea:focus{outline:none;border-color:var(--mustard);background:#fff;}
+
+  .bank-head{
+    margin-top:70px;padding:22px;border-radius:16px;text-align:center;
+    background:linear-gradient(135deg,var(--plum-soft),var(--dusty-blue-soft));
+    border:1px solid var(--line);
+  }
+  .bank-head h2{font-family:"Noto Serif TC",serif;font-weight:900;margin:0 0 6px;font-size:1.7rem;}
+  .bank-head p{margin:0;color:var(--ink-soft);font-size:.92rem;}
+
+  footer{text-align:center;color:var(--ink-soft);font-size:.78rem;
+    font-family:"JetBrains Mono",monospace;margin-top:60px;padding-top:24px;border-top:1px solid var(--line);}
+
+  @media(max-width:600px){
+    nav.toc{grid-template-columns:1fr;}
+    .chapter-head{flex-wrap:wrap;}
+    .chapter-head .en{margin-left:0;width:100%;}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="eyebrow">治療藥物監測 · TDM</div>
+  <h1>Lithium <span class="amp">&amp;</span> Theophylline</h1>
+  <div class="sub">兩種需做血中濃度監測的經典藥物 — 藥動學、毒性、交互作用與劑量調整</div>
+  <div class="meta">Ch.21 — Ch.22　|　周宏璋 助理教授講義整理</div>
+</header>
+
+<nav class="toc">
+  <a href="#c1" class="c1"><span class="n">CHAPTER 21</span><span class="t">Lithium 鋰鹽</span></a>
+  <a href="#c2" class="c2"><span class="n">CHAPTER 22</span><span class="t">Theophylline 茶鹼</span></a>
+</nav>
+
+<div class="wrap">
+
+<!-- ====================== CHAPTER 1: LITHIUM ====================== -->
+<div class="chapter c1" id="c1">
+  <div class="chapter-head">
+    <span class="ch-no">CH 21</span>
+    <h2>Lithium 鋰鹽</h2>
+    <span class="en">monovalent cation · Li⁺</span>
+  </div>
+
+  <section class="block">
+    <h3>簡介</h3>
+    <ul class="clean">
+      <li>屬鹼金屬，為一價陽離子（<span class="drug">Li⁺</span>），是小分子藥物。</li>
+      <li>主要用於治療<strong>躁鬱症（bipolar disorder）</strong>；替代藥物包括 <span class="drug">valproic acid</span>、<span class="drug">carbamazepine</span>、<span class="drug">lamotrigine</span>。</li>
+      <li>口服給予，常見鹽類為 carbonate salt 與 citrate salt。</li>
+      <li>臨床雖需做濃度監測，但仍相當常用；開發已久，但<strong>確切機轉至今仍不明確</strong>。</li>
+    </ul>
+    <div class="card key">
+      <div class="label">可能機轉（4 類假說）</div>
+      <ul class="clean">
+        <li>在受體與組織位置上與其他<strong>陽離子競爭</strong>。</li>
+        <li>阻斷 dopamine 受體的過度敏感性（supersensitivity blockage）。</li>
+        <li>降低 β-receptor 誘導之 adenylate cyclase 刺激反應。</li>
+        <li>增強對 serotonin（5-HT）、acetylcholine 與 GABA 的敏感性。</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block">
+    <h3>治療濃度與毒性濃度</h3>
+    <div class="card warn">
+      <div class="label">單位特別注意</div>
+      此藥治療濃度單位與多數藥物不同，使用 <span class="pill">mmol/L</span> 或 <span class="pill">mEq/L</span>（濃度），而非「單位體積多少重量」。
+    </div>
+    <table class="rngtable">
+      <tr><th>情境</th><th>建議濃度</th><th>無反應時</th></tr>
+      <tr><td>治療範圍（整體）</td><td class="num">0.6–1.2 mmol/L</td><td>—</td></tr>
+      <tr><td>急性躁症 Acute mania</td><td class="num">&gt;0.8（0.8–1）</td><td>1–1.2，部分達 1.2–1.5</td></tr>
+      <tr><td>長期維持 Maintenance</td><td class="num">0.6–0.8</td><td>0.9–1，部分達 1–1.2</td></tr>
+    </table>
+    <p class="lead">提高劑量時<strong>不建議超過 1.5 mmol/L</strong>。濃度監測以穩定狀態為基準，於單一劑量後約 <strong>12 小時</strong>抽血。</p>
+    <p>口服 Lithium 為<strong>二室模式（two-compartment model）</strong>藥物 — 水溶性極佳的藥物呈二室模式相當特別。</p>
+  </section>
+
+  <section class="block">
+    <h3>濃度監測注意事項</h3>
+    <ul class="clean">
+      <li>抽血前 <strong>2–3 天</strong>應依醫囑規律服藥。</li>
+      <li>於最後一劑後 <strong>12 ± 0.5 小時</strong>抽血。</li>
+      <li>服藥順從性或抽血時間若有出入，須回報照護者。</li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <h3>短期副作用</h3>
+    <p class="lead">起始用藥或調整劑量後可能增加，屬正常初期反應：</p>
+    <ul class="clean">
+      <li>肌肉無力、嗜睡（lethargy）。</li>
+      <li>口水多（polydipsia）、多尿（polyuria）、夜尿（nocturia）。</li>
+      <li>精細動作受損、手抖（hand tremors）。</li>
+      <li>頭痛、記憶或專注力受損、意識混亂。</li>
+    </ul>
+    <div class="card">
+      <div class="label">手抖（tremor）的處理</div>
+      <ul class="clean">
+        <li>拉長給藥間隔 → 降低 peak 濃度。</li>
+        <li>降低 Lithium 劑量。</li>
+        <li>併用 β-blocker 減緩副作用。</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block">
+    <h3>長期副作用</h3>
+    <ul class="clean">
+      <li>藥物引起之尿崩症（diabetes insipidus）。</li>
+      <li>腎毒性：glomerulosclerosis、renal tubular atrophy、interstitial nephritis、urinary casts。</li>
+      <li>甲狀腺低下（hypothyroidism，可伴甲狀腺腫）。</li>
+      <li>心電圖異常、白血球增多（leukocytosis）、體重增加。</li>
+      <li>皮膚變化（如 acnes 痤瘡）。</li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <h3>毒性濃度之影響</h3>
+    <table class="rngtable">
+      <tr><th>濃度</th><th>症狀</th></tr>
+      <tr><td class="num">1.2–1.5</td><td>記憶/專注力下降、嗜睡、細微手抖、虛弱、協調不良、噁心、腹瀉、嘔吐、疲倦。</td></tr>
+      <tr><td class="num">1.5–3</td><td>意識混亂、躁動、口齒不清、嗜睡、失神、運動失調、眼震、視力模糊、耳鳴、眩暈、反射亢進、肌張力增高、粗大手抖、肌束顫動。</td></tr>
+      <tr><td class="num">&gt;3</td><td>舞蹈手足徐動症、癲癇、不可逆腦損傷、心律不整、低血壓、呼吸與心血管併發症、木僵、昏迷、死亡。</td></tr>
+      <tr><td class="num">&gt;3.5–4</td><td><strong>致死劑量</strong>，可能需血液透析（hemodialysis）盡速移除藥物。</td></tr>
+    </table>
+  </section>
+
+  <!-- inline quiz Q79 (111-2) -->
+  <div class="quiz" data-answer="D">
+    <span class="qtag">111-2 · 第79題</span>
+    <div class="qstem">在 Lithium maintenance therapy 進行療劑監測時，下列抽血時間點及建議濃度範圍的配對，何者最為適當？</div>
+    <button class="opt" data-k="A"><span class="k">A</span>正要給藥前，2~4 mEq/L</button>
+    <button class="opt" data-k="B"><span class="k">B</span>服藥後 30 分鐘，0.6~1.2 mEq/L</button>
+    <button class="opt" data-k="C"><span class="k">C</span>服藥後 2 小時，2~4 mEq/L</button>
+    <button class="opt" data-k="D"><span class="k">D</span>服藥後 12 小時，0.5~0.8 mEq/L</button>
+    <div class="controls">
+      <button class="btn acc" onclick="toggleExplain(this)">顯示詳解</button>
+    </div>
+    <div class="explain"><span class="ans">(D)</span> Lithium 建議於服藥後 <strong>12 小時</strong>抽血，維持治療濃度落在 0.5~0.8 即可。</div>
+    <div class="notebox"><label>📝 補充筆記</label><textarea data-note="li-q79"></textarea></div>
+  </div>
+
+  <section class="block">
+    <h3>臨床監測：躁鬱症診斷</h3>
+    <p>Bipolar 同時具有憂鬱（depression）與躁症（mania）。</p>
+    <div class="card">
+      <div class="label">憂鬱 Depression — 同時 ≥5 項且 &gt;2 週</div>
+      情緒低落、對活動興趣與愉悅感降低、食慾下降與體重減輕、失眠或嗜睡、精神運動遲緩或激動、精力下降或疲勞、無價值感／內疚感、決策與注意力受損、自殺意念／企圖。
+    </div>
+    <div class="card">
+      <div class="label">躁症 Mania — 同時 ≥3 項且 &gt;1 週</div>
+      異常且持續高漲的情緒、誇大、睡眠需求減少、話多、思想飛躍、注意力不集中、活動增加或激動、過度參與高風險活動（如血拚、飆車）。
+      <p style="margin:.6em 0 0;font-size:.88rem;">＊「過度高風險」依個人經濟條件而定 — 指超過平常可承受範圍的行為。</p>
+    </div>
+  </section>
+
+  <section class="block">
+    <h3>一般資訊與治療前/追蹤檢查</h3>
+    <ul class="clean">
+      <li>作用起始（onset）：<span class="pill">1–2 週</span>；完整治療反應：<span class="pill">4–6 週</span>。</li>
+    </ul>
+    <div class="card key">
+      <div class="label">治療前檢查 Before therapy</div>
+      全身理學檢查、血清生化（電解質與 creatinine）、全血球計數含分類、甲狀腺功能、尿液分析（osmolality 與比重）、尿液毒物篩檢、腎功能（CrCl）與基礎心電圖；育齡女性須驗孕。
+    </div>
+    <div class="card">
+      <div class="label">追蹤檢查 Follow-up（每 6–12 個月）</div>
+      血清電解質、creatinine（排除腎功能異常）、甲狀腺功能、全血球計數含分類、尿液分析含 osmolality 與比重（注意尿量是否 &gt;3 L/d）。
+    </div>
+  </section>
+
+  <section class="block">
+    <h3>血中濃度監測時程</h3>
+    <ul class="clean">
+      <li>每位患者皆於劑量後 <strong>12 ± 0.5 小時</strong>測定（PK 個體差異大）。</li>
+      <li>一般劑量 600–900 mg/d；穩定者劑量更低。可 BID 或 TID（典型 TID：0900／1300／2100）。</li>
+      <li>起始期：每 2–3 天監測 → 達穩定狀態後每 1–2 週、持續約 2 個月。</li>
+      <li>有共病者（尤其腎臟疾病）須重新測定。</li>
+      <li>維持治療：每 3–6 個月一次，依患者狀況增減。</li>
+      <li>劑量或給藥方式調整後：須於 1–2 週內監測。</li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <h3>基本藥動學參數</h3>
+    <table class="rngtable">
+      <tr><th>參數</th><th>數值／特性</th></tr>
+      <tr><td>Li₂CO₃ 劑量（腎功能正常成人）</td><td class="num">900–2400 mg/d</td></tr>
+      <tr><td>口服生體可用率</td><td class="num">100%</td></tr>
+      <tr><td>血漿蛋白結合</td><td><strong>無（0%）</strong> → 故中毒時透析可快速清除</td></tr>
+      <tr><td>T<sub>max</sub></td><td>citrate 糖漿 15–30 min；速放錠/膠囊 1–3 h；緩釋錠 4–8 h</td></tr>
+      <tr><td>排除</td><td>&gt;95% 以原型由尿液排除；腎絲球自由過濾，60–80% 於近端腎小管再吸收；&lt;5% 經唾液/汗/糞排除</td></tr>
+      <tr><td>Elimination t½</td><td class="num">24 小時</td></tr>
+      <tr><td>V<sub>D</sub></td><td class="num">0.9 L/kg</td></tr>
+      <tr><td>Clearance</td><td class="num">20 mL/min</td></tr>
+    </table>
+    <div class="card key">
+      <div class="label">關鍵公式</div>
+      Lithium clearance ≈ <strong>CrCl 的 20%</strong> → <code>Cl = 0.2 × CrCl</code>，知道 CrCl 即可快速估算。
+    </div>
+  </section>
+
+  <section class="block">
+    <h3>疾病狀態／年齡對藥動學的影響</h3>
+    <table class="rngtable">
+      <tr><th>族群／狀態</th><th>t½</th><th>V<sub>D</sub></th><th>Clearance</th></tr>
+      <tr><td>正常腎功能成人（CrCl&gt;80）</td><td class="num">24 h</td><td>0.9 L/kg</td><td>20 mL/min</td></tr>
+      <tr><td>急性躁症期</td><td class="num">12 h</td><td>0.9 L/kg</td><td>30 mL/min</td></tr>
+      <tr><td>兒童（9–12 歲）</td><td class="num">18 h</td><td>0.9 L/kg</td><td>40 mL/min</td></tr>
+      <tr><td>老年人</td><td class="num">36 h</td><td>—</td><td>—</td></tr>
+      <tr><td>腎功能不全</td><td class="num">40–50 h</td><td>—</td><td>—</td></tr>
+    </table>
+    <p class="lead">因腎絲球過濾之日夜節律，<strong>白天 Lithium clearance 約高 30%</strong>。</p>
+  </section>
+
+  <section class="block">
+    <h3>鋰鹽腎清除與鈉平衡</h3>
+    <p>Lithium 與 Na⁺、K⁺ 同族，腎清除與體內鈉平衡相關。負鈉平衡 → Na⁺ 與 K⁺ 再吸收增加 → 連帶增加 Lithium 再吸收。</p>
+    <div class="card warn">
+      <div class="label">造成鈉缺失／脫水的因素</div>
+      限鈉飲食、嘔吐/腹瀉/發燒、劇烈運動、大量出汗、三溫暖/熱水浴、炎熱天氣、過量咖啡因飲品與酒精。
+    </div>
+    <p><strong>服用 Lithium 者建議每日水分攝取 2.5–3 L/d</strong> 以維持離子平衡。</p>
+  </section>
+
+  <section class="block">
+    <h3>懷孕期</h3>
+    <ul class="clean">
+      <li><strong>第一孕期</strong>：不建議使用，因有致畸胎風險。</li>
+      <li><strong>第三孕期</strong>：腎絲球過濾與清除增加。</li>
+      <li>Lithium 可穿過胎盤；乳汁濃度為母體血清濃度的 30–100%。</li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <h3>各透析方法之清除率</h3>
+    <table class="rngtable">
+      <tr><th>方法</th><th>Clearance</th></tr>
+      <tr><td>Hemodialysis 血液透析</td><td class="num">30–50 mL/min</td></tr>
+      <tr><td>Peritoneal dialysis 腹膜透析</td><td class="num">13–15 mL/min</td></tr>
+      <tr><td>Arteriovenous hemodiafiltration</td><td class="num">21 mL/min</td></tr>
+    </table>
+    <p class="lead">透析期間須監測濃度。</p>
+  </section>
+
+  <section class="block">
+    <h3>藥物交互作用</h3>
+    <div class="card">
+      <div class="label">利尿劑 Diuretics</div>
+      Thiazide 導致 Na⁺ 與水脫失 → 增加 Na⁺ 再吸收 → 連帶 Lithium 再吸收增加、清除<strong>降低 40–50%</strong>。<span class="drug">Chlorthalidone</span>、<span class="drug">metolazone</span> 相同。Loop 利尿劑可能無此作用；<span class="drug">amiloride</span>（鈉通道拮抗劑）影響極小。
+    </div>
+    <div class="card">
+      <div class="label">NSAIDs</div>
+      抑制 prostaglandin → 降低腎血流 → 降低清除、升高濃度。<span class="drug">Sulindac</span> 與 <span class="drug">aspirin</span> 影響極小。
+    </div>
+    <div class="card">
+      <div class="label">ACEIs / ARBs</div>
+      機轉不明，抑制 Lithium 排除。併用 ACEI 時 [lithium] ↑ <strong>200–300%</strong>。
+    </div>
+    <div class="card">
+      <div class="label">SSRIs</div>
+      <span class="drug">Fluoxetine</span>、<span class="drug">sertraline</span>、<span class="drug">fluvoxamine</span> 可致 serotonergic hyperarousal syndrome（手腳僵硬、粗大手抖、暈眩、運動失調、口齒不清、癲癇），並升高 Lithium 濃度。
+    </div>
+    <div class="card key">
+      <div class="label">Theophylline（唯一降低 Lithium 濃度者）</div>
+      增加 Lithium clearance/CrCl 比值約 <strong>58%</strong>、降低 C<sub>ss</sub> 約 <strong>21%</strong>；可能出現錐體外症狀或不可逆腦損傷。
+    </div>
+  </section>
+
+  <!-- inline quizzes for interactions -->
+  <div class="quiz" data-answer="D">
+    <span class="qtag">111-2 · 第69題</span>
+    <div class="qstem">併用 lithium carbonate 與 indapamide 之交互作用，主要影響 lithium 之：</div>
+    <button class="opt" data-k="A"><span class="k">A</span>腸道吸收</button>
+    <button class="opt" data-k="B"><span class="k">B</span>體內分布</button>
+    <button class="opt" data-k="C"><span class="k">C</span>肝臟代謝</button>
+    <button class="opt" data-k="D"><span class="k">D</span>腎臟排泄</button>
+    <div class="controls"><button class="btn acc" onclick="toggleExplain(this)">顯示詳解</button></div>
+    <div class="explain"><span class="ans">(D)</span> Indapamide 屬利尿劑，干擾的是<strong>腎臟排泄</strong>。</div>
+    <div class="notebox"><label>📝 補充筆記</label><textarea data-note="li-q69"></textarea></div>
+  </div>
+
+  <div class="quiz" data-answer="D">
+    <span class="qtag">111-1 · 第71題</span>
+    <div class="qstem">下列何種組合<strong>不屬於</strong>藥效學的交互作用？</div>
+    <button class="opt" data-k="A"><span class="k">A</span>benzodiazepines–flumazenil</button>
+    <button class="opt" data-k="B"><span class="k">B</span>glucocorticoids–glipizide</button>
+    <button class="opt" data-k="C"><span class="k">C</span>thiopental–midazolam</button>
+    <button class="opt" data-k="D"><span class="k">D</span>thiazide–lithium</button>
+    <div class="controls"><button class="btn acc" onclick="toggleExplain(this)">顯示詳解</button></div>
+    <div class="explain"><span class="ans">(D)</span> 藥效學交互作用＝不改變 ADME，僅藥理作用加成/拮抗；藥動學交互作用＝改變吸收/分布/代謝/排除。thiazide–lithium 是影響排除（屬<strong>藥動學</strong>），故不屬藥效學。</div>
+    <div class="notebox"><label>📝 補充筆記</label><textarea data-note="li-q71"></textarea></div>
+  </div>
+
+  <div class="quiz" data-answer="D">
+    <span class="qtag">113-2 · 第78題</span>
+    <div class="qstem">下列何者之 plasma albumin binding 最低？</div>
+    <button class="opt" data-k="A"><span class="k">A</span>phenytoin</button>
+    <button class="opt" data-k="B"><span class="k">B</span>carbamazepine</button>
+    <button class="opt" data-k="C"><span class="k">C</span>procainamide</button>
+    <button class="opt" data-k="D"><span class="k">D</span>lithium</button>
+    <div class="controls"><button class="btn acc" onclick="toggleExplain(this)">顯示詳解</button></div>
+    <div class="explain"><span class="ans">(D)</span> Lithium 完全不與血漿蛋白結合，故 albumin binding 最低。</div>
+    <div class="notebox"><label>📝 補充筆記</label><textarea data-note="li-q78"></textarea></div>
+  </div>
+
+  <div class="quiz" data-answer="C">
+    <span class="qtag">113-2 · 第79題（承上）</span>
+    <div class="qstem">併用下列何者會使該藥品（lithium）之血中濃度<strong>降低</strong>？</div>
+    <button class="opt" data-k="A"><span class="k">A</span>angiotensin II antagonists</button>
+    <button class="opt" data-k="B"><span class="k">B</span>thiazide diuretics</button>
+    <button class="opt" data-k="C"><span class="k">C</span>NSAIDs</button>
+    <button class="opt" data-k="D"><span class="k">D</span>acetazolamide</button>
+    <div class="controls"><button class="btn acc" onclick="toggleExplain(this)">顯示詳解</button></div>
+    <div class="explain"><span class="ans">(D)</span> ARBs、thiazide、NSAIDs 皆<strong>升高</strong> Lithium 濃度；<strong>acetazolamide</strong> 則降低其濃度。<br><span style="font-size:.86rem;color:var(--ink-soft);">＊原講義選項標示為 (D) acetazolamide。</span></div>
+    <div class="notebox"><label>📝 補充筆記</label><textarea data-note="li-q79b"></textarea></div>
+  </div>
+
+  <section class="block">
+    <h3>劑量決定方法</h3>
+    <div class="card">
+      <div class="label">① Pharmacokinetic Dosing Method</div>
+      Cl = 0.2 × CrCl；口服為二室模式；C<sub>ss</sub> = [F(D/τ)]/Cl，依急性/長期治療選擇目標濃度。
+    </div>
+    <div class="card">
+      <div class="label">② Literature-Based Recommended Dosing</div>
+      急性躁症 900–1200 mg/d（BID/TID）；預防 600 mg/d；為避副作用每 2–3 天緩增 300–600 mg/d。<br>
+      腎功能不全：CrCl 10–50 → 50–75% 劑量；CrCl &lt;10 → 25–50% 劑量。<br>
+      兒童（腎功能正常）15–60 mg/kg/d（TID/QID）；青少年 600–1800 mg/d（TID/QID）。
+    </div>
+    <div class="card">
+      <div class="label">③ Test Dose Methods</div>
+      <strong>Cooper nomogram</strong>：劑量 600 mg、<strong>24 小時</strong>測定，C<sub>ss</sub> 0.6–1.2，<code>D = e^(4.80 − 7.5·Ctest)</code>。<br>
+      <strong>Perry method</strong>：12 與 36 小時測定，算 k<sub>e</sub> 與蓄積比 R。<br>
+      <strong>Repeated one-point / Ritschel method</strong>：兩個相同劑量，第二劑前及第二劑後測定。
+    </div>
+    <div class="card key">
+      <div class="label">調整劑量 — Linear pharmacokinetics</div>
+      <code>D<sub>new</sub>/C<sub>ss,new</sub> = D<sub>old</sub>/C<sub>ss,old</sub></code>
+    </div>
+  </section>
+</div>
+
+<!-- ====================== CHAPTER 2: THEOPHYLLINE ====================== -->
+<div class="chapter c2" id="c2">
+  <div class="chapter-head">
+    <span class="ch-no">CH 22</span>
+    <h2>Theophylline 茶鹼</h2>
+    <span class="en">methylxanthine</span>
+  </div>
+
+  <section class="block">
+    <h3>總覽與機轉</h3>
+    <ul class="clean">
+      <li>屬 methylxanthine 化合物，結構接近 caffeine，可舒緩呼吸道。</li>
+      <li>適應症：氣喘（asthma）、慢性阻塞性肺病（COPD）、早產兒呼吸中止（premature apnea）。</li>
+      <li>氣喘因支氣管痙攣，主要受益於其支氣管擴張作用；COPD 因病理機轉不同，使用有爭議。</li>
+      <li>臨床上非首選，而是慢性治療的<strong>輔助療法</strong>。</li>
+    </ul>
+    <div class="card key">
+      <div class="label">作用機轉</div>
+      抑制 cyclic nucleotide phosphodiesterases；拮抗 adenosine 受體。<br>
+      其他作用：增加橫隔膜收縮力、增強黏膜纖毛清除、部分抗發炎、中樞神經刺激（用於早產兒呼吸中止）。
+    </div>
+  </section>
+
+  <section class="block">
+    <h3>治療濃度與毒性</h3>
+    <div class="card warn">
+      <div class="label">不同疾病治療範圍不同</div>
+      氣喘/COPD：<span class="pill">10–20 μg/mL</span>　|　早產兒呼吸中止：<span class="pill">6–13 μg/mL</span>（約減半）
+    </div>
+    <ul class="clean">
+      <li>肺病初始治療：先評估 5–15 μg/mL 的反應，再考慮更高濃度。</li>
+      <li>慢性治療：多數患者在 <strong>8–12 μg/mL</strong> 即有足夠支氣管擴張且副作用低。</li>
+    </ul>
+    <table class="rngtable">
+      <tr><th>濃度</th><th>副作用</th></tr>
+      <tr><td class="num">&gt;15</td><td>類咖啡因副作用：噁心、嘔吐、消化不良、失眠、焦慮、頭痛。</td></tr>
+      <tr><td class="num">20–30</td><td>心搏過速性心律不整（含 sinus tachycardia）。</td></tr>
+      <tr><td class="num">&gt;40</td><td>危及生命：心室性心律不整（PVC、VT、fibrillation）或癲癇。</td></tr>
+    </table>
+    <div class="card warn">
+      <div class="label">重要警訊</div>
+      Theophylline 引起的癲癇對抗癲癇藥反應差，可致後遺症或死亡；且<strong>輕微副作用不一定先於嚴重副作用出現</strong>。已有患者在低至 <strong>25 μg/mL</strong> 即發生癲癇的報告。
+    </div>
+  </section>
+
+  <section class="block">
+    <h3>臨床監測參數</h3>
+    <ul class="clean">
+      <li>肺功能：氣喘患者定期測 FEV₁、尖峰流速計；COPD 用肺量計（VC、TLC、FVC、FEF25–75%）。</li>
+      <li>監測疾病症狀頻率與嚴重度：呼吸困難、咳嗽、喘鳴、正常活動受損。</li>
+      <li>急性惡化或嚴重時測動脈血氧；早產兒監測呼吸中止發作頻率。</li>
+      <li><strong>使用此藥必須監測血中濃度</strong>。每年重新評估劑量需求與穩定濃度。</li>
+      <li>充血性心衰竭或肝硬化患者，劑量需求依患者狀態變化極大。</li>
+    </ul>
+    <div class="card">
+      <div class="label">半衰期變異</div>
+      兒童與吸菸者：<strong>3–5 小時</strong>（短）；嚴重心臟或肝臟衰竭：<strong>≥50 小時</strong>（長）。
+    </div>
+  </section>
+
+  <section class="block">
+    <h3>基本藥動學參數</h3>
+    <ul class="clean">
+      <li>主要由肝臟代謝（&gt;90%），主經 <strong>CYP1A2</strong>，少部分 CYP3A、CYP2E1。</li>
+      <li>理論上為非線性動力學，但臨床上以<strong>線性概念</strong>調整劑量較實用。</li>
+      <li>以原型由尿液排除者約 10%。</li>
+      <li>血漿蛋白結合僅約 <strong>40%</strong>。</li>
+    </ul>
+    <div class="card key">
+      <div class="label">Theophylline 劑型與含量</div>
+      <strong>Aminophylline</strong>（ethylenediamine salt）：無水含約 85% theophylline，二水合含約 80%。<br>
+      <strong>Oxtriphylline</strong>（choline salt）：含約 65%，僅口服劑型。<br>
+      三者口服生體可用率皆極佳，約 100%。Theophylline 與 aminophylline 可 IV 或口服。
+    </div>
+  </section>
+
+  <section class="block">
+    <h3>疾病狀態對藥動學的影響</h3>
+    <table class="rngtable">
+      <tr><th>族群／狀態</th><th>t½ / 清除變化</th><th>V<sub>D</sub></th></tr>
+      <tr><td>正常肝功能成人</td><td class="num">8 h</td><td>0.5 L/kg</td></tr>
+      <tr><td>吸菸成人</td><td>t½ 縮短（誘導 CYP1A2）</td><td>—</td></tr>
+      <tr><td>肝臟疾病</td><td>清除下降 → t½ 增加</td><td>—</td></tr>
+      <tr><td>心衰竭 class I–II</td><td class="num">12 h</td><td>—</td></tr>
+      <tr><td>心衰竭 class III–IV</td><td>t½ 更長</td><td>—</td></tr>
+      <tr><td>老年人</td><td>t½ 較長</td><td>—</td></tr>
+      <tr><td>兒童</td><td>t½ 較短</td><td>—</td></tr>
+      <tr><td>肥胖患者</td><td colspan="2">以 IBW 計算 V<sub>D</sub>，依疾病狀態評估</td></tr>
+    </table>
+    <div class="card">
+      <div class="label">特殊族群</div>
+      腎功能不全：原型由尿排除 &lt;10%，<strong>劑量調整不重要</strong>。<br>
+      透析：sieving coefficient ≈ 0.80 → 可被<strong>血液透析大量移除</strong>（建議透析後再給藥）；<strong>無法被腹膜透析移除</strong>。<br>
+      甲狀腺低下：基礎代謝率低 → 需更低劑量。<br>
+      哺乳：乳汁/血漿比值 0.7，哺乳女性須注意。
+    </div>
+  </section>
+
+  <!-- inline quizzes -->
+  <div class="quiz" data-answer="A">
+    <span class="qtag">114-1 · 第70題</span>
+    <div class="qstem">下列何者會<strong>縮短</strong> theophylline 的半衰期？</div>
+    <button class="opt" data-k="A"><span class="k">A</span>marijuana smoke（吸食大麻）</button>
+    <button class="opt" data-k="B"><span class="k">B</span>severe heart failure</button>
+    <button class="opt" data-k="C"><span class="k">C</span>age &gt; 65 歲</button>
+    <button class="opt" data-k="D"><span class="k">D</span>Child-Pugh C liver cirrhosis</button>
+    <div class="controls"><button class="btn acc" onclick="toggleExplain(this)">顯示詳解</button></div>
+    <div class="explain"><span class="ans">(A)</span> 縮短 t½ 代表肝代謝功能變好（誘導酵素）。吸食大麻會誘導酵素 → 縮短半衰期；其餘（心衰竭、老年、肝硬化）皆使代謝下降、t½ 延長。</div>
+    <div class="notebox"><label>📝 補充筆記</label><textarea data-note="th-q70"></textarea></div>
+  </div>
+
+  <section class="block">
+    <h3>藥物交互作用</h3>
+    <div class="card warn">
+      <div class="label">降低清除 30–50%（升高濃度）</div>
+      <span class="drug">Cimetidine</span>（高劑量 ≥1000 mg/d）；macrolide：<span class="drug">troleandomycin</span>；quinolone：<span class="drug">ciprofloxacin</span>、<span class="drug">enoxacin</span>；estrogen 及含雌激素口服避孕藥；<span class="drug">propranolol</span>、<span class="drug">metoprolol</span>、<span class="drug">mexiletine</span>、<span class="drug">propafenone</span>、<span class="drug">pentoxifylline</span>、<span class="drug">ticlopidine</span>、<span class="drug">tacrine</span>、<span class="drug">thiabendazole</span>、<span class="drug">disulfiram</span>、<span class="drug">nefazodone</span>、<span class="drug">interferon</span>、<span class="drug">zileuton</span>、<span class="drug">fluvoxamine</span>。
+      <p style="margin:.5em 0 0;font-size:.86rem;">＊Cimetidine 低劑量（≤800 mg/d）降清除約 20% 或更少。</p>
+    </div>
+    <div class="card">
+      <div class="label">降低清除 10–30%</div>
+      鈣離子通道阻斷劑 <span class="drug">verapamil</span>、<span class="drug">diltiazem</span>（15–25%）；macrolide：<span class="drug">clarithromycin</span>、<span class="drug">erythromycin</span>；quinolone：<span class="drug">norfloxacin</span>；<span class="drug">allopurinol</span>（≥600 mg/d，25%）。
+    </div>
+    <div class="card key">
+      <div class="label">增加清除（降低濃度）</div>
+      Theophylline 本身（自我誘導）；<span class="drug">phenytoin</span>、<span class="drug">carbamazepine</span>、<span class="drug">phenobarbital</span>（抗癲癇藥）；<span class="drug">rifampin</span>、<span class="drug">moricizine</span>。
+    </div>
+  </section>
+
+  <div class="quiz" data-answer="A">
+    <span class="qtag">110-1 · 第62題</span>
+    <div class="qstem">下列何者可能影響 theophylline 之藥動學？①老年人&gt;65歲 ②肝硬化 ③肥胖(&gt;30% over IBW) ④嚼檳榔 ⑤吸菸</div>
+    <button class="opt" data-k="A"><span class="k">A</span>①②③⑤</button>
+    <button class="opt" data-k="B"><span class="k">B</span>①②④⑤</button>
+    <button class="opt" data-k="C"><span class="k">C</span>①③④⑤</button>
+    <button class="opt" data-k="D"><span class="k">D</span>②③④</button>
+    <div class="controls"><button class="btn acc" onclick="toggleExplain(this)">顯示詳解</button></div>
+    <div class="explain"><span class="ans">(A)</span> 嚼檳榔（④）不影響；老年、肝硬化、肥胖、吸菸皆影響其藥動學。</div>
+    <div class="notebox"><label>📝 補充筆記</label><textarea data-note="th-q62"></textarea></div>
+  </div>
+
+  <div class="quiz" data-answer="D">
+    <span class="qtag">109-1 · 第69題</span>
+    <div class="qstem">吸菸最可能影響下列何者之代謝？</div>
+    <button class="opt" data-k="A"><span class="k">A</span>amiodarone</button>
+    <button class="opt" data-k="B"><span class="k">B</span>nifedipine</button>
+    <button class="opt" data-k="C"><span class="k">C</span>paroxetine</button>
+    <button class="opt" data-k="D"><span class="k">D</span>theophylline</button>
+    <div class="controls"><button class="btn acc" onclick="toggleExplain(this)">顯示詳解</button></div>
+    <div class="explain"><span class="ans">(D)</span> 吸菸誘導 CYP1A2，最明顯影響 theophylline 代謝。</div>
+    <div class="notebox"><label>📝 補充筆記</label><textarea data-note="th-q69"></textarea></div>
+  </div>
+
+  <div class="quiz" data-answer="A">
+    <span class="qtag">109-1 · 第3題</span>
+    <div class="qstem">下列何者與 theophylline 併用時，須注意藥品之交互作用？</div>
+    <button class="opt" data-k="A"><span class="k">A</span>fluvoxamine</button>
+    <button class="opt" data-k="B"><span class="k">B</span>lamotrigine</button>
+    <button class="opt" data-k="C"><span class="k">C</span>gabapentin</button>
+    <button class="opt" data-k="D"><span class="k">D</span>levetiracetam</button>
+    <div class="controls"><button class="btn acc" onclick="toggleExplain(this)">顯示詳解</button></div>
+    <div class="explain"><span class="ans">(A)</span> Fluvoxamine 降低 theophylline 清除、升高濃度；B/C/D 三個抗癲癇藥不在交互作用範圍。</div>
+    <div class="notebox"><label>📝 補充筆記</label><textarea data-note="th-q3"></textarea></div>
+  </div>
+
+  <div class="quiz" data-answer="A">
+    <span class="qtag">108-2 · 第30題</span>
+    <div class="qstem">Neuromuscular blocking agents 與下列藥品併用時，會增加神經肌肉阻斷作用，何者<strong>除外</strong>？</div>
+    <button class="opt" data-k="A"><span class="k">A</span>theophylline</button>
+    <button class="opt" data-k="B"><span class="k">B</span>clindamycin</button>
+    <button class="opt" data-k="C"><span class="k">C</span>furosemide</button>
+    <button class="opt" data-k="D"><span class="k">D</span>amphotericin B</button>
+    <div class="controls"><button class="btn acc" onclick="toggleExplain(this)">顯示詳解</button></div>
+    <div class="explain"><span class="ans">(A)</span> Theophylline 沒有增強神經肌肉阻斷的作用。</div>
+    <div class="notebox"><label>📝 補充筆記</label><textarea data-note="th-q30"></textarea></div>
+  </div>
+
+  <div class="quiz" data-answer="D">
+    <span class="qtag">108-1 · 第22題</span>
+    <div class="qstem">Theophylline 與下列何者併用時，<strong>較不會</strong>導致 theophylline 血中濃度上升？</div>
+    <button class="opt" data-k="A"><span class="k">A</span>clarithromycin</button>
+    <button class="opt" data-k="B"><span class="k">B</span>telithromycin</button>
+    <button class="opt" data-k="C"><span class="k">C</span>erythromycin</button>
+    <button class="opt" data-k="D"><span class="k">D</span>azithromycin</button>
+    <div class="controls"><button class="btn acc" onclick="toggleExplain(this)">顯示詳解</button></div>
+    <div class="explain"><span class="ans">(D)</span> Macrolide 類除 azithromycin 外，多會升高 theophylline 濃度。</div>
+    <div class="notebox"><label>📝 補充筆記</label><textarea data-note="th-q22"></textarea></div>
+  </div>
+
+  <div class="quiz" data-answer="D">
+    <span class="qtag">109-1 · 第77題</span>
+    <div class="qstem">下列哪組藥品交互作用，<strong>不是</strong>經由藥效學機轉？</div>
+    <button class="opt" data-k="A"><span class="k">A</span>tramadol–sertraline</button>
+    <button class="opt" data-k="B"><span class="k">B</span>digoxin–furosemide</button>
+    <button class="opt" data-k="C"><span class="k">C</span>ibuprofen–captopril</button>
+    <button class="opt" data-k="D"><span class="k">D</span>theophylline–erythromycin</button>
+    <div class="controls"><button class="btn acc" onclick="toggleExplain(this)">顯示詳解</button></div>
+    <div class="explain"><span class="ans">(D)</span> Theophylline–erythromycin 屬<strong>藥動學</strong>機轉（erythromycin 抑制肝酵素）。</div>
+    <div class="notebox"><label>📝 補充筆記</label><textarea data-note="th-q77"></textarea></div>
+  </div>
+
+  <div class="quiz" data-answer="C">
+    <span class="qtag">108-1 · 第79題</span>
+    <div class="qstem">下列何者與鋰鹽併用時，易造成鋰鹽血中濃度<strong>降低</strong>？</div>
+    <button class="opt" data-k="A"><span class="k">A</span>ibuprofen</button>
+    <button class="opt" data-k="B"><span class="k">B</span>imidapril</button>
+    <button class="opt" data-k="C"><span class="k">C</span>theophylline</button>
+    <button class="opt" data-k="D"><span class="k">D</span>trichlormethiazide</button>
+    <div class="controls"><button class="btn acc" onclick="toggleExplain(this)">顯示詳解</button></div>
+    <div class="explain"><span class="ans">(C)</span> Theophylline 增加 Lithium 清除 → 降低血中濃度（其餘皆升高）。</div>
+    <div class="notebox"><label>📝 補充筆記</label><textarea data-note="th-q79a"></textarea></div>
+  </div>
+
+  <div class="quiz" data-answer="B">
+    <span class="qtag">108-1 · 第80題（承上）</span>
+    <div class="qstem">前述藥品（theophylline–鋰鹽）交互作用之主要機轉屬於：</div>
+    <button class="opt" data-k="A"><span class="k">A</span>藥劑學交互作用</button>
+    <button class="opt" data-k="B"><span class="k">B</span>藥動學交互作用</button>
+    <button class="opt" data-k="C"><span class="k">C</span>藥效學交互作用</button>
+    <button class="opt" data-k="D"><span class="k">D</span>兩藥併用並無具臨床意義之交互作用</button>
+    <div class="controls"><button class="btn acc" onclick="toggleExplain(this)">顯示詳解</button></div>
+    <div class="explain"><span class="ans">(B)</span> 影響清除（排除）屬<strong>藥動學</strong>交互作用。</div>
+    <div class="notebox"><label>📝 補充筆記</label><textarea data-note="th-q80"></textarea></div>
+  </div>
+
+  <div class="quiz" data-answer="C">
+    <span class="qtag">110-2 · 第50題</span>
+    <div class="qstem">下列何者之肝臟代謝或腎臟清除率，在孕婦可能會降低，須調整劑量？</div>
+    <button class="opt" data-k="A"><span class="k">A</span>phenytoin</button>
+    <button class="opt" data-k="B"><span class="k">B</span>β-lactams</button>
+    <button class="opt" data-k="C"><span class="k">C</span>theophylline</button>
+    <button class="opt" data-k="D"><span class="k">D</span>digoxin</button>
+    <div class="controls"><button class="btn acc" onclick="toggleExplain(this)">顯示詳解</button></div>
+    <div class="explain"><span class="ans">(C)</span> Theophylline 經肝臟代謝，孕婦可能降低需調整劑量。</div>
+    <div class="notebox"><label>📝 補充筆記</label><textarea data-note="th-q50"></textarea></div>
+  </div>
+
+  <div class="quiz" data-answer="C">
+    <span class="qtag">111-1 · 第75題</span>
+    <div class="qstem">下列敘述何者正確？</div>
+    <button class="opt" data-k="A"><span class="k">A</span>綠色蔬菜富含 vit. K，服 warfarin 病人應避免食用綠色蔬菜</button>
+    <button class="opt" data-k="B"><span class="k">B</span>ethanol 增加 estazolam 鎮靜效果，故建議以酒精飲料服用</button>
+    <button class="opt" data-k="C"><span class="k">C</span>吸菸會加快 theophylline 代謝，評估劑量時務必權衡吸菸影響</button>
+    <button class="opt" data-k="D"><span class="k">D</span>ciprofloxacin 可搭配牛奶服用以增加吸收率</button>
+    <div class="controls"><button class="btn acc" onclick="toggleExplain(this)">顯示詳解</button></div>
+    <div class="explain"><span class="ans">(C)</span> A 不需完全避免綠色蔬菜（應維持穩定攝取）；B 絕不會建議以酒精服藥；D ciprofloxacin 會與牛奶螯合、降低吸收。</div>
+    <div class="notebox"><label>📝 補充筆記</label><textarea data-note="th-q75"></textarea></div>
+  </div>
+
+  <section class="block">
+    <h3>劑量決定與調整</h3>
+    <div class="card">
+      <div class="label">① Pharmacokinetic Dosing Method</div>
+      依疾病狀態估算 t½ 與 k<sub>e</sub>；肥胖者（&gt;30% over IBW）以 IBW 計算 V<sub>D</sub>；選擇目標 C<sub>ss</sub>。
+    </div>
+    <div class="card">
+      <div class="label">② Literature-Based Recommended Dosing</div>
+      預期 C<sub>ss</sub> 通常以 <strong>10 μg/mL</strong> 計。IV loading dose：theophylline 5 mg/kg 或 aminophylline 6 mg/kg。
+    </div>
+    <div class="card key">
+      <div class="label">調整劑量</div>
+      Linear pharmacokinetics：<code>D<sub>new</sub>/C<sub>ss,new</sub> = D<sub>old</sub>/C<sub>ss,old</sub></code>，或用藥動學參數法。
+    </div>
+    <div class="card">
+      <div class="label">Chiou Method（用於 IV infusion）</div>
+      適用心衰竭/肝硬化等 PK 變異大、半衰期長者，欲在達穩態前快速個別化輸注速率。連續輸注期間取<strong>間隔 ≥4–6 小時</strong>的兩個濃度計算清除與輸注速率。<br>
+      前提：藥物只能由 IV infusion 進入；最後一劑緩釋劑型須在使用本法前 <strong>≥12–16 小時</strong>給予，以免殘留口服吸收造成計算誤差。
+    </div>
+  </section>
+
+  <section class="block">
+    <h3>綜合討論題組</h3>
+    <p class="lead">以下為臨床整合題（多為承上題組），已嵌入對應答案與詳解。</p>
+  </section>
+
+  <div class="quiz" data-answer="A">
+    <span class="qtag">110-2 · 第78題</span>
+    <div class="qstem">王先生 75 歲，COPD 20 年及肝硬化(Child-Pugh A)，長期用 theophylline SR cap。檢出 H. pylori(+)，醫師處方三合一(amoxicillin + clarithromycin + lansoprazole)。有關 theophylline 與 clarithromycin 交互作用，下列何者正確？</div>
+    <button class="opt" data-k="A"><span class="k">A</span>clarithromycin 抑制肝臟酵素，使 theophylline 血中濃度上升</button>
+    <button class="opt" data-k="B"><span class="k">B</span>theophylline 抑制 clarithromycin 代謝，使其血中濃度上升</button>
+    <button class="opt" data-k="C"><span class="k">C</span>theophylline 增加胃中 pH，造成 clarithromycin 吸收增加</button>
+    <button class="opt" data-k="D"><span class="k">D</span>clarithromycin 增加腸胃蠕動，造成 theophylline 吸收增加</button>
+    <div class="controls"><button class="btn acc" onclick="toggleExplain(this)">顯示詳解</button></div>
+    <div class="explain"><span class="ans">(A)</span> Clarithromycin 抑制肝臟酵素 → 降低 theophylline 清除 → 濃度上升。</div>
+    <div class="notebox"><label>📝 補充筆記</label><textarea data-note="th-q78a"></textarea></div>
+  </div>
+
+  <div class="quiz" data-answer="D">
+    <span class="qtag">110-2 · 第79題（承上）</span>
+    <div class="qstem">下列建議何者最適當？</div>
+    <button class="opt" data-k="A"><span class="k">A</span>建議醫師將 theophylline 劑量減半</button>
+    <button class="opt" data-k="B"><span class="k">B</span>建議醫師將 clarithromycin 劑量減半</button>
+    <button class="opt" data-k="C"><span class="k">C</span>建議病人注意是否腹瀉，可能是 clarithromycin 中毒徵兆</button>
+    <button class="opt" data-k="D"><span class="k">D</span>建議病人注意心跳與腸胃道症狀，可能是 theophylline 濃度偏高徵兆</button>
+    <div class="controls"><button class="btn acc" onclick="toggleExplain(this)">顯示詳解</button></div>
+    <div class="explain"><span class="ans">(D)</span> 不會貿然調整劑量，而是先請病人留意 theophylline 濃度偏高的徵兆（心跳、腸胃道症狀）。</div>
+    <div class="notebox"><label>📝 補充筆記</label><textarea data-note="th-q79c"></textarea></div>
+  </div>
+
+  <div class="quiz" data-answer="D">
+    <span class="qtag">110-2 · 第80題（承上）</span>
+    <div class="qstem">4 天後王先生告知未服藥前心跳 110 下/分。下列何者<strong>不是</strong>他心跳加快最可能的危險因子？</div>
+    <button class="opt" data-k="A"><span class="k">A</span>藥品交互作用</button>
+    <button class="opt" data-k="B"><span class="k">B</span>年齡大於 65 歲</button>
+    <button class="opt" data-k="C"><span class="k">C</span>肝硬化</button>
+    <button class="opt" data-k="D"><span class="k">D</span>吸菸</button>
+    <div class="controls"><button class="btn acc" onclick="toggleExplain(this)">顯示詳解</button></div>
+    <div class="explain"><span class="ans">(D)</span> 吸菸是造成 theophylline 濃度<strong>下降</strong>的因子，不會導致濃度偏高/心跳加快。</div>
+    <div class="notebox"><label>📝 補充筆記</label><textarea data-note="th-q80b"></textarea></div>
+  </div>
+
+  <div class="quiz" data-answer="D">
+    <span class="qtag">111-2 · 第78題</span>
+    <div class="qstem">丁太太罹患 COPD，theophylline 穩態血中濃度 3 mg/L，症狀無顯著改善。下列建議何者最適當？</div>
+    <button class="opt" data-k="A"><span class="k">A</span>將 theophylline 改換 montelukast 10 mg PO QD</button>
+    <button class="opt" data-k="B"><span class="k">B</span>提高 theophylline 劑量約 50%，並持續監測</button>
+    <button class="opt" data-k="C"><span class="k">C</span>維持原劑量，再次檢測血中濃度正確性</button>
+    <button class="opt" data-k="D"><span class="k">D</span>提高 theophylline 劑量約 25%，並持續監測</button>
+    <div class="controls"><button class="btn acc" onclick="toggleExplain(this)">顯示詳解</button></div>
+    <div class="explain"><span class="ans">(D)</span> 調整劑量通常以 <strong>25%</strong> 緩慢調整為優先，不會一開始就換藥或大幅加量。</div>
+    <div class="notebox"><label>📝 補充筆記</label><textarea data-note="th-q78b"></textarea></div>
+  </div>
+
+  <div class="quiz" data-answer="A">
+    <span class="qtag">112-1 · 第78題</span>
+    <div class="qstem">楊先生 42 歲，菸齡 27 年，COPD 5 年、心律不整 2 年。醫師開 theophylline SR cap 200 mg PO BID 7 天，囑用藥 4 天後測濃度。藥師應如何建議？①保留 BID ②改 Q12H ③早晚餐時服用 ④空腹或隨餐皆可 ⑤固定隨餐或空腹 ⑥晚上服藥後 6h 抽血 ⑦白天服藥後 6h 抽血</div>
+    <button class="opt" data-k="A"><span class="k">A</span>②⑤⑦</button>
+    <button class="opt" data-k="B"><span class="k">B</span>①③④⑦</button>
+    <button class="opt" data-k="C"><span class="k">C</span>①③④⑥</button>
+    <button class="opt" data-k="D"><span class="k">D</span>②⑤⑥</button>
+    <div class="controls"><button class="btn acc" onclick="toggleExplain(this)">顯示詳解</button></div>
+    <div class="explain"><span class="ans">(A)</span> 需做濃度檢測 → 頻次改 Q12H(②)；服藥時間應固定(⑤)；抽血一般在白天服藥後 6h(⑦)。</div>
+    <div class="notebox"><label>📝 補充筆記</label><textarea data-note="th-q78c"></textarea></div>
+  </div>
+
+  <div class="quiz" data-answer="C">
+    <span class="qtag">112-1 · 第79題（承上）</span>
+    <div class="qstem">4 天後病人 theophylline 濃度 22 mg/L，肝功能正常。醫師調低為 200 mg QD，又 4 天後濃度 8 mg/L，抽血為早上服藥後 9 小時。下列何者最適當？</div>
+    <button class="opt" data-k="A"><span class="k">A</span>抽血太晚致濃度偏低，應再重抽一次</button>
+    <button class="opt" data-k="B"><span class="k">B</span>抽血太晚致實際峰濃度更低，應增加劑量後再驗</button>
+    <button class="opt" data-k="C"><span class="k">C</span>抽血時間正確，病人無明顯副作用，繼續原劑量</button>
+    <button class="opt" data-k="D"><span class="k">D</span>抽血時間正確，未達治療範圍，應增加劑量後再驗</button>
+    <div class="controls"><button class="btn acc" onclick="toggleExplain(this)">顯示詳解</button></div>
+    <div class="explain"><span class="ans">(C)</span> 抽血時間正確且無明顯副作用，8 mg/L 在可接受範圍 → 維持原劑量。</div>
+    <div class="notebox"><label>📝 補充筆記</label><textarea data-note="th-q79d"></textarea></div>
+  </div>
+</div>
+
+<!-- ====================== FULL QUESTION BANK ====================== -->
+<div class="bank-head" id="bank">
+  <h2>📚 完整題庫</h2>
+  <p>下方集中重複全部考題，方便最後總複習 — 作答方式同上，點選項揭示、按鈕看詳解。</p>
+</div>
+
+<div id="bankZone" class="chapter c1"></div>
+
+</div><!-- /wrap -->
+
+<footer>Lithium &amp; Theophylline · TDM 講義整理　|　筆記內容自動儲存於本機瀏覽器</footer>
+
+<script>
+  // ---- 點選選項揭示對錯 ----
+  function bindQuiz(q){
+    const ans=q.getAttribute('data-answer');
+    q.querySelectorAll('.opt').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        const k=btn.getAttribute('data-k');
+        if(k===ans){btn.classList.add('correct');}
+        else{btn.classList.add('wrong');
+          const c=q.querySelector('.opt[data-k="'+ans+'"]');
+          if(c)c.classList.add('correct');}
+      });
+    });
+  }
+  function toggleExplain(b){
+    const ex=b.closest('.quiz').querySelector('.explain');
+    ex.classList.toggle('show');
+    b.textContent=ex.classList.contains('show')?'隱藏詳解':'顯示詳解';
+  }
+
+  // ---- 複製題目至題庫（不含筆記，題庫筆記另設 key）----
+  document.querySelectorAll('.chapter .quiz').forEach(q=>{
+    const clone=q.cloneNode(true);
+    // 給題庫筆記獨立 key 避免衝突
+    const ta=clone.querySelector('textarea');
+    if(ta){ta.setAttribute('data-note',ta.getAttribute('data-note')+'-bank');}
+    document.getElementById('bankZone').appendChild(clone);
+  });
+
+  // ---- 綁定所有 quiz（含題庫複製品）----
+  document.querySelectorAll('.quiz').forEach(bindQuiz);
+
+  // ---- 補充筆記 localStorage 持久化 ----
+  document.querySelectorAll('textarea[data-note]').forEach(ta=>{
+    const key='note_LiTheo_'+ta.getAttribute('data-note');
+    const saved=localStorage.getItem(key);
+    if(saved!==null)ta.value=saved;
+    ta.addEventListener('input',()=>localStorage.setItem(key,ta.value));
+  });
+</script>
+</body>
+</html>
