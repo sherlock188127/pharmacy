@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>心血管四藥重點速記 — Digoxin / Lidocaine / Procainamide / Quinidine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FBF7EE;--ink:#2c2a26;--ink-soft:#55514a;--line:#e3dccb;--card:#ffffff;
+  --c1:#5b7b7a;--c1s:#eef3f2;   /* Digoxin 霧青綠 */
+  --c2:#9a7b8e;--c2s:#f4eef2;   /* Lidocaine 霧紫 */
+  --c3:#a8896a;--c3s:#f4ede4;   /* Procainamide 霧棕 */
+  --c4:#7a8b9a;--c4s:#eef1f4;   /* Quinidine 霧藍 */
+  --gold:#bf9b3a;--gold-soft:#f6efd9;
+  --up:#a8322d;--down:#3f7a5a;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC",sans-serif;line-height:1.7;font-size:16px;}
+.mono{font-family:"JetBrains Mono",monospace;}
+.wrap{max-width:920px;margin:0 auto;padding:42px 20px 120px;}
+
+.hero{border:1px solid var(--line);border-radius:18px;background:linear-gradient(135deg,#fdfbf4,#eef3f2 140%);padding:34px 32px;margin-bottom:22px;position:relative;overflow:hidden;}
+.hero::before{content:"♥";position:absolute;right:-8px;top:-34px;font-size:160px;color:#eadfca;opacity:.5;line-height:1;}
+.hero .eyebrow{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin:0 0 10px;}
+.hero h1{font-family:"Noto Serif TC",serif;font-weight:900;font-size:28px;line-height:1.35;margin:0 0 8px;}
+.hero p{margin:0;color:var(--ink-soft);font-size:14px;max-width:600px;position:relative;}
+
+/* 分頁標籤 */
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px;position:sticky;top:0;z-index:20;
+  background:rgba(251,247,238,.94);backdrop-filter:blur(6px);padding:10px 0;}
+.tab{font-family:"JetBrains Mono",monospace;font-weight:700;font-size:14px;cursor:pointer;
+  border:1.5px solid var(--line);background:#fff;color:var(--ink-soft);border-radius:999px;padding:8px 18px;transition:.15s;}
+.tab:hover{border-color:var(--gold);}
+.tab.on1{background:var(--c1);border-color:var(--c1);color:#fff;}
+.tab.on2{background:var(--c2);border-color:var(--c2);color:#fff;}
+.tab.on3{background:var(--c3);border-color:var(--c3);color:#fff;}
+.tab.on4{background:var(--c4);border-color:var(--c4);color:#fff;}
+
+.panel{display:none;animation:fade .25s ease;}
+.panel.show{display:block;}
+@keyframes fade{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
+
+/* 藥物標頭 */
+.drughead{border-radius:16px;padding:22px 26px;margin-bottom:18px;color:#fff;position:relative;overflow:hidden;}
+.drughead h2{font-family:"Noto Serif TC",serif;font-weight:900;font-size:27px;margin:0 0 4px;letter-spacing:.5px;}
+.drughead .cls{font-family:"JetBrains Mono",monospace;font-size:13px;opacity:.92;}
+.drughead .tag{display:inline-block;margin-top:10px;background:rgba(255,255,255,.22);border:1px solid rgba(255,255,255,.5);
+  border-radius:999px;padding:3px 12px;font-size:12.5px;font-weight:700;}
+.bg1{background:linear-gradient(120deg,#5b7b7a,#456261);}
+.bg2{background:linear-gradient(120deg,#9a7b8e,#7d6073);}
+.bg3{background:linear-gradient(120deg,#a8896a,#8a6e51);}
+.bg4{background:linear-gradient(120deg,#7a8b9a,#5f7080);}
+
+/* 區塊卡 */
+.card{border:1px solid var(--line);border-radius:13px;background:var(--card);padding:0;margin:14px 0;overflow:hidden;}
+.card>.h{display:flex;align-items:center;gap:10px;padding:13px 18px;cursor:pointer;user-select:none;font-weight:700;
+  font-family:"Noto Serif TC",serif;font-size:16px;border-bottom:1px solid transparent;transition:.15s;}
+.card>.h:hover{background:#faf6ed;}
+.card>.h .ico{font-size:15px;}
+.card>.h .arrow{margin-left:auto;font-size:13px;color:var(--ink-soft);transition:transform .2s;}
+.card.open>.h{border-bottom-color:var(--line);}
+.card.open>.h .arrow{transform:rotate(90deg);}
+.card>.body{display:none;padding:6px 18px 16px;}
+.card.open>.body{display:block;}
+.p1 .card>.h .ico{color:var(--c1)} .p2 .card>.h .ico{color:var(--c2)}
+.p3 .card>.h .ico{color:var(--c3)} .p4 .card>.h .ico{color:var(--c4)}
+
+ul.clean{margin:8px 0;padding-left:0;list-style:none;}
+ul.clean>li{position:relative;padding-left:20px;margin:7px 0;font-size:14.5px;}
+ul.clean>li::before{content:"▸";position:absolute;left:2px;top:1px;color:var(--gold);}
+.dn{font-family:"JetBrains Mono",monospace;font-weight:700;}
+strong{font-weight:700;}
+.up{color:var(--up);font-weight:700;}
+.down{color:var(--down);font-weight:700;}
+
+/* key-value */
+.kv{border:1px solid var(--line);border-radius:10px;overflow:hidden;margin:6px 0;}
+.kv .r{display:flex;border-top:1px solid var(--line);}
+.kv .r:first-child{border-top:none;}
+.kv .k{flex:0 0 38%;padding:9px 14px;font-weight:700;background:#faf6ed;font-size:13.5px;}
+.kv .v{flex:1;padding:9px 14px;font-size:14px;}
+
+/* 交互作用表 */
+table{width:100%;border-collapse:collapse;font-size:13.5px;margin:6px 0;}
+th,td{padding:8px 11px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top;}
+th{background:#faf6ed;font-family:"Noto Serif TC",serif;font-weight:700;}
+tr:last-child td{border-bottom:none;}
+.dir{white-space:nowrap;font-weight:700;}
+
+.pearl{background:var(--gold-soft);border:1px solid #e6cf9c;border-radius:10px;padding:11px 15px;margin:10px 0;font-size:14px;}
+.pearl b{color:var(--gold);}
+
+/* 控制列 */
+.ctrl{display:flex;gap:8px;margin:4px 0 16px;}
+.ctrl button{font-family:"Noto Sans TC";font-size:12.5px;font-weight:700;cursor:pointer;border:1px solid var(--gold);color:var(--gold);background:#fff;border-radius:8px;padding:5px 12px;}
+.ctrl button:hover{background:var(--gold);color:#fff;}
+
+footer{text-align:center;color:var(--ink-soft);font-size:12px;margin-top:46px;border-top:1px solid var(--line);padding-top:18px;}
+@media(max-width:600px){.hero h1{font-size:23px;}.kv .r{flex-direction:column;}.kv .k{flex:none;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <p class="eyebrow">臨床藥動學 · 重點速記</p>
+  <h1>心血管四藥重點整理</h1>
+  <p>Digoxin、Lidocaine、Procainamide、Quinidine 各自的機轉、藥動參數、治療／中毒濃度、疾病狀態影響與藥物交互作用（交互作用標明主詞與方向）。點上方藥名切換，點各區塊標題展開／收合。</p>
+</header>
+
+<div class="tabs">
+  <button class="tab on1" data-tab="1">Digoxin</button>
+  <button class="tab" data-tab="2">Lidocaine</button>
+  <button class="tab" data-tab="3">Procainamide</button>
+  <button class="tab" data-tab="4">Quinidine</button>
+</div>
+
+<div class="ctrl">
+  <button id="expandAll">全部展開</button>
+  <button id="collapseAll">全部收合</button>
+</div>
+
+<!-- ============ DIGOXIN ============ -->
+<section class="panel show p1" data-panel="1">
+  <div class="drughead bg1">
+    <h2>Digoxin</h2>
+    <div class="cls">強心苷 cardiac glycoside</div>
+    <span class="tag">CHF 第二線 · AF 控制心室率</span>
+  </div>
+
+  <div class="card open"><div class="h"><span class="ico">◆</span>一句話重點<span class="arrow">▶</span></div><div class="body">
+    <ul class="clean">
+      <li>臨床最主要的強心苷；CHF 用其<strong>正性肌力（inotropic）</strong>、AF 用其<strong>變時性（chronotropic）控制心室率</strong>。</li>
+      <li>兩種適應症皆<strong>非第一線</strong>，多為第二線或後線；AF 通常與 β-blocker 或 CCB 併用，單獨使用無法恢復竇性心律。</li>
+      <li>治療範圍狹窄、Vd 大、主要經腎排除 —— TDM 的經典藥。</li>
+    </ul>
+  </div></div>
+
+  <div class="card"><div class="h"><span class="ico">◆</span>藥動參數<span class="arrow">▶</span></div><div class="body">
+    <div class="kv">
+      <div class="r"><div class="k">排除</div><div class="v">腎排除 ~75%（腎絲球過濾＋腎小管主動分泌）；肝代謝/膽汁 ~25%（PGP 介導、腸肝循環）</div></div>
+      <div class="r"><div class="k">生體可用率</div><div class="v">錠劑 F=0.7、溶液 F=0.8；<strong>不建議 IM</strong>（吸收不穩、疼痛）；IV 須輸注 5–10 分鐘</div></div>
+      <div class="r"><div class="k">蛋白結合</div><div class="v">約 25%（不高）</div></div>
+      <div class="r"><div class="k">Vd</div><div class="v">很大、會蓄積組織；肥胖者以 <strong>IBW</strong> 計算（不分布到脂肪）</div></div>
+      <div class="r"><div class="k">半衰期</div><div class="v">正常約 36 hr；腎衰竭延長至約 120 hr；甲狀腺亢進較短</div></div>
+      <div class="r"><div class="k">模型</div><div class="v">二室模式，分布相 8–12 hr，須過分布相後抽血</div></div>
+      <div class="r"><div class="k">清除率</div><div class="v">與 CrCl 成正比。無中重度 HF：<span class="mono">Cl=1.303(CrCl)+40</span>；有中重度 HF（NYHA III/IV）：<span class="mono">Cl=1.303(CrCl)+20</span></div></div>
+    </div>
+  </div></div>
+
+  <div class="card"><div class="h"><span class="ico">◆</span>治療 / 中毒濃度<span class="arrow">▶</span></div><div class="body">
+    <div class="kv">
+      <div class="r"><div class="k">CHF（inotropic）</div><div class="v">0.5–1 ng/mL（較低）</div></div>
+      <div class="r"><div class="k">AF（chronotropic）</div><div class="v">0.8–1.5 ng/mL（最高可達 2 ng/mL）</div></div>
+      <div class="r"><div class="k">毒性風險</div><div class="v">&gt; 2 ng/mL 大幅上升；&gt; 2.5 ng/mL 約半數出現症狀</div></div>
+    </div>
+    <ul class="clean">
+      <li><strong>GI</strong>：厭食、噁心、嘔吐、腹瀉、腹痛。<strong>CNS</strong>：頭痛、疲倦、失眠、混亂、眩暈、視覺障礙（黃綠視）。<strong>心臟</strong>：AV block、心搏過緩、心室心律不整。</li>
+      <li>危及生命毒性 → <span class="dn">digoxin immune FAB（DigiFab）</span>。</li>
+    </ul>
+  </div></div>
+
+  <div class="card"><div class="h"><span class="ico">◆</span>電解質（重要）<span class="arrow">▶</span></div><div class="body">
+    <ul class="clean">
+      <li>加重毒性者：<strong>低血鉀、低血鎂、高血鈣</strong>。</li>
+      <li>須監測血鉀：使用<strong>排鉀利尿劑</strong>者、使用 <strong>ACEI / ARB</strong> 者（鉀滯留風險）。低血鉀會誘發毒性，必要時補鉀。</li>
+      <li>嚴重心臟病（CAD、MI）患者對 digoxin 較敏感。</li>
+    </ul>
+  </div></div>
+
+  <div class="card"><div class="h"><span class="ico">◆</span>藥物交互作用（主詞＋方向）<span class="arrow">▶</span></div><div class="body">
+    <table>
+      <tr><th>藥物</th><th class="dir">對 digoxin</th><th>機轉 / 幅度</th></tr>
+      <tr><td>quinidine</td><td class="dir"><span class="up">↑ 30–70%</span></td><td>使 digoxin 濃度增加 3~7 成</td></tr>
+      <tr><td>amiodarone</td><td class="dir"><span class="up">↑ 2–3 倍</span></td><td>起效慢（半衰期長）</td></tr>
+      <tr><td>propafenone</td><td class="dir"><span class="up">↑ 30–60%</span></td><td>劑量依賴性</td></tr>
+      <tr><td>verapamil</td><td class="dir"><span class="up">↑ 最多 70%</span></td><td>CCB 中最強，抑制 digoxin 清除</td></tr>
+      <tr><td>diltiazem、bepridil</td><td class="dir"><span class="up">↑ 約 30%</span></td><td>抑制 digoxin 清除</td></tr>
+      <tr><td>cyclosporine</td><td class="dir"><span class="up">↑ 50%</span></td><td>抑制 P-glycoprotein</td></tr>
+      <tr><td>巨環類（erythromycin、clarithromycin、tetracycline）</td><td class="dir"><span class="up">↑ 30%</span></td><td>部分病人</td></tr>
+      <tr><td>rifampin</td><td class="dir"><span class="down">↓</span></td><td>誘導 P-glycoprotein</td></tr>
+      <tr><td>sulfasalazine、neomycin</td><td class="dir"><span class="down">↓</span></td><td>降低 digoxin 生體可用率</td></tr>
+    </table>
+    <ul class="clean">
+      <li><strong>吸收干擾</strong>：含鋁制酸劑、kaolin-pectin（與 digoxin 間隔 2 小時）、cholestyramine（間隔 8 小時）→ 降低 digoxin 吸收。</li>
+      <li><strong>GI 通過時間</strong>：propantheline 使 digoxin 生體可用率<span class="up">上升</span>；metoclopramide、cisapride 使其<span class="down">下降</span>。</li>
+    </ul>
+  </div></div>
+
+  <div class="card"><div class="h"><span class="ico">◆</span>劑量 & 監測<span class="arrow">▶</span></div><div class="body">
+    <div class="kv">
+      <div class="r"><div class="k">腎功能正常成人（CrCl≥80）</div><div class="v">250 μg/天（範圍 125–500）</div></div>
+      <div class="r"><div class="k">腎功能不全（CrCl≤15）</div><div class="v">125 μg 每 2–3 天一次</div></div>
+      <div class="r"><div class="k">TDM 抽血</div><div class="v">給藥後 8–12 hr，經 3–5 個半衰期後再檢查</div></div>
+      <div class="r"><div class="k">監測頻率</div><div class="v">住院（嚴重/急性 HF）每週 2–3 次；穩定門診每年測 SCr</div></div>
+      <div class="r"><div class="k">劑量決定法</div><div class="v">PK 法（最彈性、最繁複）→ Jelliffe（選 total body store）→ Nomogram（最簡單、僅成人）</div></div>
+    </div>
+    <div class="pearl"><b>記</b>　血中濃度高但無症狀、心跳不快、血鉀僅略高 → 屬可接受，<strong>不需立即給 antibody</strong>；antibody 保留給危及生命的毒性。</div>
+  </div></div>
+</section>
+
+<!-- ============ LIDOCAINE ============ -->
+<section class="panel p2" data-panel="2">
+  <div class="drughead bg2">
+    <h2>Lidocaine</h2>
+    <div class="cls">Type IB 抗心律不整藥 ＋ 局部麻醉劑</div>
+    <span class="tag">VT 用藥 · 肝代謝為主</span>
+  </div>
+
+  <div class="card open"><div class="h"><span class="ico">◆</span>一句話重點<span class="arrow">▶</span></div><div class="body">
+    <ul class="clean">
+      <li>Type IB，用於<strong>心室頻脈（VT）</strong>，為 procainamide、amiodarone、sotalol 的替代藥；亦為局部麻醉劑。</li>
+      <li>機轉：抑制鈉離子內流，降低傳導速度與不反應期。</li>
+      <li>與 digoxin 最大差別：<strong>分布快、排除較慢</strong>；&gt;95% 肝代謝，腎衰竭重點在<strong>代謝物累積</strong>。</li>
+    </ul>
+  </div></div>
+
+  <div class="card"><div class="h"><span class="ico">◆</span>藥動參數<span class="arrow">▶</span></div><div class="body">
+    <div class="kv">
+      <div class="r"><div class="k">模型</div><div class="v">二室模式：分布快、排除慢</div></div>
+      <div class="r"><div class="k">半衰期</div><div class="v">正常 1–1.5 hr；肝衰竭 5+ hr</div></div>
+      <div class="r"><div class="k">代謝</div><div class="v">&gt;95% 肝臟 CYP3A；代謝物 <span class="dn">MEGX、GX</span>（經腎排除）</div></div>
+    </div>
+  </div></div>
+
+  <div class="card"><div class="h"><span class="ico">◆</span>治療 / 毒性濃度<span class="arrow">▶</span></div><div class="body">
+    <div class="kv">
+      <div class="r"><div class="k">治療範圍</div><div class="v">1.5–5 μg/mL</div></div>
+      <div class="r"><div class="k">&gt; 3 μg/mL</div><div class="v">嗜睡、頭暈、感覺異常</div></div>
+      <div class="r"><div class="k">&gt; 6 μg/mL</div><div class="v">肌肉抽搐、癲癇、昏迷、心血管衰竭</div></div>
+    </div>
+  </div></div>
+
+  <div class="card"><div class="h"><span class="ico">◆</span>疾病狀態影響<span class="arrow">▶</span></div><div class="body">
+    <table>
+      <tr><th>狀態</th><th>影響</th><th>調整</th></tr>
+      <tr><td>肝硬化</td><td>清除率↓、半衰期↑</td><td>減量，密切監測</td></tr>
+      <tr><td>心衰竭</td><td>清除率↓、Vd↓</td><td>減量</td></tr>
+      <tr><td>心肌梗塞</td><td>蛋白結合↑（AGP 上升）</td><td>監測 AGP，調整劑量</td></tr>
+      <tr><td>腎衰竭</td><td>代謝物 MEGX、GX 累積</td><td>監測 CNS 毒性</td></tr>
+    </table>
+  </div></div>
+
+  <div class="card"><div class="h"><span class="ico">◆</span>藥物交互作用（主詞＋方向）<span class="arrow">▶</span></div><div class="body">
+    <table>
+      <tr><th>藥物</th><th class="dir">對 lidocaine</th><th>機轉</th></tr>
+      <tr><td>β-blockers（propranolol、metoprolol、nadolol）、cimetidine</td><td class="dir"><span class="up">濃度↑</span></td><td>降低 lidocaine 清除率（↓肝血流、抑制酶）使其濃度上升</td></tr>
+      <tr><td>phenytoin、phenobarbital</td><td class="dir"><span class="down">濃度↓</span></td><td>誘導酶、增加 lidocaine 清除率使其濃度下降</td></tr>
+    </table>
+  </div></div>
+
+  <div class="card"><div class="h"><span class="ico">◆</span>給藥 & 調整<span class="arrow">▶</span></div><div class="body">
+    <ul class="clean">
+      <li>負荷劑量 <span class="mono">LD = C<sub>ss</sub> × V</span>；持續輸注 <span class="mono">R = C<sub>ss</sub> × Cl</span>。</li>
+      <li>負荷 1–1.5 mg/kg IV（2–5 分鐘緩慢給予，最大 50 mg/min）。</li>
+      <li>輸注：正常 3–4 mg/min；<strong>肝病/心衰竭減半（1–2 mg/min）</strong>；小兒 20–50 μg/kg/min。</li>
+    </ul>
+    <div class="pearl"><b>記</b>　肝代謝為主 → 肝病/心衰竭減半；腎衰竭時盯<strong>代謝物 CNS 毒性</strong>（MEGX、GX 經腎排除）。</div>
+  </div></div>
+</section>
+
+<!-- ============ PROCAINAMIDE ============ -->
+<section class="panel p3" data-panel="3">
+  <div class="drughead bg3">
+    <h2>Procainamide</h2>
+    <div class="cls">Type IA 抗心律不整藥</div>
+    <span class="tag">活性代謝物 NAPA（Type III）· 肝腎各半</span>
+  </div>
+
+  <div class="card open"><div class="h"><span class="ico">◆</span>一句話重點<span class="arrow">▶</span></div><div class="body">
+    <ul class="clean">
+      <li>Type IA，用於室上性與心室性心律不整（含 AF、VT）。</li>
+      <li>機轉：抑制鈉離子內流、延長動作電位、降低傳導速度。</li>
+      <li>關鍵：活性代謝物 <span class="dn">NAPA</span> 具 <strong>Type III</strong> 作用（Type I → III），腎衰竭時 NAPA 累積。</li>
+    </ul>
+  </div></div>
+
+  <div class="card"><div class="h"><span class="ico">◆</span>藥動參數<span class="arrow">▶</span></div><div class="body">
+    <div class="kv">
+      <div class="r"><div class="k">模型</div><div class="v">二室模式（IV）</div></div>
+      <div class="r"><div class="k">半衰期</div><div class="v">正常 2.5–5 hr；腎衰竭 14+ hr</div></div>
+      <div class="r"><div class="k">排除</div><div class="v">~50% 肝代謝（N-acetyltransferase II）＋ ~50% 腎排除（腎影響半衰期較多）</div></div>
+      <div class="r"><div class="k">生體可用率</div><div class="v">~83%（有持續釋放劑型）</div></div>
+    </div>
+  </div></div>
+
+  <div class="card"><div class="h"><span class="ico">◆</span>治療 / 毒性濃度<span class="arrow">▶</span></div><div class="body">
+    <div class="kv">
+      <div class="r"><div class="k">治療範圍</div><div class="v">4–10 μg/mL</div></div>
+      <div class="r"><div class="k">≥ 8 μg/mL</div><div class="v">GI 不適、倦怠、BP↓、ECG 間期延長</div></div>
+      <div class="r"><div class="k">&gt; 12 μg/mL</div><div class="v">心臟阻斷、心室心律不整、心跳停止、torsade de pointes</div></div>
+    </div>
+  </div></div>
+
+  <div class="card"><div class="h"><span class="ico">◆</span>疾病狀態影響<span class="arrow">▶</span></div><div class="body">
+    <table>
+      <tr><th>狀態</th><th>影響</th><th>調整</th></tr>
+      <tr><td>腎衰竭</td><td>半衰期↑、NAPA 累積</td><td>減量，監測毒性</td></tr>
+      <tr><td>心衰竭</td><td>清除率↓、Vd↓</td><td>減量 25–50%</td></tr>
+      <tr><td>肝硬化</td><td>不明確</td><td>Child-Pugh ≥8 → 減量</td></tr>
+      <tr><td>肥胖</td><td>Vd ~ IBW、CL ~ TBW</td><td>依體重調整</td></tr>
+    </table>
+  </div></div>
+
+  <div class="card"><div class="h"><span class="ico">◆</span>藥物交互作用（主詞＋方向）<span class="arrow">▶</span></div><div class="body">
+    <table>
+      <tr><th>藥物</th><th class="dir">對 procainamide</th><th>機轉</th></tr>
+      <tr><td>cimetidine、trimethoprim、fluoroquinolones</td><td class="dir"><span class="up">濃度↑</span></td><td>降低腎清除率，使 procainamide 與 NAPA 濃度上升</td></tr>
+      <tr><td>amiodarone</td><td class="dir"><span class="up">↑ 約 57%</span></td><td>使 procainamide 濃度上升約 57%</td></tr>
+    </table>
+  </div></div>
+
+  <div class="card"><div class="h"><span class="ico">◆</span>給藥 & 調整<span class="arrow">▶</span></div><div class="body">
+    <ul class="clean">
+      <li>IV 負荷 15 mg/kg（25–30 分鐘，最大 50 mg/min）；IV 輸注 2–4 mg/min。</li>
+      <li>口服緩釋：正常 1000–1500 mg 每 6–12 hr；腎損傷 500–1000 mg 每 12–24 hr（減半、拉長）；小兒 15–50 mg/kg/day。</li>
+      <li>肝/腎病輸注降至 1–2 mg/min。</li>
+    </ul>
+    <div class="pearl"><b>記</b>　腎衰竭最該擔心 <strong>NAPA 累積</strong>；amiodarone 使 procainamide 上升約 <strong>57%</strong>。</div>
+  </div></div>
+</section>
+
+<!-- ============ QUINIDINE ============ -->
+<section class="panel p4" data-panel="4">
+  <div class="drughead bg4">
+    <h2>Quinidine</h2>
+    <div class="cls">Type IA 抗心律不整藥</div>
+    <span class="tag">肝代謝為主 · 高蛋白結合 · cinchonism</span>
+  </div>
+
+  <div class="card open"><div class="h"><span class="ico">◆</span>一句話重點<span class="arrow">▶</span></div><div class="body">
+    <ul class="clean">
+      <li>Type IA，用於室上性與心室性心律不整，可將 <strong>AF 轉復為竇性心律</strong>。</li>
+      <li>機轉：抑制鈉離子內流、降低傳導速度、延長動作電位。</li>
+      <li>特徵：<strong>80% 肝代謝、高蛋白結合（80–90%）、強首渡代謝</strong>；會<strong>抑制 digoxin 清除使 digoxin↑</strong>。</li>
+    </ul>
+  </div></div>
+
+  <div class="card"><div class="h"><span class="ico">◆</span>藥動參數<span class="arrow">▶</span></div><div class="body">
+    <div class="kv">
+      <div class="r"><div class="k">模型</div><div class="v">二室模式（緊急 IV、常用口服）</div></div>
+      <div class="r"><div class="k">半衰期</div><div class="v">正常 6–8 hr；肝衰竭 10+ hr（顯著）</div></div>
+      <div class="r"><div class="k">代謝</div><div class="v">80% 肝代謝（CYP3A）、20% 腎排除</div></div>
+      <div class="r"><div class="k">生體可用率</div><div class="v">~70%，強首渡代謝（肝＋腸壁）</div></div>
+      <div class="r"><div class="k">蛋白結合</div><div class="v">80–90%（albumin 與 α1-酸性糖蛋白）</div></div>
+      <div class="r"><div class="k">活性代謝物</div><div class="v">3-hydroxyquinidine（效力 60–80%）、dihydroquinidine（雜質）—亦具毒性</div></div>
+    </div>
+  </div></div>
+
+  <div class="card"><div class="h"><span class="ico">◆</span>治療 / 毒性濃度<span class="arrow">▶</span></div><div class="body">
+    <div class="kv">
+      <div class="r"><div class="k">治療範圍</div><div class="v">2–6 μg/mL</div></div>
+      <div class="r"><div class="k">&gt; 6 μg/mL</div><div class="v">QT 延長、torsade de pointes、心室心律不整</div></div>
+      <div class="r"><div class="k">Cinchonism</div><div class="v">耳鳴、視覺模糊、頭暈、噁心、顫抖</div></div>
+    </div>
+  </div></div>
+
+  <div class="card"><div class="h"><span class="ico">◆</span>疾病狀態影響<span class="arrow">▶</span></div><div class="body">
+    <table>
+      <tr><th>狀態</th><th>影響</th><th>調整</th></tr>
+      <tr><td>肝硬化</td><td>清除率↓、半衰期↑（影響最大）</td><td>減量（Child-Pugh &gt;8）</td></tr>
+      <tr><td>心衰竭</td><td>清除率↓、蛋白結合↑</td><td>減量 25–50%</td></tr>
+      <tr><td>心肌梗塞</td><td>蛋白結合↑、未結合分率↓</td><td>監測 AGP</td></tr>
+      <tr><td>腎衰竭</td><td>影響極小（僅 20% 經腎）</td><td>通常不需調整</td></tr>
+    </table>
+  </div></div>
+
+  <div class="card"><div class="h"><span class="ico">◆</span>藥物交互作用（主詞＋方向）<span class="arrow">▶</span></div><div class="body">
+    <table>
+      <tr><th>藥物 / 角色</th><th class="dir">方向</th><th>機轉</th></tr>
+      <tr><td>CYP3A 抑制劑（erythromycin、ketoconazole、verapamil）</td><td class="dir"><span class="up">quinidine↑</span></td><td>抑制 CYP3A 使 quinidine 濃度上升</td></tr>
+      <tr><td>CYP3A 誘導劑（phenytoin、phenobarbital、rifampin）</td><td class="dir"><span class="down">quinidine↓</span></td><td>誘導 CYP3A 使 quinidine 濃度下降</td></tr>
+      <tr><td>quinidine 為 CYP2D6 抑制劑</td><td class="dir"><span class="up">他藥↑</span></td><td>抑制 β-blockers、TCAs、opioids（如 codeine）代謝使其濃度上升</td></tr>
+      <tr><td>quinidine 對 digoxin</td><td class="dir"><span class="up">digoxin↑ 30–50%</span></td><td>抑制 digoxin 清除使 digoxin 濃度上升</td></tr>
+    </table>
+  </div></div>
+
+  <div class="card"><div class="h"><span class="ico">◆</span>給藥 & 調整<span class="arrow">▶</span></div><div class="body">
+    <ul class="clean">
+      <li>口服 sulfate：200–400 mg 每 6–8 hr。</li>
+      <li>口服 gluconate（緩釋）：正常 648 mg 每 8–12 hr；肝病 324–600 mg 每 12 hr；心衰竭減量 25–50%。</li>
+      <li>IV 負荷 500 mg，2 小時內。</li>
+    </ul>
+    <div class="pearl"><b>記</b>　<strong>sulfate 與 gluconate 兩鹽類劑量不同</strong>；腎影響小（20% 經腎），<strong>肝影響最大</strong>；別忘了它會抬高 digoxin。</div>
+  </div></div>
+</section>
+
+<footer>
+  心血管四藥重點速記 · 0604　周宏璋 助理教授講義整理<br>
+  Digoxin · Lidocaine · Procainamide · Quinidine
+</footer>
+
+</div>
+
+<script>
+// 分頁切換
+var tabs=document.querySelectorAll('.tab');
+var panels=document.querySelectorAll('.panel');
+tabs.forEach(function(tb){
+  tb.addEventListener('click',function(){
+    var id=tb.getAttribute('data-tab');
+    tabs.forEach(function(t){t.classList.remove('on1','on2','on3','on4');});
+    tb.classList.add('on'+id);
+    panels.forEach(function(p){ p.classList.toggle('show', p.getAttribute('data-panel')===id); });
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+});
+// 展開/收合卡片
+document.querySelectorAll('.card>.h').forEach(function(h){
+  h.addEventListener('click',function(){ h.parentElement.classList.toggle('open'); });
+});
+document.getElementById('expandAll').addEventListener('click',function(){
+  document.querySelectorAll('.panel.show .card').forEach(function(c){c.classList.add('open');});
+});
+document.getElementById('collapseAll').addEventListener('click',function(){
+  document.querySelectorAll('.panel.show .card').forEach(function(c){c.classList.remove('open');});
+});
+</script>
+</body>
+</html>
