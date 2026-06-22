@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>調劑學考前衝刺 — 互動考題</title>
+<style>
+  :root{
+    --bg:#f4efe4;            /* 米黃底 */
+    --card:#fbf8f0;
+    --ink:#3a352e;
+    --muted:#6f675b;
+    --line:#e2d8c4;
+    /* Morandi 各區配色 */
+    --c1:#9aa68f;  /* 孕婦/哺乳 鼠尾草綠 */
+    --c2:#b08968;  /* 小兒 暖棕 */
+    --c3:#8a9aa6;  /* MUE 霧藍 */
+    --c4:#a98a8f;  /* 醫藥疏失 暗玫 */
+    --c5:#9a8fa6;  /* 文獻/試驗 灰紫 */
+    --right:#5b7553;
+    --wrong:#a85a51;
+    --rightbg:#e7eee1;
+    --wrongbg:#f3e2de;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;background:var(--bg);color:var(--ink);
+    font-family:"Noto Sans TC",system-ui,sans-serif;
+    line-height:1.7;padding:0 0 80px;
+  }
+  header{
+    background:linear-gradient(135deg,#9aa68f,#8a9aa6);
+    color:#fff;padding:26px 20px;text-align:center;
+  }
+  header h1{font-family:"Noto Serif TC",serif;margin:0 0 6px;font-size:1.5rem}
+  header p{margin:0;opacity:.92;font-size:.9rem}
+  .wrap{max-width:860px;margin:0 auto;padding:18px}
+  nav.toc{
+    background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:14px 16px;margin:16px 0;
+  }
+  nav.toc b{font-family:"Noto Serif TC",serif}
+  nav.toc a{display:inline-block;margin:4px 8px 4px 0;text-decoration:none;
+    color:var(--ink);background:#efe7d6;padding:4px 10px;border-radius:20px;font-size:.85rem}
+  section.block{margin:30px 0}
+  h2.sec{
+    font-family:"Noto Serif TC",serif;font-size:1.25rem;
+    padding:10px 16px;border-radius:10px;color:#fff;margin:0 0 14px;
+  }
+  .s1{background:var(--c1)} .s2{background:var(--c2)} .s3{background:var(--c3)}
+  .s4{background:var(--c4)} .s5{background:var(--c5)}
+  .q{
+    background:var(--card);border:1px solid var(--line);border-left:5px solid var(--line);
+    border-radius:12px;padding:16px 18px;margin:14px 0;
+  }
+  .q.b1{border-left-color:var(--c1)} .q.b2{border-left-color:var(--c2)}
+  .q.b3{border-left-color:var(--c3)} .q.b4{border-left-color:var(--c4)}
+  .q.b5{border-left-color:var(--c5)}
+  .qmeta{font-size:.78rem;color:var(--muted);margin-bottom:4px}
+  .qstem{font-weight:600;margin-bottom:10px}
+  .opt{
+    display:block;width:100%;text-align:left;cursor:pointer;
+    background:#fff;border:1px solid var(--line);border-radius:8px;
+    padding:9px 12px;margin:6px 0;font-size:.95rem;color:var(--ink);
+    font-family:inherit;transition:.15s;
+  }
+  .opt:hover{background:#faf5ea}
+  .opt.right{background:var(--rightbg);border-color:var(--right);color:var(--right);font-weight:600}
+  .opt.wrong{background:var(--wrongbg);border-color:var(--wrong);color:var(--wrong);text-decoration:line-through}
+  .drug{font-family:"JetBrains Mono",monospace;font-size:.9em}
+  .ctrl{margin-top:10px}
+  .btn{
+    background:#efe7d6;border:1px solid var(--line);border-radius:8px;
+    padding:6px 14px;cursor:pointer;font-family:inherit;font-size:.85rem;color:var(--ink);
+  }
+  .btn:hover{background:#e6dcc6}
+  .exp{
+    display:none;margin-top:10px;padding:11px 14px;border-radius:8px;
+    background:#f0ece0;border:1px dashed var(--line);font-size:.9rem;
+  }
+  .exp.show{display:block}
+  .exp b{color:var(--right)}
+  .note label{display:block;font-size:.8rem;color:var(--muted);margin:10px 0 4px}
+  textarea{
+    width:100%;min-height:46px;border:1px solid var(--line);border-radius:8px;
+    padding:8px;font-family:inherit;font-size:.9rem;background:#fffdf8;resize:vertical;
+  }
+  footer{text-align:center;color:var(--muted);font-size:.82rem;margin-top:30px}
+  .tag{display:inline-block;font-size:.72rem;background:#efe7d6;border-radius:6px;padding:1px 7px;margin-left:6px;color:var(--muted)}
+</style>
+</head>
+<body>
+<header>
+  <h1>調劑學 — 考前衝刺互動考題</h1>
+  <p>題目依講義順序排列 · 點選項揭曉答案 · 可記補充筆記(自動儲存)</p>
+</header>
+
+<div class="wrap">
+  <nav class="toc">
+    <b>快速跳轉</b><br>
+    <a href="#s1">一、孕婦與哺乳用藥</a>
+    <a href="#s2">二、小兒用藥</a>
+    <a href="#s3">三、藥品使用評估</a>
+    <a href="#s4">四、醫藥疏失</a>
+    <a href="#s5">五、藥品資訊與臨床試驗</a>
+  </nav>
+
+  <!-- ================= 區塊一 ================= -->
+  <section class="block" id="s1">
+    <h2 class="sec s1">一、孕婦與哺乳婦女用藥</h2>
+    <div id="g1"></div>
+  </section>
+
+  <!-- ================= 區塊二 ================= -->
+  <section class="block" id="s2">
+    <h2 class="sec s2">二、幼兒用藥</h2>
+    <div id="g2"></div>
+  </section>
+
+  <!-- ================= 區塊三 ================= -->
+  <section class="block" id="s3">
+    <h2 class="sec s3">三、藥品使用評估(MUE / DUE)</h2>
+    <div id="g3"></div>
+  </section>
+
+  <!-- ================= 區塊四 ================= -->
+  <section class="block" id="s4">
+    <h2 class="sec s4">四、醫藥疏失</h2>
+    <div id="g4"></div>
+  </section>
+
+  <!-- ================= 區塊五 ================= -->
+  <section class="block" id="s5">
+    <h2 class="sec s5">五、藥品資訊與臨床試驗</h2>
+    <div id="g5"></div>
+  </section>
+
+  <footer>祝你下午三點考試順利 💪 — 共 <span id="cnt"></span> 題</footer>
+</div>
+
+<script>
+/* 題庫:依講義出現順序。ans 為正確選項索引(0起算) */
+const DATA = {
+g1:[
+ {m:"課堂例題 50",s:"下列何者之肝臟代謝或腎臟清除率，在孕婦可能會降低，須調整劑量?",
+  o:["phenytoin","β-lactams","theophylline","digoxin"],a:2,
+  e:"theophylline 由 CYP1A2 代謝，孕婦 CYP1A2 活性降低 → 清除率下降。phenytoin 因 CYP3A4/2D6↑代謝增加;β-lactams、digoxin 因 GFR↑腎排除增加。"},
+ {m:"114-1 藥師專技高考 55",s:"有關懷孕婦女的藥動學變化，下列敘述何者最適當?",
+  o:["gentamicin 的 Cmax 可能增加，速效劑量應減少","valproic acid 血中 free form 比例會降低","theophylline 之肝臟代謝會降低","digoxin 之清除率會降低"],a:2,
+  e:"theophylline 因 CYP1A2↓ 肝代謝降低(正確)。gentamicin 因 Vd↑→Cmax↓、loading dose 應增加;valproic acid free form↑;digoxin 因 GFR↑清除率增加。"},
+ {m:"109 第二次藥師高考 56",s:"Carbamazepine 最可能會對胎兒造成何種傷害?",
+  o:["fetal kidney anuria","genitourinary defects","hearing loss","neural tube defects"],a:3,
+  e:"抗癲癇藥(carbamazepine、valproic acid、phenytoin)→ 神經管缺損(NTD)。"},
+ {m:"110 第二次藥師高考 48",s:"下列藥品與可能造成畸胎類型的配對，何者錯誤?",
+  o:["lamotrigine — 唇顎裂","methotrexate — 中樞神經和四肢畸形","streptomycin — 第八對腦神經受損","vitamin A — 視力受損"],a:3,
+  e:"vitamin A 過量造成的是畸胎(非視力受損)，故配對錯誤。第八對腦神經掌管聽覺 → streptomycin/aminoglycoside 造成聽力受損。"},
+ {m:"109 第二次藥師高考 49",s:"為避免哺乳期間母親用藥對嬰兒產生影響，下列敘述何者錯誤?",
+  o:["須考量影響藥品分布至乳汁的藥動學","須考量母親之劑量、給藥途徑、療程、代謝及腎清除率","分子量小的藥品較容易分泌至乳汁中","應優先選擇 RID > 10% 的藥品"],a:3,
+  e:"RID(relative infant dose)應 < 10% 才可接受，越小越好，故選 >10% 為錯誤。"},
+ {m:"哺乳案例 49",s:"王女士哺餵 31 週早產兒，因焦慮失眠可使用 lorazepam 0.5 mg HS 的理由包括?① 沒有活性代謝物 ② RID < 10%(2.4–4.7%) ③ 不會分泌到母乳中",
+  o:["僅 ①②","僅 ①③","僅 ②③","①②③"],a:0,
+  e:"lorazepam 無活性代謝物、RID 低(<10%)為正確理由;但藥物仍會少量分泌至母乳，③錯誤。哺乳用藥重點:無活性代謝物 + 速效劑型。"},
+ {m:"109 第二次藥師高考 50",s:"哺乳母親服用 aspirin，對嬰兒可能的影響包括?① 代謝性酸中毒 ② 出血風險增加 ③ 雷氏症候群 ④ 體溫過低",
+  o:["①②③","①②④","①③④","②③④"],a:0,
+  e:"aspirin → 代謝性酸中毒、出血風險、Reye's syndrome。體溫過低非典型影響。"},
+ {m:"114-1 藥師專技高考 47",s:"有關哺乳婦女用藥原則，下列何者錯誤?",
+  o:["儘量於下一次服藥前完成哺乳","相較外用藥品，應儘量選擇口服藥品","儘量選擇短效藥品","儘量避免長期用藥"],a:1,
+  e:"應優先選擇外用藥(全身吸收少)，而非口服，故 B 錯誤。"},
+ {m:"113-1 藥師專技高考 52",s:"下列何者無法降低嬰兒由母乳攝取藥品或受到傷害的風險?",
+  o:["選擇較不易分布至乳汁中的藥品","選用持續釋放劑型的藥品","避免長期用藥","選用對嬰兒傷害較低的藥品"],a:1,
+  e:"應選速效型，避免緩釋(持續釋放)劑型，故 B 無法降低風險。"},
+ {m:"113-2 藥師專技高考 46",s:"下列何者不建議用於哺乳婦女?",
+  o:["enoxaparin","ergotamine","insulin","warfarin"],a:1,
+  e:"ergotamine(麥角鹼,治偏頭痛)不建議用於哺乳。enoxaparin、insulin、warfarin 分子大或不易進乳汁，相對安全。"},
+ {m:"114-1 專技高考_藥師 59",s:"下列何者為治療孕婦噁心及嘔吐之首選?",
+  o:["droperidol","methylprednisolone","pyridoxine","thalidomide"],a:2,
+  e:"孕婦止吐首選 pyridoxine(維他命 B6)。類固醇致畸胎;thalidomide 海豹肢應最先排除。"},
+ {m:"課堂例題 47",s:"下列高血壓用藥，何者最不適合用於哺乳的母親?",
+  o:["irbesartan 300 mg QD","labetalol 200 mg BID","methyldopa 250 mg TID","nifedipine SR 30 mg QD"],a:3,
+  e:"nifedipine SR 為緩釋劑型;哺乳應避免緩釋,選速效,故最不適合。"},
+ {m:"106 第一次藥師高考 57",s:"下列何者會在新生兒引起 gasping syndrome?",
+  o:["benzyl alcohol","sodium benzoate","methylparaben","propylene glycol"],a:0,
+  e:"benzyl alcohol(抗菌劑)→ 新生兒 gasping syndrome。特殊病名考試愛考。"},
+ {m:"114-2 60",s:"孕婦服用下列何種藥品時，應補充 folic acid 以降低對胎兒 neural tube 的傷害?",
+  o:["warfarin","valproic acid","metronidazole","methimazole"],a:1,
+  e:"valproic acid → NTD，須補充 folic acid。"}
+],
+g2:[
+ {m:"110 第一次藥師高考 41",s:"下列何者不是為小兒族群用藥而撰寫之參考資料?",
+  o:["Harriet Lane Handbook","Neofax","Pediatric Dosage Handbook","Purple Book"],a:3,
+  e:"Purple Book 是生物製劑歸類文獻，非小兒用藥專書。"},
+ {m:"課堂例題 41",s:"有關嬰幼兒常用名詞之定義，下列何者錯誤?",
+  o:["neonate — full-term newborn 0 to 28 days","preterm — <37 weeks' gestational age at birth","very low birth weight — birth weight <1.5 kg","post-term ≧40 weeks' gestational age at birth"],a:3,
+  e:"post-term 應為 >42 週，故 D 錯誤。"},
+ {m:"109 第二次藥師高考 45",s:"下列何者為嬰兒(infant)的年齡定義?",
+  o:["0~3 個月","0~6 個月","1~12 個月","6~12 個月"],a:2,
+  e:"infant 定義為超過 1 個月 ~ 1 歲(1~12 個月)。"},
+ {m:"109 第二次藥師高考 44",s:"下列何種口服藥，在新生兒之吸收率高於成人?",
+  o:["erythromycin","phenobarbital","phenytoin","vitamin E"],a:0,
+  e:"新生兒胃酸少、pH 中性 → 耐酸差藥(erythromycin、penicillin G)吸收↑;弱酸藥(phenobarbital、phenytoin)吸收↓。"},
+ {m:"109 第二次藥師高考 40",s:"下列那些注射方式可能延緩新生兒之藥品吸收?① IV ② IM ③ SC ④ IT",
+  o:["①②","①④","②③","②④"],a:2,
+  e:"IM(肌肉發育不全)、SC(脂肪層少)會延緩吸收。"},
+ {m:"110 第二次藥師高考 43",s:"下列敘述何者錯誤?",
+  o:["在新生兒與幼兒，使用 highly protein-bound drugs 較易產生藥品毒性","幼兒到 2 歲時才能達到成人胃酸的 pH 值","在 <12 歲兒童，aminoglycosides 單位體重之分布體積較成人小","新生兒藥品經皮吸收的比率較成人高"],a:2,
+  e:"小兒含水量高 → aminoglycosides(水溶性)Vd 較成人「大」，故 C「較成人小」錯誤。"},
+ {m:"113-2 藥師專技高考 47",s:"下列何者投與新生兒後，易引起 unbound bilirubin 上升，導致神經損傷?",
+  o:["acetaminophen","gentamicin","normal saline","sulfonamides"],a:3,
+  e:"sulfonamides 與 bilirubin 競爭 albumin → free bilirubin↑ → kernicterus 核黃疸。"},
+ {m:"114-1 藥師專技高考 57",s:"下列那一公式最適合用於評估小兒 GFR?",
+  o:["Cockcroft-Gault","Jellife","Schwartz","MDRD"],a:2,
+  e:"小兒 GFR 用 Schwartz 公式;Cockcroft-Gault 為成人用。"},
+ {m:"113-1 藥師專技高考 45",s:"與成人比較，有關一般新生兒藥動學之敘述，下列何者錯誤?",
+  o:["外用藥品之吸收較好","腸胃蠕動較快，口服藥品吸收較差","腎臟排除較差","CYP3A4 代謝較差"],a:1,
+  e:"新生兒腸胃蠕動「較慢」、胃排空延長，故 B 錯誤。"},
+ {m:"113-1 專技高考_藥師 69",s:"下列何者可經由促進胃蠕動，影響併用藥品的吸收?",
+  o:["ketoconazole","chlorpheniramine","erythromycin","sulfamethoxazole"],a:2,
+  e:"erythromycin 具促進胃蠕動(motilin 受體作用)，影響併用藥吸收。"},
+ {m:"109 第一次藥師高考 43",s:"下列何者不是醫院藥局常用來預防小兒用藥疏失的方法?",
+  o:["以 Young's rule 計算 infant 之給藥劑量","導入條碼系統調劑","提供小兒用藥相關教育訓練","確認照護者能給與幼兒正確藥品劑量"],a:0,
+  e:"Young's rule 適用 2–12 歲,不適用 infant;infant 應用 Fried's rule,故 A 為錯誤做法。"},
+ {m:"100 第一次藥師高考 52",s:"有關兒童用藥之敘述，下列何者最不適當?",
+  o:["家用湯匙約 5 mL，可用於量測液劑劑量","幼兒之體重或體表面積可做為劑量計算基準","1 至 2 mL 的液體劑型，口服 syringe 較能正確量取","對不會吞服膠囊者，可將內容物與果醬果泥混合給藥"],a:0,
+  e:"家用湯匙無刻度、容量不準,不適合量測,故 A 最不適當。"},
+ {m:"109 第二次藥師高考 10",s:"Azithromycin 懸液劑 600 mg/15 mL，醫師處方 10 mg/kg QD PO，黃小弟 24 公斤，每次應服用多少 mL?",
+  o:["4","6","8","12"],a:1,
+  e:"600/15 = 40 mg/mL;10×24 = 240 mg;240 ÷ 40 = 6 mL。"},
+ {m:"100 第一次藥師高考 10",s:"cephalexin 給 20 公斤 6 歲兒童，劑量 50 mg/kg/day Q6H，每次應服用幾顆 250 mg 膠囊?",
+  o:["0.33","0.67","1","2"],a:2,
+  e:"50×20 = 1000 mg/day;Q6H 一天 4 次 → 1000÷4 = 250 mg = 1 顆。"},
+ {m:"113-2 專技高考_藥師 50",s:"有關兒童給藥技巧，下列敘述何者錯誤?",
+  o:["兒童:藥品均可使用果汁混合","幼兒:給咀嚼錠時可指示像嚼糖果一樣","嬰幼兒:藥粉可少量開水混合，以滴管餵藥器給藥","學齡兒童:劑型允許破壞時，可剝半或倒出膠囊內容物"],a:0,
+  e:"並非每種藥都可與果汁混合(可能影響藥效或交互作用)，故 A 錯誤。"}
+],
+g3:[
+ {m:"97 第二次藥師高考 32",s:"下列那些情況需要進行藥品使用評估(MUE)?① 醫療事件持續發生 ② 治療失敗案例增加 ③ 高價藥品 ④ 孤兒藥",
+  o:["①②","①④","②③","③④"],a:0,
+  e:"醫療事件持續發生、治療失敗增加為評估指標;孤兒藥用量少非優先。"},
+ {m:"100 第一次藥師高考 35",s:"具有那些特性的藥品適合列入 DUE 評估?① 療效與用法相關 ② 易誤用 ③ 具嚴重副作用 ④ 價格高",
+  o:["①④","②③","②③④","①②③④"],a:3,
+  e:"四者皆為適合評估的特性。"},
+ {m:"97 第二次藥師高考 33",s:"藥品使用評估(DUE)的實施，主要採取何種方法?",
+  o:["分析使用劑量的變異","評估介入措施的成效","分析申報金額的變化","描述採購金額的異動"],a:1,
+  e:"DUE 核心是評估某介入措施後的成效變化。"},
+ {m:"99 第二次藥師高考 37",s:"下列何者最需要進行藥品使用評估(DUE)?",
+  o:["Cholestyramine","Raloxifene","Sucralfate","Trichloromethiazide"],a:1,
+  e:"Raloxifene 須注意適應症與性別限制(如禁用於男性)，最需評估;Sucralfate(胃乳)意義不大。"},
+ {m:"99 第一次藥師高考 33",s:"藥品使用評估(DUE)下列相關敘述何者錯誤?",
+  o:["有助於藥品治療的成效","前瞻式評估模式可改變處方行為","必須運用處方、病歷或檢驗紀錄","評估準則由藥劑部門訂定"],a:3,
+  e:"評估準則須由跨部門/科室共同訂定，非單一藥劑部門,故 D 錯誤。"},
+ {m:"109 第二次藥師高考 29",s:"有關藥事委員會之敘述，下列何者正確?① 評估藥品進用與否 ② 定期評估藥品相關問題 ③ 核定用藥指引、監督用藥疏失及 ADR 監測 ④ 提供療劑監測、藥品諮詢等臨床藥事服務",
+  o:["①②③","①②④","①③④","②③④"],a:0,
+  e:"①②③為藥委會職責;④臨床藥事服務非藥委會主要任務。"},
+ {m:"110 第一次藥師國考 36",s:"根據藥品使用評估原則，下列何者最正確?",
+  o:["資料由病歷紀錄蒐集，比病人來診時蒐集完整","應比較有效藥品與安慰劑","應蒐集約 6~18 個月以前的醫療問題","審查藥品使用評估為藥事委員會的功能之一"],a:3,
+  e:"DUE/MUE 為藥委會功能之一;應蒐集近期資料而非 6–18 月前。"},
+ {m:"110 第一次藥師高考 28",s:"藥師進行 medication therapy review 之內容，不包括下列何者?",
+  o:["評估用藥安全","推薦保健食品","了解文化問題","了解服藥配合度(adherence)"],a:1,
+  e:"MTR 不包含推薦保健食品。"},
+ {m:"113-2 藥師專技高考 40",s:"藥品使用評估(DUE)之主要目的為何?",
+  o:["增加藥品處方量","確保藥品使用的適當性","降低藥品製造成本","增加病人用藥滿意度"],a:1,
+  e:"DUE 目的在確保藥品使用適當性。"},
+ {m:"114-1 藥師專技高考 43",s:"有關 drug use evaluation(DUE)之敘述，下列何者最適當?",
+  o:["所有藥品都應個別輪流進行 DUE","優先選擇已知或懷疑不當使用的藥品","先進行費用低、用量少的藥品","由醫護人員留意病人用藥狀況即可，不須特別進行 DUE"],a:1,
+  e:"DUE 以「發現問題」為導向,優先評估已知/懷疑不當使用的藥品。"},
+ {m:"113-1 藥師專技高考 40",s:"有關上市後藥品使用評估(DUE)的研究方法，下列敘述何者正確?",
+  o:["case-control study 通常比 cohort study 花費時間更長","小兒 off-label 使用的藥品不建議進行 DUE 研究","前瞻性(prospective)研究比較可以控制干擾因子","臨床上常用之藥品不須再進行 DUE 研究"],a:2,
+  e:"前瞻性研究可較好控制干擾因子。case-control 通常較快;小兒 off-label、常用藥皆建議評估。"},
+ {m:"114-1 藥師專技高考 40",s:"下列何者不是藥品使用評估(DUE)之主要參考資訊?",
+  o:["醫療機構內相關藥品之購買紀錄","相關藥品之溶離率曲線比對報告","醫療機構內相關藥品之使用量","醫療機構內相關藥品之開方紀錄"],a:1,
+  e:"溶離率曲線比對屬藥劑學/藥廠製程範疇，非調劑學 DUE 參考資訊。"}
+],
+g4:[
+ {m:"114-1 藥師專技高考 37",s:"藥師將 Loniten®(minoxidil)配成 Lonzumin®(buclizine),2 年內發生三次但均於覆核發現更正。下列何者錯誤?",
+  o:["此事件屬於 medication near-miss","Loniten® 與 Lonzumin® 商品名相似，可歸類為 LASA","可採預防措施，如改全大寫或加防誤註記","已發生多次屬重大風險，應歸類為嚴重的 medication error"],a:3,
+  e:"均於覆核攔截、未到病人 → 屬 near-miss,非嚴重 medication error,故 D 錯誤。"},
+ {m:"110 第二次藥師高考 31",s:"根據 ISMP，下列那個處方寫法，最不容易產生 medication error?",
+  o:["candesartan 8.0 mg","levothyroxine 0.1 mg","Inderal 40 mg","urokinase 6000000 U"],a:2,
+  e:"應避免尾隨零(8.0)、避免前導零缺漏、避免大數字無分隔。Inderal 40 mg 書寫清楚,最不易出錯。"},
+ {m:"109 第一次藥師高考 36",s:"有關「根本原因分析法(RCA)」，下列敘述何者正確?",
+  o:["針對可能發生的疏失計算風險優先指數並排序","可透過魚骨圖(fishbone diagram)進行因果分析","又稱為失效模式和效應分析(FMEA)","可由臨床藥學組組長獨立完成"],a:1,
+  e:"RCA 可用魚骨圖做因果分析。RCA 針對已發生錯誤(非潛在);與 FMEA 不同;須團隊進行。"},
+ {m:"113-2 藥師專技高考 36",s:"有關 medication error 之敘述，下列何者錯誤?",
+  o:["應依機構型態、病人差異及通報機制擬訂適當閾值，鼓勵通報","RCA 主要針對已發生的錯誤進行根本原因分析","FMEA 主要針對潛在錯誤進行前瞻性預防","RCA 目的是針對個人如何導致錯誤進行分析，以加強訓練"],a:3,
+  e:"RCA 著重系統與流程根因，非究責個人,故 D 錯誤。"},
+ {m:"109 第一次藥師高考 35",s:"下列何者可以減少用藥疏失?① 電子化處方輸入 ② 藥品雙人覆核 ③ 藥品外觀一致化 ④ 條碼給藥",
+  o:["①②③","①②④","①③④","②③④"],a:1,
+  e:"外觀「一致化」反而增加混淆;應差異化。①②④正確。"},
+ {m:"110 第二次藥師高考 31(兒童)",s:"下列何項措施在預防兒童用藥疏失時效果最不理想?",
+  o:["注射針劑與口服溶液使用標準濃度","由智慧型輸注幫浦(smart pump)給藥","一旦發生用藥疏失立即嚴懲相關醫療人員","電腦開方系統輔以臨床決策支援系統"],a:2,
+  e:"嚴懲會抑制通報文化,效果最差。應營造不究責的學習環境。"},
+ {m:"110 第二次藥師高考 37",s:"下列何者不是醫藥疏失的風險因子?",
+  o:["同成分藥品有多項劑型","調劑時須進行劑量換算","藥師不熟悉作業系統","調劑流程中不同步驟由不同藥師執行"],a:3,
+  e:"不同步驟由不同藥師執行=多重把關,可降低疏失,非風險因子。"},
+ {m:"110 第二次藥師高考 36",s:"有關預防護理端給藥疏失策略的敘述，下列何者正確?",
+  o:["條碼管理可以完全避免病人、品項、劑量及時間等疏失","化療藥品給藥前須經兩位護理師確認是多餘的","藥師稽核護理站緊急用藥品項數量效期是浪費人力","主管不定時到病房稽核給藥步驟是否符合標準，可降低給藥疏失"],a:3,
+  e:"主管稽核可降低疏失。條碼「完全避免」過度絕對;雙人確認與藥師稽核皆有助益。"},
+ {m:"114-1 藥師專技高考 45",s:"下列何者可避免開方錯誤?① 手寫處方 ② 電子化處方輸入 ③ 過敏註記 ④ 使用縮寫",
+  o:["①②","①④","②③","③④"],a:2,
+  e:"電子化處方+過敏註記可避免開方錯誤;手寫與縮寫反而增加風險。"},
+ {m:"109 第二次藥師高考 37",s:"醫院於護理給藥系統自動提醒護理人員於給藥後主動監測病人不良反應，此屬「藥品使用與管理」流程中何項步驟之防誤措施?",
+  o:["prescribing","administering","monitoring","storage"],a:2,
+  e:"給藥後監測 ADR 屬 monitoring 步驟。"},
+ {m:"113-2 藥師專技高考 37",s:"有關醫療疏失之處置，下列敘述何者錯誤?",
+  o:["詳細記錄醫療疏失的過程並通報","不須告知病人照顧團隊成員與管理者","改善標準作業流程(SOPs)","以 RCA 探討醫療疏失發生的原因"],a:1,
+  e:"應告知照顧團隊與管理者,故 B 錯誤。"},
+ {m:"113-1 藥師專技高考 35",s:"有關醫院藥品管理與使用，下列流程何者正確?",
+  o:["手寫處方較方便，應鼓勵使用","為縮短取藥時間，將多數藥品列為病房常備藥","醫師開立處方後，護理師可直接給藥","條碼給藥是改善護理師給藥錯誤的最佳方法之一"],a:3,
+  e:"條碼給藥可有效降低護理給藥錯誤。"},
+ {m:"113-1 藥師專技高考 37",s:"為減少調劑錯誤，建立標準調劑作業流程時應考量?① 避免單一藥師獨自完成整個調劑 ② 發音或外觀相似藥品不放相鄰位置 ③ 成分相同含量不同的藥品隔開擺放",
+  o:["僅 ①②","僅 ①③","僅 ②③","①②③"],a:3,
+  e:"三項皆為正確的防錯擺放與流程設計。"},
+ {m:"113-2 藥師專技高考 35",s:"下列何者不在美國 ISMP's list of high alert medications in acute care settings 中?",
+  o:["regular insulin","amiodarone tablet","20% dextrose IV","rocuronium injection"],a:1,
+  e:"高警訊藥多為注射劑/高濃度;amiodarone 口服錠不在急性照護高警訊清單,IV 才是。"},
+ {m:"98 第二次藥師高考 35",s:"電腦化醫師醫令鍵入(CPOE)，其主要目的不包含下列何者?",
+  o:["節省醫師的時間","減少手寫醫令之辨識困難度","降低醫療疏失","促進病人照顧品質"],a:0,
+  e:"CPOE 目的在病人安全與品質,非節省醫師時間。"}
+],
+g5:[
+ {m:"課堂例題 52",s:"下列何者不屬於二級文獻?",
+  o:["PubMed","International Pharmaceutical Abstracts(IPA)","TOXNET","Martindale: The Complete Drug Reference"],a:3,
+  e:"Martindale 為教科書 → 三級文獻。PubMed、IPA、TOXNET 屬二級(搜尋引擎/摘要)。"},
+ {m:"110 第二次藥師高考 53",s:"下列何者屬於 tertiary drug information source(三級文獻)?",
+  o:["AHFS Drug Information","Medline","The Cochrane Library","Concise Medical Dictionary"],a:0,
+  e:"AHFS Drug Information 為三級;Medline、Cochrane 為二級;字典亦屬三級工具,但題目正解為 AHFS。"},
+ {m:"110 第一次藥師高考 35",s:"那一期藥品臨床試驗提供上市的主要資訊，包含藥品特性、efficacy 及 safety 之總結?",
+  o:["Phase I","Phase II","Phase III","Phase IV"],a:2,
+  e:"Phase III 同時確認 safety + efficacy，為上市主要依據。"},
+ {m:"110 第二次藥師高考 42",s:"有關 Phase III trials 之敘述，下列何者錯誤?",
+  o:["受試者約 1,000~3,000 個病人","決定該藥的 tolerability 與 toxicity profile","確認該藥常見的不良反應","通常所花費的時間較長，且 protocol 較複雜"],a:1,
+  e:"決定 tolerability/toxicity 為 Phase I,故 B 錯誤。"},
+ {m:"114-2 43",s:"有關藥品上市前之臨床試驗，下列敘述何者錯誤?",
+  o:["phase I 通常以健康成人為試驗對象","phase III 容易偵測到 type B ADRs","phase I 的主要目的為評估藥品的耐受性及毒性","phase II 主要目的為評估療效及其劑量範圍"],a:1,
+  e:"type B ADR(罕見、特異體質)多於上市後 Phase IV 才偵測,故 B 錯誤。"},
+ {m:"114-2 48",s:"由 PubMed 搜尋到的 COVID-19 相關一級文獻，那一種研究設計的實證等級是最低的?",
+  o:["expert opinion","cohort study","retrospective case-control study","randomized controlled trial"],a:2,
+  e:"題目限定「一級文獻(原始研究)」,其中 case-control(Level 3)等級最低。expert opinion 雖最低但非原始研究。"},
+ {m:"114-2 57",s:"下列何者屬於 randomized controlled trial 之試驗設計?",
+  o:["隨機分配實驗組服藥、對照組服安慰劑，比較兩組療效","比較有服藥與沒服藥的個案 N 年後罹病機率","比較罹病與未罹病個案服藥比率","收集同一臨床特色病人，回顧文獻比較"],a:0,
+  e:"A 為 RCT(隨機分組+安慰劑對照);B 為 cohort;C 為 case-control;D 為文獻回顧。"},
+ {m:"114-2 50",s:"下列非處方綜合感冒藥成分中，何者最容易使老年人意識紊亂、口乾舌燥?",
+  o:["acetaminophen","chlorpheniramine","dextromethorphan","pseudoephedrine"],a:1,
+  e:"chlorpheniramine(第一代抗組織胺)抗膽鹼作用 → 老人意識紊亂、口乾。"},
+ {m:"114-2 51",s:"78 歲王先生有 Parkinson's disease，疑有憂鬱或失智。下列何者最易造成睡眠障礙、焦躁甚至精神混亂?",
+  o:["cetirizine","clopidogrel","fluoxetine","valdecoxib"],a:2,
+  e:"fluoxetine(SSRI)較易引起失眠、焦躁、精神混亂,尤其老年合併神經疾病。"},
+ {m:"114-2 15",s:"服用下列何種藥品後，暴露於陽光下最易引發皮膚過敏反應(光敏感)?",
+  o:["diphenidol","simvastatin","metformin","tetracycline"],a:3,
+  e:"tetracycline 為典型光敏感藥物。"},
+ {m:"114-2 77",s:"藥名與適應症之配對，下列何組錯誤?",
+  o:["trazodone—憂鬱症;triazolam—失眠","selegiline—巴金森氏症;sertraline—憂鬱症","Prozac®—憂鬱症;Plavix®—高血脂","Viagra®—性功能障礙;Allegra®—過敏性鼻炎"],a:2,
+  e:"Plavix®(clopidogrel)為抗血小板藥,非高血脂,故配對錯誤。"},
+ {m:"114-2 69",s:"病人 epilepsy 控制良好，serum phenytoin 20 μg/mL，但有肝損傷及心律不整，下列處理何者最為適當?",
+  o:["為使濃度減 25%，減 25% 劑量，再監測","因濃度在目標內且控制良好，無須調整","因出現毒性反應，立即停藥","確認有無藥物交互作用及 serum albumin，再進行調整"],a:3,
+  e:"phenytoin 高蛋白結合,肝損傷+心律不整時須先確認交互作用與 albumin(影響 free form),再調整。"},
+ {m:"114-2 38",s:"下列何者為制定標準化作業流程(SOP)最重要的目的?",
+  o:["增強藥效","減少病人客訴","減少病人看診的次數","降低風險及減少病人受到傷害"],a:3,
+  e:"SOP 最重要目的在降低風險、減少病人傷害。"}
+]
+};
+
+function render(){
+  let total=0;
+  Object.keys(DATA).forEach(gid=>{
+    const blkClass = gid.replace('g','b');
+    const secNum = gid.replace('g','');
+    const host=document.getElementById(gid);
+    DATA[gid].forEach((q,qi)=>{
+      total++;
+      const qid=gid+'_'+qi;
+      const card=document.createElement('div');
+      card.className='q '+blkClass;
+      let opts='';
+      q.o.forEach((t,oi)=>{
+        opts+=`<button class="opt" data-q="${qid}" data-i="${oi}">(${'ABCD'[oi]}) ${t}</button>`;
+      });
+      card.innerHTML=`
+        <div class="qmeta">${q.m}</div>
+        <div class="qstem">${q.s}</div>
+        ${opts}
+        <div class="ctrl"><button class="btn exbtn" data-q="${qid}">顯示詳解</button></div>
+        <div class="exp" id="exp_${qid}"><b>✔ 正解 (${'ABCD'[q.a]})</b>　${q.e}</div>
+        <div class="note"><label>📝 補充筆記</label><textarea data-note="${qid}"></textarea></div>
+      `;
+      host.appendChild(card);
+    });
+  });
+  document.getElementById('cnt').textContent=total;
+
+  // 選項點擊
+  document.querySelectorAll('.opt').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const qid=btn.dataset.q, i=+btn.dataset.i;
+      const [gid,qi]=qid.split('_');
+      const ans=DATA[gid][+qi].a;
+      btn.classList.remove('right','wrong');
+      btn.classList.add(i===ans?'right':'wrong');
+    });
+  });
+  // 詳解
+  document.querySelectorAll('.exbtn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const exp=document.getElementById('exp_'+btn.dataset.q);
+      exp.classList.toggle('show');
+      btn.textContent=exp.classList.contains('show')?'隱藏詳解':'顯示詳解';
+    });
+  });
+  // 筆記 localStorage
+  document.querySelectorAll('textarea[data-note]').forEach(ta=>{
+    const key='dispnote_'+ta.dataset.note;
+    ta.value=localStorage.getItem(key)||'';
+    ta.addEventListener('input',()=>localStorage.setItem(key,ta.value));
+  });
+}
+render();
+</script>
+</body>
+</html>
