@@ -1,0 +1,274 @@
+<!DOCTYPE html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>藥事長期照護 · 老年藥學整理</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#FBF7EE;--card:#FFFDF8;--ink:#3A352C;--muted:#8A7F6C;--line:#E7DECB;--ok:#5F8A5F;--no:#B5645A;}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:'Noto Sans TC',sans-serif;line-height:1.75;font-size:15px;}
+.wrap{max-width:880px;margin:0 auto;padding:0 16px 80px;}
+header.top{padding:28px 0 12px;border-bottom:2px solid #6E5A3E;margin-bottom:6px;}
+header.top h1{font-family:'Noto Serif TC',serif;font-size:25px;color:#6E5A3E;margin:0 0 5px;}
+header.top .sub{color:var(--muted);font-size:13.5px;}
+nav.cats{position:sticky;top:0;background:rgba(251,247,238,.95);backdrop-filter:blur(4px);padding:9px 0;display:flex;flex-wrap:wrap;gap:6px;z-index:20;border-bottom:1px solid var(--line);margin-bottom:8px;}
+nav.cats a{text-decoration:none;font-size:12px;color:#fff;background:var(--acc);border-radius:15px;padding:3px 11px;opacity:.92;}
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0;}
+.toolbar button{font-family:inherit;font-size:13px;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:20px;padding:5px 14px;cursor:pointer;}
+.toolbar button:hover{background:#F1EAD9;}
+section{margin-top:22px;}
+.ch-head{font-family:'Noto Serif TC',serif;font-size:20px;color:#fff;background:var(--acc);padding:9px 16px;border-radius:9px;margin:0 0 12px;display:flex;align-items:center;gap:10px;}
+.ch-no{background:rgba(255,255,255,.22);border-radius:50%;width:26px;height:26px;display:inline-flex;align-items:center;justify-content:center;font-size:14px;}
+.note{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--acc);border-radius:9px;padding:11px 16px;margin-bottom:11px;}
+.note-t{font-family:'Noto Serif TC',serif;font-size:15.5px;color:var(--acc);font-weight:700;margin-bottom:5px;}
+.note ul{margin:0;padding-left:20px;}
+.note li{margin:4px 0;font-size:14px;color:#4a4233;}
+code,.mono{font-family:'JetBrains Mono',monospace;}
+.qsec-lab{font-family:'Noto Serif TC',serif;font-size:14px;color:var(--acc);font-weight:700;margin:16px 0 8px;padding-left:4px;border-left:3px solid var(--acc);padding:3px 0 3px 10px;}
+.q{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--acc);border-radius:10px;padding:13px 16px;margin-bottom:12px;}
+.qhead .src{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--acc);font-weight:600;}
+.stem{font-weight:600;margin:5px 0 9px;font-size:15px;}
+.opts{display:flex;flex-direction:column;gap:6px;}
+.opt{font-family:inherit;text-align:left;font-size:14.3px;background:#FBF8F0;border:1px solid var(--line);border-radius:8px;padding:8px 12px;cursor:pointer;color:var(--ink);transition:.12s;}
+.opt:hover{border-color:var(--acc);}
+.opt.correct{background:#EAF3EA;border-color:var(--ok);color:#2f5a2f;font-weight:600;}
+.opt.wrong{background:#F6E9E7;border-color:var(--no);color:#7a3a34;}
+.opt.correct::after{content:" ✓";color:var(--ok);}
+.opt.wrong::after{content:" ✗";color:var(--no);}
+.actions{display:flex;align-items:center;gap:12px;margin-top:10px;}
+.btn-exp{font-family:inherit;font-size:13px;border:1px solid var(--acc);color:var(--acc);background:transparent;border-radius:18px;padding:4px 14px;cursor:pointer;}
+.btn-exp:hover{background:var(--acc);color:#fff;}
+.ans-reveal{font-size:13px;color:var(--muted);visibility:hidden;}
+.ans-reveal b{color:var(--ok);font-family:'JetBrains Mono',monospace;}
+.q.revealed .ans-reveal{visibility:visible;}
+.exp{display:none;margin-top:10px;background:#F6F1E4;border-left:3px solid var(--acc);border-radius:6px;padding:9px 13px;font-size:13.6px;color:#4a4233;}
+.q.show-exp .exp{display:block;}
+.exp-lab{display:inline-block;background:var(--acc);color:#fff;font-size:11px;border-radius:4px;padding:1px 8px;margin-right:7px;}
+.notebox{margin-top:10px;}
+.notebox label{font-size:12px;color:var(--muted);}
+.notebox textarea{width:100%;min-height:38px;margin-top:4px;border:1px dashed var(--line);border-radius:7px;background:#FFFEFB;padding:8px;font-family:inherit;font-size:13.3px;color:var(--ink);resize:vertical;}
+.notebox textarea:focus{outline:none;border-color:var(--acc);border-style:solid;}
+footer{margin-top:36px;text-align:center;color:var(--muted);font-size:12px;}
+.backtop{position:fixed;right:18px;bottom:20px;background:#6E5A3E;color:#fff;border:none;border-radius:50%;width:44px;height:44px;font-size:18px;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.2);z-index:30;}
+</style></head><body><div class="wrap">
+<header class="top"><h1>藥事長期照護 · 老年藥學重點整理</h1>
+<div class="sub">林嘉恩老師講義整理 ｜ ADME／藥效學變化 · Beers／STOPP／START · 共 30 題考古題（依主題分章）</div></header>
+<nav class="cats"><a href="#c1" style="--acc:#6E8CA0">老年人藥物動力學</a><a href="#c2" style="--acc:#7C9082">老年人藥效學（P</a><a href="#c3" style="--acc:#8A8275">多重用藥與不良藥</a><a href="#c4" style="--acc:#B07A5B">老年人高血壓用藥</a><a href="#c5" style="--acc:#6F9490">Theophyl</a><a href="#c6" style="--acc:#8C7A95">給藥途徑與劑型考</a><a href="#c7" style="--acc:#B8975A">潛在不適當用藥篩</a></nav>
+<div class="toolbar"><button id="revealAns">顯示所有答案</button><button id="showAllExp">展開全部詳解</button><button id="hideAllExp">收合並重置</button></div>
+<section id="c1" style="--acc:#6E8CA0"><h2 class="ch-head"><span class="ch-no">1</span>一、老年人藥物動力學變化（ADME）</h2><div class="note"><div class="note-t">吸收 Absorption</div><ul><li>血管外給藥（口服／經皮）的吸收可能受老化影響；血管內給藥視為 100% 生體可用率、不受影響。</li><li>老年人 GI 變化：腸道血流↓、胃 pH↑、胃排空延遲、腸蠕動↓。</li><li>單純老化造成的胃 pH↑ 對吸收影響極小、臨床少有意義；但併用 H2 blocker／PPI 時，會影響「需酸性環境吸收」的藥（如 iron、ketoconazole）。</li><li>一般而言：老人口服「吸收速率」變慢或不變，「吸收程度」與年輕人相近。</li><li>經皮吸收：皮膚老化（彈性↓、表皮變薄、乾燥、皮脂腺↓）影響吸收；親脂性藥（estradiol）較不受影響，親水性藥較難溶解吸收。</li></ul></div><div class="note"><div class="note-t">分布 Distribution</div><ul><li>總體水分與瘦體組織隨年齡↓10–15%；體脂↑20–40%。</li><li>水溶性／分布於體液或瘦體組織的藥（lithium、digoxin）：Vd↓ → 未調整劑量會使血中濃度偏高。</li><li>高脂溶性藥（長效 BZD 如 diazepam）：Vd↑ → 延遲最大效果或蓄積。</li><li>蛋白結合：albumin 隨年齡漸降（&gt;80 歲平均 3.58 g/dL）→ 蛋白結合↓。</li><li>蛋白結合改變「臨床顯著」僅見於：高萃取率、高蛋白結合、狹窄治療指數、小 Vd、靜脈給藥之藥。</li><li>phenytoin 範例：90% 結合 albumin → 應測 albumin；低 albumin／腎損傷時須測 free phenytoin（Sheiner-Tozer 校正）。total 雖在 10–20 μg/mL，低 albumin 時 free 可能偏高。</li></ul></div><div class="note"><div class="note-t">代謝 Metabolism</div><ul><li>肝質量↓20–30%、肝血流↓20–50%。</li><li>Phase I（還原／氧化／羥化／去甲基）：清除↓或不變；Phase II（結合／乙醯化／硫酸化／葡萄醣醛酸化）：清除不變。</li><li>高肝萃取率藥（nitrates、barbiturates、lidocaine、propranolol）：老人肝代謝可能↓。</li></ul></div><div class="note"><div class="note-t">排泄 Excretion</div><ul><li>腎質量↓20–30%、腎血流↓、腎小管分泌↓；硬化腎絲球↑、功能性腎絲球↓ → GFR↓。</li><li>30 歲後 GFR 每十年約↓8 mL/min（非所有老人都腎功能下降）；完全依賴腎排除的藥風險最高。</li><li>臨床給藥多用 Cockcroft-Gault 估 CrCl：CrCl =〔(140−年齡)×體重(kg)〕÷〔72×SCr(mg/dL)〕，女性再 ×0.85。</li><li>注意：Cockcroft-Gault 在肥胖者會高估腎功能；用瘦體重較準。</li></ul></div><div class="qsec-lab">📝 本章相關考題（8 題）</div><div class="q" data-qid="g1">
+  <div class="qhead"><span class="src">[110-2]</span></div>
+  <div class="stem">下列何者「不是」老年人常見的生理變化？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A) 胃的 pH 值上升</button><button class="opt" data-correct="0">(B) 身體總水分減少</button><button class="opt" data-correct="0">(C) 肝臟血流量減少</button><button class="opt" data-correct="1">(D) 身體總脂肪量減少</button></div>
+  <div class="actions"><button class="btn-exp">顯示詳解</button><span class="ans-reveal">正解：<b>D</b></span></div>
+  <div class="exp"><span class="exp-lab">詳解</span>老化時體脂「增加」20–40%、總體水分與瘦體組織↓10–15%、肝血流↓、胃 pH↑。故「總脂肪量減少」錯誤。</div>
+  <div class="notebox"><label>📝 補充筆記</label><textarea data-note="g1" placeholder="寫下你的記憶點…（自動儲存）"></textarea></div>
+</div><div class="q" data-qid="g2">
+  <div class="qhead"><span class="src">[109-1]</span></div>
+  <div class="stem">下列何者之藥品總血中濃度須依據血中 albumin 濃度校正？①phenytoin ②carbamazepine ③lithium ④vancomycin</div>
+  <div class="opts"><button class="opt" data-correct="1">(A) 僅 ①</button><button class="opt" data-correct="0">(B) 僅 ②</button><button class="opt" data-correct="0">(C) ① ③</button><button class="opt" data-correct="0">(D) ② ③ ④</button></div>
+  <div class="actions"><button class="btn-exp">顯示詳解</button><span class="ans-reveal">正解：<b>A</b></span></div>
+  <div class="exp"><span class="exp-lab">詳解</span>phenytoin 約 90% 與 albumin 結合，低白蛋白時須校正 total 濃度（Sheiner-Tozer）。lithium 無蛋白結合、vancomycin 結合率低，皆不需。故僅①。</div>
+  <div class="notebox"><label>📝 補充筆記</label><textarea data-note="g2" placeholder="寫下你的記憶點…（自動儲存）"></textarea></div>
+</div><div class="q" data-qid="g3">
+  <div class="qhead"><span class="src">[110-2]</span></div>
+  <div class="stem">末期腎病病人的 phenytoin 血中濃度須依照下列何種血中檢驗數值調整？</div>
+  <div class="opts"><button class="opt" data-correct="1">(A) 白蛋白 albumin</button><button class="opt" data-correct="0">(B) 膽紅素 bilirubin</button><button class="opt" data-correct="0">(C) 鈣 calcium</button><button class="opt" data-correct="0">(D) 肌酸酐 creatinine</button></div>
+  <div class="actions"><button class="btn-exp">顯示詳解</button><span class="ans-reveal">正解：<b>A</b></span></div>
+  <div class="exp"><span class="exp-lab">詳解</span>phenytoin 高度結合 albumin；低 albumin/腎損傷時游離分率上升，須以 albumin 校正並監測 free phenytoin。</div>
+  <div class="notebox"><label>📝 補充筆記</label><textarea data-note="g3" placeholder="寫下你的記憶點…（自動儲存）"></textarea></div>
+</div><div class="q" data-qid="g4">
+  <div class="qhead"><span class="src">[110]</span></div>
+  <div class="stem">Albumin 血中濃度會隨年齡老化而降低，下列何者最容易受到影響？①levetiracetam ②phenobarbital ③phenytoin ④valproic acid</div>
+  <div class="opts"><button class="opt" data-correct="0">(A) ① ③</button><button class="opt" data-correct="0">(B) ① ④</button><button class="opt" data-correct="0">(C) ② ④</button><button class="opt" data-correct="1">(D) ③ ④</button></div>
+  <div class="actions"><button class="btn-exp">顯示詳解</button><span class="ans-reveal">正解：<b>D</b></span></div>
+  <div class="exp"><span class="exp-lab">詳解</span>phenytoin（~90%）與 valproic acid（~90%）皆高度結合 albumin，受影響最大；levetiracetam 幾乎不結合、phenobarbital 約 50%。</div>
+  <div class="notebox"><label>📝 補充筆記</label><textarea data-note="g4" placeholder="寫下你的記憶點…（自動儲存）"></textarea></div>
+</div><div class="q" data-qid="g5">
+  <div class="qhead"><span class="src">[113-1]</span></div>
+  <div class="stem">羅女士 50 歲因癲癇服用 phenytoin 100 mg TID，回診主訴頭昏及步態不穩。抽血：albumin 2.2 g/dL、phenytoin 15 mg/L。下列敘述何者「錯誤」？</div>
+  <div class="opts"><button class="opt" data-correct="1">(A) phenytoin 血中濃度在理想範圍，無須調整劑量</button><button class="opt" data-correct="0">(B) 頭昏及步態不穩，顯示 phenytoin 可能過量</button><button class="opt" data-correct="0">(C) 經 albumin 校正後，free phenytoin 濃度太高</button><button class="opt" data-correct="0">(D) 了解 albumin 缺乏的原因，並予以改善</button></div>
+  <div class="actions"><button class="btn-exp">顯示詳解</button><span class="ans-reveal">正解：<b>A</b></span></div>
+  <div class="exp"><span class="exp-lab">詳解</span>total 15 mg/L 看似正常，但 albumin 僅 2.2 → 校正後 free phenytoin 偏高，已出現毒性症狀（頭昏、步態不穩），須調整。故 A 錯誤。</div>
+  <div class="notebox"><label>📝 補充筆記</label><textarea data-note="g5" placeholder="寫下你的記憶點…（自動儲存）"></textarea></div>
+</div><div class="q" data-qid="g6">
+  <div class="qhead"><span class="src">[113-2]</span></div>
+  <div class="stem">下列何者之 plasma albumin binding 最低？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A) phenytoin</button><button class="opt" data-correct="0">(B) carbamazepine</button><button class="opt" data-correct="0">(C) procainamide</button><button class="opt" data-correct="1">(D) lithium</button></div>
+  <div class="actions"><button class="btn-exp">顯示詳解</button><span class="ans-reveal">正解：<b>D</b></span></div>
+  <div class="exp"><span class="exp-lab">詳解</span>lithium 幾乎不與血漿蛋白結合（結合率最低）；phenytoin、carbamazepine 高度結合，procainamide 約 15–20%。</div>
+  <div class="notebox"><label>📝 補充筆記</label><textarea data-note="g6" placeholder="寫下你的記憶點…（自動儲存）"></textarea></div>
+</div><div class="q" data-qid="g7">
+  <div class="qhead"><span class="src">[113-2]</span></div>
+  <div class="stem">【題組】承上題，併用下列何者會使該藥品（lithium）之血中濃度「降低」？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A) angiotensin II antagonists（ARB）</button><button class="opt" data-correct="0">(B) thiazide diuretics</button><button class="opt" data-correct="0">(C) NSAIDs</button><button class="opt" data-correct="1">(D) acetazolamide</button></div>
+  <div class="actions"><button class="btn-exp">顯示詳解</button><span class="ans-reveal">正解：<b>D</b></span></div>
+  <div class="exp"><span class="exp-lab">詳解</span>acetazolamide（碳酸酐酶抑制劑）鹼化尿液→增加鋰排除→濃度下降。ARB、thiazide、NSAID 皆降低鋰清除→濃度上升。</div>
+  <div class="notebox"><label>📝 補充筆記</label><textarea data-note="g7" placeholder="寫下你的記憶點…（自動儲存）"></textarea></div>
+</div><div class="q" data-qid="g8">
+  <div class="qhead"><span class="src">[109-2]</span></div>
+  <div class="stem">有關 phenytoin 之敘述，下列何者「錯誤」？</div>
+  <div class="opts"><button class="opt" data-correct="1">(A) albumin 濃度降低，會導致 total phenytoin 的血中濃度上升</button><button class="opt" data-correct="0">(B) phenytoin 為弱酸性藥品，主要結合蛋白為 albumin</button><button class="opt" data-correct="0">(C) 腎功能正常者 phenytoin 與 albumin 結合率約 90%</button><button class="opt" data-correct="0">(D) 尿毒症病人游離態 phenytoin 約為 20~25%</button></div>
+  <div class="actions"><button class="btn-exp">顯示詳解</button><span class="ans-reveal">正解：<b>A</b></span></div>
+  <div class="exp"><span class="exp-lab">詳解</span>albumin↓→結合↓→游離分率↑→游離藥清除加快→「total」phenytoin 反而「下降」（free 分率上升）。故 A 錯誤。</div>
+  <div class="notebox"><label>📝 補充筆記</label><textarea data-note="g8" placeholder="寫下你的記憶點…（自動儲存）"></textarea></div>
+</div></section><section id="c2" style="--acc:#7C9082"><h2 class="ch-head"><span class="ch-no">2</span>二、老年人藥效學（PD）變化</h2><div class="note"><div class="note-t">中樞與受體敏感性</div><ul><li>BBB 功能可能隨老化／疾病／缺血下降 → 對中樞藥物敏感性↑；腦血流與耗氧↓、腦血管阻力↑。</li><li>抗膽鹼性藥 → 記憶喪失、意識混亂、認知障礙、功能下降。</li><li>MAO 活性隨老化↑ → 腦中 NE、dopamine↓。</li><li>CNS dopamine 合成↓ → 對 dopamine 阻斷劑（抗精神病藥）敏感性↑。</li><li>β 受體對 β-agonist／β-antagonist 敏感性↓（受體數目不一定減少）。</li><li>姿勢性低血壓機會增加（α阻斷劑、TCA、levodopa 等更明顯）。</li></ul></div><div class="qsec-lab">📝 本章相關考題（8 題）</div><div class="q" data-qid="g9">
+  <div class="qhead"><span class="src">[109-1]</span></div>
+  <div class="stem">下列哪一項生理功能在老年人會「增強」？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A) cytochrome P450 enzyme system</button><button class="opt" data-correct="0">(B) blood-brain barrier</button><button class="opt" data-correct="1">(C) monoamine oxidase（MAO）</button><button class="opt" data-correct="0">(D) gastrointestinal motility</button></div>
+  <div class="actions"><button class="btn-exp">顯示詳解</button><span class="ans-reveal">正解：<b>C</b></span></div>
+  <div class="exp"><span class="exp-lab">詳解</span>MAO 活性隨老化增加→腦中 NE、dopamine↓。CYP、BBB 功能、腸蠕動皆隨老化下降。</div>
+  <div class="notebox"><label>📝 補充筆記</label><textarea data-note="g9" placeholder="寫下你的記憶點…（自動儲存）"></textarea></div>
+</div><div class="q" data-qid="g15">
+  <div class="qhead"><span class="src">[109-1]</span></div>
+  <div class="stem">下列何者最「不會」引起 Parkinsonian symptoms？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A) metoclopramide</button><button class="opt" data-correct="0">(B) fluphenazine</button><button class="opt" data-correct="0">(C) haloperidol</button><button class="opt" data-correct="1">(D) domperidone</button></div>
+  <div class="actions"><button class="btn-exp">顯示詳解</button><span class="ans-reveal">正解：<b>D</b></span></div>
+  <div class="exp"><span class="exp-lab">詳解</span>domperidone 不易通過血腦障壁，較不引起椎體外/巴金森症狀；metoclopramide、fluphenazine、haloperidol 皆阻斷中樞 D2。</div>
+  <div class="notebox"><label>📝 補充筆記</label><textarea data-note="g15" placeholder="寫下你的記憶點…（自動儲存）"></textarea></div>
+</div><div class="q" data-qid="g16">
+  <div class="qhead"><span class="src">[109-2]</span></div>
+  <div class="stem">有關老年人生理變化對藥效學的影響，下列敘述何者「錯誤」？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A) postural hypotension 的機會增加</button><button class="opt" data-correct="0">(B) BBB 功能減退，中樞作用的 anticholinergics 易造成意識混亂</button><button class="opt" data-correct="1">(C) MAO 活性減退，腦中 dopamine 濃度增加</button><button class="opt" data-correct="0">(D) 對 dopamine receptor blocker 的敏感性增加</button></div>
+  <div class="actions"><button class="btn-exp">顯示詳解</button><span class="ans-reveal">正解：<b>C</b></span></div>
+  <div class="exp"><span class="exp-lab">詳解</span>老化時 MAO 活性「增加」、腦中 dopamine「減少」，故 C 敘述相反，錯誤。</div>
+  <div class="notebox"><label>📝 補充筆記</label><textarea data-note="g16" placeholder="寫下你的記憶點…（自動儲存）"></textarea></div>
+</div><div class="q" data-qid="g17">
+  <div class="qhead"><span class="src">[113-2]</span></div>
+  <div class="stem">老年人較容易發生姿勢性低血壓，下列何者在用藥指導時「無須」強調此風險？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A) doxazosin</button><button class="opt" data-correct="0">(B) imipramine</button><button class="opt" data-correct="0">(C) levodopa</button><button class="opt" data-correct="1">(D) midodrine</button></div>
+  <div class="actions"><button class="btn-exp">顯示詳解</button><span class="ans-reveal">正解：<b>D</b></span></div>
+  <div class="exp"><span class="exp-lab">詳解</span>midodrine 為 α1 致效劑，本身用來「治療」姿勢性低血壓（升壓），無須警告此風險。doxazosin（α阻斷）、imipramine（TCA）、levodopa 皆會引起姿勢性低血壓。</div>
+  <div class="notebox"><label>📝 補充筆記</label><textarea data-note="g17" placeholder="寫下你的記憶點…（自動儲存）"></textarea></div>
+</div><div class="q" data-qid="g21">
+  <div class="qhead"><span class="src">[109-1]</span></div>
+  <div class="stem">具有 anticholinergic 特性之藥品易使老年人意識混亂，下列何者「較不」具有此特性？</div>
+  <div class="opts"><button class="opt" data-correct="1">(A) clonidine</button><button class="opt" data-correct="0">(B) disopyramide</button><button class="opt" data-correct="0">(C) imipramine</button><button class="opt" data-correct="0">(D) hydroxyzine</button></div>
+  <div class="actions"><button class="btn-exp">顯示詳解</button><span class="ans-reveal">正解：<b>A</b></span></div>
+  <div class="exp"><span class="exp-lab">詳解</span>clonidine 為中樞 α2 致效劑，非抗膽鹼藥；disopyramide（IA 抗心律不整）、imipramine（TCA）、hydroxyzine（抗組織胺）皆具明顯抗膽鹼作用。</div>
+  <div class="notebox"><label>📝 補充筆記</label><textarea data-note="g21" placeholder="寫下你的記憶點…（自動儲存）"></textarea></div>
+</div><div class="q" data-qid="g22">
+  <div class="qhead"><span class="src">[110-2]</span></div>
+  <div class="stem">下列何者因具有很強的 anticholinergic effects，年長者應避免使用？</div>
+  <div class="opts"><button class="opt" data-correct="1">(A) quinidine</button><button class="opt" data-correct="0">(B) quinapril</button><button class="opt" data-correct="0">(C) desmopressin</button><button class="opt" data-correct="0">(D) dextromethorphan</button></div>
+  <div class="actions"><button class="btn-exp">顯示詳解</button><span class="ans-reveal">正解：<b>A</b></span></div>
+  <div class="exp"><span class="exp-lab">詳解</span>quinidine 具強抗膽鹼作用，列入 Beers 老人避免清單。quinapril（ACEI）、desmopressin、dextromethorphan 無顯著抗膽鹼性。</div>
+  <div class="notebox"><label>📝 補充筆記</label><textarea data-note="g22" placeholder="寫下你的記憶點…（自動儲存）"></textarea></div>
+</div><div class="q" data-qid="g14">
+  <div class="qhead"><span class="src">[109-2]</span></div>
+  <div class="stem">下列何者最適合用來治療老年人的憂鬱症？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A) imipramine</button><button class="opt" data-correct="0">(B) amitriptyline</button><button class="opt" data-correct="0">(C) phenelzine</button><button class="opt" data-correct="1">(D) escitalopram</button></div>
+  <div class="actions"><button class="btn-exp">顯示詳解</button><span class="ans-reveal">正解：<b>D</b></span></div>
+  <div class="exp"><span class="exp-lab">詳解</span>escitalopram（SSRI）為老人憂鬱症首選；TCA（imipramine、amitriptyline）抗膽鹼負擔高、MAOI（phenelzine）風險高，皆不適合老人。</div>
+  <div class="notebox"><label>📝 補充筆記</label><textarea data-note="g14" placeholder="寫下你的記憶點…（自動儲存）"></textarea></div>
+</div><div class="q" data-qid="g20">
+  <div class="qhead"><span class="src">[110-2]</span></div>
+  <div class="stem">李女士 75 歲，有便秘、尿液滯留問題，現因憂鬱症求診，下列何者最「不適合」用來治療她的憂鬱症？</div>
+  <div class="opts"><button class="opt" data-correct="1">(A) imipramine</button><button class="opt" data-correct="0">(B) mirtazapine</button><button class="opt" data-correct="0">(C) sertraline</button><button class="opt" data-correct="0">(D) venlafaxine</button></div>
+  <div class="actions"><button class="btn-exp">顯示詳解</button><span class="ans-reveal">正解：<b>A</b></span></div>
+  <div class="exp"><span class="exp-lab">詳解</span>imipramine（TCA）抗膽鹼作用強→加重便秘與尿滯留，最不適合。其餘對抗膽鹼負擔較低。</div>
+  <div class="notebox"><label>📝 補充筆記</label><textarea data-note="g20" placeholder="寫下你的記憶點…（自動儲存）"></textarea></div>
+</div></section><section id="c3" style="--acc:#8A8275"><h2 class="ch-head"><span class="ch-no">3</span>三、多重用藥與不良藥物事件</h2><div class="note"><div class="note-t">Polypharmacy 重點</div><ul><li>過半老人有 ≥3 種慢性病（multimorbidity）→ 死亡率、功能下降、醫療成本與 ADE↑。</li><li>高風險藥：anticholinergics、antipsychotics、opioid analgesics、hypnotics，加上多重用藥更易發生 ADE。</li><li>近 1/25 社區老人有重大藥-藥交互作用風險。</li><li>須定期 medication review，辨識不必要／不適當用藥並逐步減藥、密切監測。</li></ul></div><div class="qsec-lab">📝 本章相關考題（4 題）</div><div class="q" data-qid="g10">
+  <div class="qhead"><span class="src">[114-1]</span></div>
+  <div class="stem">老人族群易發生藥品交互作用，下列何者「不是」常見的原因？</div>
+  <div class="opts"><button class="opt" data-correct="1">(A) 胃腸蠕動變快</button><button class="opt" data-correct="0">(B) 肝臟代謝能力下降</button><button class="opt" data-correct="0">(C) 體脂分布改變</button><button class="opt" data-correct="0">(D) 腎臟功能降低</button></div>
+  <div class="actions"><button class="btn-exp">顯示詳解</button><span class="ans-reveal">正解：<b>A</b></span></div>
+  <div class="exp"><span class="exp-lab">詳解</span>老人腸蠕動「變慢」而非變快；肝代謝↓、體脂↑、腎功能↓皆為交互作用/ADE 的危險因子。</div>
+  <div class="notebox"><label>📝 補充筆記</label><textarea data-note="g10" placeholder="寫下你的記憶點…（自動儲存）"></textarea></div>
+</div><div class="q" data-qid="g11">
+  <div class="qhead"><span class="src">[109-2]</span></div>
+  <div class="stem">洪女士 79 歲，身高 148 cm、體重 75 kg，患糖尿病、高血壓、高血脂，使用五種藥；另因失眠用 lorazepam。下列何者「不是」她發生藥品交互作用的危險因子？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A) 多種慢性病與用藥</button><button class="opt" data-correct="0">(B) 肥胖</button><button class="opt" data-correct="0">(C) 高齡女性</button><button class="opt" data-correct="1">(D) 身高</button></div>
+  <div class="actions"><button class="btn-exp">顯示詳解</button><span class="ans-reveal">正解：<b>D</b></span></div>
+  <div class="exp"><span class="exp-lab">詳解</span>多重用藥、肥胖、高齡（女性）皆為危險因子；身高本身非藥品交互作用危險因子。</div>
+  <div class="notebox"><label>📝 補充筆記</label><textarea data-note="g11" placeholder="寫下你的記憶點…（自動儲存）"></textarea></div>
+</div><div class="q" data-qid="g19">
+  <div class="qhead"><span class="src">[100-1]</span></div>
+  <div class="stem">陳太太 73 歲，自從用了下列幾種藥品後較易跌倒，其中哪項藥品最「不可能」影響她的行動能力？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A) Imipramine</button><button class="opt" data-correct="0">(B) Lorazepam</button><button class="opt" data-correct="0">(C) Morphine</button><button class="opt" data-correct="1">(D) Sucralfate</button></div>
+  <div class="actions"><button class="btn-exp">顯示詳解</button><span class="ans-reveal">正解：<b>D</b></span></div>
+  <div class="exp"><span class="exp-lab">詳解</span>sucralfate 為局部作用胃黏膜保護劑，幾乎不吸收、無中樞作用，最不影響行動/跌倒。imipramine、lorazepam、morphine 皆有鎮靜/低血壓作用。</div>
+  <div class="notebox"><label>📝 補充筆記</label><textarea data-note="g19" placeholder="寫下你的記憶點…（自動儲存）"></textarea></div>
+</div><div class="q" data-qid="g30">
+  <div class="qhead"><span class="src">[113-1]</span></div>
+  <div class="stem">吳太太 73 歲，自從用了下列幾種藥品後較易跌倒，其中何者最「不可能」影響她的行動能力？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A) amitriptyline</button><button class="opt" data-correct="0">(B) diazepam</button><button class="opt" data-correct="0">(C) morphine</button><button class="opt" data-correct="1">(D) sodium polystyrene sulfonate</button></div>
+  <div class="actions"><button class="btn-exp">顯示詳解</button><span class="ans-reveal">正解：<b>D</b></span></div>
+  <div class="exp"><span class="exp-lab">詳解</span>sodium polystyrene sulfonate（鉀離子交換樹脂）僅在腸道局部作用、不吸收、無中樞作用，最不影響行動。amitriptyline、diazepam、morphine 皆有鎮靜/低血壓→跌倒風險。</div>
+  <div class="notebox"><label>📝 補充筆記</label><textarea data-note="g30" placeholder="寫下你的記憶點…（自動儲存）"></textarea></div>
+</div></section><section id="c4" style="--acc:#B07A5B"><h2 class="ch-head"><span class="ch-no">4</span>四、老年人高血壓用藥要點</h2><div class="note"><div class="note-t">重點</div><ul><li>無糖尿病／冠心病／CKD 者，血壓目標約 150/90 mmHg；治療時避免收縮壓 &lt;120 mmHg。</li><li>atenolol 為親水性 β-blocker、主要經「腎」排除 → 腎功能不佳應減量或避免（非經肝代謝）。</li><li>可用 ACEI／ARB，但須注意血鉀（高血鉀風險）。</li></ul></div><div class="qsec-lab">📝 本章相關考題（1 題）</div><div class="q" data-qid="g12">
+  <div class="qhead"><span class="src">[110-1]</span></div>
+  <div class="stem">有關老年人高血壓的藥物治療，下列何者「錯誤」？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A) 若無糖尿病、冠心病、CKD，血壓控制目標 150/90 mmHg</button><button class="opt" data-correct="0">(B) 治療高血壓時應避免收縮壓低於 120 mmHg</button><button class="opt" data-correct="1">(C) atenolol 主要經肝臟代謝，腎功能不佳可考慮使用</button><button class="opt" data-correct="0">(D) 可使用 ACEI 或 ARB，但須注意鉀離子</button></div>
+  <div class="actions"><button class="btn-exp">顯示詳解</button><span class="ans-reveal">正解：<b>C</b></span></div>
+  <div class="exp"><span class="exp-lab">詳解</span>atenolol 為親水性 β-blocker、主要「經腎排除」，腎功能不佳應減量或避免，非經肝代謝。故 C 錯誤。</div>
+  <div class="notebox"><label>📝 補充筆記</label><textarea data-note="g12" placeholder="寫下你的記憶點…（自動儲存）"></textarea></div>
+</div></section><section id="c5" style="--acc:#6F9490"><h2 class="ch-head"><span class="ch-no">5</span>五、Theophylline 臨床案例（COPD＋肝硬化）</h2><div class="note"><div class="note-t">案例重點</div><ul><li>theophylline 治療範圍 10–20 μg/mL，狹窄治療指數；&gt;15 易現心搏過速、噁心嘔吐等類咖啡因症狀。</li><li>clarithromycin（巨環類，除 azithromycin）抑制肝 CYP → theophylline 清除↓、濃度↑（茶鹼中毒風險）。</li><li>降低清除（升高濃度）的因子：藥品交互作用、肝硬化、高齡。</li><li>吸菸／大麻誘導 CYP1A2 → 加快清除、降低濃度（非茶鹼中毒之危險因子）。</li></ul></div><div class="qsec-lab">📝 本章相關考題（3 題）</div><div class="q" data-qid="g23">
+  <div class="qhead"><span class="src">[110-2]</span></div>
+  <div class="stem">王先生 75 歲，COPD 20 年＋肝硬化（Child-Pugh A），長期使用 ipratropium+albuterol 與 theophylline 緩釋膠囊。因 H. pylori(+) 加上三合一療法（含 clarithromycin）。有關 theophylline 與 clarithromycin 交互作用之敘述，下列何者正確？</div>
+  <div class="opts"><button class="opt" data-correct="1">(A) clarithromycin 抑制肝臟酵素，使 theophylline 血中濃度上升</button><button class="opt" data-correct="0">(B) theophylline 抑制 clarithromycin 代謝，使 clarithromycin 濃度上升</button><button class="opt" data-correct="0">(C) theophylline 增加胃中 pH，造成 clarithromycin 吸收增加</button><button class="opt" data-correct="0">(D) clarithromycin 增加腸胃蠕動，造成 theophylline 吸收增加</button></div>
+  <div class="actions"><button class="btn-exp">顯示詳解</button><span class="ans-reveal">正解：<b>A</b></span></div>
+  <div class="exp"><span class="exp-lab">詳解</span>clarithromycin（除 azithromycin 外的巨環類）抑制肝臟 CYP→theophylline 代謝下降、血中濃度上升，須留意茶鹼中毒。</div>
+  <div class="notebox"><label>📝 補充筆記</label><textarea data-note="g23" placeholder="寫下你的記憶點…（自動儲存）"></textarea></div>
+</div><div class="q" data-qid="g24">
+  <div class="qhead"><span class="src">[110-2]</span></div>
+  <div class="stem">【承上題】下列建議何者最適當？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A) 建議醫師將 theophylline 劑量減半</button><button class="opt" data-correct="0">(B) 建議醫師將 clarithromycin 劑量減半</button><button class="opt" data-correct="0">(C) 建議病人注意是否腹瀉，可能是 clarithromycin 中毒徵兆</button><button class="opt" data-correct="1">(D) 建議病人注意心跳與腸胃道症狀，可能是 theophylline 濃度偏高的徵兆</button></div>
+  <div class="actions"><button class="btn-exp">顯示詳解</button><span class="ans-reveal">正解：<b>D</b></span></div>
+  <div class="exp"><span class="exp-lab">詳解</span>theophylline &gt;15 μg/mL 出現心搏過速、噁心嘔吐等類咖啡因症狀。應衛教病人留意心跳與腸胃道症狀（茶鹼濃度偏高徵兆）並監測濃度。</div>
+  <div class="notebox"><label>📝 補充筆記</label><textarea data-note="g24" placeholder="寫下你的記憶點…（自動儲存）"></textarea></div>
+</div><div class="q" data-qid="g25">
+  <div class="qhead"><span class="src">[110-2]</span></div>
+  <div class="stem">【承上題】4 天後王先生來電，告知早上未服藥前心跳每分鐘 110 下。下列何者「不是」他心跳加快最可能的危險因子？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A) 藥品交互作用</button><button class="opt" data-correct="0">(B) 年齡大於 65 歲</button><button class="opt" data-correct="0">(C) 肝硬化</button><button class="opt" data-correct="1">(D) 吸菸</button></div>
+  <div class="actions"><button class="btn-exp">顯示詳解</button><span class="ans-reveal">正解：<b>D</b></span></div>
+  <div class="exp"><span class="exp-lab">詳解</span>吸菸誘導 CYP1A2→「加快」theophylline 代謝、降低血中濃度，反而不會造成茶鹼中毒/心搏過速。藥品交互作用（clarithromycin）、高齡、肝硬化皆降低清除→濃度上升，才是危險因子。</div>
+  <div class="notebox"><label>📝 補充筆記</label><textarea data-note="g25" placeholder="寫下你的記憶點…（自動儲存）"></textarea></div>
+</div></section><section id="c6" style="--acc:#8C7A95"><h2 class="ch-head"><span class="ch-no">6</span>六、給藥途徑與劑型考量（鼻胃管）</h2><div class="note"><div class="note-t">重點</div><ul><li>緩釋劑型（如 aminophylline SR / Phyllocontin®）不可磨碎→磨碎致 dose dumping、血中濃度劇烈波動、毒性。</li><li>腸溶錠（如 bisacodyl）磨碎於胃中釋出→胃刺激、失去標的作用，不適合鼻胃管。</li><li>膜衣錠一般可磨粉；部分 PPI 腸溶顆粒（如 Nexium MUPS）可分散後經管灌。</li><li>同藥不同商品名易混淆（如 Lamictal=lamotrigine vs Lamisil=terbinafine）。</li></ul></div><div class="qsec-lab">📝 本章相關考題（4 題）</div><div class="q" data-qid="g26">
+  <div class="qhead"><span class="src">[110-1]</span></div>
+  <div class="stem">陳先生無法吞嚥須經鼻胃管給藥，下列何者「不應」經由鼻胃管投與？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A) Bokey® EM（aspirin 腸溶）</button><button class="opt" data-correct="0">(B) Glidiab®（gliclazide）</button><button class="opt" data-correct="1">(C) Phyllocontin®（aminophylline 緩釋）</button><button class="opt" data-correct="0">(D) Takepron® OD（lansoprazole 口溶）</button></div>
+  <div class="actions"><button class="btn-exp">顯示詳解</button><span class="ans-reveal">正解：<b>C</b></span></div>
+  <div class="exp"><span class="exp-lab">詳解</span>Phyllocontin® 為緩釋劑型，磨碎破壞緩釋結構→劑量傾出；故不應經鼻胃管磨粉投與。</div>
+  <div class="notebox"><label>📝 補充筆記</label><textarea data-note="g26" placeholder="寫下你的記憶點…（自動儲存）"></textarea></div>
+</div><div class="q" data-qid="g27">
+  <div class="qhead"><span class="src">[110-1]</span></div>
+  <div class="stem">【承上題】該藥品不能經鼻胃管投與的主要考量為何？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A) 會被鼻胃管吸附</button><button class="opt" data-correct="0">(B) 磨粉後會被胃酸破壞</button><button class="opt" data-correct="1">(C) 磨粉後可能導致血中濃度變化過大</button><button class="opt" data-correct="0">(D) 磨粉後會潮解</button></div>
+  <div class="actions"><button class="btn-exp">顯示詳解</button><span class="ans-reveal">正解：<b>C</b></span></div>
+  <div class="exp"><span class="exp-lab">詳解</span>緩釋劑型磨碎→失去緩釋、藥物一次釋出（dose dumping）→血中濃度劇烈波動、毒性風險。</div>
+  <div class="notebox"><label>📝 補充筆記</label><textarea data-note="g27" placeholder="寫下你的記憶點…（自動儲存）"></textarea></div>
+</div><div class="q" data-qid="g28">
+  <div class="qhead"><span class="src">[109-1]</span></div>
+  <div class="stem">下列哪一項口服藥品最「不適合」經鼻胃管給藥？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A) ciprofloxacin（Ciproxin® 膜衣錠）</button><button class="opt" data-correct="0">(B) atorvastatin（Lipitor® 膜衣錠）</button><button class="opt" data-correct="0">(C) esomeprazole（Nexium® 腸衣錠）</button><button class="opt" data-correct="1">(D) bisacodyl（Dulcolax® 腸溶錠）</button></div>
+  <div class="actions"><button class="btn-exp">顯示詳解</button><span class="ans-reveal">正解：<b>D</b></span></div>
+  <div class="exp"><span class="exp-lab">詳解</span>bisacodyl 腸溶錠磨碎會於胃中釋出→胃部刺激並失去標的作用，最不適合。膜衣錠可磨粉；Nexium 腸溶顆粒可分散後經管灌。</div>
+  <div class="notebox"><label>📝 補充筆記</label><textarea data-note="g28" placeholder="寫下你的記憶點…（自動儲存）"></textarea></div>
+</div><div class="q" data-qid="g13">
+  <div class="qhead"><span class="src">[100-1]</span></div>
+  <div class="stem">下列各項藥品的配對中，何者是「不同」的藥品？</div>
+  <div class="opts"><button class="opt" data-correct="0">(A) Albuterol — Salbutamol</button><button class="opt" data-correct="0">(B) Hyoscine HBr — Scopolamine HBr</button><button class="opt" data-correct="0">(C) Pethidine HCl — Meperidine HCl</button><button class="opt" data-correct="1">(D) Lamictal — Lamisil</button></div>
+  <div class="actions"><button class="btn-exp">顯示詳解</button><span class="ans-reveal">正解：<b>D</b></span></div>
+  <div class="exp"><span class="exp-lab">詳解</span>Lamictal = lamotrigine（抗癲癇），Lamisil = terbinafine（抗黴菌），為不同藥。其餘三組皆為同藥不同名。</div>
+  <div class="notebox"><label>📝 補充筆記</label><textarea data-note="g13" placeholder="寫下你的記憶點…（自動儲存）"></textarea></div>
+</div></section><section id="c7" style="--acc:#B8975A"><h2 class="ch-head"><span class="ch-no">7</span>七、潛在不適當用藥篩選工具</h2><div class="note"><div class="note-t">三大工具</div><ul><li>Beers Criteria：美國老年醫學會，老年人潛在不適當用藥規範。</li><li>STOPP（Screening Tool of Older People&#x27;s Potentially Inappropriate Prescriptions）：2007 提出，18 位專家以德菲法制定，65 項，按生理系統 A–M 分類，標記藥-藥／藥-疾病不良作用與跌倒風險藥。</li><li>START（Screening Tool to Alert doctors to the Right Treatment）：偵測「遺漏處方」（有適應症卻未開立），22 項，六大系統 A–F。</li></ul></div><div class="note"><div class="note-t">STOPP 各系統重點（節錄）</div><ul><li>A 一般原則：A1 無適應症、A2 超過建議療程、A3 同類重複用藥（NSAIDs／SSRI／loop／ACEI／抗凝血劑）。</li><li>B 心血管：digoxin 用於正常收縮功能心衰（無效）、NYHA III/IV 用 diltiazem/verapamil、β-blocker+verapamil/diltiazem、amiodarone 第一線治 SVT、loop 第一線治高血壓、中樞型降壓藥、高血鉀用 ACEI/ARB、醛固酮拮抗劑+保鉀藥未監測血鉀。</li><li>C 抗血小板／抗凝血：aspirin &gt;160 mg/d、消化潰瘍未併 PPI、出血高風險併多種抗凝、ticlopidine、NSAID 併抗凝/抗血小板未用 PPI。</li><li>D 中樞神經／精神：TCA 用於失智/青光眼/前列腺/尿滯留、TCA 第一線治憂鬱、SSRI 用於低血鈉、BZD &gt;4 週、抗精神病藥用於巴金森/路易體、第一代抗組織胺。</li><li>E 腎臟（依 GFR）：GFR&lt;30 digoxin&gt;125 μg/d、GFR&lt;30 dabigatran/metformin、GFR&lt;15 Xa 抑制劑、GFR&lt;50 NSAID、GFR&lt;10 colchicine。</li><li>F 腸胃：巴金森者用 prochlorperazine/metoclopramide、高劑量 PPI &gt;8 週、便秘者用致便秘藥、口服元素鐵 &gt;200 mg/d。</li><li>G 呼吸：theophylline 單一治 COPD、全身性類固醇取代吸入維持、抗蕈毒鹼支擴劑用於青光眼/膀胱出口阻塞、BZD 用於呼吸衰竭。</li><li>H 肌肉骨骼：NSAID 相關（潰瘍史未用 PPI、高血壓/心衰、未試 paracetamol 長期用、COX-2 用於心血管病）、口服雙磷酸鹽用於上消化道疾病史。</li><li>I 泌尿：抗蕈毒鹼用於膀胱過動+失智/青光眼/前列腺、α1 阻斷劑用於姿勢性低血壓/排尿性昏厥。</li><li>J 內分泌：長效 sulfonylurea（glibenclamide 等）、TZD 用於心衰、β-blocker 用於頻繁低血糖、雌激素+乳癌/血栓史。</li><li>K 跌倒風險藥：BZD、抗精神病藥、姿勢性低血壓者用血管擴張藥、Z-drugs（zopiclone/zolpidem/zaleplon）。</li><li>L 鴉片類：強效鴉片第一線治輕度疼痛、規律用未併瀉劑、長效用於突發痛未備短效。</li><li>M 抗膽鹼負擔：併用 ≥2 種抗蕈毒鹼/抗膽鹼藥。</li></ul></div><div class="note"><div class="note-t">START 各系統重點（節錄）</div><ul><li>A 心血管：AF 用 warfarin（禁忌則 aspirin）、CAD/CVD/PAD 用 aspirin 或 clopidogrel、收縮壓持續 &gt;160 加降壓、預期存活 &gt;5 年用 statin、心衰/MI 後用 ACEI、穩定心絞痛用 β-blocker。</li><li>B 呼吸：輕中度氣喘/COPD 用吸入型 β2/抗膽鹼、中重度且可逆用吸入類固醇、慢性呼吸衰竭居家氧氣療法。</li><li>C 中樞神經：原發性帕金森（致障礙）用 L-DOPA、憂鬱症狀 &gt;3 個月用抗憂鬱劑。</li><li>D 消化道：重度 GERD/狹窄用 PPI、慢性憩室便秘補充纖維質。</li><li>E 骨骼肌肉：中重度 RA(&gt;12 週)用 DMARD、類固醇 &gt;1 個月加 bisphosphonate、骨鬆補鈣+維生素 D。</li><li>F 內分泌：T2DM 用 metformin（注意腎功能）、糖尿病腎病變用 ACEI/ARB、糖尿病+心血管危險因子用 aspirin/statin。</li></ul></div><div class="qsec-lab">📝 本章相關考題（1 題）</div><div class="q" data-qid="g29">
+  <div class="qhead"><span class="src">[113-1]</span></div>
+  <div class="stem">下列何者是老年人用藥的篩選準則之一？</div>
+  <div class="opts"><button class="opt" data-correct="1">(A) Screening Tool to Alert Doctors to Right Treatment（START）</button><button class="opt" data-correct="0">(B) Federal Interagency Forum on Aging-Related Statistics</button><button class="opt" data-correct="0">(C) Guiding Principles for the Care of Older Adults with Multimorbidity</button><button class="opt" data-correct="0">(D) Administration on Aging</button></div>
+  <div class="actions"><button class="btn-exp">顯示詳解</button><span class="ans-reveal">正解：<b>A</b></span></div>
+  <div class="exp"><span class="exp-lab">詳解</span>START（提醒醫師正確治療、偵測遺漏處方）與 STOPP、Beers 同為老人用藥篩選準則。其餘為機構/統計組織名稱。</div>
+  <div class="notebox"><label>📝 補充筆記</label><textarea data-note="g29" placeholder="寫下你的記憶點…（自動儲存）"></textarea></div>
+</div></section>
+<footer>講義內容＋考古題互動整理 · 點選項判定對錯 · 補充筆記自動儲存於本機<br>為 Ada 整理 · 祝國考順利 🍀</footer>
+</div><button class="backtop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>
+document.querySelectorAll('textarea[data-note]').forEach(t=>{const k='geri_note_'+t.dataset.note;const v=localStorage.getItem(k);if(v)t.value=v;t.addEventListener('input',()=>localStorage.setItem(k,t.value));});
+document.querySelectorAll('.q').forEach(q=>{
+ q.querySelectorAll('.opt').forEach(o=>o.addEventListener('click',()=>{
+  if(o.dataset.correct==='1'){o.classList.add('correct');}else{o.classList.add('wrong');q.querySelector('.opt[data-correct="1"]').classList.add('correct');}
+  q.classList.add('revealed');}));
+ q.querySelector('.btn-exp').addEventListener('click',function(){q.classList.toggle('show-exp');this.textContent=q.classList.contains('show-exp')?'隱藏詳解':'顯示詳解';});
+});
+document.getElementById('showAllExp').addEventListener('click',()=>document.querySelectorAll('.q').forEach(q=>{q.classList.add('show-exp');q.querySelector('.btn-exp').textContent='隱藏詳解';}));
+document.getElementById('hideAllExp').addEventListener('click',()=>document.querySelectorAll('.q').forEach(q=>{q.classList.remove('show-exp','revealed');q.querySelector('.btn-exp').textContent='顯示詳解';q.querySelectorAll('.opt').forEach(o=>o.classList.remove('correct','wrong'));}));
+document.getElementById('revealAns').addEventListener('click',()=>document.querySelectorAll('.q').forEach(q=>{q.classList.add('revealed');q.querySelector('.opt[data-correct="1"]').classList.add('correct');}));
+</script></body></html>
