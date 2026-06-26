@@ -134,6 +134,7 @@ table.presv .hl{background:#f6d96b;padding:2px 8px;border-radius:5px;color:#3a35
 .k2{color:#d98a3a;font-weight:700}
 .mk-y{background:#f5e9a0;padding:1px 5px;border-radius:4px}
 .mk-g{color:#2f9e5f;font-weight:700}
+.mk-p{background:#f3d4e0;padding:1px 6px;border-radius:5px}
 .presv-note{background:#fbf0f0;border:1px solid #f0dede;border-radius:10px;padding:13px 16px;margin:10px 0;font-size:12.5px;line-height:1.9}
 .presv-note .sw{display:inline-block;padding:0 7px;border-radius:4px;font-weight:700}
 
@@ -341,9 +342,163 @@ footer{text-align:center;color:var(--ink-soft);font-size:12px;padding:30px;font-
     </section>
 
     <!-- ch02 -->
-    <section class="chapter" id="ch02" data-status="empty" data-name="錠劑" style="--c:#C4A89A">
-      <div class="chapter-head"><span class="num">02</span><h3>錠劑</h3><span class="tag">待整理</span><span class="chev">▼</span></div>
-      <div class="chapter-body"><div class="empty-state">尚未整理 — 把這章要背的表格貼給我，我填進來。</div></div>
+    <section class="chapter" id="ch02" data-status="done" data-name="錠劑" style="--c:#C4A89A">
+      <div class="chapter-head"><span class="num">02</span><h3>錠劑</h3><span class="tag">已整理</span><span class="chev">▼</span></div>
+      <div class="chapter-body">
+
+        <div class="topic">
+          <div class="topic-title">直接壓錠法（<span class="en">Direct compression tableting</span>）</div>
+
+          <div class="keynote">
+            <strong>條件</strong>
+            <ul>
+              <li>有些顆粒狀化學物質，具<strong>流動自如</strong>以及<strong>凝聚（cohesive）</strong>性質者，不須造粒即可直接壓錠。<br>如 <span class="drug">NaCl</span>、<span class="drug">KCl</span>、<span class="drug">aspirin</span>、<span class="drug">methenamine</span>、<span class="drug">ammonium chloride</span>。</li>
+              <li><strong>無此條件之化學藥品</strong>：添加適當賦形劑後直接壓錠。
+                <ul>
+                  <li>主成分含量通常不超過總重之 <strong>20~25%</strong>。</li>
+                  <li>賦形劑若預先造粒，需考慮與粉末藥物之混合均勻與分離層化問題。</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+
+          <div class="callout">
+            ⚑ <strong>優點</strong>：製程少，且形成之錠劑有<strong>最佳藥品利用率</strong>（無添加會影響溶離之黏合劑、無二次壓錠過程）。
+          </div>
+
+          <div class="qa"><span class="yr">114-2</span>若藥品本身不具有 cohesive 性質，最適合添加下列何種賦形劑以利於直接壓錠法壓製成錠劑？<br>
+            ① <span class="drug">spray-dried lactose</span>　② <span class="drug">dicalcium phosphate</span>　③ <span class="drug">microcrystalline cellulose</span><br>
+            <span class="ans">A：①②③ 皆為可直接壓錠之稀釋劑（答案應為「以上皆是」，請對照官方答案）</span></div>
+        </div>
+
+        <div class="topic">
+          <div class="topic-title">可直接壓錠之稀釋劑（<span class="en">Fillers for Direct Compression</span>）</div>
+          <div class="keynote">粉紅標示者為重點 fillers（亦對應 114-2 題目選項）。</div>
+          <table class="cmp">
+            <tr><th>Filler</th><th>中文／別名</th></tr>
+            <tr><td><span class="mk-p"><span class="drug">Spray-dried lactose</span></span></td><td>噴霧乾燥乳糖</td></tr>
+            <tr><td><span class="drug">Microcrystals of alpha-monohydrate lactose</span></td><td>α-單水合乳糖微晶</td></tr>
+            <tr><td><span class="drug">Anhydrous lactose</span></td><td>無水乳糖</td></tr>
+            <tr><td><span class="drug">Sucrose-invert sugar-corn starch mixtures</span></td><td>蔗糖－轉化糖－玉米澱粉混合物</td></tr>
+            <tr><td><span class="drug">Pregelatinized starch</span></td><td>預凝膠化澱粉</td></tr>
+            <tr><td><span class="mk-p"><span class="drug">Microcrystalline cellulose (MCC)</span></span></td><td>微晶纖維素</td></tr>
+            <tr><td><span class="mk-p"><span class="drug">Crystalline maltose</span></span></td><td>結晶麥芽糖</td></tr>
+            <tr><td><span class="mk-p"><span class="drug">Dicalcium phosphate dihydrate</span></span></td><td>磷酸氫二鈣；DCP；Di-Tab</td></tr>
+            <tr><td><span class="drug">Calcium phosphate</span></td><td>磷酸鈣</td></tr>
+            <tr><td><span class="drug">Calcium sulfate dihydrate</span></td><td>二水合硫酸鈣</td></tr>
+            <tr><td><span class="drug">Granule mannitol</span></td><td>顆粒狀甘露醇</td></tr>
+            <tr><td><span class="drug">Crystalline sorbitol</span></td><td>結晶山梨糖醇</td></tr>
+          </table>
+        </div>
+
+        <div class="topic">
+          <div class="topic-title">製錠賦形劑添加順序（濕式造粒）</div>
+          <div class="numline">
+            稱重混合（主成分＋<b>稀釋劑</b>＋<b>崩散劑①</b>）→ 加<b>黏合劑</b>製濕團塊 → 濕篩造粒 → 乾燥 → 乾篩 → 打錠前加<b>潤滑劑</b>＋<b>崩散劑②</b> → 打錠
+          </div>
+          <div class="keynote">
+            <ul>
+              <li><strong>稀釋劑（filler）＋崩散劑（內加，約一半）</strong>先與主成分混合。</li>
+              <li><strong>黏合劑（binder）</strong>於製備濕團塊時加入。</li>
+              <li><strong>崩散劑分兩次加</strong>：內加（造粒前）＋外加（打錠前）→ <strong>雙重崩散</strong>。</li>
+              <li><strong>潤滑劑／助流劑／抗黏劑於打錠前最後加入</strong>，混合時間宜短（過久使錠劑變軟、潤滑劑厭水性延緩崩散溶離）。</li>
+              <li>直接壓錠法則無濕團塊／造粒步驟。</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="topic">
+          <div class="topic-title">稀釋劑（<span class="en">Diluent／Filler</span>）</div>
+          <div class="keynote">
+            <ul>
+              <li><strong>常用</strong>：<span class="drug">lactose</span>、<span class="drug">microcrystalline cellulose</span>、<span class="drug">starch</span>、<span class="drug">powdered sucrose</span>、<span class="drug">calcium phosphate</span>。</li>
+              <li><strong>選擇依據</strong>：製造者經驗、成本、安定性、相容性。</li>
+              <li><strong>最受喜愛</strong>：<span class="drug">lactose</span>（溶解度與相容性佳）、<span class="drug">MCC</span>（易壓實、相容性佳、供應品質一致）。</li>
+              <li>玉米澱粉常用於直壓；濕粒法加入 <strong>5~15%</strong> 有助造粒或乾燥過程，減少錠劑表面硬化或斑點。</li>
+            </ul>
+          </div>
+          <div class="callout">
+            ⚑ <strong>相容性禁忌（錯合 / 變色）</strong><br>
+            ・<span class="drug">calcium salts</span> ✗ <span class="drug">tetracycline</span> 抗生素（complexation 錯合）。<br>
+            ・<span class="drug">lactose</span> ✗ <span class="drug">amines</span>（在鹼性潤滑劑 metal stearate／硬脂酸鎂 存在下反應，錠劑隨時間褪色變暗）。
+          </div>
+        </div>
+
+        <div class="topic">
+          <div class="topic-title">黏合劑（<span class="en">Binder</span>）</div>
+          <div class="keynote">
+            <strong>功用</strong>：提供黏合力，使顆粒容易流動。<br>
+            <strong>常用物質</strong>：<span class="drug">阿拉伯膠 Acacia</span>、<span class="drug">MCC</span>、<span class="drug">MC</span>（甲基纖維素）、<span class="drug">Povidone (PVP)</span>。
+          </div>
+          <div class="keynote">
+            <strong>對水敏感可改用（纖維素衍生物等）</strong>
+            <ul>
+              <li><span class="drug">HPMC</span>（羥丙基甲基纖維素，＝hypromellose）：較不影響口服吸收速率；<strong>易溶於冷水</strong>，熱水中較易分散（不溶於酒精但可在酒精分散 → 亦可當黏合劑）。</li>
+              <li><span class="drug">HPC</span>（羥丙基纖維素）：可溶於水與酒精。</li>
+              <li><span class="drug">EC</span>（乙基纖維素）：<strong>不溶於水，易阻礙藥物釋出</strong>；中華藥典 Colorcon 公司 <span class="drug">Surelease</span> 含 Ethylcellulose。</li>
+              <li><span class="drug">PVP</span>（聚乙烯吡咯烷酮）：易溶於水（亦溶酒精）。</li>
+            </ul>
+          </div>
+          <div class="keynote">
+            <strong>製備濕團塊 — 黏合劑分類</strong>
+            <ul>
+              <li><strong>水性 binders</strong>：<span class="drug">PVP</span> 溶液、<span class="drug">cornstarch</span>(10~20%)、<span class="drug">glucose solution</span>(25~50%)、<span class="drug">molasses</span>(糖蜜)、<span class="drug">gelatin solution</span>、<span class="drug">methylcellulose</span>(3%)、<span class="drug">carboxymethyl cellulose</span>、<span class="drug">MCC</span>。</li>
+              <li><strong>非水性 binders</strong>：<span class="drug">HPMC</span>、<span class="drug">PVP</span>、<span class="drug">HPC</span>、<span class="drug">EC</span> 之酒精或有機媒液（含對水敏感成分時用）。</li>
+              <li><strong>乾燥粉狀 binders</strong>：<span class="drug">MCC</span>、<span class="drug">acacia powder</span>、<span class="drug">colloidal clays</span>、<span class="drug">amylose</span>、<span class="drug">PVP</span>。</li>
+              <li><span class="drug">Starch paste</span>（澱粉糊）：有澱粉崩解性又有糖的黏結作用，不阻礙錠片崩散與溶解。</li>
+              <li>冷水比熱水好溶；液體黏合劑效果通常比乾粉好。</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="topic">
+          <div class="topic-title">崩散劑（<span class="en">Disintegrating agents</span>）</div>
+          <div class="keynote">
+            <strong>物質</strong>：<span class="drug">croscarmellose</span>(2%)、<span class="drug">sodium starch glycolate</span>(5%)、<span class="drug">crospovidone</span>(2~5%)、<span class="drug">corn／potato starches</span>(3~15%)、<span class="drug">sodium carboxymethylcellulose</span>、<span class="drug">PVP</span>、<span class="drug">cation exchange resins</span>、<span class="drug">alginic acid</span>。<br>
+            （<span class="drug">polyvinylpyrrolidone ＝ povidone ＝ PVP</span>）
+          </div>
+          <div class="keynote">
+            <strong>重點</strong>
+            <ul>
+              <li><strong>最受喜愛</strong>：<span class="drug">croscarmellose</span>、<span class="drug">sodium starch glycolate</span> → 高吸水性膨脹與快速作用。</li>
+              <li><span class="drug">crospovidone</span>：<strong>水不溶性，毛細作用</strong>。</li>
+              <li><span class="drug">starch</span>：通常用 5~10%（可高達 20% 以促進更快速崩散）。</li>
+            </ul>
+          </div>
+          <div class="keynote">
+            <strong>崩散機制</strong>
+            <ul>
+              <li><strong>SWELLING 吸水膨脹</strong>：sodium starch glycolate、croscarmellose（玉米／馬鈴薯澱粉亦屬之，需加 3~15%）。</li>
+              <li><strong>WICKING 毛細作用</strong>：crospovidone（水不溶性，靠毛細將水分導入）。</li>
+            </ul>
+          </div>
+          <div class="callout">
+            ⚑ <strong>添加方式</strong>：造粒時添加一部分（ex：一半），剩餘於整粒後、壓錠前再添加 → <strong>雙重崩散</strong>（幫助錠片形成碎片 ＋ 幫助碎片再崩散成細粒）。
+          </div>
+        </div>
+
+        <div class="topic">
+          <div class="topic-title">潤滑劑（<span class="en">Lubricant</span>）</div>
+          <div class="keynote">
+            <ul>
+              <li><strong>添加量</strong>：依操作而異，一般 <strong>0.1%~5%</strong>（多數不超過 1%，滑石粉可加至 5%）。</li>
+              <li><strong>多為厭水性</strong>，使用量太高會延緩濕潤、降低溶離速率。</li>
+              <li><strong>物質</strong>：<span class="drug">magnesium stearate</span>（硬脂酸鎂，最常用）、<span class="drug">calcium stearate</span>、<span class="drug">stearic acid</span>、<span class="drug">talc</span>（滑石粉，加 5%）、<span class="drug">sodium stearyl fumarate</span>。</li>
+              <li><strong>水溶性潤滑劑</strong>（做澄清溶液之錠劑如皮下錠／調劑錠時用，種類少、效果較厭水性差）：<span class="drug">sodium benzoate</span>、sodium benzoate＋sodium acetate 混合、<span class="drug">sodium chloride</span>、<span class="drug">leucine</span>、<span class="drug">PEG／Carbowax 4000</span>。</li>
+            </ul>
+          </div>
+
+          <div class="tbl-cap">功能細分（Table 4.3 — 少有物質同時具三功能，多配合使用）</div>
+          <table class="cmp">
+            <tr><th>類型</th><th>定義</th><th>代表物質</th></tr>
+            <tr><td>① 潤滑劑<br>Lubricant</td><td>減少壓錠與彈出時錠面與模型之摩擦（與「機器」摩擦有關）</td><td><span class="drug">Magnesium stearate</span>、Calcium stearate、Stearic acid、Zinc stearate、mineral oil、高熔點蠟／PEG</td></tr>
+            <tr><td>② 抗黏劑<br>Antiadherent</td><td>減少壓錠時對銃壁與楔子之黏附（不黏模型）</td><td><span class="drug">Magnesium stearate</span></td></tr>
+            <tr><td>③ 助流劑<br>Glidant</td><td>減少填充時粉末粒子間摩擦並促進流動（自身好滑動滾動，與機器模型無關）</td><td><span class="drug">Colloidal silicon dioxide</span>（最常用，膠體二氧化矽／Cab-o-sil／Aerosil，1%以下）、cornstarch、talc</td></tr>
+          </table>
+          <div class="keynote">代表物質多為<strong>硬脂酸鎂</strong>；最常用助流劑為<strong>膠體二氧化矽</strong>。</div>
+        </div>
+
+      </div>
     </section>
 
     <!-- ch03 -->
