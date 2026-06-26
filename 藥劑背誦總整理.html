@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>藥劑背誦總整理</title>
+<!--
+  ╔══════════════════════════════════════════════════════════════╗
+  ║  藥劑背誦總整理 — 交接說明（給接手的新對話讀）                  ║
+  ║  1. 章節為靜態 HTML，每章一個 <section class="chapter" id="chXX">║
+  ║  2. 填入內容：把該章 .chapter-body 內的 .empty-state 換成內容， ║
+  ║     並把該 section 的 data-status 由 "empty" 改成 "done"。      ║
+  ║  3. 已整理章節內容一律保留，禁止刪除既有表格與功能。            ║
+  ║  4. 導覽列／統計／搜尋皆由 JS 自動讀取 section 生成，無需手動改。 ║
+  ║  5. 表格用 class="memo"，藥名/材料名用 class="drug"（mono）。    ║
+  ║  6. 繁體中文（台灣用語），忠於講義原文，不杜撰。               ║
+  ╚══════════════════════════════════════════════════════════════╝
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FBF7EE;
+  --ink:#3a352e;
+  --ink-soft:#6b6359;
+  --line:#e4dccb;
+  --card:#fffdf8;
+  --shadow:0 1px 3px rgba(90,80,60,.06),0 6px 20px rgba(90,80,60,.05);
+  --serif:'Noto Serif TC',serif;
+  --sans:'Noto Sans TC',sans-serif;
+  --mono:'JetBrains Mono',monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);color:var(--ink);
+  font-family:var(--sans);line-height:1.7;font-size:15px;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* 頂部列 */
+header.top{position:sticky;top:0;z-index:50;background:rgba(251,247,238,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top-inner{max-width:1080px;margin:0 auto;padding:14px 22px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.brand{font-family:var(--serif);font-weight:900;font-size:20px;letter-spacing:.5px;white-space:nowrap}
+.brand small{font-family:var(--sans);font-weight:500;font-size:12px;color:var(--ink-soft);margin-left:8px;letter-spacing:0}
+.search-wrap{flex:1;min-width:200px;position:relative}
+.search-wrap input{width:100%;padding:9px 14px 9px 36px;border:1px solid var(--line);border-radius:10px;background:var(--card);font-family:var(--sans);font-size:14px;color:var(--ink);outline:none;transition:border-color .15s,box-shadow .15s}
+.search-wrap input:focus{border-color:#c9b79c;box-shadow:0 0 0 3px rgba(201,183,156,.18)}
+.search-wrap .icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--ink-soft);font-size:14px;pointer-events:none}
+.stat{font-size:12px;color:var(--ink-soft);font-family:var(--mono);white-space:nowrap}
+
+/* 章節導覽 */
+nav.chapters{max-width:1080px;margin:18px auto 0;padding:0 22px;display:flex;flex-wrap:wrap;gap:7px}
+nav.chapters a{display:inline-flex;align-items:center;gap:6px;padding:5px 11px;border-radius:20px;border:1px solid var(--line);background:var(--card);font-size:12.5px;color:var(--ink-soft);text-decoration:none;transition:all .15s}
+nav.chapters a:hover{color:var(--ink);border-color:#c9b79c;transform:translateY(-1px)}
+nav.chapters a .dot{width:8px;height:8px;border-radius:50%;background:var(--c);opacity:.35;transition:opacity .15s}
+nav.chapters a[data-done="1"] .dot{opacity:1}
+nav.chapters a[data-done="1"]{color:var(--ink);font-weight:500}
+
+/* 內容 */
+main{max-width:1080px;margin:0 auto;padding:26px 22px 80px}
+.intro{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 22px;margin-bottom:28px;box-shadow:var(--shadow)}
+.intro h2{font-family:var(--serif);font-size:16px;margin-bottom:8px}
+.intro p{font-size:13.5px;color:var(--ink-soft);margin:3px 0}
+.intro code{font-family:var(--mono);background:#f1ead9;padding:1px 6px;border-radius:5px;font-size:12.5px;color:#8a6d4a}
+
+.chapter{background:var(--card);border:1px solid var(--line);border-radius:14px;margin-bottom:18px;box-shadow:var(--shadow);overflow:hidden;border-left:4px solid var(--c)}
+.chapter-head{display:flex;align-items:center;gap:12px;padding:16px 20px;cursor:pointer;user-select:none}
+.chapter-head .num{font-family:var(--mono);font-size:12px;color:#fff;background:var(--c);padding:3px 8px;border-radius:6px;font-weight:700;min-width:30px;text-align:center}
+.chapter-head h3{font-family:var(--serif);font-weight:700;font-size:18px;flex:1}
+.chapter-head .tag{font-size:11px;font-family:var(--mono);padding:2px 9px;border-radius:20px;border:1px solid var(--line);color:var(--ink-soft)}
+.chapter[data-status="done"] .chapter-head .tag{background:var(--c);color:#fff;border-color:var(--c)}
+.chapter-head .chev{transition:transform .2s;color:var(--ink-soft);font-size:13px}
+.chapter.collapsed .chapter-head .chev{transform:rotate(-90deg)}
+.chapter-body{padding:0 20px 20px}
+.chapter.collapsed .chapter-body{display:none}
+
+.empty-state{color:var(--ink-soft);font-size:13.5px;text-align:center;padding:22px;border:1.5px dashed var(--line);border-radius:10px}
+
+/* 主題與表格 */
+.topic{margin-top:14px}
+.topic:first-child{margin-top:4px}
+.topic-title{font-family:var(--serif);font-weight:700;font-size:17px;color:var(--ink);padding-bottom:6px;border-bottom:2px solid var(--c);display:inline-block;margin-bottom:12px}
+.topic-title .en{font-family:var(--mono);font-weight:500}
+.lead{font-size:13.5px;margin:8px 0;color:var(--ink)}
+.keynote{background:rgba(0,0,0,.02);border-left:3px solid var(--c);padding:10px 14px;border-radius:0 8px 8px 0;margin:12px 0;font-size:13.5px}
+.keynote ul{margin:4px 0 0;padding-left:20px}
+.keynote li{margin:4px 0}
+.callout{font-size:13px;color:#8a5a3a;background:#fbf0e3;border:1px solid #ecdcc4;border-radius:8px;padding:9px 13px;margin:12px 0}
+
+.tbl-cap{font-family:var(--serif);font-weight:700;font-size:14px;margin:16px 0 8px;color:var(--ink)}
+table.memo{width:100%;border-collapse:collapse;font-size:13.5px;margin-bottom:8px;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+table.memo th{background:var(--c);color:#fff;font-weight:500;padding:9px 12px;text-align:left;font-size:13px}
+table.memo td{padding:8px 12px;border-top:1px solid var(--line);vertical-align:top}
+table.memo td:last-child{text-align:right;font-family:var(--mono);white-space:nowrap;color:var(--ink-soft)}
+table.memo tr:nth-child(even) td{background:rgba(0,0,0,.012)}
+.drug{font-family:var(--mono);font-weight:500;color:#7a5d3a}
+mark{background:#f5e3a8;color:inherit;padding:0 1px;border-radius:2px}
+table.cmp{width:100%;border-collapse:collapse;font-size:13px;border:1px solid var(--line);border-radius:8px;overflow:hidden;margin:8px 0 4px}
+table.cmp th{background:var(--c);color:#fff;font-weight:500;padding:9px 12px;text-align:left;font-size:13px}
+table.cmp th:first-child{background:rgba(0,0,0,.18)}
+table.cmp td{padding:8px 12px;border-top:1px solid var(--line);vertical-align:top;font-size:13px}
+table.cmp td:first-child{font-family:var(--serif);font-weight:700;background:rgba(0,0,0,.025);white-space:nowrap}
+table.cmp tr:nth-child(even) td{background:rgba(0,0,0,.012)}
+.formula{background:rgba(0,0,0,.025);border:1px solid var(--line);border-radius:10px;padding:16px 20px;margin:12px 0;text-align:center;font-family:var(--mono);font-size:15px;color:var(--ink)}
+.frac{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;margin:0 5px}
+.frac .num{padding:0 8px 3px;border-bottom:1.5px solid var(--ink)}
+.frac .den{padding:3px 8px 0}
+.formula .vars{display:block;font-family:var(--sans);font-size:12.5px;color:var(--ink-soft);margin-top:11px;line-height:1.85}
+table.grade{width:100%;border-collapse:collapse;font-size:13px;border:1px solid var(--line);border-radius:8px;overflow:hidden;margin:8px 0}
+table.grade th{background:var(--c);color:#fff;font-weight:500;padding:9px 12px;text-align:left;font-size:12.5px}
+table.grade td{padding:8px 12px;border-top:1px solid var(--line);vertical-align:middle}
+table.grade td:first-child{font-weight:700}
+table.grade td .en{font-family:var(--mono);font-weight:400;font-size:12px;color:var(--ink-soft)}
+table.grade td.idx{font-family:var(--mono);color:var(--ink-soft);white-space:nowrap}
+table.grade tr:nth-child(even) td{background:rgba(0,0,0,.012)}
+table.grade tr.bound td{background:#fcf3e0;box-shadow:inset 2px 0 0 #d6a45a,inset -2px 0 0 #d6a45a}
+.numline{background:rgba(0,0,0,.025);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:10px 0;text-align:center;font-family:var(--mono);font-size:13px;color:var(--ink);overflow-x:auto;white-space:nowrap}
+.numline b{color:#8a6d4a}
+.qa{background:rgba(0,0,0,.02);border-left:3px solid var(--c);border-radius:0 8px 8px 0;padding:10px 14px;margin:8px 0;font-size:13.5px}
+.qa .ans{color:#4a7a4a;font-weight:500}
+.qa .yr{font-family:var(--mono);font-size:11px;background:var(--c);color:#fff;padding:1px 7px;border-radius:20px;margin-right:6px}
+table.presv{width:100%;border-collapse:separate;border-spacing:0;font-size:13px;border:1px solid #e7e0ec;border-radius:10px;overflow:hidden;margin:8px 0}
+table.presv th{background:#f3eef6;color:#5a5263;font-weight:700;padding:11px 14px;text-align:left;font-size:12.5px;border-bottom:1px solid #e4dcea}
+table.presv td{padding:10px 14px;border-bottom:1px solid #efe9e0;vertical-align:top}
+table.presv tr:last-child td{border-bottom:none}
+table.presv tr:nth-child(even) td{background:#faf7f4}
+table.presv .name{font-family:var(--mono);color:#6b5b9a;font-weight:500;line-height:1.5}
+table.presv .name small{color:var(--ink-soft);font-weight:400}
+table.presv .conc{font-weight:700}
+table.presv .hl{background:#f6d96b;padding:2px 8px;border-radius:5px;color:#3a352e}
+.k1{color:#3b6fb5;font-weight:700}
+.k2{color:#d98a3a;font-weight:700}
+.presv-note{background:#fbf0f0;border:1px solid #f0dede;border-radius:10px;padding:13px 16px;margin:10px 0;font-size:12.5px;line-height:1.9}
+.presv-note .sw{display:inline-block;padding:0 7px;border-radius:4px;font-weight:700}
+
+.no-result{display:none;text-align:center;color:var(--ink-soft);padding:40px;font-size:14px}
+.no-result.show{display:block}
+footer{text-align:center;color:var(--ink-soft);font-size:12px;padding:30px;font-family:var(--mono)}
+
+@media(max-width:640px){.top-inner{padding:12px 16px}main{padding:20px 16px 60px}nav.chapters{padding:0 16px}.chapter-head h3{font-size:16px}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <div class="brand">藥劑背誦總整理<small>記憶表格彙整</small></div>
+    <div class="search-wrap">
+      <span class="icon">🔍</span>
+      <input type="text" id="search" placeholder="搜尋藥名、概念、關鍵字…（例：消散乳霜、o/w、硬脂酸）" autocomplete="off">
+    </div>
+    <div class="stat" id="stat">已整理 0 / 14 章</div>
+  </div>
+  <nav class="chapters" id="nav"></nav>
+</header>
+
+<main>
+  <div class="intro">
+    <h2>使用方式</h2>
+    <p>按藥劑章節順序分 14 章。看到要背的表格就貼給我，我填進對應章節，已整理的內容不會被動到。</p>
+    <p>背書時：<code>搜尋框</code>即時找關鍵字（自動展開含該字的章節並反白）；點<code>導覽列</code>跳章節；點章節標題可<code>收合／展開</code>。導覽列實心圓點＝已整理。</p>
+  </div>
+
+  <div id="chapters">
+
+    <!-- ch01 -->
+    <section class="chapter" id="ch01" data-status="done" data-name="注射劑" style="--c:#A8B5A0">
+      <div class="chapter-head"><span class="num">01</span><h3>注射劑</h3><span class="tag">已整理</span><span class="chev">▼</span></div>
+      <div class="chapter-body">
+
+        <div class="topic">
+          <div class="topic-title">防腐劑（<span class="en">Preservatives</span>）</div>
+          <table class="presv">
+            <tr><th>藥品</th><th>中文名稱</th><th>濃度 (%)</th><th>記憶方法</th></tr>
+            <tr>
+              <td class="name"><span class="k1">B</span>enzyl alcohol</td>
+              <td>苯甲醇</td>
+              <td class="conc"><span class="hl">2</span></td>
+              <td><span class="k1">B</span> 就是 2；新生兒禁用（gasping syndrome）</td>
+            </tr>
+            <tr>
+              <td class="name">Chloro<span class="k2">b</span>utanol</td>
+              <td>氯丁醇</td>
+              <td class="conc">0.5</td>
+              <td><span class="k1">C</span>=3、<span class="k2">b</span>=2；3+2=5 → 0.5；不可高壓蒸氣滅菌（分解出 HCl 使 pH 下降）</td>
+            </tr>
+            <tr>
+              <td class="name"><span class="k1">Ph</span>enol</td>
+              <td>酚</td>
+              <td class="conc"><span class="hl">0.5</span></td>
+              <td><span class="k1">Ph</span> 音近 five → 0.5</td>
+            </tr>
+            <tr>
+              <td class="name"><span class="k1">Ph</span>enylethyl alcohol</td>
+              <td>苯乙醇</td>
+              <td class="conc">0.5</td>
+              <td><span class="k1">Ph</span> 音近 five → 0.5</td>
+            </tr>
+            <tr>
+              <td class="name">Creso<span class="k2">l</span></td>
+              <td>煤餾油酚（甲酚）</td>
+              <td class="conc">0.4</td>
+              <td><span class="k1">C</span>=3、<span class="k2">l</span>=1；3+1=4 → 0.4</td>
+            </tr>
+            <tr>
+              <td class="name">Sulphur dioxide (<span class="k1">SO₂</span>)　☆</td>
+              <td>二氧化硫</td>
+              <td class="conc"><span class="hl">0.2</span></td>
+              <td><span class="k1">O₂</span> 中間加一點 → 0.2；國考考很多次；兼具防腐劑 &amp; 抗氧化劑</td>
+            </tr>
+            <tr>
+              <td class="name">Methylpara<span class="k2">b</span>en<br><small>(Methyl p-hydroxybenzoate)</small></td>
+              <td>對羥基苯甲酸甲酯</td>
+              <td class="conc"><span class="hl">0.1</span></td>
+              <td><span class="k2">b</span> 切一半 = 0.1；1C</td>
+            </tr>
+            <tr>
+              <td class="name"><span class="k1">Pro</span>pylparaben</td>
+              <td>對羥基苯甲酸丙酯</td>
+              <td class="conc">0.05</td>
+              <td><span class="k1">Pro</span> 想成剖半 → 0.05；3C</td>
+            </tr>
+            <tr>
+              <td class="name">Butylparaben</td>
+              <td>對羥基苯甲酸丁酯</td>
+              <td class="conc">0.01–0.02</td>
+              <td>4C；跟下面幾個一起記</td>
+            </tr>
+            <tr>
+              <td class="name">Benzalkonium chloride</td>
+              <td>氯化苯烴銨</td>
+              <td class="conc">0.01</td>
+              <td>字最長，藥效最強，濃度一點點就可以；陽離子型介面活性劑</td>
+            </tr>
+            <tr>
+              <td class="name">Thimerosal</td>
+              <td>硫汞</td>
+              <td class="conc">0.01</td>
+              <td>眼用的話用於 cefazolin</td>
+            </tr>
+            <tr>
+              <td class="name">Phenylmercuric nitrate</td>
+              <td>硝酸苯基汞</td>
+              <td class="conc">0.002–0.004</td>
+              <td>比常態防腐劑更小</td>
+            </tr>
+          </table>
+
+          <div class="presv-note">
+            <strong>黃底（歷年考過）</strong>：Benzyl alcohol、Phenol、Sulphur dioxide、Methylparaben；考過的濃度數字標 <span class="sw" style="background:#f6d96b">黃色</span>。<br>
+            <strong>記憶色號</strong>：<span class="k1">藍字</span> 對應第一個數字、<span class="k2">橘字</span> 對應第二個數字。<br>
+            <strong>Paraben 系列</strong>：碳鏈越長所需濃度越低（1C→0.1、3C→0.05、4C→0.01）。<br>
+            <strong>多數防腐劑 0.幾%</strong>，唯 Benzyl alcohol 例外（整數 2%）。<br>
+            <strong>SO₂</strong>：可作為防腐劑與抗氧化劑。
+          </div>
+
+          <div class="tbl-cap"><span class="en">Benzalkonium chloride</span>（氯化苯甲烴銨）補充</div>
+          <div class="keynote">
+            <strong>陽離子型介面活性劑</strong>
+            <ul>
+              <li><strong>特性</strong>：眼用製劑最常用防腐劑。</li>
+              <li><strong>禁忌</strong>：陰離子型成分（如水楊酸鹽 <span class="drug">Salicylate</span>、硝酸鹽 <span class="drug">Nitrate</span>、陰離子界面活性劑、肥皂等）。</li>
+              <li><strong>併用</strong>：可併用 <span class="drug">Polymyxin B sulfate</span>（1000 U）或 <span class="drug">EDTA</span>（螯合劑，0.1%）來加強氯化苯甲烴銨之防腐作用。</li>
+            </ul>
+          </div>
+          <div class="qa"><span class="yr">114-1</span>有關眼用溶液的抗菌劑，下列何者可有效對抗大多數 Pseudomonas？<br>
+            (A) <span class="drug">benzethonium chloride</span> (0.005%) ／ <span class="drug">disodium ethylenediaminetetraacetate</span> (0.005%)<br>
+            (B) <span class="drug">phenylmercuric nitrite</span> (0.002%)<br>
+            (C) <span class="drug">benzalkonium chloride</span> (0.01%) ／ <span class="drug">polymyxin B sulfate</span> (1000 USP U/mL)<br>
+            (D) <span class="drug">chlorobutanol</span> (0.1%)<br>
+            <span class="ans">A：(C)</span> — benzalkonium chloride 併用 polymyxin B sulfate，可有效對抗 Pseudomonas（綠膿桿菌）</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ch02 -->
+    <section class="chapter" id="ch02" data-status="empty" data-name="錠劑" style="--c:#C4A89A">
+      <div class="chapter-head"><span class="num">02</span><h3>錠劑</h3><span class="tag">待整理</span><span class="chev">▼</span></div>
+      <div class="chapter-body"><div class="empty-state">尚未整理 — 把這章要背的表格貼給我，我填進來。</div></div>
+    </section>
+
+    <!-- ch03 -->
+    <section class="chapter" id="ch03" data-status="done" data-name="軟膏劑（半固體）" style="--c:#B0A8B9">
+      <div class="chapter-head"><span class="num">03</span><h3>軟膏劑（半固體）</h3><span class="tag">已整理</span><span class="chev">▼</span></div>
+      <div class="chapter-body">
+
+        <div class="topic">
+          <div class="topic-title">Vanishing<span class="en">®</span> cream　消散乳霜</div>
+
+          <div class="keynote">
+            <strong>性質</strong>
+            <ul>
+              <li><span class="drug">o/w</span> 乳劑，含大量水分（<strong>60–80%</strong>）與 <span class="drug">stearic acid</span>（硬脂酸，<strong>10–25%</strong>）或其他油性成分。</li>
+              <li>塗抹後 → 水分蒸發 → 留下一層薄殘留膜（<span class="drug">stearic acid</span> 或其他油性成分）。</li>
+              <li>外相為水（佔 60–80%，較多）、內相為油相 <span class="drug">stearic acid</span>（10–25%）。</li>
+            </ul>
+          </div>
+
+          <div class="callout">
+            ⚑ <strong>與 cold cream 差異（要記）</strong>：消散乳霜為 o/w，外相是水，塗上後「一下子就不見」；cold cream 性質不同（詳見後續章節），兩者差異是考點。
+          </div>
+
+          <div class="tbl-cap">最早的配方</div>
+          <table class="memo">
+            <tr><th>成分</th><th>用量</th></tr>
+            <tr><td><span class="drug">Stearic acid</span>（硬脂酸，油相）</td><td>200 g</td></tr>
+            <tr><td><span class="drug">KOH</span></td><td>14 g</td></tr>
+            <tr><td><span class="drug">Purified water</span>（水相）</td><td>800 g</td></tr>
+            <tr><td><span class="drug">Perfume</span></td><td>q.s.</td></tr>
+          </table>
+          <div class="keynote">
+            界面活性劑：<strong>鉀肥皂（硬脂酸鉀）</strong>。鉀肥皂為一價 → 親水 → 形成 <span class="drug">o/w</span>。
+          </div>
+
+          <div class="tbl-cap">最新的改良配方</div>
+          <table class="memo">
+            <tr><th>成分</th><th>用量</th></tr>
+            <tr><td><span class="drug">Stearic acid</span></td><td>15 g</td></tr>
+            <tr><td><span class="drug">White wax</span>　<em>（多加）</em></td><td>2 g</td></tr>
+            <tr><td><span class="drug">White petrolatum</span>　<em>（多加）</em></td><td>8 g</td></tr>
+            <tr><td><span class="drug">Triethanolamine</span>（鹼）</td><td>1.5 g</td></tr>
+            <tr><td><span class="drug">Propylene glycol</span></td><td>8 g</td></tr>
+            <tr><td><span class="drug">Purified water</span></td><td>65.5 g</td></tr>
+          </table>
+          <div class="keynote">
+            <strong>改良重點</strong>
+            <ul>
+              <li>多加 <span class="drug">White wax</span>、<span class="drug">White petrolatum</span>。</li>
+              <li>鹼改用 <span class="drug">triethanolamine</span> → 生成胺肥皂，親水 → 外相為水，塗上後快速消失。</li>
+              <li>鉀肥皂與胺肥皂皆具珍珠樣光澤，兩者皆常用。</li>
+              <li><span class="drug">Stearic acid</span> 為油相，可在皮膚表面形成保護膜。</li>
+            </ul>
+          </div>
+          <div style="font-family:var(--mono);font-size:11px;color:var(--ink-soft);text-align:right;margin-top:6px">講義 p.127</div>
+        </div>
+
+        <div class="topic">
+          <div class="topic-title"><span class="en">Hydrophilic petrolatum</span>, USP　親水軟石蠟</div>
+
+          <div class="keynote">
+            <strong>記法／性質</strong>
+            <ul>
+              <li>親水軟石蠟本身選用的是<strong>軟石蠟</strong>，之所以「親水」只是因為加入了<strong>界面活性劑</strong>。</li>
+              <li>主成分為軟石蠟加<strong>環狀醇</strong>（膽固醇、羊毛脂等）；變化方可加入其他成分（如 <span class="drug">Arlacel 83</span>，即 <span class="drug">sorbitan sesquioleate</span>）。</li>
+              <li>將水加入 <span class="drug">Hydrophilic petrolatum</span> 則形成 <span class="drug">w/o</span> 型乳劑基劑（第二小類／無水基劑＋水）。</li>
+              <li><span class="drug">Cholesterol</span>：<span class="drug">w/o</span> emulsifier。</li>
+            </ul>
+          </div>
+
+          <div class="callout">
+            ⚑ <strong>基劑轉變</strong>：原本是<strong>無水型吸收性基劑</strong> →（加水）→ <strong>W/O 型含水性吸收性基劑</strong>（加水往下跳一階）。
+          </div>
+
+          <div class="tbl-cap">配方（for 1000 g）</div>
+          <table class="memo">
+            <tr><th>成分</th><th>用量</th></tr>
+            <tr><td><span class="drug">Cholesterol</span>（膽固醇／界面活性劑）</td><td>30 g</td></tr>
+            <tr><td><span class="drug">Stearyl alcohol</span>（硬化劑／界面活性劑）</td><td>30 g</td></tr>
+            <tr><td><span class="drug">White wax</span>（白蠟）　<em>烴基基劑</em></td><td>80 g</td></tr>
+            <tr><td><span class="drug">White petrolatum</span>（白軟石蠟）　<em>烴基基劑</em></td><td>860 g</td></tr>
+          </table>
+
+          <div class="keynote">
+            <strong>重點補充</strong>
+            <ul>
+              <li><span class="drug">Cholesterol</span> 為主要親水來源。之前用 <span class="drug">anhydrous lanolin</span>（無水羊毛脂）會過敏，故改成 <span class="drug">cholesterol</span>。</li>
+              <li><span class="drug">Stearyl alcohol</span> 作用：① 增加硬度與熱安定性　② 使皮膚滑膩　③ 增加軟石蠟吸水性（<strong>water number</strong>：常溫下 100 g 基劑可保持之最大水量；數字越大吸水能力越好）。</li>
+              <li><span class="drug">Arlacel</span> 為類似 <span class="drug">span</span>（<span class="drug">sorbitan fatty acid esters</span>）的化合物，顏色輕淡（<span class="drug">Arlacel 83</span>: sorbitan sesquioleate；<span class="drug">Arlacel 80</span>: sorbitan monooleate）。</li>
+            </ul>
+          </div>
+          <div style="font-family:var(--mono);font-size:11px;color:var(--ink-soft);text-align:right;margin-top:6px">講義 p.115</div>
+        </div>
+
+        <div class="topic">
+          <div class="topic-title"><span class="en">Hydrophilic ointment</span>, USP　親水軟膏（<span class="en">o/w</span>）</div>
+
+          <div class="tbl-cap">配方（for 1000 g）</div>
+          <table class="memo">
+            <tr><th>成分（角色）</th><th>用量</th></tr>
+            <tr><td><span class="drug">White petrolatum</span>（軟石蠟，油相 Oleaginous phase）</td><td>250 g</td></tr>
+            <tr><td><span class="drug">Stearyl alcohol</span>（增加硬度，油相）</td><td>250 g</td></tr>
+            <tr><td><span class="drug">Sodium lauryl sulfate</span>（界面活性劑 surfactant）</td><td>10 g</td></tr>
+            <tr><td><span class="drug">Propylene glycol</span>（保濕劑 humectant，因外相為水相）</td><td>120 g</td></tr>
+            <tr><td><span class="drug">Methylparaben</span>／<span class="drug">Propylparaben</span>（防腐劑 preservatives）</td><td>0.25 g／0.15 g</td></tr>
+            <tr><td><span class="drug">Purified water</span>（水相 aqueous phase）</td><td>370 g</td></tr>
+          </table>
+
+          <div class="keynote">
+            <strong>製備（Preparation）</strong>
+            <ul>
+              <li>將 <span class="drug">white petrolatum</span> 與 <span class="drug">stearyl alcohol</span> 加熱熔融至約 <strong>75°C</strong>。</li>
+              <li>其餘成分溶於純水中，加入後攪拌至凝固（congealed）。</li>
+            </ul>
+          </div>
+
+          <div class="keynote">
+            <strong>重點補充</strong>
+            <ul>
+              <li><span class="drug">Sodium lauryl sulfate</span>（SLS）：為使外相為水相，必選<strong>親水性界面活性劑</strong>（SLS HLB 40）。</li>
+              <li><span class="drug">Propylene glycol</span>：幫助基劑滯留水分。</li>
+              <li>一般含有：抗菌防腐劑、安定劑（抗氧化劑、金屬螯合劑、緩衝劑）、保濕劑（<span class="drug">glycerin</span>、<span class="drug">propylene glycol</span>）、乳化劑。</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="topic">
+          <div class="topic-title">親水軟石蠟 vs 親水軟膏（常考比較）</div>
+          <table class="cmp">
+            <tr><th>項目</th><th>親水軟石蠟<br>Hydrophilic petrolatum</th><th>親水軟膏<br>Hydrophilic ointment</th></tr>
+            <tr><td>乳劑型</td><td><span class="drug">w/o</span>（加水後形成）</td><td><span class="drug">o/w</span></td></tr>
+            <tr><td>基劑性質</td><td>無水型吸收性基劑<br>→（加水）W/O 型含水性吸收性基劑</td><td><span class="drug">o/w</span> 型乳劑基劑</td></tr>
+            <tr><td>乳化劑／<br>界面活性劑</td><td><span class="drug">Cholesterol</span>（w/o emulsifier）</td><td><span class="drug">Sodium lauryl sulfate</span>（親水界面活性劑）</td></tr>
+            <tr><td>親水來源</td><td><span class="drug">Cholesterol</span>（原用 anhydrous lanolin 易過敏改用）</td><td><span class="drug">Sodium lauryl sulfate</span></td></tr>
+            <tr><td>配方含水</td><td>本身無水（加水才形成 w/o）</td><td>含水（<span class="drug">Purified water</span> 370 g）</td></tr>
+          </table>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ch04 -->
+    <section class="chapter" id="ch04" data-status="empty" data-name="膠囊劑・栓劑" style="--c:#A3B1B8">
+      <div class="chapter-head"><span class="num">04</span><h3>膠囊劑・栓劑</h3><span class="tag">待整理</span><span class="chev">▼</span></div>
+      <div class="chapter-body"><div class="empty-state">尚未整理 — 把這章要背的表格貼給我，我填進來。</div></div>
+    </section>
+
+    <!-- ch05 -->
+    <section class="chapter" id="ch05" data-status="empty" data-name="乳劑・懸浮劑" style="--c:#C9B79C">
+      <div class="chapter-head"><span class="num">05</span><h3>乳劑・懸浮劑</h3><span class="tag">待整理</span><span class="chev">▼</span></div>
+      <div class="chapter-body"><div class="empty-state">尚未整理 — 把這章要背的表格貼給我，我填進來。</div></div>
+    </section>
+
+    <!-- ch06 -->
+    <section class="chapter" id="ch06" data-status="empty" data-name="膠體" style="--c:#9FB4A7">
+      <div class="chapter-head"><span class="num">06</span><h3>膠體</h3><span class="tag">待整理</span><span class="chev">▼</span></div>
+      <div class="chapter-body"><div class="empty-state">尚未整理 — 把這章要背的表格貼給我，我填進來。</div></div>
+    </section>
+
+    <!-- ch07 -->
+    <section class="chapter" id="ch07" data-status="done" data-name="溶液劑" style="--c:#BCA6A0">
+      <div class="chapter-head"><span class="num">07</span><h3>溶液劑</h3><span class="tag">已整理</span><span class="chev">▼</span></div>
+      <div class="chapter-body">
+
+        <div class="topic">
+          <div class="topic-title">溶解度（<span class="en">Solubility</span>）</div>
+
+          <div class="callout">
+            ⚑ <strong>中華藥典以「溶質」為標準</strong>：1g（或 1mL）溶質需用多少 mL 溶劑去溶解（<strong>1g／? mL</strong>）。<br>
+            （一般實驗看到的 5mg/mL 是指 1mL 可溶 5mg；中華藥典定義則以 1g 溶質為標準，依分子調整溶劑／溶液含量。）
+          </div>
+
+          <div class="keynote">
+            <strong>定義</strong>：25°C 時，溶質 <strong>1g 或 1mL</strong> 能溶解於溶劑或溶液之最大量。（多念幾次）
+          </div>
+
+          <div class="tbl-cap">溶解度分級（中華藥典）</div>
+          <table class="grade">
+            <tr><th>溶解度</th><th>1g 或 1mL 溶質所需溶媒量 (mL)</th><th>指數記法</th><th>簡稱</th></tr>
+            <tr><td>極易溶<br><span class="en">Very soluble</span></td><td>&lt; 1</td><td class="idx">&lt; 10<sup>0</sup></td><td>極易</td></tr>
+            <tr><td>易溶<br><span class="en">Free soluble</span></td><td>1 – 10</td><td class="idx">10<sup>0</sup> – 10<sup>1</sup></td><td>易</td></tr>
+            <tr class="bound"><td>可溶<br><span class="en">Soluble</span></td><td>10 – 30</td><td class="idx">10<sup>1</sup> – 30<sup>1</sup></td><td>可　◄ 分界</td></tr>
+            <tr><td>略溶<br><span class="en">Sparingly soluble</span></td><td>30 – 100</td><td class="idx">30<sup>1</sup> – 10<sup>2</sup></td><td>略</td></tr>
+            <tr><td>微溶<br><span class="en">Slightly soluble</span></td><td>100 – 1000</td><td class="idx">10<sup>2</sup> – 10<sup>3</sup></td><td>微</td></tr>
+            <tr><td>極微溶<br><span class="en">Very slightly soluble</span></td><td>1000 – 10000</td><td class="idx">10<sup>3</sup> – 10<sup>4</sup></td><td>極微</td></tr>
+            <tr><td>幾不溶<br><span class="en">Insoluble</span></td><td>&gt; 10000</td><td class="idx">&gt; 10<sup>4</sup></td><td>幾不溶</td></tr>
+          </table>
+
+          <div class="keynote">
+            <strong>英文記法</strong>
+            <ul>
+              <li><strong>very free 很自由</strong> → <span class="drug">Very soluble</span>（極易溶）、<span class="drug">Free soluble</span>（易溶）。</li>
+              <li><strong>貴婦先 Spa 再照光 slight</strong> → <span class="drug">Sparingly soluble</span>（略溶）、<span class="drug">Slightly soluble</span>（微溶）。</li>
+              <li>幾不溶 <span class="drug">Insoluble</span>（與 soluble 相反）。</li>
+            </ul>
+          </div>
+
+          <div class="tbl-cap">數線記法（4 步驟）</div>
+          <div class="keynote">
+            <ul>
+              <li><strong>① 畫數線。</strong></li>
+              <li><strong>② 標數字</strong>（只要記 <strong>10</strong> 跟 <strong>30</strong>）：從 10<sup>0</sup> 開始（接 10<sup>1</sup>、10<sup>2</sup>…，多寫 10<sup>5</sup>、10<sup>6</sup> 沒關係，最後用不到）；30 介於 10–100，寫在 10<sup>1</sup>–10<sup>2</sup> 之間。</li>
+              <li><strong>③ 找範圍</strong>：假設 1g 溶質需 20mL 溶媒 → 20 介於 10–30 之間。</li>
+              <li><strong>④ 對應名稱</strong>：極易 → 易 → 可 → 略 → 微 → 極微 → 幾不溶。</li>
+            </ul>
+          </div>
+          <div class="numline">
+            極易 │ <b>10<sup>0</sup></b> │ 易 │ <b>10<sup>1</sup></b> │ 可 │ <b>30</b> │ 略 │ <b>10<sup>2</sup></b> │ 微 │ <b>10<sup>3</sup></b> │ 極微 │ <b>10<sup>4</sup></b> │ 幾不溶
+          </div>
+          <div class="keynote">範例：1g 溶質需 <strong>20mL</strong> 溶媒 → 落在 10–30 → 屬「<strong>可溶性</strong>」。</div>
+
+          <div class="tbl-cap">例題</div>
+          <div class="qa">Q：1g 溶質需溶在 500 mL，屬何種溶解度？<br><span class="ans">A：微溶</span>（500 落在 100–1000）</div>
+          <div class="qa">Q：略溶落在哪個範圍？<br><span class="ans">A：溶解 1g 溶質需 30~100 mL 溶劑或溶液</span></div>
+          <div class="qa"><span class="yr">114-2</span>當 1g 或 1mL 藥品能溶於下列多少 mL 溶媒時，其溶解度符合中華藥典所規定之「略溶」範圍？(A) 5　(B) 10　(C) 50　(D) 200<br><span class="ans">A：(C) 50</span>（略溶 = 30–100 mL）</div>
+        </div>
+
+        <div class="topic">
+          <div class="topic-title">溶媒（<span class="en">Solvent</span>）總整理</div>
+
+          <table class="cmp">
+            <tr><th>溶媒</th><th>重點</th></tr>
+            <tr><td><span class="drug">乙醇</span><br>Ethanol</td><td>含量百分率為 <strong>15.56°C</strong> 時所測得之容量。（考過兩次）</td></tr>
+            <tr><td><span class="drug">丙二醇</span><br>Propylene glycol</td><td><strong>耳滴劑</strong>常用溶媒（可增加藥品與傷口接觸時間、減少發炎）；與水、乙醇、丙酮、氯仿皆可互溶；傾向與極性互溶、非極性較不溶。</td></tr>
+            <tr><td><span class="drug">異丙醇</span><br>Isopropanol</td><td><strong>不可內服，只外用</strong>（毒性大）。</td></tr>
+            <tr><td>★ <span class="drug">丙三醇／甘油</span><br>Glycerol</td><td>丙基接上 <strong>3 個羥基</strong>；<strong>半極性溶媒</strong>，與水、乙醇可互溶，與乙醚、氯仿不互溶；功用見下表。</td></tr>
+            <tr><td><span class="drug">環糊精</span><br>Cyclodextrin</td><td>可形成<strong>複合物（Complex）</strong>，增加物質溶解度（亦具助溶效果）。</td></tr>
+            <tr><td><span class="drug">四氯化碳</span><br>CCl₄</td><td><strong>非極性溶媒</strong>（碳上雖連極性分子，但結構對稱 → 極性互相抵消）。</td></tr>
+          </table>
+
+          <div class="callout">⚑ <strong>甘油（Glycerol）功用 × 劑型配對 — 國考皆有考過</strong></div>
+          <table class="cmp">
+            <tr><th>功用</th><th>劑型</th></tr>
+            <tr><td>助溶劑</td><td>鞣酸軟膏</td></tr>
+            <tr><td>保濕劑</td><td>軟膏（醇類基劑）</td></tr>
+            <tr><td>防腐劑</td><td>糖漿劑</td></tr>
+            <tr><td>甜味劑</td><td>糖漿劑</td></tr>
+            <tr><td>塑化劑</td><td>錠劑、軟膠囊</td></tr>
+            <tr><td>安定劑</td><td><span class="drug">Regular insulin</span>（短效胰島素注射劑）</td></tr>
+          </table>
+          <div class="keynote">
+            <ul>
+              <li>以上六個功用-劑型配對<strong>國考都出現過</strong>。</li>
+              <li>多元醇類在軟膏有保濕作用；一般軟膏分類上屬於<strong>多元醇類</strong>，當作保濕劑。</li>
+            </ul>
+          </div>
+
+          <div class="tbl-cap">例題</div>
+          <div class="qa">Q：乙醇含量百分率是在幾度下測得的容量？<br><span class="ans">A：15.56°C</span></div>
+          <div class="qa">Q：丙三醇在錠劑的作用？<br><span class="ans">A：塑化劑</span></div>
+          <div class="qa">Q：糖漿劑添加丙三醇的作用？<br><span class="ans">A：甜味劑或防腐劑</span></div>
+        </div>
+
+        <div class="topic">
+          <div class="topic-title">溶解度（濃度）表示法</div>
+          <div class="keynote">基礎：重量（w）→ <strong>g</strong>；體積（v）→ <strong>mL</strong>。</div>
+
+          <table class="cmp">
+            <tr><th>表示法</th><th>定義</th><th>意義</th></tr>
+            <tr><td><span class="drug">w/w</span></td><td>g／100 g</td><td>每 100 g 溶液含 X g 溶質（劑）</td></tr>
+            <tr><td><span class="drug">w/v</span></td><td>g／100 mL</td><td>每 100 mL 溶液含 X g 溶質（劑）</td></tr>
+            <tr><td><span class="drug">v/v</span></td><td>mL／100 mL</td><td>每 100 mL 溶液含 X mL 溶質（劑）</td></tr>
+            <tr><td><span class="drug">1 : 10</span></td><td>1 加至 10</td><td>1 g(mL) 加至 10 g(mL)</td></tr>
+            <tr><td><span class="drug">1 → 10</span></td><td>—</td><td>1 g(mL) 加至 10 g(mL)</td></tr>
+            <tr><td><span class="drug">1 ppm</span></td><td>百萬分之一</td><td>1 g／10<sup>6</sup> mL</td></tr>
+          </table>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ch08 -->
+    <section class="chapter" id="ch08" data-status="empty" data-name="流變學" style="--c:#A6A8B0">
+      <div class="chapter-head"><span class="num">08</span><h3>流變學</h3><span class="tag">待整理</span><span class="chev">▼</span></div>
+      <div class="chapter-body"><div class="empty-state">尚未整理 — 把這章要背的表格貼給我，我填進來。</div></div>
+    </section>
+
+    <!-- ch09 -->
+    <section class="chapter" id="ch09" data-status="done" data-name="散劑・微粒學" style="--c:#C2B0A0">
+      <div class="chapter-head"><span class="num">09</span><h3>散劑・微粒學</h3><span class="tag">已整理</span><span class="chev">▼</span></div>
+      <div class="chapter-body">
+
+        <div class="topic">
+          <div class="topic-title"><span class="en">Particle size</span>　各劑型粒徑範圍</div>
+
+          <div class="callout">
+            ⚑ 此頁為 <strong>Ansel 新版新增</strong>內容，講義紅字者皆為背誦重點；單位皆為 <strong>µm</strong>。
+          </div>
+
+          <div class="tbl-cap">常見劑型與相關粒徑範圍（µm）</div>
+          <table class="memo">
+            <tr><th>劑型</th><th>粒徑 (µm)</th></tr>
+            <tr><td><span class="drug">Aerosols for the lung</span>（肺部氣霧／乾粉吸入劑）</td><td>1~5</td></tr>
+            <tr><td><span class="drug">Parenteral suspensions</span>（注射用懸浮液）</td><td>0.5~25</td></tr>
+            <tr><td><span class="drug">Ophthalmic suspensions</span>（眼用懸浮液）</td><td>≤10</td></tr>
+            <tr><td><span class="drug">Oral suspensions</span>（口服懸浮液）</td><td>10~50</td></tr>
+            <tr><td><span class="drug">Tablets &amp; capsules, immediate release</span>（即釋錠劑、膠囊）</td><td>≤50</td></tr>
+            <tr><td><span class="drug">Topical emulsions</span>（外用乳劑）</td><td>≤50</td></tr>
+            <tr><td><span class="drug">Topical suspensions</span>（外用懸浮液）</td><td>10~50</td></tr>
+            <tr><td><span class="drug">Topical aerosols</span>（外用氣霧劑）</td><td>50~100</td></tr>
+          </table>
+
+          <div class="keynote">
+            <strong>考點說明</strong>
+            <ul>
+              <li><span class="drug">Aerosols for the lung</span>（乾粉吸入劑）<strong>1~5 µm</strong>：太重會沉積於口腔，此範圍才能到達支氣管與肺部。（部分版本寫 1~6 或 2~6 皆可）<strong>國考考過數次</strong>。</li>
+              <li><span class="drug">Parenteral suspension</span> <strong>0.5~25 µm</strong>：可作注射劑（打肌肉、皮下，<strong>不打 IV</strong>）；25 µm 仍可打入（注意單位為 µm，針頭粗者內徑可達 mm 級）。</li>
+              <li><span class="drug">Ophthalmic suspension</span> <strong>≤10 µm</strong>：可點眼，但須 ≤10（眼睛容不下異物、避免沙粒感）。</li>
+              <li><span class="drug">Oral suspension</span> <strong>10~50 µm</strong>：吞服後不應有沙粒感。</li>
+              <li>錠劑膠囊與外用製劑（emulsion／suspension／aerosol）大致在 <strong>50 µm</strong> 上下。</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="topic">
+          <div class="topic-title">粒徑測量方法（<span class="en">Particle size measurement</span>）</div>
+          <div class="callout">
+            ⚑ <strong>英文也會考</strong>；其中<strong>沉降法（Sedimentation）</strong>國考出現至少三次，英文務必記。
+          </div>
+
+          <div class="keynote">
+            <strong>① 過篩法　<span class="drug">Sieving method</span></strong>
+            <ul>
+              <li><strong>原理</strong>：利用震盪裝置使粉末震動通過篩網（震動或重力方式）。</li>
+              <li><strong>特性</strong>：所有測量法中<strong>最簡單、最易操作</strong>；可測大量粉末與大顆粒。</li>
+              <li><strong>測量</strong>：算術平均粒徑、過篩直徑。</li>
+              <li><strong>缺點</strong>：無法測得分子量。</li>
+              <li><strong>範圍</strong>：約 <strong>50~5000 µm</strong>。</li>
+            </ul>
+          </div>
+
+          <div class="keynote">
+            <strong>② 顯微鏡法　<span class="drug">Microscopic method</span></strong>
+            <ul>
+              <li><strong>原理</strong>：利用顯微鏡觀察顆粒大小。</li>
+              <li><strong>特性</strong>：可直接觀察顆粒外觀、大小、形狀等表面因素。</li>
+              <li><strong>測量</strong>：投影面積直徑。</li>
+              <li><strong>種類</strong>：光學顯微鏡（<span class="drug">Optical microscopy</span>）、電子顯微鏡（<span class="drug">Electron microscopy</span>）。</li>
+              <li><strong>比較</strong>：光學約 <strong>0.1~100 µm</strong>（10⁻⁷~10⁻⁴ m），較粗；電子約 <strong>1Å~100 µm</strong>（10⁻¹⁰~10⁻⁴ m），更細小。</li>
+            </ul>
+          </div>
+
+          <div class="keynote">
+            <strong>③ 沉降法　<span class="drug">Sedimentation method</span></strong>　<em>★ 國考≥3 次</em>
+            <ul>
+              <li><strong>原理</strong>：利用顆粒大小與沉降速率測量；沉降速率與 <span class="drug">Stokes' equation</span>、粒子重量有關。</li>
+              <li><strong>特性</strong>：使用 <span class="drug">Andreasen apparatus</span> 測量（記法：沈（沉降）魚落雁 An-）。</li>
+              <li><strong>測量</strong>：<span class="drug">Stokes' diameter</span>（史脫克斯直徑）（記法：要誠（沉降）實 Stoke's-）。</li>
+              <li><strong>範圍</strong>：約 <strong>1~100 µm</strong>（10⁻⁶~10⁻⁴ m）。</li>
+            </ul>
+          </div>
+
+          <div class="tbl-cap"><span class="en">Stokes equation</span>（沉降速率）</div>
+          <div class="formula">
+            V = <span class="frac"><span class="num">Δρ · g · d²</span><span class="den">18 η</span></span>
+            <span class="vars">
+              V：沉降速率　｜　Δρ：密度差（內相－外相）　｜　g：重力常數（980 cm/s²）<br>
+              d：直徑　｜　η：外相黏度
+            </span>
+          </div>
+          <div class="keynote">
+            <strong>結論</strong>：沉降速率 ∝ 直徑平方（d²）、∝ 密度差（Δρ）；顆粒越小越不易沉降，外相黏度（η）越大越不易沉降。
+          </div>
+
+          <div class="keynote">
+            <strong>④ 康特計數器　<span class="drug">Coulter Counter</span></strong>（記法：柯基）
+            <ul>
+              <li><strong>原理</strong>：顆粒通過兩端<strong>電極</strong>造成<strong>電阻</strong>改變（電流傳導受阻）→ <strong>由粒子體積測量粒徑</strong>。</li>
+              <li><strong>特性</strong>：全自動化（通電所以全自動）。</li>
+              <li><strong>測量</strong>：<span class="drug">Volume diameter</span>（容積直徑／體積直徑）、體積（<strong>重點是體積</strong>）。</li>
+            </ul>
+          </div>
+
+          <div class="keynote">
+            <strong>⑤ 氣體穿透法　<span class="drug">Air permeability</span></strong>
+            <ul>
+              <li><strong>原理</strong>：氣體通過一定厚度粉末時，利用氣體流速與粉末上下壓力差，測顆粒<strong>比表面積</strong>。</li>
+              <li><strong>特性</strong>：使用 <span class="drug">Fisher subsieve sizer</span>（記法：穿透漁網）；氣體進入樣本前宜先恆壓與除濕（濕度太高粉末易沾黏）。</li>
+              <li><strong>測量</strong>：比表面積。</li>
+            </ul>
+          </div>
+
+          <div class="keynote">
+            <strong>⑥ 氣體吸附法　<span class="drug">Air adsorption</span></strong>
+            <ul>
+              <li><strong>原理</strong>：利用氣體或蒸氣吸附於固體（粉末）表面，測<strong>比表面積</strong>。</li>
+              <li><strong>特性</strong>：使用 <span class="drug">BET equation</span>（記法：被（Be-）吸（吸附））；最常用氣體為<strong>氮氣（N₂）</strong>（看到 N₂ 就想到氣體吸附）。</li>
+              <li><strong>測量</strong>：比表面積、<span class="drug">Volume surface diameter</span>（容積表面平均粒徑，與顆粒表面氣體吸附量相關性較高）。</li>
+              <li><strong>補充</strong>：增加壓力或降低溫度 → 氣體對粉末之吸附量增加。</li>
+            </ul>
+          </div>
+
+          <div class="callout">
+            🔗 <strong>共同點</strong>：氣體穿透法 + 氣體吸附法皆可測「<strong>比表面積</strong>」。（可連結膠體章節其他方程式）
+          </div>
+
+          <div class="keynote">
+            <strong>⑦ <span class="drug">HIAC/Royco</span> 儀器</strong>（記法：光線不好就不用說 Hyro）
+            <ul>
+              <li><strong>原理</strong>：利用<strong>光阻斷法</strong>測量顆粒大小。</li>
+            </ul>
+          </div>
+
+          <div class="tbl-cap">濃縮對照：測得直徑與範圍</div>
+          <table class="cmp">
+            <tr><th>方法</th><th>測得參數／直徑</th><th>範圍 (µm)</th></tr>
+            <tr><td>過篩法<br>Sieving</td><td>算術平均粒徑、過篩直徑</td><td>50~5000</td></tr>
+            <tr><td>顯微鏡法<br>Microscopic</td><td>投影面積直徑</td><td>光學 0.1~100<br>電子 1Å~100</td></tr>
+            <tr><td>沉降法<br>Sedimentation</td><td><span class="drug">Stokes' diameter</span></td><td>1~100</td></tr>
+            <tr><td>康特計數器<br>Coulter</td><td><span class="drug">Volume diameter</span>（體積）</td><td>—</td></tr>
+            <tr><td>氣體穿透法<br>Air permeability</td><td>比表面積</td><td>—</td></tr>
+            <tr><td>氣體吸附法<br>Air adsorption</td><td>比表面積、容積表面平均粒徑</td><td>—</td></tr>
+            <tr><td>HIAC／Royco</td><td>顆粒大小（光阻斷法）</td><td>—</td></tr>
+          </table>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ch10 -->
+    <section class="chapter" id="ch10" data-status="empty" data-name="眼用製劑" style="--c:#A0B0A8">
+      <div class="chapter-head"><span class="num">10</span><h3>眼用製劑</h3><span class="tag">待整理</span><span class="chev">▼</span></div>
+      <div class="chapter-body"><div class="empty-state">尚未整理 — 把這章要背的表格貼給我，我填進來。</div></div>
+    </section>
+
+    <!-- ch11 -->
+    <section class="chapter" id="ch11" data-status="empty" data-name="糖漿・酏・醑・酊劑" style="--c:#C8AEB0">
+      <div class="chapter-head"><span class="num">11</span><h3>糖漿・酏・醑・酊劑</h3><span class="tag">待整理</span><span class="chev">▼</span></div>
+      <div class="chapter-body"><div class="empty-state">尚未整理 — 把這章要背的表格貼給我，我填進來。</div></div>
+    </section>
+
+    <!-- ch12 -->
+    <section class="chapter" id="ch12" data-status="empty" data-name="生物製劑" style="--c:#A8AEBC">
+      <div class="chapter-head"><span class="num">12</span><h3>生物製劑</h3><span class="tag">待整理</span><span class="chev">▼</span></div>
+      <div class="chapter-body"><div class="empty-state">尚未整理 — 把這章要背的表格貼給我，我填進來。</div></div>
+    </section>
+
+    <!-- ch13 -->
+    <section class="chapter" id="ch13" data-status="empty" data-name="試驗檢查法" style="--c:#B5AE9E">
+      <div class="chapter-head"><span class="num">13</span><h3>試驗檢查法</h3><span class="tag">待整理</span><span class="chev">▼</span></div>
+      <div class="chapter-body"><div class="empty-state">尚未整理 — 把這章要背的表格貼給我，我填進來。</div></div>
+    </section>
+
+    <!-- ch14 -->
+    <section class="chapter" id="ch14" data-status="empty" data-name="滅菌・度量衡・CYP450" style="--c:#AAB5AD">
+      <div class="chapter-head"><span class="num">14</span><h3>滅菌・度量衡・CYP450</h3><span class="tag">待整理</span><span class="chev">▼</span></div>
+      <div class="chapter-body"><div class="empty-state">尚未整理 — 把這章要背的表格貼給我，我填進來。</div></div>
+    </section>
+
+  </div>
+  <div class="no-result" id="noResult">查無「<span id="kw"></span>」相關內容</div>
+</main>
+
+<footer>藥師國考 · 藥劑背誦總整理 · 持續更新中</footer>
+
+<script>
+const navEl = document.getElementById('nav');
+const sections = Array.from(document.querySelectorAll('section.chapter'));
+
+/* 由 section 自動生成導覽 */
+sections.forEach(sec=>{
+  const a = document.createElement('a');
+  a.href = '#'+sec.id;
+  a.dataset.target = sec.id;
+  a.dataset.done = sec.dataset.status === 'done' ? '1' : '0';
+  a.style.setProperty('--c', sec.style.getPropertyValue('--c'));
+  a.innerHTML = `<span class="dot"></span>${sec.dataset.name}`;
+  navEl.appendChild(a);
+});
+
+/* 統計 */
+function refreshStat(){
+  const done = sections.filter(s=>s.dataset.status==='done').length;
+  document.getElementById('stat').textContent = `已整理 ${done} / ${sections.length} 章`;
+}
+refreshStat();
+
+/* 收合／展開 */
+document.querySelectorAll('.chapter-head').forEach(h=>{
+  h.addEventListener('click', ()=> h.parentElement.classList.toggle('collapsed'));
+});
+
+/* 搜尋 + 反白 */
+const searchInput = document.getElementById('search');
+const noResult = document.getElementById('noResult');
+const origHTML = {};
+sections.forEach(s=> origHTML[s.id] = s.querySelector('.chapter-body').innerHTML);
+
+function escapeRe(s){return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');}
+function highlight(el, kw){
+  const re = new RegExp(escapeRe(kw),'gi');
+  const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null);
+  const nodes=[]; while(walker.nextNode()) nodes.push(walker.currentNode);
+  nodes.forEach(n=>{
+    if(re.test(n.textContent)){
+      const span=document.createElement('span');
+      span.innerHTML=n.textContent.replace(re,m=>`<mark>${m}</mark>`);
+      n.replaceWith(span);
+    }
+  });
+}
+
+searchInput.addEventListener('input', ()=>{
+  const kw = searchInput.value.trim();
+  let any=false;
+  sections.forEach(sec=>{
+    const body=sec.querySelector('.chapter-body');
+    body.innerHTML = origHTML[sec.id];
+    if(kw===''){ sec.style.display=''; sec.classList.remove('collapsed'); return; }
+    if(sec.textContent.toLowerCase().includes(kw.toLowerCase())){
+      sec.style.display=''; sec.classList.remove('collapsed'); highlight(body,kw); any=true;
+    }else{
+      sec.style.display='none';
+    }
+  });
+  navEl.querySelectorAll('a').forEach(a=>{
+    const sec=document.getElementById(a.dataset.target);
+    a.style.display = sec.style.display==='none' ? 'none' : '';
+  });
+  if(kw!=='' && !any){ noResult.classList.add('show'); document.getElementById('kw').textContent=kw; }
+  else noResult.classList.remove('show');
+});
+</script>
+</body>
+</html>
