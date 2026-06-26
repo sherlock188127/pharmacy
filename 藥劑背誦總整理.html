@@ -85,6 +85,12 @@ main{max-width:1080px;margin:0 auto;padding:26px 22px 80px}
 .topic-title .en{font-family:var(--mono);font-weight:500}
 .lead{font-size:13.5px;margin:8px 0;color:var(--ink)}
 .keynote{background:rgba(0,0,0,.02);border-left:3px solid var(--c);padding:10px 14px;border-radius:0 8px 8px 0;margin:12px 0;font-size:13.5px}
+.keynote.c-blue{background:#e9f1f9;border-left-color:#5b8fc7}
+.keynote.c-orange{background:#fbefdd;border-left-color:#dd9a3c}
+.keynote.c-green{background:#eaf3e9;border-left-color:#6aa86a}
+.keynote.c-purple{background:#f1ecf7;border-left-color:#9a7fb8}
+.keynote.c-pink{background:#fbeef2;border-left-color:#d985a6}
+.keynote.c-teal{background:#e5f2f0;border-left-color:#4fa89a}
 .keynote ul{margin:4px 0 0;padding-left:20px}
 .keynote li{margin:4px 0}
 .callout{font-size:13px;color:#8a5a3a;background:#fbf0e3;border:1px solid #ecdcc4;border-radius:8px;padding:9px 13px;margin:12px 0}
@@ -118,6 +124,14 @@ table.grade tr:nth-child(even) td{background:rgba(0,0,0,.012)}
 table.grade tr.bound td{background:#fcf3e0;box-shadow:inset 2px 0 0 #d6a45a,inset -2px 0 0 #d6a45a}
 .numline{background:rgba(0,0,0,.025);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:10px 0;text-align:center;font-family:var(--mono);font-size:13px;color:var(--ink);overflow-x:auto;white-space:nowrap}
 .numline b{color:#8a6d4a}
+.sol-axis{position:relative;margin:20px 10px 36px;height:58px}
+.sol-axis .ln{position:absolute;top:26px;left:0;right:0;height:2px;background:var(--ink-soft);opacity:.5}
+.sol-axis .lbls{position:absolute;top:0;left:0;right:0;display:grid;grid-template-columns:repeat(7,1fr)}
+.sol-axis .lbls span{font-family:var(--serif);font-weight:700;font-size:14px;color:var(--c);text-align:center}
+.sol-axis .tk{position:absolute;top:20px;transform:translateX(-50%);text-align:center}
+.sol-axis .tk i{display:block;width:2px;height:13px;background:var(--ink-soft);margin:0 auto;opacity:.6}
+.sol-axis .tk b{display:block;font-family:var(--mono);font-weight:700;font-size:12px;color:#8a6d4a;margin-top:5px;white-space:nowrap}
+@media(max-width:640px){.sol-axis .lbls span{font-size:11.5px}.sol-axis .tk b{font-size:10.5px}}
 .qa{background:rgba(0,0,0,.02);border-left:3px solid var(--c);border-radius:0 8px 8px 0;padding:10px 14px;margin:8px 0;font-size:13.5px}
 .qa .ans{color:#4a7a4a;font-weight:500}
 .qa .yr{font-family:var(--mono);font-size:11px;background:var(--c);color:#fff;padding:1px 7px;border-radius:20px;margin-right:6px}
@@ -409,6 +423,19 @@ footer{text-align:center;color:var(--ink-soft);font-size:12px;padding:30px;font-
 
         <div class="topic">
           <div class="topic-title">稀釋劑（<span class="en">Diluent／Filler</span>）</div>
+
+          <div class="keynote"><strong>功用</strong>：增加藥品重量與體積，多為惰性物質。</div>
+          <div class="callout">⚑ 例：藥品僅 0.1g 太小不好吞服 → 加 0.9g <span class="drug">lactose（乳糖）</span> → 總重 1g 錠劑，藥品佔比由 100% 降為 10%。</div>
+          <div class="keynote">
+            <strong>物質</strong>：<span class="drug">lactose（乳糖）</span>、<span class="drug">starch（澱粉）</span>、<span class="drug">MCC（Microcrystalline cellulose，微晶纖維素）</span>、<span class="drug">sorbitol（山梨醇）</span>、<span class="drug">mannitol（甘露醇）</span>、<span class="drug">xylitol（木醣醇）</span>、<span class="drug">sucrose（蔗糖）</span>。
+            <ul>
+              <li><span class="drug">lactose（乳糖）</span>：具良好溶解度與相容性，為<strong>最常用</strong>之稀釋劑。</li>
+              <li><span class="drug">starch（澱粉）</span>：適合用<strong>溫水（熱水）</strong>溶解。</li>
+              <li><span class="drug">Calcium sulfate（硫酸鈣）</span>：<strong>固醇類錠劑</strong>可用作稀釋劑。</li>
+              <li><span class="drug">MCC（微晶纖維素）</span>：良好相容性、均一度、溶解度；<strong>最適合用於直接壓錠</strong>。</li>
+            </ul>
+          </div>
+          <div class="callout">⚑ <strong>咀嚼錠常用記法「山木甘蔗 → 三醇一糖」</strong>：<span class="drug">sorbitol（山梨醇）</span>、<span class="drug">xylitol（木醣醇）</span>、<span class="drug">mannitol（甘露醇）</span> ＝三醇；<span class="drug">sucrose（蔗糖）</span> ＝一糖。</div>
           <div class="keynote">
             <ul>
               <li><strong>常用</strong>：<span class="drug">lactose</span>、<span class="drug">microcrystalline cellulose</span>、<span class="drug">starch</span>、<span class="drug">powdered sucrose</span>、<span class="drug">calcium phosphate</span>。</li>
@@ -428,26 +455,29 @@ footer{text-align:center;color:var(--ink-soft);font-size:12px;padding:30px;font-
           <div class="topic-title">黏合劑（<span class="en">Binder</span>）</div>
           <div class="keynote">
             <strong>功用</strong>：提供黏合力，使顆粒容易流動。<br>
-            <strong>常用物質</strong>：<span class="drug">阿拉伯膠 Acacia</span>、<span class="drug">MCC</span>、<span class="drug">MC</span>（甲基纖維素）、<span class="drug">Povidone (PVP)</span>。
+            <strong>常用物質</strong>：<span class="drug">Acacia（阿拉伯膠）</span>、<span class="drug">MCC（Microcrystalline cellulose，微晶纖維素）</span>、<span class="drug">MC（Methylcellulose，甲基纖維素）</span>、<span class="drug">Povidone（PVP，聚維酮）</span>。
           </div>
           <div class="keynote">
             <strong>對水敏感可改用（纖維素衍生物等）</strong>
             <ul>
-              <li><span class="drug">HPMC</span>（羥丙基甲基纖維素，＝hypromellose）：較不影響口服吸收速率；<strong>易溶於冷水</strong>，熱水中較易分散（不溶於酒精但可在酒精分散 → 亦可當黏合劑）。</li>
-              <li><span class="drug">HPC</span>（羥丙基纖維素）：可溶於水與酒精。</li>
-              <li><span class="drug">EC</span>（乙基纖維素）：<strong>不溶於水，易阻礙藥物釋出</strong>；中華藥典 Colorcon 公司 <span class="drug">Surelease</span> 含 Ethylcellulose。</li>
-              <li><span class="drug">PVP</span>（聚乙烯吡咯烷酮）：易溶於水（亦溶酒精）。</li>
+              <li><span class="drug">HPMC（Hydroxypropyl methylcellulose，羥丙基甲基纖維素，＝hypromellose）</span>：較不影響口服吸收速率；<strong>易溶於冷水</strong>，熱水中較易分散（不溶於酒精但可在酒精分散 → 亦可當黏合劑）。</li>
+              <li><span class="drug">HPC（Hydroxypropyl cellulose，羥丙基纖維素）</span>：可溶於水與酒精。</li>
+              <li><span class="drug">EC（Ethylcellulose，乙基纖維素）</span>：<strong>不溶於水，易阻礙藥物釋出</strong>；中華藥典 Colorcon 公司 <span class="drug">Surelease</span> 含 Ethylcellulose。</li>
+              <li><span class="drug">PVP（Polyvinylpyrrolidone，聚乙烯吡咯烷酮）</span>：易溶於水（亦溶酒精）。</li>
             </ul>
           </div>
+          <div class="tbl-cap">製備濕團塊 — 黏合劑分類</div>
+          <div class="keynote c-blue">
+            <strong>💧 水性 binders</strong>：<span class="drug">PVP</span> 溶液、<span class="drug">cornstarch</span>(10~20%)、<span class="drug">glucose solution</span>(25~50%)、<span class="drug">molasses</span>(糖蜜)、<span class="drug">gelatin solution</span>、<span class="drug">methylcellulose</span>(3%)、<span class="drug">carboxymethyl cellulose</span>、<span class="drug">MCC（Microcrystalline cellulose，微晶纖維素）</span>。
+          </div>
+          <div class="keynote c-orange">
+            <strong>🛢️ 非水性 binders</strong>：<span class="drug">HPMC</span>、<span class="drug">PVP</span>、<span class="drug">HPC</span>、<span class="drug">EC</span> 之酒精或有機媒液（含對水敏感成分時用）。
+          </div>
+          <div class="keynote c-green">
+            <strong>乾燥粉狀 binders</strong>：<span class="drug">MCC（Microcrystalline cellulose）</span>、<span class="drug">acacia powder</span>、<span class="drug">colloidal clays</span>、<span class="drug">amylose</span>、<span class="drug">PVP</span>。
+          </div>
           <div class="keynote">
-            <strong>製備濕團塊 — 黏合劑分類</strong>
-            <ul>
-              <li><strong>水性 binders</strong>：<span class="drug">PVP</span> 溶液、<span class="drug">cornstarch</span>(10~20%)、<span class="drug">glucose solution</span>(25~50%)、<span class="drug">molasses</span>(糖蜜)、<span class="drug">gelatin solution</span>、<span class="drug">methylcellulose</span>(3%)、<span class="drug">carboxymethyl cellulose</span>、<span class="drug">MCC</span>。</li>
-              <li><strong>非水性 binders</strong>：<span class="drug">HPMC</span>、<span class="drug">PVP</span>、<span class="drug">HPC</span>、<span class="drug">EC</span> 之酒精或有機媒液（含對水敏感成分時用）。</li>
-              <li><strong>乾燥粉狀 binders</strong>：<span class="drug">MCC</span>、<span class="drug">acacia powder</span>、<span class="drug">colloidal clays</span>、<span class="drug">amylose</span>、<span class="drug">PVP</span>。</li>
-              <li><span class="drug">Starch paste</span>（澱粉糊）：有澱粉崩解性又有糖的黏結作用，不阻礙錠片崩散與溶解。</li>
-              <li>冷水比熱水好溶；液體黏合劑效果通常比乾粉好。</li>
-            </ul>
+            <span class="drug">Starch paste</span>（澱粉糊）：有澱粉崩解性又有糖的黏結作用，不阻礙錠片崩散與溶解。冷水比熱水好溶；液體黏合劑效果通常比乾粉好。
           </div>
         </div>
 
@@ -465,12 +495,12 @@ footer{text-align:center;color:var(--ink-soft);font-size:12px;padding:30px;font-
               <li><span class="drug">starch</span>：通常用 5~10%（可高達 20% 以促進更快速崩散）。</li>
             </ul>
           </div>
-          <div class="keynote">
-            <strong>崩散機制</strong>
-            <ul>
-              <li><strong>SWELLING 吸水膨脹</strong>：sodium starch glycolate、croscarmellose（玉米／馬鈴薯澱粉亦屬之，需加 3~15%）。</li>
-              <li><strong>WICKING 毛細作用</strong>：crospovidone（水不溶性，靠毛細將水分導入）。</li>
-            </ul>
+          <div class="tbl-cap">崩散機制</div>
+          <div class="keynote c-blue">
+            <strong>SWELLING 吸水膨脹</strong>：<span class="drug">sodium starch glycolate</span>、<span class="drug">croscarmellose</span>（玉米／馬鈴薯澱粉亦屬之，需加 3~15%）。
+          </div>
+          <div class="keynote c-teal">
+            <strong>WICKING 毛細作用</strong>：<span class="drug">crospovidone</span>（水不溶性，靠毛細將水分導入）。
           </div>
           <div class="callout">
             ⚑ <strong>添加方式</strong>：造粒時添加一部分（ex：一半），剩餘於整粒後、壓錠前再添加 → <strong>雙重崩散</strong>（幫助錠片形成碎片 ＋ 幫助碎片再崩散成細粒）。
@@ -496,6 +526,42 @@ footer{text-align:center;color:var(--ink-soft);font-size:12px;padding:30px;font-
             <tr><td>③ 助流劑<br>Glidant</td><td>減少填充時粉末粒子間摩擦並促進流動（自身好滑動滾動，與機器模型無關）</td><td><span class="drug">Colloidal silicon dioxide</span>（最常用，膠體二氧化矽／Cab-o-sil／Aerosil，1%以下）、cornstarch、talc</td></tr>
           </table>
           <div class="keynote">代表物質多為<strong>硬脂酸鎂</strong>；最常用助流劑為<strong>膠體二氧化矽</strong>。</div>
+
+          <div class="tbl-cap">三種分類詳述（功用＋物質）</div>
+          <div class="keynote">用量：通常 <strong>&lt;1%</strong>（但滑石粉最多可添加 5%）。</div>
+
+          <div class="keynote c-blue">
+            <strong>① Lubricants（潤滑劑）</strong>
+            <ul>
+              <li><strong>功用</strong>：降低顆粒與容器、衝模之摩擦力（減少顆粒跟機器的摩擦力）。</li>
+              <li><strong>物質</strong>：
+                <ul>
+                  <li>★ <span class="drug">Magnesium stearate（硬脂酸鎂）</span>：用量 ≤1%，否則容易發生<strong>雨衣效應</strong>。</li>
+                  <li><span class="drug">Talc（滑石粉）</span>：≤5%（比較例外的物質）。</li>
+                  <li><span class="drug">SLS（Sodium lauryl sulfate，月桂基硫酸鈉）</span>：屬<strong>陰離子型介面活性劑</strong>。</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <div class="callout">
+            ⚑ <strong>雨衣效應</strong>＝延遲藥物崩散、溶離時間（減少藥品釋出、溶離速率下降）。故 Magnesium stearate 用量須 ≤1%。
+          </div>
+
+          <div class="keynote c-orange">
+            <strong>② Anti-adherents（抗黏著劑）</strong>
+            <ul>
+              <li><strong>功用</strong>：減少顆粒黏著、降低顆粒凝集（降低顆粒間黏附）。</li>
+              <li><strong>物質</strong>：<span class="drug">Magnesium stearate（硬脂酸鎂）</span>、<span class="drug">Talc（滑石粉）</span>、玉米澱粉、<span class="drug">SLS（Sodium lauryl sulfate）</span>、<span class="drug">Fumed silicon dioxide（Colloidal silica，膠體二氧化矽，SiO₂）</span>。</li>
+            </ul>
+          </div>
+
+          <div class="keynote c-green">
+            <strong>③ Glidants（助流劑／滑動劑）</strong>　<em>★ 比較常用的是助流劑</em>
+            <ul>
+              <li><strong>功用</strong>：減少顆粒之間摩擦力，增加顆粒流動性。</li>
+              <li><strong>物質</strong>：<span class="drug">Magnesium stearate（硬脂酸鎂）</span>、<span class="drug">Talc（滑石粉）</span>、澱粉、<span class="drug">Fumed silicon dioxide（Colloidal silica，膠體二氧化矽，SiO₂）</span>。</li>
+            </ul>
+          </div>
         </div>
 
       </div>
@@ -705,8 +771,15 @@ footer{text-align:center;color:var(--ink-soft);font-size:12px;padding:30px;font-
               <li><strong>④ 對應名稱</strong>：極易 → 易 → 可 → 略 → 微 → 極微 → 幾不溶。</li>
             </ul>
           </div>
-          <div class="numline">
-            極易 │ <b>10<sup>0</sup></b> │ 易 │ <b>10<sup>1</sup></b> │ 可 │ <b>30</b> │ 略 │ <b>10<sup>2</sup></b> │ 微 │ <b>10<sup>3</sup></b> │ 極微 │ <b>10<sup>4</sup></b> │ 幾不溶
+          <div class="sol-axis">
+            <div class="lbls"><span>極易</span><span>易</span><span>可</span><span>略</span><span>微</span><span>極微</span><span>幾不溶</span></div>
+            <div class="ln"></div>
+            <div class="tk" style="left:14.2857%"><i></i><b>1</b></div>
+            <div class="tk" style="left:28.5714%"><i></i><b>10</b></div>
+            <div class="tk" style="left:42.8571%"><i></i><b>30</b></div>
+            <div class="tk" style="left:57.1428%"><i></i><b>10<sup>2</sup></b></div>
+            <div class="tk" style="left:71.4285%"><i></i><b>10<sup>3</sup></b></div>
+            <div class="tk" style="left:85.7142%"><i></i><b>10<sup>4</sup></b></div>
           </div>
           <div class="keynote">範例：1g 溶質需 <strong>20mL</strong> 溶媒 → 落在 10–30 → 屬「<strong>可溶性</strong>」。</div>
 
