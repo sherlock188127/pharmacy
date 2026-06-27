@@ -3,128 +3,91 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>衝刺排程 6/23–6/28</title>
+<title>衝刺收尾排程</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#f4 ecd9;
-    --bg:#f4ecd9;
-    --card:#fbf6ea;
-    --ink:#3a3026;
-    --ink-soft:#6b5d4b;
-    --line:#e3d6bd;
-    --ink-light:#9a8a72;
-    /* 科目色：避開以紅為主色，採沉穩多彩 */
-    --pharm:#2f6f5e;      /* 藥理 — 墨綠 */
-    --pharm-bg:#e4efe9;
-    --anal:#3d5a80;       /* 藥分 — 靛藍 */
-    --anal-bg:#e3eaf2;
-    --formul:#9c6b3f;     /* 藥劑 — 赭棕 */
-    --formul-bg:#f1e6d8;
-    --accent:#8a3b3b;     /* 深緋 — 僅做點綴 */
-    --done:#bcae93;
+    --bg:#f4ecd9; --card:#fbf6ea; --ink:#3a3026; --ink-soft:#6b5d4b;
+    --line:#e3d6bd; --ink-light:#9a8a72;
+    --pharm:#2f6f5e; --pharm-bg:#e4efe9;
+    --anal:#3d5a80;  --anal-bg:#e3eaf2;
+    --formul:#9c6b3f;--formul-bg:#f1e6d8;
+    --herb:#7d6699;  --herb-bg:#ebe5f0;
+    --tcm:#a85751;   --tcm-bg:#f2e4e2;
+    --bio:#2f7d8f;   --bio-bg:#dfeef0;
+    --accent:#8a3b3b; --gold:#b8893b; --done:#bcae93;
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  body{
-    background:var(--bg);
-    color:var(--ink);
-    font-family:"Noto Sans TC",sans-serif;
-    line-height:1.7;
-    padding:28px 16px 64px;
-    -webkit-font-smoothing:antialiased;
-  }
+  body{background:var(--bg);color:var(--ink);font-family:"Noto Sans TC",sans-serif;
+    line-height:1.7;padding:28px 16px 64px;-webkit-font-smoothing:antialiased}
   .wrap{max-width:760px;margin:0 auto}
-  header{text-align:center;margin-bottom:8px}
-  h1{
-    font-family:"Noto Serif TC",serif;
-    font-weight:900;
-    font-size:1.9rem;
-    letter-spacing:.04em;
-    color:var(--ink);
-  }
+  header{text-align:center;margin-bottom:6px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:900;font-size:1.9rem;letter-spacing:.04em}
   .sub{color:var(--ink-soft);font-size:.92rem;margin-top:4px}
-  .legend{
-    display:flex;gap:14px;justify-content:center;flex-wrap:wrap;
-    margin:18px 0 8px;font-size:.82rem;color:var(--ink-soft);
-  }
+  .legend{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin:16px 0 4px;font-size:.82rem;color:var(--ink-soft)}
   .legend span{display:inline-flex;align-items:center;gap:5px}
   .dot{width:10px;height:10px;border-radius:50%;display:inline-block}
 
-  /* 總進度 */
-  .progress-box{
-    background:var(--card);border:1px solid var(--line);border-radius:14px;
-    padding:16px 18px;margin:18px 0 26px;
-  }
+  .progress-box{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin:18px 0 26px}
   .progress-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px}
   .progress-top b{font-family:"Noto Serif TC",serif;font-size:1.05rem}
   .pct{font-family:"JetBrains Mono",monospace;font-weight:700;color:var(--pharm)}
   .bar{height:11px;background:#ece2cd;border-radius:99px;overflow:hidden}
-  .bar-fill{height:100%;width:0;background:linear-gradient(90deg,var(--pharm),var(--anal));
-    border-radius:99px;transition:width .35s ease}
+  .bar-fill{height:100%;width:0;background:linear-gradient(90deg,var(--pharm),var(--anal));border-radius:99px;transition:width .35s ease}
 
-  .day{
-    background:var(--card);border:1px solid var(--line);border-radius:16px;
-    padding:18px 18px 8px;margin-bottom:18px;
-    box-shadow:0 1px 0 #fff inset, 0 2px 8px rgba(120,95,55,.06);
-  }
+  .phase{font-family:"Noto Serif TC",serif;font-weight:900;font-size:1.15rem;color:var(--ink);
+    margin:30px 4px 12px;display:flex;align-items:center;gap:10px}
+  .phase::after{content:"";flex:1;height:1px;background:var(--line)}
+  .phase.spark{color:var(--accent)}
+  .phase .em{font-size:.78rem;font-weight:500;color:var(--ink-light);font-family:"Noto Sans TC"}
+
+  .day{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 18px 8px;margin-bottom:16px;
+    box-shadow:0 1px 0 #fff inset,0 2px 8px rgba(120,95,55,.06)}
+  .day.spark{border-color:#e7caca;box-shadow:0 1px 0 #fff inset,0 3px 14px rgba(138,59,59,.10)}
+  .day.folded{background:#f1ead9;border-style:dashed;opacity:.92}
   .day-head{display:flex;align-items:baseline;gap:12px;margin-bottom:4px;flex-wrap:wrap}
-  .date{font-family:"Noto Serif TC",serif;font-weight:900;font-size:1.25rem;color:var(--ink)}
-  .tag{
-    font-size:.72rem;font-weight:700;padding:2px 9px;border-radius:99px;
-    background:var(--formul-bg);color:var(--formul);
-  }
+  .date{font-family:"Noto Serif TC",serif;font-weight:900;font-size:1.22rem}
+  .tag{font-size:.72rem;font-weight:700;padding:2px 9px;border-radius:99px;background:var(--formul-bg);color:var(--formul)}
   .tag.rest{background:#efe7d3;color:var(--ink-light)}
-  .hours{margin-left:auto;font-family:"JetBrains Mono",monospace;font-size:.85rem;
-    color:var(--ink-soft);font-weight:700}
+  .tag.spark{background:#f0dcdc;color:var(--accent)}
+  .tag.win{background:var(--pharm-bg);color:var(--pharm)}
+  .hours{margin-left:auto;font-family:"JetBrains Mono",monospace;font-size:.85rem;color:var(--ink-soft);font-weight:700}
 
   ul{list-style:none;margin-top:8px}
-  li{
-    display:flex;align-items:flex-start;gap:11px;
-    padding:9px 4px;border-top:1px dashed var(--line);
-    cursor:pointer;user-select:none;transition:opacity .2s;
-  }
+  li{display:flex;align-items:flex-start;gap:11px;padding:9px 4px;border-top:1px dashed var(--line);cursor:pointer;user-select:none;transition:opacity .2s}
   li:first-child{border-top:none}
-  .cb{
-    flex:0 0 auto;width:20px;height:20px;margin-top:2px;border-radius:6px;
-    border:2px solid var(--line);background:#fff;position:relative;transition:.18s;
-  }
+  .cb{flex:0 0 auto;width:20px;height:20px;margin-top:2px;border-radius:6px;border:2px solid var(--line);background:#fff;position:relative;transition:.18s}
   li[data-subj="pharm"] .cb{border-color:#bcd6ca}
   li[data-subj="anal"]  .cb{border-color:#c2d0e0}
   li[data-subj="formul"].cb{border-color:#e0cdb3}
+  li[data-subj="herb"]  .cb{border-color:#cfc3de}
+  li[data-subj="tcm"]   .cb{border-color:#e0c5c2}
+  li[data-subj="bio"]   .cb{border-color:#bcd8de}
   .item-body{flex:1;min-width:0}
-  .subj{
-    font-size:.7rem;font-weight:700;padding:1px 7px;border-radius:5px;margin-right:7px;
-    vertical-align:1px;white-space:nowrap;
-  }
+  .subj{font-size:.7rem;font-weight:700;padding:1px 7px;border-radius:5px;margin-right:7px;vertical-align:1px;white-space:nowrap}
   .subj.pharm{background:var(--pharm-bg);color:var(--pharm)}
   .subj.anal{background:var(--anal-bg);color:var(--anal)}
   .subj.formul{background:var(--formul-bg);color:var(--formul)}
-  .name{font-family:"JetBrains Mono",monospace;font-weight:500;font-size:.92rem;color:var(--ink)}
+  .subj.herb{background:var(--herb-bg);color:var(--herb)}
+  .subj.tcm{background:var(--tcm-bg);color:var(--tcm)}
+  .subj.bio{background:var(--bio-bg);color:var(--bio)}
+  .name{font-family:"JetBrains Mono",monospace;font-weight:500;font-size:.92rem}
   .dur{font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--ink-light);margin-left:6px}
   .milestone{font-size:.74rem;color:var(--accent);font-weight:700;margin-left:6px}
+  .hint{font-size:.74rem;color:var(--gold);font-weight:700;margin-left:6px}
 
   li.checked .cb{background:var(--pharm);border-color:var(--pharm)}
-  li.checked .cb::after{
-    content:"";position:absolute;left:6px;top:2px;width:5px;height:10px;
-    border:solid #fff;border-width:0 2.5px 2.5px 0;transform:rotate(42deg);
-  }
+  li.checked .cb::after{content:"";position:absolute;left:6px;top:2px;width:5px;height:10px;border:solid #fff;border-width:0 2.5px 2.5px 0;transform:rotate(42deg)}
   li.checked .name,li.checked .dur{text-decoration:line-through;color:var(--done)}
-  li.checked{opacity:.62}
+  li.checked{opacity:.6}
 
-  .note{
-    margin-top:26px;background:#f6eede;border:1px solid #e7d3d3;border-left:4px solid var(--accent);
-    border-radius:10px;padding:14px 16px;font-size:.86rem;color:var(--ink-soft);
-  }
+  .note{margin-top:28px;background:#f6eede;border:1px solid #e7d3d3;border-left:4px solid var(--accent);border-radius:10px;padding:14px 16px;font-size:.86rem;color:var(--ink-soft)}
   .note b{color:var(--accent);font-family:"Noto Serif TC",serif}
   .note ul{margin-top:6px}
   .note li{display:list-item;border:none;padding:2px 0 2px 4px;cursor:default;list-style:disc;margin-left:18px}
-  .reset{
-    display:block;margin:22px auto 0;background:none;border:1px solid var(--line);
-    color:var(--ink-light);font-family:"Noto Sans TC";font-size:.82rem;
-    padding:7px 18px;border-radius:99px;cursor:pointer;transition:.2s;
-  }
+  .reset{display:block;margin:22px auto 0;background:none;border:1px solid var(--line);color:var(--ink-light);font-family:"Noto Sans TC";font-size:.82rem;padding:7px 18px;border-radius:99px;cursor:pointer;transition:.2s}
   .reset:hover{background:#fff;color:var(--ink-soft)}
   footer{text-align:center;color:var(--ink-light);font-size:.78rem;margin-top:24px}
 </style>
@@ -132,32 +95,35 @@
 <body>
 <div class="wrap">
   <header>
-    <h1>期末後衝刺排程</h1>
-    <div class="sub">6/23 – 6/28　第一次讀完：藥理 · 藥分光譜段 · 藥劑剩餘</div>
+    <h1>衝刺收尾排程</h1>
+    <div class="sub">6/28 攻兩大科 · 實習後清尾 · 7/6 影片全收工</div>
   </header>
 
   <div class="legend">
     <span><i class="dot" style="background:var(--pharm)"></i>藥理</span>
     <span><i class="dot" style="background:var(--anal)"></i>藥分</span>
     <span><i class="dot" style="background:var(--formul)"></i>藥劑</span>
+    <span><i class="dot" style="background:var(--herb)"></i>生藥</span>
+    <span><i class="dot" style="background:var(--tcm)"></i>中藥</span>
+    <span><i class="dot" style="background:var(--bio)"></i>生物藥劑</span>
   </div>
 
   <div class="progress-box">
-    <div class="progress-top"><b>總進度</b><span class="pct" id="pct">0 / 0</span></div>
+    <div class="progress-top"><b>影片總進度</b><span class="pct" id="pct">0 / 0</span></div>
     <div class="bar"><div class="bar-fill" id="barfill"></div></div>
   </div>
 
-  <div id="days"></div>
+  <div id="phases"></div>
 
   <div class="note">
-    <b>守住不要提前的（移到實習後晚上／週末＋刷考古）</b>
+    <b>長線並行（7/6 影片收工後持續）</b>
     <ul>
-      <li>生藥剩 4 章：多醣/樹脂、苯丙烷、萜類、揮發油</li>
-      <li>中藥複習（祛風濕起）</li>
-      <li>生物藥劑全部（非線性需先複習前面幾章）</li>
-      <li>藥分：2D NMR + 光譜推理大題（進階補充）、傳統滴定整塊 → 刷題帶</li>
+      <li>中藥：複習① ② 已排入，剩餘段（清熱/瀉下/活血/止血…）7/6 後每晚一段繼續滾</li>
+      <li>生物藥劑：弱章（基本計算/多室/血管外/生體可用率/透析）已起步，其餘章節搭刷題往後接</li>
+      <li>生藥：4 章排入 7/6 收工；藥分 2D NMR＋光譜推理大題、傳統滴定靠考古帶</li>
+      <li>7/6 影片清完後，全力計時刷考古至 7/18</li>
     </ul>
-    <div style="margin-top:8px">每讀完一大段，立刻用該段嵌入的考古題即時驗收；整份計時刷題 6/29 晚上正式開始。</div>
+    <div style="margin-top:8px">背誦/計算條每晚 30–60 分，跟影片並行；累就先做背誦科、影片順延一格，不是欠債。</div>
   </div>
 
   <button class="reset" id="reset">清除所有勾選</button>
@@ -165,81 +131,117 @@
 </div>
 
 <script>
-const DATA=[
-  {date:"6/23",tag:"剛考完 · 回血",rest:true,hours:"4.2hr",items:[
-    {s:"pharm",n:"鴉片類藥物",d:"2:10:00"},
-    {s:"pharm",n:"骨質疏鬆",d:"13:00"},
-    {s:"anal",n:"螢光光譜 FLUOR",d:"1:06:55"},
-    {s:"formul",n:"眼用製劑",d:"44:00"},
+const SUBJ={pharm:"藥理",anal:"藥分",formul:"藥劑",herb:"生藥",tcm:"中藥",bio:"生物藥劑"};
+const PHASES=[
+  {title:"已攻克",em:"6/23–6/27 已讀完 7 章",days:[
+    {date:"已完成",tag:"7 章 ✓",tagcls:"win",folded:true,hours:"",items:[
+      {s:"pharm",n:"骨質疏鬆",d:"13:00",done:true},
+      {s:"pharm",n:"抗甲狀腺藥物",d:"39:00",done:true},
+      {s:"pharm",n:"糖尿病藥物",d:"53:00",done:true},
+      {s:"pharm",n:"NSAID 非類固醇抗發炎",d:"1:21:00",done:true},
+      {s:"anal",n:"螢光光譜 FLUOR",d:"1:06:55",done:true},
+      {s:"formul",n:"眼用製劑",d:"44:00",done:true},
+      {s:"formul",n:"散劑/微粒學",d:"1:09:40",done:true},
+    ]},
   ]},
-  {date:"6/24",tag:"高鐵回台北 · 輕",rest:true,hours:"1.5hr",items:[
-    {s:"pharm",n:"抗甲狀腺藥物",d:"39:00",m:"高鐵上可看"},
-    {s:"pharm",n:"糖尿病藥物",d:"53:00",m:"高鐵上可看"},
+  {title:"明日衝刺 · 兩大科",spark:true,em:"實習前最後一天 · 別撐到崩",days:[
+    {date:"6/28",tag:"攻頂",tagcls:"spark",spark:true,hours:"5.2hr",items:[
+      {s:"anal",n:"NMR 核磁共振光譜",d:"3:02:54",h:"放早上 · 最吃專注"},
+      {s:"pharm",n:"鴉片類藥物",d:"2:10:00",h:"放下午 · 中間務必休息"},
+    ]},
   ]},
-  {date:"6/25",hours:"4.6hr",items:[
-    {s:"pharm",n:"NSAID 非類固醇抗發炎",d:"1:21:00"},
-    {s:"pharm",n:"抗痛風藥物",d:"14:00"},
-    {s:"anal",n:"拉曼/原子/旋光/折光",d:"1:49:12"},
-    {s:"formul",n:"散劑/微粒學",d:"1:09:40"},
-  ]},
-  {date:"6/26",tag:"NMR 專場",hours:"4.4hr",items:[
-    {s:"anal",n:"NMR 核磁共振光譜",d:"3:02:54",m:"✔ 藥分光譜段收工"},
-    {s:"pharm",n:"抗痙攣",d:"18:00"},
-    {s:"pharm",n:"貧血治療劑",d:"28:00"},
-    {s:"pharm",n:"解毒劑",d:"33:00"},
-  ]},
-  {date:"6/27",hours:"4.3hr",items:[
-    {s:"pharm",n:"抗組織胺 1+2",d:"47:00"},
-    {s:"pharm",n:"與胃酸分泌有關的藥物",d:"36:00"},
-    {s:"formul",n:"糖漿…生物製劑1",d:"40:18"},
-    {s:"formul",n:"糖漿…生物製劑2",d:"1:25:54"},
-    {s:"formul",n:"試驗檢查法1",d:"49:34"},
-  ]},
-  {date:"6/28",hours:"4.7hr",items:[
-    {s:"pharm",n:"抗病毒藥物",d:"1:24:00"},
-    {s:"pharm",n:"止吐/止瀉/瀉劑/腸胃蠕動",d:"42:00",m:"✔ 藥理收工"},
-    {s:"formul",n:"試驗檢查法2",d:"1:14:11"},
-    {s:"formul",n:"滅菌檢查/度量衡/CYP450",d:"1:23:34",m:"✔ 藥劑收工"},
+  {title:"實習後清尾",em:"影片清尾 ＋ 每晚附掛背誦/計算 並行",days:[
+    {date:"6/29 一",hours:"影片1.5＋背誦",items:[
+      {s:"pharm",n:"抗痛風藥物",d:"14:00"},
+      {s:"pharm",n:"抗痙攣",d:"18:00"},
+      {s:"pharm",n:"貧血治療劑",d:"28:00"},
+      {s:"pharm",n:"解毒劑",d:"33:00"},
+      {s:"herb",n:"多醣類/樹脂",d:"背誦",h:"生藥剩 4 章之一"},
+    ]},
+    {date:"6/30 二",hours:"影片1.4＋計算",items:[
+      {s:"pharm",n:"抗組織胺 1+2",d:"47:00"},
+      {s:"pharm",n:"與胃酸分泌有關的藥物",d:"36:00"},
+      {s:"bio",n:"基本計算 零階/壹階",d:"練題",h:"先複習弱章"},
+    ]},
+    {date:"7/1 三",hours:"影片1.8＋背誦",items:[
+      {s:"anal",n:"拉曼/原子/旋光/折光",d:"1:49:12",m:"✔ 藥分收工"},
+      {s:"tcm",n:"複習① 補氣/補血/補陰/補陽",d:"背誦"},
+    ]},
+    {date:"7/2 四",hours:"影片2.1＋背誦",items:[
+      {s:"formul",n:"糖漿…生物製劑1",d:"40:18"},
+      {s:"formul",n:"糖漿…生物製劑2",d:"1:25:54"},
+      {s:"herb",n:"苯丙烷",d:"背誦"},
+    ]},
+    {date:"7/3 五",hours:"影片1.5＋計算",items:[
+      {s:"formul",n:"試驗檢查法1",d:"49:34"},
+      {s:"pharm",n:"止吐/止瀉/瀉劑/腸胃蠕動",d:"42:00",m:"✔ 藥理收工"},
+      {s:"bio",n:"多室/血管外",d:"練題",h:"弱章複習"},
+    ]},
+    {date:"7/4 六",tag:"醫院活動 · 晚7–10",tagcls:"spark",hours:"純背誦 3hr",items:[
+      {s:"tcm",n:"複習② 溫裡/理氣/平肝/安神",d:"背誦",h:"不費腦 · 可斷續"},
+      {s:"herb",n:"萜類",d:"背誦"},
+      {s:"tcm",n:"常考方劑整理",d:"背誦"},
+    ]},
+    {date:"7/5 日",tag:"週末",hours:"影片2.6＋計算",items:[
+      {s:"pharm",n:"抗病毒藥物",d:"1:24:00"},
+      {s:"formul",n:"試驗檢查法2",d:"1:14:11"},
+      {s:"bio",n:"生體可用率/透析",d:"練題",h:"弱章複習"},
+    ]},
+    {date:"7/6 一",tag:"影片收尾",tagcls:"win",hours:"影片1.4＋背誦",items:[
+      {s:"formul",n:"滅菌檢查/度量衡/CYP450",d:"1:23:34",m:"✔ 影片全收工 🎉"},
+      {s:"herb",n:"揮發油",d:"背誦",m:"✔ 生藥收工"},
+    ]},
   ]},
 ];
-const SUBJ={pharm:"藥理",anal:"藥分",formul:"藥劑"};
-const KEY="ada_sprint_0623_0628";
-let state=JSON.parse(localStorage.getItem(KEY)||"{}");
 
-const daysEl=document.getElementById("days");
+const KEY="ada_final_sprint_v2";
+let state=JSON.parse(localStorage.getItem(KEY)||"null");
+const firstLoad=(state===null);
+if(firstLoad)state={};
+
+const root=document.getElementById("phases");
 let total=0;
-DATA.forEach((day,di)=>{
-  const card=document.createElement("div");card.className="day";
-  let head=`<div class="day-head"><span class="date">${day.date}</span>`;
-  if(day.tag)head+=`<span class="tag ${day.rest?'rest':''}">${day.tag}</span>`;
-  head+=`<span class="hours">${day.hours}</span></div>`;
-  let ul="<ul>";
-  day.items.forEach((it,ii)=>{
-    const id=`${di}-${ii}`;total++;
-    const on=state[id]?"checked":"";
-    ul+=`<li data-id="${id}" data-subj="${it.s}" class="${on}">
-      <span class="cb"></span>
-      <span class="item-body">
-        <span class="subj ${it.s}">${SUBJ[it.s]}</span>
-        <span class="name">${it.n}</span><span class="dur">${it.d}</span>
-        ${it.m?`<span class="milestone">${it.m}</span>`:""}
-      </span></li>`;
+PHASES.forEach((ph,pi)=>{
+  const h=document.createElement("div");
+  h.className="phase"+(ph.spark?" spark":"");
+  h.innerHTML=`${ph.title}${ph.em?`<span class="em">${ph.em}</span>`:""}`;
+  root.appendChild(h);
+  ph.days.forEach((day,di)=>{
+    const card=document.createElement("div");
+    card.className="day"+(day.spark?" spark":"")+(day.folded?" folded":"");
+    let head=`<div class="day-head"><span class="date">${day.date}</span>`;
+    if(day.tag)head+=`<span class="tag ${day.tagcls||(day.folded?'rest':'')}">${day.tag}</span>`;
+    if(day.hours)head+=`<span class="hours">${day.hours}</span>`;
+    head+=`</div>`;
+    let ul="<ul>";
+    day.items.forEach((it,ii)=>{
+      const id=`${pi}-${di}-${ii}`;total++;
+      if(firstLoad&&it.done)state[id]=true;
+      const on=state[id]?"checked":"";
+      ul+=`<li data-id="${id}" data-subj="${it.s}" class="${on}">
+        <span class="cb"></span>
+        <span class="item-body">
+          <span class="subj ${it.s}">${SUBJ[it.s]}</span>
+          <span class="name">${it.n}</span><span class="dur">${it.d}</span>
+          ${it.h?`<span class="hint">${it.h}</span>`:""}
+          ${it.m?`<span class="milestone">${it.m}</span>`:""}
+        </span></li>`;
+    });
+    ul+="</ul>";
+    card.innerHTML=head+ul;
+    root.appendChild(card);
   });
-  ul+="</ul>";
-  card.innerHTML=head+ul;
-  daysEl.appendChild(card);
 });
+if(firstLoad)localStorage.setItem(KEY,JSON.stringify(state));
 
 function refresh(){
   let done=0;
-  document.querySelectorAll("li[data-id]").forEach(li=>{
-    if(li.classList.contains("checked"))done++;
-  });
+  document.querySelectorAll("li[data-id]").forEach(li=>{if(li.classList.contains("checked"))done++});
   const pct=total?Math.round(done/total*100):0;
   document.getElementById("pct").textContent=`${done} / ${total}　${pct}%`;
   document.getElementById("barfill").style.width=pct+"%";
 }
-daysEl.addEventListener("click",e=>{
+root.addEventListener("click",e=>{
   const li=e.target.closest("li[data-id]");if(!li)return;
   const id=li.dataset.id;
   li.classList.toggle("checked");
