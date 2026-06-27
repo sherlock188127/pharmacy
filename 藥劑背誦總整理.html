@@ -18,7 +18,7 @@
 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700;900&family=Noto+Sans+TC:wght@400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#FBF7EE;
@@ -28,7 +28,7 @@
   --card:#fffdf8;
   --shadow:0 1px 3px rgba(90,80,60,.06),0 6px 20px rgba(90,80,60,.05);
   --serif:'Noto Serif TC',serif;
-  --sans:'Noto Sans TC',sans-serif;
+  --sans:Georgia,'Noto Serif TC',serif;
   --mono:'JetBrains Mono',monospace;
 }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -85,12 +85,11 @@ main{max-width:1080px;margin:0 auto;padding:26px 22px 80px}
 .topic-title .en{font-family:var(--mono);font-weight:500}
 .lead{font-size:13.5px;margin:8px 0;color:var(--ink)}
 .keynote{background:rgba(0,0,0,.02);border-left:3px solid var(--c);padding:10px 14px;border-radius:0 8px 8px 0;margin:12px 0;font-size:13.5px}
-.keynote.c-blue{background:#e9f1f9;border-left-color:#5b8fc7}
-.keynote.c-orange{background:#fbefdd;border-left-color:#dd9a3c}
-.keynote.c-green{background:#eaf3e9;border-left-color:#6aa86a}
-.keynote.c-purple{background:#f1ecf7;border-left-color:#9a7fb8}
-.keynote.c-pink{background:#fbeef2;border-left-color:#d985a6}
-.keynote.c-teal{background:#e5f2f0;border-left-color:#4fa89a}
+.chapter-body .keynote strong,.chapter-body .callout strong,.chapter-body .qa strong{color:#b5482e}
+.t-blue{color:#2f6aa8!important}
+.t-orange{color:#c47a1e!important}
+.t-green{color:#3f8c4f!important}
+.t-red{color:#c0392b!important}
 .keynote ul{margin:4px 0 0;padding-left:20px}
 .keynote li{margin:4px 0}
 .callout{font-size:13px;color:#8a5a3a;background:#fbf0e3;border:1px solid #ecdcc4;border-radius:8px;padding:9px 13px;margin:12px 0}
@@ -101,7 +100,13 @@ table.memo th{background:var(--c);color:#fff;font-weight:500;padding:9px 12px;te
 table.memo td{padding:8px 12px;border-top:1px solid var(--line);vertical-align:top}
 table.memo td:last-child{text-align:right;font-family:var(--mono);white-space:nowrap;color:var(--ink-soft)}
 table.memo tr:nth-child(even) td{background:rgba(0,0,0,.012)}
-.drug{font-family:var(--mono);font-weight:500;color:#7a5d3a}
+.drug{font-family:Georgia,'Noto Serif TC',serif;font-weight:600;color:#6b4a2b;letter-spacing:.2px}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin:9px 0}
+.chip{display:inline-block;background:#fff;border:1px solid #e7ddc9;border-radius:9px;padding:6px 12px;font-size:13px;font-family:Georgia,'Noto Serif TC',serif;color:#5a4a38;box-shadow:0 1px 2px rgba(90,80,60,.04);line-height:1.4}
+.chip .cn{color:var(--ink-soft);font-size:12px}
+.chip .pc{color:#b5482e;font-weight:700;font-family:var(--mono);font-size:12px}
+.chip.star{border-color:#d9a94a;background:#fdf6e8}
+.lbl{color:#3a6ea5;font-weight:700;font-family:'Noto Serif TC',serif}
 mark{background:#f5e3a8;color:inherit;padding:0 1px;border-radius:2px}
 table.cmp{width:100%;border-collapse:collapse;font-size:13px;border:1px solid var(--line);border-radius:8px;overflow:hidden;margin:8px 0 4px}
 table.cmp th{background:var(--c);color:#fff;font-weight:500;padding:9px 12px;text-align:left;font-size:13px}
@@ -140,7 +145,7 @@ table.presv th{background:#f3eef6;color:#5a5263;font-weight:700;padding:11px 14p
 table.presv td{padding:10px 14px;border-bottom:1px solid #efe9e0;vertical-align:top}
 table.presv tr:last-child td{border-bottom:none}
 table.presv tr:nth-child(even) td{background:#faf7f4}
-table.presv .name{font-family:var(--mono);color:#6b5b9a;font-weight:500;line-height:1.5}
+table.presv .name{font-family:Georgia,'Noto Serif TC',serif;color:#6b5b9a;font-weight:600;line-height:1.5}
 table.presv .name small{color:var(--ink-soft);font-weight:400}
 table.presv .conc{font-weight:700}
 table.presv .hl{background:#f6d96b;padding:2px 8px;border-radius:5px;color:#3a352e}
@@ -274,10 +279,10 @@ footer{text-align:center;color:var(--ink-soft);font-size:12px;padding:30px;font-
           </div>
 
           <div class="tbl-cap"><span class="en">Benzalkonium chloride</span>（氯化苯甲烴銨）補充</div>
-          <div class="keynote c-blue">
+          <div class="keynote">
             <strong>陽離子型介面活性劑</strong>
             <ul>
-              <li><strong>特性</strong>：眼用製劑最常用防腐劑。</li>
+              <li><span class="lbl">特性</span>：眼用製劑最常用防腐劑。</li>
               <li><strong>禁忌</strong>：陰離子型成分（如水楊酸鹽 <span class="drug">Salicylate</span>、硝酸鹽 <span class="drug">Nitrate</span>、陰離子界面活性劑、肥皂等）。</li>
               <li><strong>併用</strong>：可併用 <span class="drug">Polymyxin B sulfate</span>（1000 U）或 <span class="drug">EDTA</span>（螯合劑，0.1%）來加強氯化苯甲烴銨之防腐作用。</li>
             </ul>
@@ -291,7 +296,7 @@ footer{text-align:center;color:var(--ink-soft);font-size:12px;padding:30px;font-
 
           <div class="tbl-cap">綠膿桿菌（<span class="en">Pseudomonas aeruginosa</span>）與眼用防腐系統</div>
           <div class="callout">☆ <strong>綠膿桿菌＝眼用製劑中最危險的污染菌</strong></div>
-          <div class="keynote c-orange">
+          <div class="keynote">
             <strong>為什麼最危險？</strong>
             <ul>
               <li>能快速侵入受傷角膜。</li>
@@ -300,7 +305,7 @@ footer{text-align:center;color:var(--ink-soft);font-size:12px;padding:30px;font-
               <li>→ 因此防腐系統必須有效抑制綠膿桿菌生長。</li>
             </ul>
           </div>
-          <div class="keynote c-green">
+          <div class="keynote">
             <strong>防腐重點</strong>
             <ul>
               <li><span class="drug">EDTA</span> 是加強防腐劑的重要助劑（<strong>破壞外膜 → 增強殺菌力</strong>）。</li>
@@ -335,7 +340,7 @@ footer{text-align:center;color:var(--ink-soft);font-size:12px;padding:30px;font-
             <span class="ans">A：(C)</span> — A／D 為 BAC＋Polymyxin B／EDTA、B 為 Chlorobutanol＋Phenylethyl alcohol，皆屬上表對綠膿桿菌有效之組合；唯 (C) 非有效抗綠膿桿菌組合，故效果不佳。</div>
 
           <div class="tbl-cap">113-2 解析：為何 (C) 效果不佳（正負電交互作用 → 沉澱）</div>
-          <div class="keynote c-purple">
+          <div class="keynote">
             <strong><span class="drug">Phenylmercuric acetate</span>（PMA，醋酸苯汞）</strong>
             <ul>
               <li>分子式 <span class="drug">C<sub>8</sub>H<sub>8</sub>HgO<sub>2</sub></span>；結構式 <span class="drug">C<sub>6</sub>H<sub>5</sub>HgOCOCH<sub>3</sub></span>。</li>
@@ -363,8 +368,8 @@ footer{text-align:center;color:var(--ink-soft);font-size:12px;padding:30px;font-
         <div class="topic">
           <div class="topic-title">直接壓錠法（<span class="en">Direct compression tableting</span>）</div>
 
-          <div class="keynote c-teal">
-            <strong>條件</strong>
+          <div class="keynote">
+            <span class="lbl">條件</span>
             <ul>
               <li>有些顆粒狀化學物質，具<strong>流動自如</strong>以及<strong>凝聚（cohesive）</strong>性質者，不須造粒即可直接壓錠。<br>如 <span class="drug">NaCl</span>、<span class="drug">KCl</span>、<span class="drug">aspirin</span>、<span class="drug">methenamine</span>、<span class="drug">ammonium chloride</span>。</li>
               <li><strong>無此條件之化學藥品</strong>：添加適當賦形劑後直接壓錠。
@@ -377,7 +382,7 @@ footer{text-align:center;color:var(--ink-soft);font-size:12px;padding:30px;font-
           </div>
 
           <div class="callout">
-            ⚑ <strong>優點</strong>：製程少，且形成之錠劑有<strong>最佳藥品利用率</strong>（無添加會影響溶離之黏合劑、無二次壓錠過程）。
+            ⚑ <span class="lbl">優點</span>：製程少，且形成之錠劑有<strong>最佳藥品利用率</strong>（無添加會影響溶離之黏合劑、無二次壓錠過程）。
           </div>
 
           <div class="qa"><span class="yr">114-2</span>若藥品本身不具有 cohesive 性質，最適合添加下列何種賦形劑以利於直接壓錠法壓製成錠劑？<br>
@@ -424,10 +429,19 @@ footer{text-align:center;color:var(--ink-soft);font-size:12px;padding:30px;font-
         <div class="topic">
           <div class="topic-title">稀釋劑（<span class="en">Diluent／Filler</span>）</div>
 
-          <div class="keynote c-pink"><strong>功用</strong>：增加藥品重量與體積，多為惰性物質。</div>
+          <div class="keynote"><span class="lbl">功用</span>：增加藥品重量與體積，多為惰性物質。</div>
           <div class="callout">⚑ 例：藥品僅 0.1g 太小不好吞服 → 加 0.9g <span class="drug">lactose（乳糖）</span> → 總重 1g 錠劑，藥品佔比由 100% 降為 10%。</div>
-          <div class="keynote c-blue">
-            <strong>物質</strong>：<span class="drug">lactose（乳糖）</span>、<span class="drug">starch（澱粉）</span>、<span class="drug">MCC（Microcrystalline cellulose，微晶纖維素）</span>、<span class="drug">sorbitol（山梨醇）</span>、<span class="drug">mannitol（甘露醇）</span>、<span class="drug">xylitol（木醣醇）</span>、<span class="drug">sucrose（蔗糖）</span>。
+          <div class="keynote">
+            <span class="lbl">物質</span>
+            <div class="chips">
+              <span class="chip">lactose <span class="cn">乳糖</span></span>
+              <span class="chip">starch <span class="cn">澱粉</span></span>
+              <span class="chip">MCC <span class="cn">微晶纖維素</span></span>
+              <span class="chip">sorbitol <span class="cn">山梨醇</span></span>
+              <span class="chip">mannitol <span class="cn">甘露醇</span></span>
+              <span class="chip">xylitol <span class="cn">木醣醇</span></span>
+              <span class="chip">sucrose <span class="cn">蔗糖</span></span>
+            </div>
             <ul>
               <li><span class="drug">lactose（乳糖）</span>：具良好溶解度與相容性，為<strong>最常用</strong>之稀釋劑。</li>
               <li><span class="drug">starch（澱粉）</span>：適合用<strong>溫水（熱水）</strong>溶解。</li>
@@ -439,7 +453,7 @@ footer{text-align:center;color:var(--ink-soft);font-size:12px;padding:30px;font-
           <div class="keynote">
             <ul>
               <li><strong>常用</strong>：<span class="drug">lactose</span>、<span class="drug">microcrystalline cellulose</span>、<span class="drug">starch</span>、<span class="drug">powdered sucrose</span>、<span class="drug">calcium phosphate</span>。</li>
-              <li><strong>選擇依據</strong>：製造者經驗、成本、安定性、相容性。</li>
+              <li><span class="lbl">選擇依據</span>：製造者經驗、成本、安定性、相容性。</li>
               <li><strong>最受喜愛</strong>：<span class="drug">lactose</span>（溶解度與相容性佳）、<span class="drug">MCC</span>（易壓實、相容性佳、供應品質一致）。</li>
               <li>玉米澱粉常用於直壓；濕粒法加入 <strong>5~15%</strong> 有助造粒或乾燥過程，減少錠劑表面硬化或斑點。</li>
             </ul>
@@ -453,11 +467,11 @@ footer{text-align:center;color:var(--ink-soft);font-size:12px;padding:30px;font-
 
         <div class="topic">
           <div class="topic-title">黏合劑（<span class="en">Binder</span>）</div>
-          <div class="keynote c-orange">
-            <strong>功用</strong>：提供黏合力，使顆粒容易流動。<br>
+          <div class="keynote">
+            <span class="lbl">功用</span>：提供黏合力，使顆粒容易流動。<br>
             <strong>常用物質</strong>：<span class="drug">Acacia（阿拉伯膠）</span>、<span class="drug">MCC（Microcrystalline cellulose，微晶纖維素）</span>、<span class="drug">MC（Methylcellulose，甲基纖維素）</span>、<span class="drug">Povidone（PVP，聚維酮）</span>。
           </div>
-          <div class="keynote c-green">
+          <div class="keynote">
             <strong>對水敏感可改用（纖維素衍生物等）</strong>
             <ul>
               <li><span class="drug">HPMC（Hydroxypropyl methylcellulose，羥丙基甲基纖維素，＝hypromellose）</span>：較不影響口服吸收速率；<strong>易溶於冷水</strong>，熱水中較易分散（不溶於酒精但可在酒精分散 → 亦可當黏合劑）。</li>
@@ -467,14 +481,38 @@ footer{text-align:center;color:var(--ink-soft);font-size:12px;padding:30px;font-
             </ul>
           </div>
           <div class="tbl-cap">製備濕團塊 — 黏合劑分類</div>
-          <div class="keynote c-blue">
-            <strong>💧 水性 binders</strong>：<span class="drug">PVP</span> 溶液、<span class="drug">cornstarch</span>(10~20%)、<span class="drug">glucose solution</span>(25~50%)、<span class="drug">molasses</span>(糖蜜)、<span class="drug">gelatin solution</span>、<span class="drug">methylcellulose</span>(3%)、<span class="drug">carboxymethyl cellulose</span>、<span class="drug">MCC（Microcrystalline cellulose，微晶纖維素）</span>。
+          <div class="keynote">
+            <strong class="t-blue">水性 binders</strong>
+            <div class="chips">
+              <span class="chip">PVP 溶液</span>
+              <span class="chip">cornstarch <span class="pc">10~20%</span></span>
+              <span class="chip">glucose solution <span class="pc">25~50%</span></span>
+              <span class="chip">molasses <span class="cn">糖蜜</span></span>
+              <span class="chip">gelatin solution</span>
+              <span class="chip">methylcellulose <span class="pc">3%</span></span>
+              <span class="chip">carboxymethyl cellulose</span>
+              <span class="chip">MCC <span class="cn">微晶纖維素</span></span>
+            </div>
           </div>
-          <div class="keynote c-orange">
-            <strong>🛢️ 非水性 binders</strong>：<span class="drug">HPMC</span>、<span class="drug">PVP</span>、<span class="drug">HPC</span>、<span class="drug">EC</span> 之酒精或有機媒液（含對水敏感成分時用）。
+          <div class="keynote">
+            <strong class="t-orange">非水性 binders</strong>
+            <div class="chips">
+              <span class="chip">HPMC</span>
+              <span class="chip">PVP</span>
+              <span class="chip">HPC</span>
+              <span class="chip">EC</span>
+            </div>
+            <span class="cn" style="font-size:12.5px;color:var(--ink-soft)">→ 之酒精或有機媒液（含對水敏感成分時用）</span>
           </div>
-          <div class="keynote c-green">
-            <strong>乾燥粉狀 binders</strong>：<span class="drug">MCC（Microcrystalline cellulose）</span>、<span class="drug">acacia powder</span>、<span class="drug">colloidal clays</span>、<span class="drug">amylose</span>、<span class="drug">PVP</span>。
+          <div class="keynote">
+            <strong>乾燥粉狀 binders</strong>
+            <div class="chips">
+              <span class="chip">MCC</span>
+              <span class="chip">acacia powder</span>
+              <span class="chip">colloidal clays</span>
+              <span class="chip">amylose</span>
+              <span class="chip">PVP</span>
+            </div>
           </div>
           <div class="keynote">
             <span class="drug">Starch paste</span>（澱粉糊）：有澱粉崩解性又有糖的黏結作用，不阻礙錠片崩散與溶解。冷水比熱水好溶；液體黏合劑效果通常比乾粉好。
@@ -483,12 +521,22 @@ footer{text-align:center;color:var(--ink-soft);font-size:12px;padding:30px;font-
 
         <div class="topic">
           <div class="topic-title">崩散劑（<span class="en">Disintegrating agents</span>）</div>
-          <div class="keynote c-purple">
-            <strong>物質</strong>：<span class="drug">croscarmellose</span>(2%)、<span class="drug">sodium starch glycolate</span>(5%)、<span class="drug">crospovidone</span>(2~5%)、<span class="drug">corn／potato starches</span>(3~15%)、<span class="drug">sodium carboxymethylcellulose</span>、<span class="drug">PVP</span>、<span class="drug">cation exchange resins</span>、<span class="drug">alginic acid</span>。<br>
-            （<span class="drug">polyvinylpyrrolidone ＝ povidone ＝ PVP</span>）
+          <div class="keynote">
+            <span class="lbl">物質</span>
+            <div class="chips">
+              <span class="chip">croscarmellose <span class="pc">2%</span></span>
+              <span class="chip">sodium starch glycolate <span class="pc">5%</span></span>
+              <span class="chip">crospovidone <span class="pc">2~5%</span></span>
+              <span class="chip">corn／potato starches <span class="pc">3~15%</span></span>
+              <span class="chip">sodium carboxymethylcellulose</span>
+              <span class="chip">PVP</span>
+              <span class="chip">cation exchange resins</span>
+              <span class="chip">alginic acid</span>
+            </div>
+            <span class="cn" style="font-size:12.5px;color:var(--ink-soft)">（polyvinylpyrrolidone ＝ povidone ＝ PVP）</span>
           </div>
-          <div class="keynote c-teal">
-            <strong>重點</strong>
+          <div class="keynote">
+            <span class="lbl">重點</span>
             <ul>
               <li><strong>最受喜愛</strong>：<span class="drug">croscarmellose</span>、<span class="drug">sodium starch glycolate</span> → 高吸水性膨脹與快速作用。</li>
               <li><span class="drug">crospovidone</span>：<strong>水不溶性，毛細作用</strong>。</li>
@@ -496,14 +544,14 @@ footer{text-align:center;color:var(--ink-soft);font-size:12px;padding:30px;font-
             </ul>
           </div>
           <div class="tbl-cap">崩散機制</div>
-          <div class="keynote c-blue">
-            <strong>SWELLING 吸水膨脹</strong>：<span class="drug">sodium starch glycolate</span>、<span class="drug">croscarmellose</span>（玉米／馬鈴薯澱粉亦屬之，需加 3~15%）。
+          <div class="keynote">
+            <strong class="t-blue">SWELLING 吸水膨脹</strong>：<span class="drug">sodium starch glycolate</span>、<span class="drug">croscarmellose</span>（玉米／馬鈴薯澱粉亦屬之，需加 3~15%）。
           </div>
-          <div class="keynote c-teal">
-            <strong>WICKING 毛細作用</strong>：<span class="drug">crospovidone</span>（水不溶性，靠毛細將水分導入）。
+          <div class="keynote">
+            <strong class="t-green">WICKING 毛細作用</strong>：<span class="drug">crospovidone</span>（水不溶性，靠毛細將水分導入）。
           </div>
           <div class="callout">
-            ⚑ <strong>添加方式</strong>：造粒時添加一部分（ex：一半），剩餘於整粒後、壓錠前再添加 → <strong>雙重崩散</strong>（幫助錠片形成碎片 ＋ 幫助碎片再崩散成細粒）。
+            ⚑ <span class="lbl">添加方式</span>：造粒時添加一部分（ex：一半），剩餘於整粒後、壓錠前再添加 → <strong>雙重崩散</strong>（幫助錠片形成碎片 ＋ 幫助碎片再崩散成細粒）。
           </div>
         </div>
 
@@ -513,7 +561,15 @@ footer{text-align:center;color:var(--ink-soft);font-size:12px;padding:30px;font-
             <ul>
               <li><strong>添加量</strong>：依操作而異，一般 <strong>0.1%~5%</strong>（多數不超過 1%，滑石粉可加至 5%）。</li>
               <li><strong>多為厭水性</strong>，使用量太高會延緩濕潤、降低溶離速率。</li>
-              <li><strong>物質</strong>：<span class="drug">magnesium stearate</span>（硬脂酸鎂，最常用）、<span class="drug">calcium stearate</span>、<span class="drug">stearic acid</span>、<span class="drug">talc</span>（滑石粉，加 5%）、<span class="drug">sodium stearyl fumarate</span>。</li>
+              <li><span class="lbl">物質</span>
+                <div class="chips">
+                  <span class="chip star">magnesium stearate <span class="cn">硬脂酸鎂・最常用</span></span>
+                  <span class="chip">calcium stearate</span>
+                  <span class="chip">stearic acid</span>
+                  <span class="chip">talc <span class="cn">滑石粉</span> <span class="pc">5%</span></span>
+                  <span class="chip">sodium stearyl fumarate</span>
+                </div>
+              </li>
               <li><strong>水溶性潤滑劑</strong>（做澄清溶液之錠劑如皮下錠／調劑錠時用，種類少、效果較厭水性差）：<span class="drug">sodium benzoate</span>、sodium benzoate＋sodium acetate 混合、<span class="drug">sodium chloride</span>、<span class="drug">leucine</span>、<span class="drug">PEG／Carbowax 4000</span>。</li>
             </ul>
           </div>
@@ -530,11 +586,11 @@ footer{text-align:center;color:var(--ink-soft);font-size:12px;padding:30px;font-
           <div class="tbl-cap">三種分類詳述（功用＋物質）</div>
           <div class="keynote">用量：通常 <strong>&lt;1%</strong>（但滑石粉最多可添加 5%）。</div>
 
-          <div class="keynote c-blue">
+          <div class="keynote">
             <strong>① Lubricants（潤滑劑）</strong>
             <ul>
-              <li><strong>功用</strong>：降低顆粒與容器、衝模之摩擦力（減少顆粒跟機器的摩擦力）。</li>
-              <li><strong>物質</strong>：
+              <li><span class="lbl">功用</span>：降低顆粒與容器、衝模之摩擦力（減少顆粒跟機器的摩擦力）。</li>
+              <li><span class="lbl">物質</span>：
                 <ul>
                   <li>★ <span class="drug">Magnesium stearate（硬脂酸鎂）</span>：用量 ≤1%，否則容易發生<strong>雨衣效應</strong>。</li>
                   <li><span class="drug">Talc（滑石粉）</span>：≤5%（比較例外的物質）。</li>
@@ -547,19 +603,19 @@ footer{text-align:center;color:var(--ink-soft);font-size:12px;padding:30px;font-
             ⚑ <strong>雨衣效應</strong>＝延遲藥物崩散、溶離時間（減少藥品釋出、溶離速率下降）。故 Magnesium stearate 用量須 ≤1%。
           </div>
 
-          <div class="keynote c-orange">
+          <div class="keynote">
             <strong>② Anti-adherents（抗黏著劑）</strong>
             <ul>
-              <li><strong>功用</strong>：減少顆粒黏著、降低顆粒凝集（降低顆粒間黏附）。</li>
-              <li><strong>物質</strong>：<span class="drug">Magnesium stearate（硬脂酸鎂）</span>、<span class="drug">Talc（滑石粉）</span>、玉米澱粉、<span class="drug">SLS（Sodium lauryl sulfate）</span>、<span class="drug">Fumed silicon dioxide（Colloidal silica，膠體二氧化矽，SiO₂）</span>。</li>
+              <li><span class="lbl">功用</span>：減少顆粒黏著、降低顆粒凝集（降低顆粒間黏附）。</li>
+              <li><span class="lbl">物質</span>：<span class="drug">Magnesium stearate（硬脂酸鎂）</span>、<span class="drug">Talc（滑石粉）</span>、玉米澱粉、<span class="drug">SLS（Sodium lauryl sulfate）</span>、<span class="drug">Fumed silicon dioxide（Colloidal silica，膠體二氧化矽，SiO₂）</span>。</li>
             </ul>
           </div>
 
-          <div class="keynote c-green">
+          <div class="keynote">
             <strong>③ Glidants（助流劑／滑動劑）</strong>　<em>★ 比較常用的是助流劑</em>
             <ul>
-              <li><strong>功用</strong>：減少顆粒之間摩擦力，增加顆粒流動性。</li>
-              <li><strong>物質</strong>：<span class="drug">Magnesium stearate（硬脂酸鎂）</span>、<span class="drug">Talc（滑石粉）</span>、澱粉、<span class="drug">Fumed silicon dioxide（Colloidal silica，膠體二氧化矽，SiO₂）</span>。</li>
+              <li><span class="lbl">功用</span>：減少顆粒之間摩擦力，增加顆粒流動性。</li>
+              <li><span class="lbl">物質</span>：<span class="drug">Magnesium stearate（硬脂酸鎂）</span>、<span class="drug">Talc（滑石粉）</span>、澱粉、<span class="drug">Fumed silicon dioxide（Colloidal silica，膠體二氧化矽，SiO₂）</span>。</li>
             </ul>
           </div>
         </div>
@@ -575,7 +631,7 @@ footer{text-align:center;color:var(--ink-soft);font-size:12px;padding:30px;font-
         <div class="topic">
           <div class="topic-title">Vanishing<span class="en">®</span> cream　消散乳霜</div>
 
-          <div class="keynote c-pink">
+          <div class="keynote">
             <strong>性質</strong>
             <ul>
               <li><span class="drug">o/w</span> 乳劑，含大量水分（<strong>60–80%</strong>）與 <span class="drug">stearic acid</span>（硬脂酸，<strong>10–25%</strong>）或其他油性成分。</li>
@@ -610,7 +666,7 @@ footer{text-align:center;color:var(--ink-soft);font-size:12px;padding:30px;font-
             <tr><td><span class="drug">Propylene glycol</span></td><td>8 g</td></tr>
             <tr><td><span class="drug">Purified water</span></td><td>65.5 g</td></tr>
           </table>
-          <div class="keynote c-blue">
+          <div class="keynote">
             <strong>改良重點</strong>
             <ul>
               <li>多加 <span class="drug">White wax</span>、<span class="drug">White petrolatum</span>。</li>
@@ -625,7 +681,7 @@ footer{text-align:center;color:var(--ink-soft);font-size:12px;padding:30px;font-
         <div class="topic">
           <div class="topic-title"><span class="en">Hydrophilic petrolatum</span>, USP　親水軟石蠟</div>
 
-          <div class="keynote c-orange">
+          <div class="keynote">
             <strong>記法／性質</strong>
             <ul>
               <li>親水軟石蠟本身選用的是<strong>軟石蠟</strong>，之所以「親水」只是因為加入了<strong>界面活性劑</strong>。</li>
@@ -648,7 +704,7 @@ footer{text-align:center;color:var(--ink-soft);font-size:12px;padding:30px;font-
             <tr><td><span class="drug">White petrolatum</span>（白軟石蠟）　<em>烴基基劑</em></td><td>860 g</td></tr>
           </table>
 
-          <div class="keynote c-green">
+          <div class="keynote">
             <strong>重點補充</strong>
             <ul>
               <li><span class="drug">Cholesterol</span> 為主要親水來源。之前用 <span class="drug">anhydrous lanolin</span>（無水羊毛脂）會過敏，故改成 <span class="drug">cholesterol</span>。</li>
@@ -673,7 +729,7 @@ footer{text-align:center;color:var(--ink-soft);font-size:12px;padding:30px;font-
             <tr><td><span class="drug">Purified water</span>（水相 aqueous phase）</td><td>370 g</td></tr>
           </table>
 
-          <div class="keynote c-purple">
+          <div class="keynote">
             <strong>製備（Preparation）</strong>
             <ul>
               <li>將 <span class="drug">white petrolatum</span> 與 <span class="drug">stearyl alcohol</span> 加熱熔融至約 <strong>75°C</strong>。</li>
@@ -681,7 +737,7 @@ footer{text-align:center;color:var(--ink-soft);font-size:12px;padding:30px;font-
             </ul>
           </div>
 
-          <div class="keynote c-teal">
+          <div class="keynote">
             <strong>重點補充</strong>
             <ul>
               <li><span class="drug">Sodium lauryl sulfate</span>（SLS）：為使外相為水相，必選<strong>親水性界面活性劑</strong>（SLS HLB 40）。</li>
@@ -737,8 +793,8 @@ footer{text-align:center;color:var(--ink-soft);font-size:12px;padding:30px;font-
             （一般實驗看到的 5mg/mL 是指 1mL 可溶 5mg；中華藥典定義則以 1g 溶質為標準，依分子調整溶劑／溶液含量。）
           </div>
 
-          <div class="keynote c-pink">
-            <strong>定義</strong>：25°C 時，溶質 <strong>1g 或 1mL</strong> 能溶解於溶劑或溶液之最大量。（多念幾次）
+          <div class="keynote">
+            <span class="lbl">定義</span>：25°C 時，溶質 <strong>1g 或 1mL</strong> 能溶解於溶劑或溶液之最大量。（多念幾次）
           </div>
 
           <div class="tbl-cap">溶解度分級（中華藥典）</div>
@@ -753,7 +809,7 @@ footer{text-align:center;color:var(--ink-soft);font-size:12px;padding:30px;font-
             <tr><td>幾不溶<br><span class="en">Insoluble</span></td><td>&gt; 10000</td><td class="idx">&gt; 10<sup>4</sup></td><td>幾不溶</td></tr>
           </table>
 
-          <div class="keynote c-blue">
+          <div class="keynote">
             <strong>英文記法</strong>
             <ul>
               <li><strong>very free 很自由</strong> → <span class="drug">Very soluble</span>（極易溶）、<span class="drug">Free soluble</span>（易溶）。</li>
@@ -874,7 +930,7 @@ footer{text-align:center;color:var(--ink-soft);font-size:12px;padding:30px;font-
             <tr><td><span class="drug">Topical aerosols</span>（外用氣霧劑）</td><td>50~100</td></tr>
           </table>
 
-          <div class="keynote c-orange">
+          <div class="keynote">
             <strong>考點說明</strong>
             <ul>
               <li><span class="drug">Aerosols for the lung</span>（乾粉吸入劑）<strong>1~5 µm</strong>：太重會沉積於口腔，此範圍才能到達支氣管與肺部。（部分版本寫 1~6 或 2~6 皆可）<strong>國考考過數次</strong>。</li>
@@ -892,33 +948,33 @@ footer{text-align:center;color:var(--ink-soft);font-size:12px;padding:30px;font-
             ⚑ <strong>英文也會考</strong>；其中<strong>沉降法（Sedimentation）</strong>國考出現至少三次，英文務必記。
           </div>
 
-          <div class="keynote c-green">
+          <div class="keynote">
             <strong>① 過篩法　<span class="drug">Sieving method</span></strong>
             <ul>
-              <li><strong>原理</strong>：利用震盪裝置使粉末震動通過篩網（震動或重力方式）。</li>
-              <li><strong>特性</strong>：所有測量法中<strong>最簡單、最易操作</strong>；可測大量粉末與大顆粒。</li>
+              <li><span class="lbl">原理</span>：利用震盪裝置使粉末震動通過篩網（震動或重力方式）。</li>
+              <li><span class="lbl">特性</span>：所有測量法中<strong>最簡單、最易操作</strong>；可測大量粉末與大顆粒。</li>
               <li><strong>測量</strong>：算術平均粒徑、過篩直徑。</li>
-              <li><strong>缺點</strong>：無法測得分子量。</li>
+              <li><span class="lbl">缺點</span>：無法測得分子量。</li>
               <li><strong>範圍</strong>：約 <strong>50~5000 µm</strong>。</li>
             </ul>
           </div>
 
-          <div class="keynote c-purple">
+          <div class="keynote">
             <strong>② 顯微鏡法　<span class="drug">Microscopic method</span></strong>
             <ul>
-              <li><strong>原理</strong>：利用顯微鏡觀察顆粒大小。</li>
-              <li><strong>特性</strong>：可直接觀察顆粒外觀、大小、形狀等表面因素。</li>
+              <li><span class="lbl">原理</span>：利用顯微鏡觀察顆粒大小。</li>
+              <li><span class="lbl">特性</span>：可直接觀察顆粒外觀、大小、形狀等表面因素。</li>
               <li><strong>測量</strong>：投影面積直徑。</li>
-              <li><strong>種類</strong>：光學顯微鏡（<span class="drug">Optical microscopy</span>）、電子顯微鏡（<span class="drug">Electron microscopy</span>）。</li>
+              <li><span class="lbl">種類</span>：光學顯微鏡（<span class="drug">Optical microscopy</span>）、電子顯微鏡（<span class="drug">Electron microscopy</span>）。</li>
               <li><strong>比較</strong>：光學約 <strong>0.1~100 µm</strong>（10⁻⁷~10⁻⁴ m），較粗；電子約 <strong>1Å~100 µm</strong>（10⁻¹⁰~10⁻⁴ m），更細小。</li>
             </ul>
           </div>
 
-          <div class="keynote c-teal">
+          <div class="keynote">
             <strong>③ 沉降法　<span class="drug">Sedimentation method</span></strong>　<em>★ 國考≥3 次</em>
             <ul>
-              <li><strong>原理</strong>：利用顆粒大小與沉降速率測量；沉降速率與 <span class="drug">Stokes' equation</span>、粒子重量有關。</li>
-              <li><strong>特性</strong>：使用 <span class="drug">Andreasen apparatus</span> 測量（記法：沈（沉降）魚落雁 An-）。</li>
+              <li><span class="lbl">原理</span>：利用顆粒大小與沉降速率測量；沉降速率與 <span class="drug">Stokes' equation</span>、粒子重量有關。</li>
+              <li><span class="lbl">特性</span>：使用 <span class="drug">Andreasen apparatus</span> 測量（記法：沈（沉降）魚落雁 An-）。</li>
               <li><strong>測量</strong>：<span class="drug">Stokes' diameter</span>（史脫克斯直徑）（記法：要誠（沉降）實 Stoke's-）。</li>
               <li><strong>範圍</strong>：約 <strong>1~100 µm</strong>（10⁻⁶~10⁻⁴ m）。</li>
             </ul>
@@ -932,35 +988,35 @@ footer{text-align:center;color:var(--ink-soft);font-size:12px;padding:30px;font-
               d：直徑　｜　η：外相黏度
             </span>
           </div>
-          <div class="keynote c-pink">
-            <strong>結論</strong>：沉降速率 ∝ 直徑平方（d²）、∝ 密度差（Δρ）；顆粒越小越不易沉降，外相黏度（η）越大越不易沉降。
+          <div class="keynote">
+            <span class="lbl">結論</span>：沉降速率 ∝ 直徑平方（d²）、∝ 密度差（Δρ）；顆粒越小越不易沉降，外相黏度（η）越大越不易沉降。
           </div>
 
-          <div class="keynote c-blue">
+          <div class="keynote">
             <strong>④ 康特計數器　<span class="drug">Coulter Counter</span></strong>（記法：柯基）
             <ul>
-              <li><strong>原理</strong>：顆粒通過兩端<strong>電極</strong>造成<strong>電阻</strong>改變（電流傳導受阻）→ <strong>由粒子體積測量粒徑</strong>。</li>
-              <li><strong>特性</strong>：全自動化（通電所以全自動）。</li>
+              <li><span class="lbl">原理</span>：顆粒通過兩端<strong>電極</strong>造成<strong>電阻</strong>改變（電流傳導受阻）→ <strong>由粒子體積測量粒徑</strong>。</li>
+              <li><span class="lbl">特性</span>：全自動化（通電所以全自動）。</li>
               <li><strong>測量</strong>：<span class="drug">Volume diameter</span>（容積直徑／體積直徑）、體積（<strong>重點是體積</strong>）。</li>
             </ul>
           </div>
 
-          <div class="keynote c-orange">
+          <div class="keynote">
             <strong>⑤ 氣體穿透法　<span class="drug">Air permeability</span></strong>
             <ul>
-              <li><strong>原理</strong>：氣體通過一定厚度粉末時，利用氣體流速與粉末上下壓力差，測顆粒<strong>比表面積</strong>。</li>
-              <li><strong>特性</strong>：使用 <span class="drug">Fisher subsieve sizer</span>（記法：穿透漁網）；氣體進入樣本前宜先恆壓與除濕（濕度太高粉末易沾黏）。</li>
+              <li><span class="lbl">原理</span>：氣體通過一定厚度粉末時，利用氣體流速與粉末上下壓力差，測顆粒<strong>比表面積</strong>。</li>
+              <li><span class="lbl">特性</span>：使用 <span class="drug">Fisher subsieve sizer</span>（記法：穿透漁網）；氣體進入樣本前宜先恆壓與除濕（濕度太高粉末易沾黏）。</li>
               <li><strong>測量</strong>：比表面積。</li>
             </ul>
           </div>
 
-          <div class="keynote c-green">
+          <div class="keynote">
             <strong>⑥ 氣體吸附法　<span class="drug">Air adsorption</span></strong>
             <ul>
-              <li><strong>原理</strong>：利用氣體或蒸氣吸附於固體（粉末）表面，測<strong>比表面積</strong>。</li>
-              <li><strong>特性</strong>：使用 <span class="drug">BET equation</span>（記法：被（Be-）吸（吸附））；最常用氣體為<strong>氮氣（N₂）</strong>（看到 N₂ 就想到氣體吸附）。</li>
+              <li><span class="lbl">原理</span>：利用氣體或蒸氣吸附於固體（粉末）表面，測<strong>比表面積</strong>。</li>
+              <li><span class="lbl">特性</span>：使用 <span class="drug">BET equation</span>（記法：被（Be-）吸（吸附））；最常用氣體為<strong>氮氣（N₂）</strong>（看到 N₂ 就想到氣體吸附）。</li>
               <li><strong>測量</strong>：比表面積、<span class="drug">Volume surface diameter</span>（容積表面平均粒徑，與顆粒表面氣體吸附量相關性較高）。</li>
-              <li><strong>補充</strong>：增加壓力或降低溫度 → 氣體對粉末之吸附量增加。</li>
+              <li><span class="lbl">補充</span>：增加壓力或降低溫度 → 氣體對粉末之吸附量增加。</li>
             </ul>
           </div>
 
@@ -968,10 +1024,10 @@ footer{text-align:center;color:var(--ink-soft);font-size:12px;padding:30px;font-
             🔗 <strong>共同點</strong>：氣體穿透法 + 氣體吸附法皆可測「<strong>比表面積</strong>」。（可連結膠體章節其他方程式）
           </div>
 
-          <div class="keynote c-purple">
+          <div class="keynote">
             <strong>⑦ <span class="drug">HIAC/Royco</span> 儀器</strong>（記法：光線不好就不用說 Hyro）
             <ul>
-              <li><strong>原理</strong>：利用<strong>光阻斷法</strong>測量顆粒大小。</li>
+              <li><span class="lbl">原理</span>：利用<strong>光阻斷法</strong>測量顆粒大小。</li>
             </ul>
           </div>
 
@@ -992,9 +1048,71 @@ footer{text-align:center;color:var(--ink-soft);font-size:12px;padding:30px;font-
     </section>
 
     <!-- ch10 -->
-    <section class="chapter" id="ch10" data-status="empty" data-name="眼用製劑" style="--c:#A0B0A8">
-      <div class="chapter-head"><span class="num">10</span><h3>眼用製劑</h3><span class="tag">待整理</span><span class="chev">▼</span></div>
-      <div class="chapter-body"><div class="empty-state">尚未整理 — 把這章要背的表格貼給我，我填進來。</div></div>
+    <section class="chapter" id="ch10" data-status="done" data-name="眼用製劑" style="--c:#A0B0A8">
+      <div class="chapter-head"><span class="num">10</span><h3>眼用製劑</h3><span class="tag">已整理</span><span class="chev">▼</span></div>
+      <div class="chapter-body">
+
+        <div class="topic">
+          <div class="topic-title">眼用製劑之添加劑</div>
+
+          <div class="tbl-cap">防腐劑（眼用）</div>
+          <table class="cmp">
+            <tr><th>防腐劑</th><th>濃度</th><th>備註</th></tr>
+            <tr><td><span class="mk-y"><span class="drug">Benzalkonium Cl</span></span></td><td>0.004–0.01%</td><td>禁與 <span class="drug">Nitrate</span> 或 <span class="drug">Salicylate</span> 藥品併用</td></tr>
+            <tr><td><span class="drug">Benzethonium Cl</span></td><td>0.01%</td><td>—</td></tr>
+            <tr><td><span class="mk-y"><span class="drug">Chlorobutanol</span></span></td><td>0.5%</td><td>易水解成鹽酸</td></tr>
+            <tr><td><span class="drug">Phenylmercuric acetate</span></td><td>0.004%</td><td>—</td></tr>
+            <tr><td><span class="drug">Phenylmercuric nitrate</span></td><td>0.004%</td><td>—</td></tr>
+            <tr><td><span class="drug">Thimerosal</span></td><td>0.005%</td><td>—</td></tr>
+          </table>
+
+          <div class="tbl-cap">等張劑</div>
+          <div class="keynote">
+            <ul>
+              <li><span class="drug">0.9% NaCl solution</span></li>
+              <li><span class="drug">1.9% Borate solution</span></li>
+              <li>等張的 NaCl solution 是 <strong>0.9%</strong>，但眼睛對 <strong>0.6~2.0% NaCl solution</strong> 有耐受性。</li>
+            </ul>
+          </div>
+
+          <div class="tbl-cap">增稠劑（眼用）</div>
+          <div class="keynote">
+            <span class="lbl">功用</span>：延長溶液與眼睛之接觸時間。<br>
+            <strong>常用</strong>：<span class="drug">Methylcellulose</span>、<span class="drug">Hydroxypropyl methylcellulose</span>、<span class="drug">Polyvinyl alcohol</span>。
+          </div>
+          <div class="tbl-cap">眼用增稠劑之使用濃度（以下都可用）</div>
+          <table class="cmp">
+            <tr><th>增稠劑</th><th>濃度</th></tr>
+            <tr><td><span class="drug">HPMC（Hydroxypropyl methylcellulose，羥丙基甲基纖維素）</span></td><td>1.0%</td></tr>
+            <tr><td><span class="drug">PVA（Polyvinyl alcohol，聚乙烯醇）</span></td><td>1.4%</td></tr>
+            <tr><td><span class="drug">PVP（Polyvinylpyrrolidone，聚乙烯吡咯烷酮）</span></td><td>1.7%</td></tr>
+            <tr><td><span class="drug">MC（Methylcellulose，甲基纖維素）</span></td><td>2.0%</td></tr>
+            <tr><td><span class="drug">HEC（Hydroxyethylcellulose，羥乙基纖維素，冷水可溶）</span></td><td>0.8%</td></tr>
+            <tr><td><span class="drug">CMC（Carboxymethylcellulose，羧甲基纖維素）</span></td><td>0.4–1%</td></tr>
+          </table>
+
+          <div class="qa"><span class="yr">39</span>下列何者最不適合作為眼用溶液之增稠劑？<br>
+            (A) <span class="drug">polyvinyl alcohol</span>　(B) <span class="drug">microcrystalline cellulose</span>　(C) <span class="drug">hydroxypropyl methylcellulose</span>　(D) <span class="drug">hydroxyethyl cellulose</span><br>
+            <span class="ans">A：(B) microcrystalline cellulose</span> — MCC <strong>水溶性差</strong>，不適合作眼用溶液增稠劑（增稠劑須溶於水形成黏稠溶液）；A／C／D 皆為水溶性纖維素或 PVA，可作增稠劑。</div>
+
+          <div class="tbl-cap">補充：全能的微晶纖維素（MCC，Avicel）</div>
+          <div class="keynote">
+            <span class="drug">Microcrystalline cellulose（微晶纖維素）</span> 可作崩散劑、助懸劑、稀釋劑：
+            <ul>
+              <li>常做為<strong>直接壓錠法</strong>製備錠劑所需之賦形劑。</li>
+              <li>由天然纖維素經<strong>強酸</strong>處理、<strong>保留晶型</strong>部分製備而得 → 故<strong>水溶性差</strong>。</li>
+              <li>具些微之<strong>潤滑</strong>特性。</li>
+              <li>可做為<strong>助懸劑</strong>。</li>
+              <li>添加於錠劑具<strong>崩散</strong>功能。</li>
+              <li>→ 但潤滑能力還不夠，所以需額外添加潤滑劑。</li>
+            </ul>
+          </div>
+          <div class="qa"><span class="yr">94 二技</span>使用微晶纖維素（Avicel）作為直接壓錠之賦形劑時，需要外加下列哪一項成分？<br>
+            (A) 稀釋劑　(B) 黏合劑　(C) 崩散劑　(D) 潤滑劑<br>
+            <span class="ans">A：(D) 潤滑劑</span> — MCC 潤滑能力不足，需外加潤滑劑。</div>
+        </div>
+
+      </div>
     </section>
 
     <!-- ch11 -->
