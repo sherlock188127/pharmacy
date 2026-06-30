@@ -138,6 +138,24 @@ table.grade tr.bound td{background:#fcf3e0;box-shadow:inset 2px 0 0 #d6a45a,inse
 .sol-axis .tk b{display:block;font-family:var(--mono);font-weight:700;font-size:12px;color:#8a6d4a;margin-top:5px;white-space:nowrap}
 @media(max-width:640px){.sol-axis .lbls span{font-size:11.5px}.sol-axis .tk b{font-size:10.5px}}
 .qa{background:rgba(0,0,0,.02);border-left:3px solid var(--c);border-radius:0 8px 8px 0;padding:10px 14px;margin:8px 0;font-size:13.5px}
+.quiz{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:14px 0;box-shadow:var(--shadow)}
+.q-stem{font-weight:500;margin-bottom:10px;font-size:14px;line-height:1.6}
+.opt{display:block;width:100%;text-align:left;background:#fff;border:1px solid var(--line);border-radius:8px;padding:9px 13px;margin:6px 0;font-family:inherit;font-size:13.5px;color:var(--ink);cursor:pointer;transition:all .15s}
+.opt:hover{border-color:#c9b79c;background:#fdfbf6}
+.opt.correct{background:#e6f4ea;border-color:#5fae6f;color:#2c6e3f;font-weight:600}
+.opt.wrong{background:#fbe9e9;border-color:#d98a8a;color:#a04444}
+.opt .pick{font-weight:700;margin-left:6px}
+.opt.correct .pick::after{content:" ✓"}
+.opt.wrong .pick::after{content:" ✗"}
+.q-tools{margin-top:9px;display:flex;gap:8px;flex-wrap:wrap}
+.q-btn{background:var(--c);color:#fff;border:none;border-radius:7px;padding:6px 14px;font-family:inherit;font-size:12.5px;cursor:pointer;font-weight:500}
+.q-btn.ghost{background:transparent;color:var(--ink-soft);border:1px solid var(--line)}
+.q-exp{display:none;margin-top:10px;padding:11px 14px;background:rgba(0,0,0,.025);border-left:3px solid var(--c);border-radius:0 8px 8px 0;font-size:13px;line-height:1.7}
+.q-exp.show{display:block}
+.q-ans{display:none;margin-top:8px;font-size:13.5px;color:#2c6e3f;font-weight:600}
+.q-ans.show{display:block}
+.q-note{display:block;width:100%;margin-top:10px;border:1px dashed #d0c3a8;border-radius:8px;padding:9px 12px;font-family:inherit;font-size:13px;background:#fffdf8;resize:vertical;min-height:42px;color:var(--ink);line-height:1.6}
+.q-note:focus{outline:none;border-color:#c9b79c;background:#fff;box-shadow:0 0 0 3px rgba(201,183,156,.15)}
 .qa .ans{color:#4a7a4a;font-weight:500}
 .qa .yr{font-family:var(--mono);font-size:11px;background:var(--c);color:#fff;padding:1px 7px;border-radius:20px;margin-right:6px}
 table.presv{width:100%;border-collapse:separate;border-spacing:0;font-size:13px;border:1px solid #e7e0ec;border-radius:10px;overflow:hidden;margin:8px 0}
@@ -287,12 +305,16 @@ footer{text-align:center;color:var(--ink-soft);font-size:12px;padding:30px;font-
               <li><strong>併用</strong>：可併用 <span class="drug">Polymyxin B sulfate</span>（1000 U）或 <span class="drug">EDTA</span>（螯合劑，0.1%）來加強氯化苯甲烴銨之防腐作用。</li>
             </ul>
           </div>
-          <div class="qa"><span class="yr">114-1</span>有關眼用溶液的抗菌劑，下列何者可有效對抗大多數 Pseudomonas？<br>
-            (A) <span class="drug">benzethonium chloride</span> (0.005%) ／ <span class="drug">disodium ethylenediaminetetraacetate</span> (0.005%)<br>
-            (B) <span class="drug">phenylmercuric nitrite</span> (0.002%)<br>
-            (C) <span class="drug">benzalkonium chloride</span> (0.01%) ／ <span class="drug">polymyxin B sulfate</span> (1000 USP U/mL)<br>
-            (D) <span class="drug">chlorobutanol</span> (0.1%)<br>
-            <span class="ans">A：(C)</span> — benzalkonium chloride 併用 polymyxin B sulfate，可有效對抗 Pseudomonas（綠膿桿菌）</div>
+          <div class="quiz" data-qid="ch01-114-1">
+            <div class="q-stem"><span class="yr">114-1</span>有關眼用溶液的抗菌劑，下列何者可有效對抗大多數 Pseudomonas？</div>
+            <button class="opt" data-c="0">(A) <span class="drug">benzethonium chloride</span> (0.005%) ／ <span class="drug">disodium ethylenediaminetetraacetate</span> (0.005%)</button>
+            <button class="opt" data-c="0">(B) <span class="drug">phenylmercuric nitrite</span> (0.002%)</button>
+            <button class="opt" data-c="1">(C) <span class="drug">benzalkonium chloride</span> (0.01%) ／ <span class="drug">polymyxin B sulfate</span> (1000 USP U/mL)</button>
+            <button class="opt" data-c="0">(D) <span class="drug">chlorobutanol</span> (0.1%)</button>
+            <div class="q-tools"><button class="q-btn q-exp-btn">顯示詳解</button></div>
+            <div class="q-exp">(C) <span class="drug">benzalkonium chloride</span> 併用 <span class="drug">polymyxin B sulfate</span>，可有效對抗 Pseudomonas（綠膿桿菌）。</div>
+            <textarea class="q-note" placeholder="📝 補充筆記…"></textarea>
+          </div>
 
           <div class="tbl-cap">綠膿桿菌（<span class="en">Pseudomonas aeruginosa</span>）與眼用防腐系統</div>
           <div class="callout">☆ <strong>綠膿桿菌＝眼用製劑中最危險的污染菌</strong></div>
@@ -332,12 +354,16 @@ footer{text-align:center;color:var(--ink-soft);font-size:12px;padding:30px;font-
             <tr><td><span class="drug">Chlorobutanol</span></td><td>0.5%</td><td><span class="mk-y">不宜高壓蒸汽滅菌</span>；久置會分解出 HCl。</td></tr>
           </table>
 
-          <div class="qa"><span class="yr">113-2</span>眼用溶液添加下列何種防腐劑時，其對抗綠膿桿菌之效果<strong>不佳</strong>？<br>
-            (A) <span class="drug">benzalkonium chloride</span> (0.01%) 和 <span class="drug">polymyxin B sulfate</span> (1,000 U/mL)<br>
-            (B) <span class="drug">chlorobutanol</span> (0.5%) 和 <span class="drug">phenylethyl alcohol</span> (0.5%)<br>
-            (C) <span class="drug">phenylmercuric acetate</span> (0.004%) 和 <span class="drug">sodium metabisulfite</span> (0.01%)<br>
-            (D) <span class="drug">benzalkonium chloride</span> (0.01%) 和 <span class="drug">disodium ethylenediaminetetraacetate</span> (0.1%)<br>
-            <span class="ans">A：(C)</span> — A／D 為 BAC＋Polymyxin B／EDTA、B 為 Chlorobutanol＋Phenylethyl alcohol，皆屬上表對綠膿桿菌有效之組合；唯 (C) 非有效抗綠膿桿菌組合，故效果不佳。</div>
+          <div class="quiz" data-qid="ch01-113-2">
+            <div class="q-stem"><span class="yr">113-2</span>眼用溶液添加下列何種防腐劑時，其對抗綠膿桿菌之效果<strong>不佳</strong>？</div>
+            <button class="opt" data-c="0">(A) <span class="drug">benzalkonium chloride</span> (0.01%) 和 <span class="drug">polymyxin B sulfate</span> (1,000 U/mL)</button>
+            <button class="opt" data-c="0">(B) <span class="drug">chlorobutanol</span> (0.5%) 和 <span class="drug">phenylethyl alcohol</span> (0.5%)</button>
+            <button class="opt" data-c="1">(C) <span class="drug">phenylmercuric acetate</span> (0.004%) 和 <span class="drug">sodium metabisulfite</span> (0.01%)</button>
+            <button class="opt" data-c="0">(D) <span class="drug">benzalkonium chloride</span> (0.01%) 和 <span class="drug">disodium ethylenediaminetetraacetate</span> (0.1%)</button>
+            <div class="q-tools"><button class="q-btn q-exp-btn">顯示詳解</button></div>
+            <div class="q-exp">A／D 為 BAC＋Polymyxin B／EDTA、B 為 Chlorobutanol＋Phenylethyl alcohol，皆屬對綠膿桿菌有效之組合；唯 (C) 為汞類 PMA＋還原性 metabisulfite，正負電結合生成沉澱使 PMA 失活，故效果不佳。</div>
+            <textarea class="q-note" placeholder="📝 補充筆記…"></textarea>
+          </div>
 
           <div class="tbl-cap">113-2 解析：為何 (C) 效果不佳（正負電交互作用 → 沉澱）</div>
           <div class="keynote">
@@ -385,9 +411,15 @@ footer{text-align:center;color:var(--ink-soft);font-size:12px;padding:30px;font-
             ⚑ <span class="lbl">優點</span>：製程少，且形成之錠劑有<strong>最佳藥品利用率</strong>（無添加會影響溶離之黏合劑、無二次壓錠過程）。
           </div>
 
-          <div class="qa"><span class="yr">114-2</span>若藥品本身不具有 cohesive 性質，最適合添加下列何種賦形劑以利於直接壓錠法壓製成錠劑？<br>
-            ① <span class="drug">spray-dried lactose</span>　② <span class="drug">dicalcium phosphate</span>　③ <span class="drug">microcrystalline cellulose</span><br>
-            <span class="ans">A：①②③ 皆為可直接壓錠之稀釋劑（答案應為「以上皆是」，請對照官方答案）</span></div>
+          <div class="quiz" data-qid="ch02-114-2">
+            <div class="q-stem"><span class="yr">114-2</span>若藥品本身不具有 cohesive 性質，最適合添加下列何種賦形劑以利於直接壓錠法壓製成錠劑？</div>
+            <button class="opt" data-c="1">① <span class="drug">spray-dried lactose</span></button>
+            <button class="opt" data-c="1">② <span class="drug">dicalcium phosphate</span></button>
+            <button class="opt" data-c="1">③ <span class="drug">microcrystalline cellulose</span></button>
+            <div class="q-tools"><button class="q-btn q-exp-btn">顯示詳解</button></div>
+            <div class="q-exp">①②③ 皆為可直接壓錠之稀釋劑（答案應為「以上皆是」，請對照官方答案）。</div>
+            <textarea class="q-note" placeholder="📝 補充筆記…"></textarea>
+          </div>
         </div>
 
         <div class="topic">
@@ -436,7 +468,7 @@ footer{text-align:center;color:var(--ink-soft);font-size:12px;padding:30px;font-
             <div class="chips">
               <span class="chip">lactose <span class="cn">乳糖</span></span>
               <span class="chip">starch <span class="cn">澱粉</span></span>
-              <span class="chip">MCC <span class="cn">微晶纖維素</span></span>
+              <span class="chip">MCC <span class="cn">Microcrystalline cellulose 微晶纖維素</span></span>
               <span class="chip">sorbitol <span class="cn">山梨醇</span></span>
               <span class="chip">mannitol <span class="cn">甘露醇</span></span>
               <span class="chip">xylitol <span class="cn">木醣醇</span></span>
@@ -491,16 +523,16 @@ footer{text-align:center;color:var(--ink-soft);font-size:12px;padding:30px;font-
               <span class="chip">gelatin solution</span>
               <span class="chip">methylcellulose <span class="pc">3%</span></span>
               <span class="chip">carboxymethyl cellulose</span>
-              <span class="chip">MCC <span class="cn">微晶纖維素</span></span>
+              <span class="chip">MCC <span class="cn">Microcrystalline cellulose 微晶纖維素</span></span>
             </div>
           </div>
           <div class="keynote">
             <strong class="t-orange">非水性 binders</strong>
             <div class="chips">
-              <span class="chip">HPMC</span>
-              <span class="chip">PVP</span>
-              <span class="chip">HPC</span>
-              <span class="chip">EC</span>
+              <span class="chip">HPMC <span class="cn">Hydroxypropyl methylcellulose</span></span>
+              <span class="chip">PVP <span class="cn">Polyvinylpyrrolidone</span></span>
+              <span class="chip">HPC <span class="cn">Hydroxypropyl cellulose</span></span>
+              <span class="chip">EC <span class="cn">Ethylcellulose</span></span>
             </div>
             <span class="cn" style="font-size:12.5px;color:var(--ink-soft)">→ 之酒精或有機媒液（含對水敏感成分時用）</span>
           </div>
@@ -840,9 +872,28 @@ footer{text-align:center;color:var(--ink-soft);font-size:12px;padding:30px;font-
           <div class="keynote">範例：1g 溶質需 <strong>20mL</strong> 溶媒 → 落在 10–30 → 屬「<strong>可溶性</strong>」。</div>
 
           <div class="tbl-cap">例題</div>
-          <div class="qa">Q：1g 溶質需溶在 500 mL，屬何種溶解度？<br><span class="ans">A：微溶</span>（500 落在 100–1000）</div>
-          <div class="qa">Q：略溶落在哪個範圍？<br><span class="ans">A：溶解 1g 溶質需 30~100 mL 溶劑或溶液</span></div>
-          <div class="qa"><span class="yr">114-2</span>當 1g 或 1mL 藥品能溶於下列多少 mL 溶媒時，其溶解度符合中華藥典所規定之「略溶」範圍？(A) 5　(B) 10　(C) 50　(D) 200<br><span class="ans">A：(C) 50</span>（略溶 = 30–100 mL）</div>
+          <div class="quiz" data-qid="ch07-sol-ex1">
+            <div class="q-stem">Q：1g 溶質需溶在 500 mL，屬何種溶解度？</div>
+            <div class="q-tools"><button class="q-btn q-ans-btn">顯示答案</button></div>
+            <div class="q-ans">微溶（500 落在 100–1000）</div>
+            <textarea class="q-note" placeholder="📝 補充筆記…"></textarea>
+          </div>
+          <div class="quiz" data-qid="ch07-sol-ex2">
+            <div class="q-stem">Q：略溶落在哪個範圍？</div>
+            <div class="q-tools"><button class="q-btn q-ans-btn">顯示答案</button></div>
+            <div class="q-ans">溶解 1g 溶質需 30~100 mL 溶劑或溶液</div>
+            <textarea class="q-note" placeholder="📝 補充筆記…"></textarea>
+          </div>
+          <div class="quiz" data-qid="ch07-114-2">
+            <div class="q-stem"><span class="yr">114-2</span>當 1g 或 1mL 藥品能溶於下列多少 mL 溶媒時，其溶解度符合中華藥典所規定之「略溶」範圍？</div>
+            <button class="opt" data-c="0">(A) 5</button>
+            <button class="opt" data-c="0">(B) 10</button>
+            <button class="opt" data-c="1">(C) 50</button>
+            <button class="opt" data-c="0">(D) 200</button>
+            <div class="q-tools"><button class="q-btn q-exp-btn">顯示詳解</button></div>
+            <div class="q-exp">略溶 = 1g 溶質需 30–100 mL 溶媒，50 落在此範圍。</div>
+            <textarea class="q-note" placeholder="📝 補充筆記…"></textarea>
+          </div>
         </div>
 
         <div class="topic">
@@ -876,9 +927,24 @@ footer{text-align:center;color:var(--ink-soft);font-size:12px;padding:30px;font-
           </div>
 
           <div class="tbl-cap">例題</div>
-          <div class="qa">Q：乙醇含量百分率是在幾度下測得的容量？<br><span class="ans">A：15.56°C</span></div>
-          <div class="qa">Q：丙三醇在錠劑的作用？<br><span class="ans">A：塑化劑</span></div>
-          <div class="qa">Q：糖漿劑添加丙三醇的作用？<br><span class="ans">A：甜味劑或防腐劑</span></div>
+          <div class="quiz" data-qid="ch07-solv-ex1">
+            <div class="q-stem">Q：乙醇含量百分率是在幾度下測得的容量？</div>
+            <div class="q-tools"><button class="q-btn q-ans-btn">顯示答案</button></div>
+            <div class="q-ans">15.56°C</div>
+            <textarea class="q-note" placeholder="📝 補充筆記…"></textarea>
+          </div>
+          <div class="quiz" data-qid="ch07-solv-ex2">
+            <div class="q-stem">Q：丙三醇在錠劑的作用？</div>
+            <div class="q-tools"><button class="q-btn q-ans-btn">顯示答案</button></div>
+            <div class="q-ans">塑化劑</div>
+            <textarea class="q-note" placeholder="📝 補充筆記…"></textarea>
+          </div>
+          <div class="quiz" data-qid="ch07-solv-ex3">
+            <div class="q-stem">Q：糖漿劑添加丙三醇的作用？</div>
+            <div class="q-tools"><button class="q-btn q-ans-btn">顯示答案</button></div>
+            <div class="q-ans">甜味劑或防腐劑</div>
+            <textarea class="q-note" placeholder="📝 補充筆記…"></textarea>
+          </div>
         </div>
 
         <div class="topic">
@@ -1091,9 +1157,16 @@ footer{text-align:center;color:var(--ink-soft);font-size:12px;padding:30px;font-
             <tr><td><span class="drug">CMC（Carboxymethylcellulose，羧甲基纖維素）</span></td><td>0.4–1%</td></tr>
           </table>
 
-          <div class="qa"><span class="yr">39</span>下列何者最不適合作為眼用溶液之增稠劑？<br>
-            (A) <span class="drug">polyvinyl alcohol</span>　(B) <span class="drug">microcrystalline cellulose</span>　(C) <span class="drug">hydroxypropyl methylcellulose</span>　(D) <span class="drug">hydroxyethyl cellulose</span><br>
-            <span class="ans">A：(B) microcrystalline cellulose</span> — MCC <strong>水溶性差</strong>，不適合作眼用溶液增稠劑（增稠劑須溶於水形成黏稠溶液）；A／C／D 皆為水溶性纖維素或 PVA，可作增稠劑。</div>
+          <div class="quiz" data-qid="ch10-39">
+            <div class="q-stem"><span class="yr">39</span>下列何者最不適合作為眼用溶液之增稠劑？</div>
+            <button class="opt" data-c="0">(A) <span class="drug">polyvinyl alcohol</span></button>
+            <button class="opt" data-c="1">(B) <span class="drug">microcrystalline cellulose</span></button>
+            <button class="opt" data-c="0">(C) <span class="drug">hydroxypropyl methylcellulose</span></button>
+            <button class="opt" data-c="0">(D) <span class="drug">hydroxyethyl cellulose</span></button>
+            <div class="q-tools"><button class="q-btn q-exp-btn">顯示詳解</button></div>
+            <div class="q-exp">(B) <span class="drug">MCC</span> <strong>水溶性差</strong>，不適合作眼用溶液增稠劑（增稠劑須溶於水形成黏稠溶液）；A／C／D 皆為水溶性纖維素或 PVA，可作增稠劑。</div>
+            <textarea class="q-note" placeholder="📝 補充筆記…"></textarea>
+          </div>
 
           <div class="tbl-cap">補充：全能的微晶纖維素（MCC，Avicel）</div>
           <div class="keynote">
@@ -1107,18 +1180,254 @@ footer{text-align:center;color:var(--ink-soft);font-size:12px;padding:30px;font-
               <li>→ 但潤滑能力還不夠，所以需額外添加潤滑劑。</li>
             </ul>
           </div>
-          <div class="qa"><span class="yr">94 二技</span>使用微晶纖維素（Avicel）作為直接壓錠之賦形劑時，需要外加下列哪一項成分？<br>
-            (A) 稀釋劑　(B) 黏合劑　(C) 崩散劑　(D) 潤滑劑<br>
-            <span class="ans">A：(D) 潤滑劑</span> — MCC 潤滑能力不足，需外加潤滑劑。</div>
+          <div class="quiz" data-qid="ch10-94er">
+            <div class="q-stem"><span class="yr">94 二技</span>使用微晶纖維素（Avicel）作為直接壓錠之賦形劑時，需要外加下列哪一項成分？</div>
+            <button class="opt" data-c="0">(A) 稀釋劑</button>
+            <button class="opt" data-c="0">(B) 黏合劑</button>
+            <button class="opt" data-c="0">(C) 崩散劑</button>
+            <button class="opt" data-c="1">(D) 潤滑劑</button>
+            <div class="q-tools"><button class="q-btn q-exp-btn">顯示詳解</button></div>
+            <div class="q-exp"><span class="drug">MCC</span> 潤滑能力不足，需外加潤滑劑。</div>
+            <textarea class="q-note" placeholder="📝 補充筆記…"></textarea>
+          </div>
         </div>
 
       </div>
     </section>
 
     <!-- ch11 -->
-    <section class="chapter" id="ch11" data-status="empty" data-name="糖漿・酏・醑・酊劑" style="--c:#C8AEB0">
-      <div class="chapter-head"><span class="num">11</span><h3>糖漿・酏・醑・酊劑</h3><span class="tag">待整理</span><span class="chev">▼</span></div>
-      <div class="chapter-body"><div class="empty-state">尚未整理 — 把這章要背的表格貼給我，我填進來。</div></div>
+    <section class="chapter" id="ch11" data-status="done" data-name="糖漿・酏・醑・酊劑" style="--c:#C8AEB0">
+      <div class="chapter-head"><span class="num">11</span><h3>糖漿・酏・醑・酊劑</h3><span class="tag">已整理</span><span class="chev">▼</span></div>
+      <div class="chapter-body">
+
+        <div class="callout">
+          ⚑ <strong>國考常考</strong>：酏劑、醑劑、酊劑、流浸膏的 <span class="mk-y">內用／外用</span>、<span class="mk-y">外觀澄清透明／不透明</span>、<span class="mk-y">有無含乙醇</span>、<span class="mk-y">乙醇含量高／低</span>。
+        </div>
+
+        <div class="topic">
+          <div class="topic-title">各種劑綜合比較表</div>
+          <table class="cmp">
+            <tr><th>劑型</th><th>乙醇</th><th>製法</th><th>儲存</th><th>備註／效能</th></tr>
+            <tr><td>芳香水劑</td><td><span class="pc">✗</span></td><td>蒸餾法、振搖法 I／II</td><td>阻光</td><td>—</td></tr>
+            <tr><td>糖漿劑</td><td><span class="pc">10%↓</span></td><td>溶解法</td><td>滿置冷處</td><td>矯苦味：可可、覆盆子；分散：甜橙皮→滑石粉、吐魯→碳酸鎂</td></tr>
+            <tr><td>酏劑</td><td><span class="pc">4–40%</span></td><td>溶解法</td><td>阻光冷處</td><td>分散：滑石粉；助溶：甘油；芳香酏主成份：複方橙皮醑</td></tr>
+            <tr><td>醑劑</td><td><span class="pc">&gt;60%</span></td><td>溶解法：複方橙皮醑／蒸餾法：芳香醑／化學反應法：芳香氨醑</td><td>冷處</td><td>—</td></tr>
+            <tr><td>酊劑</td><td><span class="pc">15–80%</span></td><td>滲漉法：顛茄／溶解法：碘、阿片樟腦、吐根／浸漬法：其他</td><td>阻光冷處</td><td>劇藥 10%（顛茄、吐根）；普通 20%（安息香）；新鮮 50%（橙皮）</td></tr>
+            <tr><td>流浸膏劑</td><td><span class="pc">V</span></td><td>滲漉法（慢-1-中-3-快-5）</td><td>阻光冷處</td><td>100%</td></tr>
+            <tr><td>浸膏劑</td><td><span class="pc">V</span></td><td>滲漉法</td><td>阻光</td><td>2–6 倍</td></tr>
+            <tr><td>浸劑</td><td><span class="pc">✗</span></td><td>浸漬法</td><td>無規定</td><td>5%</td></tr>
+          </table>
+        </div>
+
+        <div class="topic">
+          <div class="topic-title">酏劑（<span class="en">Elixirs</span>）　<span class="cn" style="font-size:13px">酏＝4 劃記 4%</span></div>
+          <div class="keynote">
+            <span class="lbl">簡介</span>：<strong>內服</strong>之 <strong>澄明、含糖、含乙醇</strong> 之安定水溶液，乙醇含量約 <strong>4–40%</strong>，通常都含矯味劑。屬<strong>真溶液</strong>（溶質為分子或離子，粒徑 &lt; 1nm）。
+          </div>
+          <div class="keynote">
+            <span class="lbl">物質</span>
+            <ul>
+              <li>芳香酏主成分 → <span class="drug">複方橙皮醑（Compound orange spirit）</span>（醑劑亦具矯味功能）。</li>
+              <li>含療效成分 → <span class="drug">苯巴比妥酏</span>、<span class="drug">長葉毛地黃苷酏</span>（每 100mL 含 <span class="drug">digoxin</span> <span class="pc">4.5–5.25 mg</span>；即 5%＝5mg/100mL＝0.005g/100mL）。含療效成份的酏劑大多含藥名。</li>
+            </ul>
+          </div>
+          <div class="keynote"><span class="lbl">製備</span>：溶解法、混合溶解法（製備水性藥物時，應將<strong>水性溶液分次加入醇性溶液</strong>中，用力振搖）。</div>
+          <div class="keynote"><span class="lbl">防腐</span>：含乙醇濃度 <strong>10~12%</strong> 時即有自我防腐作用（糖漿劑 &gt;85 w/v 或 65 w/w 亦有自我防腐作用）。</div>
+
+          <div class="tbl-cap">助溶劑（不同酏劑助溶劑不同）</div>
+          <table class="cmp">
+            <tr><th>酏劑</th><th>助溶劑</th><th>記法</th></tr>
+            <tr><td><span class="drug">Amobarbital Elixir</span></td><td><span class="drug">Methenamine</span></td><td>阿妹 A-Me</td></tr>
+            <tr><td><span class="drug">Butabarbital Elixir</span></td><td><span class="drug">Propylene glycol</span></td><td>被 bu 迫 pro</td></tr>
+            <tr><td><span class="drug">Phenobarbital Elixir</span></td><td><span class="drug">Glycerin</span>（甘油）</td><td>粉專 phen gly</td></tr>
+          </table>
+          <div class="keynote"><span class="drug">Phenobarbital</span> 水溶性差，較易溶於乙醇，故加 <span class="drug">glycerin</span> 助溶。</div>
+
+          <div class="tbl-cap">芳香酏（Aromatic Elixir）配方</div>
+          <table class="memo">
+            <tr><th>成分</th><th>用量</th></tr>
+            <tr><td><span class="drug">複方橙皮醑</span>（矯味）</td><td>12 mL</td></tr>
+            <tr><td><span class="drug">糖漿</span></td><td>375 mL</td></tr>
+            <tr><td><span class="drug">滑石粉</span>（分散）</td><td>30 g</td></tr>
+            <tr><td><span class="drug">乙醇</span></td><td>適量（約 21~23%）</td></tr>
+            <tr><td><span class="drug">蒸餾水</span></td><td>適量</td></tr>
+            <tr><td>共製</td><td>1000 mL</td></tr>
+          </table>
+          <div class="keynote">儲存：緊密容器；功用：<strong>矯味劑</strong>。</div>
+
+          <div class="keynote">
+            <span class="lbl">補充</span>：<strong>非治療性酏劑</strong>（Nonmedicated Elixirs）三經典 → <span class="drug">芳香酏（aromatic elixir）</span>、<span class="drug">複方苯甲醛酏（compound benzaldehyde elixir）</span>、<span class="drug">等張酒精酏（isoalcoholic elixir）</span>。稀釋治療性酏劑時，所選非治療性酏劑之<strong>酒精濃度應與被稀釋者相近</strong>，且風味、顏色不衝突、化學物理相容。
+          </div>
+
+          <div class="tbl-cap">例題</div>
+          <div class="quiz" data-qid="ch11-elixir-113-1">
+            <div class="q-stem"><span class="yr">113-1</span>「Phenobarbital elixir」配方中添加 glycerin 之主要目的為何？</div>
+            <button class="opt" data-c="1">(A) 增進 phenobarbital 之溶解度</button>
+            <button class="opt" data-c="0">(B) 作為保濕劑以減少水分蒸發</button>
+            <button class="opt" data-c="0">(C) 提供防腐效果避免微生物孳生</button>
+            <button class="opt" data-c="0">(D) 作為甜味劑以增進口感</button>
+            <div class="q-tools"><button class="q-btn q-exp-btn">顯示詳解</button></div>
+            <div class="q-exp"><span class="drug">Phenobarbital</span> 水溶性差、較易溶於乙醇；<span class="drug">glycerin</span> 作助溶劑以增進其溶解度。</div>
+            <textarea class="q-note" placeholder="📝 補充筆記…"></textarea>
+          </div>
+          <div class="quiz" data-qid="ch11-elixir-112-1">
+            <div class="q-stem"><span class="yr">112-1</span>依中華藥典，有關酏劑之敘述，下列何者<strong>錯誤</strong>？</div>
+            <button class="opt" data-c="1">(A) 為供外用之澄明或混濁且具甜味之含乙醇水溶液</button>
+            <button class="opt" data-c="0">(B) 不一定含有具療效之藥物</button>
+            <button class="opt" data-c="0">(C) 應貯藏於緊密容器</button>
+            <button class="opt" data-c="0">(D) 製備芳香酏時須使用複方橙皮醑</button>
+            <div class="q-tools"><button class="q-btn q-exp-btn">顯示詳解</button></div>
+            <div class="q-exp">(A) 錯：酏劑為<strong>內服</strong>、外觀<strong>澄明</strong>（不混濁），含糖、乙醇 4–40%。</div>
+            <textarea class="q-note" placeholder="📝 補充筆記…"></textarea>
+          </div>
+          <div class="quiz" data-qid="ch11-elixir-108-2">
+            <div class="q-stem"><span class="yr">108-2</span>「酏劑」為廣用於口服之液體製劑，其特性何者<strong>除外</strong>？</div>
+            <button class="opt" data-c="0">(A) 矯味佳而口感好</button>
+            <button class="opt" data-c="0">(B) 與其他大部分液劑比較，安定性尚佳</button>
+            <button class="opt" data-c="0">(C) 含有酒精</button>
+            <button class="opt" data-c="1">(D) 通常不含糖，很適合糖尿病患服用</button>
+            <div class="q-tools"><button class="q-btn q-exp-btn">顯示詳解</button></div>
+            <div class="q-exp">(D) 錯：酏劑<strong>含糖</strong>，故不適合糖尿病患服用。</div>
+            <textarea class="q-note" placeholder="📝 補充筆記…"></textarea>
+          </div>
+          <div class="quiz" data-qid="ch11-elixir-114-1">
+            <div class="q-stem"><span class="yr">114-1</span>依據中華藥典，有關「芳香酏（Aromatic Elixir）」之敘述，下列何者<strong>最適當</strong>？</div>
+            <button class="opt" data-c="0">(A) 為含有具療效藥物、芳香成分以及甜味之水醇溶液</button>
+            <button class="opt" data-c="1">(B) 製備時應將水性溶液分次加入醇性溶液中，並予振搖</button>
+            <button class="opt" data-c="0">(C) 添加滑石粉之目的作為增稠劑，以減少芳香成分揮發</button>
+            <button class="opt" data-c="0">(D) 配方中之芳香成分為「芳香醋（Aromatic Spirit）」</button>
+            <div class="q-tools"><button class="q-btn q-exp-btn">顯示詳解</button></div>
+            <div class="q-exp">(B) 正確。製備芳香酏時，水性溶液須<strong>分次加入醇性溶液</strong>並振搖；滑石粉作<strong>分散劑</strong>（非增稠劑）；芳香成分主成份為<strong>複方橙皮醑</strong>。</div>
+            <textarea class="q-note" placeholder="📝 補充筆記…"></textarea>
+          </div>
+        </div>
+
+        <div class="topic">
+          <div class="topic-title">醑劑（<span class="en">Spirits</span>）</div>
+          <div class="keynote"><span class="lbl">簡介</span>：含<strong>揮發性物質</strong>的乙醇水溶液，乙醇含量約 <strong>60–80%</strong>（<strong>乙醇含量 &gt; 酏劑</strong>）。</div>
+          <div class="keynote"><span class="lbl">功用</span>：可作<strong>矯味劑</strong>（如複方橙皮醑）。</div>
+          <div class="keynote"><span class="lbl">特性</span>：所含揮發油濃度通常<strong>大於芳香水劑</strong>；因水產生混濁而欲過濾使之澄明時，<strong>濾紙宜先以酒精潤濕</strong>再行處理。</div>
+          <div class="keynote"><span class="lbl">儲存</span>：<strong>冷處（&lt;8°C）</strong>（補充：涼處 &lt;15°C）。</div>
+
+          <div class="tbl-cap">製法三類</div>
+          <table class="cmp">
+            <tr><th>製法</th><th>醑劑</th><th>記法</th></tr>
+            <tr><td>溶解法</td><td><span class="drug">薄荷醑（Peppermint spirit）</span>、<span class="drug">樟腦醑（Camphor spirit）</span><span class="cn">（含量最高）</span></td><td>—</td></tr>
+            <tr><td>蒸餾法</td><td><span class="drug">芳香醑（Aromatic spirit）</span></td><td>真香</td></tr>
+            <tr><td>化學反應法</td><td><span class="drug">芳香氨醑（Aromatic ammonia spirit）</span><span class="cn">（含醇量最低）</span></td><td>唐伯虎點秋香的華安</td></tr>
+          </table>
+
+          <div class="keynote">
+            <span class="lbl">芳香氨醑</span>（含醇量最低）
+            <ul>
+              <li><strong>製備</strong>：將半透明塊狀 <span class="drug">碳酸銨</span> 置於玻璃瓶內，以<strong>氨試液和蒸餾水</strong>振搖溶解，靜置後<strong>加入酒精</strong>混合均勻而得。</li>
+              <li><strong>功用</strong>：驅風、醒腦、制酸（類似樟腦的功用）。</li>
+            </ul>
+          </div>
+
+          <div class="tbl-cap">例題</div>
+          <div class="quiz" data-qid="ch11-spirit-113-1">
+            <div class="q-stem"><span class="yr">113-1</span>依據中華藥典之規定，下列醑劑何者是以<strong>蒸餾法</strong>製備？</div>
+            <button class="opt" data-c="0">(A) 複方橙皮醑（compound orange spirit）</button>
+            <button class="opt" data-c="0">(B) 芳香氨醑（aromatic ammonia spirit）</button>
+            <button class="opt" data-c="0">(C) 薄荷醑（peppermint spirit）</button>
+            <button class="opt" data-c="1">(D) 芳香醑（aromatic spirit）</button>
+            <div class="q-tools"><button class="q-btn q-exp-btn">顯示詳解</button></div>
+            <div class="q-exp">(D) <span class="drug">芳香醑</span> 以蒸餾法製備（記法：真香）。複方橙皮醑、薄荷醑為溶解法；芳香氨醑為化學反應法。</div>
+            <textarea class="q-note" placeholder="📝 補充筆記…"></textarea>
+          </div>
+          <div class="quiz" data-qid="ch11-spirit-112-1">
+            <div class="q-stem"><span class="yr">112-1</span>有關醑劑之敘述，下列何者<strong>正確</strong>？</div>
+            <button class="opt" data-c="0">(A) 其內所含揮發油濃度通常小於芳香水劑</button>
+            <button class="opt" data-c="0">(B) 裝盛醑劑時，若量筒內含水易有混濁，通常係內容物水解所致</button>
+            <button class="opt" data-c="1">(C) 若因水而混濁，欲過濾使之澄明，濾紙宜先以酒精潤濕再行處理</button>
+            <button class="opt" data-c="0">(D) 此類劑型之醇含量通常少於 30%</button>
+            <div class="q-tools"><button class="q-btn q-exp-btn">顯示詳解</button></div>
+            <div class="q-exp">(A) 應為<strong>大於</strong>芳香水劑；(B) 應為<strong>內容物析出</strong>所致；(D) 醇含量應為 <strong>60–80%</strong>。</div>
+            <textarea class="q-note" placeholder="📝 補充筆記…"></textarea>
+          </div>
+          <div class="quiz" data-qid="ch11-spirit-106-2">
+            <div class="q-stem"><span class="yr">106-2</span>在製備芳香氨醑（Aromatic Ammonia Spirit）時，下列何者<strong>錯誤</strong>？</div>
+            <button class="opt" data-c="0">(A) 製備時選用之主藥碳酸銨，應呈半透明之塊狀</button>
+            <button class="opt" data-c="1">(B) 製備時宜先以 10% 之氫氧化鈉溶液將碳酸銨溶解</button>
+            <button class="opt" data-c="0">(C) 溶解碳酸銨後再加入酒精混合均勻即得</button>
+            <button class="opt" data-c="0">(D) 本產品具驅風、制酸、醒腦等作用</button>
+            <div class="q-tools"><button class="q-btn q-exp-btn">顯示詳解</button></div>
+            <div class="q-exp">(B) 錯：應以<strong>氨試液、蒸餾水</strong>振搖溶解碳酸銨，非氫氧化鈉溶液。</div>
+            <textarea class="q-note" placeholder="📝 補充筆記…"></textarea>
+          </div>
+          <div class="quiz" data-qid="ch11-spirit-114-2">
+            <div class="q-stem"><span class="yr">114-2</span>有關醑劑（spirits），下列敘述何者<strong>錯誤</strong>？</div>
+            <button class="opt" data-c="0">(A) 與水性製劑混合時，其中的揮發性物質可能自溶液中分離</button>
+            <button class="opt" data-c="0">(B) 配方中的醇濃度通常超過 60%</button>
+            <button class="opt" data-c="1">(C) 通常用於矯味，對於芳香溶質則不具醫療價值</button>
+            <button class="opt" data-c="0">(D) 為揮發性物質的醇類或醇水溶液</button>
+            <div class="q-tools"><button class="q-btn q-exp-btn">顯示詳解</button></div>
+            <div class="q-exp">(C) 錯：醑劑對芳香溶質<strong>仍具醫療價值</strong>（如甘草止咳水含甘草流浸膏、阿片酊、酒石酸銻鉀、亞硝酸乙酯醑，分具化痰、止痛、祛痰、利水作用）。<br>補充：(A) 量筒含水易混濁係內容物析出；(B) 含醇量約 62–87%。</div>
+            <textarea class="q-note" placeholder="📝 補充筆記…"></textarea>
+          </div>
+
+          <div class="callout">
+            ⚑ <strong>三劑型口訣：甜酏、揮醑、生化藥酊</strong><br>
+            ・<strong>酏劑</strong>：澄清有甜味，含<strong>芳香性物質</strong>的乙醇水溶液。<br>
+            ・<strong>醑劑</strong>：含<strong>揮發性物質</strong>的乙醇水溶液。<br>
+            ・<strong>酊劑</strong>：<strong>生藥或化學藥品</strong>製成的乙醇水溶液。
+          </div>
+        </div>
+
+        <div class="topic">
+          <div class="topic-title">酊劑（<span class="en">Tinctures</span>）</div>
+          <div class="keynote"><span class="lbl">簡介</span>：以<strong>乙醇</strong>為溶劑，將<strong>生藥或動物</strong>長時間浸泡使有效成份析出之製劑；<strong>可內服或外用</strong>；酒精含量約 <strong>15~80%</strong>。</div>
+
+          <div class="tbl-cap">製法三類（建議記滲漉法、溶解法）</div>
+          <table class="cmp">
+            <tr><th>製法</th><th>特性</th><th>酊劑</th><th>記法</th></tr>
+            <tr><td>滲漉法</td><td>可用少量溶媒接近完全抽提；狹長型滲漉器效果佳</td><td><span class="drug">顛茄酊</span>、<span class="drug">香莢蘭酊</span></td><td>省點香</td></tr>
+            <tr><td>浸漬法</td><td>適合抽提<strong>非軟性</strong>細胞生藥；可振搖；多用漏斗型容器</td><td><span class="drug">檸檬酊</span>、<span class="drug">甜橙皮酊</span>、<span class="drug">複方安息香酊</span>（不含水）、<span class="drug">吐魯香膠酊</span></td><td>沒記到的大多是浸漬</td></tr>
+            <tr><td>溶解法</td><td>—</td><td><span class="drug">碘酊</span>、<span class="drug">阿片樟腦酊</span>（含無水嗎啡 0.05%，可作止瀉劑）</td><td>溶解碘片</td></tr>
+          </table>
+
+          <div class="tbl-cap">濃度分類（國考愛考）</div>
+          <table class="cmp">
+            <tr><th>類別</th><th>每 100mL 含量</th><th>種類</th><th>記法</th></tr>
+            <tr><td>劇藥</td><td><span class="pc">10 g（10%）</span></td><td><span class="drug">顛茄酊</span>（Tropane 類代表 <span class="drug">Atropine</span>）</td><td>一齣歌劇／一顆番茄</td></tr>
+            <tr><td>普通藥</td><td><span class="pc">20 g（20%）</span></td><td><span class="drug">阿片酊</span></td><td>普遍（片），普上有 2 點</td></tr>
+            <tr><td>新鮮生藥</td><td><span class="pc">50 g（50%）</span></td><td><span class="drug">檸檬酊</span>、<span class="drug">甜橙皮酊</span></td><td>新鮮水果，立 5 劃</td></tr>
+            <tr><td>複方酊劑</td><td>無特定濃度</td><td>內容物太多</td><td>—</td></tr>
+          </table>
+
+          <div class="tbl-cap">主要製劑</div>
+          <div class="keynote">
+            <span class="lbl">阿片酊</span>（<span class="drug">Opium tincture</span>）— 含 10% 阿片 ＝ 1% 嗎啡
+            <ul>
+              <li>原料：顆粒或切細阿片。</li>
+              <li>濃度：含 <span class="drug">Morphine</span> <span class="pc">0.9~1.1 g/100mL</span>（1% w/v）。</li>
+              <li>服用：<strong>口服</strong>（記法：阿片的「阿」中有「口」）。</li>
+              <li>儲存：緊密阻光容器，避免過熱與陽光直射。</li>
+            </ul>
+          </div>
+          <div class="keynote">
+            <span class="lbl">阿片樟腦酊</span>（<span class="drug">Camphorated opium tincture</span>，複方鴉片酊）— 阿片含量 ＝ 0.04% 嗎啡
+            <ul>
+              <li>原料：取苯甲酸、樟腦及八角茴香油，加 60% 乙醇 90mL 溶解後，徐徐加入阿片酊及適量 60% 乙醇，使全量成 1000mL。</li>
+              <li>濃度：含 <span class="drug">Morphine</span> <span class="pc">45~55 mg/100mL</span>（較阿片酊低，0.05% w/v，五字記 0.05）；含乙醇 56~60%（以丙酮為內標、氣相層析法測乙醇量）。</li>
+              <li>服用：<strong>口服</strong>。儲存：緊密阻光容器，冷暗處保存。<strong>功用：止瀉</strong>。</li>
+            </ul>
+          </div>
+          <div class="keynote">
+            <span class="lbl">複方安息香酊</span>
+            <ul>
+              <li>製法：<strong>浸漬法</strong>。</li>
+              <li>成分：<span class="drug">安息香（Benzoin）</span>、<span class="drug">蘆薈（Aloe）</span>、<span class="drug">蘇木香（Storax）</span>、<span class="drug">吐魯香膠（Tolu balsam）</span>（記法：安蘇的魯味（薈））。</li>
+              <li>添加：<span class="drug">甘油</span>（防止鞣酸分解）。功用：祛痰。</li>
+            </ul>
+          </div>
+          <div class="callout">
+            ⚑ <strong>嗎啡含量比較</strong>：<span class="drug">Paregoric</span>（鴉片樟腦酊）＝鴉片類<strong>止瀉劑</strong>，含 <strong>0.05% morphine</strong>；<span class="drug">Laudanum</span>（鴉片酊）＝鴉片類<strong>止痛劑</strong>，含 <strong>1% morphine</strong>。
+          </div>
+        </div>
+
+      </div>
     </section>
 
     <!-- ch12 -->
@@ -1211,6 +1520,47 @@ searchInput.addEventListener('input', ()=>{
   });
   if(kw!=='' && !any){ noResult.classList.add('show'); document.getElementById('kw').textContent=kw; }
   else noResult.classList.remove('show');
+});
+/* 互動題目元件 */
+document.querySelectorAll('.quiz').forEach(q=>{
+  const qid = q.dataset.qid || ('q'+Math.random().toString(36).slice(2));
+  // 選項點擊判對錯
+  q.querySelectorAll('.opt').forEach(opt=>{
+    opt.addEventListener('click', ()=>{
+      if(opt.classList.contains('correct')||opt.classList.contains('wrong')) return;
+      if(opt.dataset.c==='1'){
+        opt.classList.add('correct');
+      }else{
+        opt.classList.add('wrong');
+        q.querySelectorAll('.opt[data-c="1"]').forEach(o=>o.classList.add('correct'));
+      }
+    });
+  });
+  // 顯示答案（簡答題用）
+  const ansBtn=q.querySelector('.q-ans-btn');
+  if(ansBtn){
+    ansBtn.addEventListener('click',()=>{
+      const a=q.querySelector('.q-ans');
+      a.classList.toggle('show');
+      ansBtn.textContent=a.classList.contains('show')?'隱藏答案':'顯示答案';
+    });
+  }
+  // 顯示詳解
+  const expBtn=q.querySelector('.q-exp-btn');
+  if(expBtn){
+    expBtn.addEventListener('click',()=>{
+      const e=q.querySelector('.q-exp');
+      e.classList.toggle('show');
+      expBtn.textContent=e.classList.contains('show')?'隱藏詳解':'顯示詳解';
+    });
+  }
+  // 補充筆記 localStorage
+  const note=q.querySelector('.q-note');
+  if(note){
+    const key='pharm-note-'+qid;
+    try{const v=localStorage.getItem(key); if(v) note.value=v;}catch(e){}
+    note.addEventListener('input',()=>{try{localStorage.setItem(key,note.value);}catch(e){}});
+  }
 });
 </script>
 </body>
