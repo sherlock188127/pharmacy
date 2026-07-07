@@ -594,19 +594,60 @@ h:液面至移液管下端高度　d:直徑　ρ:質粒密度　ρ₀:液體密�
   <div class="formula">Carr's index (compressibility index) = (tapped − bulk) / tapped × 100%　→ 越大流動性越差
 Hausner ratio = tapped density / bulk density　→ &gt; 1.4 為 cohesive material</div>
 
-  <h3>各種體積與密度</h3>
-  <div class="tbl-wrap">
+  <div class="card key"><span class="label">兩者換算</span>Carr's Index 亦可由 Hausner Ratio 換算：<br>
+  <span class="mono">Carr's Index = (1 − 1/HR) × 100%</span><br>
+  （HR 越接近 1，與敲緊密度差距越小，代表越容易流動／流動性越佳；HR 越大則流動性越差，兩指標方向一致，判讀邏輯相同：<strong>數值越大 → 流動性越差</strong>。）</div>
+
+  <div class="card warn"><span class="label">Carr's Index／Hausner Ratio 分級表（判斷流動性好壞）</span>
+  <div class="tbl-wrap" style="margin:10px 0 0;">
   <table>
-    <thead><tr><th>體積</th><th>測法</th><th>包含內容</th></tr></thead>
+    <thead><tr><th>Carr's Index (%)</th><th>Hausner Ratio</th><th>流動性評級</th></tr></thead>
     <tbody>
-      <tr><td class="l"><strong>真體積</strong> true volume</td><td>氣體吸附法（氦密度劑 densitometer）</td><td>實心部分（氣體可深入縫隙）</td></tr>
-      <tr><td class="l"><strong>顆粒體積</strong> granule volume</td><td>汞取代法</td><td>真體積 + 表面裂縫／孔洞（汞不入縫隙）</td></tr>
-      <tr><td class="l"><strong>整體體積</strong> bulk volume</td><td>量筒記錄</td><td>真體積 + 縫隙 + 粉粒間孔洞</td></tr>
-      <tr><td class="l"><strong>振實體積</strong> tapped volume</td><td>量筒振實後記錄</td><td>振實壓縮後體積</td></tr>
+      <tr><td>5–15</td><td>1.00–1.18</td><td class="l">Excellent 極佳</td></tr>
+      <tr><td>16–20</td><td>1.19–1.25</td><td class="l">Good 良好</td></tr>
+      <tr><td>21–25</td><td>1.26–1.34</td><td class="l">Fair 尚可</td></tr>
+      <tr><td>26–31</td><td>1.35–1.45</td><td class="l">Poor 差</td></tr>
+      <tr><td>32–37</td><td>1.46–1.59</td><td class="l">Very poor 非常差</td></tr>
+      <tr><td>≥ 38</td><td>≥ 1.60</td><td class="l">Extremely poor 極差</td></tr>
     </tbody>
   </table>
   </div>
-  <div class="card key"><span class="label">密度大小</span>體積越小密度越大 → <strong>true density &gt; granule density &gt; bulk density</strong>。<br>多孔性質粒以汞（比重瓶裝汞）測得 = <strong>granule density</strong>。</div>
+  <p style="margin:10px 0 0;">此表為評估標準（可對照 Carr's Index 或 Hausner Ratio 任一數值查表），數值越大／越高，流動性越差；數值越接近下限（5–15% 或 1.00–1.18），代表粉體較鬆散、流動性越佳。</p>
+  </div>
+
+  <div class="quiz" data-qid="q67" data-answer="D">
+    <span class="q-meta">114-2</span>
+    <div class="q-text">粉劑的流動性以壓縮性指數（Carr's index）表示，且測得數值為 40% 時，下列何者正確？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>豪斯納比值（Hausner ratio）接近 1</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>為容積密度與敲緊密度之比值</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>安息角小於 30 度</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>流動性極差</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>D</b></span></div>
+    <div class="explanation">Carr's index = 40% 落在分級表 <strong>≥38% → Extremely poor（極差）</strong> 區間，D 正確。<br>A 錯：由 Carr's Index=(1−1/HR)×100% 反推，HR = 1/(1−0.4) ≈ <strong>1.67</strong>，遠不接近 1。<br>B 錯：容積密度與敲緊密度之「比值」是 <strong>Hausner ratio</strong> 之定義，非 Carr's index（Carr's index 是兩者「差值除以敲緊密度」）。<br>C 錯：Carr's index 越大代表安息角通常也越大（流動性差），40% 屬極差等級，安息角應 &gt;45°，非小於 30 度。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q67"></textarea></div>
+  </div>
+
+  <h3>各種體積與密度</h3>
+  <div class="tbl-wrap">
+  <table>
+    <thead><tr><th>體積／密度</th><th>測法</th><th>包含內容</th></tr></thead>
+    <tbody>
+      <tr><td class="l"><strong>真體積 / 真密度</strong> true volume/density</td><td>氣體吸附法（氦密度劑 <span class="mono">Helium densitometer</span>）／流體置換法</td><td>實心部分，<strong>不含</strong>顆粒本身之孔洞</td></tr>
+      <tr><td class="l"><strong>顆粒體積 / 顆粒密度</strong> granule volume/density</td><td>汞取代法（比重瓶裝汞）</td><td>真體積 + <strong>顆粒本身之孔洞</strong>（汞不進入細微孔隙）</td></tr>
+      <tr><td class="l"><strong>整體體積 / 整體密度</strong> bulk volume/density</td><td>量筒記錄</td><td>真體積 + 顆粒自身孔洞 + <strong>顆粒之間空隙</strong></td></tr>
+      <tr><td class="l"><strong>振實體積 / 振實密度</strong> tapped volume/density</td><td>量筒振實後記錄／振實密度分析儀</td><td>真體積 + 顆粒自身孔洞 + 顆粒間空隙（<strong>振實壓縮後</strong>之體積，較整體體積小）</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="card key"><span class="label">密度大小（體積愈大，密度愈小）</span><strong>真密度 &gt; 顆粒密度 &gt; 整體密度</strong>（True density &gt; Granule density &gt; Bulk density）。<br>
+  多孔性質粒以汞（比重瓶裝汞）測得 = <strong>顆粒密度 granule density</strong>；氦氣密度計或流體置換法測得 = <strong>真密度 true density</strong>；量筒測得（未振實）= <strong>整體密度 bulk density</strong>；量筒振實後測得 = <strong>振實密度 tap density</strong>。</div>
+  <div class="card tip"><span class="label">振實密度 Tap density（敲緊密度）</span>
+  <strong>定義：</strong>將定量粉末振動至粉末體積不再變化後，粉末重量除以該體積之密度。<br>
+  <strong>測量：</strong>可用振實密度分析儀測得。<br>
+  <strong>計算：</strong>重量 ／ 振實體積（= 真實體積 + 顆粒自身孔洞 + 顆粒之間空隙，經敲實後空隙已減少）。<br>
+  <strong>應用：</strong>調劑小數量膠囊、估計稀釋劑添加量；亦為計算 Carr's Index 與 Hausner Ratio 之必要數值。</div>
 
   <div class="quiz" data-qid="q16" data-answer="D">
     <span class="q-meta">113-1</span>
@@ -1397,7 +1438,7 @@ Hausner ratio = tapped density / bulk density　→ &gt; 1.4 為 cohesive materi
 <section id="bank">
   <div class="bank-head">
     <h2>歷屆國考題庫（統整）</h2>
-    <p>含講義未分段之歷屆題（q53–q66）＋全章節題目重整（q1–q52）。補充筆記與內文同步。</p>
+    <p>含講義未分段之歷屆題（q53–q67）＋全章節題目重整（q1–q52）。補充筆記與內文同步。</p>
   </div>
 
   <h3 style="margin-top:8px;">A · 歷屆綜合題（講義 p141–155）</h3>
@@ -1595,6 +1636,20 @@ Hausner ratio = tapped density / bulk density　→ &gt; 1.4 為 cohesive materi
     <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>B</b></span></div>
     <div class="explanation">光學顯微鏡可見低限約 <strong>500 nm</strong>。</div>
     <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q66"></textarea></div>
+  </div>
+
+  <div class="quiz" data-qid="q67" data-answer="D">
+    <span class="q-meta">114-2</span>
+    <div class="q-text">粉劑的流動性以壓縮性指數（Carr's index）表示，且測得數值為 40% 時，下列何者正確？</div>
+    <div class="options">
+      <div class="option" data-opt="A"><span class="opt-k">A</span><span>豪斯納比值（Hausner ratio）接近 1</span></div>
+      <div class="option" data-opt="B"><span class="opt-k">B</span><span>為容積密度與敲緊密度之比值</span></div>
+      <div class="option" data-opt="C"><span class="opt-k">C</span><span>安息角小於 30 度</span></div>
+      <div class="option" data-opt="D"><span class="opt-k">D</span><span>流動性極差</span></div>
+    </div>
+    <div class="q-actions"><button class="show-exp">顯示詳解</button><span class="ans-tag">答案：<b>D</b></span></div>
+    <div class="explanation">Carr's index = 40% 落在分級表 <strong>≥38% → Extremely poor（極差）</strong> 區間，D 正確。A、B、C 詳見「粉體之流動性」章節之詳解。</div>
+    <div class="note-wrap"><label>📝 補充筆記</label><textarea class="note" data-qid="q67"></textarea></div>
   </div>
 
   <h3 style="margin-top:28px;">B · 各章節題目重整（依講義順序 q1–q52）</h3>
