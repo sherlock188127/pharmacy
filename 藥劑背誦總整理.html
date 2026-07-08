@@ -145,6 +145,15 @@ table.grade tr.bound td{background:#fcf3e0;box-shadow:inset 2px 0 0 #d6a45a,inse
 .sol-axis .tk i{display:block;width:2px;height:13px;background:var(--ink-soft);margin:0 auto;opacity:.6}
 .sol-axis .tk b{display:block;font-family:var(--mono);font-weight:700;font-size:12px;color:#8a6d4a;margin-top:5px;white-space:nowrap}
 @media(max-width:640px){.sol-axis .lbls span{font-size:11.5px}.sol-axis .tk b{font-size:10.5px}}
+.scaleline{position:relative;height:2px;margin:40px 18px 48px}
+.scaleline .sl-line{position:absolute;top:0;left:0;right:0;height:2px;background:var(--ink-soft);opacity:.55;border-radius:2px}
+.sl-tick{position:absolute;top:-7px;width:2px;height:16px;background:var(--ink);opacity:.7;transform:translateX(-50%)}
+.sl-tick b{position:absolute;top:-25px;left:50%;transform:translateX(-50%);font-family:var(--mono);font-weight:700;font-size:12px;color:#8a6d4a;white-space:nowrap}
+.sl-zone{position:absolute;top:15px;transform:translateX(-50%);font-family:var(--serif);font-weight:700;font-size:13px;color:var(--c);white-space:nowrap;text-align:center}
+.sl-zone small{display:block;font-family:var(--sans);font-weight:400;font-size:11px;color:var(--ink-soft);margin-top:2px}
+.sl-band{position:absolute;height:9px;top:-3.5px;border-radius:5px;opacity:.4}
+.sl-band b{position:absolute;top:-19px;left:50%;transform:translateX(-50%);font-family:var(--sans);font-size:11px;font-weight:600;white-space:nowrap;opacity:1}
+@media(max-width:640px){.sl-tick b{font-size:10.5px;top:-23px}.sl-zone{font-size:11.5px}.sl-zone small{font-size:10px}}
 .qa{background:rgba(0,0,0,.02);border-left:3px solid var(--c);border-radius:0 8px 8px 0;padding:10px 14px;margin:8px 0;font-size:13.5px}
 .quiz{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:14px 0;box-shadow:var(--shadow)}
 .q-stem{font-weight:500;margin-bottom:10px;font-size:14px;line-height:1.6}
@@ -1634,7 +1643,15 @@ footer{text-align:center;color:var(--ink-soft);font-size:12px;padding:30px;font-
           </div>
           <div class="keynote">
             <span class="lbl">流速</span>：抽提生藥 1000g，每分鐘所流出液體量
-            <div class="numline">慢速（&lt;1mL）── 1mL ── 中速（1–3mL）── 3mL ── 快速（3–5mL）</div>
+            <div class="scaleline">
+              <span class="sl-line"></span>
+              <span class="sl-tick" style="left:16.7%"><b>1 mL</b></span>
+              <span class="sl-tick" style="left:50%"><b>3 mL</b></span>
+              <span class="sl-tick" style="left:83.3%"><b>5 mL</b></span>
+              <span class="sl-zone" style="left:8.3%">慢速<small>&lt;1 mL</small></span>
+              <span class="sl-zone" style="left:33.3%">中速<small>1–3 mL</small></span>
+              <span class="sl-zone" style="left:66.7%">快速<small>3–5 mL</small></span>
+            </div>
           </div>
           <div class="keynote">
             <span class="lbl">儲存</span>：緊密阻光容器、低溫。
@@ -2008,6 +2025,173 @@ footer{text-align:center;color:var(--ink-soft);font-size:12px;padding:30px;font-
               <li>大多數藥品平均重量減少率<strong>不得超過 1%</strong>。</li>
               <li><strong>發泡錠與咀嚼錠</strong>之脆度試驗可有<strong>不同規格</strong>。</li>
             </ul>
+          </div>
+        </div>
+
+        <div class="topic">
+          <div class="topic-title">含量均一度試驗（錠劑／膠囊，判定標準）</div>
+          <table class="cmp">
+            <tr><th>階段</th><th>數量</th><th>標準</th></tr>
+            <tr><td>第一次</td><td>10</td><td>超 ±15%（85–115%）不超 <strong>1 個</strong>；超 ±25% 為 <strong>0 個</strong>；相對標準差 <strong>≤ 6%</strong></td></tr>
+            <tr><td>第二次</td><td>30</td><td>超 ±15%（85–115%）不超 <strong>3 個</strong>；超 ±25% 為 <strong>0 個</strong>；相對標準差 <strong>≤ 7.8%</strong></td></tr>
+          </table>
+          <div class="scaleline">
+            <span class="sl-line"></span>
+            <span class="sl-band" style="left:8.3%;width:83.4%;background:#e8d18a"><b class="t-orange">±25%（75–125）</b></span>
+            <span class="sl-band" style="left:25%;width:50%;background:#9ec8a6"></span>
+            <span class="sl-tick" style="left:8.3%"><b>75</b></span>
+            <span class="sl-tick" style="left:25%"><b>85</b></span>
+            <span class="sl-tick" style="left:50%"><b>100</b></span>
+            <span class="sl-tick" style="left:75%"><b>115</b></span>
+            <span class="sl-tick" style="left:91.7%"><b>125</b></span>
+            <span class="sl-zone" style="left:50%;color:#2c6e3f">±15%<small>85–115</small></span>
+          </div>
+          <div class="keynote"><span class="lbl">說明</span>：第一次 10 個若有 1 個超 ±15%（但皆在 ±25% 內），或相對標準差 &gt;6%，則再取 20 個做第二次（共 30 個）。錠劑與膠囊標準相同。</div>
+          <div class="quiz" data-qid="ch13-cu-110-1">
+            <div class="q-stem"><span class="yr">110-1</span>依錠劑含量均一度試驗，測得 10 個檢品之個別有效成分，其中 9 個含量在 90.0~110.0% 範圍內，1 個在 80.5%，相對標準差 7.0%。依藥典規定，應如何繼續進行該試驗？</div>
+            <button class="opt" data-c="0">(A) 再取 10 個檢品重複進行同一試驗</button>
+            <button class="opt" data-c="1">(B) 再取 20 個檢品重複進行同一試驗</button>
+            <button class="opt" data-c="0">(C) 再取 30 個檢品重複進行同一試驗</button>
+            <button class="opt" data-c="0">(D) 判定為不符規格，不須再進行試驗</button>
+            <div class="q-tools"><button class="q-btn q-exp-btn">顯示詳解</button></div>
+            <div class="q-exp">有 1 個（80.5%）超 ±15%（85–115）但在 ±25%（75–125）內，且相對標準差 7.0% &gt;6% → 再取 20 個做第二次（共 30 個）。故選 (B)。</div>
+            <textarea class="q-note" placeholder="📝 補充筆記…"></textarea>
+          </div>
+          <div class="quiz" data-qid="ch13-cu-108-2">
+            <div class="q-stem"><span class="yr">108-2</span>依中華藥典第八版「單位劑量均一度試驗法」，對於檢品各別所含有效成分百分率之敘述，下列何者<strong>錯誤</strong>？</div>
+            <button class="opt" data-c="0">(A) 壓製錠劑：10 個檢品各別所含有效成分均在標誌含量 85.0~115.0%，且相對標準差 ≤6.0%</button>
+            <button class="opt" data-c="1">(B) 壓製錠劑：合計 30 個檢品含量，僅 1 個超出 85.0~115.0%，但未超出 75.0~125.0%，且相對標準差 ≤7.8%</button>
+            <button class="opt" data-c="0">(C) 膠囊劑：10 個檢品至少 9 個未超出 85.0~115.0%，且均未超出 75.0~125.0%，相對標準差 ≤6.0%</button>
+            <button class="opt" data-c="0">(D) 膠囊劑：合計 30 個檢品含量，僅 3 個超出 85.0~115.0%，但均未超出 75.0~125.0%，相對標準差 ≤7.8%</button>
+            <div class="q-tools"><button class="q-btn q-exp-btn">顯示詳解</button></div>
+            <div class="q-exp">(B) 錯：第二次 30 個超 ±15% 者可達 <strong>3 個</strong>（非 1 個），且皆未超 ±25%、相對標準差 ≤7.8%。</div>
+            <textarea class="q-note" placeholder="📝 補充筆記…"></textarea>
+          </div>
+        </div>
+
+        <div class="topic">
+          <div class="topic-title">溶離度試驗（<span class="en">Dissolution</span>）</div>
+          <div class="keynote"><span class="lbl">內容</span>：測量錠劑或膠囊是否能在規定時間內溶離；可檢測藥物品質一致性、批次釋放均一性、預測體內釋放、配方篩選。</div>
+          <table class="cmp">
+            <tr><th>階段</th><th>數量</th><th>標準</th></tr>
+            <tr><td>第一次</td><td>6</td><td>每個檢品 <strong>≥ Q+5%</strong></td></tr>
+            <tr><td>第二次</td><td>12</td><td>平均 ≥ Q，且<strong>無</strong>檢品低於 Q−15%</td></tr>
+            <tr><td>第三次</td><td>24</td><td>平均 ≥ Q，低於 Q−15% <strong>不超過 2 個</strong>，且無檢品低於 Q−25%</td></tr>
+          </table>
+          <div class="keynote"><span class="lbl">例（Q=60）</span>：第一次每個 &gt;65%；第二次平均 &gt;60% 且每個 &gt;45%；第三次平均 &gt;60%，&lt;45% 者只能 2 個、&lt;35% 不能有。</div>
+          <div class="tbl-cap">溶離試驗相關條件（裝置：筒狀網籃）</div>
+          <table class="memo">
+            <tr><td>溫度</td><td>37 ± 0.5°C</td></tr>
+            <tr><td>篩網</td><td>40 號（記法：蘇黎世 溶離-40）</td></tr>
+            <tr><td>軸心偏差</td><td>≤ 2 mm</td></tr>
+            <tr><td>馬達轉速</td><td>50–100 rpm 或 25–150 rpm</td></tr>
+            <tr><td>底部距離</td><td>25 ± 2 mm</td></tr>
+            <tr><td>溶媒體積</td><td>3 倍飽和體積</td></tr>
+          </table>
+          <div class="tbl-cap">腸溶（delayed-release）溶離試驗：酸性液段 → 緩衝液段</div>
+          <table class="cmp">
+            <tr><th></th><th>方法一</th><th>方法二</th></tr>
+            <tr><td>酸性液段</td><td>0.1N 鹽酸 <strong>750 mL</strong>，平衡 37±0.5°C，加樣 <strong>2 小時</strong></td><td>0.1N 鹽酸 <strong>1000 mL</strong>，2 小時</td></tr>
+            <tr><td>緩衝液段</td><td>加 0.2M 磷酸三鈉 250mL 調 <strong>pH 6.8</strong>，45 分鐘</td><td>加 0.1N 鹽酸 : 0.2M 磷酸三鈉（3:1）pH 6.8 共 1000mL，45 分鐘</td></tr>
+          </table>
+          <div class="keynote">
+            <span class="lbl">合格範圍</span>：酸性液段 → 第一次 6 個（每個溶解量 ≤ 規定量 10%）、第二次 12 個（平均 ≤10% 且無 &gt;25%）、第三次 24 個（平均 ≤10% 且無 &gt;25%）；緩衝液段 → 同一般溶離（Q+5% / Q / Q−15% / Q−25%）。
+          </div>
+          <div class="quiz" data-qid="ch13-diss-114-2">
+            <div class="q-stem"><span class="yr">114-2</span>依中華藥典，有關 delayed-release dosage form 溶離試驗，下列敘述何者<strong>錯誤</strong>？</div>
+            <button class="opt" data-c="0">(A) 階段 1 之檢品數為 6 件，階段 2 之檢品數為 6 件</button>
+            <button class="opt" data-c="0">(B) 酸性液段之媒液為 0.1N 鹽酸，緩衝液段之媒液為 pH 6.8 磷酸鹽緩衝液</button>
+            <button class="opt" data-c="1">(C) 酸性液段階段 1 之結果，如檢品平均溶解量未超出規定量 10%，即符合允收基準</button>
+            <button class="opt" data-c="0">(D) 酸性液段階段 2 之結果，如階段 1 與階段 2 所有檢品之平均溶解量未超出規定量 10%，且無一檢品溶解量超出規定量 25%，即符合允收基準</button>
+            <div class="q-tools"><button class="q-btn q-exp-btn">顯示詳解</button></div>
+            <div class="q-exp">(C) 錯：酸性液段階段 1 標準是<strong>每個檢品</strong>溶解量均不超過規定量 10%（非「平均」），且為個別判定。</div>
+            <textarea class="q-note" placeholder="📝 補充筆記…"></textarea>
+          </div>
+        </div>
+
+        <div class="topic">
+          <div class="topic-title">崩散度試驗（<span class="en">Disintegration</span>）</div>
+          <div class="callout">⚑ 在任何時間，測定<strong>網架之頂端不應被淹沒</strong>。網架升至最高點時，篩網維持於液面下至少 <strong>15 mm</strong>；降至最低點時，距容器底部至少 <strong>25 mm</strong>。</div>
+          <table class="cmp">
+            <tr><th>階段</th><th>數量</th><th>標準</th></tr>
+            <tr><td>第一次</td><td>6</td><td>全部崩散</td></tr>
+            <tr><td>第二次</td><td>18</td><td>至少 <strong>16 個</strong>完全崩散（最多 2 個未完全崩散）</td></tr>
+          </table>
+          <div class="tbl-cap">崩散度 vs 溶離度 比較</div>
+          <table class="cmp">
+            <tr><th></th><th>崩散度試驗</th><th>溶離度試驗</th></tr>
+            <tr><td>溫度</td><td>37 ± 2°C</td><td>37 ± 0.5°C</td></tr>
+            <tr><td>篩網</td><td>10 號</td><td>40 號</td></tr>
+            <tr><td>速率</td><td>升降 30 ± 2 次/min</td><td>轉速 25–150 rpm</td></tr>
+            <tr><td>底部距離</td><td>25 ± 20 mm</td><td>25 ± 2 mm</td></tr>
+            <tr><td>網架升降高度</td><td>5.3~5.7 cm</td><td>—</td></tr>
+            <tr><td>數量</td><td>6 + 12 = 18（兩次）</td><td>6 + 6 + 12 = 24（三次）</td></tr>
+          </table>
+          <div class="keynote"><span class="lbl">記法</span>：崩下面 2 個月（37±2）、上面山想成山拾 30（升降 30±2）；蘇黎世（溶離-40）。完全崩散＝除不溶性塗層碎片或膠囊外殼外，殘留物已呈稀軟團塊、無可覺察之硬質部分。</div>
+          <div class="quiz" data-qid="ch13-dis-114-1">
+            <div class="q-stem"><span class="yr">114-1</span>依中華藥典，有關膜衣錠崩散度試驗之規定，下列何者<strong>正確</strong>？</div>
+            <button class="opt" data-c="0">(A) 先取 10 顆錠劑進行試驗，若未在規定時間內崩散則另取 20 顆進行試驗</button>
+            <button class="opt" data-c="1">(B) 進行測定時，置放錠劑之網架升降頻率為每分鐘 29~32 週期</button>
+            <button class="opt" data-c="0">(C) 測定網架之頂端在測定過程中均須保持在浸液內，不可高於浸液之液面</button>
+            <button class="opt" data-c="0">(D) 完全崩散狀態之評估，是指整個劑型或其所含之有效成分完全溶解</button>
+            <div class="q-tools"><button class="q-btn q-exp-btn">顯示詳解</button></div>
+            <div class="q-exp">(B) 正確（30±2 次/min = 29~32 週期）。(A) 先取 <strong>6</strong> 顆，不符再取 12 顆；(C) 網架頂端<strong>不應被淹沒</strong>；(D) 完全崩散<strong>非</strong>指完全溶解，指殘留物呈稀軟團塊無硬質。</div>
+            <textarea class="q-note" placeholder="📝 補充筆記…"></textarea>
+          </div>
+          <div class="quiz" data-qid="ch13-dis-113-1">
+            <div class="q-stem"><span class="yr">113-1</span>有關「崩散度試驗」之敘述，下列何者<strong>錯誤</strong>？</div>
+            <button class="opt" data-c="1">(A) 維持 37±0.5°C 恆溫，篩網為 20 號篩</button>
+            <button class="opt" data-c="0">(B) 網架升降頻率每分鐘 29~32 週期</button>
+            <button class="opt" data-c="0">(C) 網架提升高度 5.3~5.7 公分</button>
+            <button class="opt" data-c="0">(D) 篩網應浸在液面下 2.5 公分</button>
+            <div class="q-tools"><button class="q-btn q-exp-btn">顯示詳解</button></div>
+            <div class="q-exp">(A) 錯：崩散度恆溫為 <strong>37±2°C</strong>（非 ±0.5），篩網為 <strong>10 號</strong>（非 20 號）。</div>
+            <textarea class="q-note" placeholder="📝 補充筆記…"></textarea>
+          </div>
+        </div>
+
+        <div class="topic">
+          <div class="topic-title">溶離試驗七裝置（<span class="en">USP Apparatus 1–7</span>）</div>
+          <div class="callout">⚑ <strong>記法</strong>：試驗劑型＝控釋 3、7，就 4 難溶，經皮 5 6 7；錠劑／膠囊找 1、2，名稱有「往復」的找控釋劑型。</div>
+          <table class="cmp">
+            <tr><th>裝置</th><th>名稱</th><th>試驗劑型</th><th>溫度</th></tr>
+            <tr><td>Apparatus 1</td><td>轉籃法（rotating basket）</td><td>錠劑、膠囊、栓劑</td><td rowspan="4">37°C</td></tr>
+            <tr><td>Apparatus 2</td><td>槳式法（paddle）</td><td>錠劑、膠囊、部分栓劑</td></tr>
+            <tr><td>Apparatus 3</td><td>往復圓筒法（reciprocating cylinder，富士山）</td><td>控釋劑型、部分栓劑</td></tr>
+            <tr><td>Apparatus 4</td><td>川流槽式／流通池法（flow-through cell，四川）</td><td>難溶性藥物</td></tr>
+            <tr><td>Apparatus 5</td><td>槳碟法（paddle over disk）</td><td>經皮吸收劑</td><td rowspan="3">32°C</td></tr>
+            <tr><td>Apparatus 6</td><td>圓筒法（cylinder）</td><td>經皮吸收劑</td></tr>
+            <tr><td>Apparatus 7</td><td>往復碟法（reciprocating disk）</td><td>控釋劑型／經皮吸收劑</td></tr>
+          </table>
+          <div class="quiz" data-qid="ch13-app-112-1">
+            <div class="q-stem"><span class="yr">112-1</span>依中華藥典及 USP-NF，下列何者是一般錠劑與膠囊劑進行溶離試驗時最常用的溶離裝置？</div>
+            <button class="opt" data-c="1">(A) Apparatus I / Apparatus II</button>
+            <button class="opt" data-c="0">(B) Apparatus I / Apparatus III</button>
+            <button class="opt" data-c="0">(C) Apparatus II / Apparatus III</button>
+            <button class="opt" data-c="0">(D) Apparatus I / Apparatus II / Apparatus III</button>
+            <div class="q-tools"><button class="q-btn q-exp-btn">顯示詳解</button></div>
+            <div class="q-exp">(A) 一般錠劑、膠囊最常用 <strong>裝置 1（轉籃法）與裝置 2（槳式法）</strong>。</div>
+            <textarea class="q-note" placeholder="📝 補充筆記…"></textarea>
+          </div>
+          <div class="quiz" data-qid="ch13-app-109-2">
+            <div class="q-stem"><span class="yr">109-2</span>當修飾釋放劑型（modified-release）含有溶解度不佳之主成分時，宜採用下列何種溶離裝置評估其溶離速率最適合？</div>
+            <button class="opt" data-c="0">(A) paddle method</button>
+            <button class="opt" data-c="0">(B) rotating basket method</button>
+            <button class="opt" data-c="0">(C) reciprocating cylinder method</button>
+            <button class="opt" data-c="1">(D) flow-through-cell method</button>
+            <div class="q-tools"><button class="q-btn q-exp-btn">顯示詳解</button></div>
+            <div class="q-exp">(D) 難溶性藥物 → <strong>裝置 4 川流槽式／流通池法</strong>（四川、難溶）。</div>
+            <textarea class="q-note" placeholder="📝 補充筆記…"></textarea>
+          </div>
+          <div class="quiz" data-qid="ch13-app-107-2">
+            <div class="q-stem"><span class="yr">107-2</span>依 USP 規定，下列何種溶離試驗方法的溶離媒液須維持在 32°C？</div>
+            <button class="opt" data-c="0">(A) 圓筒型往復式法（reciprocating cylinder method）</button>
+            <button class="opt" data-c="0">(B) 川流槽式法（flow-through-cell method）</button>
+            <button class="opt" data-c="1">(C) 圓筒法（cylinder method）</button>
+            <button class="opt" data-c="0">(D) 轉籃法（rotating basket method）</button>
+            <div class="q-tools"><button class="q-btn q-exp-btn">顯示詳解</button></div>
+            <div class="q-exp">32°C 為經皮吸收劑裝置（5、6、7）。(C) 圓筒法為裝置 6 → 32°C。裝置 1–4 為 37°C。</div>
+            <textarea class="q-note" placeholder="📝 補充筆記…"></textarea>
           </div>
         </div>
 
