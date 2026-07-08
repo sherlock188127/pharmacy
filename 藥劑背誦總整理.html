@@ -82,6 +82,14 @@ main{max-width:1080px;margin:0 auto;padding:26px 22px 80px}
 .topic{margin-top:14px}
 .topic:first-child{margin-top:4px}
 .topic-title{font-family:var(--serif);font-weight:700;font-size:17px;color:var(--ink);padding-bottom:6px;border-bottom:2px solid var(--c);display:inline-block;margin-bottom:12px}
+.topic-title.collapsible{cursor:pointer;user-select:none}
+.topic-title.collapsible::after{content:" ▼";font-size:12px;color:var(--c)}
+.topic.quiz-collapsed .topic-title.collapsible::after{content:" ▶"}
+.topic.quiz-collapsed .quiz{display:none}
+.q-stem{cursor:pointer}
+.q-stem::before{content:"▼ ";font-size:11px;color:var(--c);font-weight:400}
+.quiz.folded .q-stem::before{content:"▶ "}
+.quiz.folded .opt,.quiz.folded .q-tools,.quiz.folded .q-exp,.quiz.folded .q-ans,.quiz.folded .q-note{display:none}
 .topic-title .en{font-family:var(--mono);font-weight:500}
 .lead{font-size:13.5px;margin:8px 0;color:var(--ink)}
 .keynote{background:rgba(0,0,0,.02);border-left:3px solid var(--c);padding:10px 14px;border-radius:0 8px 8px 0;margin:12px 0;font-size:13.5px}
@@ -2144,14 +2152,114 @@ footer{text-align:center;color:var(--ink-soft);font-size:12px;padding:30px;font-
             <div class="q-exp">(A) 錯：乾熱滅菌有效條件為 <strong>160°C × 2 小時</strong>，非 100°C 30 分鐘。</div>
             <textarea class="q-note" placeholder="📝 補充筆記…"></textarea>
           </div>
-          <div class="quiz" data-qid="ch14-39">
-            <div class="q-stem"><span class="yr">考點</span>有關滅菌法的選擇，下列何者<strong>錯誤</strong>？</div>
-            <button class="opt" data-c="0">(A) 依中華藥典，除另有規定外，油質懸液劑以乾熱法滅菌時，應於 150°C 下加熱一小時</button>
+          <div class="quiz" data-qid="ch14-110-1-9">
+            <div class="q-stem"><span class="yr">110-1</span>有關滅菌法的選擇，下列何者<strong>錯誤</strong>？</div>
+            <button class="opt" data-c="0">(A) 除另有規定外，油質懸液劑以乾熱法滅菌時，應於 150°C 下加熱一小時</button>
             <button class="opt" data-c="0">(B) 已裝填於包材中之醫療用插管，通常使用氣體滅菌法</button>
             <button class="opt" data-c="0">(C) 進行無菌試驗時所需的培養基，應選用高壓蒸氣滅菌法</button>
             <button class="opt" data-c="1">(D) 甘油不宜採用乾熱滅菌法</button>
             <div class="q-tools"><button class="q-btn q-exp-btn">顯示詳解</button></div>
             <div class="q-exp">(D) 錯：甘油屬油溶性物質，<strong>可</strong>採用乾熱滅菌法（乾熱適用甘油、石蠟、礦物油等）。</div>
+            <textarea class="q-note" placeholder="📝 補充筆記…"></textarea>
+          </div>
+          <div class="quiz" data-qid="ch14-110-2-7">
+            <div class="q-stem"><span class="yr">110-2</span>依中華藥典滅菌法 III，耐熱藥物製成 25 mL 油溶液，並置於密閉容器中，其使用之滅菌溫度與時間何者正確？</div>
+            <button class="opt" data-c="0">(A) 115°C、25 分鐘</button>
+            <button class="opt" data-c="0">(B) 121°C、15 分鐘</button>
+            <button class="opt" data-c="1">(C) 150°C、60 分鐘</button>
+            <button class="opt" data-c="0">(D) 150°C、30 分鐘</button>
+            <div class="q-tools"><button class="q-btn q-exp-btn">顯示詳解</button></div>
+            <div class="q-exp">25 mL 油溶液（≤30 mL）→ 油液滅菌法 <strong>150°C 加熱 60 分鐘</strong>。故選 (C)。</div>
+            <textarea class="q-note" placeholder="📝 補充筆記…"></textarea>
+          </div>
+          <div class="quiz" data-qid="ch14-110-1-8">
+            <div class="q-stem"><span class="yr">110-1</span>氣體滅菌法最常使用下列何者？</div>
+            <button class="opt" data-c="0">(A) chlorine dioxide</button>
+            <button class="opt" data-c="1">(B) ethylene oxide</button>
+            <button class="opt" data-c="0">(C) formaldehyde</button>
+            <button class="opt" data-c="0">(D) propylene oxide</button>
+            <div class="q-tools"><button class="q-btn q-exp-btn">顯示詳解</button></div>
+            <div class="q-exp">(B) 環氧乙烯（ethylene oxide）為最常用之氣體滅菌劑。</div>
+            <textarea class="q-note" placeholder="📝 補充筆記…"></textarea>
+          </div>
+          <div class="quiz" data-qid="ch14-109-2-10">
+            <div class="q-stem"><span class="yr">109-2</span>下列何種劑型最適合以高壓蒸氣進行滅菌？</div>
+            <button class="opt" data-c="1">(A) 溶液劑</button>
+            <button class="opt" data-c="0">(B) 乳劑</button>
+            <button class="opt" data-c="0">(C) 懸液劑</button>
+            <button class="opt" data-c="0">(D) 軟膏劑</button>
+            <div class="q-tools"><button class="q-btn q-exp-btn">顯示詳解</button></div>
+            <div class="q-exp">(A) 高壓蒸氣滅菌適用<strong>溶液劑</strong>、培養基（水性、可被濕熱穿透）。</div>
+            <textarea class="q-note" placeholder="📝 補充筆記…"></textarea>
+          </div>
+          <div class="quiz" data-qid="ch14-109-1-11">
+            <div class="q-stem"><span class="yr">109-1</span>下列滅菌法中，何者可用於最終包裝產品之滅菌？</div>
+            <button class="opt" data-c="0">(A) 高壓蒸氣滅菌法</button>
+            <button class="opt" data-c="1">(B) 氣體滅菌法</button>
+            <button class="opt" data-c="0">(C) 過濾滅菌法</button>
+            <button class="opt" data-c="0">(D) 乾熱滅菌法</button>
+            <div class="q-tools"><button class="q-btn q-exp-btn">顯示詳解</button></div>
+            <div class="q-exp">(B) 氣體滅菌法適用最終包裝品之滅菌（可穿透包材）。</div>
+            <textarea class="q-note" placeholder="📝 補充筆記…"></textarea>
+          </div>
+          <div class="quiz" data-qid="ch14-113-2-1">
+            <div class="q-stem"><span class="yr">113-2</span>有關 steam sterilization 之敘述，下列何者<strong>正確</strong>？</div>
+            <button class="opt" data-c="0">(A) 藉由微生物細胞脫水造成死亡</button>
+            <button class="opt" data-c="1">(B) 可設定溫度為 121.5°C，滅菌時間 20 分鐘</button>
+            <button class="opt" data-c="0">(C) 適合石油類產品如石蠟（Petrolatum）的滅菌</button>
+            <button class="opt" data-c="0">(D) 使用滅菌壓力越大，滅菌時間越長</button>
+            <div class="q-tools"><button class="q-btn q-exp-btn">顯示詳解</button></div>
+            <div class="q-exp">(A) 藉由細菌<strong>蛋白質凝固</strong>致死；(C) 石蠟類 → <strong>乾熱</strong>滅菌法；(D) 壓力越大滅菌時間<strong>越短</strong>。故選 (B)。</div>
+            <textarea class="q-note" placeholder="📝 補充筆記…"></textarea>
+          </div>
+          <div class="quiz" data-qid="ch14-113-2-2">
+            <div class="q-stem"><span class="yr">113-2</span>有關滅菌法之敘述，下列何者<strong>錯誤</strong>？</div>
+            <button class="opt" data-c="0">(A) 高壓蒸氣滅菌法最主要滅菌機制，是使細菌蛋白質發生變性反應</button>
+            <button class="opt" data-c="1">(B) 乾熱滅菌法最主要滅菌機制，是將細菌蛋白質還原</button>
+            <button class="opt" data-c="0">(C) B. subtilis 為常用於高壓蒸氣滅菌法之 biological indicator</button>
+            <button class="opt" data-c="0">(D) B. atrophaeus 為常用於乾熱滅菌法之 biological indicator</button>
+            <div class="q-tools"><button class="q-btn q-exp-btn">顯示詳解</button></div>
+            <div class="q-exp">(B) 錯：乾熱滅菌法主要機制是將細菌蛋白質<strong>氧化與脫水</strong>，非還原。</div>
+            <textarea class="q-note" placeholder="📝 補充筆記…"></textarea>
+          </div>
+          <div class="quiz" data-qid="ch14-113-1-3">
+            <div class="q-stem"><span class="yr">113-1</span>有關氣體滅菌法（Gas sterilization）之敘述，下列何者<strong>錯誤</strong>？</div>
+            <button class="opt" data-c="0">(A) 最主要滅菌機制為與微生物蛋白質產生反應，使被改變的代謝物無法再被微生物利用</button>
+            <button class="opt" data-c="0">(B) 依中華藥典，容器滅菌若採用該方法，應使用環氧乙烯進行滅菌</button>
+            <button class="opt" data-c="1">(C) 使用環氧乙烯進行滅菌時，一般可在 2 小時內完成整個滅菌程序</button>
+            <button class="opt" data-c="0">(D) 適用於對熱及濕度敏感之藥品進行滅菌</button>
+            <div class="q-tools"><button class="q-btn q-exp-btn">顯示詳解</button></div>
+            <div class="q-exp">(C) 錯：氣體滅菌後需<strong>放置 14 天</strong>以除去吸附殘留物，無法 2 小時內完成。</div>
+            <textarea class="q-note" placeholder="📝 補充筆記…"></textarea>
+          </div>
+          <div class="quiz" data-qid="ch14-113-1-4">
+            <div class="q-stem"><span class="yr">113-1</span>有關蒸氣滅菌（Steam sterilization）之敘述，下列何者<strong>最適當</strong>？</div>
+            <button class="opt" data-c="0">(A) 適合用於油脂類（Oils and fats preparations）注射劑之滅菌</button>
+            <button class="opt" data-c="1">(B) 滅菌時使用的壓力越高，則滅菌所需要的時間越短</button>
+            <button class="opt" data-c="0">(C) 滅菌時使用的溫度越高，則滅菌所需要的時間越長</button>
+            <button class="opt" data-c="0">(D) 不適合用於玻璃器具之滅菌</button>
+            <div class="q-tools"><button class="q-btn q-exp-btn">顯示詳解</button></div>
+            <div class="q-exp">(B) 壓力越高 → 溫度越高 → 滅菌所需時間<strong>越短</strong>（壓力×時間=300）。(A) 油脂類用乾熱；(C) 溫度越高時間越短。</div>
+            <textarea class="q-note" placeholder="📝 補充筆記…"></textarea>
+          </div>
+          <div class="quiz" data-qid="ch14-111-2-5">
+            <div class="q-stem"><span class="yr">111-2</span>乾熱法滅菌法，最常使用何種微生物之芽胞作為滅菌指示劑？</div>
+            <button class="opt" data-c="1">(A) Bacillus subtilis</button>
+            <button class="opt" data-c="0">(B) Escherichia coli</button>
+            <button class="opt" data-c="0">(C) Pseudomonas aeruginosa</button>
+            <button class="opt" data-c="0">(D) Candida albican</button>
+            <div class="q-tools"><button class="q-btn q-exp-btn">顯示詳解</button></div>
+            <div class="q-exp">(A) 乾熱滅菌八版生物指示劑為 <span class="drug">Bacillus subtilis</span>（九版改為 Bacillus atrophaeus）。</div>
+            <textarea class="q-note" placeholder="📝 補充筆記…"></textarea>
+          </div>
+          <div class="quiz" data-qid="ch14-110-2-6">
+            <div class="q-stem"><span class="yr">110-2</span>下列何成分之 0.5% 熱水溶液，可以用來清洗一般橡皮塞（rubber closures）？</div>
+            <button class="opt" data-c="0">(A) sodium chloride</button>
+            <button class="opt" data-c="0">(B) sodium acetate</button>
+            <button class="opt" data-c="1">(C) sodium pyrophosphate</button>
+            <button class="opt" data-c="0">(D) sodium lauryl sulfate</button>
+            <div class="q-tools"><button class="q-btn q-exp-btn">顯示詳解</button></div>
+            <div class="q-exp">(C) <strong>0.5% Sodium pyrophosphate（焦磷酸鈉）</strong>熱水溶液可清洗一般橡皮塞。</div>
             <textarea class="q-note" placeholder="📝 補充筆記…"></textarea>
           </div>
         </div>
@@ -2237,6 +2345,14 @@ searchInput.addEventListener('input', ()=>{
 /* 互動題目元件 */
 document.querySelectorAll('.quiz').forEach(q=>{
   const qid = q.dataset.qid || ('q'+Math.random().toString(36).slice(2));
+  // 題幹點擊 → 收合/展開該題
+  const stem=q.querySelector('.q-stem');
+  if(stem){
+    stem.addEventListener('click',e=>{
+      if(e.target.closest('.opt')) return;
+      q.classList.toggle('folded');
+    });
+  }
   // 選項點擊判對錯
   q.querySelectorAll('.opt').forEach(opt=>{
     opt.addEventListener('click', ()=>{
@@ -2273,6 +2389,17 @@ document.querySelectorAll('.quiz').forEach(q=>{
     const key='pharm-note-'+qid;
     try{const v=localStorage.getItem(key); if(v) note.value=v;}catch(e){}
     note.addEventListener('input',()=>{try{localStorage.setItem(key,note.value);}catch(e){}});
+  }
+});
+
+/* 含題目之段落標題 → 一鍵收合整批題目 */
+document.querySelectorAll('.topic').forEach(t=>{
+  if(t.querySelector('.quiz')){
+    const title=t.querySelector('.topic-title');
+    if(title){
+      title.classList.add('collapsible');
+      title.addEventListener('click',()=>t.classList.toggle('quiz-collapsed'));
+    }
   }
 });
 </script>
