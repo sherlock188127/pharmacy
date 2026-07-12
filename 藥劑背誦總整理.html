@@ -124,6 +124,16 @@ table.cmp td:first-child{font-family:var(--serif);font-weight:700;background:rgb
 table.cmp tr:nth-child(even) td{background:rgba(0,0,0,.012)}
 .formula{background:rgba(0,0,0,.025);border:1px solid var(--line);border-radius:10px;padding:16px 20px;margin:12px 0;text-align:center;font-family:var(--mono);font-size:15px;color:var(--ink)}
 .frac{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;margin:0 5px}
+.rheo{display:flex;flex-wrap:wrap;gap:14px;align-items:flex-start;margin:12px 0}
+.rheo-fig{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px;flex:0 0 auto}
+.rheo-fig svg{display:block}
+.rheo-txt{flex:1 1 240px;min-width:220px}
+.rheo-cap{font-family:var(--serif);font-weight:700;font-size:13px;color:var(--c);text-align:center;margin-top:6px}
+.ax{stroke:#8a8378;stroke-width:1.6}
+.axl{font-family:'Noto Sans TC',sans-serif;font-size:10px;fill:#8a8378}
+.cv{fill:none;stroke-width:2.4;stroke-linecap:round}
+.dot{fill:#b5482e}
+.gl{stroke:#c9c2b4;stroke-width:1;stroke-dasharray:3 3}
 .frac .num{padding:0 8px 3px;border-bottom:1.5px solid var(--ink)}
 .frac .den{padding:3px 8px 0}
 .formula .vars{display:block;font-family:var(--sans);font-size:12.5px;color:var(--ink-soft);margin-top:11px;line-height:1.85}
@@ -1035,9 +1045,577 @@ footer{text-align:center;color:var(--ink-soft);font-size:12px;padding:30px;font-
     </section>
 
     <!-- ch08 -->
-    <section class="chapter" id="ch08" data-status="empty" data-name="流變學" style="--c:#A6A8B0">
-      <div class="chapter-head"><span class="num">08</span><h3>流變學</h3><span class="tag">待整理</span><span class="chev">▼</span></div>
-      <div class="chapter-body"><div class="empty-state">尚未整理 — 把這章要背的表格貼給我，我填進來。</div></div>
+    <section class="chapter" id="ch08" data-status="done" data-name="流變學" style="--c:#A6A8B0">
+      <div class="chapter-head"><span class="num">08</span><h3>流變學</h3><span class="tag">已整理</span><span class="chev">▼</span></div>
+      <div class="chapter-body">
+
+        <div class="topic">
+          <div class="topic-title">基本定義與公式</div>
+          <div class="keynote">
+            <span class="lbl t-blue">切變速率（Shear rate, γ）</span>：物體受切應力作用所產生的連續性變形，<strong>變形之速率</strong>稱為切變速率。單位 <strong>sec⁻¹</strong>。
+          </div>
+          <div class="formula">
+            γ ＝ <span class="frac"><span class="num">切應力 τ</span><span class="den">黏度 η</span></span>
+            ＝ <span class="frac"><span class="num">速率 v</span><span class="den">厚度 h</span></span>
+            <div class="vars">速率單位 m/sec ÷ 厚度單位 m → 剩下 <strong>sec⁻¹</strong>（每秒變形程度）。<br>γ = v/h：上面平板速度 v 越快、或厚度 h 越薄（軟膏推很薄），液體分子間相對移動速率就越快。</div>
+          </div>
+          <div class="keynote">
+            <span class="lbl t-orange">黏度（Viscosity, η ← eta）</span>：物質黏性的程度，又叫<strong>黏滯係數</strong>。黏度＝切應力與切變速率的<strong>比值</strong>。
+          </div>
+          <div class="formula">
+            η ＝ <span class="frac"><span class="num">切應力 τ</span><span class="den">切變速率 γ</span></span>
+            <div class="vars">η 很大（很黏）→ 需極大的力 τ 才流動一點點（γ 很小）。<br>單位：<strong>g/cm·s</strong>（1 泊 poise ＝ 100 厘泊 centipoise）；切應力與彈性係數單位為 g/cm·s²。</div>
+          </div>
+          <div class="keynote"><span class="lbl">特性</span>：<strong>溫度越高，黏度越低</strong>（想成岩漿：溫度高流得快，冷卻後流很慢）。</div>
+          <div class="keynote">
+            <span class="lbl t-green">流動性（Fluidity, φ ← phi）</span>：<strong>黏度之倒數</strong>；黏度愈大，流動性愈差。
+          </div>
+          <div class="formula">φ ＝ <span class="frac"><span class="num">1</span><span class="den">η</span></span></div>
+        </div>
+
+        <div class="topic">
+          <div class="topic-title">兩大方程式</div>
+          <div class="keynote">
+            <span class="lbl t-blue">阿瑞尼斯方程式（Arrhenius equation）</span>：描述<strong>反應速率與溫度之關係</strong>；為評估製劑在不同溫度下之<strong>架儲期（shelf-life）</strong>的理論基礎。
+          </div>
+          <div class="formula">
+            log k ＝ log A − <span class="frac"><span class="num">Ea</span><span class="den">2.303 RT</span></span>
+            <div class="vars">
+              k：反應速率常數（<strong>溫度↑ → k↑</strong>，成正比）　｜　A：Arrhenius factor<br>
+              Ea：活化能　｜　R：氣體常數　｜　T：絕對溫度
+            </div>
+          </div>
+          <div class="keynote">
+            <span class="lbl t-orange">愛因斯坦黏度方程式（Einstein viscosity equation）</span>：可應用於<strong>牛頓性流體</strong>。
+          </div>
+          <div class="formula">
+            η ＝ η₀ (1 + 2.5 φ)
+            <div class="vars">η＝分散相黏度；<strong>理想黏度值 = 2.5</strong></div>
+          </div>
+        </div>
+
+        <div class="topic">
+          <div class="topic-title">流體分類與流動曲線圖</div>
+          <div class="keynote"><span class="lbl">分類依據</span>：切應力與切變速率是否呈<strong>線性</strong>。<br>
+            <strong>線性</strong> → 牛頓性流體（Newtonian flow）<br>
+            <strong>非線性</strong> → 非牛頓性流體：可塑性（Plastic）、假塑性（Pseudoplastic）、擴張性（Dilatant）、搖變性（Thixotropic）
+          </div>
+
+          <div class="tbl-cap">流動曲線圖總覽（X 軸：切應力 τ｜Y 軸：切變速率 γ）</div>
+          <div class="rheo-fig" style="width:100%">
+            <svg viewBox="0 0 320 220" width="100%" style="max-width:420px;margin:0 auto">
+              <line class="ax" x1="40" y1="190" x2="300" y2="190"/>
+              <line class="ax" x1="40" y1="190" x2="40" y2="20"/>
+              <text class="axl" x="150" y="208">切應力 τ</text>
+              <text class="axl" x="6" y="105">切變速率 γ</text>
+              <path class="cv" stroke="#3a6ea5" d="M40,190 L230,30"/>
+              <path class="cv" stroke="#c98a3a" d="M120,190 C170,170 215,110 250,30"/>
+              <path class="cv" stroke="#5fae6f" d="M40,190 C95,188 130,180 152,155 C175,128 185,80 190,30"/>
+              <path class="cv" stroke="#9a7fb0" d="M40,190 C90,120 160,80 260,68"/>
+              <text class="axl" x="200" y="26" fill="#3a6ea5">A 牛頓</text>
+              <text class="axl" x="252" y="26" fill="#c98a3a">B 可塑</text>
+              <text class="axl" x="166" y="26" fill="#5fae6f">C 假塑</text>
+              <text class="axl" x="264" y="72" fill="#9a7fb0">D 擴張</text>
+              <circle class="dot" cx="120" cy="190" r="3"/>
+            </svg>
+          </div>
+          <table class="cmp">
+            <tr><th>曲線</th><th>流體</th><th>特徵</th></tr>
+            <tr><td>A</td><td><strong>牛頓性</strong></td><td><strong>過原點直線</strong>（線性）</td></tr>
+            <tr><td>B</td><td><strong>可塑性</strong></td><td><span class="mk-y"><strong>不過原點</strong></span>（有啟動值）、凹向上</td></tr>
+            <tr><td>C</td><td><strong>假塑性</strong></td><td>過原點、<strong>凹向上</strong></td></tr>
+            <tr><td>D</td><td><strong>擴張性</strong></td><td>過原點、<strong>凹向下</strong></td></tr>
+          </table>
+          <div class="callout">
+            ⚑ <strong>影響黏度因子</strong><br>
+            ① <strong>牛頓性</strong>：溫度、組成<br>
+            ② <strong>可塑性、假塑性、擴張性</strong>：溫度、組成、切應力、切變速率<br>
+            ③ <strong>搖變性</strong>：溫度、組成、切應力、切變速率、<span class="mk-y"><strong>時間</strong></span>
+          </div>
+        </div>
+
+        <div class="topic">
+          <div class="topic-title">牛頓性流體（<span class="en">Newtonian flow</span>）</div>
+          <div class="rheo">
+            <div class="rheo-fig">
+              <svg viewBox="0 0 180 150" width="180" height="150">
+                <line class="ax" x1="30" y1="125" x2="165" y2="125"/>
+                <line class="ax" x1="30" y1="125" x2="30" y2="15"/>
+                <text class="axl" x="95" y="142">切應力 τ</text>
+                <text class="axl" x="4" y="72">γ</text>
+                <path class="cv" stroke="#3a6ea5" d="M30,125 L150,25"/>
+              </svg>
+              <div class="rheo-cap">通過原點的直線</div>
+            </div>
+            <div class="rheo-txt">
+              <div class="keynote">
+                <ul>
+                  <li><strong>作圖</strong>：切應力與切變速率成<strong>正比</strong>（線性）。</li>
+                  <li><strong>特性</strong>：黏度與<strong>溫度、組成</strong>有關（T↑、η↓）；與切應力、切變速率、時間<strong>無關</strong>。溫度與組成不變 → 黏度為<strong>定值</strong>。</li>
+                  <li><span class="mk-y">最不常出現於一般乳劑</span>（乳劑大多屬非牛頓性流體）。</li>
+                  <li><strong>物質</strong>：<span class="drug">乙醇</span>、<span class="drug">甘油</span>、<span class="drug">蓖麻油</span>、<span class="drug">10% 葡萄糖溶液</span>。</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="rheo">
+            <div class="rheo-fig">
+              <svg viewBox="0 0 180 150" width="180" height="150">
+                <line class="ax" x1="30" y1="125" x2="165" y2="125"/>
+                <line class="ax" x1="30" y1="125" x2="30" y2="15"/>
+                <text class="axl" x="95" y="142">切應力 τ</text>
+                <text class="axl" x="4" y="72">γ</text>
+                <path class="cv" stroke="#b5482e" d="M30,125 L120,20"/>
+                <path class="cv" stroke="#3a6ea5" d="M30,125 L155,75"/>
+                <text class="axl" x="124" y="22" fill="#b5482e">A</text>
+                <text class="axl" x="158" y="76" fill="#3a6ea5">B</text>
+              </svg>
+              <div class="rheo-cap">斜率越大，黏度越小</div>
+            </div>
+            <div class="rheo-txt">
+              <div class="keynote">
+                <ul>
+                  <li>斜率：<strong>A &gt; B</strong>　｜　黏度：<strong>B &gt; A</strong></li>
+                  <li>η = τ/γ：若切變速率相同，切應力越大 → 黏度越大。</li>
+                  <li><span class="mk-y"><strong>結論：斜率越大，黏度越小</strong></span>（斜率與黏度成反比）。</li>
+                  <li>將<strong>黏度</strong>對切應力或切變速率作圖 → 得一<strong>水平直線</strong>（牛頓性流體黏度與兩者皆無關）。</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic">
+          <div class="topic-title">可塑性流體（<span class="en">Plastic flow</span>）</div>
+          <div class="rheo">
+            <div class="rheo-fig">
+              <svg viewBox="0 0 180 150" width="180" height="150">
+                <line class="ax" x1="30" y1="125" x2="165" y2="125"/>
+                <line class="ax" x1="30" y1="125" x2="30" y2="15"/>
+                <text class="axl" x="95" y="142">切應力 τ</text>
+                <text class="axl" x="4" y="72">γ</text>
+                <path class="cv" stroke="#c98a3a" d="M70,125 C102,124 122,118 136,102 C150,86 156,58 159,20"/>
+                <circle class="dot" cx="70" cy="125" r="4"/>
+                <text class="axl" x="48" y="118" fill="#b5482e">啟動值</text>
+              </svg>
+              <div class="rheo-cap">不通過原點、凹向上</div>
+            </div>
+            <div class="rheo-txt">
+              <div class="keynote">
+                <ul>
+                  <li><strong>作圖</strong>：具<span class="mk-y"><strong>啟動值（yield value）</strong></span>，達到啟動值後與牛頓性流體類似。<strong>不通過原點</strong>、呈非線性。</li>
+                  <li>施加外力需達一定數值後，才會有切變速率、黏度出現（像擠牙膏，輕輕碰不動，超過啟動值後突然順暢流出）。</li>
+                  <li><strong>物質（國考愛考）</strong>：<span class="drug">糊劑</span>、<span class="drug">凝膠</span>、<span class="drug">軟膏</span>、<span class="drug">乳劑</span>（半固體製劑）<br><span class="cn">記法：胡椒亂入（糊、膠、軟、乳）</span></li>
+                  <li><span class="drug">Bingham plastics</span>（賓漢流體）＝可塑性流體：超過啟動值後，會像牛頓流體一樣出現黏性流動。</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic">
+          <div class="topic-title">假塑性流體（<span class="en">Pseudoplastic flow</span>）</div>
+          <div class="rheo">
+            <div class="rheo-fig">
+              <svg viewBox="0 0 180 150" width="180" height="150">
+                <line class="ax" x1="30" y1="125" x2="165" y2="125"/>
+                <line class="ax" x1="30" y1="125" x2="30" y2="15"/>
+                <text class="axl" x="95" y="142">切應力 τ</text>
+                <text class="axl" x="4" y="72">γ</text>
+                <path class="cv" stroke="#5fae6f" d="M30,125 C70,124 95,120 112,105 C128,90 136,60 140,20"/>
+                <circle class="dot" cx="30" cy="125" r="3.5"/>
+              </svg>
+              <div class="rheo-cap">通過原點、凹向上</div>
+            </div>
+            <div class="rheo-txt">
+              <div class="keynote">
+                <ul>
+                  <li><strong>作圖</strong>：<strong>通過原點</strong>、非線性、<strong>凹向上</strong>曲線（無啟動值）。</li>
+                  <li><strong>特性</strong>：黏度隨切變速率增加而<strong>減少</strong> → <span class="mk-y"><strong>搖變稀（Shear-thinning）</strong></span>。切應力越大，黏度越小。</li>
+                  <li><strong>結論</strong>：斜率越大，黏度越小（對 A、B 兩點做切線斜率）。</li>
+                  <li><strong>物質</strong>：<span class="drug">甲基纖維素（Methyl cellulose, MC）</span>、<span class="drug">西黃耆膠（Tragacanth）</span>、<span class="drug">阿拉伯膠（Acacia）</span><br><span class="cn">記法：假甲黃伯</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic">
+          <div class="topic-title">擴張性流體（<span class="en">Dilatant flow</span>）</div>
+          <div class="rheo">
+            <div class="rheo-fig">
+              <svg viewBox="0 0 180 150" width="180" height="150">
+                <line class="ax" x1="30" y1="125" x2="165" y2="125"/>
+                <line class="ax" x1="30" y1="125" x2="30" y2="15"/>
+                <text class="axl" x="95" y="142">切應力 τ</text>
+                <text class="axl" x="4" y="72">γ</text>
+                <path class="cv" stroke="#9a7fb0" d="M30,125 C50,80 80,45 110,35 C130,29 142,27 155,26"/>
+                <circle class="dot" cx="30" cy="125" r="3.5"/>
+              </svg>
+              <div class="rheo-cap">通過原點、凹向下</div>
+            </div>
+            <div class="rheo-txt">
+              <div class="keynote">
+                <ul>
+                  <li><strong>作圖</strong>：<strong>通過原點</strong>、非線性、<strong>凹向下</strong>曲線（把假塑性反過來）。</li>
+                  <li><strong>特性</strong>：黏度隨切變速率增加而<strong>增加</strong> → <span class="mk-y"><strong>搖變稠（Shear-thickening）</strong></span>。</li>
+                  <li>製劑中<strong>分散相比例過高</strong>，可能形成擴張性流體。</li>
+                  <li><strong>物質</strong>：<span class="drug">50% 以上去凝絮懸浮液</span>、<span class="drug">澱粉</span>（經典例：太白粉加水）。</li>
+                  <li><strong>缺點</strong>：<strong>阻礙膠體廠</strong>——給更多外力，黏度變大會讓成分沾黏在機器上，製造速率下降。</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic">
+          <div class="topic-title">搖變性流體（<span class="en">Thixotropic flow</span>）</div>
+          <div class="rheo">
+            <div class="rheo-fig">
+              <svg viewBox="0 0 250 175" width="250" height="175">
+                <line class="ax" x1="34" y1="145" x2="240" y2="145"/>
+                <line class="ax" x1="34" y1="145" x2="34" y2="12"/>
+                <text class="axl" x="120" y="162">切應力 τ (dyne/cm²)</text>
+                <text class="axl" x="4" y="80">γ</text>
+                <!-- A：不具啟動值 -->
+                <path class="cv" stroke="#b5482e" d="M34,145 C70,143 92,128 105,95 C114,70 118,42 120,22"/>
+                <path class="cv" stroke="#5fae6f" d="M120,22 C104,45 84,78 66,105 C54,124 43,139 34,145"/>
+                <text class="axl" x="88" y="112" fill="#8a8378">A</text>
+                <!-- B：具啟動值 -->
+                <path class="cv" stroke="#b5482e" d="M150,145 C182,143 200,126 210,96 C217,72 220,42 222,22"/>
+                <path class="cv" stroke="#5fae6f" d="M222,22 C205,48 186,82 172,108 C163,126 156,139 150,145"/>
+                <circle class="dot" cx="150" cy="145" r="3.5"/>
+                <text class="axl" x="188" y="122" fill="#8a8378">B</text>
+                <text class="axl" x="130" y="158" fill="#b5482e">啟動值</text>
+                <!-- 箭頭：右去（上升）左回（下降） -->
+                <path d="M110,80 l4,-7 M110,80 l6,2" stroke="#b5482e" stroke-width="1.5" fill="none"/>
+                <path d="M78,90 l-5,6 M78,90 l-6,-2" stroke="#5fae6f" stroke-width="1.5" fill="none"/>
+                <text class="axl" x="122" y="18" fill="#8a8378">滯後環</text>
+              </svg>
+              <div class="rheo-cap">右去左回：<span style="color:#b5482e">紅＝增大應力</span>／<span style="color:#5fae6f">綠＝減小應力</span><br><span class="cn">A 不具啟動值｜B 具啟動值</span></div>
+            </div>
+            <div class="rheo-txt">
+              <div class="keynote">
+                <ul>
+                  <li><strong>作圖</strong>：不一定通過原點、非線性曲線。<strong>增加與減少切應力所得曲線不同</strong>；上升與下降曲線所圍成之區域稱為 <span class="mk-y"><strong>滯後環（hysteresis loop）</strong></span>。</li>
+                  <li><span class="mk-y"><strong>右去左回</strong></span>：增大應力走右側曲線、減小應力走左側曲線 → <strong>破壞快、重建慢</strong>（結構被打散後需時間恢復）。同一切應力下，<strong>下降段的切變速率較高</strong>（已變稀）。</li>
+                  <li>A 為<strong>不具啟動值</strong>者（過原點，假塑性的搖變性）；B 為<strong>具啟動值</strong>者（可塑性的搖變性）。</li>
+                  <li><strong>特性</strong>：黏度隨切變速率增加而<strong>減少</strong>；容易發生在分散相 <strong>≥50%</strong> 的懸浮液。</li>
+                  <li>屬<strong>液體與凝膠之間的轉變</strong>（<strong>搖動為液體、靜止為固體</strong>）。</li>
+                  <li><strong>黏度</strong>：<strong>上升段 &gt; 下降段</strong>。與溫度、組成、切應力、切變速率、<span class="mk-y"><strong>時間</strong></span>有關。</li>
+                  <li><strong>物質</strong>：<span class="drug">凝膠劑</span>、<span class="drug">膠漿劑</span>、<span class="drug">乳漿劑</span>、<span class="drug">皂土（Bentonite）</span>、<span class="drug">皂土懸浮液</span>、<span class="drug">高嶺土（Kaolin）</span>、<span class="drug">水輝石（Hectorite）</span>、<span class="drug">矽酸鎂鋁（Veegum）</span>、<span class="drug">50% Procaine penicillin G</span><br><span class="cn">記法：膠漿類＋皂高水飛滿</span></li>
+                  <li><span class="drug">Attapulgite</span>（坡縷石）可增加物質搖變性。</li>
+                  <li><strong>備註</strong>：<span class="mk-y">理想乳劑應具有<strong>假塑性與搖變性</strong>流體的特性</span>（靜止時黏稠、搖動後不黏）。</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic">
+          <div class="topic-title">黏度 vs 切變速率 四型圖（<span class="en">Viscosity–Shear Rate</span>）</div>
+          <div class="callout">⚑ 國考愛考：Y 軸換成<strong>黏度</strong>時的四種曲線長相</div>
+          <div class="rheo">
+            <div class="rheo-fig">
+              <svg viewBox="0 0 170 130" width="170" height="130">
+                <line class="ax" x1="30" y1="105" x2="155" y2="105"/>
+                <line class="ax" x1="30" y1="105" x2="30" y2="15"/>
+                <text class="axl" x="72" y="122">Shear Rate</text>
+                <text class="axl" x="2" y="62">η</text>
+                <path class="cv" stroke="#c98a3a" d="M40,22 C46,60 55,80 75,86 C100,92 130,92 148,92"/>
+              </svg>
+              <div class="rheo-cap">(A) 可塑性<br><span class="cn">γ↑ → η↓（有啟動值）</span></div>
+            </div>
+            <div class="rheo-fig">
+              <svg viewBox="0 0 170 130" width="170" height="130">
+                <line class="ax" x1="30" y1="105" x2="155" y2="105"/>
+                <line class="ax" x1="30" y1="105" x2="30" y2="15"/>
+                <text class="axl" x="72" y="122">Shear Rate</text>
+                <text class="axl" x="2" y="62">η</text>
+                <path class="cv" stroke="#5fae6f" d="M36,20 C42,62 52,82 74,88 C100,94 130,94 148,94"/>
+              </svg>
+              <div class="rheo-cap">(B) <strong>假塑性</strong><br><span class="cn">γ↑ → η↓（過原點）</span></div>
+            </div>
+            <div class="rheo-fig">
+              <svg viewBox="0 0 170 130" width="170" height="130">
+                <line class="ax" x1="30" y1="105" x2="155" y2="105"/>
+                <line class="ax" x1="30" y1="105" x2="30" y2="15"/>
+                <text class="axl" x="72" y="122">Shear Rate</text>
+                <text class="axl" x="2" y="62">η</text>
+                <path class="cv" stroke="#3a6ea5" d="M32,60 L150,60"/>
+              </svg>
+              <div class="rheo-cap">(C) 牛頓性<br><span class="cn">γ↑ → η 定值（水平線）</span></div>
+            </div>
+            <div class="rheo-fig">
+              <svg viewBox="0 0 170 130" width="170" height="130">
+                <line class="ax" x1="30" y1="105" x2="155" y2="105"/>
+                <line class="ax" x1="30" y1="105" x2="30" y2="15"/>
+                <text class="axl" x="72" y="122">Shear Rate</text>
+                <text class="axl" x="2" y="62">η</text>
+                <path class="cv" stroke="#9a7fb0" d="M34,88 C70,86 95,80 115,66 C130,54 140,36 148,20"/>
+              </svg>
+              <div class="rheo-cap">(D) 擴張性<br><span class="cn">γ↑ → η↑</span></div>
+            </div>
+          </div>
+          <div class="quiz" data-qid="ch08-110-1-8">
+            <div class="q-stem"><span class="yr">110-1</span>下列何者代表 pseudoplastic 物質的流變性（黏度 vs 切變速率）？</div>
+            <button class="opt" data-c="0">(A) 曲線下降但有啟動值（可塑性）</button>
+            <button class="opt" data-c="1">(B) 曲線自高處下降並趨平（過原點、假塑性）</button>
+            <button class="opt" data-c="0">(C) 水平直線（牛頓性）</button>
+            <button class="opt" data-c="0">(D) 曲線上升（擴張性）</button>
+            <div class="q-tools"><button class="q-btn q-exp-btn">顯示詳解</button></div>
+            <div class="q-exp">假塑性：黏度隨切變速率增加而<strong>減少</strong>（shear-thinning），且過原點無啟動值 → (B)。</div>
+            <textarea class="q-note" placeholder="📝 補充筆記…"></textarea>
+          </div>
+          <div class="quiz" data-qid="ch08-110-2-6">
+            <div class="q-stem"><span class="yr">110-2</span>在固定溫度下，圖列中 4 種軟膏（切變速率 vs 切應力，斜率 1&gt;2&gt;3&gt;4）何者黏度最大？</div>
+            <button class="opt" data-c="0">(A) 1</button>
+            <button class="opt" data-c="0">(B) 2</button>
+            <button class="opt" data-c="0">(C) 3</button>
+            <button class="opt" data-c="1">(D) 4</button>
+            <div class="q-tools"><button class="q-btn q-exp-btn">顯示詳解</button></div>
+            <div class="q-exp">η = τ/γ；<strong>斜率越小 → 黏度越大</strong>。斜率最小的 4 黏度最大。</div>
+            <textarea class="q-note" placeholder="📝 補充筆記…"></textarea>
+          </div>
+          <div class="quiz" data-qid="ch08-108-2-12">
+            <div class="q-stem"><span class="yr">108-2</span>當假塑性流體以切變速率（Y 軸）對切應力（X 軸）作圖，若切應力大小為甲 &gt; 乙 &gt; 丙，則同一稠度曲線之斜率大小關係為何？</div>
+            <button class="opt" data-c="1">(A) 甲 &gt; 乙 &gt; 丙</button>
+            <button class="opt" data-c="0">(B) 乙 &gt; 丙 &gt; 甲</button>
+            <button class="opt" data-c="0">(C) 丙 &gt; 甲 &gt; 乙</button>
+            <button class="opt" data-c="0">(D) 丙 &gt; 乙 &gt; 甲</button>
+            <div class="q-tools"><button class="q-btn q-exp-btn">顯示詳解</button></div>
+            <div class="q-exp">假塑性曲線凹向上，切應力越大處<strong>切線斜率越大</strong>（黏度越小）。故甲&gt;乙&gt;丙。</div>
+            <textarea class="q-note" placeholder="📝 補充筆記…"></textarea>
+          </div>
+          <div class="quiz" data-qid="ch08-110-2-7">
+            <div class="q-stem"><span class="yr">110-2</span>下列何者<strong>最不可能</strong>為非牛頓性物質（non-Newtonian materials）？</div>
+            <button class="opt" data-c="0">(A) 乳劑</button>
+            <button class="opt" data-c="0">(B) 懸液劑</button>
+            <button class="opt" data-c="0">(C) 軟膏劑</button>
+            <button class="opt" data-c="1">(D) 稀乙醇</button>
+            <div class="q-tools"><button class="q-btn q-exp-btn">顯示詳解</button></div>
+            <div class="q-exp">(D) 稀乙醇為<strong>牛頓性流體</strong>（乙醇、甘油、蓖麻油、10% 葡萄糖溶液）。</div>
+            <textarea class="q-note" placeholder="📝 補充筆記…"></textarea>
+          </div>
+          <div class="quiz" data-qid="ch08-108-2-11">
+            <div class="q-stem"><span class="yr">108-2</span>下列何種劑型<strong>最不</strong>具有搖變性？</div>
+            <button class="opt" data-c="0">(A) 凝膠劑</button>
+            <button class="opt" data-c="0">(B) 乳漿劑</button>
+            <button class="opt" data-c="0">(C) 膠漿劑</button>
+            <button class="opt" data-c="1">(D) 流浸膏</button>
+            <div class="q-tools"><button class="q-btn q-exp-btn">顯示詳解</button></div>
+            <div class="q-exp">搖變性物質：凝膠劑、膠漿劑、乳漿劑（膠漿類）。<strong>流浸膏</strong>為乙醇抽提液，不具搖變性。</div>
+            <textarea class="q-note" placeholder="📝 補充筆記…"></textarea>
+          </div>
+          <div class="quiz" data-qid="ch08-109-1-10">
+            <div class="q-stem"><span class="yr">109-1</span>某液體以受力時之切應力與切變速率作圖呈現通過原點的直線，今改以切變速率為 X 軸、黏稠度為 Y 軸作圖，隨著切變速率增加，該液體的黏稠度值如何變化？</div>
+            <button class="opt" data-c="0">(A) 增加</button>
+            <button class="opt" data-c="0">(B) 降低</button>
+            <button class="opt" data-c="1">(C) 不變</button>
+            <button class="opt" data-c="0">(D) 先增加後降低</button>
+            <div class="q-tools"><button class="q-btn q-exp-btn">顯示詳解</button></div>
+            <div class="q-exp">通過原點的直線 → <strong>牛頓性流體</strong>，黏度為定值，與切變速率無關 → 水平線，<strong>不變</strong>。</div>
+            <textarea class="q-note" placeholder="📝 補充筆記…"></textarea>
+          </div>
+        </div>
+
+        <div class="topic">
+          <div class="topic-title">黏度測定</div>
+          <div class="keynote">
+            <span class="lbl t-blue">工具</span>：測定牛頓性流體可使用 <span class="drug">Ostwald 毛細管黏度計</span>。<br>
+            <span class="lbl">流速</span>：<strong>中央最大、管壁最小</strong>（貼近管壁的分子受管壁摩擦力影響，降低流動速率）。
+          </div>
+          <div class="formula">
+            η ＝ k · t · d
+            <div class="vars">k：常數　｜　t：通過毛細管時間　｜　d：密度</div>
+          </div>
+          <div class="formula">
+            <span class="frac"><span class="num">η₁</span><span class="den">η₂</span></span>
+            ＝ <span class="frac"><span class="num">t₁ · d₁</span><span class="den">t₂ · d₂</span></span>
+            <div class="vars">兩個黏度、兩個時間、兩個密度對應相除</div>
+          </div>
+          <div class="keynote"><span class="lbl t-orange">理想溶液黏度（混合）</span>：算完記得<strong>取倒數</strong>（因為算出來是 1/黏度）。</div>
+          <div class="formula">
+            <span class="frac"><span class="num">1</span><span class="den">η</span></span>
+            ＝ <span class="frac"><span class="num">V₁</span><span class="den">η₁</span></span>
+            ＋ <span class="frac"><span class="num">V₂</span><span class="den">η₂</span></span>
+            <div class="vars">η：理想溶液黏度　｜　η₁、η₂：溶液 1、2 黏度　｜　V₁、V₂：溶液 1、2 <strong>體積分率</strong></div>
+          </div>
+
+          <div class="tbl-cap">Poiseuille's equation（泊蕭葉定律）</div>
+          <div class="keynote">流體通過毛細管所產生的壓力差、半徑四次方、時間與黏度成<strong>正比</strong>；和管長、溶液體積成<strong>反比</strong>。</div>
+          <div class="formula">
+            η ＝ <span class="frac"><span class="num">π · ΔP · R⁴ · t</span><span class="den">8 L V</span></span>
+            <div class="vars">
+              ΔP：壓力差　｜　<strong>R：毛細管半徑</strong>　｜　L：毛細管長度　｜　V：溶液體積<br>
+              <span class="mk-y">參數放大 2 倍時，對黏度影響最大者為 <strong>半徑 R</strong>（四次方）</span>
+            </div>
+          </div>
+
+          <div class="tbl-cap">毛細管壁切應力</div>
+          <div class="keynote">毛細管半徑、壓力差越大 → 管壁切應力越大；毛細管長度越長 → 管壁切應力越小。</div>
+          <div class="formula">
+            τ ＝ <span class="frac"><span class="num">R · ΔP</span><span class="den">2 L</span></span>
+            <div class="vars">正比：毛細管半徑、壓力差　｜　反比：長度</div>
+          </div>
+
+          <div class="quiz" data-qid="ch08-visc-113-1">
+            <div class="q-stem"><span class="yr">113-1</span>25°C 時水之密度 1 g/mL、黏度 0.895 cP，在毛細管黏度計流動時間為 15 秒；若某液體流動時間為 750 秒，密度為 1.216 g/mL，則該液體黏度為若干 cP？</div>
+            <button class="opt" data-c="0">(A) 1.74×10⁻²</button>
+            <button class="opt" data-c="0">(B) 2.2×10⁻²</button>
+            <button class="opt" data-c="0">(C) 36.8</button>
+            <button class="opt" data-c="1">(D) 54.4</button>
+            <div class="q-tools"><button class="q-btn q-exp-btn">顯示詳解</button></div>
+            <div class="q-exp">η = k·t·d；η₁/η₂ = (t₁d₁)/(t₂d₂)<br>η = (0.895 / (15×1)) × (750 × 1.216) = 0.0597 × 912 ≈ <strong>54.4 cP</strong>。</div>
+            <textarea class="q-note" placeholder="📝 補充筆記…"></textarea>
+          </div>
+          <div class="quiz" data-qid="ch08-visc-110-1">
+            <div class="q-stem"><span class="yr">110-1</span>25°C 水密度 1 g/mL、黏度 0.895 cP；50% 甘油水性溶液密度 1.216 g/mL、黏度 54.4 cP。若測量水需 15 秒，則測量該甘油溶液需若干秒？</div>
+            <button class="opt" data-c="0">(A) 550</button>
+            <button class="opt" data-c="0">(B) 650</button>
+            <button class="opt" data-c="1">(C) 750</button>
+            <button class="opt" data-c="0">(D) 850</button>
+            <div class="q-tools"><button class="q-btn q-exp-btn">顯示詳解</button></div>
+            <div class="q-exp">η = k·t·d → t₂ = 54.4 / [(0.895/15) × 1.216] = 54.4 / 0.0726 ≈ <strong>750 秒</strong>。</div>
+            <textarea class="q-note" placeholder="📝 補充筆記…"></textarea>
+          </div>
+          <div class="quiz" data-qid="ch08-visc-110-2-2">
+            <div class="q-stem"><span class="yr">110-2</span>液體 A（η=2.0 cP）300 mL 和液體 B（η=4.0 cP）200 mL 混合後，其液體黏度為多少 cP？</div>
+            <button class="opt" data-c="0">(A) 0.4</button>
+            <button class="opt" data-c="0">(B) 1.3</button>
+            <button class="opt" data-c="1">(C) 2.5</button>
+            <button class="opt" data-c="0">(D) 5.0</button>
+            <div class="q-tools"><button class="q-btn q-exp-btn">顯示詳解</button></div>
+            <div class="q-exp">1/η = V_A/η_A + V_B/η_B = (300/500)/2.0 + (200/500)/4.0 = 0.3 + 0.1 = 0.4<br>η = 1/0.4 = <strong>2.5 cP</strong>（記得取倒數）。</div>
+            <textarea class="q-note" placeholder="📝 補充筆記…"></textarea>
+          </div>
+          <div class="quiz" data-qid="ch08-visc-107-1">
+            <div class="q-stem"><span class="yr">107-1</span>甲乙兩液體均是牛頓流體，混合 100 mL 液體甲（黏度 1.0 cP）與 400 mL 液體乙（黏度 4.0 cP），均勻混合液的黏度為多少 cP？</div>
+            <button class="opt" data-c="0">(A) 1.0</button>
+            <button class="opt" data-c="1">(B) 2.5</button>
+            <button class="opt" data-c="0">(C) 3.5</button>
+            <button class="opt" data-c="0">(D) 4.0</button>
+            <div class="q-tools"><button class="q-btn q-exp-btn">顯示詳解</button></div>
+            <div class="q-exp">1/η = (100/500)/1.0 + (400/500)/4.0 = 0.2 + 0.2 = 0.4 → η = <strong>2.5 cP</strong>。</div>
+            <textarea class="q-note" placeholder="📝 補充筆記…"></textarea>
+          </div>
+          <div class="quiz" data-qid="ch08-visc-99-1">
+            <div class="q-stem"><span class="yr">99-1</span>液體 A 黏度 1.0 cP、液體 B 黏度 3.4 cP，300 mL A 與 200 mL B 混合為理想溶液，其黏度為若干 cP？</div>
+            <button class="opt" data-c="0">(A) 0.9</button>
+            <button class="opt" data-c="1">(B) 1.4</button>
+            <button class="opt" data-c="0">(C) 2.0</button>
+            <button class="opt" data-c="0">(D) 4.4</button>
+            <div class="q-tools"><button class="q-btn q-exp-btn">顯示詳解</button></div>
+            <div class="q-exp">1/η = 0.6/1.0 + 0.4/3.4 = 0.6 + 0.1176 = 0.7176 → η = 1/0.7176 ≈ <strong>1.4 cP</strong>。</div>
+            <textarea class="q-note" placeholder="📝 補充筆記…"></textarea>
+          </div>
+          <div class="quiz" data-qid="ch08-visc-108-2-4">
+            <div class="q-stem"><span class="yr">108-2</span>使用同一套毛細管黏度計測流體的黏稠度，除了需檢測流體的流動時間，尚需下列何項數據？</div>
+            <button class="opt" data-c="0">(A) 毛細管半徑</button>
+            <button class="opt" data-c="0">(B) 滲透壓</button>
+            <button class="opt" data-c="0">(C) 兩側液面落差</button>
+            <button class="opt" data-c="1">(D) 液體密度</button>
+            <div class="q-tools"><button class="q-btn q-exp-btn">顯示詳解</button></div>
+            <div class="q-exp">η = k·t·d：同一套黏度計 k 固定，需<strong>時間 t</strong> 與<strong>密度 d</strong>。</div>
+            <textarea class="q-note" placeholder="📝 補充筆記…"></textarea>
+          </div>
+        </div>
+
+        <div class="topic">
+          <div class="topic-title">流變學 例題</div>
+          <div class="quiz" data-qid="ch08-109-1">
+            <div class="q-stem"><span class="yr">109-1</span>一軟膏以 20 cm/s 速度，塗抹於皮膚之厚度為 0.05 cm，其切變速率為何？</div>
+            <button class="opt" data-c="1">(A) 400 s⁻¹</button>
+            <button class="opt" data-c="0">(B) 1 s⁻¹</button>
+            <button class="opt" data-c="0">(C) 400 cm²/s</button>
+            <button class="opt" data-c="0">(D) 1 cm²/s</button>
+            <div class="q-tools"><button class="q-btn q-exp-btn">顯示詳解</button></div>
+            <div class="q-exp">γ = v/h = 20 cm/s ÷ 0.05 cm = <strong>400 s⁻¹</strong>。單位 cm 消掉 → s⁻¹。</div>
+            <textarea class="q-note" placeholder="📝 補充筆記…"></textarea>
+          </div>
+          <div class="quiz" data-qid="ch08-107-2">
+            <div class="q-stem"><span class="yr">107-2</span>已知液體甲是牛頓流體，施以 15 dyne/cm² 的力可產生 500 sec⁻¹ 的切變速率，若改施以 30 dyne/cm² 的力，則切變速率應為多少 sec⁻¹？</div>
+            <button class="opt" data-c="0">(A) 250</button>
+            <button class="opt" data-c="0">(B) 500</button>
+            <button class="opt" data-c="0">(C) 750</button>
+            <button class="opt" data-c="1">(D) 1,000</button>
+            <div class="q-tools"><button class="q-btn q-exp-btn">顯示詳解</button></div>
+            <div class="q-exp">牛頓流體黏度為定值：η = τ/γ = 15/500 = 0.03。改施 30 → γ = 30/0.03 = <strong>1000 s⁻¹</strong>。切應力與切變速率等比例放大。</div>
+            <textarea class="q-note" placeholder="📝 補充筆記…"></textarea>
+          </div>
+          <div class="quiz" data-qid="ch08-102-2">
+            <div class="q-stem"><span class="yr">102-2</span>牛頓性液體之黏滯性與下列何者有關？①組成 ②溫度 ③切應力 ④切變速率 ⑤測量時間</div>
+            <button class="opt" data-c="1">(A) ①②</button>
+            <button class="opt" data-c="0">(B) ①③</button>
+            <button class="opt" data-c="0">(C) ②④</button>
+            <button class="opt" data-c="0">(D) ②⑤</button>
+            <div class="q-tools"><button class="q-btn q-exp-btn">顯示詳解</button></div>
+            <div class="q-exp">(A) 牛頓性流體黏度僅與<strong>組成、溫度</strong>有關；與切應力、切變速率、時間無關。</div>
+            <textarea class="q-note" placeholder="📝 補充筆記…"></textarea>
+          </div>
+          <div class="quiz" data-qid="ch08-112-2">
+            <div class="q-stem"><span class="yr">112-2</span>有關凝膠劑（gel），下列敘述何者<strong>錯誤</strong>？</div>
+            <button class="opt" data-c="0">(A) 為半固體製劑</button>
+            <button class="opt" data-c="0">(B) 由無機小粒子或有機大分子所組成</button>
+            <button class="opt" data-c="0">(C) 可能具有搖變性（thixotropy）</button>
+            <button class="opt" data-c="1">(D) 僅供局部外用</button>
+            <div class="q-tools"><button class="q-btn q-exp-btn">顯示詳解</button></div>
+            <div class="q-exp">(D) 錯：凝膠<strong>可內服</strong>，不限於局部外用。</div>
+            <textarea class="q-note" placeholder="📝 補充筆記…"></textarea>
+          </div>
+          <div class="quiz" data-qid="ch08-112-1">
+            <div class="q-stem"><span class="yr">112-1</span>乳劑經搖動後之流變圖（黏度 vs 切應力）為「黏度先降後升」，則其具下列何種特性？</div>
+            <button class="opt" data-c="1">(A) dilatant</button>
+            <button class="opt" data-c="0">(B) elastic</button>
+            <button class="opt" data-c="0">(C) Newtonian</button>
+            <button class="opt" data-c="0">(D) pseudoplastic</button>
+            <div class="q-tools"><button class="q-btn q-exp-btn">顯示詳解</button></div>
+            <div class="q-exp">黏度隨切應力<strong>增加</strong>（曲線上揚）→ 擴張性流體（shear-thickening）。假塑性則黏度持續下降。</div>
+            <textarea class="q-note" placeholder="📝 補充筆記…"></textarea>
+          </div>
+          <div class="quiz" data-qid="ch08-111-1-4">
+            <div class="q-stem"><span class="yr">111-1</span>有關 pseudoplastic substance 流變性質之敘述，下列何者<strong>正確</strong>？</div>
+            <button class="opt" data-c="0">(A) 製劑中分散相（dispersed phase）比例過高所造成</button>
+            <button class="opt" data-c="1">(B) 又稱為 shear-thinning systems</button>
+            <button class="opt" data-c="0">(C) 具此特性之懸液劑在振搖後體積變大</button>
+            <button class="opt" data-c="0">(D) 又稱為 Bingham plastics</button>
+            <div class="q-tools"><button class="q-btn q-exp-btn">顯示詳解</button></div>
+            <div class="q-exp">(B) 假塑性＝<strong>shear-thinning</strong>（搖變稀）。(A) 為擴張性流體特性；(D) Bingham plastics＝<strong>可塑性</strong>流體。</div>
+            <textarea class="q-note" placeholder="📝 補充筆記…"></textarea>
+          </div>
+          <div class="quiz" data-qid="ch08-111-1-5">
+            <div class="q-stem"><span class="yr">111-1</span>下列何種流體之特性，<strong>最不常</strong>出現於一般乳劑？</div>
+            <button class="opt" data-c="0">(A) dilatant flow</button>
+            <button class="opt" data-c="1">(B) newtonian flow</button>
+            <button class="opt" data-c="0">(C) plastic flow</button>
+            <button class="opt" data-c="0">(D) pseudoplastic flow</button>
+            <div class="q-tools"><button class="q-btn q-exp-btn">顯示詳解</button></div>
+            <div class="q-exp">(B) 乳劑大多屬<strong>非牛頓性流體</strong>，故牛頓性最不常出現。可塑性物質：糊、膠、軟、乳。</div>
+            <textarea class="q-note" placeholder="📝 補充筆記…"></textarea>
+          </div>
+          <div class="quiz" data-qid="ch08-114-2">
+            <div class="q-stem"><span class="yr">114-2</span>當 shear-thickening systems 以切變速率（X 軸）對黏度（Y 軸）作圖，若切變速率大小為甲 &gt; 乙 &gt; 丙，則該物質黏度的大小關係為何？</div>
+            <button class="opt" data-c="0">(A) 丙 &gt; 乙 &gt; 甲</button>
+            <button class="opt" data-c="0">(B) 丙 &gt; 甲 &gt; 乙</button>
+            <button class="opt" data-c="0">(C) 甲 &gt; 丙 &gt; 乙</button>
+            <button class="opt" data-c="1">(D) 甲 &gt; 乙 &gt; 丙</button>
+            <div class="q-tools"><button class="q-btn q-exp-btn">顯示詳解</button></div>
+            <div class="q-exp">shear-thickening（擴張性）：黏度隨切變速率<strong>增加而增加</strong>，故切變速率 甲&gt;乙&gt;丙 → 黏度亦 <strong>甲&gt;乙&gt;丙</strong>。</div>
+            <textarea class="q-note" placeholder="📝 補充筆記…"></textarea>
+          </div>
+          <div class="quiz" data-qid="ch08-thixo-10">
+            <div class="q-stem"><span class="yr">考點</span>具有搖變性之塑性流體，下列敘述何者<strong>正確</strong>？</div>
+            <button class="opt" data-c="0">(A) 流變曲線經過原點</button>
+            <button class="opt" data-c="1">(B) 受力時流變曲線有啟動值</button>
+            <button class="opt" data-c="0">(C) 減小應力後流變曲線為凹面向上</button>
+            <button class="opt" data-c="0">(D) 布朗運動越快則滯後環區域越大</button>
+            <div class="q-tools"><button class="q-btn q-exp-btn">顯示詳解</button></div>
+            <div class="q-exp">具搖變性之<strong>塑性</strong>流體 → 有<strong>啟動值</strong>、不過原點。(C) 減小應力後之下降段曲線位在上升段左側。</div>
+            <textarea class="q-note" placeholder="📝 補充筆記…"></textarea>
+          </div>
+        </div>
+
+      </div>
     </section>
 
     <!-- ch09 -->
@@ -1187,10 +1765,10 @@ footer{text-align:center;color:var(--ink-soft);font-size:12px;padding:30px;font-
           </div>
           <table class="cmp">
             <tr><th>密度</th><th>定義</th><th>測量</th><th>計算</th></tr>
-            <tr><td><strong>真密度</strong><br><span class="en">True density, ρ</span></td><td>真實物體（固體）之密度</td><td>氦氣密度計（Helium densitometer）、流體置換</td><td>重量 / <strong>真實體積</strong></td></tr>
-            <tr><td><strong>顆粒密度</strong><br><span class="en">Granule density, ρg</span></td><td>固體部分密度，<strong>不含</strong>顆粒間空隙</td><td>汞置換</td><td>重量 / 顆粒體積（真實體積＋顆粒自身孔洞）</td></tr>
-            <tr><td><strong>整體密度</strong><br><span class="en">Bulk / Apparent density, ρ'</span></td><td>粉末重量除以整體體積</td><td>量筒</td><td>重量 / 整體體積（真實＋顆粒孔洞＋顆粒間空隙）</td></tr>
-            <tr><td><strong>敲緊／振實密度</strong><br><span class="en">Tap density</span></td><td>定量粉末振動至體積不再變化後，重量除以該體積</td><td>振實密度分析儀</td><td>重量 / 振實體積（真實＋顆粒孔洞＋顆粒間空隙）</td></tr>
+            <tr><td><strong>真密度</strong><br><span class="en">True density, ρ</span></td><td>真實物體（固體）之密度</td><td>氦氣密度計（Helium densitometer）、流體置換</td><td><span class="frac"><span class="num">重量</span><span class="den">真實體積</span></span></td></tr>
+            <tr><td><strong>顆粒密度</strong><br><span class="en">Granule density, ρg</span></td><td>固體部分密度，<strong>不含</strong>顆粒間空隙</td><td>汞置換</td><td><span class="frac"><span class="num">重量</span><span class="den">顆粒體積</span></span><span class="cn">（真實體積＋顆粒自身孔洞）</span></td></tr>
+            <tr><td><strong>整體密度</strong><br><span class="en">Bulk / Apparent density, ρ'</span></td><td>粉末重量除以整體體積</td><td>量筒</td><td><span class="frac"><span class="num">重量</span><span class="den">整體體積</span></span><span class="cn">（真實＋顆粒孔洞＋顆粒間空隙）</span></td></tr>
+            <tr><td><strong>敲緊／振實密度</strong><br><span class="en">Tap density</span></td><td>定量粉末振動至體積不再變化後，重量除以該體積</td><td>振實密度分析儀</td><td><span class="frac"><span class="num">重量</span><span class="den">振實體積</span></span><span class="cn">（真實＋顆粒孔洞＋顆粒間空隙）</span></td></tr>
           </table>
           <div class="keynote">
             <span class="lbl">應用（振實密度）</span>：調劑小數量膠囊、估計稀釋劑添加量。
@@ -1211,13 +1789,15 @@ footer{text-align:center;color:var(--ink-soft);font-size:12px;padding:30px;font-
             </ul>
           </div>
           <div class="formula">
-            Carr's Index ＝ (1 − 1 / Hausner Ratio) × 100%<br>
-            壓縮率 ＝ (D<sub>packed</sub> − D<sub>aerated</sub>) / D<sub>packed</sub>　（拍擊後密度 − 鬆密度）/ 拍擊後密度
+            Carr's Index ＝ (1 − <span class="frac"><span class="num">1</span><span class="den">Hausner Ratio</span></span>) × 100%
+            <br><br>
+            壓縮率 ＝ <span class="frac"><span class="num">D<sub>packed</sub> − D<sub>aerated</sub></span><span class="den">D<sub>packed</sub></span></span>
+            ＝ <span class="frac"><span class="num">拍擊後密度 − 鬆密度</span><span class="den">拍擊後密度</span></span>
           </div>
           <div class="keynote">
             <span class="lbl t-orange">Hausner Ratio（豪斯納比值，HR）</span>
             <ul>
-              <li>定義：<strong>HR ＝ 敲緊密度 / 容積密度</strong>。</li>
+              <li>定義：<strong>HR ＝ <span class="frac"><span class="num">敲緊密度</span><span class="den">容積密度</span></span></strong>。</li>
               <li>越接近 <strong>1</strong>，與敲實密度差距越小 → 越容易流動（流動性越佳）。</li>
               <li><strong>HR &gt; 1.25</strong>：流動性不良，需改善粉體特性。</li>
             </ul>
@@ -1990,7 +2570,7 @@ footer{text-align:center;color:var(--ink-soft);font-size:12px;padding:30px;font-
           <div class="callout">⚑ <strong>軟膠囊若填充溶液</strong>，重量比例或含量比例都是用<strong>重量差異試驗（WV）</strong>，不是含量均一度（CU）</div>
           <table class="cmp">
             <tr><th>劑型</th><th>亞型</th><th>≥25mg 及 ≥25%</th><th>&lt;25mg 或 &lt;25%</th></tr>
-            <tr><td rowspan="3">錠劑</td><td>未包衣</td><td><strong>WV</strong>（祿錠）</td><td>CU</td></tr>
+            <tr><td rowspan="3">錠劑</td><td>未包衣</td><td><strong>WV</strong>（裸錠）</td><td>CU</td></tr>
             <tr><td>包衣—薄膜</td><td><strong>WV</strong>（膜錠）</td><td>CU</td></tr>
             <tr><td>包衣—其他</td><td>CU</td><td>CU</td></tr>
             <tr><td rowspan="3">膠囊</td><td>硬膠囊</td><td><strong>WV</strong>（硬膠囊）</td><td>CU</td></tr>
