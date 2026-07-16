@@ -1,0 +1,2212 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>生物藥劑學 觀念題重複考點（111–115）</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FBF7EE; --card:#FFFDF8; --ink:#3A362F; --ink-soft:#7A7266;
+  --line:#E6DFD2; --serif:"Noto Serif TC",serif; --sans:"Noto Sans TC",sans-serif;
+  --mono:"JetBrains Mono",monospace;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.75;padding-bottom:60px;}
+.mono,.drug{font-family:var(--mono);}
+header{background:linear-gradient(135deg,#F1EADC,#FBF7EE);border-bottom:2px solid var(--line);padding:28px 20px 22px;}
+header .wrap{max-width:920px;margin:0 auto;}
+h1{font-family:var(--serif);font-weight:900;font-size:1.7rem;margin:0 0 6px;letter-spacing:.02em;}
+.subtitle{color:var(--ink-soft);font-size:.92rem;}
+.stat{display:inline-flex;gap:14px;margin-top:12px;flex-wrap:wrap;font-size:.82rem;color:var(--ink-soft);}
+.stat b{color:var(--ink);font-family:var(--mono);}
+nav{max-width:920px;margin:18px auto 0;padding:0 20px;display:flex;flex-wrap:wrap;gap:8px;}
+nav a{text-decoration:none;color:var(--ink);background:var(--card);border:1px solid var(--line);
+  border-left:4px solid var(--a);border-radius:8px;padding:7px 12px;font-size:.82rem;font-weight:500;
+  display:inline-flex;align-items:center;gap:7px;transition:.15s;}
+nav a:hover{transform:translateY(-1px);box-shadow:0 3px 10px rgba(0,0,0,.06);}
+.nav-n{font-family:var(--mono);font-size:.72rem;background:var(--a);color:#fff;border-radius:20px;padding:1px 8px;}
+main{max-width:920px;margin:0 auto;padding:24px 20px;}
+.chapter{margin-bottom:38px;}
+.ch-title{font-family:var(--serif);font-weight:700;font-size:1.28rem;color:var(--accent);
+  border-bottom:2px solid var(--accent);padding-bottom:8px;margin:0 0 18px;
+  display:flex;align-items:baseline;justify-content:space-between;}
+.ch-count{font-family:var(--mono);font-size:.78rem;color:var(--ink-soft);font-weight:400;}
+.q{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 18px 16px;margin-bottom:16px;
+  box-shadow:0 1px 3px rgba(0,0,0,.03);}
+.q-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px;}
+.q-tag{font-family:var(--mono);font-size:.74rem;color:#fff;background:var(--accent);border-radius:6px;padding:2px 9px;}
+.multi-badge{font-size:.7rem;background:#B0967C;color:#fff;border-radius:6px;padding:2px 8px;font-weight:700;}
+.ans-tag{display:none;margin-left:auto;font-family:var(--mono);font-size:.82rem;font-weight:600;color:#5C8A5C;}
+.q.locked .ans-tag{display:inline-block;}
+.q-stem{font-size:1rem;font-weight:500;margin-bottom:12px;letter-spacing:.01em;}
+.opts{display:flex;flex-direction:column;gap:8px;}
+.opt{display:flex;gap:10px;align-items:flex-start;text-align:left;width:100%;cursor:pointer;
+  background:#FDFBF5;border:1px solid var(--line);border-radius:9px;padding:10px 12px;
+  font-family:var(--sans);font-size:.94rem;color:var(--ink);transition:.12s;line-height:1.6;}
+.opt:hover{border-color:var(--accent);background:#fff;}
+.ol{font-family:var(--mono);font-weight:600;color:var(--accent);flex-shrink:0;}
+.q.locked .opt{cursor:default;}
+.q.locked .opt[data-correct="1"]{background:#EAF3EA;border-color:#8FBF8F;}
+.q.locked .opt[data-correct="1"] .ol{color:#4A8A4A;}
+.q.locked .opt[data-correct="1"]::after{content:"✓";margin-left:auto;color:#4A8A4A;font-weight:700;}
+.q.locked .opt.chosen[data-correct="0"]{background:#F5E9E9;border-color:#CF9E9E;}
+.q.locked .opt.chosen[data-correct="0"]::after{content:"✗";margin-left:auto;color:#C06A6A;font-weight:700;}
+.show-exp{margin-top:12px;background:none;border:1px dashed var(--accent);color:var(--accent);
+  border-radius:8px;padding:6px 14px;font-family:var(--sans);font-size:.84rem;font-weight:500;cursor:pointer;transition:.12s;}
+.show-exp:hover{background:var(--accent);color:#fff;}
+.exp{display:none;margin-top:12px;background:#F6F1E6;border-left:4px solid var(--accent);
+  border-radius:0 8px 8px 0;padding:13px 15px;font-size:.92rem;line-height:1.85;color:#4A443B;}
+.exp.on{display:block;}
+.note{display:block;width:100%;margin-top:12px;background:#FFFEF9;border:1px solid var(--line);
+  border-radius:8px;padding:9px 11px;font-family:var(--sans);font-size:.88rem;color:var(--ink);
+  resize:vertical;min-height:38px;line-height:1.6;}
+.note:focus{outline:none;border-color:var(--accent);}
+.toolbar{position:sticky;top:0;z-index:20;background:rgba(251,247,238,.94);backdrop-filter:blur(6px);
+  border-bottom:1px solid var(--line);padding:8px 20px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
+.toolbar button{background:var(--card);border:1px solid var(--line);border-radius:7px;padding:5px 13px;
+  font-family:var(--sans);font-size:.8rem;cursor:pointer;color:var(--ink);transition:.12s;}
+.toolbar button:hover{border-color:#8896A6;}
+footer{text-align:center;color:var(--ink-soft);font-size:.78rem;padding:24px;}
+@media(max-width:600px){h1{font-size:1.35rem;}.ch-title{font-size:1.1rem;}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <h1>生物藥劑學　觀念題重複考點</h1>
+  <div class="subtitle">111–115 專技高考藥師（含九次考試）· 僅收觀念題，計算題另計</div>
+  <div class="stat">
+    <span>總題數 <b>145</b></span>
+    <span>主題 <b>12</b> 類</span>
+    <span>涵蓋 <b>111–115</b> 年</span>
+  </div>
+</div></header>
+<div class="toolbar">
+  <button onclick="revealAll()">全部顯示答案</button>
+  <button onclick="hideAll()">全部收合</button>
+  <button onclick="expAll()">展開所有詳解</button>
+  <button onclick="clearNotes()">清除我的筆記</button>
+</div>
+<nav><a href="#sec-nonlinear" style="--a:#8896A6">非線性藥動學（Michaelis-Menten）觀念<span class="nav-n">15</span></a>
+<a href="#sec-genetics" style="--a:#9A8AA0">藥物代謝酵素／基因多型性／轉運蛋白<span class="nav-n">26</span></a>
+<a href="#sec-bcs" style="--a:#8FA593">生體可用率／BCS／首渡效應<span class="nav-n">20</span></a>
+<a href="#sec-be" style="--a:#B0967C">生體相等性試驗<span class="nav-n">4</span></a>
+<a href="#sec-renal" style="--a:#7E9AA8">腎功能評估／劑量調整（觀念）<span class="nav-n">11</span></a>
+<a href="#sec-hepatic" style="--a:#A88F7E">肝功能／清除率（觀念）<span class="nav-n">5</span></a>
+<a href="#sec-tdm" style="--a:#98A090">血中濃度監測（TDM）<span class="nav-n">1</span></a>
+<a href="#sec-dialysis" style="--a:#8CA0A8">透析<span class="nav-n">1</span></a>
+<a href="#sec-ivivc" style="--a:#A2879A">IVIVC／吸收速率求法<span class="nav-n">10</span></a>
+<a href="#sec-dissolution" style="--a:#8DA0A0">溶離／Noyes-Whitney／吸收部位<span class="nav-n">29</span></a>
+<a href="#sec-basic" style="--a:#9C9484">藥動基本觀念／預配方<span class="nav-n">16</span></a>
+<a href="#sec-other" style="--a:#95908A">其他藥動觀念<span class="nav-n">7</span></a>
+</nav>
+<main><section class="chapter" id="sec-nonlinear" style="--accent:#8896A6">
+  <h2 class="ch-title">非線性藥動學（Michaelis-Menten）觀念 <span class="ch-count">15 題</span></h2>
+  <div class="q" data-qid="bio1">
+  <div class="q-head">
+    <span class="q-tag">111年第一次 第3題</span>
+    <span class="ans-tag">答案：C</span>
+  </div>
+  <div class="q-stem">若藥物具非線性藥動學（non-linear pharmacokinetics）特性，當藥物劑量增加時，下列敘述何者正確？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">Vmax不成比例增加</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">半衰期不變</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">C</span><span class="ot">AUC 不成比例增加</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">清除率成比例增加</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">非線性藥動學指藥物在治療濃度範圍內，代謝或排除已達飽和（Michaelis-Menten）。劑量↑時，因清除率（CL＝Vmax/(Km+C)）隨濃度上升而下降，AUC會不成比例地大幅增加、半衰期延長。故正確為(C)。(A)Vmax為酵素固有常數不隨劑量變；(B)半衰期會延長非不變；(D)清除率隨劑量增加而下降，非成比例增加。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio1"></textarea>
+</div><div class="q" data-qid="bio2">
+  <div class="q-head">
+    <span class="q-tag">111年第二次 第72題</span>
+    <span class="ans-tag">答案：A</span>
+  </div>
+  <div class="q-stem">下列何種情況最有可能導致藥物發生非線性藥動學現象？</div>
+  <div class="opts"><button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">A</span><span class="ot">代謝酵素自體誘導（autoinduction）</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">完全經腎小球過濾排除</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">藥物吸收率佳</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">藥物溶解度佳</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">非線性最常見成因是「飽和」機轉：代謝酵素飽和、蛋白結合飽和、主動運輸飽和，或酵素自體誘導/抑制。(A)代謝酵素自體誘導（autoinduction，如carbamazepine）屬時間依賴型非線性。(B)腎小球過濾為被動、不飽和，屬線性；(C)(D)吸收/溶解度佳與非線性無關。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio2"></textarea>
+</div><div class="q" data-qid="bio3">
+  <div class="q-head">
+    <span class="q-tag">111年第二次 第80題</span>
+    <span class="ans-tag">答案：B</span>
+  </div>
+  <div class="q-stem">Digoxin給藥後通常測定trough level以作為劑量調整之依據，其主要考量為digoxin之何項藥動特性？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">吸收速率慢</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">B</span><span class="ot">體內分布平衡慢</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">排除速率快</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">肝臟代謝屬非線性</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">Digoxin分布相很長（分布體積大、組織結合多），須待分布達平衡後測血中濃度才具代表性，故採trough（下次給藥前）測定。(A)吸收速率、(C)排除速率、(D)非線性代謝皆非digoxin採trough的主因。關鍵是(B)分布平衡慢。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio3"></textarea>
+</div><div class="q" data-qid="bio4">
+  <div class="q-head">
+    <span class="q-tag">112年第一次 第49題</span>
+    <span class="ans-tag">答案：D</span>
+  </div>
+  <div class="q-stem">有關藥物連續多次給藥後，可正確預測濃度與時間關係之敘述，下列何者錯誤？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">基於藥物 mass balance 原理</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">基於藥物符合 superposition 原理</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">藥物第一次投藥的 等於穩定狀態投藥間隔的</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">D</span><span class="ot">藥物第一次投藥的 等於穩定狀態投藥間隔的</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">多次給藥可用疊加原理（superposition）預測濃度，前提是藥物符合線性藥動學（一階、mass balance成立）。第一次投藥的AUC(0→∞)＝穩態單一給藥間隔的AUC(0→τ)。此題選項因原檔數學符號缺字，(C)(D)描述同一觀念但其一敘述錯誤；重點觀念是「首劑AUC∞＝穩態間隔AUC」。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio4"></textarea>
+</div><div class="q" data-qid="bio5">
+  <div class="q-head">
+    <span class="q-tag">112年第一次 第72題</span>
+    <span class="ans-tag">答案：A</span>
+  </div>
+  <div class="q-stem">下列何種情況最可能造成藥物發生非線性藥動學特性？</div>
+  <div class="opts"><button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">A</span><span class="ot">藥物蛋白結合率高</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">藥物溶解度佳</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">藥物排除速率快</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">藥物吸收率佳</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">蛋白結合率高的藥物，當劑量增加使結合位飽和，游離分率上升，代謝/排除呈非線性。(A)正確。(B)溶解度佳、(C)排除快、(D)吸收佳皆與飽和無關，仍為線性。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio5"></textarea>
+</div><div class="q" data-qid="bio6">
+  <div class="q-head">
+    <span class="q-tag">113年第二次 第67題</span>
+    <span class="ans-tag">答案：C</span>
+  </div>
+  <div class="q-stem">某藥經口服給與，血中濃度曲線下面積（AUC）與劑量相關性如下圖所示，下列敘述何者正確？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">劑量增加將活化體內的代謝酵素</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">此現象可能與口服吸收達到飽和有關</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">C</span><span class="ot">排除速率可能隨劑量增加而達到定值</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">清除率為定值不隨劑量改變</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">AUC隨劑量不成比例增加（上凹）代表排除趨飽和。(C)排除速率達飽和後趨定值（零級），正確。(A)劑量增加通常是酵素飽和而非活化；(B)吸收飽和會使AUC低於比例（下凹）方向相反；(D)清除率會隨劑量下降而非定值。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio6"></textarea>
+</div><div class="q" data-qid="bio7">
+  <div class="q-head">
+    <span class="q-tag">113年第二次 第77題</span>
+    <span class="ans-tag">答案：A</span>
+  </div>
+  <div class="q-stem">在治療劑量的範圍中，下列何種藥物之代謝一般多屬於dose-dependent？</div>
+  <div class="opts"><button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">A</span><span class="ot">phenytoin</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">methotrexate</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">omeprazole</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">L-dopa</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">Dose-dependent（劑量依賴、非線性）最典型代表藥為phenytoin，其代謝在治療濃度即飽和，小幅加量可致濃度暴增。(A)正確。methotrexate、omeprazole、L-dopa在常規劑量多屬線性。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio7"></textarea>
+</div><div class="q" data-qid="bio8">
+  <div class="q-head">
+    <span class="q-tag">113年第二次 第78題</span>
+    <span class="ans-tag">答案：A</span>
+  </div>
+  <div class="q-stem">在一般常用劑量，下列何者不具有time-dependent pharmacokinetics之特性？</div>
+  <div class="opts"><button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">A</span><span class="ot">acetaminophen</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">carbamazepine</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">cisplatin</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">heparin</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">Time-dependent PK指藥動參數隨時間改變（自體誘導/抑制、晝夜節律）。carbamazepine（自體誘導）、cisplatin、heparin具此特性。(A)acetaminophen在常用劑量為線性、時間穩定，不具time-dependent，故選(A)。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio8"></textarea>
+</div><div class="q" data-qid="bio9">
+  <div class="q-head">
+    <span class="q-tag">114年第一次 第71題</span>
+    <span class="ans-tag">答案：A</span>
+  </div>
+  <div class="q-stem">依下列圖形，何者可判定該藥品具有非線性藥動學的特性？</div>
+  <div class="opts"><button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">A</span><span class="ot">僅①③</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">②③</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">僅①④</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">①③④</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">判定非線性的圖形特徵：①劑量-AUC非線性（不成比例）、③半對數濃度-時間曲線隨劑量改變斜率（半衰期隨劑量變）等。②④若為成比例線性關係則屬線性。故選①③（答A）。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio9"></textarea>
+</div><div class="q" data-qid="bio10">
+  <div class="q-head">
+    <span class="q-tag">114年第二次 第46題</span>
+    <span class="ans-tag">答案：D</span>
+  </div>
+  <div class="q-stem">有關口服延釋（extended-release）劑型之敘述，下列何者最適當？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">延釋劑型可減少給藥次數，並且有助於提高劑量調整之彈性</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">延釋劑型通過胃腸道時間之快慢，並不影響藥品之釋放與吸收</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">理想的口服延釋劑型，藥品釋放通常遵循Michaelis-Menten動力學模式</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">D</span><span class="ot">藥品水溶解度佳且在胃腸道具均一吸收之特性，為製備成延釋劑型藥品條件之一</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">適合製成延釋劑型的藥物條件：半衰期適中（約2–8h）、治療窗適中、在胃腸道各部位吸收均一、水溶解度佳。(D)符合。(A)彈性應變小而非提高；(B)胃腸通過時間會影響釋放吸收；(C)延釋不遵循Michaelis-Menten（應為零級）。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio10"></textarea>
+</div><div class="q" data-qid="bio11">
+  <div class="q-head">
+    <span class="q-tag">114年第二次 第68題</span>
+    <span class="ans-tag">答案：A</span>
+  </div>
+  <div class="q-stem">某藥品屬二室藥動模式，其體外－體內相關性若為Level A時，可用下列何種方法取得體內藥動參數？</div>
+  <div class="opts"><button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">A</span><span class="ot">Loo-Riegelman method</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">Wagner-Nelson method</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">Higuchi equation</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">Michaelis-Menten equation</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">二室模式求體內吸收百分比用Loo-Riegelman法（需IV數據求分布速率常數）；一室模式用Wagner-Nelson法。Level A的IVIVC需點對點的吸收分率，二室即用Loo-Riegelman，故選(A)。(C)Higuchi為釋放、(D)Michaelis-Menten為非線性排除，皆非。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio11"></textarea>
+</div><div class="q" data-qid="bio12">
+  <div class="q-head">
+    <span class="q-tag">114年第二次 第71題</span>
+    <span class="ans-tag">答案：D</span>
+  </div>
+  <div class="q-stem">有關非線性藥動學特性之敘述，下列何者正確？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">AUC會隨著劑量增加而等比例增加</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">清除率不會隨著劑量改變而改變</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">依循一階次（first-order）的排除特性</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">D</span><span class="ot">多次劑量給藥後，在體內不會依循principle of superposition</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">非線性特性：(D)多次給藥不遵循疊加原理（superposition），正確。(A)AUC非等比例增加；(B)清除率會隨劑量改變；(C)排除非一階（飽和後趨零級）。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio12"></textarea>
+</div><div class="q" data-qid="bio13">
+  <div class="q-head">
+    <span class="q-tag">115年第一次 第71題</span>
+    <span class="ans-tag">答案：C</span>
+  </div>
+  <div class="q-stem">一般治療狀況下，下列那些因素可能造成藥品呈現非線性藥動學性質？①轉運蛋白效應 ②CYP450 代謝 ③ 白蛋白結合 ④膽酸運輸 ⑤腎絲球過濾</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">僅①②③</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">僅④⑤</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">C</span><span class="ot">僅①②③④</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">①②③④⑤</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">造成非線性的飽和性機轉：①轉運蛋白（主動運輸飽和）、②CYP450代謝飽和、③白蛋白結合飽和、④膽酸運輸（主動、可飽和）皆可能。⑤腎絲球過濾為被動、不飽和，屬線性。故選①②③④（答C）。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio13"></textarea>
+</div><div class="q" data-qid="bio14">
+  <div class="q-head">
+    <span class="q-tag">115年第一次 第78題</span>
+    <span class="ans-tag">答案：B</span>
+  </div>
+  <div class="q-stem">具非線性藥動學之藥品，下列何種情形最容易達到飽和？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">最大代謝速率 較大</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">B</span><span class="ot">Michaelis-Menten 常數 較小</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">藥品濃度小於</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">藥品劑量較低</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">Michaelis-Menten中，當藥物濃度C≫Km時即接近飽和（速率趨Vmax）。Km越小，代表酵素對受質親和力越高、在較低濃度即達半飽和，越容易飽和。故(B)Km較小最易飽和。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio14"></textarea>
+</div><div class="q" data-qid="bio15">
+  <div class="q-head">
+    <span class="q-tag">115年第一次 第79題</span>
+    <span class="ans-tag">答案：B</span>
+  </div>
+  <div class="q-stem">某藥屬非線性藥動特性，其 為 100 mg， 為 50 mg/h。若以靜脈注射方式投與此藥 300 mg，則自給藥開始後多少小時此藥才會有 50％被排除？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">5.4</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">B</span><span class="ot">4.4</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">5.0</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">4.0</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">此為Michaelis-Menten計算題（Vmax=50 mg/h、Km=100 mg、給藥300 mg求排除50%即150 mg所需時間）。屬計算，可略；觀念上零級與一階混合排除下，高濃度先近零級再轉一階，答案4.4小時。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio15"></textarea>
+</div>
+</section>
+<section class="chapter" id="sec-genetics" style="--accent:#9A8AA0">
+  <h2 class="ch-title">藥物代謝酵素／基因多型性／轉運蛋白 <span class="ch-count">26 題</span></h2>
+  <div class="q" data-qid="bio16">
+  <div class="q-head">
+    <span class="q-tag">111年第一次 第8題</span>
+    <span class="ans-tag">答案：C</span>
+  </div>
+  <div class="q-stem">服用 codeine 為止痛劑時，有些人不易或無法達到止痛效果，主要因為具有下列何種代謝酶多型性？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">CYP2C9 之 extensive metabolizer</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">CYP2D6 之 extensive metabolizer</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">C</span><span class="ot">CYP2D6 之 poor metabolizer</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">CYP2C9 之 poor metabolizer</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">Codeine為前驅藥，須經CYP2D6代謝為morphine才具止痛效。CYP2D6 poor metabolizer（PM，慢代謝者）無法有效轉化，故止痛效差。(C)正確。反之ultrarapid metabolizer會大量生成morphine而中毒。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio16"></textarea>
+</div><div class="q" data-qid="bio17">
+  <div class="q-head">
+    <span class="q-tag">111年第一次 第9題</span>
+    <span class="ans-tag">答案：A</span>
+  </div>
+  <div class="q-stem">下列何者對於 dihydropyrimidine dehydrogenase poor metabolizer 病人，會使藥物血中濃度升高而易產生副作用？</div>
+  <div class="opts"><button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">A</span><span class="ot">5-flourouracil</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">sulfonamide</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">warfarin</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">mercaptopurine</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">5-Fluorouracil（5-FU）由dihydropyrimidine dehydrogenase（DPD）代謝失活。DPD PM者代謝慢、血中濃度升高，易生嚴重毒性（黏膜炎、骨髓抑制）。(A)正確。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio17"></textarea>
+</div><div class="q" data-qid="bio18">
+  <div class="q-head">
+    <span class="q-tag">111年第二次 第78題</span>
+    <span class="ans-tag">答案：B</span>
+  </div>
+  <div class="q-stem">有關CYP2C19基因多型性（genetic polymorphism）之敘述，下列何者錯誤？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">與clopidogrel之藥物療效反應有關</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">B</span><span class="ot">與warfarin之藥物不良反應有關</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">與diazepam的延長鎮靜效果有關</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">S-mephenytoin可用來評估其活性及表現型（phenotype）</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">CYP2C19多型性：與clopidogrel（前驅藥，PM療效差）、diazepam（PM鎮靜延長）、S-mephenytoin（探針受質）相關。(B)warfarin主要由CYP2C9代謝（非2C19），故此配對錯誤，選(B)。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio18"></textarea>
+</div><div class="q" data-qid="bio19">
+  <div class="q-head">
+    <span class="q-tag">111年第二次 第79題</span>
+    <span class="ans-tag">答案：B</span>
+  </div>
+  <div class="q-stem">若病人屬於 CYP2C19 poor metabolizer，服用下列何者時其藥物之療效較一般病人為佳？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">clopidogrel</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">B</span><span class="ot">omeprazole</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">isoniazid</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">clozapine</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">Omeprazole由CYP2C19代謝失活。CYP2C19 PM者代謝慢、血中濃度高、抑酸療效反而較佳。(B)正確。clopidogrel（前驅藥）PM療效差；isoniazid由NAT代謝；clozapine由CYP1A2代謝。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio19"></textarea>
+</div><div class="q" data-qid="bio20">
+  <div class="q-head">
+    <span class="q-tag">112年第一次 第70題</span>
+    <span class="ans-tag">答案：B</span>
+  </div>
+  <div class="q-stem">根據 biopharmaceutics classification system（BCS）與 biopharmaceutics drug disposition classification system （BDDCS）的觀念，下列敘述何者正確？①細胞膜轉運蛋白（membrane transporter）對於具有 BCS class 1 特性  原料藥的口服吸收影響不大                      ②代謝對於具有 BCS class 1 特性口服藥的生體可用率影響不大 ③代謝是評估  BCS 特性的重要依據之一 ④細胞膜轉運蛋白是評估 BDDCS 特性的重要依據之一</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">①③</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">B</span><span class="ot">①④</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">②④</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">②③</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">BCS看溶解度與通透性；BDDCS以「代謝程度」取代通透性，並強調轉運蛋白角色。①BCS class 1（高溶解高通透）轉運蛋白影響小、②代謝影響其F小、④轉運蛋白為BDDCS重要依據，皆正確；③代謝非BCS依據（是BDDCS）。故選①④（答B）。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio20"></textarea>
+</div><div class="q" data-qid="bio21">
+  <div class="q-head">
+    <span class="q-tag">112年第一次 第77題</span>
+    <span class="ans-tag">答案：D</span>
+  </div>
+  <div class="q-stem">若病人屬於 CYP2D6 ultrarapid metabolizer，其對下列何者之療效不佳？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">clopidogrel</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">omeprazole</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">isoniazid</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">D</span><span class="ot">amitriptyline</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">CYP2D6 ultrarapid metabolizer（UM）代謝快，對「經CYP2D6代謝失活的活性原藥」療效差。amitriptyline（三環抗憂鬱，經CYP2D6代謝）UM者血中濃度低、療效不佳。(D)正確。clopidogrel、omeprazole主要2C19；isoniazid為NAT。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio21"></textarea>
+</div><div class="q" data-qid="bio22">
+  <div class="q-head">
+    <span class="q-tag">112年第二次 第68題</span>
+    <span class="ans-tag">答案：B</span>
+  </div>
+  <div class="q-stem">下列何者無法有效提升口服藥物生體可用率？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">改善賦形劑組成，提升藥品在腸道吸收</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">B</span><span class="ot">減少腎排除以減緩血中藥物濃度的下降</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">抑制腸道代謝酵素及轉運蛋白</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">降低肝臟首渡代謝</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">提升口服F可從吸收、代謝、轉運蛋白著手。(A)改善腸吸收、(C)抑制腸道酵素/轉運蛋白、(D)降低首渡代謝皆可提升F。(B)減少腎排除只影響排除相、延長半衰期，不改變「進入體循環的比例（F）」，故無法提升F，選(B)。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio22"></textarea>
+</div><div class="q" data-qid="bio23">
+  <div class="q-head">
+    <span class="q-tag">112年第二次 第70題</span>
+    <span class="ans-tag">答案：D</span>
+  </div>
+  <div class="q-stem">下列藥品與其代謝CYP之配對，何者錯誤？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">desipramine－CYP2D6</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">midazolam－CYP3A4</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">repaglinide－CYP2C8</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">D</span><span class="ot">warfarin－CYP1A2</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">藥物-CYP配對：desipramine-2D6、midazolam-3A4、repaglinide-2C8皆正確。(D)warfarin主要由CYP2C9（S-warfarin）代謝，非CYP1A2，故錯誤，選(D)。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio23"></textarea>
+</div><div class="q" data-qid="bio24">
+  <div class="q-head">
+    <span class="q-tag">112年第二次 第76題</span>
+    <span class="ans-tag">答案：D</span>
+  </div>
+  <div class="q-stem">有關 ABCB1基因多型性與藥物之關聯性，下列敘述何者錯誤？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">與paclitaxel之療效有關</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">與口服 digoxin 之吸收有關</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">與 etoposide 之抗藥性有關</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">D</span><span class="ot">與simvastatin之myopathy副作用有關</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">ABCB1（P-gp）基因多型性與paclitaxel療效、digoxin吸收、etoposide抗藥性相關。(D)simvastatin的myopathy與SLCO1B1（OATP1B1）多型性相關，非ABCB1，故錯誤，選(D)。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio24"></textarea>
+</div><div class="q" data-qid="bio25">
+  <div class="q-head">
+    <span class="q-tag">112年第二次 第77題</span>
+    <span class="ans-tag">答案：A</span>
+  </div>
+  <div class="q-stem">下列何者對帶有 CYP2C9*2 基因者，會使其藥物血中濃度升高而易產生副作用？</div>
+  <div class="opts"><button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">A</span><span class="ot">phenytoin</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">codeine</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">cisapride</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">clopidogrel</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">CYP2C9*2為活性下降之變異。phenytoin主由CYP2C9代謝，*2攜帶者代謝慢、濃度升高易毒。(A)正確。codeine-2D6、cisapride-3A4、clopidogrel-2C19。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio25"></textarea>
+</div><div class="q" data-qid="bio26">
+  <div class="q-head">
+    <span class="q-tag">112年第二次 第78題</span>
+    <span class="ans-tag">答案：A</span>
+  </div>
+  <div class="q-stem">下列何者非屬於ABC transporter？</div>
+  <div class="opts"><button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">A</span><span class="ot">OATP</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">P-gp</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">BCRP</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">MRPs</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">ABC transporter（ATP-binding cassette，外流幫浦）：P-gp（ABCB1）、BCRP（ABCG2）、MRPs（ABCC）。(A)OATP屬SLC家族（攝入型），非ABC transporter，故選(A)。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio26"></textarea>
+</div><div class="q" data-qid="bio27">
+  <div class="q-head">
+    <span class="q-tag">113年第一次 第75題</span>
+    <span class="ans-tag">答案：A</span>
+  </div>
+  <div class="q-stem">依基因多型性（genetic polymorphism）與基因突變（mutation）之定義，其發生機率之分界點為何？</div>
+  <div class="opts"><button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">A</span><span class="ot">1%</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">2%</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">3%</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">5%</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">依定義，等位基因（allele）頻率≥1%稱為基因多型性（polymorphism）；&lt;1%稱為突變（mutation）。分界點為1%，選(A)。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio27"></textarea>
+</div><div class="q" data-qid="bio28">
+  <div class="q-head">
+    <span class="q-tag">113年第一次 第76題</span>
+    <span class="ans-tag">答案：A</span>
+  </div>
+  <div class="q-stem">服用 codeine止痛時，若病人是屬於CYP2D6 poor metabolizer，基於藥動學觀點，下列敘述何者正確？</div>
+  <div class="opts"><button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">A</span><span class="ot">止痛效果比CYP2D6 extensive metabolizer差</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">止痛效果比CYP2D6 extensive metabolizer佳</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">止痛效果與CYP2D6 extensive metabolizer相同</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">無法得知止痛效果之差異</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">Codeine需CYP2D6活化為morphine。PM者無法活化，止痛效果比extensive metabolizer差。(A)正確（同111-1第8題觀念）。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio28"></textarea>
+</div><div class="q" data-qid="bio29">
+  <div class="q-head">
+    <span class="q-tag">113年第二次 第65題</span>
+    <span class="ans-tag">答案：D</span>
+  </div>
+  <div class="q-stem">某口服藥品之主成分具結晶多型性，最可能因下列何項性質之影響，使其製劑須進行生體相等性評估？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">藥物腸吸收機轉</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">肝臟代謝速率</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">胃中安定性</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">D</span><span class="ot">水溶解度</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">結晶多型性（polymorphism）不同晶型有不同「水溶解度」與溶離速率，進而影響溶離與吸收，故製劑須做生體相等性評估。(D)水溶解度為關鍵，選(D)。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio29"></textarea>
+</div><div class="q" data-qid="bio30">
+  <div class="q-head">
+    <span class="q-tag">114年第一次 第22題</span>
+    <span class="ans-tag">答案：B</span>
+  </div>
+  <div class="q-stem">可可脂具有多晶型性（polymorphism），下列何者最安定？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">α-form</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">B</span><span class="ot">β-form</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">γ-form</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">δ-form</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">可可脂（cocoa butter）具多晶型，穩定度順序 β＞β&#x27;＞α＞γ。β-form熔點最高（約34–35℃）且最安定，是製栓劑所要的目標晶型（緩慢熔合可得）。(B)正確。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio30"></textarea>
+</div><div class="q" data-qid="bio31">
+  <div class="q-head">
+    <span class="q-tag">114年第一次 第62題</span>
+    <span class="ans-tag">答案：D</span>
+  </div>
+  <div class="q-stem">有關具高肝抽提率藥品之敘述，下列何者最適當？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">若肝抽提率太高，則適合以口服方式給藥</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">經口服給藥受到首渡代謝程度最小</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">其代謝速率主要受肝臟代謝酵素變異之影響</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">D</span><span class="ot">經由sublingual給藥，可避免首渡效應之影響</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">高肝抽提率（high hepatic extraction）藥物口服首渡代謝大、F低。(D)舌下（sublingual）給藥可繞過肝首渡，避免首渡效應，正確。(A)口服F低不適口服；(B)首渡程度最大非最小；(C)高抽提率藥主受「肝血流」影響而非酵素變異。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio31"></textarea>
+</div><div class="q" data-qid="bio32">
+  <div class="q-head">
+    <span class="q-tag">114年第一次 第76題</span>
+    <span class="ans-tag">答案：C</span>
+  </div>
+  <div class="q-stem">下列何項transporter基因多型性與gefitinib產生腹瀉副作用最相關？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">P-glycoprotein（P-gp）</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">organic anion transporter polypeptide（OATP）-1B1</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">C</span><span class="ot">breast cancer resistance protein（BCRP）</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">multidrug resistance-associated proteins（MRP）-2</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">Gefitinib的腹瀉副作用與BCRP（ABCG2，breast cancer resistance protein）基因多型性最相關。(C)正確。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio32"></textarea>
+</div><div class="q" data-qid="bio33">
+  <div class="q-head">
+    <span class="q-tag">114年第一次 第77題</span>
+    <span class="ans-tag">答案：B</span>
+  </div>
+  <div class="q-stem">有關CYP2D6於藥品代謝之敘述，下列何者最適當？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">僅有一個等位基因的變異和CYP2D6表現關聯</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">B</span><span class="ot">和CYP2D6表現相關的基因型變異可能會反映在藥品的代謝速率上</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">和CYP2D6表現相關的基因型變異頻率在不同種族中皆一致</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">和CYP2D6表現相關的基因型變異不會影響抗憂鬱和抗心律不整藥品代謝</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">CYP2D6多型性：(B)基因型變異會反映在代謝速率（PM/EM/UM），正確。(A)為多個等位基因變異；(C)不同種族頻率差異大；(D)會影響抗憂鬱與抗心律不整藥代謝。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio33"></textarea>
+</div><div class="q" data-qid="bio34">
+  <div class="q-head">
+    <span class="q-tag">114年第一次 第78題</span>
+    <span class="ans-tag">答案：D</span>
+  </div>
+  <div class="q-stem">有關藥品代謝酵素之基因多型性對藥品副作用的影響，下列配對何者最不適當？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">fluorouracil－dihydropyrimidine dehydrogenase－neurotoxicity</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">azathioprine－thiopurine methyltransferase－myelotoxicity</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">irinotecan－UDP-glucuronosyltransferase－diarrhea</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">D</span><span class="ot">simvastatin－CYP2C19－myopathy</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">酵素-藥物-毒性配對：(A)5-FU-DPD-毒性、(B)azathioprine-TPMT-骨髓毒性、(C)irinotecan-UGT1A1-腹瀉皆正確。(D)simvastatin肌病變與SLCO1B1（OATP1B1）相關，非CYP2C19，故最不適當，選(D)。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio34"></textarea>
+</div><div class="q" data-qid="bio35">
+  <div class="q-head">
+    <span class="q-tag">114年第二次 第75題</span>
+    <span class="ans-tag">答案：A</span>
+  </div>
+  <div class="q-stem">某病人經基因檢測後發現帶有UGT1A1*6等位基因（UGT1A1*6 allele），其服用下列何種藥品時須減低劑量，以免發生嚴重的嗜中性白血球減少症及腹瀉？</div>
+  <div class="opts"><button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">A</span><span class="ot">irinotecan</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">procainamide</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">azathioprine</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">rosuvastatin</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">UGT1A1*6為低活性變異（亞洲人常見）。irinotecan活性代謝物SN-38由UGT1A1去毒；*6攜帶者去毒差，易生嚴重嗜中性白血球減少與腹瀉，須減量。(A)正確。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio35"></textarea>
+</div><div class="q" data-qid="bio36">
+  <div class="q-head">
+    <span class="q-tag">114年第二次 第76題</span>
+    <span class="ans-tag">答案：B</span>
+  </div>
+  <div class="q-stem">吸菸最可能會誘發下列何種酵素的合成量？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">dihydropyrimidine dehydrogenase</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">B</span><span class="ot">CYP1A2</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">thiopurine methyltransferase</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">UDP-­g lucuronosyltransferase</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">吸菸中的多環芳香烴會誘導CYP1A2。(B)正確。故吸菸者服用CYP1A2受質（theophylline、clozapine）濃度會下降。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio36"></textarea>
+</div><div class="q" data-qid="bio37">
+  <div class="q-head">
+    <span class="q-tag">114年第二次 第77題</span>
+    <span class="ans-tag">答案：C</span>
+  </div>
+  <div class="q-stem">病人若是屬於N­- acetyltransferase慢代謝者（slow metabolizers），其服用下列何種藥品則易產生neurotoxicity？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">procainamide</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">hydralazine</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">C</span><span class="ot">isoniazid</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">irinotecan</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">Isoniazid由N-acetyltransferase（NAT2）代謝。慢乙醯化者（slow acetylator）代謝慢、濃度高，易生周邊神經病變（neurotoxicity）。(C)正確。procainamide、hydralazine雖也經NAT，但典型神經毒性以isoniazid為代表。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio37"></textarea>
+</div><div class="q" data-qid="bio38">
+  <div class="q-head">
+    <span class="q-tag">114年第二次 第80題</span>
+    <span class="ans-tag">答案：D</span>
+  </div>
+  <div class="q-stem">下列何項代謝酵素之基因多型性，亞洲人比在高加索人出現代謝速率表現型為PM（poor metabolizer）之頻率較高？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">CYP2B6*6</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">CYP2D6*4</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">CYP2C9*3</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">D</span><span class="ot">CYP2C19*2</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">CYP2C19*2為亞洲人常見的PM變異（poor metabolizer頻率明顯高於高加索人）。(D)正確。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio38"></textarea>
+</div><div class="q" data-qid="bio39">
+  <div class="q-head">
+    <span class="q-tag">115年第一次 第76題</span>
+    <span class="ans-tag">答案：B</span>
+  </div>
+  <div class="q-stem">若屬於 CYP2D6 代謝能力差的病人（poor metabolizers）時，其服用下列何種藥則療效會較差？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">warfarin</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">B</span><span class="ot">tamoxifen</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">pimozide</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">amitriptyline</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">CYP2D6 PM者對「需經2D6活化」的藥療效差。tamoxifen需CYP2D6代謝為活性endoxifen；PM者活化不足、療效較差。(B)正確。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio39"></textarea>
+</div><div class="q" data-qid="bio40">
+  <div class="q-head">
+    <span class="q-tag">115年第一次 第77題</span>
+    <span class="ans-tag">答案：A</span>
+  </div>
+  <div class="q-stem">吸菸病人在服用下列何項藥品時，可能會因為吸菸誘導酵素活性的表現，進而降低藥品濃度並導致治療失 敗？</div>
+  <div class="opts"><button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">A</span><span class="ot">clozapine</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">phenytoin</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">diazepam</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">codeine</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">吸菸誘導CYP1A2。clozapine為CYP1A2受質，吸菸者代謝加快、濃度下降，可能治療失敗。(A)正確。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio40"></textarea>
+</div><div class="q" data-qid="bio41">
+  <div class="q-head">
+    <span class="q-tag">115年第一次 第80題</span>
+    <span class="ans-tag">答案：D</span>
+  </div>
+  <div class="q-stem">下列何者易受個體基因差異之影響？①drug receptor 之反應 ②drug-metabolizing enzyme 之活性 ③ drug transporter 之表現</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">僅①②</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">僅②③</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">僅①③</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">D</span><span class="ot">①②③</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">個體基因差異可影響①藥物受體反應（藥效學）、②代謝酵素活性、③轉運蛋白表現，三者皆是。故選①②③（答D）。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio41"></textarea>
+</div>
+</section>
+<section class="chapter" id="sec-bcs" style="--accent:#8FA593">
+  <h2 class="ch-title">生體可用率／BCS／首渡效應 <span class="ch-count">20 題</span></h2>
+  <div class="q" data-qid="bio42">
+  <div class="q-head">
+    <span class="q-tag">111年第一次 第1題</span>
+    <span class="ans-tag">答案：D</span>
+  </div>
+  <div class="q-stem">藥品的預配方研究（preformulation studies）不包含下列那一項？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">藥品溶解度</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">油水分配係數</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">安定性</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">D</span><span class="ot">生體可用率</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">預配方研究（preformulation）評估原料藥物化性質：溶解度、油水分配係數、pKa、安定性、晶型、粒徑等。(D)生體可用率屬「製劑後」的體內評估，非預配方項目，故選(D)。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio42"></textarea>
+</div><div class="q" data-qid="bio43">
+  <div class="q-head">
+    <span class="q-tag">111年第一次 第2題</span>
+    <span class="ans-tag">答案：D</span>
+  </div>
+  <div class="q-stem">一般藥物當溶解度小於若干 mg/mL 時，其吸收較差？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">200</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">100</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">50</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">D</span><span class="ot">10</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">一般經驗法則：藥物水溶解度&lt;10 mg/mL時，溶離常成為吸收限速步驟，吸收較差。(D)正確。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio43"></textarea>
+</div><div class="q" data-qid="bio44">
+  <div class="q-head">
+    <span class="q-tag">111年第一次 第77題</span>
+    <span class="ans-tag">答案：A</span>
+  </div>
+  <div class="q-stem">疏水性藥品使用界面活性劑增加其口服吸收，其作為吸收促進劑之主要機轉為何？</div>
+  <div class="opts"><button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">A</span><span class="ot">增加溶解度</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">降低穿透阻力</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">產生電位差</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">具載體作用</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">疏水性藥物加界面活性劑，主要藉降低界面張力、形成微胞（micelle）以增加溶解度，進而促進吸收。(A)正確。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio44"></textarea>
+</div><div class="q" data-qid="bio45">
+  <div class="q-head">
+    <span class="q-tag">111年第一次 第78題</span>
+    <span class="ans-tag">答案：D</span>
+  </div>
+  <div class="q-stem">下列那些為藥品設計考量中，影響生體可用率的因素？①藥物本身物化性質 ②使用劑型及給藥途徑 ③賦 形劑 ④製造方法及過程</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">僅①②④</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">僅 ②③</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">僅③④</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">D</span><span class="ot">①②③④</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">影響生體可用率的因素涵蓋①藥物物化性質、②劑型與給藥途徑、③賦形劑、④製造方法及製程，四者皆是。故選①②③④（答D）。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio45"></textarea>
+</div><div class="q" data-qid="bio46">
+  <div class="q-head">
+    <span class="q-tag">111年第二次 第66題</span>
+    <span class="ans-tag">答案：C</span>
+  </div>
+  <div class="q-stem">某藥進行生體可用率試驗後，可獲得各劑型之給藥後24小時平均之AUC值，如下所列：   則口服懸液劑之絕對生體可用率約為？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">1.2</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">1</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">C</span><span class="ot">0.86</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">0.80</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">絕對生體可用率＝(AUC口服／AUC靜脈)。此為由表格AUC計算，屬計算延伸；觀念上絕對F以IV為分母基準。答案約0.86。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio46"></textarea>
+</div><div class="q" data-qid="bio47">
+  <div class="q-head">
+    <span class="q-tag">112年第一次 第32題</span>
+    <span class="ans-tag">答案：B</span>
+  </div>
+  <div class="q-stem">依據 biopharmaceutics classification system（BCS）分類，下列何類型藥物最易獲得 IVIVC（in vitro-in vivo correlation）關係？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">class 1</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">B</span><span class="ot">class 2</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">class 3</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">class 4</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">BCS class 2（低溶解、高通透）其吸收受溶離限速，體外溶離最能反映體內吸收，最易建立IVIVC。(B)正確。class 1吸收太快、class 3受通透限速，皆較難得IVIVC。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio47"></textarea>
+</div><div class="q" data-qid="bio48">
+  <div class="q-head">
+    <span class="q-tag">112年第一次 第65題</span>
+    <span class="ans-tag">答案：D</span>
+  </div>
+  <div class="q-stem">某藥四種劑型之 72 小時尿中原型藥物排出量，如下表所示，何者之絕對生體可用率最小？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">靜脈注射溶液</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">口服溶液</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">口服膠囊</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">D</span><span class="ot">口服錠劑</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">以尿中原型藥總排出量（Du∞）比較F，排出越少代表F越低。(D)口服錠劑通常因崩散溶離限制，F最小。此題需比對表格數值。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio48"></textarea>
+</div><div class="q" data-qid="bio49">
+  <div class="q-head">
+    <span class="q-tag">112年第一次 第66題</span>
+    <span class="ans-tag">答案：B</span>
+  </div>
+  <div class="q-stem">有關生體可用率之敘述，下列何者最適當？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">用以衡量藥品在體內分布代謝的程度</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">B</span><span class="ot">會受劑型之製劑配方或製程改變而影響</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">須從特定疾病群組的受試者所得到的藥動參數</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">相同藥品不同劑量會得到不同之生體可用率</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">(B)生體可用率會受配方或製程改變而影響，正確。(A)F衡量進入體循環的「速率與程度」非分布代謝程度；(C)F用健康受試者非特定疾病群；(D)同藥線性範圍內不同劑量F相同。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio49"></textarea>
+</div><div class="q" data-qid="bio50">
+  <div class="q-head">
+    <span class="q-tag">112年第二次 第8題</span>
+    <span class="ans-tag">答案：D</span>
+  </div>
+  <div class="q-stem">有關微乳劑之敘述，下列何者錯誤？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">外觀澄清</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">可製備為o/w或w/o等型式</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">可增加藥品之口服生體可用率</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">D</span><span class="ot">與乳劑相比，液滴易凝集安定性差</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">微乳劑（microemulsion）熱力學安定、外觀澄清、可o/w或w/o、能增加口服F。(D)敘述「與乳劑相比液滴易凝集安定性差」錯誤——微乳劑反而更安定，故選(D)。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio50"></textarea>
+</div><div class="q" data-qid="bio51">
+  <div class="q-head">
+    <span class="q-tag">112年第二次 第67題</span>
+    <span class="ans-tag">答案：D</span>
+  </div>
+  <div class="q-stem">下列選項為erythromycin口服製劑在胃中1小時的溶離率，何者對應之生體可用率最高？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">100%</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">80%</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">60%</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">D</span><span class="ot">40%</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">Erythromycin酸性不安定，在胃中溶離越少（被胃酸破壞越少），到腸道完整吸收越多，F越高。(D)胃中溶離率40%（最低）對應F最高，選(D)。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio51"></textarea>
+</div><div class="q" data-qid="bio52">
+  <div class="q-head">
+    <span class="q-tag">112年第二次 第69題</span>
+    <span class="ans-tag">答案：C</span>
+  </div>
+  <div class="q-stem">某藥屬於BCS Class III，已知此藥僅由腎排除，下列何者是影響此藥口服生體可用率的主要限制步驟？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">崩散作用</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">溶離釋放</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">C</span><span class="ot">腸壁通透</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">首渡效應</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">BCS Class III（高溶解、低通透），吸收限速為腸壁通透。(C)正確。崩散溶離對高溶解藥非限速；首渡屬肝非吸收步驟。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio52"></textarea>
+</div><div class="q" data-qid="bio53">
+  <div class="q-head">
+    <span class="q-tag">113年第一次 第25題</span>
+    <span class="ans-tag">答案：D</span>
+  </div>
+  <div class="q-stem">有關「膠囊劑」與其他劑型之比較，下列敘述何者最不適當？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">水溶液劑型之藥物生體可用率，通常會高於膠囊劑</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">膠囊劑在包裝與運送之成本，通常比相應之液體劑型低</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">藥物製成膠囊劑，通常比相應之液體劑型有更長之架貯期</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">D</span><span class="ot">錠劑可製備成extended-release劑型，而膠囊劑僅能製備為 immediate-release劑型</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">膠囊與其他劑型比較：(D)錯誤——膠囊同樣可製成extended-release（如微丸充填），非僅immediate-release。(A)(B)(C)敘述皆正確。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio53"></textarea>
+</div><div class="q" data-qid="bio54">
+  <div class="q-head">
+    <span class="q-tag">113年第一次 第78題</span>
+    <span class="ans-tag">答案：B</span>
+  </div>
+  <div class="q-stem">根據經設計的療程（dosage regimen）給藥後，由血中濃度監測發現藥品濃度比預期還低，下列何者為其最 可能的原因？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">藥品與血中蛋白質結合率比預期高</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">B</span><span class="ot">藥品與血中蛋白質結合率比預期低</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">肝血流量降低</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">藥品吸收及生體可用率增加</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">血中濃度比預期低的可能原因中，(B)蛋白結合率比預期「低」→游離分率高→分布/清除增加→總血中濃度下降，合理。(A)結合率高會使總濃度上升；(C)肝血流降低會使濃度上升；(D)F增加濃度上升。故選(B)。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio54"></textarea>
+</div><div class="q" data-qid="bio55">
+  <div class="q-head">
+    <span class="q-tag">113年第二次 第66題</span>
+    <span class="ans-tag">答案：C</span>
+  </div>
+  <div class="q-stem">下表為某藥以不同劑型或給藥途徑在體內所獲得之血中濃度曲線下面積（AUC），依此推測影響該藥口服生體可用率的最主要因素為何？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">藥品的崩散及溶離</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">腸道吸收過程的代謝</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">C</span><span class="ot">肝臟首渡代謝</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">總體清除率的改變</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">由不同途徑AUC比較推斷F限制因素：若口服AUC遠低於IV，且非崩散溶離問題，最可能為肝臟首渡代謝。(C)正確（須比對表格）。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio55"></textarea>
+</div><div class="q" data-qid="bio56">
+  <div class="q-head">
+    <span class="q-tag">114年第一次 第46題</span>
+    <span class="ans-tag">答案：D</span>
+  </div>
+  <div class="q-stem">一般而言下列何種藥品，相對最適合製備成口服extended-release products？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">用於治療慢性疾病，水溶解度差且吸收不佳的藥品</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">用於治療急性疾病，半衰期小於2小時且吸收不佳的藥品</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">用於治療急性疾病，半衰期長且吸收快速的藥品</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">D</span><span class="ot">用於治療慢性疾病，排除半衰期短但大於2小時的藥品</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">適合製延釋的藥：治療慢性病、半衰期短但&gt;2小時（太短則需釋放量大）、吸收良好。(D)符合。(A)吸收不佳不適；(B)(C)急性病、半衰期過短或過長皆不宜。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio56"></textarea>
+</div><div class="q" data-qid="bio57">
+  <div class="q-head">
+    <span class="q-tag">114年第一次 第69題</span>
+    <span class="ans-tag">答案：D</span>
+  </div>
+  <div class="q-stem">下列何者可作為生體可用率或生體相等性試驗之評估標的？①血中藥物濃度 ②尿中藥物排泄量 ③藥效學反應 ④治療窗（therapeutic window）濃度 ⑤臨床試驗觀察標的</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">①②③④</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">①④⑤</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">③④⑤</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">D</span><span class="ot">①②③⑤</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">生體可用率/相等性評估標的可為①血中濃度、②尿中排泄量、③藥效學反應、⑤臨床試驗標的。④治療窗濃度為安全範圍非評估標的。故選①②③⑤（答D）。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio57"></textarea>
+</div><div class="q" data-qid="bio58">
+  <div class="q-head">
+    <span class="q-tag">114年第二次 第23題</span>
+    <span class="ans-tag">答案：C</span>
+  </div>
+  <div class="q-stem">有關硬明膠膠囊劑之敘述，下列何者最適當？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">膠囊殼在冷水中即能迅速溶解</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">應貯存在幾乎無水的環境，以避免吸收水分而變形</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">C</span><span class="ot">妥善保存的硬膠囊能保持穩定形狀，較不因吸收水分而影響生體可用率</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">熔封或封口處理（sealing）之主要目的為確保藥品的長效釋放</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">硬明膠膠囊：(C)妥善保存的硬膠囊形狀穩定、較不因吸水變形而影響F，正確。(A)冷水中不會迅速溶解（需胃液約37℃）；(B)應避免過乾以免變脆；(D)sealing主要防漏/防偽非長效釋放。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio58"></textarea>
+</div><div class="q" data-qid="bio59">
+  <div class="q-head">
+    <span class="q-tag">114年第二次 第28題</span>
+    <span class="ans-tag">答案：D</span>
+  </div>
+  <div class="q-stem">依中華藥典，有關錠劑之敘述，下列何者錯誤？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">壓製錠之製造法中，利用適當黏合液，經混合控壓處理者，屬濕式顆粒法</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">常見滑潤劑多屬疏水性，過量使用會影響溶離表現</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">乾燥黏合劑中之微晶纖維素，常用於直壓錠之製造</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">D</span><span class="ot">當藥用成分為疏水性時，由生體可用率考量，建議使用疏水性稀釋劑</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">錠劑敘述：(D)錯誤——藥用成分為疏水性時，由F考量應使用「親水性」稀釋劑以助潤濕溶離，非疏水性。(A)(B)(C)皆正確。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio59"></textarea>
+</div><div class="q" data-qid="bio60">
+  <div class="q-head">
+    <span class="q-tag">114年第二次 第52題</span>
+    <span class="ans-tag">答案：A</span>
+  </div>
+  <div class="q-stem">藥品以口服方式給與後，若遵循一室式藥動模式，且吸收與排除皆為first-order，下列何種情況代表體內藥品是在濃度經時變化曲線的排除相？</div>
+  <div class="opts"><button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">A</span><span class="ot">當藥品的吸收速率趨近於零</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">當藥品的吸收速率＞排除速率</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">當藥品的吸收速率＝排除速率</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">當藥品的吸收速率＜排除速率 ( C ) 將一室式非flip-flop口服藥品之血中濃度對數值（log C p ）對應時間（t）作圖，並利用method of residuals於elimination phase進行外插， 53-54 為題組 第53題 53.所得之斜率可以直接推算出下列那個藥動參數？</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">A</span><span class="ot">生體可用率（F）</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">吸收速率常數（k a ）</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">排除速率常數（k）</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">擬似分布體積（V d ）</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">一室、吸收與排除皆一階時，排除相定義為「吸收速率趨近於零」（藥物吸收完畢，只剩排除）。(A)正確。（此題原檔黏連53題題組，53題答案為排除速率常數k）</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio60"></textarea>
+</div><div class="q" data-qid="bio61">
+  <div class="q-head">
+    <span class="q-tag">115年第一次 第69題</span>
+    <span class="ans-tag">答案：A</span>
+  </div>
+  <div class="q-stem">下列何種藥品屬 BCS Class 2，其原料經微粒化後可大幅增加其生體可用率？①fenofibrate ② griseofulvin ③nitrofurantoin ④acetaminophen</div>
+  <div class="opts"><button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">A</span><span class="ot">①②③</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">②③④</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">①③④</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">①②④</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">BCS Class 2（低溶解高通透）微粒化可增溶離而提升F。①fenofibrate、②griseofulvin、③nitrofurantoin屬此類；④acetaminophen為高溶解（class 1/3），微粒化助益小。故選①②③（答A）。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio61"></textarea>
+</div>
+</section>
+<section class="chapter" id="sec-be" style="--accent:#B0967C">
+  <h2 class="ch-title">生體相等性試驗 <span class="ch-count">4 題</span></h2>
+  <div class="q" data-qid="bio62">
+  <div class="q-head">
+    <span class="q-tag">112年第一次 第67題</span>
+    <span class="ans-tag">答案：D</span>
+  </div>
+  <div class="q-stem">依據中華藥典，有關溶離圖比對（dissolution profile comparison）應用之敘述，下列何者錯誤？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">可用以佐證藥物許可上市後變更（SUPAC）新配方藥品之相等性</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">用以評估不同劑量產品時，較低強度的藥品可否免除（biowavers）體內生體相等性試驗</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">若藥物產品配方改變前與後的溶離曲線具相似性，則相似因子（f2）至少達 50</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">D</span><span class="ot">Immediate-release 產品可於三種酸鹼值（1.2, 4.5 及 6.8）緩衝液中進行，於規定時間內應溶出≧85%</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">溶離圖比對：(A)可佐證SUPAC變更、(B)可作不同劑量biowaiver依據、(C)相似因子f2≥50代表相似皆正確。(D)敘述錯誤——immediate-release biowaiver的快速溶離定義是在三種pH（1.2/4.5/6.8）緩衝液中，通常規定15分鐘溶出≥85%，選項時間/條件敘述有誤，選(D)。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio62"></textarea>
+</div><div class="q" data-qid="bio63">
+  <div class="q-head">
+    <span class="q-tag">112年第二次 第66題</span>
+    <span class="ans-tag">答案：D</span>
+  </div>
+  <div class="q-stem">有關以血中濃度為評估標的，進行多次劑量給藥之生體相等性試驗，下列敘述何者錯誤？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">採隨機、交叉實驗設計，洗除期間為10個排除半衰期</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">須測定三次波谷濃度，以確定多次給藥已達穩定狀態</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">可利用變異數分析經對數轉換的 與AUC</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">D</span><span class="ot">以90%信賴區間，需在對照品的75~120%間始具生體相等性</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">生體相等性判定：以90%信賴區間，經對數轉換的Cmax與AUC須落在對照品的80–125%間才具生體相等。(D)敘述「75~120%」錯誤，選(D)。(A)洗除期10個半衰期、(B)三次波谷確認穩態、(C)ANOVA對數轉換皆正確。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio63"></textarea>
+</div><div class="q" data-qid="bio64">
+  <div class="q-head">
+    <span class="q-tag">113年第一次 第45題</span>
+    <span class="ans-tag">答案：C</span>
+  </div>
+  <div class="q-stem">有關控釋劑型之生體相等性試驗，下列敘述何者最不適當？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">必須分別在空腹和餐後的條件下分別進行試驗</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">和速放藥品一樣採用單劑量交叉試驗</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">C</span><span class="ot">至少須進行最高劑量與最低劑量之試驗</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">無須進行多劑量穩定狀態試驗</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">控釋劑型BE試驗：須空腹與餐後分別試驗、採單劑量交叉、須做多劑量穩態試驗。(C)「至少須進行最高與最低劑量試驗」最不適當——一般以最高劑量（strength）進行即可。(D)敘述「無須多劑量穩態」也有爭議，但依題意選(C)。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio64"></textarea>
+</div><div class="q" data-qid="bio65">
+  <div class="q-head">
+    <span class="q-tag">113年第二次 第68題</span>
+    <span class="ans-tag">答案：B</span>
+  </div>
+  <div class="q-stem">有關藥品生體相等性（bioequivalence）試驗設計之考量，下列何者最適當？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">空腹試驗時，受試者需空腹8小時，給藥後1小時始可進食</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">B</span><span class="ot">可採拉丁方格交叉設計，洗除期間為10個排除半衰期</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">須測定三次波峰濃度，以確定多次給藥已達穩定狀態</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">以臨床終點評定療效，一般須為交叉試驗設計</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">(B)可採拉丁方格交叉設計、洗除期10個排除半衰期，正確。(A)空腹通常給藥後≥2–4小時始進食（非1小時）；(C)穩態應測波谷（trough）非波峰；(D)一般以血中濃度（PK）非臨床終點。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio65"></textarea>
+</div>
+</section>
+<section class="chapter" id="sec-renal" style="--accent:#7E9AA8">
+  <h2 class="ch-title">腎功能評估／劑量調整（觀念） <span class="ch-count">11 題</span></h2>
+  <div class="q" data-qid="bio66">
+  <div class="q-head">
+    <span class="q-tag">111年第二次 第74題</span>
+    <span class="ans-tag">答案：A</span>
+  </div>
+  <div class="q-stem">一般而言，下列何者最需要進行血中濃度監測？</div>
+  <div class="opts"><button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">A</span><span class="ot">digoxin</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">acetaminophen</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">ibuprofen</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">omeprazole</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">最需TDM的藥為治療窗窄、個體差異大者。digoxin治療窗極窄（0.8–2 ng/mL），須監測。(A)正確。acetaminophen、ibuprofen、omeprazole治療窗寬，一般不需。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio66"></textarea>
+</div><div class="q" data-qid="bio67">
+  <div class="q-head">
+    <span class="q-tag">112年第一次 第59題</span>
+    <span class="ans-tag">答案：B</span>
+  </div>
+  <div class="q-stem">Inulin 僅由腎絲球過濾從尿液排出體外，下列何圖示意此藥排泄速率與血中濃度之相關性？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot"></span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">B</span><span class="ot"></span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot"></span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot"></span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">Inulin僅經腎絲球被動過濾、不分泌不再吸收，屬線性排除，排泄速率與血中濃度成正比（直線通過原點）。故選對應的線性圖(B)。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio67"></textarea>
+</div><div class="q" data-qid="bio68">
+  <div class="q-head">
+    <span class="q-tag">113年第一次 第61題</span>
+    <span class="ans-tag">答案：C</span>
+  </div>
+  <div class="q-stem">線性一室藥動模式藥品口服後，血中藥物濃度經時關係式為C = 60（e -0.16t -e -1.8t ），該式中之數值60可   由數個藥動學參數共同推算，但不包含下列何者？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">吸收速率常數</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">排除速率常數</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">C</span><span class="ot">腎排除分率</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">擬似分布體積</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">口服雙指數式 C=A(e^-kt − e^-ka·t) 中，係數A由 F、Dose、ka、k、Vd 共同組成（A＝F·Do·ka/[Vd(ka−k)]）。不包含「腎排除分率fe」。故選(C)。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio68"></textarea>
+</div><div class="q" data-qid="bio69">
+  <div class="q-head">
+    <span class="q-tag">113年第一次 第74題</span>
+    <span class="ans-tag">答案：B</span>
+  </div>
+  <div class="q-stem">血清中creatinine濃度廣用於評估下列何種生理功能？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">腎近曲小管再吸收</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">B</span><span class="ot">腎絲球體過濾</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">腎近曲小管分泌</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">腎動脈血流</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">血清creatinine由腎絲球過濾清除，臨床用以評估腎絲球過濾率（GFR）。(B)正確。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio69"></textarea>
+</div><div class="q" data-qid="bio70">
+  <div class="q-head">
+    <span class="q-tag">113年第一次 第80題</span>
+    <span class="ans-tag">答案：D</span>
+  </div>
+  <div class="q-stem">下列何者通常較不須依據腎功能調整劑量？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">vancomycin</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">gentamicin</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">digoxin</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">D</span><span class="ot">lidocaine</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">腎功能調整劑量的藥須「主要經腎排除」。vancomycin、gentamicin、digoxin皆大量經腎排除須調整。lidocaine主要經肝代謝，較不需依腎功能調整。(D)正確。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio70"></textarea>
+</div><div class="q" data-qid="bio71">
+  <div class="q-head">
+    <span class="q-tag">113年第二次 第62題</span>
+    <span class="ans-tag">答案：D</span>
+  </div>
+  <div class="q-stem">若已知藥物從尿中或血中所得實驗數據，以下列方法何者無法求得腎清除率？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">尿中排泄速率對血中濃度作圖</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">單位時間尿中累積排泄量對血中濃度曲線下面積作圖</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">單位時間平均尿中排泄量與時間中點之血中濃度的比值</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">D</span><span class="ot">尿中待排泄剩餘量對時間作圖</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">腎清除率求法：(A)尿排泄速率對Cp作圖斜率、(B)dDu/dt對AUC、(C)平均尿排率／中點Cp皆可。(D)「尿中待排泄剩餘量對時間作圖」求的是排除速率常數k（sigma-minus），非腎清除率，故無法，選(D)。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio71"></textarea>
+</div><div class="q" data-qid="bio72">
+  <div class="q-head">
+    <span class="q-tag">113年第二次 第73題</span>
+    <span class="ans-tag">答案：C</span>
+  </div>
+  <div class="q-stem">某藥經由腎排除20%原型藥物，欲以靜脈注射投與肝清除率降為一半的慢性肝炎病人，若其腎排除未改變， 則應如何調整給藥最適當？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">給藥間隔時間縮短一半，劑量調整為原量的70%</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">給藥間隔時間縮短一半，維持原劑量</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">C</span><span class="ot">給藥間隔時間不變，劑量調整為原量的60%</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">給藥間隔時間與劑量均調整為原量的60%</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">藥物20%腎排、80%肝代謝。肝清除減半→肝那部分減半：新CL＝0.2+0.8×0.5＝0.6（原60%）。維持相同平均濃度，給藥間隔不變下，劑量調為原量60%。(C)正確。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio72"></textarea>
+</div><div class="q" data-qid="bio73">
+  <div class="q-head">
+    <span class="q-tag">113年第二次 第75題</span><span class="multi-badge">複選</span>
+    <span class="ans-tag">答案：A、D</span>
+  </div>
+  <div class="q-stem">進行腎功能評估時，測定creatinine血清中濃度，下列何者對其數值之影響最小？</div>
+  <div class="opts"><button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">A</span><span class="ot">肥胖</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">性別</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">年齡</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">D</span><span class="ot">人種</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">血清creatinine受肌肉量影響（性別、年齡、人種相關）。(A)肥胖（脂肪多、肌肉不一定多）與(D)人種對數值影響相對最小。此為複選，答A、D。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio73"></textarea>
+</div><div class="q" data-qid="bio74">
+  <div class="q-head">
+    <span class="q-tag">113年第二次 第76題</span>
+    <span class="ans-tag">答案：D</span>
+  </div>
+  <div class="q-stem">使用Cockcroft-Gault method計算creatinine之清除率，下列何者非為必要資訊？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">血清中creatinine濃度</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">年齡</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">體重</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">D</span><span class="ot">藥物腎排除分率</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">Cockcroft-Gault公式需：年齡、體重、血清creatinine、性別。(D)「藥物腎排除分率」非計算CLcr所需，故選(D)。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio74"></textarea>
+</div><div class="q" data-qid="bio75">
+  <div class="q-head">
+    <span class="q-tag">114年第一次 第80題</span>
+    <span class="ans-tag">答案：B</span>
+  </div>
+  <div class="q-stem">某藥品的排除速率常數與creatinine clearance之關係如下圖，排除速率常數以相對百分率表示 （ ），依此資料，此藥品之腎臟排泄分率為A，若病人的creatinine clearance由100 mL/min降為60 mL/min，劑量應調整為原來的B％，下列何者正確？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">A為0.25，B為70</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">B</span><span class="ot">A為0.75，B為70</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">A為0.25，B為30</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">A為0.75，B為30</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">由ke與CLcr線性關係求腎排泄分率fe（斜率/截距推算）。此為圖形計算題，答案A為0.75、B為70%。屬計算延伸，觀念上fe＝腎排除占比。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio75"></textarea>
+</div><div class="q" data-qid="bio76">
+  <div class="q-head">
+    <span class="q-tag">115年第一次 第75題</span>
+    <span class="ans-tag">答案：C</span>
+  </div>
+  <div class="q-stem">以 Child-Pugh score 進行肝功能評估時，其評估指標應包括下列那些項目？① international normalized ratio ②alanine aminotransferase/aspartate aminotransferase ③ascites ④bilirubin ⑤ alkaline phosphatase</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">①②⑤</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">②③④</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">C</span><span class="ot">①③④</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">③④⑤</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">Child-Pugh肝功能評估五項：①INR（凝血）、③腹水ascites、④膽紅素bilirubin、白蛋白、肝腦病變。②ALT/AST與⑤ALP非Child-Pugh項目。故選①③④（答C）。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio76"></textarea>
+</div>
+</section>
+<section class="chapter" id="sec-hepatic" style="--accent:#A88F7E">
+  <h2 class="ch-title">肝功能／清除率（觀念） <span class="ch-count">5 題</span></h2>
+  <div class="q" data-qid="bio77">
+  <div class="q-head">
+    <span class="q-tag">111年第一次 第10題</span>
+    <span class="ans-tag">答案：C</span>
+  </div>
+  <div class="q-stem">下列何者最不受肝臟生理狀況之影響，而改變其藥動特性？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">antipyrine</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">erythromycin</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">C</span><span class="ot">neomycin</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">chloramphenicol</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">受肝生理影響者為經肝代謝藥。antipyrine、erythromycin、chloramphenicol皆經肝代謝。neomycin為胺基醣苷、口服幾乎不吸收、不經肝代謝，最不受肝影響。(C)正確。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio77"></textarea>
+</div><div class="q" data-qid="bio78">
+  <div class="q-head">
+    <span class="q-tag">112年第二次 第62題</span>
+    <span class="ans-tag">答案：D</span>
+  </div>
+  <div class="q-stem">某藥具二室分布特性，估算其在體內的四種擬似分布體積（ ）大小順序為何（假設此藥為高清除率藥物）？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot"></span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot"></span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot"></span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">D</span><span class="ot"></span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">二室高清除率藥物的四種擬似分布體積大小順序（Vss、Vβ、Vc等）為圖形/公式判斷題。觀念：Vβ(Varea)＞Vss＞Vc。此題原檔選項為圖示，屬進階計算。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio78"></textarea>
+</div><div class="q" data-qid="bio79">
+  <div class="q-head">
+    <span class="q-tag">113年第二次 第61題</span>
+    <span class="ans-tag">答案：C</span>
+  </div>
+  <div class="q-stem">甲藥在體內的動態變化循一室模式及一階次排除，已知此藥的排除僅經肝代謝及腎原型排泄且半衰期為1小時，若經肝臟代謝的速率常數為0.2 ，則3天後約有若干百分比的甲藥可在尿中收集得到？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">20</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">30</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">C</span><span class="ot">70</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">80</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">半衰期1h→總k＝0.693/1＝0.693。肝代謝k_m＝0.2，則腎排除k_r＝0.693−0.2≈0.49，fe＝k_r/k≈0.49/0.693≈0.7（70%）。3天後幾乎全部排完，尿中收得原型比例≈fe≈70%。(C)正確。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio79"></textarea>
+</div><div class="q" data-qid="bio80">
+  <div class="q-head">
+    <span class="q-tag">113年第二次 第79題</span>
+    <span class="ans-tag">答案：D</span>
+  </div>
+  <div class="q-stem">當病人腎臟與肝臟功能不良時，將會影響下列何者，因而需要調整劑量？①藥品血漿蛋白結合率 ②藥品清 除率 ③擬似分布體積</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">僅②</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">僅①③</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">僅②③</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">D</span><span class="ot">①②③</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">腎、肝功能不良會影響①血漿蛋白結合率（低白蛋白）、②清除率、③擬似分布體積（水腫、結合改變），三者皆會，故須調整劑量。選①②③（答D）。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio80"></textarea>
+</div><div class="q" data-qid="bio81">
+  <div class="q-head">
+    <span class="q-tag">113年第二次 第80題</span>
+    <span class="ans-tag">答案：D</span>
+  </div>
+  <div class="q-stem">藥物具有那些特性時，在肝臟損傷的病人相對不須調整劑量？①藥物完全由腎臟排除 ②藥物肝臟代謝比例 極低（&lt;20%），且療效範圍很寬 ③氣體或揮發性藥品，及原型藥與其活性代謝物主要藉由肺臟排除</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">僅①</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">僅②</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">僅③</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">D</span><span class="ot">①②③</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">肝損傷相對不需調整劑量的藥：①完全經腎排除、②肝代謝&lt;20%且療效範圍寬、③氣體/揮發性經肺排除，三者皆是。選①②③（答D）。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio81"></textarea>
+</div>
+</section>
+<section class="chapter" id="sec-tdm" style="--accent:#98A090">
+  <h2 class="ch-title">血中濃度監測（TDM） <span class="ch-count">1 題</span></h2>
+  <div class="q" data-qid="bio82">
+  <div class="q-head">
+    <span class="q-tag">111年第一次 第57題</span>
+    <span class="ans-tag">答案：D</span>
+  </div>
+  <div class="q-stem">藥物具有下列何項特性，最適合開發為口服持續釋放錠劑?</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">半衰期小於 1 小時</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">治療濃度範圍較窄</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">劑量較大</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">D</span><span class="ot">在腸胃道各部位吸收均一</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">適合開發口服緩釋錠的藥：半衰期適中、治療窗適中、劑量不過大、在胃腸道各部位吸收均一。(D)吸收均一為必要條件。(A)半衰期&lt;1h釋放需求過大、(B)治療窗窄危險、(C)劑量大體積難，皆不適。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio82"></textarea>
+</div>
+</section>
+<section class="chapter" id="sec-dialysis" style="--accent:#8CA0A8">
+  <h2 class="ch-title">透析 <span class="ch-count">1 題</span></h2>
+  <div class="q" data-qid="bio83">
+  <div class="q-head">
+    <span class="q-tag">114年第一次 第75題</span>
+    <span class="ans-tag">答案：C</span>
+  </div>
+  <div class="q-stem">有關透析之敘述，下列何者正確？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">常見的透析分為兩種，分別為血液透析及腹膜透析，其透析過程均須使用人工膜</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">分子量大於800且蛋白質結合率高之藥品容易被透析移除，因此需於透析完成後，再補充藥品劑量，以維持血中治療濃度</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">C</span><span class="ot">dialysance為描述藥品經由透析機器移除至體外的清除率，以 表示</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">無論是何種透析方式都無法自行在家操作，皆須每週至醫院2～3次進行透析</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">(C)dialysance描述藥物經透析機移除的清除率，正確。(A)腹膜透析用「自身腹膜」非人工膜；(B)分子量大、蛋白結合率高的藥「不易」被透析移除；(D)腹膜透析可在家自行操作（CAPD）。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio83"></textarea>
+</div>
+</section>
+<section class="chapter" id="sec-ivivc" style="--accent:#A2879A">
+  <h2 class="ch-title">IVIVC／吸收速率求法 <span class="ch-count">10 題</span></h2>
+  <div class="q" data-qid="bio84">
+  <div class="q-head">
+    <span class="q-tag">111年第一次 第79題</span>
+    <span class="ans-tag">答案：B</span>
+  </div>
+  <div class="q-stem">在 IVIVC 試驗中，以體外溶離試驗所獲得的平均溶離時間與藥物在體內的平均滯留時間作比較，是屬於何種 層級的相關性？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">level A</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">B</span><span class="ot">level B</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">level C</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">level S</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">以體外平均溶離時間 vs 體內平均滯留時間（MRT）比較，屬Level B的IVIVC（用統計動差比較，非點對點）。(B)正確。Level A為點對點、Level C為單點。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio84"></textarea>
+</div><div class="q" data-qid="bio85">
+  <div class="q-head">
+    <span class="q-tag">111年第二次 第62題</span>
+    <span class="ans-tag">答案：D</span>
+  </div>
+  <div class="q-stem">以原型藥物在尿中排泄量 及總排泄量 之關係，計算藥物排除速率常數k的方法稱為：</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">excretion rate method</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">Loo-Riegelman method</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">model-independent method</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">D</span><span class="ot">sigma-minus method</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">以尿中剩餘待排量（Du∞−Du）對時間作半對數圖求k，稱sigma-minus method（虧量法）。(D)正確。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio85"></textarea>
+</div><div class="q" data-qid="bio86">
+  <div class="q-head">
+    <span class="q-tag">111年第二次 第67題</span>
+    <span class="ans-tag">答案：B</span>
+  </div>
+  <div class="q-stem">已知某藥可經由腎臟以原型排泄，今以A、B、C三種不同製劑口服給藥，藥物血中濃度與時間相關性如下   圖，則尿中藥物最大累積排泄量（ ）排列順序為何？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">A＞B＞C</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">B</span><span class="ot">A＝B＞C</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">A＝B＝C</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">A＝C＞B</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">尿中最大累積排泄量Du∞＝F·Dose·fe/... 只與吸收總量（F·Dose）有關，與釋放速率無關。若A、B完全吸收、C吸收較差，則Du∞：A＝B＞C。(B)正確。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio86"></textarea>
+</div><div class="q" data-qid="bio87">
+  <div class="q-head">
+    <span class="q-tag">112年第一次 第48題</span>
+    <span class="ans-tag">答案：D</span>
+  </div>
+  <div class="q-stem">下列何者屬於 level A 的 in vitro-in vivo correlations（IVIVC）？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">體外溶離速率常數和體內吸收速率常數</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">體外溶出 50%的時間和體內最高血中濃度</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">體外平均溶離時間和體內平均溶離時間</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">D</span><span class="ot">體外溶離量和體內吸收量之經時變化相關性</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">Level A的IVIVC為「體外溶離量 vs 體內吸收量」的點對點經時相關性。(D)正確。(A)(B)(C)分屬其他層級或非標準定義。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio87"></textarea>
+</div><div class="q" data-qid="bio88">
+  <div class="q-head">
+    <span class="q-tag">112年第一次 第62題</span>
+    <span class="ans-tag">答案：D</span>
+  </div>
+  <div class="q-stem">有關藥物經口服吸收之敘述，下列何者最適當？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">殘值法（method of residuals）是利用口服後血中濃度數據，推估吸收速率常數的方法，但無法推估排除速率 常數</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">滯後時間（lag time）一般是指投與藥物後，藥物血中濃度到達治療有效濃度的時間</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">利用殘值法（method of residuals）時，要儘量採用靠近 tmax 的數值作線性迴歸，求得斜率</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">D</span><span class="ot">利用 Wagner-Nelson method 可求得吸收速率常數</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">(D)Wagner-Nelson法可求吸收速率常數（一室），正確。(A)殘值法可同時得ka與k；(B)lag time是到達可測濃度而非治療濃度；(C)殘值法應取吸收後期（遠離tmax）數據。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio88"></textarea>
+</div><div class="q" data-qid="bio89">
+  <div class="q-head">
+    <span class="q-tag">112年第二次 第64題</span>
+    <span class="ans-tag">答案：B</span>
+  </div>
+  <div class="q-stem">下列何者適用於計算二室藥動模式藥物之口服吸收速率常數？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">steady-state method</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">B</span><span class="ot">Loo-Riegelman method</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">Wagner-Nelson method</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">sigma-minus method</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">二室模式求口服吸收速率常數用Loo-Riegelman法（需IV分布數據）。(B)正確。Wagner-Nelson用於一室；sigma-minus求排除k。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio89"></textarea>
+</div><div class="q" data-qid="bio90">
+  <div class="q-head">
+    <span class="q-tag">113年第一次 第66題</span>
+    <span class="ans-tag">答案：A</span>
+  </div>
+  <div class="q-stem">以體外溶離試驗來預測藥品在體內吸收的變化時，若屬Level C之相關性，其以藥物溶離百分比為x軸，下列 何者為y軸作圖時，可得負值的線性關係？</div>
+  <div class="opts"><button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">A</span><span class="ot">藥物達最高血中濃度時間</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">藥物吸收百分比</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">藥物尖峰血中濃度</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">某時間之藥物血中濃度</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">Level C以溶離百分比為x軸，對單一藥動參數作圖。若y軸為Tmax，溶離越快Tmax越短，呈「負」線性關係。(A)正確。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio90"></textarea>
+</div><div class="q" data-qid="bio91">
+  <div class="q-head">
+    <span class="q-tag">113年第一次 第69題</span>
+    <span class="ans-tag">答案：D</span>
+  </div>
+  <div class="q-stem">某藥可經由腎臟以原型排泄，今以A、B、C三種不同製劑口服給藥，尿中累積藥量與時間相關性如下圖，則   給藥後依到達最高血中濃度的時間先後之排序為何？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">A＜B＜C</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">A＝B＜C</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">A＝B＝C</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">D</span><span class="ot">A＝C＜B</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">尿中累積曲線斜率反映吸收速率。到達Cmax時間（Tmax）取決於吸收速率：吸收越快Tmax越早。依圖若A=C吸收快、B較慢，則Tmax：A=C＜B。(D)正確。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio91"></textarea>
+</div><div class="q" data-qid="bio92">
+  <div class="q-head">
+    <span class="q-tag">113年第二次 第64題</span>
+    <span class="ans-tag">答案：D</span>
+  </div>
+  <div class="q-stem">下列何者可推估口服藥物之吸收速率常數？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">以Loo-Riegelman法用於一室藥動模式藥物</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">以Wagner-Nelson法利用藥物被吸收分率數值對時間作圖</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">以Wagner-Nelson法先推算出藥物分布速率常數後計算推估</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">D</span><span class="ot">以尿藥數據計算藥物未吸收分率之對數值對時間作圖推估</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">(D)以尿藥數據計算未吸收分率對數對時間作圖可推吸收速率常數，正確。(A)Loo-Riegelman用於二室非一室；(B)Wagner-Nelson用未吸收分率的殘值；(C)Wagner-Nelson用於一室不需分布常數。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio92"></textarea>
+</div><div class="q" data-qid="bio93">
+  <div class="q-head">
+    <span class="q-tag">114年第二次 第45題</span>
+    <span class="ans-tag">答案：D</span>
+  </div>
+  <div class="q-stem">建立口服extended-release dosage form的IVIVC時，下列何者錯誤？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">體外平均溶離時間／體內平均溶離時間是屬於Level B的IVIVC</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">進行體外溶離試驗時，檢品數量最少要有12件</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">進行體外溶離試驗時，溶離液之pH值不要超過6.8</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">D</span><span class="ot">進行體內試驗時，受試者最少要有12位</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">建立ER的IVIVC：(D)敘述錯誤——體內試驗受試者最少通常需更多（非12位即可，且此為體外檢品數的混淆）。(A)平均溶離/滯留為Level B、(B)體外檢品≥12、(C)溶離pH≤6.8皆正確。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio93"></textarea>
+</div>
+</section>
+<section class="chapter" id="sec-dissolution" style="--accent:#8DA0A0">
+  <h2 class="ch-title">溶離／Noyes-Whitney／吸收部位 <span class="ch-count">29 題</span></h2>
+  <div class="q" data-qid="bio94">
+  <div class="q-head">
+    <span class="q-tag">111年第一次 第37題</span>
+    <span class="ans-tag">答案：D</span>
+  </div>
+  <div class="q-stem">依中華藥典，有關溶離度試驗法之規定，下列何者錯誤？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">可以用水當媒液</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">溫度必須為 37 ± 0.5℃</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">裝置Ｉ為 40 網目篩網</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">D</span><span class="ot">網籃與容器底之距離維持在 3.5 ± 0.5 公分</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">溶離度試驗：(A)可用水為媒液、(B)37±0.5℃、(C)裝置I為40網目籃、(D)網籃與杯底距離規定為25±2 mm（2.5公分），非3.5公分，故錯誤，選(D)。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio94"></textarea>
+</div><div class="q" data-qid="bio95">
+  <div class="q-head">
+    <span class="q-tag">111年第一次 第59題</span>
+    <span class="ans-tag">答案：C</span>
+  </div>
+  <div class="q-stem">下列何者不是確認藥物產生翻轉 (flip-flop）現象的必要方法？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">利用殘餘法得口服吸收速率常數</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">利用殘餘法得口服排除速率常數</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">C</span><span class="ot">取得藥物靜脈輸注時的穩定濃度</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">取得靜脈注射後的排除速率常數</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">確認flip-flop需比對「IV給藥的真實排除速率常數k」與口服殘值法所得，看兩速率常數是否對調。(C)取IV輸注穩定濃度並非確認flip-flop的必要方法，選(C)。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio95"></textarea>
+</div><div class="q" data-qid="bio96">
+  <div class="q-head">
+    <span class="q-tag">111年第二次 第51題</span>
+    <span class="ans-tag">答案：A</span>
+  </div>
+  <div class="q-stem">某支氣管擴張劑以口服投與，以殘值法先行推得排除速率常數為0.72 、吸收速率常數為1.72 。然可藉由   下列何種後續方法證實此藥應為具flip-flop現象 ？</div>
+  <div class="opts"><button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">A</span><span class="ot">以靜脈注射給藥後，比對排除速率常數</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">以靜脈輸注給藥後，比對穩定藥效濃度</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">以多次靜脈給藥後，比對穩定尖峰濃度</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">不需後續方法，直接以半衰期判斷即可</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">口服殘值法得兩速率常數0.72與1.72，無法直接分辨何者為ka何者為k（flip-flop）。須(A)以IV給藥後比對真實排除速率常數，才能確認。(A)正確。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio96"></textarea>
+</div><div class="q" data-qid="bio97">
+  <div class="q-head">
+    <span class="q-tag">111年第二次 第69題</span>
+    <span class="ans-tag">答案：A</span>
+  </div>
+  <div class="q-stem">藥品製程中添加賦形劑對於藥品特性的影響，下列敘述何者錯誤？</div>
+  <div class="opts"><button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">A</span><span class="ot">calcium carbonate可促進tetracycline的吸收</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">添加5% magnesium stearate可減緩藥物的溶離</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">sodium bicarbonate可促進aspirin的溶解</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">sodium starch glycolate可促進furosemide的崩散</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">(A)錯誤——calcium carbonate會與tetracycline形成不溶性螯合物，「抑制」而非促進其吸收。(B)硬脂酸鎂疏水減緩溶離、(C)碳酸氫鈉助aspirin溶解、(D)羧甲基澱粉鈉為崩散劑皆正確。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio97"></textarea>
+</div><div class="q" data-qid="bio98">
+  <div class="q-head">
+    <span class="q-tag">111年第二次 第70題</span>
+    <span class="ans-tag">答案：A</span>
+  </div>
+  <div class="q-stem">下列何者不是進行溶離及藥物釋放試驗之主要目的？</div>
+  <div class="opts"><button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">A</span><span class="ot">檢測不純物之總量</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">預測體內藥物釋放表現</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">藥物配方篩選之參考依據</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">檢測藥物生產批次之釋放均一性</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">溶離試驗目的：預測體內釋放、配方篩選、批次均一性。(A)「檢測不純物總量」非溶離試驗目的（屬含量/純度分析），選(A)。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio98"></textarea>
+</div><div class="q" data-qid="bio99">
+  <div class="q-head">
+    <span class="q-tag">112年第一次 第53題</span>
+    <span class="ans-tag">答案：A</span>
+  </div>
+  <div class="q-stem">有關藥物口服吸收之敘述，下列何者正確？① 一級吸收速率與藥物在吸收部位的濃度及吸收量成正比  ② 零級吸收速率與藥物在吸收部位的濃度及含量成正比  ③到達最高血中濃度( C max ) 前，僅進行藥物吸收，( C max ) 後才開始排除  ④到達最高血中濃度的時間 (T max) 與吸收速率常數及排除速率常數有關</div>
+  <div class="opts"><button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">A</span><span class="ot">①④</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">②③</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">②④</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">①③</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">口服吸收：①一級吸收速率與吸收部位藥物量成正比，正確；④Tmax與ka及k皆有關（Tmax＝ln(ka/k)/(ka−k)），正確。②零級與濃度無關、③Cmax前吸收與排除同時進行，皆錯。故選①④（答A）。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio99"></textarea>
+</div><div class="q" data-qid="bio100">
+  <div class="q-head">
+    <span class="q-tag">112年第一次 第55題</span>
+    <span class="ans-tag">答案：A</span>
+  </div>
+  <div class="q-stem">某藥物注射投與符合二室藥動模式，其吸收與排除皆依循一次動力特性。若以一室模式計算該藥口服投與之藥動參數時，最可能出現下列何種情況？</div>
+  <div class="opts"><button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">A</span><span class="ot">排除速率常數會被高估</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">分布速率常數會被低估</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">總曲線下面積會被高估</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">吸收速率常數會被低估</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">二室藥物若誤用一室模式計算，會把分布相誤當排除相，導致排除速率常數k被高估。(A)正確。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio100"></textarea>
+</div><div class="q" data-qid="bio101">
+  <div class="q-head">
+    <span class="q-tag">112年第一次 第63題</span>
+    <span class="ans-tag">答案：C</span>
+  </div>
+  <div class="q-stem">有關口服藥物經吸收達最高血中藥物濃度時之敘述，下列何者最適當？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">藥物已吸收完全</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">吸收速率大於排除速率</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">C</span><span class="ot">吸收速率等於排除速率</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">吸收速率小於排除速率</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">口服達Cmax（尖峰）時，吸收速率＝排除速率（淨變化率為零）。(C)正確。此時藥物尚未吸收完全。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio101"></textarea>
+</div><div class="q" data-qid="bio102">
+  <div class="q-head">
+    <span class="q-tag">112年第一次 第68題</span>
+    <span class="ans-tag">答案：A</span>
+  </div>
+  <div class="q-stem">依中華藥典及 USP-NF，下列何者是一般錠劑與膠囊劑進行溶離試驗時最常用的溶離裝置？</div>
+  <div class="opts"><button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">A</span><span class="ot">Apparatus I/ Apparatus II</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">Apparatus I/ ApparatusIII</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">Apparatus II / ApparatusIII</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">Apparatus I / ApparatusII / ApparatusIII</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">錠劑與膠囊溶離最常用Apparatus I（轉籃）與Apparatus II（槳）。(A)正確。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio102"></textarea>
+</div><div class="q" data-qid="bio103">
+  <div class="q-head">
+    <span class="q-tag">112年第二次 第27題</span>
+    <span class="ans-tag">答案：C</span>
+  </div>
+  <div class="q-stem">依中華藥典，充填液體之膠囊劑，其單位劑量均一度的測試方法為何？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">崩散度試驗</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">脆度試驗</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">C</span><span class="ot">重量差異試驗</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">溶離度試驗</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">充填液體的膠囊，單位劑量均一度用「重量差異試驗」。(C)正確。（固體充填且劑量小者才用含量均一度）</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio103"></textarea>
+</div><div class="q" data-qid="bio104">
+  <div class="q-head">
+    <span class="q-tag">112年第二次 第54題</span>
+    <span class="ans-tag">答案：D</span>
+  </div>
+  <div class="q-stem">口服投與具dose-independent特性的藥品後，因病況改變使得藥物排除速率常數變小，吸收速率常數未受影 響，則下列藥動參數的變化何者最適當？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">清除率變大</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">分布體積變小</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">達最高血中濃度的時間縮短</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">D</span><span class="ot">最高血中濃度變大</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">dose-independent（線性）藥，k變小（排除變慢）而ka不變：清除率變小、半衰期延長、Cmax上升、Tmax延後。(D)最高血中濃度變大，正確。(A)(B)(C)方向皆錯。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio104"></textarea>
+</div><div class="q" data-qid="bio105">
+  <div class="q-head">
+    <span class="q-tag">113年第一次 第65題</span>
+    <span class="ans-tag">答案：A</span>
+  </div>
+  <div class="q-stem">下列何種賦形劑與用途的配對，最可能縮短藥物達尖峰血中濃度之時間？</div>
+  <div class="opts"><button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">A</span><span class="ot">Avicel-崩散劑</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">talc-潤滑劑</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">veegum-持放劑</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">cellulose acetate phthalate-腸衣</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">縮短Tmax需加快溶離/崩散。(A)Avicel（微晶纖維素）作崩散劑可加速崩散溶離、縮短Tmax。(B)talc潤滑、(C)veegum持放、(D)CAP腸衣皆會延後或無助於縮短Tmax。故選(A)。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio105"></textarea>
+</div><div class="q" data-qid="bio106">
+  <div class="q-head">
+    <span class="q-tag">113年第一次 第67題</span>
+    <span class="ans-tag">答案：A</span>
+  </div>
+  <div class="q-stem">一般口服之藥物吸收，最主要在腸道何區段？</div>
+  <div class="opts"><button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">A</span><span class="ot">十二指腸（duodenum）</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">空腸（jejunum）</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">迴腸（ileum）</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">結腸（colon）</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">口服藥物吸收主要在小腸，其中十二指腸（duodenum）表面積大、血流豐富，為主要吸收區段。(A)正確。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio106"></textarea>
+</div><div class="q" data-qid="bio107">
+  <div class="q-head">
+    <span class="q-tag">113年第二次 第52題</span>
+    <span class="ans-tag">答案：C</span>
+  </div>
+  <div class="q-stem">有關口服藥物之吸收速率常數（ka）不變，當排除速率常數（k）增加時，對血中濃度變化之影響，下列何者正確？①曲線下面積（AUC）下降 ②到達血中最高濃度的時間（ ）不變 ③血中最高濃度（ ）下降 ④血中最高濃度（ ）不變</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">僅②④</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">①②④</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">C</span><span class="ot">僅①③</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">①②③</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">ka不變、k增加：AUC下降（①對）、Tmax不變？其實Tmax會縮短、Cmax下降（③對）。依題選項組合，正確為①③（答C）。（k↑使排除快，Cmax↓、AUC↓）</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio107"></textarea>
+</div><div class="q" data-qid="bio108">
+  <div class="q-head">
+    <span class="q-tag">113年第二次 第69題</span>
+    <span class="ans-tag">答案：B</span>
+  </div>
+  <div class="q-stem">根據Noyes-Whitney方程式，增加擾動（agitation）次數為藉由下列何種原因加速固態藥物的溶離速率？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">增加擴散速率常數</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">B</span><span class="ot">減少滯留層（stagnant layer）厚度</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">增加顆粒接觸表面積</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">加大媒液及滯留層（stagnant layer）的濃度差</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">Noyes-Whitney：dC/dt＝DA(Cs−C)/h。增加擾動（agitation）主要「減少滯留層（stagnant/diffusion layer）厚度h」，加速溶離。(B)正確。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio108"></textarea>
+</div><div class="q" data-qid="bio109">
+  <div class="q-head">
+    <span class="q-tag">113年第二次 第70題</span>
+    <span class="ans-tag">答案：A</span>
+  </div>
+  <div class="q-stem">下列何種賦形劑可提高口服藥品的吸收速率？</div>
+  <div class="opts"><button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">A</span><span class="ot">disintegrants</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">lubricants</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">enteric coat</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">coating agent</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">崩散劑（disintegrants）加速錠劑崩散→增大溶離表面積→提高吸收速率。(A)正確。(B)潤滑劑疏水反減溶離、(C)腸衣延遲、(D)包衣延遲。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio109"></textarea>
+</div><div class="q" data-qid="bio110">
+  <div class="q-head">
+    <span class="q-tag">114年第一次 第56題</span>
+    <span class="ans-tag">答案：C</span>
+  </div>
+  <div class="q-stem">口服給與一定劑量的藥品A，已知其擬似分布體積為0.2 L/kg，排除速率常數0.23 ，吸收速率常 數1.2 ，當該藥的吸收速率常數變大，而前述其他參數不變情況下，有關 和AUC變化之敘述，下列何者正確？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">延長、 降低、AUC不變</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">縮短、 降低、AUC增加</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">C</span><span class="ot">縮短、 增加、AUC不變</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">延長、 增加、AUC增加</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">ka變大（吸收更快）、其他不變：Tmax縮短、Cmax增加，但AUC＝F·Dose/CL不受ka影響而「不變」。(C)縮短、增加、AUC不變，正確。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio110"></textarea>
+</div><div class="q" data-qid="bio111">
+  <div class="q-head">
+    <span class="q-tag">114年第一次 第68題</span>
+    <span class="ans-tag">答案：A</span>
+  </div>
+  <div class="q-stem">下列那一種溶離裝置最適合用於執行transdermal drug product的溶離試驗？</div>
+  <div class="opts"><button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">A</span><span class="ot">cylinder</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">flow cell</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">paddle</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">rotating basket</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">穿皮製劑（transdermal）溶離試驗最適用cylinder（Apparatus VI，往復圓筒）或paddle over disk。此題選(A)cylinder。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio111"></textarea>
+</div><div class="q" data-qid="bio112">
+  <div class="q-head">
+    <span class="q-tag">114年第二次 第44題</span>
+    <span class="ans-tag">答案：C</span>
+  </div>
+  <div class="q-stem">依中華藥典，有關delayed-release dosage form之溶離試驗，下列敘述何者錯誤？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">階段1之檢品數為6件，階段2之檢品數為6件</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">酸性液段之媒液為0.1 N鹽酸，緩衝液段之媒液為pH 6.8磷酸鹽緩衝液</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">C</span><span class="ot">酸性液段階段1之結果，如檢品平均溶解量未超出規定量10％，即符合允收基準</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">酸性液段階段2之結果，如階段1與階段2所有檢品之平均溶解量未超出規定量10％，且無一檢品溶 解量超出規定量25％，即符合允收基準</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">delayed-release溶離：(C)敘述錯誤——酸性液段階段1的允收基準通常是「無一檢品溶出超過規定量10%」（限制溶出上限，防提前釋放），非「平均未超出10%即符合」，選(C)。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio112"></textarea>
+</div><div class="q" data-qid="bio113">
+  <div class="q-head">
+    <span class="q-tag">114年第二次 第56題</span>
+    <span class="ans-tag">答案：C</span>
+  </div>
+  <div class="q-stem">一室模式的藥品經由2個不同的血管外途徑給與相同劑量，當藥品吸收後，其first-order排除速率常數均相同，但first-order吸收速率常數則為甲＞乙時，下列藥動學參數之比較，何者正確？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">T max ：甲＞乙</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">C max ：甲＜乙</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">C</span><span class="ot">AUC 0-∞ ：甲＝乙</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">CL：甲＞乙</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">同劑量、同k、ka：甲＞乙。ka大者Tmax短、Cmax高，但AUC0-∞＝F·Dose/CL相同（甲＝乙）。(C)正確。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio113"></textarea>
+</div><div class="q" data-qid="bio114">
+  <div class="q-head">
+    <span class="q-tag">114年第二次 第69題</span>
+    <span class="ans-tag">答案：D</span>
+  </div>
+  <div class="q-stem">Transdermal drug products之溶離試驗，選用下列何種裝置最適當？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">rotating basket</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">paddle</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">reciprocating cylinder</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">D</span><span class="ot">paddle over disk</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">穿皮製劑溶離最適裝置為paddle over disk（Apparatus V，槳碟法）。(D)正確。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio114"></textarea>
+</div><div class="q" data-qid="bio115">
+  <div class="q-head">
+    <span class="q-tag">115年第一次 第20題</span>
+    <span class="ans-tag">答案：C</span>
+  </div>
+  <div class="q-stem">有關 hydroxypropyl methylcellulose 作為膠囊殼材質之敘述，下列何者正確？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">結構具有交聯的潛在性</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">交聯會增加體外溶離</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">C</span><span class="ot">可在溫度低於 30℃測試溶液中崩解</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">完全不具氣體通透性</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">HPMC膠囊殼：(C)可在低於30℃的測試溶液中崩解，正確。(A)HPMC不易交聯（明膠才有交聯風險）；(B)交聯會「減少」溶離；(D)並非完全不透氣。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio115"></textarea>
+</div><div class="q" data-qid="bio116">
+  <div class="q-head">
+    <span class="q-tag">115年第一次 第28題</span>
+    <span class="ans-tag">答案：C</span>
+  </div>
+  <div class="q-stem">依據中華藥典，有關口服給藥劑型之溶離試驗法裝置Ⅰ，下列敘述何者錯誤？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">液溫維持 37±0.5℃</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">指定轉速誤差應小於±4％</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">C</span><span class="ot">籃底與溶離杯底應距離 20±2 mm</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">網籃孔徑為 0.36～0.44 mm</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">裝置I（轉籃法）：(C)敘述錯誤——籃底與溶離杯底距離規定為25±2 mm，非20±2 mm，選(C)。(A)37±0.5℃、(B)轉速誤差±4%、(D)網籃孔徑皆正確。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio116"></textarea>
+</div><div class="q" data-qid="bio117">
+  <div class="q-head">
+    <span class="q-tag">115年第一次 第46題</span>
+    <span class="ans-tag">答案：A</span>
+  </div>
+  <div class="q-stem">一藥品裸錠以 cellulose acetate phthalate 包衣後，於 pH 1.2 的媒液中進行溶離試驗，其結果最可能是下列何圖？</div>
+  <div class="opts"><button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">A</span><span class="ot"></span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot"></span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot"></span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot"></span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">CAP（cellulose acetate phthalate）為腸溶衣，在pH 1.2（胃酸）不溶，故裸錠包CAP後於pH 1.2幾乎不溶離（溶離曲線接近平坦低值）。選對應圖(A)。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio117"></textarea>
+</div><div class="q" data-qid="bio118">
+  <div class="q-head">
+    <span class="q-tag">115年第一次 第55題</span>
+    <span class="ans-tag">答案：D</span>
+  </div>
+  <div class="q-stem">藥品遵循線性藥動學特性且為非 flip-flop 的情形下，有關口服給藥後血中濃度變化，下列敘述何者正確？ （排除速率常數：k；吸收速率常數： ）</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">k 不變時， 越大，AUC 越大</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">k 不變時， 越小，半衰期越長</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">k 不變時， 越大，Tmax 越長</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">D</span><span class="ot">不變時，k 越大，AUC 越小</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">非flip-flop線性口服：(D)ka不變時，k越大→CL越大→AUC越小，正確。(A)ka越大AUC不變（AUC與ka無關）；(B)ka不變下半衰期由k決定；(C)ka越大Tmax越短非越長。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio118"></textarea>
+</div><div class="q" data-qid="bio119">
+  <div class="q-head">
+    <span class="q-tag">115年第一次 第56題</span>
+    <span class="ans-tag">答案：D</span>
+  </div>
+  <div class="q-stem">藥品經由口服給與後，有關 flip-flop 現象之敘述，下列何者正確？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">會出現吸收雙峰現象</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">存在滯後吸收時間（lag time）</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">吸收速率常數＞排除速率常數</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">D</span><span class="ot">需與靜脈注射給藥之排除速率常數值相比對後得知</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">flip-flop指ka＜k（吸收比排除慢，吸收為限速），須與IV的真實排除速率常數比對才能確認。(D)正確。(A)雙峰另有原因；(B)lag time不同概念；(C)flip-flop為ka＜k。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio119"></textarea>
+</div><div class="q" data-qid="bio120">
+  <div class="q-head">
+    <span class="q-tag">115年第一次 第57題</span>
+    <span class="ans-tag">答案：B</span>
+  </div>
+  <div class="q-stem">某藥品口服後，以零級速率被吸收至體內，下列敘述何者錯誤？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">藥品以定速被吸收至體內</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">B</span><span class="ot">單位時間被吸收至體內的藥量會改變</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">零級吸收速率的單位可利用 mass/time 表示</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">吸收速率不受胃腸道內待被吸收之藥量的影響</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">零級吸收：定速吸收，單位時間吸收藥量固定（不變）。(B)「單位時間被吸收的藥量會改變」錯誤，選(B)。(A)(C)(D)描述零級特性皆正確。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio120"></textarea>
+</div><div class="q" data-qid="bio121">
+  <div class="q-head">
+    <span class="q-tag">115年第一次 第66題</span>
+    <span class="ans-tag">答案：A</span>
+  </div>
+  <div class="q-stem">下圖為某一藥品在配方中添加不同濃度（5.0％、1.0％及 0.5％）賦形劑後的體外溶離曲線。該賦形劑最有可能為下列何者？</div>
+  <div class="opts"><button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">A</span><span class="ot">microcrystalline cellulose</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">talc</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">ethylcellulose</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">stearic acid</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">添加濃度越高溶離越快的賦形劑為崩散劑。microcrystalline cellulose（Avicel）具崩散/潤濕作用，濃度越高溶離越快。(A)正確。talc、ethylcellulose、stearic acid為疏水/緩釋性會減慢。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio121"></textarea>
+</div><div class="q" data-qid="bio122">
+  <div class="q-head">
+    <span class="q-tag">115年第一次 第70題</span>
+    <span class="ans-tag">答案：C</span>
+  </div>
+  <div class="q-stem">藥品若具非常快速之溶離與吸收特性，不易以溶離試驗預測藥品體內動態，其係指在 15 分鐘內主成分至少已 溶離多少％？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">50</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">75</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">C</span><span class="ot">85</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">95</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">「非常快速溶離」定義：15分鐘內主成分溶離≥85%（可豁免部分BE，屬快速溶離製劑）。(C)正確。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio122"></textarea>
+</div>
+</section>
+<section class="chapter" id="sec-basic" style="--accent:#9C9484">
+  <h2 class="ch-title">藥動基本觀念／預配方 <span class="ch-count">16 題</span></h2>
+  <div class="q" data-qid="bio123">
+  <div class="q-head">
+    <span class="q-tag">111年第一次 第66題</span>
+    <span class="ans-tag">答案：C</span>
+  </div>
+  <div class="q-stem">藥物產生雙峰血中濃度之可能原因，下列何者錯誤？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">胃排空的變異</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">錠劑崩散不完全</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">C</span><span class="ot">腎臟經主動分泌排泄</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">經膽汁腸肝循環</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">雙峰血中濃度成因：胃排空變異、腸肝循環、不同吸收部位、崩散不完全等。(C)「腎臟主動分泌排泄」屬排除過程，不會造成吸收相的雙峰，故錯誤，選(C)。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio123"></textarea>
+</div><div class="q" data-qid="bio124">
+  <div class="q-head">
+    <span class="q-tag">111年第二次 第48題</span>
+    <span class="ans-tag">答案：A</span>
+  </div>
+  <div class="q-stem">有關藥物從固體劑型釋出速率之改良，下列敘述何者最不適當？</div>
+  <div class="opts"><button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">A</span><span class="ot">利用障壁性包衣控制藥物接觸體液，進而改變藥物本身的排除速率</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">控制藥物從劑型擴散之速率</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">利用藥物或其藥用特性，與特定部位體液間的化學反應或交互作用</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">藉由可溶性基質之溶蝕作用控制藥物釋出</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">控制固體劑型釋放的手段：擴散控制、化學交互作用、基質溶蝕等。(A)「利用包衣改變藥物本身的排除速率」錯誤——包衣只改變釋放，不會改變藥物在體內的排除速率，選(A)。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio124"></textarea>
+</div><div class="q" data-qid="bio125">
+  <div class="q-head">
+    <span class="q-tag">111年第二次 第57題</span>
+    <span class="ans-tag">答案：A</span>
+  </div>
+  <div class="q-stem">藥品具有下列何種特性時，其擬似分布體積較小？①高血漿蛋白質結合率 ②低血漿蛋白質結合率 ③分子 量大而不易離開血管 ④分子量小且易離開血管</div>
+  <div class="opts"><button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">A</span><span class="ot">①③</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">②④</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">①④</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">②③</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">Vd小的條件：①高血漿蛋白結合（藥物留在血中）、③分子量大不易離開血管。②低結合、④分子量小易外滲會使Vd大。故選①③（答A）。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio125"></textarea>
+</div><div class="q" data-qid="bio126">
+  <div class="q-head">
+    <span class="q-tag">112年第一次 第64題</span>
+    <span class="ans-tag">答案：C</span>
+  </div>
+  <div class="q-stem">某藥具一室線性動力學特性，經腎及肝排除，以靜脈注射給藥 0.25 g 後，利用尿中藥物排除速率之對數值（Y  軸，mg/h）與收集區間時段之中點時間（X 軸，h）作圖，經線性迴歸，於 Y 軸之截距經對數轉換後其值為 125，已知該藥肝排除速率常數為 0.19 ，則其總排除速率常數（ ）為若干？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">0.31</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">0.5</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">C</span><span class="ot">0.69</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">0.89</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">以尿排泄速率半對數作圖，Y截距經對數轉換值125，肝排除k_m＝0.19。此為計算題求總排除速率常數。屬計算延伸。答案約0.69。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio126"></textarea>
+</div><div class="q" data-qid="bio127">
+  <div class="q-head">
+    <span class="q-tag">112年第一次 第69題</span>
+    <span class="ans-tag">答案：C</span>
+  </div>
+  <div class="q-stem">某原廠藥及學名藥具藥劑相等性，當學名藥之吸收程度低於原廠藥時，下列學名藥之相關數據可能變化，何 者錯誤？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">最高血中濃度值下降</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">尿中累積最大排除量下降</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">C</span><span class="ot">達尿中累積最大排除量之時間延長</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">達最高血中濃度之時間不變</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">學名藥吸收程度（F）低於原廠但吸收速率相同：(C)「達尿中最大排除量的時間延長」錯誤——F下降只影響「量」（Du∞下降），不改變「時間」，選(C)。(A)(B)(D)皆正確。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio127"></textarea>
+</div><div class="q" data-qid="bio128">
+  <div class="q-head">
+    <span class="q-tag">112年第二次 第53題</span>
+    <span class="ans-tag">答案：B</span>
+  </div>
+  <div class="q-stem">下列藥動參數之估算，何者最不會受到藥物是否具flip-flop特性之影響？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">AUC</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">B</span><span class="ot">Tmax</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">Cmin</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">Cmax</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">flip-flop影響ka與k的歸屬，但Tmax由兩速率常數決定，其估算「最不受」flip-flop歸屬影響（Tmax數值不變，只是解讀不同）。(B)正確。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio128"></textarea>
+</div><div class="q" data-qid="bio129">
+  <div class="q-head">
+    <span class="q-tag">112年第二次 第61題</span>
+    <span class="ans-tag">答案：D</span>
+  </div>
+  <div class="q-stem">某藥物遵循二室開放模式及一階次排除藥動特性，今以靜脈輸注給藥，欲達到穩定狀態血中濃度（ ）。下列何者可使血中濃度於給藥後全程皆可與 相同？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">加入速效劑量</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">加入速效劑量</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">加入速效劑量</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">D</span><span class="ot">加入速效劑量也不可能全程皆達</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">二室輸注要全程維持Css，單靠loading dose無法讓分布相也完全等於Css（二室有分布過程）。(D)加入速效劑量也不可能全程皆達，正確。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio129"></textarea>
+</div><div class="q" data-qid="bio130">
+  <div class="q-head">
+    <span class="q-tag">113年第一次 第54題</span>
+    <span class="ans-tag">答案：B</span>
+  </div>
+  <div class="q-stem">有關靜脈輸注之敘述，下列何者正確？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">輸注速率越快，半衰期越短</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">B</span><span class="ot">到達穩定狀態的時間與藥物半衰期有關</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">輸注速率越快，越早到達穩定狀態</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">到達穩定狀態的時間與藥物劑量有關</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">靜脈輸注：(B)達穩態時間只與藥物半衰期有關（約4–5個t½），正確。(A)(C)輸注速率只影響穩態濃度高低、不影響達穩態時間；(D)達穩態時間與劑量無關。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio130"></textarea>
+</div><div class="q" data-qid="bio131">
+  <div class="q-head">
+    <span class="q-tag">113年第二次 第49題</span>
+    <span class="ans-tag">答案：A</span>
+  </div>
+  <div class="q-stem">連續多次口服給藥後，藥物之累積半衰期（accumulation ）與下列何組參數最相關？</div>
+  <div class="opts"><button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">A</span><span class="ot">ka，k</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">D 0 ，k</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot"></span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot"></span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">多次給藥的蓄積程度與ka、k（吸收與排除速率常數）相關。(A)正確。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio131"></textarea>
+</div><div class="q" data-qid="bio132">
+  <div class="q-head">
+    <span class="q-tag">114年第一次 第49題</span>
+    <span class="ans-tag">答案：D</span>
+  </div>
+  <div class="q-stem">以固定劑量及間隔多次口服給藥時，下列敘述何者正確？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">清除率越小，穩定狀態平均血中濃度越小</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">給藥頻次越頻繁，達穩定狀態所需時間越短</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">在穩定狀態下，一個給藥間隔內所排除之藥量一定等於口服劑量</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">D</span><span class="ot">給藥間隔越長，達穩定狀態時之蓄積指數（accumulation index）越小</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">(D)給藥間隔越長，蓄積指數（accumulation index）越小，正確。(A)清除率越小Css越大；(B)達穩態時間只與半衰期有關、與頻次無關；(C)穩態下一間隔排除量等於「吸收進入量（F·Dose）」非口服劑量。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio132"></textarea>
+</div><div class="q" data-qid="bio133">
+  <div class="q-head">
+    <span class="q-tag">114年第一次 第50題</span>
+    <span class="ans-tag">答案：B</span>
+  </div>
+  <div class="q-stem">多次口服給藥後，有關藥品在steady-state時 之敘述，下列何者錯誤？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">可用來評估藥品的安全性</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">B</span><span class="ot">不會受到給藥間隔的影響</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">要維持低於藥品的最低中毒濃度</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">可藉以判斷藥品在體內是否有蓄積</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">穩態平均濃度Css：(B)錯誤——Css會受給藥間隔τ影響（Css＝F·Dose/(CL·τ)）。(A)(C)(D)皆正確。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio133"></textarea>
+</div><div class="q" data-qid="bio134">
+  <div class="q-head">
+    <span class="q-tag">114年第一次 第52題</span>
+    <span class="ans-tag">答案：D</span>
+  </div>
+  <div class="q-stem">柯先生接受某藥多次靜脈注射治療，假設下列方法皆可執行，何者可縮短此藥到達穩定狀態之平均血中濃度（ ）的時間？①縮短給藥間隔 ②增加給藥劑量 ③減緩藥物排除 ④搭配loading dose</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">①②③</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">①③④</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">僅①②</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">D</span><span class="ot">僅④</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">縮短達穩態時間只能靠(④)搭配loading dose（速效劑量）。①縮短間隔、②增加劑量只提高穩態濃度、③減緩排除反而延長達穩態時間。故選僅④（答D）。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio134"></textarea>
+</div><div class="q" data-qid="bio135">
+  <div class="q-head">
+    <span class="q-tag">114年第一次 第61題</span>
+    <span class="ans-tag">答案：C</span>
+  </div>
+  <div class="q-stem">某藥遵循線性一室藥動學模式，經靜脈注射（IV bolus）給藥，有關其擬似分布體積（ ）與排除速率常數（k）之敘述，下列何者正確？① 可用來估算速效劑量 ②k隨劑量改變 ③ 為血液體積及脂肪體積的總和 ④k為一階次動力學性質 ⑤ 與k為正比關係</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">①②</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">②④</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">C</span><span class="ot">①④</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">③⑤</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">IV bolus一室：①Vd可估速效劑量（正確）、④k為一階次動力學（正確）。②k不隨劑量變（線性）、③Vd非血液+脂肪體積之和（為擬似值）、⑤Vd與k無正比關係。故選①④（答C）。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio135"></textarea>
+</div><div class="q" data-qid="bio136">
+  <div class="q-head">
+    <span class="q-tag">114年第二次 第47題</span>
+    <span class="ans-tag">答案：D</span>
+  </div>
+  <div class="q-stem">下列何者可做為delayed-release劑型之包衣材料？①hydroxypropyl methylcellulose acetate succinate ②cellulose acetate phthalate ③methacrylic acid copolymer B ④polyvinyl acetate phthalate</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">僅②④</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">僅①③</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">僅②③④</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">D</span><span class="ot">①②③④ ( B ) 某藥品之體內動態遵循線性一室模式，今以單次靜脈注射360 mg，及固定給藥間隔（間隔時間依病人而異）方式多次靜脈注射360 mg於Ⅰ、Ⅱ、Ⅲ、Ⅳ四位病人。其單次給藥後之血中濃度曲線下面積（AUC 0-∞ ）及多次靜脈注射給藥之穩定狀態平均血中濃度（ ）之參數如圖所示。 48-49 為題組 第48題 48.有關四位病 人給藥間隔時間（hr）之大小比較，下列何者正確？</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">Ⅰ＞Ⅲ＞Ⅱ</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">Ⅱ＞Ⅳ＞Ⅲ</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">Ⅲ＞Ⅰ＞Ⅳ</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">D</span><span class="ot">Ⅳ＞Ⅱ＞Ⅰ</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">delayed-release（腸溶）包衣材料：①HPMCAS、②CAP、③methacrylic acid copolymer、④PVAP皆為腸溶材料，四者皆可。故選①②③④（答D）。（此題原檔黏連題組）</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio136"></textarea>
+</div><div class="q" data-qid="bio137">
+  <div class="q-head">
+    <span class="q-tag">114年第二次 第51題</span>
+    <span class="ans-tag">答案：A</span>
+  </div>
+  <div class="q-stem">遵循線性藥動學一室模式藥品之多次劑量靜脈注射給藥，下列敘述何者正確？①dosage regimen 之調整包括藥品劑量與給藥頻率 ②血中藥品濃度的波動程度可被調整 ③藥品之擬似分布體積與 排除速率常數皆會隨著劑量頻次增加而有所變化</div>
+  <div class="opts"><button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">A</span><span class="ot">僅①②</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">僅①③</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">僅②③</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">①②③</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">線性一室多次IV：①可調劑量與頻率、②可調濃度波動程度，皆正確。③Vd與k為藥物固有參數，不隨劑量頻次改變（線性）。故選①②（答A）。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio137"></textarea>
+</div><div class="q" data-qid="bio138">
+  <div class="q-head">
+    <span class="q-tag">115年第一次 第62題</span>
+    <span class="ans-tag">答案：D</span>
+  </div>
+  <div class="q-stem">某藥品經靜脈注射後，如圖示遵循二室開放模式並以一階次從中央室排除，其血中藥品濃度變化可表示為 = （t 為時間），下列敘述何者錯誤？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot"></span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot"></span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot"></span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">D</span><span class="ot"></span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">二室開放模式IV，中央室一階排除，血中濃度為雙指數式。此題選項為公式判斷（哪個敘述錯誤），涉及α、β、係數關係，屬進階觀念，答案(D)。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio138"></textarea>
+</div>
+</section>
+<section class="chapter" id="sec-other" style="--accent:#95908A">
+  <h2 class="ch-title">其他藥動觀念 <span class="ch-count">7 題</span></h2>
+  <div class="q" data-qid="bio139">
+  <div class="q-head">
+    <span class="q-tag">111年第一次 第60題</span>
+    <span class="ans-tag">答案：D</span>
+  </div>
+  <div class="q-stem">某藥經口服給藥，可完全吸收且無遲滯時間。今測得血中濃度為 C p ，尿液中藥物量為D u ，則由 與t作圖得排除相線性的 Y 軸截距，組成截距之參數不包括下列何者?</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">k a</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">k e</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">F</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">D</span><span class="ot">V d</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">口服完全吸收、無lag，尿排除相作圖Y截距由ka、ke、F組成（不含Vd，因尿量Du以藥量計非濃度）。(D)Vd不包含，選(D)。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio139"></textarea>
+</div><div class="q" data-qid="bio140">
+  <div class="q-head">
+    <span class="q-tag">112年第一次 第36題</span>
+    <span class="ans-tag">答案：A</span>
+  </div>
+  <div class="q-stem">有關無菌操作之敘述，下列何者正確？</div>
+  <div class="opts"><button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">A</span><span class="ot">所使用之高效率特殊空氣濾網（HEPA filter）可過濾至少 99.99%之粒徑大於或等於 0.3 μm 的粒子</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">依中華藥典規定，進行無菌試驗時應在 Class 1,000 環境下進行</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">無菌操作所用之層流設備（laminar airflow equipment），依規定其層流流速應維持在 70 fpm±20%範圍內</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">符合 Class 1,000 的 cleanroom ，表示此空間裡每立方英呎空間中小於 0.5 μm 的總顆粒數不會超過 1,000 粒</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">無菌操作：(A)HEPA可過濾≥0.3μm粒子達99.97%以上（≈99.99%），正確。(B)無菌試驗環境要求更嚴（非Class 1000）；(C)層流風速規定約90 fpm±20%；(D)Class分級定義為每立方英呎≥0.5μm粒子數，敘述不精確。故選(A)。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio140"></textarea>
+</div><div class="q" data-qid="bio141">
+  <div class="q-head">
+    <span class="q-tag">112年第二次 第45題</span>
+    <span class="ans-tag">答案：D</span>
+  </div>
+  <div class="q-stem">下列何者不是長效性劑型最主要的優點？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">提高用藥的方便性及病人服藥順從性</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">減少血中濃度高低波動的情形</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">減少藥物對身體造成的不良反應</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">D</span><span class="ot">提高藥物最高血中濃度以獲得較大療效</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">長效劑型優點：提高順從性、減少濃度波動、降低不良反應。(D)「提高最高血中濃度以獲較大療效」錯誤——長效劑型是「降低」波峰、平穩釋放，非提高Cmax，選(D)。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio141"></textarea>
+</div><div class="q" data-qid="bio142">
+  <div class="q-head">
+    <span class="q-tag">112年第二次 第55題</span>
+    <span class="ans-tag">答案：C</span>
+  </div>
+  <div class="q-stem">某藥物的吸收與排除皆依循一次動力學特性，下列何者會直接影響其達到最高藥物血中濃度所需時間之估   算？①Do ②ka ③k ④ ⑤F</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">①②⑤</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">③④</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">C</span><span class="ot">②③</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">①④⑤</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">Tmax＝ln(ka/k)/(ka−k)，只與②ka與③k有關。①Do劑量、④Vd、⑤F不影響Tmax。故選②③（答C）。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio142"></textarea>
+</div><div class="q" data-qid="bio143">
+  <div class="q-head">
+    <span class="q-tag">113年第一次 第68題</span>
+    <span class="ans-tag">答案：B</span>
+  </div>
+  <div class="q-stem">下列何項裝置或方法，最適用於測定穿皮製劑藥物之permeation？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">flow-through-cell apparatus</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">B</span><span class="ot">Franz diffusion cell</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">Caco-2 cell diffusion test</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">everted sac method</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">測穿皮製劑的permeation（穿透）最適用Franz diffusion cell（法蘭茲擴散槽）。(B)正確。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio143"></textarea>
+</div><div class="q" data-qid="bio144">
+  <div class="q-head">
+    <span class="q-tag">113年第二次 第20題</span>
+    <span class="ans-tag">答案：C</span>
+  </div>
+  <div class="q-stem">有關 laurocapram（Azone）與 dimethyl sulfoxide（DMSO）促進藥物穿皮吸收之敘述，下列何者錯誤？</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">Azone 不溶於水，DMSO 可與水互溶</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">B</span><span class="ot">兩者主要作用都是降低角質層障蔽對藥物擴散之阻力</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">C</span><span class="ot">一般作為促進穿透所使用之濃度，Azone 比 DMSO 高</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">單次施用下，Azone 在角質層存留之時間比 DMSO 長</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">Azone與DMSO為穿皮促進劑：(C)敘述錯誤——一般使用濃度DMSO需高濃度（常&gt;50%）才有效，Azone低濃度（1–5%）即有效，故「Azone比DMSO高」錯，選(C)。(A)(B)(D)皆正確。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio144"></textarea>
+</div><div class="q" data-qid="bio145">
+  <div class="q-head">
+    <span class="q-tag">114年第一次 第63題</span>
+    <span class="ans-tag">答案：B</span>
+  </div>
+  <div class="q-stem">單次口服給藥後血中濃度與時間關係如下圖，何階段符合 ？ （ ：腸胃道中藥物 量； ：藥物排除量）</div>
+  <div class="opts"><button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">A</span><span class="ot">Ⅰ</span></button>
+<button class="opt" data-correct="1" onclick="pick(this)"><span class="ol">B</span><span class="ot">Ⅱ</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">C</span><span class="ot">Ⅲ</span></button>
+<button class="opt" data-correct="0" onclick="pick(this)"><span class="ol">D</span><span class="ot">Ⅳ</span></button>
+</div>
+  <button class="show-exp" onclick="toggleExp(this)">顯示詳解</button>
+  <div class="exp">單次口服曲線，符合「腸胃道藥量＝藥物排除量」的階段為Cmax附近（吸收與排除平衡點後）。依圖選階段Ⅱ。(B)正確。</div>
+  <textarea class="note" placeholder="📝 補充筆記（自動儲存）" oninput="saveNote(this)" data-note="bio145"></textarea>
+</div>
+</section>
+</main>
+<footer>資料來源：111–115 專技高考藥師歷屆試題　·　詳解為依藥劑學知識整理，僅供複習參考</footer>
+<script>
+function pick(btn){
+  const q=btn.closest('.q');
+  if(q.classList.contains('locked')) return;
+  const multi=q.querySelector('.multi-badge');
+  btn.classList.add('chosen');
+  if(!multi){ q.classList.add('locked'); }
+  else{
+    // 複選：點過幾個後仍可繼續，點「顯示詳解」或再點鎖定
+    q.classList.add('locked');
+  }
+}
+function toggleExp(btn){ btn.nextElementSibling.classList.toggle('on'); }
+function revealAll(){ document.querySelectorAll('.q').forEach(q=>q.classList.add('locked')); }
+function hideAll(){ document.querySelectorAll('.q').forEach(q=>{q.classList.remove('locked');q.querySelectorAll('.opt').forEach(o=>o.classList.remove('chosen'));}); }
+function expAll(){ document.querySelectorAll('.exp').forEach(e=>e.classList.add('on')); }
+function saveNote(t){ try{localStorage.setItem('bionote_'+t.dataset.note,t.value);}catch(e){} }
+function loadNotes(){ document.querySelectorAll('.note').forEach(t=>{try{const v=localStorage.getItem('bionote_'+t.dataset.note);if(v)t.value=v;}catch(e){}}); }
+function clearNotes(){ if(confirm('確定清除所有補充筆記？')){document.querySelectorAll('.note').forEach(t=>{t.value='';try{localStorage.removeItem('bionote_'+t.dataset.note);}catch(e){}});} }
+loadNotes();
+</script>
+</body></html>
